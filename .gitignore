@@ -8,3 +8,4 @@ slides/sl_A.Rmd
 *.Rmd
 slides/template.tex
 *.Rmd
+.DS_Store
