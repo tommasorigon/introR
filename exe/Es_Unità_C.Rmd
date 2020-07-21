@@ -1,0 +1,56 @@
+---
+title: "Esercitazione Unità C"
+subtitle: 
+author: "Tommaso Rigon"
+date: "Anno Accademico 2019/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Esercizio 1
+
+La funzione errore `erf(x)` ammette la seguente espansione in serie
+
+$$\text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-s^2}ds = \frac{2}{\sqrt{\pi}} \sum_{n=0}^\infty(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.$$
+Inoltre, si noti che
+
+$$
+\mathbb{P}(X \le x) = \Phi(x) = \frac{1}{2}\left[1 + \text{erf}(x/\sqrt{2}) \right].
+$$
+Dove $X \sim N(0,1)$ è una distribuzione normale standard. 
+
+- Si costruiscano le funzioni `erf_approx(x,N)` e  `pnorm_approx(x, N)` basate su un troncamento al termine $N$-esimo della serie mostrata qui sopra. In altri termini, si usi l'approssimazione
+
+$$\text{erf}(x) \approx \frac{2}{\sqrt{\pi}} \sum_{n=0}^N(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.$$
+
+- Si valutino le funzioni `erf_approx(x,N)` e  `pnorm_approx(x, N)` nei punti $x = 0$, $x = 1$ e $x = 2$, avendo fissato $N = 10$. Si commentino i risultati.
+
+- Si confrontino i valori del punto precedente con il valore ottenuto tramite la funzione `pnorm`. Si faccia quindi un ulteriore confronto nel punto $x = -3$ usando $N = 10$. Si commenti.
+
+```{r, echo=FALSE}
+erf_approx <- function(x, N) {
+  indexes <- 0:N
+  values <- (-1)^indexes * x^(2 * indexes + 1) / (factorial(indexes) * (2 * indexes + 1))
+  2 / sqrt(pi) * sum(values)
+}
+
+pnorm_approx <- function(x, N) {
+  0.5 * (1 + erf_approx(x / sqrt(2), N))
+}
+```
+
+```{r, results="hide", echo=FALSE}
+rbind(c(erf_approx(x = 0, N = 10), pnorm_approx(x = 0, N = 10), pnorm(0)),
+      c(erf_approx(x = 1, N = 10), pnorm_approx(x = 1, N = 10), pnorm(1)),
+      c(erf_approx(x = 2, N = 10), pnorm_approx(x = 2, N = 10), pnorm(2)))
+```
+
+```{r, results = "hide", echo=FALSE}
+c(pnorm_approx(x = -3, N = 10), pnorm(-3))
+```
+
+
+## Esercizio 2

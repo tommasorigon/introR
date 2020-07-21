@@ -1,0 +1,140 @@
+---
+title: 'Esercitazione A'
+output:
+  html_document: 
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+    highlight: kate
+---
+
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval= T, message=F, warning=F, error=F, comment=NA, cache=F, R.options=list(width=220))
+```
+
+
+## Esercizio 1
+
+Si scriva in **R** la funzione `f(x)` associata a 
+
+$$f(x) = \frac{|\sin(\pi/4 x^2)|}{x}, \qquad x \neq 0.$$
+
+1. Quanto vale $f(1)$? Quanto vale $f(10^8)$? 
+
+1. Si approssimino $f(1)$ ed $f(10)$ alle prime due cifre decimali.
+
+1. Si calcoli $\sum_{k=1}^{K} f(k)$, per $K = 500$.
+
+## Esercizio 2
+
+
+Si definisca in **R** una matrice simmetrica ${\bf A}$ di dimensione $5 \times 5$, i cui elementi sono
+$$
+{\bf A} = \begin{pmatrix}
+26 &  22 &  17 &  22 &  23 \\ 
+22 &  18 &  14 &  23 &  27 \\ 
+17 &  14 &  14 &  20 &  24 \\ 
+22 &  23 &  20 &  26 &  23 \\ 
+23 &  27 &  24 &  23 &  12 \\ 
+\end{pmatrix}.
+$$
+
+1. Si verifichi empiricamente che $\text{det}({\bf A}^{-1}) = 1 / \text{det}({\bf A})$.
+
+1. Si verifichi empiricamente che $\text{det}({\bf A}^2) = \text{det}({\bf A})^2$.
+
+1. Si calcoli la traccia di ${\bf A}$, ovvero $\text{tr}({\bf A}) = \sum_{i=1}^n a_{ii}$, per $n = 5$.
+
+1. Se verifichi empiricamente che $\text{det}({\bf A}) = \prod_{i=1}^n \lambda_i$, dove $\lambda_1,\dots,\lambda_n$ sono gli autovalori di ${\bf A}$.
+
+## Esercizio 3
+
+La varianza campionaria dei dati ${\bf x} = (x_1,\dots,x_n)$ è definita come
+
+$$
+\text{var}({\bf x}) = \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^2,
+$$
+dove $\bar{x}$ è la media campionaria. Si noti che $\text{var}({\bf x})$  ammette la rappresentazione alternativa
+
+$$\text{var}({\bf x}) = \frac{1}{2 n^2} \sum_{i=1}^n \sum_{j = 1}^n (x_i - x_j)^2.$$
+
+1. Si scriva una funzione `var2(x)` che calcola la varianza di ${\bf x}$ utilizzando la definizione. È consentito utilizzare il comando `mean(x)` disponibile in **R** (si veda la documentazione).
+
+1. Si scriva una funzione `var3(x)` che calcola la varianza di ${\bf x}$ utilizzando la formula basata sulle distanze tra coppie di elementi.
+
+1. Si supponga che `x = c(1, 4, 2, 2, 10)`. Si verifichi che le due funzioni `var2(x)` e `var3(x)` forniscono lo stesso risultato.
+
+1. Si supponga ora che `x <- 1:3000`. Si notano differenze rispetto al punto precedente?
+
+1. Si confrontino le funzioni `var2` e `var3` con la funzione `var` implementata in **R**, utilizzando i dati del punto 3. Come mai i risultati differiscono, anche se di poco? Si consulti la documentazione per rispondere.
+
+
+```{r}
+# --------------------------
+# Traccia della soluzione
+# --------------------------
+
+var2 <- function(x) {
+  mean((x - mean(x))^2)
+}
+
+var3 <- function(x) {
+  n <- length(x) # Ottengo la lunghezza del vettore x
+  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota
+  for (i in 1:n) {
+    for (j in 1:n) {
+      D[i, j] <- (x[i] - x[j])^2
+    }
+  }
+  sum(D) / (2 * n^2)
+}
+
+x <- c(1, 4, 2, 2, 10)
+c(var2(x),var3(x),var(x))
+
+x <- 1:3000
+var2(x)
+var3(x) # Molto più lenta rispetto a var2(x)
+```
+
+## Esercizio 4
+
+La distanza euclidea tra due vettori ${\bf x}$ e ${\bf y}$ in $\mathbb{R}^p$ è definita come
+$$d({\bf x},{\bf y}) = \sqrt{\sum_{j=1}^p(x_j - y_j)^2}.$$
+
+1. Si scriva la funzione **R** `dist_euclid(x, y)` che calcola la distanza euclidea tra due vettori.
+
+1. Se `x = c(1, 4, 2, 2, 10)` e `y = c(8, 1, 8, 3, 6)`, quanto vale `dist_euclid(x, y)`?
+
+
+
+## Esercizio 5
+
+La norma di Frobenius $||{\bf A}||_F$ di una matrice ${\bf A}$ a valori reali di dimensione $n \times m$ è definita come
+$$||{\bf A}||_F = \sqrt{\sum_{i=1}^n \sum_{j=1}^m a_{ij}^2}.$$
+
+1. Si scriva la funzione **R** `frobenius_norm(A)` che calcola la norma di Frobenius per una matrice `A`. 
+
+1. Se `A = cbind(1:5,6:10,11:15)`, quanto vale `frobenius_norm(A)`?
+
+## Esercizio 6
+
+Utilizzando i seguenti comandi, si carichino in memoria i dati `cars`. 
+
+```{r, include=TRUE}
+# Operazione preliminare: caricamento in memoria dei dati cars.
+data(cars)
+y <- cars$dist
+x <- cars$speed
+```
+
+I vettori `y` ed `x` rappresentano, rispettivamente, una variabile risposta ed una covariata. Si consulti la documentazione dei dati `cars` per ulteriori informazioni.  La stima ai minimi quadrati per i coefficienti di un modello lineare $y_i = \beta_0 + \beta_1 x_i + \epsilon_i$ è pari a 
+$$
+(\hat{\beta}_0,\hat{\beta}_1) = ({\bf X}^\intercal {\bf X})^{-1}{\bf X}^\intercal{\bf y}, \qquad {\bf X} = ({\bf 1}, {\bf x}).
+$$
+
+1. Si scriva una funzione `my_ols(x,y)` per ottenere la stima ai minimi quadrati.
+
+1. Si applichi la funzione `my_ols(x,y)` ai dati `cars`.
+

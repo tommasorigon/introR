@@ -1,0 +1,19 @@
+---
+title: '**R** per l''analisi statistica multivariata'
+author: '**Tommaso Rigon**'
+date: ''
+output:
+  beamer_presentation: 
+    template: template.tex
+  ioslides_presentation: default
+  slidy_presentation:
+    highlight: tango
+institute: '*Università degli Studi di Milano-Bicocca*'
+subtitle: Calcolo delle probabilità con R
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 

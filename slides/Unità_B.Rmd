@@ -1,0 +1,43 @@
+---
+title: '**R** per l''analisi statistica multivariata'
+author: '**Tommaso Rigon**'
+date: ''
+output:
+  beamer_presentation: 
+    template: template.tex
+  ioslides_presentation: default
+  slidy_presentation:
+    highlight: tango
+institute: '*Università degli Studi di Milano-Bicocca*'
+subtitle: "Unità B: statistica descrittiva con **R**"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Dataframe
+
+- Un `dataframe` è essenzialmente una matrice dei dati. Ciascuna riga rappresenta un'**unità statistica**, ciascuna colonna rappresenta una **variabile**.
+
+- Un `dataframe` assomiglia ad una matrice (`matrix`), ma può contenere anche valori non numerici.
+
+- Come vedremo nelle unità successive, il `dataframe` viene generalmente caricato all'interno di **R** utilizzando ad esempio la funzione `read.table`.
+
+- Per cominciare, consideriamo un `dataframe` già presente in **R**, a scopo illustrativo. 
+
+```{r, echo=TRUE}
+# Dataset di esempio già presente in R
+data(iris) # Caricamente in memoria dell'oggetto iris
+```
+
+
+## Esplorazione di un dataframe
+
+- Il dataset `iris` contiene `r nrow(iris)` osservazioni e `r ncol(iris)` variabili, come si può vedere dal comando `dim(iris)`.
+
+- Conviene quindi considerare solamente un piccolo numero di osservazioni, ad esempio le prime 5.
+
+```{r, echo=TRUE}
+iris[1:5, ] # Estrazione delle prime 5 osservazioni
+```

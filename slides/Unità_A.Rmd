@@ -1,0 +1,765 @@
+---
+title: '**R** per l''analisi statistica multivariata'
+author: '**Tommaso Rigon**'
+date: ''
+output:
+  beamer_presentation:
+    template: template.tex
+    highlight: kate
+institute: '*Università degli Studi di Milano-Bicocca*'
+subtitle: 'Unità A: Introduzione ad R'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(width = 60)
+```
+
+## Informazioni di servizio
+ Prova 
+
+## Organizzazione del corso
+ prova 
+
+## Cos'è **R**?
+
+- **R** è contemporaneamente un **software statistico**, un **linguaggio di programmazione** ed uno strumento per il **calcolo numerico**. 
+
+- **R** è un "read–eval–print loop" (REPL), ovvero un linguaggio di programmazione **interattivo**. E' quindi profondamente diverso per esempio da C/C++.
+
+- Il sito ufficiale è <https://www.r-project.org>.
+
+- **R** è un software **open source** ed è possibile scaricarlo gratuitamente al link <https://cloud.r-project.org>. Per l'installazione è sufficiente seguire le istruzioni.
+
+- **R** è disponibile per tutti i principali sistemi operativi (Windows, Mac Os, Linux).
+
+- Ulteriori informazioni su **R** le trovate tra le FAQ ufficiali <https://cran.r-project.org/doc/FAQ/R-FAQ.html#What-is-R_003f>.
+
+## Perché usare **R**?
+
+- **R** è un software **open source** e **gratuito**, a differenza di altri software statistici (SAS, SPSS, Stata, etc.).
+
+- **R** è scritto per gli statistici dagli statistici, con tutti i pro e i contro che ne derivano.
+
+- Esiste un pacchetto **R** per ogni necessità.
+
+- Di **R** sono molto apprezzate le funzionalità legate alla **visualizzazione dei dati**.
+
+- **R** è molto diffuso nelle università e nel mondo accademico.
+
+- **R** è ampiamente utilizzato anche in contesto aziendale ed è ormai diventato uno strumento imprescindibile per un **data scientist**.
+
+
+## Rstudio
+
+- **RStudio** è un'interfaccia utente per il software **R**. Rstudio facilita la scrittura del codice, la visualizzazione dei risultati, la lettura della documentazione.  
+
+- L'uso di **Rstudio** è **facoltativo** in questo corso, anche se consigliato. E' possibile scaricarlo al link <https://rstudio.com/products/rstudio/>.
+
+- **RStudio** è disponibile sia nella versione open source (gratuita) che nella versione commerciale. Le due versioni sono identiche, ma la seconda comprende "l'assistenza clienti".
+
+- **Rstudio**, come **R**, è disponibile per tutti i principali sistemi operativi (Windows, Mac Os, Linux).
+
+## Operazioni di base
+
+- **R** può essere usato come se fosse una calcolatrice scientifica. 
+
+- **Nota**. Tutto quello che viene scritto dopo un cancelletto (`#`) è considerato un **commento** e non viene eseguito.
+
+### Esempi
+
+```{r, echo=TRUE}
+2 + 2
+4 * (3 + 5) # La somma entro parentesi viene eseguita per prima
+pi / 4 # Pi greco quarti
+```
+
+## Operazioni di base II
+
+- Per calcolare la potenza $a^b$ si usa la stessa sintassi di una calcolatrice scientifica
+
+```{r, echo=TRUE}
+2^5 # Sintassi alternativa: 2**5
+```
+
+- Per calcolare $\sqrt{2}$ e $\sin(\pi/4)$ si possono usare le funzioni
+
+```{r, echo=TRUE}
+sqrt(2)
+sin(pi / 4)
+```
+
+## Assegnazione di un valore
+
+- E' possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo `<-`
+
+```{r, echo=TRUE}
+x <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)
+```
+
+- **Nota**. **R** è *case sensitive*, pertanto  l'oggetto `x` è diverso dall'oggetto `X`.
+
+- Il valore contenuto in `x` può essere successivamente richiamato e salvato in un nuovo oggetto `y`
+
+```{r, echo=TRUE}
+y <- x + pi # ovvero pi greco + radice quadrata di 5
+y
+```
+
+- Per rimuovere un oggetto dalla memoria, si usa il comando `rm`
+
+```{r, echo=TRUE}
+rm(x) # x non è più presente nel "workspace"
+```
+
+## Pulizia del "workspace"
+
+- È buona norma mantenere pulito il "workspace", ovvero l'ambiente di lavoro. 
+
+- Se un oggetto non è più necessario, è possibile eliminarlo tramite il comando `rm`.
+
+- È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando
+
+```{r, echo=TRUE}
+ls() # Nel workspace è presente l'oggetto y
+```
+
+- Pertanto, per **eliminare tutti gli oggetti** salvati, si può usare
+
+```{r, echo=TRUE}
+rm(list = ls())
+```
+
+
+## Alcune funzioni matematiche
+
+- Supponiamo che `x` sia un numero reale, ad esempio `x <- 1/2`.
+
+```{r}
+x <- 1 / 2
+```
+
+```{r, echo=TRUE, results="hide"}
+exp(x) # Esponenziale e logaritmo naturale
+log(x)
+```
+
+```{r, echo=TRUE, results="hide"}
+abs(x) # Valore assoluto
+sign(x) # Funzione segno
+```
+
+```{r, echo=TRUE, results="hide"}
+sin(x) # Funzioni trigonometriche (seno, coseno, tangente)
+cos(x)
+tan(x)
+```
+
+```{r, echo=TRUE, results="hide"}
+asin(x) # Funzioni trigonometriche inverse
+acos(x)
+atan(x)
+```
+
+- Le funzioni di **R** si possono combinare tra di loro, ad esempio: `log(abs(x))`.
+
+## Ulteriori funzioni matematiche
+
+- Supponiamo che `x` e `y` siano due numeri reali, ad esempio `x <- 1/2`, `y <- 1/3`.
+
+- Inoltre, siano `n` e `k`  due numeri naturali, ad esempio `n <- 5`, `k <- 2`. 
+
+```{r}
+x <- 1 / 2
+y <- 1 / 3
+n <- 5
+k <- 2
+```
+
+```{r, echo=TRUE, results="hide"}
+factorial(n) # n!
+choose(n, k) # Coefficiente binomiale
+```
+
+```{r, echo=TRUE, results="hide"}
+round(x, digits = 2) # Arrotonda x usando 2 cifre decimali
+floor(x) # Arrotonda x all'intero più vicino, per difetto
+ceiling(x) # Arrotonda x all'intero più vicino, per eccesso
+```
+
+- La funzione $\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s$ si calcola in **R** come segue
+
+```{r, echo=TRUE, results="hide"}
+gamma(x) # Funzione gamma
+```
+
+- La funzione $\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds$ si calcola in **R** come segue
+
+```{r, echo=TRUE, results="hide"}
+beta(x, y) # Funzione beta
+```
+
+## La documentazione ufficiale (help)
+
+- La documentazione di **R** è la principale fonte di informazione di un utente **R**. 
+
+- Cosa fa una funzione? La risposta va sempre cercata nella **documentazione ufficiale**  e non in queste slide, che ne sono solamente un riassunto.
+
+- Il comando "`? funzione`" apre una finestra in cui vengono descritta nel dettaglio una `funzione`. Esempio:
+
+```{r, echo=TRUE}
+? log # Documentazione della funzione log
+```
+
+- Durante l'esame è legittimo (anzi, è caldamente consigliato!) consultare la documentazione. Non sarà tuttavia concesso utilizzare le slide.
+
+
+## Simboli speciali
+
+- Numeri molto grandi (e molti piccoli) in **R** vengono rappresentati come segue 
+
+```{r, echo=TRUE}
+10^15
+10^(-15)
+```
+
+- Quando un numero è troppo grande **R** riporta `Inf`, ovvero *infinito*.
+
+```{r, echo=TRUE}
+10^1000
+```
+
+- Il simbolo `NaN` significa "Not a Number".
+
+```{r, echo=TRUE}
+log(-1) # Questo comando genera un avviso
+```
+
+
+## Errori di approssimazione numerica
+
+- È ben noto che $\sin(\pi) = 0$. Tuttavia, in **R** si ottiene un numero molto vicino a $0$, ma strettamente positivo
+
+```{r, echo=TRUE}
+sin(pi)
+```
+
+- **R** è uno strumento di calcolo numerico e pertanto sono sempre presenti **errori di approssimazione numerica**.
+
+- Fortunatamente, nella maggior parte dei casi pratici la differenza tra $0$ e $10^{-16}$ è irrilevante. In altre situazioni, errori di approssimazione numerica possono portare a conclusioni completamente fuorvianti.
+
+- Occorre quindi fare attenzione e valutare caso per caso.
+
+- Ad ogni modo, l'approssimazione numerica potrebbe anche migliorare. Ad esempio:
+
+```{r, echo=TRUE}
+cos(pi)
+```
+
+## Operazioni logiche
+
+```{r, echo=TRUE}
+x <- 5
+x < 0 # Il valore di x è minore di 0?
+```
+
+```{r, echo=TRUE}
+a <- (x == -3) # Il valore di x è uguale a -3?
+a
+```
+
+- Il valore di `a` è un indicatore **binario** o **booleano**, ovvero può essere vero (`TRUE`) oppure falso (`FALSE`).
+
+```{r,echo=FALSE, results='hide'}
+y <- 3
+a <- TRUE
+b <- FALSE
+```
+
+
+- Altre funzioni logiche disponibili sono: 
+
+```{r, echo=TRUE, results='hide'}
+x >= y # x è maggiore o uguale a y? (Si usa "<=" per minore uguale)
+x != y # x è diverso da y?
+a & b # a AND b. I valori booleani a e b sono entrambi veri?
+a | b # a OR b. Almeno uno tra a ed b è vero?
+```
+
+## Vettori e successioni
+
+- Un "vettore" in **R** si può scrivere come segue
+
+```{r, echo=TRUE}
+x <- c(4, 2, 2, 8, 10)
+x
+```
+
+- **Nota**. Con il termine generico "vettore" in **R** non si fa riferimento alla nozione  dell'algebra lineare ma semplicemente ad una stringa di valori consecutivi. Infatti il seguente oggetto è un "vettore"
+
+```{r, echo=TRUE}
+x <- c("A", "B", 2, 8, 10)
+x
+```
+
+```{r, echo=TRUE}
+x <- 5:10 # Equivalente a: x <- c(5, 6, 7, 8, 9, 10)
+x
+```
+
+## Vettori e successioni
+
+- E' possibile anche creare successioni in ordine decrescente
+
+```{r, echo=TRUE}
+x <- 10:-10
+x
+```
+
+- Per creare successioni di numeri non interi si usa il comando
+
+```{r, echo=TRUE}
+x <- seq(from = 0, to = 1, by = 0.1)
+x
+```
+
+- Per creare un vettore di valori ripetuti si usa il comando
+
+```{r, echo=TRUE}
+x <- rep(10, 7) # Vettore in cui il numero 10 è ripetuto 7 volte
+x
+```
+
+## Operazioni sui vettori
+
+- La maggior parte delle funzioni matematiche di **R** sono **vettorizzate**, ovvero agiscono su tutti gli elementi di un vettore.
+
+### Esempi
+
+```{r, echo=TRUE}
+exp(1:6) + (1:6) / 2 + 1
+x <- c(10, 10^2, 10^3, 10^4, 10^5, 10^6)
+log(x, base = 10)
+1:8 > 4
+```
+
+## Operazioni sui vettori II
+
+
+```{r, echo=TRUE}
+x <- c(2, 3, 1, 3, 10, 5)
+length(x) # Lunghezza del vettore
+sum(x) # Somma degli elementi del vettore
+cumsum(x) # Somme cumulate
+prod(x) # Prodotto degli elementi del vettore
+cumprod(x) # Prodotti cumulati
+```
+
+## Operazioni sui vettori III
+
+```{r, echo=TRUE}
+x <- c(2, 3, 1, 3, 10, 5)
+sort(x, decreasing = FALSE) # Vettore ordinato in ordine crescente
+min(x) # Valore minimo
+which.min(x) # Posizione del valore corrispondente al minimo
+```
+
+- I risultati dei seguenti comandi sono facilmente intuibili e non riportati.
+
+```{r, echo=TRUE, results="hide"}
+max(x) # Valore massimo
+which.max(x) # Posizione del valore corrispondente al massimo
+range(x) # Equivalente a: c(min(x), max(x))
+```
+
+
+
+## Manipolazione dei vettori
+
+```{r, echo=TRUE}
+# Concatenazione di vettori
+x <- c(rep(pi, 2), sqrt(2), c(10, 7))
+```
+
+```{r, echo=TRUE}
+x[3] # Estrae il terzo elemento dal vettore x, ovvero sqrt(2)
+```
+
+```{r, echo=TRUE}
+x[c(1, 3, 5)] # Estrae il primo, il terzo ed il quinto elemento
+```
+
+```{r, echo=TRUE}
+x[-c(1, 3, 5)] # Elimina il primo, il terzo ed il quinto elemento
+```
+
+
+```{r, echo=TRUE}
+x[x > 3.5] # Estrae gli elementi maggiori di 3.5
+```
+
+## Avvertenze sul calcolo vettoriale in **R**
+
+- Cosa succede quando vengono sommati due vettori di dimensioni diverse? La maggior parte dei linguaggi di programmazione restituisce un errore. **R** invece esegue ugualmente l'operazione "allungando" il vettore più corto.
+
+```{r, echo=TRUE}
+x <- 1:5
+y <- 1:6
+x + y # Equivalente a: c(x, x[1]) + y
+```
+
+- Attenzione invece al contesto seguente. Nessun avviso da parte di **R**.
+
+```{r, echo=TRUE}
+x <- 1:3
+y <- 1:6
+x + y # Equivalente a: c(x, x) + y
+```
+
+## Matrici
+
+- Una matrice $\bm{A}$ è una collezione di elementi $(a)_{ij}$ per $i=1,\dots,n$ e $j=1,\dots,m$. 
+
+- Per esempio, la matrice quadrata di dimensione $2 \times 2$
+
+$$\bm{A} = \begin{pmatrix}
+5 & 2\\
+1 & 4 \\
+\end{pmatrix},$$
+si può definire in **R** come segue:
+
+```{r, echo=TRUE}
+A <- matrix(c(5, 1, 2, 4), nrow = 2, ncol = 2)
+A
+```
+
+```{r, echo=TRUE}
+# Definizione equivalente
+A <- matrix(c(5, 2, 1, 4), nrow = 2, ncol = 2, byrow = TRUE)
+```
+
+
+## Manipolazione di matrici
+
+```{r, echo=TRUE}
+dim(A) # Restituisce la dimensione della matrice
+a <- c(A) # Converte la matrice in un vettore
+a
+```
+
+### Estrazione di elementi
+
+```{r, echo=TRUE, results="hide"}
+A[1, 2] # Estrazione di elemento in posizione (1,2)
+A[, 2] # Estrazione seconda colonna
+A[1, ] # Estrazione prima riga
+```
+
+- Per operazioni più complesse si procede come per i vettori, con le dovute ma ovvie modifiche. 
+
+
+## Manipolazione di matrici II
+
+```{r, echo=TRUE}
+diag(A) # Restituisce la diagonale della matrice
+t(A) # Calcola la matrice trasposta A'
+sum(A) # Somma di tutti gli elementi di A
+```
+
+- Come per i vettori, le operazioni elementari (somma, prodotto, `log`, `exp`, etc.) vengono eseguite **elemento per elemento**. 
+
+## Manipolazione di matrici III
+
+```{r, echo=FALSE}
+B <- A
+```
+
+
+- Siano $\bm{A}$ e $\bm{B}$ due matrici aventi lo stesso numero di colonne e definiamo
+
+$$\bm{C} = \begin{pmatrix}\bm{A} \\ \bm{B} \end{pmatrix}.$$
+
+- In **R** questa operazione si esegue tramite il comando:
+
+```{r, echo=TRUE}
+C <- rbind(A, B)
+```
+
+- Siano $\bm{A}$ e $\bm{B}$ due matrici aventi lo stesso numero di righe e definiamo
+
+$$\bm{C} = \begin{pmatrix}\bm{A} & \bm{B} \end{pmatrix}.$$
+
+- In **R** questa operazione si esegue tramite il comando:
+
+```{r, echo=TRUE}
+C <- cbind(A, B)
+```
+
+## Vettori riga e vettori colonna
+
+- Gli oggetti `matrix` consentono di definire **vettori riga** e **vettori colonna**
+
+```{r, echo=TRUE}
+x_col <- matrix(c(1, 10, 3, 5), ncol = 1)
+x_col
+x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
+x_row
+```
+
+## Vettori riga e vettori colonna
+
+- Nella maggior parte dei casi, l'oggetto `x_row` è intercambiabile col vettore `x`. 
+
+```{r, echo=TRUE}
+x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
+x <- c(1, 10, 3, 5) # Simile, ma non identico, a x_row
+```
+
+- Ad esempio, le funzioni `sum(x_row)` e `sum(x)` forniscono lo stesso risultato. Ci sono tuttavia alcune lievi distinzioni. Ad esempio:
+
+```{r, echo=TRUE}
+dim(x_row)
+dim(x)
+```
+
+- Il simbolo `NULL` significa "non definito", perché non esiste la nozione di "dimensione" per un generico vettore **R**.
+
+## Il prodotto incrociato
+
+Siano $\bm{x}$ e $\bm{y}$ due vettori colonna in $\mathbb{R}^p$. Allora, il loro prodotto incrociato è pari a
+$$ \bm{x}^\intercal \bm{y} = \sum_{i=1}^p x_i y_i.$$
+```{r, echo=TRUE}
+x <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)
+y <- matrix(c(3, 2, 2, 7, 9), ncol = 1)
+crossprod(x, y) # Equivalente a: sum(x * y)
+```
+
+- Il comando `crossprod` funziona correttamente anche con "vettori" **R**.
+
+- Inoltre, il comando `crossprod` può essere usato anche per calcolare $\bm{A}^\intercal \bm{B}$, dove $\bm{A}$ e $\bm{B}$ sono due matrici di dimensioni compatibili. 
+
+
+## Operazioni di algebra lineare
+
+- In algebra lineare il prodotto tra matrici compatibili $\bm{A} \bm{B}$ è chiamato prodotto righe per colonne. In **R** si usa il comando `%*%`.
+
+```{r, echo=TRUE}
+A <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))
+B <- rbind(c(5, 2, 5), c(3, 3, 7), c(-2, -8, 10))
+A %*% B # Prodotto righe per colonne AB
+```
+
+- **Nota**. Il comando `A * B` indica il prodotto elemento per elemento e non il prodotto righe per colonne!
+
+- Se le matrici non sono compatibili **R** produce un errore (provateci!)
+
+## Operazioni di algebra lineare II
+
+- Sia $\bm{A}$ una matrice quadrata $n \times n$ a valori reali. La sua inversa $\bm{A}^{-1}$, quando esiste, è l'unica matrice tale per cui $\bm{A} \bm{A}^{-1} = \bm{A}^{-1} \bm{A} =  I_n$.
+
+```{r, echo=TRUE}
+A <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))
+A1 <- solve(A) # Matrice inversa di A
+A1
+round(A %*% A1, digits = 5) # Operazione di controllo
+```
+
+## Operazioni di algebra lineare III
+
+```{r, echo=TRUE}
+det(A) # Calcola il determinante della matrice A
+```
+
+
+```{r, echo=TRUE}
+# Esempio di matrice NON invertibile
+A <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))
+det(A) # Deteminante pari a 0, solve(A) produce un errore
+```
+
+- Ci sono numerose funzioni per la decomposizione di matrici, il cui output è a volte una **lista** (vedi prossima slide).
+
+```{r, echo=TRUE, results='hide'}
+A <- matrix(c(4, 1, 1, 8), ncol = 2)
+chol(A) # Decomposizione di Cholesky
+qr(A) # Decomposizione QR
+eigen(A) # Decomposizione spettrale
+```
+
+
+## Liste
+
+- Una lista è una collezione di oggetti (numeri, vettori, matrici, altro). 
+
+- Per salvare o per estrarre un oggetto da una lista si usa il simbolo `$`.
+
+```{r, echo=TRUE}
+# Creazione di una lista
+new_list <- list(
+  A = matrix(c(4, 1, 1, 8), ncol = 2),
+  x = c(1, 2, 6, 6, 9)
+)
+new_list
+```
+
+
+## Liste II
+
+```{r, echo=TRUE}
+Spec_A <- eigen(A) # Decomposizione spettrale
+Spec_A
+```
+
+```{r, echo=TRUE}
+Spec_A$values # Estrazione degli autovalori
+```
+
+
+
+## Programmazione in **R**
+
+- **R** è anche e soprattutto un linguaggio di programmazione. È possibile quindi definire nuove funzioni.
+
+```{r, echo=TRUE}
+cube <- function(x) {
+  out <- x^3
+  out
+}
+```
+
+- L'ultimo oggetto (in questo caso chiamato `out`) viene restituito come risultato.
+
+```{r, echo=TRUE}
+cube(4)
+```
+
+## Funzioni
+
+- È possibile definire funzioni con molteplici argomenti, scegliendo eventuali valori di predefiniti.
+
+```{r, echo=TRUE}
+power <- function(x, p = 2) {
+  out <- x^p
+  out
+}
+
+power(x = 4)
+power(x = 4, p = 3)
+```
+
+## `If` e `else`
+
+```{r, echo=TRUE}
+condizione <- pi^2 < 10 # Valore booleano
+
+if (condizione) {
+  print("La condizione è vera")
+  # Alcuni comandi da eseguire
+  # ...
+} else {
+  print("La condizione è falsa")
+  # Altri comandi da eseguire
+  # ...
+}
+```
+
+- **Nota**. Non è obbligatorio usare la funzione `else` dopo una condizione `if`.  
+
+## `If` e `else`: esempio
+
+```{r, echo=TRUE}
+square_root <- function(x) {
+  if (x < 0) {
+    print("Il valore di x deve essere positivo")
+    out <- NaN
+  } else {
+    out <- sqrt(x)
+  }
+  out
+}
+square_root(-2)
+square_root(36)
+```
+
+## Cicli
+
+- La funzione `while` esegue ripetutamente le operazioni all'interno delle parentesi fino a quando la condizione non è soddisfatta.
+
+
+```{r, echo=TRUE}
+i <- 5
+while (i <= 25) {
+  print(i) # Mostra a schermo il valore di i
+  i <- i + 5
+
+  # Altre operazioni da eseguire
+  # ...
+}
+```
+
+## Cicli
+
+- Attenzione a non creare delle ripetizioni senza fine! 
+
+- Il codice seguente richiede l'interruzione forzata della sessione di **R** oppure, nella peggiore delle ipotesi, il riavvio del computer.
+
+```{r eval=FALSE, echo=TRUE}
+# NON ESEGUIRE IL SEGUENTE CODICE!
+#
+# La condizione i <= 25 è sempre vera
+# perché i non viene aggiornato
+i <- 5
+while (i <= 25) {
+  print(i)
+
+  # Altre operazioni da eseguire
+  # ...
+}
+```
+
+## Cicli `for`
+
+- In alternativa ai cicli `while`, si può usare la sintassi più esplicita dei cicli `for`.
+
+```{r, echo=TRUE}
+values <- seq(from = 5, to = 25, by = 5)
+for (i in values) {
+  print(i) # Mostra a schermo il valore di i
+
+  # Altre operazioni da eseguire
+  # ...
+}
+```
+
+
+## Cicli `for`: esempio
+
+- Vogliamo calcolare gli elementi di una matrice quadrata $\bm{D}$, i cui elementi sono pari a
+$$
+d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
+$$
+dove $\bm{x} = (x_1,\dots,x_n)^\intercal$ è un vettore.
+
+- Per fare questo, useremo due cicli `for` annidati.
+
+- Questa implementazione è inefficiente (è un po' lenta soprattutto se $n$ è grande), ma corretta.
+
+- Come regola indicativa, in **R** i cicli `for` andrebbero limitati o evitati, ove possibile, in quanto poco efficienti. 
+
+## Cicli `for`: esempio
+
+```{r, echo=TRUE}
+distances <- function(x) {
+  n <- length(x) # Ottengo la lunghezza del vettore x
+  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota
+
+  for (i in 1:n) {
+    for (j in 1:n) {
+      D[i, j] <- (x[i] - x[j])^2
+    }
+  }
+  D
+}
+x <- c(5, 2, 1, 24)
+distances(x)
+```
