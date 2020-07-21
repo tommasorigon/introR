@@ -21,8 +21,8 @@ _R per l'analisi statistica multivariata_ è il primo modulo dell'insegnamento _
 
 | Tipologia | Data | Aula | Orario | Argomenti | 
 |-|-|---|----|------|
-| Lezione | ?? | ?? | ?? | [Introduzione ad R](slides/Unità_A.pdf) |
-| Esercitazione | - | - | - | [Exe - Introduzione ad R](exe/es_A.html) |
+| Lezione | ?? | ?? | ?? | [Introduzione ad R](slides/sl_A.pdf) |
+| Esercitazione | - | - | - | [Introduzione ad R - Esercizi](exe/es_A.html) |
 
 
 
