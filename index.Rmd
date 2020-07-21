@@ -62,6 +62,9 @@ Questa attività formativa deve essere preceduta dal superamento degli esami di 
 ## Ricevimento {.appendix}
 
 Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all'indirizzo . 
+## Ringraziamenti {.appendix}
+
+La struttura di questo sito web è in gran parte tratta dai corsi di Aldo Solari.
 
 
 
