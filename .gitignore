@@ -4,3 +4,7 @@ blackboard/.DS_Store
 exe/.DS_Store
 esami/.DS_Store
 dati/.DS_Store
+slides/sl_A.Rmd
+*.Rmd
+slides/template.tex
+*.Rmd
