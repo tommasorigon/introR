@@ -19,11 +19,11 @@ _R per l'analisi statistica multivariata_ è il primo modulo dell'insegnamento _
 
 # Calendario delle lezioni
 
-| N | Data | Aula | Orario | Argomenti | 
+| Tipologia | Data | Aula | Orario | Argomenti | 
 |-|-|---|----|------|
-| 1 | 28/11/2019 | U6-30 | 9:30-12:30 (3h) | [Analisi multivariata](docs/slides/1_multi.pdf) |
-| |  |  |  | [La matrice dei dati](docs/slides/2_dati.pdf) [[BB]](docs/blackboard/2_datiBB.pdf) |
-||||||
+| Lezione | ?? | ?? | ?? | [Introduzione ad R](slides/Unità_A.pdf) |
+| Esercitazione | - | - | - | [Exe - Introduzione ad R](exe/Es_A.html) |
+
 
 
 Il materiale didattico di ciascuna lezione è scaricabile utilizzando i [collegamenti ipertestuali](). Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l'ultima versione aggiornata.
