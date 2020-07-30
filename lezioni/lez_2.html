@@ -556,6 +556,18 @@ d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
 <h2>La funzione <code>apply</code></h2>
 <p>Ove possibile, sarebbe meglio evitare l’utilizzo dei cicli <code>for</code>, perchè questi tendono ad essere lenti in <strong>R</strong>.</p>
 <p>In alcuni casi, questo è possibile tramite la funzione <code>apply</code>. Sostanzialmente, la stessa funzione viene applicata ad ogni riga / colonna di una matrice / dataframe.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">apply</span>(dde, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> sum) <span class="co"># Somma gli elementi di ciascuna colonna di DDE</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>      DDE       GAD </span>
+<span id="cb32-3"><a href="#cb32-3"></a> <span class="fl">69925.31</span> <span class="fl">635477.00</span> </span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="kw">apply</span>(dde, <span class="dv">2</span>, sum) <span class="co"># Comando equivalente, più compatto</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>      DDE       GAD </span>
+<span id="cb32-6"><a href="#cb32-6"></a> <span class="fl">69925.31</span> <span class="fl">635477.00</span> </span>
+<span id="cb32-7"><a href="#cb32-7"></a></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="co"># Somma di tutti gli elementi al quadrato di ciascuna colonna di DDE</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="kw">apply</span>(dde, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">sum</span>(x<span class="op">^</span><span class="dv">2</span>)) </span>
+<span id="cb32-10"><a href="#cb32-10"></a>      DDE       GAD </span>
+<span id="cb32-11"><a href="#cb32-11"></a>  <span class="dv">3039342</span> <span class="dv">175462207</span> </span></code></pre></div>
+<p>Se l’opzione <code>MARGIN = 1</code>, allora l’operazione viene effettuata riga per riga.</p>
 </div>
 </div>
 </div>
