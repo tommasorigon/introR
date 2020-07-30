@@ -34,6 +34,99 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
+a.sourceLine {
+  pointer-events: auto;
+}
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -80,145 +173,321 @@ code span.ot { color: #007020; }
 <div class="inner">
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
-<h2 class="subtitle">CdL in Scienze Statistiche ed Economiche, Università Milano-Bicocca</h2>
-<h3 class="author">Tommaso Rigon</h3>
-<address class="author_afil">
-DEMS<br><h3 class="date">2020-07-30</h3>
+<h2 class="subtitle">Dataframes ed elementi di programmazione</h2>
+<h3 class="date">2020-07-30</h3>
 </header>
 
 <hr>
 
 
 
-<p>L’insegnamento di <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a> (15 CFU) è articolato nelle seguenti parti:</p>
+<div id="dataframe" class="section level1">
+<h1>Dataframe</h1>
+<p>Un <code>dataframe</code> è essenzialmente una matrice dei dati. Ciascuna riga rappresenta un’<strong>unità statistica</strong>, ciascuna colonna rappresenta una <strong>variabile</strong>.</p>
+<p>Un <code>dataframe</code> assomiglia ad una matrice, ma può contenere anche valori non numerici.</p>
+<p>Come vedremo, il <code>dataframe</code> viene generalmente caricato all’interno di <strong>R</strong> utilizzando ad esempio la funzione <code>read.table</code>.</p>
+<p>Per cominciare, consideriamo un <code>dataframe</code> già presente in <strong>R</strong>, a scopo illustrativo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Dataset di esempio già presente in R</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">data</span>(iris) <span class="co"># Caricamente in memoria dell&#39;oggetto iris</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">class</span>(iris) <span class="co"># Conferma che si tratta di un data.frame</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>[<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span></code></pre></div>
+<div id="esplorazione-di-un-dataframe" class="section level2">
+<h2>Esplorazione di un dataframe</h2>
+<p>Il dataset <code>iris</code> contiene 150 osservazioni e 5 variabili, come si può vedere dal comando <code>dim(iris)</code>.</p>
+<p>Conviene quindi considerare solamente un piccolo numero di osservazioni, ad esempio le prime 6.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">dim</span>(iris) <span class="co"># Equivalente a c(nrow(iris), ncol(iris))</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>[<span class="dv">1</span>] <span class="dv">150</span>   <span class="dv">5</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Estrazione delle prime 6 osservazioni</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">head</span>(iris) <span class="co"># Comando equivalente: iris[1:6, ]</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="dv">1</span>          <span class="fl">5.1</span>         <span class="fl">3.5</span>          <span class="fl">1.4</span>         <span class="fl">0.2</span>  setosa</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="dv">2</span>          <span class="fl">4.9</span>         <span class="fl">3.0</span>          <span class="fl">1.4</span>         <span class="fl">0.2</span>  setosa</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="dv">3</span>          <span class="fl">4.7</span>         <span class="fl">3.2</span>          <span class="fl">1.3</span>         <span class="fl">0.2</span>  setosa</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="dv">4</span>          <span class="fl">4.6</span>         <span class="fl">3.1</span>          <span class="fl">1.5</span>         <span class="fl">0.2</span>  setosa</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="dv">5</span>          <span class="fl">5.0</span>         <span class="fl">3.6</span>          <span class="fl">1.4</span>         <span class="fl">0.2</span>  setosa</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="dv">6</span>          <span class="fl">5.4</span>         <span class="fl">3.9</span>          <span class="fl">1.7</span>         <span class="fl">0.4</span>  setosa</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># Estrazione delle ultime 6 osservazioni</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">tail</span>(iris) <span class="co"># Comando equivalente: iris[145:150, ]</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="dv">145</span>          <span class="fl">6.7</span>         <span class="fl">3.3</span>          <span class="fl">5.7</span>         <span class="fl">2.5</span> virginica</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="dv">146</span>          <span class="fl">6.7</span>         <span class="fl">3.0</span>          <span class="fl">5.2</span>         <span class="fl">2.3</span> virginica</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="dv">147</span>          <span class="fl">6.3</span>         <span class="fl">2.5</span>          <span class="fl">5.0</span>         <span class="fl">1.9</span> virginica</span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="dv">148</span>          <span class="fl">6.5</span>         <span class="fl">3.0</span>          <span class="fl">5.2</span>         <span class="fl">2.0</span> virginica</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="dv">149</span>          <span class="fl">6.2</span>         <span class="fl">3.4</span>          <span class="fl">5.4</span>         <span class="fl">2.3</span> virginica</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="dv">150</span>          <span class="fl">5.9</span>         <span class="fl">3.0</span>          <span class="fl">5.1</span>         <span class="fl">1.8</span> virginica</span></code></pre></div>
+</div>
+<div id="le-variabili-di-un-data.frame" class="section level2">
+<h2>Le variabili di un <code>data.frame</code></h2>
+<p>Un data frame contiene variabili di varia natura. Nella lezione precedente abbiamo gestito oggetti di tipo <code>numeric</code>, <code>matrix</code> e <code>list</code>. All’interno dei <code>data.frame</code> ci possono essere oggetti di vario tipo.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">class</span>(x)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">is.numeric</span>(x) <span class="co"># Controlla se si tratta di un oggetto numeric</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mela&quot;</span>, <span class="st">&quot;Banana&quot;</span>, <span class="st">&quot;Pera&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">class</span>(x)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">is.character</span>(x) <span class="co"># Controlla se si tratta di un oggetto character</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<p>La lista delle variabili in un <code>data.frame</code> e la loro tipologia, si ottiene tramite come segue.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">str</span>(iris) <span class="co"># Schema delle variabili</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">150</span> obs. of  <span class="dv">5</span> variables<span class="op">:</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>Sepal.Length<span class="op">:</span><span class="st"> </span>num  <span class="fl">5.1</span> <span class="fl">4.9</span> <span class="fl">4.7</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">5.4</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">4.4</span> <span class="fl">4.9</span> ...</span>
+<span id="cb4-4"><a href="#cb4-4"></a> <span class="op">$</span><span class="st"> </span>Sepal.Width <span class="op">:</span><span class="st"> </span>num  <span class="fl">3.5</span> <span class="dv">3</span> <span class="fl">3.2</span> <span class="fl">3.1</span> <span class="fl">3.6</span> <span class="fl">3.9</span> <span class="fl">3.4</span> <span class="fl">3.4</span> <span class="fl">2.9</span> <span class="fl">3.1</span> ...</span>
+<span id="cb4-5"><a href="#cb4-5"></a> <span class="op">$</span><span class="st"> </span>Petal.Length<span class="op">:</span><span class="st"> </span>num  <span class="fl">1.4</span> <span class="fl">1.4</span> <span class="fl">1.3</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.7</span> <span class="fl">1.4</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.5</span> ...</span>
+<span id="cb4-6"><a href="#cb4-6"></a> <span class="op">$</span><span class="st"> </span>Petal.Width <span class="op">:</span><span class="st"> </span>num  <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.4</span> <span class="fl">0.3</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.1</span> ...</span>
+<span id="cb4-7"><a href="#cb4-7"></a> <span class="op">$</span><span class="st"> </span>Species     <span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">3</span> levels <span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;versicolor&quot;</span>,..<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span></code></pre></div>
+<p>Per estrarre una variabile si procede come nel caso delle liste, ovvero tramite il simbolo <code>$</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Length</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">is.numeric</span>(x)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  [<span class="dv">1</span>] <span class="fl">5.1</span> <span class="fl">4.9</span> <span class="fl">4.7</span> <span class="fl">4.6</span> <span class="fl">5.0</span> <span class="fl">5.4</span> <span class="fl">4.6</span> <span class="fl">5.0</span> <span class="fl">4.4</span> <span class="fl">4.9</span> <span class="fl">5.4</span> <span class="fl">4.8</span> <span class="fl">4.8</span> <span class="fl">4.3</span> <span class="fl">5.8</span> <span class="fl">5.7</span> <span class="fl">5.4</span> <span class="fl">5.1</span> <span class="fl">5.7</span> <span class="fl">5.1</span> <span class="fl">5.4</span> <span class="fl">5.1</span> <span class="fl">4.6</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a> [<span class="dv">24</span>] <span class="fl">5.1</span> <span class="fl">4.8</span> <span class="fl">5.0</span> <span class="fl">5.0</span> <span class="fl">5.2</span> <span class="fl">5.2</span> <span class="fl">4.7</span> <span class="fl">4.8</span> <span class="fl">5.4</span> <span class="fl">5.2</span> <span class="fl">5.5</span> <span class="fl">4.9</span> <span class="fl">5.0</span> <span class="fl">5.5</span> <span class="fl">4.9</span> <span class="fl">4.4</span> <span class="fl">5.1</span> <span class="fl">5.0</span> <span class="fl">4.5</span> <span class="fl">4.4</span> <span class="fl">5.0</span> <span class="fl">5.1</span> <span class="fl">4.8</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a> [<span class="dv">47</span>] <span class="fl">5.1</span> <span class="fl">4.6</span> <span class="fl">5.3</span> <span class="fl">5.0</span> <span class="fl">7.0</span> <span class="fl">6.4</span> <span class="fl">6.9</span> <span class="fl">5.5</span> <span class="fl">6.5</span> <span class="fl">5.7</span> <span class="fl">6.3</span> <span class="fl">4.9</span> <span class="fl">6.6</span> <span class="fl">5.2</span> <span class="fl">5.0</span> <span class="fl">5.9</span> <span class="fl">6.0</span> <span class="fl">6.1</span> <span class="fl">5.6</span> <span class="fl">6.7</span> <span class="fl">5.6</span> <span class="fl">5.8</span> <span class="fl">6.2</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a> [<span class="dv">70</span>] <span class="fl">5.6</span> <span class="fl">5.9</span> <span class="fl">6.1</span> <span class="fl">6.3</span> <span class="fl">6.1</span> <span class="fl">6.4</span> <span class="fl">6.6</span> <span class="fl">6.8</span> <span class="fl">6.7</span> <span class="fl">6.0</span> <span class="fl">5.7</span> <span class="fl">5.5</span> <span class="fl">5.5</span> <span class="fl">5.8</span> <span class="fl">6.0</span> <span class="fl">5.4</span> <span class="fl">6.0</span> <span class="fl">6.7</span> <span class="fl">6.3</span> <span class="fl">5.6</span> <span class="fl">5.5</span> <span class="fl">5.5</span> <span class="fl">6.1</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a> [<span class="dv">93</span>] <span class="fl">5.8</span> <span class="fl">5.0</span> <span class="fl">5.6</span> <span class="fl">5.7</span> <span class="fl">5.7</span> <span class="fl">6.2</span> <span class="fl">5.1</span> <span class="fl">5.7</span> <span class="fl">6.3</span> <span class="fl">5.8</span> <span class="fl">7.1</span> <span class="fl">6.3</span> <span class="fl">6.5</span> <span class="fl">7.6</span> <span class="fl">4.9</span> <span class="fl">7.3</span> <span class="fl">6.7</span> <span class="fl">7.2</span> <span class="fl">6.5</span> <span class="fl">6.4</span> <span class="fl">6.8</span> <span class="fl">5.7</span> <span class="fl">5.8</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>[<span class="dv">116</span>] <span class="fl">6.4</span> <span class="fl">6.5</span> <span class="fl">7.7</span> <span class="fl">7.7</span> <span class="fl">6.0</span> <span class="fl">6.9</span> <span class="fl">5.6</span> <span class="fl">7.7</span> <span class="fl">6.3</span> <span class="fl">6.7</span> <span class="fl">7.2</span> <span class="fl">6.2</span> <span class="fl">6.1</span> <span class="fl">6.4</span> <span class="fl">7.2</span> <span class="fl">7.4</span> <span class="fl">7.9</span> <span class="fl">6.4</span> <span class="fl">6.3</span> <span class="fl">6.1</span> <span class="fl">7.7</span> <span class="fl">6.3</span> <span class="fl">6.4</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>[<span class="dv">139</span>] <span class="fl">6.0</span> <span class="fl">6.9</span> <span class="fl">6.7</span> <span class="fl">6.9</span> <span class="fl">5.8</span> <span class="fl">6.8</span> <span class="fl">6.7</span> <span class="fl">6.7</span> <span class="fl">6.3</span> <span class="fl">6.5</span> <span class="fl">6.2</span> <span class="fl">5.9</span></span></code></pre></div>
+</div>
+<div id="variabili-di-tipo-factor" class="section level2">
+<h2>Variabili di tipo <code>factor</code></h2>
+<p>Una variabile di tipo <code>factor</code> serve per codificare una variabile <strong>qualitativa</strong>, come nel caso di <code>Species</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x &lt;-<span class="st"> </span>iris<span class="op">$</span>Species</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">is.factor</span>(x) <span class="co"># Controlla se si tratta di un oggetto factor</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</span>
+<span id="cb8-2"><a href="#cb8-2"></a> [<span class="dv">1</span>] setosa setosa setosa setosa setosa setosa setosa setosa setosa setosa</span>
+<span id="cb8-3"><a href="#cb8-3"></a>Levels<span class="op">:</span><span class="st"> </span>setosa versicolor virginica</span></code></pre></div>
+<p>La funzione <code>factor</code> crea una variabile qualitativa, dove le modalità non sono ordinate e vengono elencate in ordine alfabetico o non decrescente.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>eyes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;hazel&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>eyecol &lt;-<span class="st"> </span><span class="kw">factor</span>(eyes) <span class="co"># Conversione della variabile eyes in un &quot;factor&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>eyes</span>
+<span id="cb9-5"><a href="#cb9-5"></a>[<span class="dv">1</span>] <span class="st">&quot;hazel&quot;</span> <span class="st">&quot;blue&quot;</span>  <span class="st">&quot;brown&quot;</span> <span class="st">&quot;green&quot;</span> <span class="st">&quot;blue&quot;</span>  <span class="st">&quot;brown&quot;</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a>eyecol</span>
+<span id="cb9-8"><a href="#cb9-8"></a>[<span class="dv">1</span>] hazel blue  brown green blue  brown</span>
+<span id="cb9-9"><a href="#cb9-9"></a>Levels<span class="op">:</span><span class="st"> </span>blue brown green hazel</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="kw">is.character</span>(eyes)</span>
+<span id="cb9-12"><a href="#cb9-12"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="kw">is.factor</span>(eyes)</span>
+<span id="cb9-14"><a href="#cb9-14"></a>[<span class="dv">1</span>] <span class="ot">FALSE</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="kw">is.factor</span>(eyecol)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<p>Il comando <code>levels</code> permette di accedere al nome delle modalità:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">levels</span>(eyecol) <span class="co"># Accede alle modalità</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>[<span class="dv">1</span>] <span class="st">&quot;blue&quot;</span>  <span class="st">&quot;brown&quot;</span> <span class="st">&quot;green&quot;</span> <span class="st">&quot;hazel&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Rinominare le modalità</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">levels</span>(eyecol) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BL&quot;</span>, <span class="st">&quot;GR&quot;</span>, <span class="st">&quot;HA&quot;</span>, <span class="st">&quot;BR&quot;</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>eyecol <span class="co"># Risultato finale</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>[<span class="dv">1</span>] BR BL GR HA BL GR</span>
+<span id="cb10-9"><a href="#cb10-9"></a>Levels<span class="op">:</span><span class="st"> </span>BL GR HA BR</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="kw">levels</span>(eyecol) <span class="co"># Elenco delle nuove modalità</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>[<span class="dv">1</span>] <span class="st">&quot;BL&quot;</span> <span class="st">&quot;GR&quot;</span> <span class="st">&quot;HA&quot;</span> <span class="st">&quot;BR&quot;</span></span></code></pre></div>
+<p>Nel caso di variabili qualitative ordinali, dove le modalità devono essere ordinate secondo una precisa logica, è opportuno ricorrere alla funzione <code>ordered</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>pain &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;low&quot;</span>),</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>pain</span>
+<span id="cb11-5"><a href="#cb11-5"></a>[<span class="dv">1</span>] low    medium medium high   medium low   </span>
+<span id="cb11-6"><a href="#cb11-6"></a>Levels<span class="op">:</span><span class="st"> </span>low <span class="op">&lt;</span><span class="st"> </span>medium <span class="op">&lt;</span><span class="st"> </span>high</span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="kw">is.factor</span>(pain)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<p>Si noti che <code>Levels: low &lt; medium &lt; high</code>, che rende evidente l’ordine delle modalità della variabile. Inoltre, si noti che la variabile <code>pain</code> viene comunque riconosciuta in quanto <code>factor</code>.</p>
+</div>
+<div id="creazione-ed-organizzazione-di-una-variabile" class="section level2">
+<h2>Creazione ed organizzazione di una variabile</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Creazione di una nuova variabile</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>iris<span class="op">$</span>Sepal.length.class &lt;-<span class="st"> </span><span class="kw">factor</span>(iris<span class="op">$</span>Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Modifica delle modalità</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">levels</span>(iris<span class="op">$</span>Sepal.length.class) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;big&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="kw">str</span>(iris)</span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">150</span> obs. of  <span class="dv">6</span> variables<span class="op">:</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>Sepal.Length      <span class="op">:</span><span class="st"> </span>num  <span class="fl">5.1</span> <span class="fl">4.9</span> <span class="fl">4.7</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">5.4</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">4.4</span> <span class="fl">4.9</span> ...</span>
+<span id="cb12-10"><a href="#cb12-10"></a> <span class="op">$</span><span class="st"> </span>Sepal.Width       <span class="op">:</span><span class="st"> </span>num  <span class="fl">3.5</span> <span class="dv">3</span> <span class="fl">3.2</span> <span class="fl">3.1</span> <span class="fl">3.6</span> <span class="fl">3.9</span> <span class="fl">3.4</span> <span class="fl">3.4</span> <span class="fl">2.9</span> <span class="fl">3.1</span> ...</span>
+<span id="cb12-11"><a href="#cb12-11"></a> <span class="op">$</span><span class="st"> </span>Petal.Length      <span class="op">:</span><span class="st"> </span>num  <span class="fl">1.4</span> <span class="fl">1.4</span> <span class="fl">1.3</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.7</span> <span class="fl">1.4</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.5</span> ...</span>
+<span id="cb12-12"><a href="#cb12-12"></a> <span class="op">$</span><span class="st"> </span>Petal.Width       <span class="op">:</span><span class="st"> </span>num  <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.4</span> <span class="fl">0.3</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.1</span> ...</span>
+<span id="cb12-13"><a href="#cb12-13"></a> <span class="op">$</span><span class="st"> </span>Species           <span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">3</span> levels <span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;versicolor&quot;</span>,..<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span>
+<span id="cb12-14"><a href="#cb12-14"></a> <span class="op">$</span><span class="st"> </span>Sepal.length.class<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;small&quot;</span>,<span class="st">&quot;big&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span></code></pre></div>
+<p>Per cambiare i nomi alle variabili, si può invece procedere come segue</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">colnames</span>(iris) <span class="co"># Accede ai nomi delle variabili</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>[<span class="dv">1</span>] <span class="st">&quot;Sepal.Length&quot;</span>       <span class="st">&quot;Sepal.Width&quot;</span>        <span class="st">&quot;Petal.Length&quot;</span>       <span class="st">&quot;Petal.Width&quot;</span>       </span>
+<span id="cb13-3"><a href="#cb13-3"></a>[<span class="dv">5</span>] <span class="st">&quot;Species&quot;</span>            <span class="st">&quot;Sepal.length.class&quot;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co"># Modifica i nomi delle variabili</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="kw">colnames</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S_L&quot;</span>, <span class="st">&quot;S_W&quot;</span>, <span class="st">&quot;P_L&quot;</span>, <span class="st">&quot;P_W&quot;</span>, <span class="st">&quot;SP&quot;</span>, <span class="st">&quot;S_L_Class&quot;</span>)</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">colnames</span>(iris)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>[<span class="dv">1</span>] <span class="st">&quot;S_L&quot;</span>       <span class="st">&quot;S_W&quot;</span>       <span class="st">&quot;P_L&quot;</span>       <span class="st">&quot;P_W&quot;</span>       <span class="st">&quot;SP&quot;</span>        <span class="st">&quot;S_L_Class&quot;</span></span></code></pre></div>
+</div>
+<div id="manipolazione-di-un-data.frame" class="section level2">
+<h2>Manipolazione di un <code>data.frame</code></h2>
+<p>Per selezionare le righe di un <code>data.frame</code> si può anzitutto procedere come per le matrici.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>iris[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>), ] <span class="co"># Estrae il primo, il quinto ed il decimo elemento</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>   S_L S_W P_L P_W     SP S_L_Class</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="dv">1</span>  <span class="fl">5.1</span> <span class="fl">3.5</span> <span class="fl">1.4</span> <span class="fl">0.2</span> setosa     small</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="dv">5</span>  <span class="fl">5.0</span> <span class="fl">3.6</span> <span class="fl">1.4</span> <span class="fl">0.2</span> setosa     small</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="dv">10</span> <span class="fl">4.9</span> <span class="fl">3.1</span> <span class="fl">1.5</span> <span class="fl">0.1</span> setosa     small</span></code></pre></div>
+<p>Esistono però anche</p>
+</div>
+<div id="creazione-di-un-data.frame" class="section level2">
+<h2>Creazione di un <code>data.frame</code></h2>
+</div>
+<div id="lettura-dei-dati" class="section level2">
+<h2>Lettura dei dati</h2>
+</div>
+</div>
+<div id="elementi-di-programmazione-in-r" class="section level1">
+<h1>Elementi di programmazione in <strong>R</strong></h1>
+<p><strong>R</strong> è anche e soprattutto un linguaggio di programmazione. È possibile quindi definire nuove funzioni.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>cube &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">3</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  out</span>
+<span id="cb15-4"><a href="#cb15-4"></a>}</span></code></pre></div>
+<p>L’ultimo oggetto (in questo caso chiamato <code>out</code>) viene restituito come risultato.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">cube</span>(<span class="dv">4</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>[<span class="dv">1</span>] <span class="dv">64</span></span></code></pre></div>
+<div id="funzioni" class="section level2">
+<h2>Funzioni</h2>
 <ul>
-<li>R per l’Analisi Statistica Multivariata (3 CFU) che fornisce un’introduzione al linguaggio R. Il corso sarà erogato nel I ciclo.</li>
-<li>Analisi Esplorativa (6 CFU). Il corso sarà erogato nel II ciclo.</li>
-<li>Modelli Statistici (6 CFU). Il corso sarà erogato nel III ciclo.</li>
+<li>È possibile definire funzioni con molteplici argomenti, scegliendo eventuali valori di predefiniti.</li>
 </ul>
-<div id="calendario-delle-lezioni" class="section level2">
-<h2>Calendario delle lezioni</h2>
-<table>
-<thead>
-<tr class="header">
-<th>N</th>
-<th>Tipologia</th>
-<th>Data</th>
-<th>Aula</th>
-<th>Orario</th>
-<th>Materiale didattico</th>
-<th>Codice R</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td><a href="slides/sl_A.pdf">Introduzione ad R (pdf)</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>Esercizi</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td><a href="exe/es_A.html">Introduzione ad R - Esercizi</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td><a href="slides/sl_B.pdf">Statistica descrittiva (pdf)</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Il materiale didattico di ciascuna lezione è scaricabile utilizzando i <a href>collegamenti ipertestuali</a>. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>power &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">p =</span> <span class="dv">2</span>) {</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span>p</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  out</span>
+<span id="cb17-4"><a href="#cb17-4"></a>}</span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="kw">power</span>(<span class="dt">x =</span> <span class="dv">4</span>)</span>
+<span id="cb17-7"><a href="#cb17-7"></a>[<span class="dv">1</span>] <span class="dv">16</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="kw">power</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">p =</span> <span class="dv">3</span>)</span>
+<span id="cb17-9"><a href="#cb17-9"></a>[<span class="dv">1</span>] <span class="dv">64</span></span></code></pre></div>
 </div>
-<div id="calendario-delle-esercitazioni" class="section level2">
-<h2>Calendario delle esercitazioni</h2>
+<div id="if-e-else" class="section level2">
+<h2><code>If</code> e <code>else</code></h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>condizione &lt;-<span class="st"> </span>pi<span class="op">^</span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> <span class="co"># Valore booleano</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="cf">if</span> (condizione) {</span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="kw">print</span>(<span class="st">&quot;La condizione è vera&quot;</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="co"># Alcuni comandi da eseguire</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="co"># ...</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>} <span class="cf">else</span> {</span>
+<span id="cb18-8"><a href="#cb18-8"></a>  <span class="kw">print</span>(<span class="st">&quot;La condizione è falsa&quot;</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>  <span class="co"># Altri comandi da eseguire</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  <span class="co"># ...</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>}</span>
+<span id="cb18-12"><a href="#cb18-12"></a>[<span class="dv">1</span>] <span class="st">&quot;La condizione è vera&quot;</span></span></code></pre></div>
+<p><strong>Nota</strong>. Non è obbligatorio usare la funzione <code>else</code> dopo una condizione <code>if</code>.</p>
 </div>
-<div id="materiale-didattico" class="section level2">
-<h2>Materiale didattico</h2>
-<div id="il-software-r" class="section level3">
-<h3>Il software R</h3>
+<div id="if-e-else-esempio" class="section level2">
+<h2><code>If</code> e <code>else</code>: esempio</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>square_root &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb19-3"><a href="#cb19-3"></a>    <span class="kw">print</span>(<span class="st">&quot;Il valore di x deve essere positivo&quot;</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>    out &lt;-<span class="st"> </span><span class="ot">NaN</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb19-6"><a href="#cb19-6"></a>    out &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>  }</span>
+<span id="cb19-8"><a href="#cb19-8"></a>  out</span>
+<span id="cb19-9"><a href="#cb19-9"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="kw">square_root</span>(<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb19-11"><a href="#cb19-11"></a>[<span class="dv">1</span>] <span class="st">&quot;Il valore di x deve essere positivo&quot;</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a>[<span class="dv">1</span>] <span class="ot">NaN</span></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="kw">square_root</span>(<span class="dv">36</span>)</span>
+<span id="cb19-14"><a href="#cb19-14"></a>[<span class="dv">1</span>] <span class="dv">6</span></span></code></pre></div>
+</div>
+<div id="cicli" class="section level2">
+<h2>Cicli</h2>
 <ul>
-<li><strong>R</strong> è un software <strong>open source</strong> ed è possibile scaricarlo al link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a>.</li>
-<li>L’uso di <strong>Rstudio</strong> è <strong>facoltativo</strong> in questo corso, anche se consigliato. E’ possibile scaricarlo al link <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a>.</li>
+<li>La funzione <code>while</code> esegue ripetutamente le operazioni all’interno delle parentesi fino a quando la condizione non è soddisfatta.</li>
 </ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>i &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) {</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="kw">print</span>(i) <span class="co"># Mostra a schermo il valore di i</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="co"># ...</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>}</span>
+<span id="cb20-9"><a href="#cb20-9"></a>[<span class="dv">1</span>] <span class="dv">5</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>[<span class="dv">1</span>] <span class="dv">10</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>[<span class="dv">1</span>] <span class="dv">15</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>[<span class="dv">1</span>] <span class="dv">20</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>[<span class="dv">1</span>] <span class="dv">25</span></span></code></pre></div>
 </div>
-<div id="libro-di-testo" class="section level3">
-<h3>Libro di testo</h3>
-<p>Agresti, C. Franklin (2016) “Statistica: l’arte e la scienza d’imparare dai dati”. Ediz. mylab, Pearson Education Italia</p>
+<div id="cicli-1" class="section level2">
+<h2>Cicli</h2>
+<p>Attenzione a non creare delle ripetizioni senza fine!</p>
+<p>Il codice seguente richiede l’interruzione forzata della sessione di <strong>R</strong> oppure, nella peggiore delle ipotesi, il riavvio del computer.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># NON ESEGUIRE IL SEGUENTE CODICE!</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># La condizione i &lt;= 25 è sempre vera</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co"># perché i non viene aggiornato</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>i &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) {</span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="kw">print</span>(i)</span>
+<span id="cb21-8"><a href="#cb21-8"></a></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="co"># ...</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>}</span></code></pre></div>
 </div>
+<div id="cicli-for" class="section level2">
+<h2>Cicli <code>for</code></h2>
+<p>In alternativa ai cicli <code>while</code>, si può usare la sintassi più esplicita dei cicli <code>for</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>values &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">25</span>, <span class="dt">by =</span> <span class="dv">5</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="cf">for</span> (i <span class="cf">in</span> values) {</span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="kw">print</span>(i) <span class="co"># Mostra a schermo il valore di i</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="co"># ...</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>}</span>
+<span id="cb22-8"><a href="#cb22-8"></a>[<span class="dv">1</span>] <span class="dv">5</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a>[<span class="dv">1</span>] <span class="dv">10</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a>[<span class="dv">1</span>] <span class="dv">15</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a>[<span class="dv">1</span>] <span class="dv">20</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>[<span class="dv">1</span>] <span class="dv">25</span></span></code></pre></div>
 </div>
-<div id="esame-e-verbalizzazione-del-voto" class="section level2">
-<h2>Esame e verbalizzazione del voto</h2>
-<div id="modalità-desame" class="section level3">
-<h3>Modalità d’esame</h3>
-<ul>
-<li>L’esame si svolge solo in <em>laboratorio</em> e consiste in:
-<ul>
-<li>Una prima prova con 10 domande a risposta multipla: si accede alla prova successiva solo se si risponde correttamente ad almeno 6 domande. Ogni risposta corretta vale 0.5 punti e il punteggio accumulato in questa prova viene sommato a quello della prova successiva.</li>
-<li>Una seconda prova in cui verrà richiesto di svolgere esercizi con <strong>R</strong>: oltre a saper programmare in R si dovrà essere in grado di interpretare il problema dato e i risultati ottenuti</li>
-</ul></li>
-</ul>
+<div id="cicli-for-esempio" class="section level2">
+<h2>Cicli <code>for</code>: esempio</h2>
+<p>Vogliamo calcolare gli elementi di una matrice quadrata <span class="math inline">\({\bf D}\)</span>, i cui elementi sono pari a <span class="math display">\[
+d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
+\]</span> dove <span class="math inline">\({\bf x} = (x_1,\dots,x_n)^\intercal\)</span> è un vettore.</p>
+<p>Per fare questo, useremo due cicli <code>for</code> annidati.</p>
+<p>Questa implementazione è inefficiente (è un po’ lenta soprattutto se <span class="math inline">\(n\)</span> è grande), ma corretta.</p>
+<p>Come regola indicativa, in <strong>R</strong> i cicli <code>for</code> andrebbero limitati o evitati, ove possibile, in quanto poco efficienti.</p>
 </div>
-<div id="verbalizzazione-del-voto" class="section level3">
-<h3>Verbalizzazione del voto</h3>
-<ul>
-<li>Per poter verbalizzare il voto è necessario
-<ul>
-<li>Aver superato le prove di tutte le parti che compongono l’insegnamento (R per l’Analisi Statistica Multivariata, Analisi Esplorativa, Modelli Statistici)</li>
-<li>Iscriversi all’appello di Analisi Statistica Multivariata (iscrizione mediante piattaforma Esse3)</li>
-</ul></li>
-<li>Il voto di Analisi Statistica Multivariata è ottenuto come media pesata dei voti conseguiti nelle 3 parti che compongono l’insegnamento. I pesi sono proporzionali al numero di crediti di ciascuna delle parti:</li>
-</ul>
-<p><span class="math display">\[ \text{Voto}_{ASM} = \frac{3}{15}\text{Voto}_{R} + \frac{6}{15}\text{Voto}_{AE} + \frac{6}{15}\text{Voto}_{MS}  \]</span></p>
-<p>con</p>
-<ul>
-<li><span class="math inline">\(\text{Voto}_{ASM}\)</span>: voto di Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{R}\)</span>: voto di R per l’Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{AE}\)</span>: voto di Analisi Esplorativa</li>
-<li><span class="math inline">\(\text{Voto}_{MS}\)</span>: voto di Modelli Statistici</li>
-</ul>
+<div id="cicli-for-esempio-1" class="section level2">
+<h2>Cicli <code>for</code>: esempio</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>distances &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x) <span class="co"># Ottengo la lunghezza del vettore x</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  D &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> n, <span class="dt">ncol =</span> n) <span class="co"># Creazione matrice vuota</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb23-7"><a href="#cb23-7"></a>      D[i, j] &lt;-<span class="st"> </span>(x[i] <span class="op">-</span><span class="st"> </span>x[j])<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>    }</span>
+<span id="cb23-9"><a href="#cb23-9"></a>  }</span>
+<span id="cb23-10"><a href="#cb23-10"></a>  D</span>
+<span id="cb23-11"><a href="#cb23-11"></a>}</span>
+<span id="cb23-12"><a href="#cb23-12"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">24</span>)</span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="kw">distances</span>(x)</span>
+<span id="cb23-14"><a href="#cb23-14"></a>     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</span>
+<span id="cb23-15"><a href="#cb23-15"></a>[<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">9</span>   <span class="dv">16</span>  <span class="dv">361</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a>[<span class="dv">2</span>,]    <span class="dv">9</span>    <span class="dv">0</span>    <span class="dv">1</span>  <span class="dv">484</span></span>
+<span id="cb23-17"><a href="#cb23-17"></a>[<span class="dv">3</span>,]   <span class="dv">16</span>    <span class="dv">1</span>    <span class="dv">0</span>  <span class="dv">529</span></span>
+<span id="cb23-18"><a href="#cb23-18"></a>[<span class="dv">4</span>,]  <span class="dv">361</span>  <span class="dv">484</span>  <span class="dv">529</span>    <span class="dv">0</span></span></code></pre></div>
 </div>
-<div id="note" class="section level3">
-<h3>Note</h3>
-<ul>
-<li>Per <strong>ogni prova</strong> è necessaria l’iscrizione (ricordarsi di portare con sè un <strong>documento di riconoscimento</strong> valido)</li>
-<li><strong>Non</strong> è prevista la visione della prima prova (questionario a risposta multipla)</li>
-<li>È prevista un’<strong>unica data</strong> per la visione della seconda prova (esercizi con <strong>R</strong>)</li>
-</ul>
-</div>
-</div>
-<div id="propedeuticità" class="section level2">
-<h2>Propedeuticità</h2>
-<p>Questa attività formativa deve essere preceduta dal superamento degli esami di Algebra lineare, Analisi Matematica I, Calcolo delle Probabilità e Statistica I.</p>
-</div>
-<div id="ricevimento" class="section level2 appendix">
-<h2>Ricevimento</h2>
-<p>Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo .</p>
-</div>
-<div id="ringraziamenti" class="section level2 appendix">
-<h2>Ringraziamenti</h2>
-<p>La struttura di questo sito web è largamente ispirata dal sito web dei corsi di Aldo Solari. Si ringrazia inoltre il prof.ssa Nicola Lunardon per aver messo a disposizione e concesso l’uso del materiale dell’A.A. 2019-2020</p>
 </div>
 </div>
 </div>

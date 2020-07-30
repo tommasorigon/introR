@@ -12,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-07-30" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -80,145 +79,51 @@ code span.ot { color: #007020; }
 <div class="inner">
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
-<h2 class="subtitle">CdL in Scienze Statistiche ed Economiche, Università Milano-Bicocca</h2>
-<h3 class="author">Tommaso Rigon</h3>
-<address class="author_afil">
-DEMS<br><h3 class="date">2020-07-30</h3>
+<h2 class="subtitle">Introduzione al corso</h2>
+<h3 class="date">A.A. 2020-2020</h3>
 </header>
 
 <hr>
 
 
 
-<p>L’insegnamento di <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a> (15 CFU) è articolato nelle seguenti parti:</p>
-<ul>
-<li>R per l’Analisi Statistica Multivariata (3 CFU) che fornisce un’introduzione al linguaggio R. Il corso sarà erogato nel I ciclo.</li>
-<li>Analisi Esplorativa (6 CFU). Il corso sarà erogato nel II ciclo.</li>
-<li>Modelli Statistici (6 CFU). Il corso sarà erogato nel III ciclo.</li>
-</ul>
-<div id="calendario-delle-lezioni" class="section level2">
-<h2>Calendario delle lezioni</h2>
-<table>
-<thead>
-<tr class="header">
-<th>N</th>
-<th>Tipologia</th>
-<th>Data</th>
-<th>Aula</th>
-<th>Orario</th>
-<th>Materiale didattico</th>
-<th>Codice R</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td><a href="slides/sl_A.pdf">Introduzione ad R (pdf)</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>Esercizi</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td><a href="exe/es_A.html">Introduzione ad R - Esercizi</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td><a href="slides/sl_B.pdf">Statistica descrittiva (pdf)</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Il materiale didattico di ciascuna lezione è scaricabile utilizzando i <a href>collegamenti ipertestuali</a>. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.</p>
+<div id="r-software" class="section level2">
+<h2>R software</h2>
+<p><a href="http://www.r-project.org">R</a> è un software adatto alla manipolazione di dati, al calcolo e alla visualizzazione grafica; è distribuito gratuitamente da <em>The R Project for Statistical Computing</em>, all’indirizzo <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>, dove è altresì possibile trovare ogni tipo di supporto per l’utilizzo e lo sviluppo di R.</p>
+<p>Un gruppo di ricercatori, l’<em>R Core Team</em>, costituito oggi da circa 20 membri, si occupa dei codici sorgente. Lo sviluppo di R si allarga sempre più e dalla versione 0.64 si è giunti ad oggi allo sviluppo della versione 4.0.2. E’ previsto un aggiornamento semestrale in quanto il gruppo di sviluppatori rilascia una <em>major release</em> all’anno e una sua revisione (<em>patch</em>) ogni 6 mesi, distribuito attraverso il CRAN.</p>
+<p>Sono inoltre disponibili nel CRAN più di 10.000 pacchetti aggiuntivi.</p>
 </div>
-<div id="calendario-delle-esercitazioni" class="section level2">
-<h2>Calendario delle esercitazioni</h2>
-</div>
-<div id="materiale-didattico" class="section level2">
-<h2>Materiale didattico</h2>
-<div id="il-software-r" class="section level3">
-<h3>Il software R</h3>
+<div id="scaricare-ed-installare-r" class="section level2">
+<h2>Scaricare ed installare R</h2>
+<p>R è un software libero in quanto viene distribuito con la licenza <a href="http://it.wikipedia.org/wiki/GNU_General_Public_License">GNU GPL</a>.</p>
+<p>Per il download di R bisogna andare nel <a href="http://cran.r-project.org"><em>Comprehensive R Archive Network</em></a> (CRAN).<br />
+R è <em>cross-platform</em>, ovvero disponibile per Windows, Mac e Linux:</p>
 <ul>
-<li><strong>R</strong> è un software <strong>open source</strong> ed è possibile scaricarlo al link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a>.</li>
-<li>L’uso di <strong>Rstudio</strong> è <strong>facoltativo</strong> in questo corso, anche se consigliato. E’ possibile scaricarlo al link <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a>.</li>
+<li>Microsoft Windows: <a href="http://cran.r-project.org/bin/windows/base/" class="uri">http://cran.r-project.org/bin/windows/base/</a></li>
+<li>MacOS: <a href="http://cran.r-project.org/bin/macosx/" class="uri">http://cran.r-project.org/bin/macosx/</a></li>
+<li>Linux: <a href="http://cran.r-project.org/bin/linux/" class="uri">http://cran.r-project.org/bin/linux/</a></li>
 </ul>
 </div>
-<div id="libro-di-testo" class="section level3">
-<h3>Libro di testo</h3>
-<p>Agresti, C. Franklin (2016) “Statistica: l’arte e la scienza d’imparare dai dati”. Ediz. mylab, Pearson Education Italia</p>
-</div>
-</div>
-<div id="esame-e-verbalizzazione-del-voto" class="section level2">
-<h2>Esame e verbalizzazione del voto</h2>
-<div id="modalità-desame" class="section level3">
-<h3>Modalità d’esame</h3>
+<div id="the-r-environment" class="section level2">
+<h2>The R Environment</h2>
+<p>Alcune caratteristiche del software R:</p>
 <ul>
-<li>L’esame si svolge solo in <em>laboratorio</em> e consiste in:
-<ul>
-<li>Una prima prova con 10 domande a risposta multipla: si accede alla prova successiva solo se si risponde correttamente ad almeno 6 domande. Ogni risposta corretta vale 0.5 punti e il punteggio accumulato in questa prova viene sommato a quello della prova successiva.</li>
-<li>Una seconda prova in cui verrà richiesto di svolgere esercizi con <strong>R</strong>: oltre a saper programmare in R si dovrà essere in grado di interpretare il problema dato e i risultati ottenuti</li>
-</ul></li>
+<li>un software open-source;</li>
+<li>un ambiente di sviluppo per l’analisi statistica dei dati;</li>
+<li>un linguaggio di programmazione ad oggetti;</li>
+<li>una comunità di utenti molto collaborativa;</li>
+<li>molto popolare! Già nel lontano 2009, il <em>New York Times</em> ha pubblicato l’articolo <a href="http://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=all&amp;_r=0">Data Analysts Captivated by R’s Power</a> che contiene le ‘confessioni’ di esperti presso Pfizer, Merck, Bank of America, Shell etc. che utilizzano R nel loro lavoro quotidiano.</li>
 </ul>
+<p>R è articolato in un sistema concentrico in cui al centro si trova il nucleo, che sostanzialmente definisce le regole del linguaggio stesso, modificabile solo dagli sviluppatori.</p>
+<p>Nel cerchio circostante il nucleo vi è una collezione di funzionalità di base (che descrivono i blocchi su cui verranno costruite tutte le funzionalità statistiche: algoritmi di ottimizzazione lineare e non, algoritmi di algebra lineare, ecc). Nel cerchio esterno vi è un insieme di pacchetti aggiuntivi dedicati alle più svariate esigenze di tipo statistico.</p>
+<p>R è un linguaggio orientato alla programmazione ad oggetti: ogni variabile in R è detta oggetto ed è associata ad una determinata classe, che ne definisce le proprietà.</p>
+<p>In R un’analisi statistica normalmente è fatta attraverso una serie di passi, con risultati intermedi che sono immagazzinati in oggetti. Così, mentre SAS o SPSS danno una produzione copiosa di risultati relativi all’analisi richiesta, R restituisce la minima produzione, immagazzinando i risultati in oggetti che possono essere richiamati da altre funzioni dette di estrazione.</p>
+<p>R può essere utilizzato tramite linea di comando (R Console) o attraverso programmi d’interfaccia “user friendly” come RStudio.</p>
 </div>
-<div id="verbalizzazione-del-voto" class="section level3">
-<h3>Verbalizzazione del voto</h3>
-<ul>
-<li>Per poter verbalizzare il voto è necessario
-<ul>
-<li>Aver superato le prove di tutte le parti che compongono l’insegnamento (R per l’Analisi Statistica Multivariata, Analisi Esplorativa, Modelli Statistici)</li>
-<li>Iscriversi all’appello di Analisi Statistica Multivariata (iscrizione mediante piattaforma Esse3)</li>
-</ul></li>
-<li>Il voto di Analisi Statistica Multivariata è ottenuto come media pesata dei voti conseguiti nelle 3 parti che compongono l’insegnamento. I pesi sono proporzionali al numero di crediti di ciascuna delle parti:</li>
-</ul>
-<p><span class="math display">\[ \text{Voto}_{ASM} = \frac{3}{15}\text{Voto}_{R} + \frac{6}{15}\text{Voto}_{AE} + \frac{6}{15}\text{Voto}_{MS}  \]</span></p>
-<p>con</p>
-<ul>
-<li><span class="math inline">\(\text{Voto}_{ASM}\)</span>: voto di Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{R}\)</span>: voto di R per l’Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{AE}\)</span>: voto di Analisi Esplorativa</li>
-<li><span class="math inline">\(\text{Voto}_{MS}\)</span>: voto di Modelli Statistici</li>
-</ul>
-</div>
-<div id="note" class="section level3">
-<h3>Note</h3>
-<ul>
-<li>Per <strong>ogni prova</strong> è necessaria l’iscrizione (ricordarsi di portare con sè un <strong>documento di riconoscimento</strong> valido)</li>
-<li><strong>Non</strong> è prevista la visione della prima prova (questionario a risposta multipla)</li>
-<li>È prevista un’<strong>unica data</strong> per la visione della seconda prova (esercizi con <strong>R</strong>)</li>
-</ul>
-</div>
-</div>
-<div id="propedeuticità" class="section level2">
-<h2>Propedeuticità</h2>
-<p>Questa attività formativa deve essere preceduta dal superamento degli esami di Algebra lineare, Analisi Matematica I, Calcolo delle Probabilità e Statistica I.</p>
-</div>
-<div id="ricevimento" class="section level2 appendix">
-<h2>Ricevimento</h2>
-<p>Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo .</p>
-</div>
-<div id="ringraziamenti" class="section level2 appendix">
-<h2>Ringraziamenti</h2>
-<p>La struttura di questo sito web è largamente ispirata dal sito web dei corsi di Aldo Solari. Si ringrazia inoltre il prof.ssa Nicola Lunardon per aver messo a disposizione e concesso l’uso del materiale dell’A.A. 2019-2020</p>
+<div id="scaricare-ed-installare-rstudio" class="section level2">
+<h2>Scaricare ed installare RStudio</h2>
+<p><a href="http://www.rstudio.org">RStudio</a> è un software open-source separato da R, ma che grazie alla sua interfaccia intuitiva e “<em>easy-to-learn</em>” ne rende più agevole l’uso. RStudio è infatti un <a href="http://it.wikipedia.org/wiki/Integrated_development_environment">IDE</a> (<em>Integrated Development Environment</em>).</p>
+<p>Anche RStudio è disponibile per differenti piattaforme (Windows, Mac, Linux) all’indirizzo <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a></p>
 </div>
 </div>
 </div>

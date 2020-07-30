@@ -34,6 +34,99 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
+a.sourceLine {
+  pointer-events: auto;
+}
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -80,145 +173,115 @@ code span.ot { color: #007020; }
 <div class="inner">
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
-<h2 class="subtitle">CdL in Scienze Statistiche ed Economiche, Università Milano-Bicocca</h2>
-<h3 class="author">Tommaso Rigon</h3>
-<address class="author_afil">
-DEMS<br><h3 class="date">2020-07-30</h3>
+<h2 class="subtitle">Esercitazione 1</h2>
+<h3 class="date">2020-07-30</h3>
 </header>
 
 <hr>
 
 
 
-<p>L’insegnamento di <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a> (15 CFU) è articolato nelle seguenti parti:</p>
-<ul>
-<li>R per l’Analisi Statistica Multivariata (3 CFU) che fornisce un’introduzione al linguaggio R. Il corso sarà erogato nel I ciclo.</li>
-<li>Analisi Esplorativa (6 CFU). Il corso sarà erogato nel II ciclo.</li>
-<li>Modelli Statistici (6 CFU). Il corso sarà erogato nel III ciclo.</li>
-</ul>
-<div id="calendario-delle-lezioni" class="section level2">
-<h2>Calendario delle lezioni</h2>
-<table>
-<thead>
-<tr class="header">
-<th>N</th>
-<th>Tipologia</th>
-<th>Data</th>
-<th>Aula</th>
-<th>Orario</th>
-<th>Materiale didattico</th>
-<th>Codice R</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td><a href="slides/sl_A.pdf">Introduzione ad R (pdf)</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>Esercizi</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td><a href="exe/es_A.html">Introduzione ad R - Esercizi</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>Lezione</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td><a href="slides/sl_B.pdf">Statistica descrittiva (pdf)</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Il materiale didattico di ciascuna lezione è scaricabile utilizzando i <a href>collegamenti ipertestuali</a>. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.</p>
+<div id="esercizio-1" class="section level2">
+<h2>Esercizio 1</h2>
+<p>Si scriva in <strong>R</strong> la funzione <code>f(x)</code> associata a</p>
+<p><span class="math display">\[f(x) = \frac{|\sin(\pi/4 x^2)|}{x}, \qquad x \neq 0.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Quanto vale <span class="math inline">\(f(1)\)</span>? Quanto vale <span class="math inline">\(f(10^8)\)</span>?</p></li>
+<li><p>Si approssimino <span class="math inline">\(f(1)\)</span> ed <span class="math inline">\(f(10)\)</span> alle prime due cifre decimali.</p></li>
+<li><p>Si calcoli <span class="math inline">\(\sum_{k=1}^{K} f(k)\)</span>, per <span class="math inline">\(K = 500\)</span>.</p></li>
+</ol>
 </div>
-<div id="calendario-delle-esercitazioni" class="section level2">
-<h2>Calendario delle esercitazioni</h2>
+<div id="esercizio-2" class="section level2">
+<h2>Esercizio 2</h2>
+<p>Si definisca in <strong>R</strong> una matrice simmetrica <span class="math inline">\({\bf A}\)</span> di dimensione <span class="math inline">\(5 \times 5\)</span>, i cui elementi sono <span class="math display">\[
+{\bf A} = \begin{pmatrix}
+26 &amp;  22 &amp;  17 &amp;  22 &amp;  23 \\ 
+22 &amp;  18 &amp;  14 &amp;  23 &amp;  27 \\ 
+17 &amp;  14 &amp;  14 &amp;  20 &amp;  24 \\ 
+22 &amp;  23 &amp;  20 &amp;  26 &amp;  23 \\ 
+23 &amp;  27 &amp;  24 &amp;  23 &amp;  12 \\ 
+\end{pmatrix}.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}^{-1}) = 1 / \text{det}({\bf A})\)</span>.</p></li>
+<li><p>Si verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}^2) = \text{det}({\bf A})^2\)</span>.</p></li>
+<li><p>Si calcoli la traccia di <span class="math inline">\({\bf A}\)</span>, ovvero <span class="math inline">\(\text{tr}({\bf A}) = \sum_{i=1}^n a_{ii}\)</span>, per <span class="math inline">\(n = 5\)</span>.</p></li>
+<li><p>Se verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}) = \prod_{i=1}^n \lambda_i\)</span>, dove <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span> sono gli autovalori di <span class="math inline">\({\bf A}\)</span>.</p></li>
+</ol>
 </div>
-<div id="materiale-didattico" class="section level2">
-<h2>Materiale didattico</h2>
-<div id="il-software-r" class="section level3">
-<h3>Il software R</h3>
-<ul>
-<li><strong>R</strong> è un software <strong>open source</strong> ed è possibile scaricarlo al link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a>.</li>
-<li>L’uso di <strong>Rstudio</strong> è <strong>facoltativo</strong> in questo corso, anche se consigliato. E’ possibile scaricarlo al link <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a>.</li>
-</ul>
+<div id="esercizio-3" class="section level2">
+<h2>Esercizio 3</h2>
+<p>La varianza campionaria dei dati <span class="math inline">\({\bf x} = (x_1,\dots,x_n)\)</span> è definita come</p>
+<p><span class="math display">\[
+\text{var}({\bf x}) = \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^2,
+\]</span> dove <span class="math inline">\(\bar{x}\)</span> è la media campionaria. Si noti che <span class="math inline">\(\text{var}({\bf x})\)</span> ammette la rappresentazione alternativa</p>
+<p><span class="math display">\[\text{var}({\bf x}) = \frac{1}{2 n^2} \sum_{i=1}^n \sum_{j = 1}^n (x_i - x_j)^2.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si scriva una funzione <code>var2(x)</code> che calcola la varianza di <span class="math inline">\({\bf x}\)</span> utilizzando la definizione. È consentito utilizzare il comando <code>mean(x)</code> disponibile in <strong>R</strong> (si veda la documentazione).</p></li>
+<li><p>Si scriva una funzione <code>var3(x)</code> che calcola la varianza di <span class="math inline">\({\bf x}\)</span> utilizzando la formula basata sulle distanze tra coppie di elementi.</p></li>
+<li><p>Si supponga che <code>x = c(1, 4, 2, 2, 10)</code>. Si verifichi che le due funzioni <code>var2(x)</code> e <code>var3(x)</code> forniscono lo stesso risultato.</p></li>
+<li><p>Si supponga ora che <code>x &lt;- 1:3000</code>. Si notano differenze rispetto al punto precedente?</p></li>
+<li><p>Si confrontino le funzioni <code>var2</code> e <code>var3</code> con la funzione <code>var</code> implementata in <strong>R</strong>, utilizzando i dati del punto 3. Come mai i risultati differiscono, anche se di poco? Si consulti la documentazione per rispondere.</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Traccia della soluzione</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># --------------------------</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>var2 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="kw">mean</span>((x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>var3 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x) <span class="co"># Ottengo la lunghezza del vettore x</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  D &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> n, <span class="dt">ncol =</span> n) <span class="co"># Creazione matrice vuota</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb1-14"><a href="#cb1-14"></a>      D[i, j] &lt;-<span class="st"> </span>(x[i] <span class="op">-</span><span class="st"> </span>x[j])<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    }</span>
+<span id="cb1-16"><a href="#cb1-16"></a>  }</span>
+<span id="cb1-17"><a href="#cb1-17"></a>  <span class="kw">sum</span>(D) <span class="op">/</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>n<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>}</span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>)</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="kw">c</span>(<span class="kw">var2</span>(x),<span class="kw">var3</span>(x),<span class="kw">var</span>(x))</span>
+<span id="cb1-22"><a href="#cb1-22"></a>[<span class="dv">1</span>] <span class="fl">10.56</span> <span class="fl">10.56</span> <span class="fl">13.20</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3000</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="kw">var2</span>(x)</span>
+<span id="cb1-26"><a href="#cb1-26"></a>[<span class="dv">1</span>] <span class="fl">749999.9</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="kw">var3</span>(x) <span class="co"># Molto più lenta rispetto a var2(x)</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>[<span class="dv">1</span>] <span class="fl">749999.9</span></span></code></pre></div>
 </div>
-<div id="libro-di-testo" class="section level3">
-<h3>Libro di testo</h3>
-<p>Agresti, C. Franklin (2016) “Statistica: l’arte e la scienza d’imparare dai dati”. Ediz. mylab, Pearson Education Italia</p>
+<div id="esercizio-4" class="section level2">
+<h2>Esercizio 4</h2>
+<p>La distanza euclidea tra due vettori <span class="math inline">\({\bf x}\)</span> e <span class="math inline">\({\bf y}\)</span> in <span class="math inline">\(\mathbb{R}^p\)</span> è definita come <span class="math display">\[d({\bf x},{\bf y}) = \sqrt{\sum_{j=1}^p(x_j - y_j)^2}.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si scriva la funzione <strong>R</strong> <code>dist_euclid(x, y)</code> che calcola la distanza euclidea tra due vettori.</p></li>
+<li><p>Se <code>x = c(1, 4, 2, 2, 10)</code> e <code>y = c(8, 1, 8, 3, 6)</code>, quanto vale <code>dist_euclid(x, y)</code>?</p></li>
+</ol>
 </div>
+<div id="esercizio-5" class="section level2">
+<h2>Esercizio 5</h2>
+<p>La norma di Frobenius <span class="math inline">\(||{\bf A}||_F\)</span> di una matrice <span class="math inline">\({\bf A}\)</span> a valori reali di dimensione <span class="math inline">\(n \times m\)</span> è definita come <span class="math display">\[||{\bf A}||_F = \sqrt{\sum_{i=1}^n \sum_{j=1}^m a_{ij}^2}.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si scriva la funzione <strong>R</strong> <code>frobenius_norm(A)</code> che calcola la norma di Frobenius per una matrice <code>A</code>.</p></li>
+<li><p>Se <code>A = cbind(1:5,6:10,11:15)</code>, quanto vale <code>frobenius_norm(A)</code>?</p></li>
+</ol>
 </div>
-<div id="esame-e-verbalizzazione-del-voto" class="section level2">
-<h2>Esame e verbalizzazione del voto</h2>
-<div id="modalità-desame" class="section level3">
-<h3>Modalità d’esame</h3>
-<ul>
-<li>L’esame si svolge solo in <em>laboratorio</em> e consiste in:
-<ul>
-<li>Una prima prova con 10 domande a risposta multipla: si accede alla prova successiva solo se si risponde correttamente ad almeno 6 domande. Ogni risposta corretta vale 0.5 punti e il punteggio accumulato in questa prova viene sommato a quello della prova successiva.</li>
-<li>Una seconda prova in cui verrà richiesto di svolgere esercizi con <strong>R</strong>: oltre a saper programmare in R si dovrà essere in grado di interpretare il problema dato e i risultati ottenuti</li>
-</ul></li>
-</ul>
-</div>
-<div id="verbalizzazione-del-voto" class="section level3">
-<h3>Verbalizzazione del voto</h3>
-<ul>
-<li>Per poter verbalizzare il voto è necessario
-<ul>
-<li>Aver superato le prove di tutte le parti che compongono l’insegnamento (R per l’Analisi Statistica Multivariata, Analisi Esplorativa, Modelli Statistici)</li>
-<li>Iscriversi all’appello di Analisi Statistica Multivariata (iscrizione mediante piattaforma Esse3)</li>
-</ul></li>
-<li>Il voto di Analisi Statistica Multivariata è ottenuto come media pesata dei voti conseguiti nelle 3 parti che compongono l’insegnamento. I pesi sono proporzionali al numero di crediti di ciascuna delle parti:</li>
-</ul>
-<p><span class="math display">\[ \text{Voto}_{ASM} = \frac{3}{15}\text{Voto}_{R} + \frac{6}{15}\text{Voto}_{AE} + \frac{6}{15}\text{Voto}_{MS}  \]</span></p>
-<p>con</p>
-<ul>
-<li><span class="math inline">\(\text{Voto}_{ASM}\)</span>: voto di Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{R}\)</span>: voto di R per l’Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{AE}\)</span>: voto di Analisi Esplorativa</li>
-<li><span class="math inline">\(\text{Voto}_{MS}\)</span>: voto di Modelli Statistici</li>
-</ul>
-</div>
-<div id="note" class="section level3">
-<h3>Note</h3>
-<ul>
-<li>Per <strong>ogni prova</strong> è necessaria l’iscrizione (ricordarsi di portare con sè un <strong>documento di riconoscimento</strong> valido)</li>
-<li><strong>Non</strong> è prevista la visione della prima prova (questionario a risposta multipla)</li>
-<li>È prevista un’<strong>unica data</strong> per la visione della seconda prova (esercizi con <strong>R</strong>)</li>
-</ul>
-</div>
-</div>
-<div id="propedeuticità" class="section level2">
-<h2>Propedeuticità</h2>
-<p>Questa attività formativa deve essere preceduta dal superamento degli esami di Algebra lineare, Analisi Matematica I, Calcolo delle Probabilità e Statistica I.</p>
-</div>
-<div id="ricevimento" class="section level2 appendix">
-<h2>Ricevimento</h2>
-<p>Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo .</p>
-</div>
-<div id="ringraziamenti" class="section level2 appendix">
-<h2>Ringraziamenti</h2>
-<p>La struttura di questo sito web è largamente ispirata dal sito web dei corsi di Aldo Solari. Si ringrazia inoltre il prof.ssa Nicola Lunardon per aver messo a disposizione e concesso l’uso del materiale dell’A.A. 2019-2020</p>
+<div id="esercizio-6" class="section level2">
+<h2>Esercizio 6</h2>
+<p>Utilizzando i seguenti comandi, si carichino in memoria i dati <code>cars</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Operazione preliminare: caricamento in memoria dei dati cars.</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">data</span>(cars)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>y &lt;-<span class="st"> </span>cars<span class="op">$</span>dist</span>
+<span id="cb2-4"><a href="#cb2-4"></a>x &lt;-<span class="st"> </span>cars<span class="op">$</span>speed</span></code></pre></div>
+<p>I vettori <code>y</code> ed <code>x</code> rappresentano, rispettivamente, una variabile risposta ed una covariata. Si consulti la documentazione dei dati <code>cars</code> per ulteriori informazioni. La stima ai minimi quadrati per i coefficienti di un modello lineare <span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \epsilon_i\)</span> è pari a <span class="math display">\[
+(\hat{\beta}_0,\hat{\beta}_1) = ({\bf X}^\intercal {\bf X})^{-1}{\bf X}^\intercal{\bf y}, \qquad {\bf X} = ({\bf 1}, {\bf x}).
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si scriva una funzione <code>my_ols(x,y)</code> per ottenere la stima ai minimi quadrati.</p></li>
+<li><p>Si applichi la funzione <code>my_ols(x,y)</code> ai dati <code>cars</code>.</p></li>
+</ol>
 </div>
 </div>
 </div>
