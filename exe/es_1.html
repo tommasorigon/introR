@@ -264,21 +264,20 @@ code span.ot { color: #007020; }
 <li><p>Si scriva la funzione <strong>R</strong> <code>frobenius_norm(A)</code> che calcola la norma di Frobenius per una matrice <code>A</code>.</p></li>
 <li><p>Se <code>A = cbind(1:5,6:10,11:15)</code>, quanto vale <code>frobenius_norm(A)</code>?</p></li>
 </ol>
-</div>
-<div id="esercizio-6" class="section level2">
-<h2>Esercizio 6</h2>
-<p>Utilizzando i seguenti comandi, si carichino in memoria i dati <code>cars</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Operazione preliminare: caricamento in memoria dei dati cars.</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">data</span>(cars)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>y &lt;-<span class="st"> </span>cars<span class="op">$</span>dist</span>
-<span id="cb2-4"><a href="#cb2-4"></a>x &lt;-<span class="st"> </span>cars<span class="op">$</span>speed</span></code></pre></div>
-<p>I vettori <code>y</code> ed <code>x</code> rappresentano, rispettivamente, una variabile risposta ed una covariata. Si consulti la documentazione dei dati <code>cars</code> per ulteriori informazioni. La stima ai minimi quadrati per i coefficienti di un modello lineare <span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \epsilon_i\)</span> è pari a <span class="math display">\[
-(\hat{\beta}_0,\hat{\beta}_1) = ({\bf X}^\intercal {\bf X})^{-1}{\bf X}^\intercal{\bf y}, \qquad {\bf X} = ({\bf 1}, {\bf x}).
-\]</span></p>
-<ol style="list-style-type: decimal">
-<li><p>Si scriva una funzione <code>my_ols(x,y)</code> per ottenere la stima ai minimi quadrati.</p></li>
-<li><p>Si applichi la funzione <code>my_ols(x,y)</code> ai dati <code>cars</code>.</p></li>
-</ol>
+<!-- ## Esercizio 6 -->
+<!-- Utilizzando i seguenti comandi, si carichino in memoria i dati `cars`.  -->
+<!-- ```{r, include=TRUE} -->
+<!-- # Operazione preliminare: caricamento in memoria dei dati cars. -->
+<!-- data(cars) -->
+<!-- y <- cars$dist -->
+<!-- x <- cars$speed -->
+<!-- ``` -->
+<!-- I vettori `y` ed `x` rappresentano, rispettivamente, una variabile risposta ed una covariata. Si consulti la documentazione dei dati `cars` per ulteriori informazioni.  La stima ai minimi quadrati per i coefficienti di un modello lineare $y_i = \beta_0 + \beta_1 x_i + \epsilon_i$ è pari a  -->
+<!-- $$ -->
+<!-- (\hat{\beta}_0,\hat{\beta}_1) = ({\bf X}^\intercal {\bf X})^{-1}{\bf X}^\intercal{\bf y}, \qquad {\bf X} = ({\bf 1}, {\bf x}). -->
+<!-- $$ -->
+<!-- 1. Si scriva una funzione `my_ols(x,y)` per ottenere la stima ai minimi quadrati. -->
+<!-- 1. Si applichi la funzione `my_ols(x,y)` ai dati `cars`. -->
 </div>
 </section>
 

@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-07-30" />
+<meta name="date" content="2020-07-31" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -172,7 +172,7 @@ code span.ot { color: #007020; }
 <section class="page-header">
 <h1 class="title toc-ignore project-name">R per l’analisi statistica multivariata</h1>
 <h3 class="subtitle project-tagline">Dataframes ed elementi di programmazione</h3>
-<h4 class="date project-date">2020-07-30</h4>
+<h4 class="date project-date">2020-07-31</h4>
 </section>
 
 
@@ -240,8 +240,8 @@ code span.ot { color: #007020; }
 <span id="cb5-5"><a href="#cb5-5"></a> <span class="op">$</span><span class="st"> </span>Petal.Length<span class="op">:</span><span class="st"> </span>num  <span class="fl">1.4</span> <span class="fl">1.4</span> <span class="fl">1.3</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.7</span> <span class="fl">1.4</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.5</span> ...</span>
 <span id="cb5-6"><a href="#cb5-6"></a> <span class="op">$</span><span class="st"> </span>Petal.Width <span class="op">:</span><span class="st"> </span>num  <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.4</span> <span class="fl">0.3</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.1</span> ...</span>
 <span id="cb5-7"><a href="#cb5-7"></a> <span class="op">$</span><span class="st"> </span>Species     <span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">3</span> levels <span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;versicolor&quot;</span>,..<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span></code></pre></div>
-<p>Per estrarre una variabile si procede come nel caso delle liste, ovvero tramite il simbolo <code>$</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>S_L &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Length</span>
+<p>Si noti che una variabile del dataset è di tipo <code>factor</code>: ci torniamo in segutio. Per estrarre una variabile si procede come nel caso delle liste, ovvero tramite il simbolo <code>$</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>S_L &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Length <span class="co"># Estrazione della variabile chiamata Sepal.Length</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="kw">is.numeric</span>(S_L)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>S_L</span>
@@ -257,9 +257,9 @@ code span.ot { color: #007020; }
 <h2>Variabili di tipo <code>factor</code></h2>
 <p>Una variabile di tipo <code>factor</code> serve per codificare una variabile <strong>qualitativa</strong>, come nel caso di <code>Species</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x &lt;-<span class="st"> </span>iris<span class="op">$</span>Species</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">is.factor</span>(x) <span class="co"># Controlla se si tratta di un oggetto factor</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">is.factor</span>(x) <span class="co"># Controlla se si tratta di un oggetto di tipo factor</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>] <span class="co"># Mostra i primi 10 valori.</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a> [<span class="dv">1</span>] setosa setosa setosa setosa setosa setosa setosa setosa setosa setosa</span>
 <span id="cb9-3"><a href="#cb9-3"></a>Levels<span class="op">:</span><span class="st"> </span>setosa versicolor virginica</span></code></pre></div>
 <p>La funzione <code>factor</code> crea una variabile qualitativa, dove le modalità non sono ordinate e vengono elencate in ordine alfabetico o non decrescente.</p>
@@ -278,7 +278,7 @@ code span.ot { color: #007020; }
 <span id="cb11-4"><a href="#cb11-4"></a>[<span class="dv">1</span>] <span class="ot">FALSE</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a><span class="kw">is.factor</span>(eyecol)</span>
 <span id="cb11-6"><a href="#cb11-6"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
-<p>Il comando <code>levels</code> permette di accedere al nome delle modalità:</p>
+<p>Il comando <code>levels</code> permette di accedere ai nomi delle modalità e anche di modificarle.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">levels</span>(eyecol) <span class="co"># Accede alle modalità</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>[<span class="dv">1</span>] <span class="st">&quot;blue&quot;</span>  <span class="st">&quot;brown&quot;</span> <span class="st">&quot;green&quot;</span> <span class="st">&quot;hazel&quot;</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a></span>
@@ -367,7 +367,7 @@ code span.ot { color: #007020; }
 </div>
 <div id="creazione-di-un-data.frame" class="section level2">
 <h2>Creazione di un <code>data.frame</code></h2>
-<p>Il modo più diretto per creare un <code>data.frame</code> è tramite l’uso della funzione <code>data.frame</code> stessa.</p>
+<p>Il modo più diretto per creare un <code>data.frame</code> è tramite l’uso della funzione <code>data.frame</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>dataset &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
 <span id="cb20-2"><a href="#cb20-2"></a>  <span class="dt">variable1 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">43</span>, <span class="dv">10</span>, <span class="dv">231</span>),</span>
 <span id="cb20-3"><a href="#cb20-3"></a>  <span class="dt">variable2 =</span> eyes,</span>
@@ -385,16 +385,15 @@ code span.ot { color: #007020; }
 <div id="importazione-di-un-data.frame" class="section level2">
 <h2>Importazione di un <code>data.frame</code></h2>
 <p>Il modo più frequente di caricare un dataset in memoria è importarlo da un file esterno. Se i dati hanno dimensioni moderate (&lt; 3-4 Gb), essi sono spesso salvati in formato <code>.csv</code> oppure <code>.txt</code>.</p>
-<p>Per poter procedere con i prossimi comandi, è necessario scaricare il file <a href="../data/dde.csv">dde.csv</a> e salvarlo nel proprio computer.</p>
+<p><strong>Nota</strong>. Per poter procedere con i prossimi comandi, è necessario scaricare il file <a href="../data/dde.csv">dde.csv</a> e salvarlo nel proprio computer.</p>
 <p><strong>R</strong> è aperto in una cartella specifica, identificata dal comando seguente.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">getwd</span>() <span class="co"># Identifica la cartella di lavoro (get working directory)</span></span></code></pre></div>
 <p>Per aprire il file <code>dde.csv</code>, bisogna fornire ad <strong>R</strong> il percorso del file, che dipende da dove questo è stato salvato.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Se il file dde.csv è salvato nella stessa cartella di getwd(), allora va usato</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="co"># path &lt;- &quot;dde.csv&quot;</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># ATTENZIONE!</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="co"># LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>path &lt;-<span class="st"> &quot;../data/dde.csv&quot;</span> <span class="co"># Questo è il percorso del file</span></span></code></pre></div>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>path &lt;-<span class="st"> &quot;../data/dde.csv&quot;</span> <span class="co"># Questo è il percorso del file</span></span></code></pre></div>
 <p>Il percorso è espresso in termini relativi rispetto alla cartella di riferimento ottenuta con il comando <code>getwd</code>.</p>
 <p>È anche possibile cambiare la cartella di lavoro tramite il comando <code>setwd</code>. In Rstudio, questo si può fare usando l’opzione <code>More -&gt; Set as working directory</code> nella finestra <code>Files</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># header = TRUE significa che la prima riga contiene i nomi delle variabili</span></span>
