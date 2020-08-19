@@ -268,10 +268,10 @@ F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(x_i \le x).
 <span id="cb7-6"><a href="#cb7-6"></a><span class="co"># Definisco la funzione di ripartizione di DDE</span></span>
 <span id="cb7-7"><a href="#cb7-7"></a>F_preterm &lt;-<span class="st"> </span><span class="kw">ecdf</span>(dde_preterm)</span>
 <span id="cb7-8"><a href="#cb7-8"></a></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="kw">F_preterm</span>(<span class="dv">30</span>) <span class="co"># Calcola la funzione di ripartizione empirica in 30</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>[<span class="dv">1</span>] <span class="fl">0.5235457</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="kw">sum</span>(dde_preterm <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(dde_preterm) <span class="co"># Calcola la funzione di ripartizione empirica in 30</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a>[<span class="dv">1</span>] <span class="fl">0.5235457</span></span></code></pre></div>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="kw">F_preterm</span>(<span class="dv">40</span>) <span class="co"># Calcola la funzione di ripartizione empirica in 40</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>[<span class="dv">1</span>] <span class="fl">0.6980609</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="kw">sum</span>(dde_preterm <span class="op">&lt;=</span><span class="st"> </span><span class="dv">40</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(dde_preterm) <span class="co"># Calcola la funzione di ripartizione empirica in 40</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>[<span class="dv">1</span>] <span class="fl">0.6980609</span></span></code></pre></div>
 <p>Si noti anche che:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">F_preterm</span>(<span class="kw">median</span>(dde_preterm))</span>
 <span id="cb8-2"><a href="#cb8-2"></a>[<span class="dv">1</span>] <span class="fl">0.501385</span></span></code></pre></div>
@@ -328,22 +328,15 @@ F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(x_i \le x).
 <span id="cb14-3"><a href="#cb14-3"></a><span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="fl">0.5</span>) <span class="co"># Ovvero: quantile(x, probs = 0.5, type = 7)</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a><span class="dv">50</span>% </span>
 <span id="cb14-5"><a href="#cb14-5"></a> <span class="dv">19</span> </span></code></pre></div>
-<p>Per numerosità campionarie elevate le differenze tendono ad essere trascurabili:</p>
+<p>Per numerosità campionarie elevate le differenze tendono ad essere trascurabili. Elenchiamo qui di seguito alcuni esempi</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">library</span>(knitr) <span class="co"># Carica in memoria il pacchetto knitr</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a></span>
 <span id="cb15-3"><a href="#cb15-3"></a>tab &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
 <span id="cb15-4"><a href="#cb15-4"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">1</span>),</span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">2</span>),</span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">3</span>),</span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">4</span>),</span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">5</span>),</span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">6</span>),</span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">7</span>),</span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">8</span>),</span>
-<span id="cb15-12"><a href="#cb15-12"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">9</span>)</span>
-<span id="cb15-13"><a href="#cb15-13"></a>)</span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="kw">rownames</span>(tab) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">9</span></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="kw">kable</span>(tab, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">6</span>),</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="kw">quantile</span>(dde_preterm, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="dt">type =</span> <span class="dv">7</span>))</span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="kw">rownames</span>(tab) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="kw">kable</span>(tab, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -358,75 +351,27 @@ F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(x_i \le x).
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">15.07000</td>
+<td align="right">15.070</td>
 <td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.30000</td>
-<td align="right">68.01000</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">15.07000</td>
-<td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.30000</td>
-<td align="right">68.01000</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">15.05000</td>
-<td align="right">19.94</td>
-<td align="right">29.310</td>
-<td align="right">45.30000</td>
-<td align="right">68.01000</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">15.05200</td>
-<td align="right">19.94</td>
-<td align="right">29.385</td>
-<td align="right">45.29500</td>
-<td align="right">67.93300</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">15.06200</td>
-<td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.39500</td>
-<td align="right">68.37400</td>
+<td align="right">29.46</td>
+<td align="right">45.30</td>
+<td align="right">68.010</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">15.05400</td>
+<td align="right">15.054</td>
 <td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.49000</td>
-<td align="right">68.73800</td>
+<td align="right">29.46</td>
+<td align="right">45.49</td>
+<td align="right">68.738</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
-<td align="right">15.07000</td>
+<td align="right">15.070</td>
 <td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.30000</td>
-<td align="right">68.01000</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="right">15.05933</td>
-<td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.42667</td>
-<td align="right">68.49533</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="right">15.06000</td>
-<td align="right">19.94</td>
-<td align="right">29.460</td>
-<td align="right">45.41875</td>
-<td align="right">68.46500</td>
+<td align="right">29.46</td>
+<td align="right">45.30</td>
+<td align="right">68.010</td>
 </tr>
 </tbody>
 </table>
@@ -443,69 +388,114 @@ F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(x_i \le x).
 </div>
 <div id="i-dati-emoglobina" class="section level2">
 <h2>I dati <code>emoglobina</code></h2>
+<ul>
+<li><p>Siamo interessati a confrontare l’efficacia di due diverse metodologie, chiamate A e B, per la misurazione dell’emoglobina nel sangue.</p></li>
+<li><p>Si è creato in laboratorio del sangue artificiale contenente 15 grammi di emoglobina ogni <span class="math inline">\(100 \text{cm}^3\)</span>.</p></li>
+</ul>
+<p>Dal composito sono stati estratti in totale <span class="math inline">\(n = 360\)</span> campioni.</p>
+<p>Di questi, in <span class="math inline">\(n_A = 180\)</span> campioni l’emoglobina è stata misurata utilizzando la metodologia A mentre per i restanti <span class="math inline">\(n_B = 180\)</span> campioni è stata usata la metodologia B.</p>
+<p>Alcuni dati sono riportati nella prossima slide. Le differenze tra le diverse misurazioni sono da attribuire in larga parte agli errori di misura delle due diverse metodologie.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>()) <span class="co"># Rimozione di quanto presente nel workspace</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>path &lt;-<span class="st"> &quot;https://tommasorigon.github.io/introR/data/emoglobina.csv&quot;</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>emoglobina &lt;-<span class="st"> </span><span class="kw">read.table</span>(path, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>) <span class="co"># Scarica il file da internet</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="kw">str</span>(emoglobina)</span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">360</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>emoglobina <span class="op">:</span><span class="st"> </span>num  <span class="dv">15</span> <span class="fl">15.1</span> <span class="fl">15.2</span> <span class="fl">14.8</span> <span class="dv">15</span> ...</span>
+<span id="cb17-8"><a href="#cb17-8"></a> <span class="op">$</span><span class="st"> </span>Metodologia<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>emo_A &lt;-<span class="st"> </span>emoglobina<span class="op">$</span>emoglobina[emoglobina<span class="op">$</span>Metodologia <span class="op">==</span><span class="st"> &quot;A&quot;</span>] <span class="co"># Emoglobina gruppo A</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>emo_B &lt;-<span class="st"> </span>emoglobina<span class="op">$</span>emoglobina[emoglobina<span class="op">$</span>Metodologia <span class="op">==</span><span class="st"> &quot;B&quot;</span>] <span class="co"># Emoglobina gruppo B</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="kw">summary</span>(emo_A)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fl">14.44</span>   <span class="fl">14.87</span>   <span class="fl">15.00</span>   <span class="fl">15.00</span>   <span class="fl">15.14</span>   <span class="fl">15.64</span> </span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="kw">summary</span>(emo_B)</span>
+<span id="cb18-8"><a href="#cb18-8"></a>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span id="cb18-9"><a href="#cb18-9"></a>  <span class="fl">13.83</span>   <span class="fl">14.83</span>   <span class="fl">15.02</span>   <span class="fl">15.02</span>   <span class="fl">15.22</span>   <span class="fl">15.80</span> </span></code></pre></div>
 </div>
 <div id="varianza" class="section level2">
 <h2>Varianza</h2>
 <p>La varianza dei dati <span class="math inline">\(x_1,\dots,x_n\)</span> è</p>
 <p><span class="math display">\[
 \sigma^2 = \frac{(x_1 - \bar{x})^2 + (x_2 - \bar{x})^2  + \cdots + (x_n - \bar{x})^2}{n} = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2.
-\]</span> La varianza della variabile <code>DDE</code> si calcola quindi come segue</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">mean</span>((dde<span class="op">$</span>DDE <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(dde<span class="op">$</span>DDE))<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>[<span class="dv">1</span>] <span class="fl">399.8639</span></span></code></pre></div>
-<p>Oppure usando la definizione alternativa</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">mean</span>(dde<span class="op">$</span>DDE<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(dde<span class="op">$</span>DDE)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>[<span class="dv">1</span>] <span class="fl">399.8639</span></span></code></pre></div>
+\]</span> La varianza delle variabili <code>emo_A</code> ed <code>emo_B</code> si calcola quindi come segue</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">mean</span>((emo_A <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(emo_A))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>[<span class="dv">1</span>] <span class="fl">0.0456162</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="kw">mean</span>((emo_B <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(emo_B))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>[<span class="dv">1</span>] <span class="fl">0.09901038</span></span></code></pre></div>
+<p>Si noti che la variabilità del gruppo <span class="math inline">\(B\)</span> è molto maggiore di quella del gruppo <span class="math inline">\(A\)</span>. Lo stesso risultato si ottiene tramite la definizione alternativa</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">mean</span>(emo_A<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(emo_A)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>[<span class="dv">1</span>] <span class="fl">0.0456162</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="kw">mean</span>(emo_B<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(emo_B)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>[<span class="dv">1</span>] <span class="fl">0.09901038</span></span></code></pre></div>
+<p>Per poter fare confronti in futuro, definiamo la funzione della varianza</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>my_var &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="kw">mean</span>(x<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>}</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="kw">my_var</span>(emo_A)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>[<span class="dv">1</span>] <span class="fl">0.0456162</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="kw">my_var</span>(emo_B)</span>
+<span id="cb21-8"><a href="#cb21-8"></a>[<span class="dv">1</span>] <span class="fl">0.09901038</span></span></code></pre></div>
 <p>La funzione <code>var</code> di <strong>R</strong> invece calcola</p>
 <p><span class="math display">\[
 \frac{n}{n-1}\sigma^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2,
 \]</span> ovvero lo stimatore corretto della varianza quando i dati provendono da una distribuzione Gaussiana.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">var</span>(dde<span class="op">$</span>DDE)</span>
-<span id="cb19-2"><a href="#cb19-2"></a>[<span class="dv">1</span>] <span class="fl">400.0369</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(dde<span class="op">$</span>DDE)</span>
-<span id="cb19-5"><a href="#cb19-5"></a>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>n <span class="op">*</span><span class="st"> </span><span class="kw">var</span>(dde<span class="op">$</span>DDE) <span class="co"># Trasformazione inversa per ottenere la varianza</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a>[<span class="dv">1</span>] <span class="fl">399.8639</span></span></code></pre></div>
-<p>Per poter fare confronti in futuro, definiamo la funzione della varianza</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>my_var &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="kw">mean</span>(x<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>}</span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a><span class="kw">my_var</span>(dde<span class="op">$</span>DDE)</span>
-<span id="cb20-6"><a href="#cb20-6"></a>[<span class="dv">1</span>] <span class="fl">399.8639</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">var</span>(emo_A)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>[<span class="dv">1</span>] <span class="fl">0.04587104</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="kw">var</span>(emo_B)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>[<span class="dv">1</span>] <span class="fl">0.09956351</span></span></code></pre></div>
 </div>
 <div id="scarto-quadratico-medio" class="section level2">
 <h2>Scarto quadratico medio</h2>
 <p>Lo scarto quadratico medio si calcola considerando la radice quadrata della varianza. Esso è pari a</p>
 <p><span class="math display">\[\sigma = \sqrt{\sigma^2}.\]</span></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">sqrt</span>(<span class="kw">my_var</span>(x))</span>
-<span id="cb21-2"><a href="#cb21-2"></a>[<span class="dv">1</span>] <span class="fl">17.61123</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">sqrt</span>(<span class="kw">my_var</span>(emo_A))</span>
+<span id="cb23-2"><a href="#cb23-2"></a>[<span class="dv">1</span>] <span class="fl">0.2135795</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="kw">sqrt</span>(<span class="kw">my_var</span>(emo_B))</span>
+<span id="cb23-4"><a href="#cb23-4"></a>[<span class="dv">1</span>] <span class="fl">0.3146591</span></span></code></pre></div>
 <p>Anche in questo caso, si faccia attenzione che il comando <code>sd</code> di <strong>R</strong> invece calcola il valore di</p>
 <p><span class="math display">\[
 \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}.
 \]</span></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">sd</span>(dde<span class="op">$</span>DDE)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>[<span class="dv">1</span>] <span class="fl">20.00092</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="kw">sqrt</span>(<span class="kw">var</span>(dde<span class="op">$</span>DDE))</span>
-<span id="cb22-4"><a href="#cb22-4"></a>[<span class="dv">1</span>] <span class="fl">20.00092</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">sd</span>(emo_A)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>[<span class="dv">1</span>] <span class="fl">0.2141753</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="kw">sd</span>(emo_B)</span>
+<span id="cb24-4"><a href="#cb24-4"></a>[<span class="dv">1</span>] <span class="fl">0.3155369</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="co"># Equivalente a</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="kw">sqrt</span>(<span class="kw">var</span>(emo_A))</span>
+<span id="cb24-8"><a href="#cb24-8"></a>[<span class="dv">1</span>] <span class="fl">0.2141753</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="kw">sqrt</span>(<span class="kw">var</span>(emo_B))</span>
+<span id="cb24-10"><a href="#cb24-10"></a>[<span class="dv">1</span>] <span class="fl">0.3155369</span></span></code></pre></div>
 </div>
 <div id="campo-di-variazione" class="section level2">
 <h2>Campo di variazione</h2>
 <p>Il campo di variazione è la differenza tra minimo e massimo della distribuzione, ovvero <span class="math display">\[
 (\text{Campo di variazione}) = x_{(n)} - x_{(1)}.
 \]</span></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">max</span>(dde<span class="op">$</span>DDE) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(dde<span class="op">$</span>DDE)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>[<span class="dv">1</span>] <span class="fl">175.56</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="kw">diff</span>(<span class="kw">range</span>(dde<span class="op">$</span>DDE)) <span class="co"># Comando alternativo</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>[<span class="dv">1</span>] <span class="fl">175.56</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">max</span>(emo_A) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(emo_A)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>[<span class="dv">1</span>] <span class="fl">1.20242</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="kw">max</span>(emo_B) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(emo_B)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>[<span class="dv">1</span>] <span class="fl">1.97508</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co"># Comando alternativo</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">diff</span>(<span class="kw">range</span>(emo_A))</span>
+<span id="cb25-8"><a href="#cb25-8"></a>[<span class="dv">1</span>] <span class="fl">1.20242</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="kw">diff</span>(<span class="kw">range</span>(emo_B)) </span>
+<span id="cb25-10"><a href="#cb25-10"></a>[<span class="dv">1</span>] <span class="fl">1.97508</span></span></code></pre></div>
 </div>
 <div id="scarto-interquartile" class="section level2">
 <h2>Scarto interquartile</h2>
 <p>È la differenza tra il terzo ed il primo quartile, ovvero <span class="math display">\[
 (\text{Scarto interquartile}) = \mathcal{Q}_{0.75} - \mathcal{Q}_{0.25}.
 \]</span> È molto più <strong>resistente</strong> della varianza in presenza di poche osservazioni estreme. È usato soprattutto nelle situazioni in cui si sospetta la presenza di osservazioni anomale.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">diff</span>(<span class="kw">quantile</span>(dde<span class="op">$</span>DDE, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))) <span class="co"># Scarto interquartile</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>    <span class="dv">75</span>% </span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="fl">19.3825</span> </span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">diff</span>(<span class="kw">quantile</span>(emo_A, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))) <span class="co"># Scarto interquartile gruppo A</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>      <span class="dv">75</span>% </span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="fl">0.2699275</span> </span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="kw">diff</span>(<span class="kw">quantile</span>(emo_B, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))) <span class="co"># Scarto interquartile gruppo B</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>      <span class="dv">75</span>% </span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="fl">0.3929925</span> </span></code></pre></div>
 </div>
 <div id="mad" class="section level2">
 <h2>MAD</h2>
@@ -513,13 +503,16 @@ F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(x_i \le x).
 <p><span class="math display">\[
 \text{MAD} = \text{Mediana}(|x_1 - \text{Me}_x|, \dots, |x_n - \text{Me}_x|), \qquad \text{Me}_x = \text{Mediana}(x_1,\dots,x_n).
 \]</span></p>
-<p>Per il suo calcolo, creiamo una funzione appropriata</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>MAD &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="kw">median</span>(<span class="kw">abs</span>(x <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(x)))</span>
-<span id="cb25-3"><a href="#cb25-3"></a>}</span></code></pre></div>
-<p>Il MAD della variabile <code>DDE</code> è quindi pari a</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">MAD</span>(dde<span class="op">$</span>DDE)</span>
-<span id="cb26-2"><a href="#cb26-2"></a>[<span class="dv">1</span>] <span class="fl">8.965</span></span></code></pre></div>
+<p>Per il suo calcolo, creiamo una funzione appropriata:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>MAD &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="kw">median</span>(<span class="kw">abs</span>(x <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(x)))</span>
+<span id="cb27-3"><a href="#cb27-3"></a>}</span></code></pre></div>
+<p>Il MAD della variabili <code>emo_A</code> ed <code>emo_B</code> sono quindi pari a</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">MAD</span>(emo_A)</span>
+<span id="cb28-2"><a href="#cb28-2"></a>[<span class="dv">1</span>] <span class="fl">0.135795</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="kw">MAD</span>(emo_B)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>[<span class="dv">1</span>] <span class="fl">0.198025</span></span></code></pre></div>
+<p>Anche quest’ultimo indice mostra che il gruppo B è caratterizzato da maggiore variabilità.</p>
 </div>
 <div id="indice-di-asimmetria-di-pearson" class="section level2">
 <h2>Indice di asimmetria di Pearson</h2>
