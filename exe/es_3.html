@@ -108,6 +108,38 @@ code span.ot { color: #007020; }
 </div>
 <div id="esercizio-3" class="section level2">
 <h2>Esercizio 3</h2>
+<ul>
+<li><span class="math inline">\(Poisson(\lambda)\)</span>: si provi a ripetere quanto fatto con la v.c. Binomiale per la v.c. <span class="math inline">\(X\sim \mathrm{Poisson}(\lambda)\)</span>, ovvero
+<ul>
+<li>Si calcoli <span class="math inline">\(\mathrm{P}(X=x)\)</span> per <span class="math inline">\(X\sim\mathrm{Poisson}(\lambda=0.5)\)</span> per <span class="math inline">\(x=0,1,2,\ldots,6\)</span> e se ne costruisca il grafico;</li>
+<li>Si verifichi che una v.c. Binomiale in cui <span class="math inline">\(n\)</span> è grande e <span class="math inline">\(p\)</span> piccolo è ben approssimata da una v.c. Poisson con media <span class="math inline">\(\lambda=np\)</span>. Si usi ad esempio <span class="math inline">\(n=100\)</span> e <span class="math inline">\(p=0.02\)</span> e si confrontino sia numericamente che graficamente le funzioni di probabilità per <span class="math inline">\(x=0,\ldots,9\)</span>.</li>
+</ul></li>
+<li><span class="math inline">\(Esponenziale(\theta)\)</span> e <span class="math inline">\(Gamma(\alpha, \beta)\)</span>: si provi a ripetere quanto fatto con la v.c. Normale per la v.c. <span class="math inline">\(X\sim \mathrm{Esponenziale}(\theta)\)</span> con valore atteso <span class="math inline">\(\mathrm{E}(X)=1/\theta\)</span>, ovvero
+<ul>
+<li>costruire l’istogramma relativo alle realizzazioni di <span class="math inline">\(n=100\)</span> v.c. <span class="math inline">\(X_1,\ldots,X_n\)</span> i.i.d. a <span class="math inline">\(X\sim \mathrm{Esponenziale}(\theta=1)\)</span> e confrontarlo con la funzione di densità;</li>
+<li>se <span class="math inline">\(X_1,\ldots,X_n\)</span> i.i.d. a <span class="math inline">\(X\sim \mathrm{Esponenziale}(\theta)\)</span>, allora <span class="math inline">\(Y=\sum_{i=1}^{n}X_i\)</span> è una v.c. <span class="math inline">\(\mathrm{Gamma}(n,\theta)\)</span>. Sfruttando questa relazione, si generi <span class="math inline">\(Y\sim \mathrm{Gamma}(10,2)\)</span>.</li>
+</ul></li>
+<li>Relazione gamma/poisson: esiste una relazione interessante tra le v.c. Gamma e Poisson. Sia <span class="math inline">\(X\sim \mathrm{Gamma}(\alpha, \beta)\)</span> con parametro di forma (<code>shape</code>) <span class="math inline">\(\alpha\)</span> numero intero e parametro di scala (<code>scale</code>) <span class="math inline">\(\beta \in \mathrm{R}^{+}\)</span>, allora per ogni <span class="math inline">\(x\)</span> abbiamo <span class="math display">\[\mathrm{P}(X\leq x) = \mathrm{P}(Y \geq \alpha)\]</span> dove <span class="math inline">\(Y\sim \mathrm{Poisson}(x/\beta)\)</span>. Si verifichi questo risultato per <span class="math inline">\(x=2\)</span>, <span class="math inline">\(\alpha=3\)</span> e <span class="math inline">\(\beta=4\)</span>
+<ol style="list-style-type: decimal">
+<li>utilizzando le funzioni <code>pgamma</code> e <code>ppois</code></li>
+<li>impostando uno studio di simulazione: si simulino campioni di dimensione 20 e si ripeta il tutto per 10000 volte (numero di simulazioni)</li>
+</ol></li>
+</ul>
+</div>
+<div id="esercizio" class="section level2">
+<h2>Esercizio</h2>
+<p>Un consulente che lavora presso un grande gruppo d’acquisto (e.g. groupon) valuta, sulla base dell’esperienza passata, che la probabilità di chiudere con successo un accordo con un nuovo partner (ristorante, centro benessere, etc.) è pari a 0.3. Normalmente il consulente riesce ad organizzare 6 appuntamenti al giorno.</p>
+<p>Ipotizzando che gli appuntamenti siano tra loro indipendenti e che il consulente abbia la stessa probabilità di chiudere ogni singolo accordo, calcolare:</p>
+<ul>
+<li>Qual è la probabilità di chiudere esattamente 2 accordi in un giorno?</li>
+<li>Qual è la probabilità di chiudere nessun accordo in una giornata?</li>
+<li>Qual è la probabilità di chiudere più di 1 accordo in una giornata?</li>
+<li>Qual è la probabilità di non chiuderne al massimo 3 accordi in una giornata?</li>
+<li>Qual è la probabilità di chiudere tra 3 e 5 accordi (estremi inclusi) in una giornata?</li>
+</ul>
+<div id="soluzione" class="section level3">
+<h3>Soluzione</h3>
+</div>
 </div>
 </section>
 
