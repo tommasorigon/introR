@@ -97,18 +97,6 @@ code span.ot { color: #007020; }
 </div>
 <div id="esercizio-2" class="section level2">
 <h2>Esercizio 2</h2>
-<p>Un consulente che lavora presso un grande gruppo d’acquisto (e.g. groupon) valuta che la probabilità di chiudere con successo un accordo con un nuovo partner (ristorante, centro benessere, etc.) è <span class="math inline">\(p = 3/10\)</span>. Normalmente il consulente riesce ad organizzare <span class="math inline">\(n = 7\)</span> appuntamenti al giorno.</p>
-<p>Ipotizzando che gli appuntamenti siano tra loro indipendenti e che il consulente abbia la stessa probabilità di chiudere ogni singolo accordo, calcolare:</p>
-<ol style="list-style-type: decimal">
-<li><p>La probabilità di chiudere esattamente 2 accordi in un giorno.</p></li>
-<li><p>La probabilità di chiudere nessun accordo in una giornata.</p></li>
-<li><p>La probabilità di chiudere più di 1 accordo in una giornata.</p></li>
-<li><p>La probabilità di non chiuderne al massimo 3 accordi in una giornata.</p></li>
-<li><p>La probabilità di chiudere tra 3 e 5 accordi (estremi inclusi) in una giornata.</p></li>
-</ol>
-</div>
-<div id="esercizio-3" class="section level2">
-<h2>Esercizio 3</h2>
 <p>La funzione errore <code>erf(x)</code> ammette la seguente espansione in serie</p>
 <p><span class="math display">\[\text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-s^2}ds = \frac{2}{\sqrt{\pi}} \sum_{n=0}^\infty(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.\]</span> Inoltre, si noti che</p>
 <p><span class="math display">\[
@@ -121,25 +109,45 @@ code span.ot { color: #007020; }
 <li><p>Si approssimi la probabilità <span class="math inline">\(\mathbb{P}(X \le -3)\)</span> tramite simulazione.</p></li>
 </ol>
 </div>
+<div id="esercizio-3" class="section level2">
+<h2>Esercizio 3</h2>
+<p>In un noto gioco da tavolo, si usano dadi a <span class="math inline">\(20\)</span> facce. Il lancio del dado pertanto corrisponde ad una variabile aleatoria <span class="math inline">\(X\)</span> tale che</p>
+<p><span class="math display">\[
+\mathbb{P}(X = k) = \frac{1}{20}, \qquad k=1,\dots,20.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Per superare una determinata prova, un giocatore lancia il dado da <span class="math inline">\(20\)</span> e dopo aver aggiunto <span class="math inline">\(5\)</span> al risultato controlla se il totale è maggiore o uguale a <span class="math inline">\(17\)</span>. Si calcoli la probabilità di questo evento analiticamente e tramite simulazione.</li>
+</ol>
+<p>In determinati contesti, al giocatore è concesso un <em>vantaggio</em>. Questo significa che può tirare il dado due volte e considerare il risultato più alto. In formule, siano <span class="math inline">\(X_1,X_2\)</span> due variabili aleatorie indipendenti e distribuite come <span class="math inline">\(X\)</span>. Si ponga quindi <span class="math inline">\(Z = \max\{X_1,X_2\}\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Si rappresenti graficamente la distribuzione di probabilità di <span class="math inline">\(Z\)</span>.</li>
+<li>Si ottenga tramite simulazione <span class="math inline">\(\mathbb{P}(Z + 5 \ge 17)\)</span> e la ci confronti con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?</li>
+</ol>
+</div>
 <div id="esercizio-4" class="section level2">
 <h2>Esercizio 4</h2>
-<ul>
-<li><span class="math inline">\(Poisson(\lambda)\)</span>: si provi a ripetere quanto fatto con la v.c. Binomiale per la v.c. <span class="math inline">\(X\sim \mathrm{Poisson}(\lambda)\)</span>, ovvero
-<ul>
-<li>Si calcoli <span class="math inline">\(\mathrm{P}(X=x)\)</span> per <span class="math inline">\(X\sim\mathrm{Poisson}(\lambda=0.5)\)</span> per <span class="math inline">\(x=0,1,2,\ldots,6\)</span> e se ne costruisca il grafico;</li>
-<li>Si verifichi che una v.c. Binomiale in cui <span class="math inline">\(n\)</span> è grande e <span class="math inline">\(p\)</span> piccolo è ben approssimata da una v.c. Poisson con media <span class="math inline">\(\lambda=np\)</span>. Si usi ad esempio <span class="math inline">\(n=100\)</span> e <span class="math inline">\(p=0.02\)</span> e si confrontino sia numericamente che graficamente le funzioni di probabilità per <span class="math inline">\(x=0,\ldots,9\)</span>.</li>
-</ul></li>
-<li><span class="math inline">\(Esponenziale(\theta)\)</span> e <span class="math inline">\(Gamma(\alpha, \beta)\)</span>: si provi a ripetere quanto fatto con la v.c. Normale per la v.c. <span class="math inline">\(X\sim \mathrm{Esponenziale}(\theta)\)</span> con valore atteso <span class="math inline">\(\mathrm{E}(X)=1/\theta\)</span>, ovvero
-<ul>
-<li>costruire l’istogramma relativo alle realizzazioni di <span class="math inline">\(n=100\)</span> v.c. <span class="math inline">\(X_1,\ldots,X_n\)</span> i.i.d. a <span class="math inline">\(X\sim \mathrm{Esponenziale}(\theta=1)\)</span> e confrontarlo con la funzione di densità;</li>
-<li>se <span class="math inline">\(X_1,\ldots,X_n\)</span> i.i.d. a <span class="math inline">\(X\sim \mathrm{Esponenziale}(\theta)\)</span>, allora <span class="math inline">\(Y=\sum_{i=1}^{n}X_i\)</span> è una v.c. <span class="math inline">\(\mathrm{Gamma}(n,\theta)\)</span>. Sfruttando questa relazione, si generi <span class="math inline">\(Y\sim \mathrm{Gamma}(10,2)\)</span>.</li>
-</ul></li>
-<li>Relazione gamma/poisson: esiste una relazione interessante tra le v.c. Gamma e Poisson. Sia <span class="math inline">\(X\sim \mathrm{Gamma}(\alpha, \beta)\)</span> con parametro di forma (<code>shape</code>) <span class="math inline">\(\alpha\)</span> numero intero e parametro di scala (<code>scale</code>) <span class="math inline">\(\beta \in \mathrm{R}^{+}\)</span>, allora per ogni <span class="math inline">\(x\)</span> abbiamo <span class="math display">\[\mathrm{P}(X\leq x) = \mathrm{P}(Y \geq \alpha)\]</span> dove <span class="math inline">\(Y\sim \mathrm{Poisson}(x/\beta)\)</span>. Si verifichi questo risultato per <span class="math inline">\(x=2\)</span>, <span class="math inline">\(\alpha=3\)</span> e <span class="math inline">\(\beta=4\)</span>
-<ol style="list-style-type: decimal">
-<li>utilizzando le funzioni <code>pgamma</code> e <code>ppois</code></li>
-<li>impostando uno studio di simulazione: si simulino campioni di dimensione 20 e si ripeta il tutto per 10000 volte (numero di simulazioni)</li>
-</ol></li>
-</ul>
+<p>Simulazione da una distribuzione di Cauchy</p>
+</div>
+<div id="esercizio-5" class="section level2">
+<h2>Esercizio 5</h2>
+<p>Calcolo indice di asimmetria variabile gaussiana</p>
+</div>
+<div id="esercizio-6" class="section level2">
+<h2>Esercizio 6</h2>
+<p>Definizione della distribuzione beta-binomiale, calcolo valore atteso e varianza</p>
+</div>
+<div id="esercizio-7" class="section level2">
+<h2>Esercizio 7</h2>
+<p>Calcolare tramite simulazione il valore di</p>
+<p><span class="math display">\[\mathbb{E}\left(e^{-|x|^3}\right), \quad X \sim \text{N}(0,1).\]</span></p>
+</div>
+<div id="esercizio-8" class="section level2">
+<h2>Esercizio 8</h2>
+<p>Verifica disuguaglianza di Chebyshev</p>
+</div>
+<div id="esercizio-9" class="section level2">
+<h2>Esercizio 9</h2>
+<p>Il problema dei compleanni</p>
 </div>
 </div>
 </div>

@@ -103,6 +103,24 @@ code span.ot { color: #007020; }
 <li><p>Si confrontino le funzioni <code>var2</code> e <code>var3</code> con la funzione <code>var</code> implementata in <strong>R</strong>, utilizzando i dati del punto 3. Come mai i risultati differiscono, anche se di poco? Si consulti la documentazione per rispondere.</p></li>
 </ol>
 </div>
+<div id="esercizio-2-robert-casella-2009-esercizio-1.23" class="section level2">
+<h2>Esercizio 2 (Robert &amp; Casella (2009), Esercizio 1.23)</h2>
+<p>Si ricordi che un Sudoku è una griglia <span class="math inline">\(9 \times 9\)</span> che è parzialmente riempita da numeri tra <span class="math inline">\(1\)</span> e <span class="math inline">\(9\)</span> tale che ciascun numero tra <span class="math inline">\(1\)</span> e <span class="math inline">\(9\)</span> compare solamente una volta in ciascun riga, colonna o blocco <span class="math inline">\(3 \times 3\)</span> della griglia.</p>
+<p>This exercise solves a simple Sudoku grid where there exists a path over the empty entries that fills them one at a time by excluding all possibilities but one. The Sudoku we solve is given by</p>
+<ol style="list-style-type: decimal">
+<li><p>Print the grid on-screen.</p></li>
+<li><p>We define the array pool=array(TRUE,dim=c(9,9,9)) of possible values for each entry (i,j) of the grid, pool[i,j,k] being FALSE if the value k can be excluded. Give the R code that updates pool for the entries already filled.</p></li>
+<li><p>If i is an integer between 1 and 81, explain the meaning of s[i].</p></li>
+</ol>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Show that, for a given entry (a, b), the indices of the integers in the same 3x3 box as (a, b) are defined by boxa=3<em>trunc((a-1)/3)+1 boxa=boxa:(boxa+2) boxb=3</em>trunc((b-1)/3)+1 boxb=boxb:(boxb+2)</li>
+</ol>
+<ol style="list-style-type: decimal">
+<li><p>Deduce that values at an entry (a,b) that is not yet determined can be excluded by for (u in (1:9)[pool[a,b,]]) pool[a,b,u]=(sum(u==s[a,])+sum(u==s[,b])+ and that certain entries correspond to sum(u==s[boxa,boxb]))==0 if (sum(pool[a,b,])==1) s[i]=(1:9)[pool[a,b,]]</p></li>
+<li><p>Solve the grid above by a random exploration of entries (a,b) that continues as long as sum(s==0)&gt;0.</p></li>
+</ol>
+<p><strong>Nota</strong>. If you ever attempt to apply this program on an arbitrary Sudoku grid, be aware that it may run forever since the harder Sudokus do not allow this logical and deterministic filling but instead require several scenarios in parallel be followed.</p>
+</div>
 </div>
 </div>
 
