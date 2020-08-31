@@ -116,25 +116,51 @@ code span.ot { color: #007020; }
 \mathbb{P}(X = k) = \frac{1}{20}, \qquad k=1,\dots,20.
 \]</span></p>
 <ol style="list-style-type: decimal">
-<li>Per superare una determinata prova, un giocatore lancia il dado da <span class="math inline">\(20\)</span> e dopo aver aggiunto <span class="math inline">\(5\)</span> al risultato controlla se il totale è maggiore o uguale a <span class="math inline">\(17\)</span>. Si calcoli la probabilità di questo evento analiticamente e tramite simulazione.</li>
+<li>Per superare una determinata prova, un giocatore lancia il dado da <span class="math inline">\(20\)</span>. Dopo aver aggiunto <span class="math inline">\(5\)</span> al risultato, il giocatore controlla se il totale è maggiore o uguale a <span class="math inline">\(17\)</span>. Si calcoli la probabilità di questo evento analiticamente e tramite simulazione.</li>
 </ol>
 <p>In determinati contesti, al giocatore è concesso un <em>vantaggio</em>. Questo significa che può tirare il dado due volte e considerare il risultato più alto. In formule, siano <span class="math inline">\(X_1,X_2\)</span> due variabili aleatorie indipendenti e distribuite come <span class="math inline">\(X\)</span>. Si ponga quindi <span class="math inline">\(Z = \max\{X_1,X_2\}\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li>Si rappresenti graficamente la distribuzione di probabilità di <span class="math inline">\(Z\)</span>.</li>
-<li>Si ottenga tramite simulazione <span class="math inline">\(\mathbb{P}(Z + 5 \ge 17)\)</span> e la ci confronti con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?</li>
+<li>Si ottenga tramite simulazione la probabilità <span class="math inline">\(\mathbb{P}(Z + 5 \ge 17)\)</span>. Si confronti il risultato con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?</li>
 </ol>
 </div>
 <div id="esercizio-4" class="section level2">
 <h2>Esercizio 4</h2>
-<p>Simulazione da una distribuzione di Cauchy</p>
+<p>Una variabile aleatoria <span class="math inline">\(X\)</span> è distribuita come una variabile di Cauchy (standard) se la sua densità è pari a</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\pi}\frac{1}{1 + x^2}, \qquad x \in \mathbb{R}.
+\]</span> <strong>Suggerimento</strong>: si usino la funzioni <code>dcauchy</code>, <code>pcauchy</code>, <code>qcauchy</code> e <code>rcauchy</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Si rappresenti graficamente la funzione <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((-5,5)\)</span> e si confronti il grafico con la densità di una normale standard.</p></li>
+<li><p>Si calcoli tramite simulazione la probabilità che <span class="math inline">\(X\)</span> sia maggiore di <span class="math inline">\(3\)</span>. Si confronti il risultato ottenuto con il valore teorico.</p></li>
+<li><p>Siano <span class="math inline">\(X_1,\dots,X_n\)</span> dei valori iid da una Cauchy standard e si calcoli <span class="math display">\[
+\frac{1}{n}\sum_{i=1}^nX_i,
+\]</span> per vari valori di <span class="math inline">\(n = 10^2, 10^3, 10^4, 10^5\)</span>. Si ripeta l’esperimento alcune volte. La media aritmetica dei valori simulati sembra convergere? Si commenti il risultato.</p></li>
+</ol>
 </div>
 <div id="esercizio-5" class="section level2">
 <h2>Esercizio 5</h2>
-<p>Calcolo indice di asimmetria variabile gaussiana</p>
+<p>L’indice di asimmetria di Bowley di una variabile aleatoria è definito come segue</p>
+<p><span class="math display">\[
+B = \frac{\mathcal{Q}(0.75) - 2\mathcal{Q}(0.5) + \mathcal{Q}(0.25)}{\mathcal{Q}(0.75) - \mathcal{Q}(0.25)}.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si calcoli l’indice di asimmetria di Bowley di una distribuzione gaussiana di media <span class="math inline">\(5\)</span> e varianza <span class="math inline">\(12\)</span>.</p></li>
+<li><p>Si calcoli l’indice di Bowley per una distribuzione gamma di parametri <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 4\)</span> e si commenti il risultato.</p></li>
+<li><p>Si calcoli l’indice di Bowley per una distribuzione gamma di parametri <span class="math inline">\(\alpha = 200\)</span> e <span class="math inline">\(\beta = 400\)</span> e lo si confronti col valore ottenuto al punto precedente. Si commenti il risultato.</p></li>
+</ol>
 </div>
 <div id="esercizio-6" class="section level2">
 <h2>Esercizio 6</h2>
-<p>Definizione della distribuzione beta-binomiale, calcolo valore atteso e varianza</p>
+<p>La distribuzione beta-binomiale di parametri <span class="math inline">\(\alpha, \beta &gt; 0\)</span> ed <span class="math inline">\(n \in \mathbb{N}\)</span> di è una variabile aleatoria discreta <span class="math inline">\(X\)</span> è tale che</p>
+<p><span class="math display">\[
+\mathbb{P}(X = k) = \binom{n}{k}\frac{\mathcal{B}(k+\alpha,n-k+\beta)}{\mathcal{B}(\alpha,\beta)},\qquad k=0,\dots,n.
+\]</span> dove <span class="math inline">\(\mathcal{B}\)</span> è la funzione beta.</p>
+<ol style="list-style-type: decimal">
+<li><p>Si definiscano la funzione di probabilità <code>dbetabinom(k, n, alpha, beta)</code> e la funzione di ripartizione <code>pbetabinom(k, n, alpha, beta)</code> di una distribuzione beta-binomiale.</p></li>
+<li><p>Si controlli empiricamente che per <span class="math inline">\(n = 40\)</span> e <span class="math inline">\(\alpha = \beta = 1\)</span> le probabilità descritte nell’equazione precedente sommano a uno. Quindi, si rappresenti graficamente la distribuzione.</p></li>
+<li><p>Utilizzando i parametri del punto precedente, si calcolino numericamente media e varianza di <span class="math inline">\(X\)</span>.</p></li>
+</ol>
 </div>
 <div id="esercizio-7" class="section level2">
 <h2>Esercizio 7</h2>
@@ -143,11 +169,39 @@ code span.ot { color: #007020; }
 </div>
 <div id="esercizio-8" class="section level2">
 <h2>Esercizio 8</h2>
-<p>Verifica disuguaglianza di Chebyshev</p>
+<p>Sia <span class="math inline">\(X\)</span> una variabile casuale e sia <span class="math inline">\(g(\cdot)\)</span> una funzione a valori non negativi. Allora, per ogni <span class="math inline">\(k &gt; 0\)</span></p>
+<p><span class="math display">\[
+\mathbb{P}(g(X) \ge k) \le \frac{\mathbb{E}(g(X))}{k}.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si verifichi tramite simulazione la disugaglianza di Chebychev nel caso <span class="math inline">\(g(x) = x^2\)</span> e con <span class="math inline">\(X \sim \text{N}(0,1)\)</span>, per <span class="math inline">\(k = 1,2,3\)</span>. Si confronti il risultato con i valori teorici.</p></li>
+<li><p>Si verifichi tramite simulazione la disugaglianza di Chebychev nel caso <span class="math inline">\(g(x) = e^{-x}\)</span> e con <span class="math inline">\(X \sim \text{Ga}(10,4)\)</span>, per <span class="math inline">\(k = 1,2,3\)</span>.</p></li>
+</ol>
 </div>
 <div id="esercizio-9" class="section level2">
 <h2>Esercizio 9</h2>
-<p>Il problema dei compleanni</p>
+<p>In un’aula universitaria sono presenti <span class="math inline">\(50\)</span> persone, tutte nate nello stesso anno (non bisestile). Si supponga che la distribuzione del giorno del compleanno sia una distribuzione uniforme discreta nei valori <span class="math inline">\(1,\dots,365\)</span> e che le date di compleanno delle persone presenti possano essere considerate variabili aleatorie indipendenti.</p>
+<p>Usando la funzione <code>duplicated</code> ed i cicli <code>for</code> di <strong>R</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Si calcoli la probabilità che due persone siano nate nello stesso giorno tramite simulazione.</p></li>
+<li><p>Nell’ora successiva sono presenti in aula <span class="math inline">\(25\)</span> persone. Si ricacolino le probabilità del punto precedente.</p></li>
+<li><p>Si scriva quindi del codice <strong>R</strong> che fa uso della funzione <code>replicate</code> al posto dei cicli <code>for</code> e si ri-ottengano i risultati dei punti precedenti. Ci sono dei miglioramenti in termini di tempo?</p></li>
+</ol>
+</div>
+<div id="esercizio-10" class="section level2">
+<h2>Esercizio 10</h2>
+<p>La variabile aleatoria <span class="math inline">\(X\)</span> ha distribuzione normale asimmetrica (<em>skew normal</em>) con parametro <span class="math inline">\(\alpha \in \mathbb{R}\)</span> se la sua funzione di densità è pari a</p>
+<p><span class="math display">\[
+f(x) = 2\phi(x)\Phi(\alpha x), \qquad x \in \mathbb{R}.
+\]</span> in cui <span class="math inline">\(\phi(x)\)</span> e <span class="math inline">\(\Phi(x)\)</span> sono, rispettivamente, la densità e la funzione di ripartizione di una normale standard.</p>
+<ol style="list-style-type: decimal">
+<li><p>Si scriva la funzione <code>dsn(x, alpha)</code> che calcola la densità <span class="math inline">\(f(x)\)</span>.</p></li>
+<li><p>Si tracci il grafico di <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((-4,4)\)</span> utilizzando i valori <span class="math inline">\(\alpha = -5, 0, 5\)</span>. Si proponga un’interpretazione per il parametro <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p>Si scriva la funzione <code>rsn(n, alpha)</code> che simula <span class="math inline">\(n\)</span> valori pseudo-casuali da una funzione normale asimmetrica di parametro <span class="math inline">\(\alpha\)</span> sfruttando la seguente relazione per <span class="math inline">\(X\)</span> <span class="math display">\[
+X = \sqrt{1 - \delta^2} Z_1 + \delta|Z_2|, \qquad \delta = \frac{\alpha}{\sqrt{1 + \alpha^2}}, \qquad Z_1,Z_2 \overset{\text{iid}}{\sim} \text{N}(0,1).
+\]</span></p></li>
+<li><p>Si usi la funzione <code>rsn</code> per simulare <span class="math inline">\(10^4\)</span> valori da una normale asimmetrica di parametro <span class="math inline">\(\alpha = 7\)</span> e si confronti l’istogramma dei dati simulati con la funzione di densità.</p></li>
+</ol>
 </div>
 </div>
 </div>
