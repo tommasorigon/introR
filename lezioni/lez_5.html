@@ -208,9 +208,8 @@ n! = 1 \times 2 \times 3 \times \cdots \times n.
 <span id="cb2-5"><a href="#cb2-5"></a>[<span class="dv">1</span>] <span class="fl">82108.93</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a><span class="kw">lfactorial</span>(n) <span class="co"># Comando equivalente</span></span>
 <span id="cb2-7"><a href="#cb2-7"></a>[<span class="dv">1</span>] <span class="fl">82108.93</span></span></code></pre></div>
-</div>
-<div id="coefficiente-binomiale" class="section level2">
-<h2>Coefficiente binomiale</h2>
+<div id="coefficiente-binomiale" class="section level3">
+<h3>Coefficiente binomiale</h3>
 <p>Il coefficiente binomiale può essere ottenuto combinando i coefficienti fattoriali oppure utilizzando un comando apposito. Si ricordi che</p>
 <p><span class="math display">\[
 \binom{n}{k} = \frac{n!}{k!(n-k)!}.
@@ -223,6 +222,7 @@ n! = 1 \times 2 \times 3 \times \cdots \times n.
 <span id="cb3-5"><a href="#cb3-5"></a>[<span class="dv">1</span>] <span class="dv">210</span></span>
 <span id="cb3-6"><a href="#cb3-6"></a><span class="kw">choose</span>(n, k) <span class="co"># Comando equivalente</span></span>
 <span id="cb3-7"><a href="#cb3-7"></a>[<span class="dv">1</span>] <span class="dv">210</span></span></code></pre></div>
+</div>
 </div>
 <div id="variabili-casuali-in-r" class="section level2">
 <h2>Variabili casuali in R</h2>
@@ -410,7 +410,7 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x - \mu)^2
 <p><span class="math display">\[X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5\]</span> possiamo usare in <strong>R</strong> il comando seguente:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>R &lt;-<span class="st"> </span><span class="dv">5</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="kw">rnorm</span>(R, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>[<span class="dv">1</span>] <span class="fl">-0.4264032</span>  <span class="fl">0.2170306</span> <span class="fl">-1.1154097</span> <span class="fl">-0.9577006</span> <span class="fl">-0.8391974</span></span></code></pre></div>
+<span id="cb17-3"><a href="#cb17-3"></a>[<span class="dv">1</span>] <span class="fl">-1.286867878</span>  <span class="fl">0.680835377</span>  <span class="fl">0.003298792</span> <span class="fl">-1.582857757</span> <span class="fl">-0.466011086</span></span></code></pre></div>
 <p>Questo tipo di operazione è enormemente utile per compiere <strong>studi di simulazione</strong>.</p>
 </div>
 <div id="numeri-pseudo-casuali" class="section level2">
