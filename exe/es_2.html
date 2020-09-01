@@ -103,8 +103,8 @@ code span.ot { color: #007020; }
 <li><p>Si confrontino le funzioni <code>var2</code> e <code>var3</code> con la funzione <code>var</code> implementata in <strong>R</strong>, utilizzando i dati del punto 3. Come mai i risultati differiscono, anche se di poco? Si consulti la documentazione per rispondere.</p></li>
 </ol>
 </div>
-<div id="esercizio" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-2" class="section level2">
+<h2>Esercizio 2</h2>
 <p>Questo esercizio ripercorre l’<a href="https://tommasorigon.github.io/StatI/slides/sl_I.pdf">unità I</a> del corso <a href="https://tommasorigon.github.io/StatI">Statistica I</a>, a cui si rimanda per un ripasso sugll’indice di Gini e una descrizione del problema.</p>
 <p>Al link <a href="https://tommasorigon.github.io/introR/data/elezioni.RData">https://tommasorigon.github.io/introR/data/elezioni.RData</a> sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.</p>
 <ol style="list-style-type: decimal">
@@ -117,6 +117,20 @@ G = 1 - \sum_{j=1}^k f_j^2,
 \]</span> dove <span class="math inline">\(f_1,\dots,f_k\)</span> sono le frequenze relative delle <span class="math inline">\(k\)</span> modalità.</p></li>
 <li><p>Si scriva una funzione <code>Gini_norm(x)</code>che calcola l’indice di Gini normalizzato, ovvero <span class="math display">\[G_\text{norm} = \frac{k}{k-1} G.\]</span></p></li>
 <li><p>Si valuti la polarizzazione dei voti tra i candidati nelle diverse municipalità utilizzando l’indice di Gini normalizzato. Si organizzino quindi i risultati in una tabella e si dica quale municipalità presenta la polarizzazione maggiore.</p></li>
+</ol>
+</div>
+<div id="esercizio-3" class="section level2">
+<h2>Esercizio 3</h2>
+<p>Questo esercizio riprende i dati considerati nell’<a href="https://tommasorigon.github.io/StatI/slides/sl_J.pdf">unità J</a> del corso <a href="https://tommasorigon.github.io/StatI">Statistica I</a>, a cui si rimanda per una descrizione più approfondita del dataset.</p>
+<p>I dati sono disponibili al link <a href="https://tommasorigon.github.io/introR/data/province.csv">https://tommasorigon.github.io/introR/data/province.csv</a>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Si carichino i dati in memoria e si salvi il dataset nell’oggetto <code>province</code>.</p></li>
+<li><p>Quali variabili contiene il dataset <code>province</code>? Di quale tipologia sono?</p></li>
+<li><p>Si rappresenti graficamente la variabile <code>istruzione</code> tramite istogramma. Si calcoli quindi media, mediana e varianza.</p></li>
+<li><p>Si rappresenti graficamente la funzione di ripartizione della variabile <code>agricoltura</code>.</p></li>
+<li><p>Si rappresenti il diagramma a dispersione delle variabili <code>agricoltura</code> e <code>istruzione</code>. Si può notare una qualche relazione?</p></li>
+<li><p>Si ottenga la matrice di varianza e covarianza.</p></li>
+<li><p>Si ottenga la matrice di correlazione. Si commenti la relazione esistente tra <code>agricoltura</code> e <code>relazione</code>.</p></li>
 </ol>
 </div>
 </div>
