@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-08-31" />
+<meta name="date" content="2020-09-04" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -81,7 +81,7 @@ code span.ot { color: #007020; }
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
 <h2 class="subtitle">Esercizi 2</h2>
-<h3 class="date">2020-08-31</h3>
+<h3 class="date">2020-09-04</h3>
 </header>
 
 <hr>
@@ -95,6 +95,7 @@ code span.ot { color: #007020; }
 \text{var}({\bf x}) = \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^2,
 \]</span> dove <span class="math inline">\(\bar{x}\)</span> è la media campionaria. Si noti che <span class="math inline">\(\text{var}({\bf x})\)</span> ammette la rappresentazione alternativa</p>
 <p><span class="math display">\[\text{var}({\bf x}) = \frac{1}{2 n^2} \sum_{i=1}^n \sum_{j = 1}^n (x_i - x_j)^2.\]</span></p>
+<hr />
 <ol style="list-style-type: decimal">
 <li><p>Si scriva una funzione <code>var2(x)</code> che calcola la varianza di <span class="math inline">\({\bf x}\)</span> utilizzando la definizione.</p></li>
 <li><p>Si scriva una funzione <code>var3(x)</code> che calcola la varianza di <span class="math inline">\({\bf x}\)</span> utilizzando la formula basata sulle distanze tra coppie di elementi.</p></li>
@@ -107,6 +108,7 @@ code span.ot { color: #007020; }
 <h2>Esercizio 2</h2>
 <p>Questo esercizio ripercorre l’<a href="https://tommasorigon.github.io/StatI/slides/sl_I.pdf">unità I</a> del corso <a href="https://tommasorigon.github.io/StatI">Statistica I</a>, a cui si rimanda per un ripasso sugll’indice di Gini e una descrizione del problema.</p>
 <p>Al link <a href="https://tommasorigon.github.io/introR/data/elezioni.RData">https://tommasorigon.github.io/introR/data/elezioni.RData</a> sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.</p>
+<hr />
 <ol style="list-style-type: decimal">
 <li><p>Si carichino in memoria i dati.</p></li>
 <li><p>Quali variabili contiene il dataset <code>elez</code>? Di quale tipologia sono?</p></li>
@@ -123,6 +125,7 @@ G = 1 - \sum_{j=1}^k f_j^2,
 <h2>Esercizio 3</h2>
 <p>Questo esercizio riprende i dati considerati nell’<a href="https://tommasorigon.github.io/StatI/slides/sl_J.pdf">unità J</a> del corso <a href="https://tommasorigon.github.io/StatI">Statistica I</a>, a cui si rimanda per una descrizione più approfondita del dataset.</p>
 <p>I dati sono disponibili al link <a href="https://tommasorigon.github.io/introR/data/province.csv">https://tommasorigon.github.io/introR/data/province.csv</a>.</p>
+<hr />
 <ol style="list-style-type: decimal">
 <li><p>Si carichino i dati in memoria e si salvi il dataset nell’oggetto <code>province</code>.</p></li>
 <li><p>Quali variabili contiene il dataset <code>province</code>? Di quale tipologia sono?</p></li>
@@ -131,6 +134,51 @@ G = 1 - \sum_{j=1}^k f_j^2,
 <li><p>Si rappresenti il diagramma a dispersione delle variabili <code>agricoltura</code> e <code>istruzione</code>. Si può notare una qualche relazione?</p></li>
 <li><p>Si ottenga la matrice di varianza e covarianza.</p></li>
 <li><p>Si ottenga la matrice di correlazione. Si commenti la relazione esistente tra <code>agricoltura</code> e <code>relazione</code>.</p></li>
+</ol>
+</div>
+<div id="esercizio-4" class="section level2">
+<h2>Esercizio 4</h2>
+<p>Nel dataset <code>calcio</code> disponibile al link <a href="https://tommasorigon.github.io/introR/data/calcio.RData">https://tommasorigon.github.io/introR/data/calcio.RData</a>, ciascuna unità statistica rappresenta una partita di calcio della Serie A italiana, relativa ai campionati 2008-2015. Il dataset è composto dalle seguenti variabili:</p>
+<ul>
+<li><p><code>Date</code> indica la data della partita.</p></li>
+<li><p><code>HomeTeam</code> e <code>AwayTeam</code> indicano, rispettivamente, la squadra che gioca in casa e la squadra ospite per ciascuna partita.</p></li>
+<li><p><code>FTR</code> indica se la squadra che giocava in casa ha vinto (H), pareggiato (D), oppure perso (A).</p></li>
+<li><p>Le variabili <code>B365H</code>, <code>B365D</code>, <code>B365A</code> sono le quote per la vittoria, pareggio, sconfitta, rispettivamente.</p></li>
+</ul>
+<p>Supponendo di scommettere sulla vittoria della squadra di casa, puntando un euro su di essa si otterrebbero <code>B365H</code> euro in caso di vittoria.</p>
+<hr />
+<ol style="list-style-type: decimal">
+<li><p>Si carichi il dataset in memoria.</p></li>
+<li><p>Verificare le tipologie di variabili presenti nel dataset <code>calcio</code>.</p></li>
+<li><p>Controllare se esistono dei dati mancanti nel dataset. Se presenti, si escludano le righe contenenti dei valori mancanti dall’analisi. <strong>Suggerimento</strong>: si usi la funzione <code>na.omit</code>.</p></li>
+<li><p>Calcolare i principali indici descrittivi per la variabile <code>B365H</code>. Rappresentarla poi tramite istogramma ed il boxplot. Sono presenti valori anomali? Da cosa è possibile intuirlo?</p></li>
+<li><p>Effettuare l’analisi del punto precedenti sulla trasformazione logaritmica di <code>B365H</code>. Sono presenti valori anomali?</p></li>
+<li><p>Valutare la correlazione presente tra <code>B365H</code> e <code>B365A</code>. Ci si poteva aspettare un risultato simile? Cosa implicherebbe una correlazione positiva?</p></li>
+<li><p>Rappresentare con un grafico opportuno la relazione tra le trasformate logaritmiche delle variabili <code>B365H</code> e <code>B365A</code>. Si commenti il risultato.</p></li>
+<li><p>Valutare la quota media <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Come si interpreta questo risultato?</p></li>
+<li><p>Rappresentare tramite boxplot la variabile <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Si commenti il risultato.</p></li>
+</ol>
+</div>
+<div id="esercizio-5" class="section level2">
+<h2>Esercizio 5</h2>
+<p>Nel dataset <code>imdb</code> disponibile al link <a href="https://tommasorigon.github.io/introR/data/imdb.RData">https://tommasorigon.github.io/introR/data/imdb.RData</a>, ciascuna unità statistica è un film estratto dal sito <a href="http://www.imdb.com/" class="uri">http://www.imdb.com/</a> (Internet Movie Data Base). Per ciascun film, sono a disposizione le seguenti variabili:</p>
+<ul>
+<li><code>movie_title</code> è il titolo del film.</li>
+<li><code>duration</code> è la durata del film espressa in minuti.</li>
+<li><code>lgross</code>è la trasformazione logaritmica dell’incasso lordo, espresso in dollari.</li>
+<li><code>lbudget</code>è la trasformazione logaritmica del budget, espresso in dollari.</li>
+<li><code>Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Romance, SciFi, Thriller, War, Western</code>, sono variabili qualitative che indicano se il film appartiene o meno al genere. Ciascun film può appartenere a più generi contemporaneamente.</li>
+</ul>
+<hr />
+<ol style="list-style-type: decimal">
+<li><p>Si carichi il dataset in memoria. Si controlli la tipologia delle variabili.</p></li>
+<li><p>Quante sono le unità statistiche?</p></li>
+<li><p>Qual è la durata media dei film del dataset? E l’incasso medio?</p></li>
+<li><p>Ci sono differenze tra la distribuzione della durata (<code>duration</code>) dei film drammatici (<code>Drama</code>) e quelli non drammatici? Si risponda tramite opportuni indici descrittivi ed analisi grafiche.</p></li>
+<li><p>Quali sono i 5 film che presentano, all’interno del dataset, i maggiori incassi? <strong>Suggerimento</strong>: si usi la funzione <code>order</code>.</p></li>
+<li><p>Rappresentare con grafici appropriati le distribuzioni marginali e la distribuzione congiunta delle variabili <code>lbudget</code> e <code>lgross</code>. Che tipo di relazione sembra esserci tra le due variabili?</p></li>
+<li><p>Si calcoli la correlazione tra <code>lbudget</code> e <code>lgross</code> e si commenti il risultato.</p></li>
+<li><p>Si calcoli la correlazione tra <code>duration</code> e <code>lgross</code> e si commenti il risultato. Possiamo quindi concludere che, per guodagnare molto, sia sufficiente produrre un film della durata di 12 ore?</p></li>
 </ol>
 </div>
 </div>

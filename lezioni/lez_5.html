@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-09-03" />
+<meta name="date" content="2020-09-04" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -174,7 +174,7 @@ code span.ot { color: #007020; }
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
 <h2 class="subtitle">Calcolo delle probabilità in <strong>R</strong></h2>
-<h3 class="date">2020-09-03</h3>
+<h3 class="date">2020-09-04</h3>
 </header>
 
 <hr>
@@ -410,7 +410,7 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x - \mu)^2
 <p><span class="math display">\[X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5\]</span> possiamo usare in <strong>R</strong> il comando seguente:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>R &lt;-<span class="st"> </span><span class="dv">5</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="kw">rnorm</span>(R, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>[<span class="dv">1</span>]  <span class="fl">0.9217848</span>  <span class="fl">1.0954699</span>  <span class="fl">0.7254403</span> <span class="fl">-0.3979084</span> <span class="fl">-0.4497119</span></span></code></pre></div>
+<span id="cb17-3"><a href="#cb17-3"></a>[<span class="dv">1</span>] <span class="fl">-0.2505308</span> <span class="fl">-0.8204266</span> <span class="fl">-2.1452035</span>  <span class="fl">0.3570060</span> <span class="fl">-1.4111014</span></span></code></pre></div>
 <p>Questo tipo di operazione è enormemente utile per compiere <strong>studi di simulazione</strong>.</p>
 </div>
 <div id="numeri-pseudo-casuali" class="section level2">
