@@ -306,218 +306,232 @@ code span.ot { color: #007020; }
 <span id="cb13-9"><a href="#cb13-9"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
 <p>Si noti che <code>Levels: low &lt; medium &lt; high</code>, che rende evidente l’ordine delle modalità della variabile. Inoltre, si noti che la variabile <code>pain</code> viene comunque riconosciuta in quanto <code>factor</code>.</p>
 </div>
+<div id="altre-tipologie-di-variabili" class="section level2">
+<h2>Altre tipologie di variabili</h2>
+<p>Un ulteriore tipologia di variabile. Salviamo nella variabile <code>birthdays</code> le date di compleanno di un gruppo di amici.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>birthdays &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2001-04-28&quot;</span>,<span class="st">&quot;1998-12-01&quot;</span>,<span class="st">&quot;2000-04-16&quot;</span>,<span class="st">&quot;2000-07-16&quot;</span>,<span class="st">&quot;1999-11-30&quot;</span>))</span>
+<span id="cb14-2"><a href="#cb14-2"></a>birthdays</span>
+<span id="cb14-3"><a href="#cb14-3"></a>[<span class="dv">1</span>] <span class="st">&quot;2001-04-28&quot;</span> <span class="st">&quot;1998-12-01&quot;</span> <span class="st">&quot;2000-04-16&quot;</span> <span class="st">&quot;2000-07-16&quot;</span> <span class="st">&quot;1999-11-30&quot;</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="kw">class</span>(birthdays)</span>
+<span id="cb14-5"><a href="#cb14-5"></a>[<span class="dv">1</span>] <span class="st">&quot;Date&quot;</span></span></code></pre></div>
+<p>È possibile condurre operazioni sulle date usando le funzioni introdotte finora. Ad esempio:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">min</span>(birthdays) <span class="co"># Membro più vecchio del gruppo</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>[<span class="dv">1</span>] <span class="st">&quot;1998-12-01&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">max</span>(birthdays) <span class="co"># Membro più giovane del gruppo</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>[<span class="dv">1</span>] <span class="st">&quot;2001-04-28&quot;</span></span></code></pre></div>
+</div>
 <div id="creazione-ed-organizzazione-di-una-variabile" class="section level2">
 <h2>Creazione ed organizzazione di una variabile</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Creazione di una nuova variabile</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>iris<span class="op">$</span>Sepal.length.class &lt;-<span class="st"> </span><span class="kw">factor</span>(iris<span class="op">$</span>Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># Modifica delle modalità</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">levels</span>(iris<span class="op">$</span>Sepal.length.class) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;big&quot;</span>)</span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="kw">str</span>(iris)</span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">150</span> obs. of  <span class="dv">6</span> variables<span class="op">:</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>Sepal.Length      <span class="op">:</span><span class="st"> </span>num  <span class="fl">5.1</span> <span class="fl">4.9</span> <span class="fl">4.7</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">5.4</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">4.4</span> <span class="fl">4.9</span> ...</span>
-<span id="cb14-10"><a href="#cb14-10"></a> <span class="op">$</span><span class="st"> </span>Sepal.Width       <span class="op">:</span><span class="st"> </span>num  <span class="fl">3.5</span> <span class="dv">3</span> <span class="fl">3.2</span> <span class="fl">3.1</span> <span class="fl">3.6</span> <span class="fl">3.9</span> <span class="fl">3.4</span> <span class="fl">3.4</span> <span class="fl">2.9</span> <span class="fl">3.1</span> ...</span>
-<span id="cb14-11"><a href="#cb14-11"></a> <span class="op">$</span><span class="st"> </span>Petal.Length      <span class="op">:</span><span class="st"> </span>num  <span class="fl">1.4</span> <span class="fl">1.4</span> <span class="fl">1.3</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.7</span> <span class="fl">1.4</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.5</span> ...</span>
-<span id="cb14-12"><a href="#cb14-12"></a> <span class="op">$</span><span class="st"> </span>Petal.Width       <span class="op">:</span><span class="st"> </span>num  <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.4</span> <span class="fl">0.3</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.1</span> ...</span>
-<span id="cb14-13"><a href="#cb14-13"></a> <span class="op">$</span><span class="st"> </span>Species           <span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">3</span> levels <span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;versicolor&quot;</span>,..<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span>
-<span id="cb14-14"><a href="#cb14-14"></a> <span class="op">$</span><span class="st"> </span>Sepal.length.class<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;small&quot;</span>,<span class="st">&quot;big&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Creazione di una nuova variabile</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>iris<span class="op">$</span>Sepal.length.class &lt;-<span class="st"> </span><span class="kw">factor</span>(iris<span class="op">$</span>Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># Modifica delle modalità</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">levels</span>(iris<span class="op">$</span>Sepal.length.class) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;big&quot;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="kw">str</span>(iris)</span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">150</span> obs. of  <span class="dv">6</span> variables<span class="op">:</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>Sepal.Length      <span class="op">:</span><span class="st"> </span>num  <span class="fl">5.1</span> <span class="fl">4.9</span> <span class="fl">4.7</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">5.4</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">4.4</span> <span class="fl">4.9</span> ...</span>
+<span id="cb16-10"><a href="#cb16-10"></a> <span class="op">$</span><span class="st"> </span>Sepal.Width       <span class="op">:</span><span class="st"> </span>num  <span class="fl">3.5</span> <span class="dv">3</span> <span class="fl">3.2</span> <span class="fl">3.1</span> <span class="fl">3.6</span> <span class="fl">3.9</span> <span class="fl">3.4</span> <span class="fl">3.4</span> <span class="fl">2.9</span> <span class="fl">3.1</span> ...</span>
+<span id="cb16-11"><a href="#cb16-11"></a> <span class="op">$</span><span class="st"> </span>Petal.Length      <span class="op">:</span><span class="st"> </span>num  <span class="fl">1.4</span> <span class="fl">1.4</span> <span class="fl">1.3</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.7</span> <span class="fl">1.4</span> <span class="fl">1.5</span> <span class="fl">1.4</span> <span class="fl">1.5</span> ...</span>
+<span id="cb16-12"><a href="#cb16-12"></a> <span class="op">$</span><span class="st"> </span>Petal.Width       <span class="op">:</span><span class="st"> </span>num  <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.4</span> <span class="fl">0.3</span> <span class="fl">0.2</span> <span class="fl">0.2</span> <span class="fl">0.1</span> ...</span>
+<span id="cb16-13"><a href="#cb16-13"></a> <span class="op">$</span><span class="st"> </span>Species           <span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">3</span> levels <span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;versicolor&quot;</span>,..<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span>
+<span id="cb16-14"><a href="#cb16-14"></a> <span class="op">$</span><span class="st"> </span>Sepal.length.class<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">2</span> levels <span class="st">&quot;small&quot;</span>,<span class="st">&quot;big&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span></code></pre></div>
 <p>Per cambiare i nomi alle variabili, si può invece procedere come segue</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">colnames</span>(iris) <span class="co"># Accede ai nomi delle variabili</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>[<span class="dv">1</span>] <span class="st">&quot;Sepal.Length&quot;</span>       <span class="st">&quot;Sepal.Width&quot;</span>        <span class="st">&quot;Petal.Length&quot;</span>       <span class="st">&quot;Petal.Width&quot;</span>       </span>
-<span id="cb15-3"><a href="#cb15-3"></a>[<span class="dv">5</span>] <span class="st">&quot;Species&quot;</span>            <span class="st">&quot;Sepal.length.class&quot;</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co"># Modifica i nomi delle variabili</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="kw">colnames</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S_L&quot;</span>, <span class="st">&quot;S_W&quot;</span>, <span class="st">&quot;P_L&quot;</span>, <span class="st">&quot;P_W&quot;</span>, <span class="st">&quot;SP&quot;</span>, <span class="st">&quot;S_L_Class&quot;</span>)</span>
-<span id="cb15-7"><a href="#cb15-7"></a></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="kw">colnames</span>(iris)</span>
-<span id="cb15-9"><a href="#cb15-9"></a>[<span class="dv">1</span>] <span class="st">&quot;S_L&quot;</span>       <span class="st">&quot;S_W&quot;</span>       <span class="st">&quot;P_L&quot;</span>       <span class="st">&quot;P_W&quot;</span>       <span class="st">&quot;SP&quot;</span>        <span class="st">&quot;S_L_Class&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">colnames</span>(iris) <span class="co"># Accede ai nomi delle variabili</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>[<span class="dv">1</span>] <span class="st">&quot;Sepal.Length&quot;</span>       <span class="st">&quot;Sepal.Width&quot;</span>        <span class="st">&quot;Petal.Length&quot;</span>       <span class="st">&quot;Petal.Width&quot;</span>       </span>
+<span id="cb17-3"><a href="#cb17-3"></a>[<span class="dv">5</span>] <span class="st">&quot;Species&quot;</span>            <span class="st">&quot;Sepal.length.class&quot;</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co"># Modifica i nomi delle variabili</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="kw">colnames</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S_L&quot;</span>, <span class="st">&quot;S_W&quot;</span>, <span class="st">&quot;P_L&quot;</span>, <span class="st">&quot;P_W&quot;</span>, <span class="st">&quot;SP&quot;</span>, <span class="st">&quot;S_L_Class&quot;</span>)</span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="kw">colnames</span>(iris)</span>
+<span id="cb17-9"><a href="#cb17-9"></a>[<span class="dv">1</span>] <span class="st">&quot;S_L&quot;</span>       <span class="st">&quot;S_W&quot;</span>       <span class="st">&quot;P_L&quot;</span>       <span class="st">&quot;P_W&quot;</span>       <span class="st">&quot;SP&quot;</span>        <span class="st">&quot;S_L_Class&quot;</span></span></code></pre></div>
 </div>
 <div id="manipolazione-di-un-data.frame" class="section level2">
 <h2>Manipolazione di un <code>data.frame</code></h2>
 <p>Per selezionare le righe di un <code>data.frame</code> si può anzitutto procedere come per le matrici.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>iris[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>), ] <span class="co"># Estrae il primo, il quinto ed il decimo elemento</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>   S_L S_W P_L P_W     SP S_L_Class</span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="dv">1</span>  <span class="fl">5.1</span> <span class="fl">3.5</span> <span class="fl">1.4</span> <span class="fl">0.2</span> setosa     small</span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="dv">5</span>  <span class="fl">5.0</span> <span class="fl">3.6</span> <span class="fl">1.4</span> <span class="fl">0.2</span> setosa     small</span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="dv">10</span> <span class="fl">4.9</span> <span class="fl">3.1</span> <span class="fl">1.5</span> <span class="fl">0.1</span> setosa     small</span>
-<span id="cb16-6"><a href="#cb16-6"></a></span>
-<span id="cb16-7"><a href="#cb16-7"></a>iris_big &lt;-<span class="st"> </span>iris[iris<span class="op">$</span>S_L <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>, ] <span class="co"># Considera solamente le righe tali che S_L &gt; 5.8</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>iris[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>), ] <span class="co"># Estrae il primo, il quinto ed il decimo elemento</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>   S_L S_W P_L P_W     SP S_L_Class</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="dv">1</span>  <span class="fl">5.1</span> <span class="fl">3.5</span> <span class="fl">1.4</span> <span class="fl">0.2</span> setosa     small</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="dv">5</span>  <span class="fl">5.0</span> <span class="fl">3.6</span> <span class="fl">1.4</span> <span class="fl">0.2</span> setosa     small</span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="dv">10</span> <span class="fl">4.9</span> <span class="fl">3.1</span> <span class="fl">1.5</span> <span class="fl">0.1</span> setosa     small</span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a>iris_big &lt;-<span class="st"> </span>iris[iris<span class="op">$</span>S_L <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>, ] <span class="co"># Considera solamente le righe tali che S_L &gt; 5.8</span></span></code></pre></div>
 <p>Si può tuttavia anche ricorrere alla funzione <code>subset</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Comandi equivalenti a quello precedente</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>iris_big &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">subset =</span> S_L <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>) <span class="co"># Considera solamente le righe tali che S_L &gt; 5.8</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>iris_big &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">subset =</span> S_L_Class <span class="op">==</span><span class="st"> &quot;big&quot;</span>) <span class="co"># Comando alternativo</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="kw">head</span>(iris_big)</span>
-<span id="cb17-6"><a href="#cb17-6"></a>   S_L S_W P_L P_W         SP S_L_Class</span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="dv">51</span> <span class="fl">7.0</span> <span class="fl">3.2</span> <span class="fl">4.7</span> <span class="fl">1.4</span> versicolor       big</span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="dv">52</span> <span class="fl">6.4</span> <span class="fl">3.2</span> <span class="fl">4.5</span> <span class="fl">1.5</span> versicolor       big</span>
-<span id="cb17-9"><a href="#cb17-9"></a><span class="dv">53</span> <span class="fl">6.9</span> <span class="fl">3.1</span> <span class="fl">4.9</span> <span class="fl">1.5</span> versicolor       big</span>
-<span id="cb17-10"><a href="#cb17-10"></a><span class="dv">55</span> <span class="fl">6.5</span> <span class="fl">2.8</span> <span class="fl">4.6</span> <span class="fl">1.5</span> versicolor       big</span>
-<span id="cb17-11"><a href="#cb17-11"></a><span class="dv">57</span> <span class="fl">6.3</span> <span class="fl">3.3</span> <span class="fl">4.7</span> <span class="fl">1.6</span> versicolor       big</span>
-<span id="cb17-12"><a href="#cb17-12"></a><span class="dv">59</span> <span class="fl">6.6</span> <span class="fl">2.9</span> <span class="fl">4.6</span> <span class="fl">1.3</span> versicolor       big</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Comandi equivalenti a quello precedente</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>iris_big &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">subset =</span> S_L <span class="op">&gt;</span><span class="st"> </span><span class="fl">5.8</span>) <span class="co"># Considera solamente le righe tali che S_L &gt; 5.8</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>iris_big &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">subset =</span> S_L_Class <span class="op">==</span><span class="st"> &quot;big&quot;</span>) <span class="co"># Comando alternativo</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="kw">head</span>(iris_big)</span>
+<span id="cb19-6"><a href="#cb19-6"></a>   S_L S_W P_L P_W         SP S_L_Class</span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="dv">51</span> <span class="fl">7.0</span> <span class="fl">3.2</span> <span class="fl">4.7</span> <span class="fl">1.4</span> versicolor       big</span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="dv">52</span> <span class="fl">6.4</span> <span class="fl">3.2</span> <span class="fl">4.5</span> <span class="fl">1.5</span> versicolor       big</span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="dv">53</span> <span class="fl">6.9</span> <span class="fl">3.1</span> <span class="fl">4.9</span> <span class="fl">1.5</span> versicolor       big</span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="dv">55</span> <span class="fl">6.5</span> <span class="fl">2.8</span> <span class="fl">4.6</span> <span class="fl">1.5</span> versicolor       big</span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="dv">57</span> <span class="fl">6.3</span> <span class="fl">3.3</span> <span class="fl">4.7</span> <span class="fl">1.6</span> versicolor       big</span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="dv">59</span> <span class="fl">6.6</span> <span class="fl">2.9</span> <span class="fl">4.6</span> <span class="fl">1.3</span> versicolor       big</span></code></pre></div>
 <p>Per selezionare <strong>colonne</strong> di un <code>data.frame</code> si può ricorrere alla funzione <code>subset</code> specificando l’opzione <code>select</code> invece che <code>subset</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>iris_reduced &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">select =</span> <span class="kw">c</span>(S_L, P_L))</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>iris_reduced &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">select =</span> <span class="kw">c</span>(S_L, P_L))</span></code></pre></div>
 <p>Attenzione ai dettagli. Sebbene apparentemente simili, le seguenti operazioni non sono identiche.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>S_L_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">select =</span> S_L)</span>
-<span id="cb19-2"><a href="#cb19-2"></a>S_L_dollar &lt;-<span class="st"> </span>iris<span class="op">$</span>S_L</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="kw">class</span>(S_L_subset)</span>
-<span id="cb19-5"><a href="#cb19-5"></a>[<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="kw">class</span>(S_L_dollar)</span>
-<span id="cb19-7"><a href="#cb19-7"></a>[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>S_L_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">select =</span> S_L)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>S_L_dollar &lt;-<span class="st"> </span>iris<span class="op">$</span>S_L</span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="kw">class</span>(S_L_subset)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>[<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">class</span>(S_L_dollar)</span>
+<span id="cb21-7"><a href="#cb21-7"></a>[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span></code></pre></div>
 <p>Entrambe le operazioni estraggono la variabile <code>S_L</code>, tuttavia cambiano i formati in cui questa viene rappresentata.</p>
 </div>
 <div id="creazione-di-un-data.frame" class="section level2">
 <h2>Creazione di un <code>data.frame</code></h2>
 <p>Il modo più diretto per creare un <code>data.frame</code> è tramite l’uso della funzione <code>data.frame</code>.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>dataset &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="dt">variable1 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">43</span>, <span class="dv">10</span>, <span class="dv">231</span>),</span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="dt">variable2 =</span> eyes,</span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="dt">variable3 =</span> eyecol</span>
-<span id="cb20-5"><a href="#cb20-5"></a>)</span>
-<span id="cb20-6"><a href="#cb20-6"></a>dataset</span>
-<span id="cb20-7"><a href="#cb20-7"></a>  variable1 variable2 variable3</span>
-<span id="cb20-8"><a href="#cb20-8"></a><span class="dv">1</span>         <span class="dv">1</span>     hazel        BR</span>
-<span id="cb20-9"><a href="#cb20-9"></a><span class="dv">2</span>         <span class="dv">2</span>      blue        BL</span>
-<span id="cb20-10"><a href="#cb20-10"></a><span class="dv">3</span>         <span class="dv">2</span>     brown        GR</span>
-<span id="cb20-11"><a href="#cb20-11"></a><span class="dv">4</span>        <span class="dv">43</span>     green        HA</span>
-<span id="cb20-12"><a href="#cb20-12"></a><span class="dv">5</span>        <span class="dv">10</span>      blue        BL</span>
-<span id="cb20-13"><a href="#cb20-13"></a><span class="dv">6</span>       <span class="dv">231</span>     brown        GR</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>dataset &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="dt">variable1 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">43</span>, <span class="dv">10</span>, <span class="dv">231</span>),</span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="dt">variable2 =</span> eyes,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="dt">variable3 =</span> eyecol</span>
+<span id="cb22-5"><a href="#cb22-5"></a>)</span>
+<span id="cb22-6"><a href="#cb22-6"></a>dataset</span>
+<span id="cb22-7"><a href="#cb22-7"></a>  variable1 variable2 variable3</span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="dv">1</span>         <span class="dv">1</span>     hazel        BR</span>
+<span id="cb22-9"><a href="#cb22-9"></a><span class="dv">2</span>         <span class="dv">2</span>      blue        BL</span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="dv">3</span>         <span class="dv">2</span>     brown        GR</span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="dv">4</span>        <span class="dv">43</span>     green        HA</span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="dv">5</span>        <span class="dv">10</span>      blue        BL</span>
+<span id="cb22-13"><a href="#cb22-13"></a><span class="dv">6</span>       <span class="dv">231</span>     brown        GR</span></code></pre></div>
 </div>
 <div id="importazione-di-un-data.frame" class="section level2">
 <h2>Importazione di un <code>data.frame</code></h2>
 <p>Il modo più frequente di caricare un dataset in memoria è importarlo da un file esterno. Se i dati hanno dimensioni moderate (&lt; 3-4 Gb), essi sono spesso salvati in formato <code>.csv</code> oppure <code>.txt</code>.</p>
 <p><strong>Nota</strong>. Per poter procedere con i prossimi comandi, è necessario scaricare il file <a href="../data/dde.csv">dde.csv</a> e salvarlo nel proprio computer.</p>
 <p><strong>R</strong> è aperto in una cartella specifica, identificata dal comando seguente.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">getwd</span>() <span class="co"># Identifica la cartella di lavoro (get working directory)</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">getwd</span>() <span class="co"># Identifica la cartella di lavoro (get working directory)</span></span></code></pre></div>
 <p>Per aprire il file <code>dde.csv</code>, bisogna fornire ad <strong>R</strong> il percorso del file, che dipende da dove questo è stato salvato.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Se il file dde.csv è salvato nella stessa cartella di getwd(), allora va usato</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="co"># path &lt;- &quot;dde.csv&quot;</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>path &lt;-<span class="st"> &quot;../data/dde.csv&quot;</span> <span class="co"># Questo è il percorso del file</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Se il file dde.csv è salvato nella stessa cartella di getwd(), allora va usato</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># path &lt;- &quot;dde.csv&quot;</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co"># LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>path &lt;-<span class="st"> &quot;../data/dde.csv&quot;</span> <span class="co"># Questo è il percorso del file</span></span></code></pre></div>
 <p>Il percorso è espresso in termini relativi rispetto alla cartella di riferimento ottenuta con il comando <code>getwd</code>.</p>
 <p>È anche possibile cambiare la cartella di lavoro tramite il comando <code>setwd</code>. In Rstudio, questo si può fare usando l’opzione <code>More -&gt; Set as working directory</code> nella finestra <code>Files</code>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># header = TRUE significa che la prima riga contiene i nomi delle variabili</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>dde &lt;-<span class="st"> </span><span class="kw">read.table</span>(path, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="kw">str</span>(dde)</span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">2312</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>DDE<span class="op">:</span><span class="st"> </span>num  <span class="fl">24.6</span> <span class="fl">15.6</span> <span class="fl">54.8</span> <span class="dv">15</span> <span class="fl">33.5</span> ...</span>
-<span id="cb23-7"><a href="#cb23-7"></a> <span class="op">$</span><span class="st"> </span>GAD<span class="op">:</span><span class="st"> </span>num  <span class="dv">292</span> <span class="dv">289</span> <span class="dv">252</span> <span class="dv">285</span> <span class="dv">281</span> ...</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># header = TRUE significa che la prima riga contiene i nomi delle variabili</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>dde &lt;-<span class="st"> </span><span class="kw">read.table</span>(path, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="kw">str</span>(dde)</span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">2312</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>DDE<span class="op">:</span><span class="st"> </span>num  <span class="fl">24.6</span> <span class="fl">15.6</span> <span class="fl">54.8</span> <span class="dv">15</span> <span class="fl">33.5</span> ...</span>
+<span id="cb25-7"><a href="#cb25-7"></a> <span class="op">$</span><span class="st"> </span>GAD<span class="op">:</span><span class="st"> </span>num  <span class="dv">292</span> <span class="dv">289</span> <span class="dv">252</span> <span class="dv">285</span> <span class="dv">281</span> ...</span></code></pre></div>
 </div>
 <div id="caricamento-di-un-file-da-internet" class="section level2">
 <h2>Caricamento di un file da internet</h2>
 <p>Il percorso del file può anche essere un link. Lo stesso file si può quindi caricare in memoria come segue:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>path &lt;-<span class="st"> &quot;https://tommasorigon.github.io/introR/data/dde.csv&quot;</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>dde &lt;-<span class="st"> </span><span class="kw">read.table</span>(path, <span class="dt">header =</span> <span class="ot">TRUE</span>) <span class="co"># Scarica il file da internet</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>path &lt;-<span class="st"> &quot;https://tommasorigon.github.io/introR/data/dde.csv&quot;</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>dde &lt;-<span class="st"> </span><span class="kw">read.table</span>(path, <span class="dt">header =</span> <span class="ot">TRUE</span>) <span class="co"># Scarica il file da internet</span></span></code></pre></div>
 </div>
 </div>
 <div id="elementi-di-programmazione-in-r" class="section level1">
 <h1>Elementi di programmazione in <strong>R</strong></h1>
 <p><strong>R</strong> è anche e soprattutto un linguaggio di programmazione. È possibile quindi definire nuove funzioni.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>cube &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb25-2"><a href="#cb25-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">3</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  out</span>
-<span id="cb25-4"><a href="#cb25-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>cube &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb27-2"><a href="#cb27-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">3</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  out</span>
+<span id="cb27-4"><a href="#cb27-4"></a>}</span></code></pre></div>
 <p>L’ultimo oggetto (in questo caso chiamato <code>out</code>) viene restituito come risultato.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">cube</span>(<span class="dv">4</span>)</span>
-<span id="cb26-2"><a href="#cb26-2"></a>[<span class="dv">1</span>] <span class="dv">64</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">cube</span>(<span class="dv">4</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a>[<span class="dv">1</span>] <span class="dv">64</span></span></code></pre></div>
 <div id="funzioni" class="section level2">
 <h2>Funzioni</h2>
 <p>È possibile definire funzioni con molteplici argomenti, scegliendo eventuali valori di predefiniti.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>power &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">p =</span> <span class="dv">2</span>) {</span>
-<span id="cb27-2"><a href="#cb27-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span>p</span>
-<span id="cb27-3"><a href="#cb27-3"></a>  out</span>
-<span id="cb27-4"><a href="#cb27-4"></a>}</span>
-<span id="cb27-5"><a href="#cb27-5"></a></span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="kw">power</span>(<span class="dt">x =</span> <span class="dv">4</span>)</span>
-<span id="cb27-7"><a href="#cb27-7"></a>[<span class="dv">1</span>] <span class="dv">16</span></span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="kw">power</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">p =</span> <span class="dv">3</span>)</span>
-<span id="cb27-9"><a href="#cb27-9"></a>[<span class="dv">1</span>] <span class="dv">64</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>power &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">p =</span> <span class="dv">2</span>) {</span>
+<span id="cb29-2"><a href="#cb29-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span>p</span>
+<span id="cb29-3"><a href="#cb29-3"></a>  out</span>
+<span id="cb29-4"><a href="#cb29-4"></a>}</span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="kw">power</span>(<span class="dt">x =</span> <span class="dv">4</span>)</span>
+<span id="cb29-7"><a href="#cb29-7"></a>[<span class="dv">1</span>] <span class="dv">16</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="kw">power</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">p =</span> <span class="dv">3</span>)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>[<span class="dv">1</span>] <span class="dv">64</span></span></code></pre></div>
 </div>
 <div id="if-e-else" class="section level2">
 <h2><code>If</code> e <code>else</code></h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>condizione &lt;-<span class="st"> </span>pi<span class="op">^</span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> <span class="co"># Valore booleano</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="cf">if</span> (condizione) {</span>
-<span id="cb28-4"><a href="#cb28-4"></a>  <span class="kw">print</span>(<span class="st">&quot;La condizione è vera&quot;</span>)</span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="co"># Alcuni comandi da eseguire</span></span>
-<span id="cb28-6"><a href="#cb28-6"></a>  <span class="co"># ...</span></span>
-<span id="cb28-7"><a href="#cb28-7"></a>} <span class="cf">else</span> {</span>
-<span id="cb28-8"><a href="#cb28-8"></a>  <span class="kw">print</span>(<span class="st">&quot;La condizione è falsa&quot;</span>)</span>
-<span id="cb28-9"><a href="#cb28-9"></a>  <span class="co"># Altri comandi da eseguire</span></span>
-<span id="cb28-10"><a href="#cb28-10"></a>  <span class="co"># ...</span></span>
-<span id="cb28-11"><a href="#cb28-11"></a>}</span>
-<span id="cb28-12"><a href="#cb28-12"></a>[<span class="dv">1</span>] <span class="st">&quot;La condizione è vera&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>condizione &lt;-<span class="st"> </span>pi<span class="op">^</span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> <span class="co"># Valore booleano</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="cf">if</span> (condizione) {</span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="kw">print</span>(<span class="st">&quot;La condizione è vera&quot;</span>)</span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="co"># Alcuni comandi da eseguire</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="co"># ...</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>} <span class="cf">else</span> {</span>
+<span id="cb30-8"><a href="#cb30-8"></a>  <span class="kw">print</span>(<span class="st">&quot;La condizione è falsa&quot;</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a>  <span class="co"># Altri comandi da eseguire</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a>  <span class="co"># ...</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a>}</span>
+<span id="cb30-12"><a href="#cb30-12"></a>[<span class="dv">1</span>] <span class="st">&quot;La condizione è vera&quot;</span></span></code></pre></div>
 <p><strong>Nota</strong>. Non è obbligatorio usare la funzione <code>else</code> dopo una condizione <code>if</code>.</p>
 </div>
 <div id="if-e-else-esempio" class="section level2">
 <h2><code>If</code> e <code>else</code>: esempio</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>square_root &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb29-3"><a href="#cb29-3"></a>    <span class="kw">print</span>(<span class="st">&quot;Il valore di x deve essere positivo&quot;</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>    out &lt;-<span class="st"> </span><span class="ot">NaN</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a>  } <span class="cf">else</span> {</span>
-<span id="cb29-6"><a href="#cb29-6"></a>    out &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x)</span>
-<span id="cb29-7"><a href="#cb29-7"></a>  }</span>
-<span id="cb29-8"><a href="#cb29-8"></a>  out</span>
-<span id="cb29-9"><a href="#cb29-9"></a>}</span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="kw">square_root</span>(<span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb29-11"><a href="#cb29-11"></a>[<span class="dv">1</span>] <span class="st">&quot;Il valore di x deve essere positivo&quot;</span></span>
-<span id="cb29-12"><a href="#cb29-12"></a>[<span class="dv">1</span>] <span class="ot">NaN</span></span>
-<span id="cb29-13"><a href="#cb29-13"></a><span class="kw">square_root</span>(<span class="dv">36</span>)</span>
-<span id="cb29-14"><a href="#cb29-14"></a>[<span class="dv">1</span>] <span class="dv">6</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>square_root &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb31-3"><a href="#cb31-3"></a>    <span class="kw">print</span>(<span class="st">&quot;Il valore di x deve essere positivo&quot;</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a>    out &lt;-<span class="st"> </span><span class="ot">NaN</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb31-6"><a href="#cb31-6"></a>    out &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x)</span>
+<span id="cb31-7"><a href="#cb31-7"></a>  }</span>
+<span id="cb31-8"><a href="#cb31-8"></a>  out</span>
+<span id="cb31-9"><a href="#cb31-9"></a>}</span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="kw">square_root</span>(<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb31-11"><a href="#cb31-11"></a>[<span class="dv">1</span>] <span class="st">&quot;Il valore di x deve essere positivo&quot;</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a>[<span class="dv">1</span>] <span class="ot">NaN</span></span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="kw">square_root</span>(<span class="dv">36</span>)</span>
+<span id="cb31-14"><a href="#cb31-14"></a>[<span class="dv">1</span>] <span class="dv">6</span></span></code></pre></div>
 </div>
 <div id="cicli" class="section level2">
 <h2>Cicli</h2>
 <p>La funzione <code>while</code> esegue ripetutamente le operazioni all’interno delle parentesi fino a quando la condizione non è soddisfatta.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>i &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) {</span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="kw">print</span>(i) <span class="co"># Mostra a schermo il valore di i</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a></span>
-<span id="cb30-6"><a href="#cb30-6"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
-<span id="cb30-7"><a href="#cb30-7"></a>  <span class="co"># ...</span></span>
-<span id="cb30-8"><a href="#cb30-8"></a>}</span>
-<span id="cb30-9"><a href="#cb30-9"></a>[<span class="dv">1</span>] <span class="dv">5</span></span>
-<span id="cb30-10"><a href="#cb30-10"></a>[<span class="dv">1</span>] <span class="dv">10</span></span>
-<span id="cb30-11"><a href="#cb30-11"></a>[<span class="dv">1</span>] <span class="dv">15</span></span>
-<span id="cb30-12"><a href="#cb30-12"></a>[<span class="dv">1</span>] <span class="dv">20</span></span>
-<span id="cb30-13"><a href="#cb30-13"></a>[<span class="dv">1</span>] <span class="dv">25</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>i &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) {</span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="kw">print</span>(i) <span class="co"># Mostra a schermo il valore di i</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a></span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a>  <span class="co"># ...</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a>}</span>
+<span id="cb32-9"><a href="#cb32-9"></a>[<span class="dv">1</span>] <span class="dv">5</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a>[<span class="dv">1</span>] <span class="dv">10</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a>[<span class="dv">1</span>] <span class="dv">15</span></span>
+<span id="cb32-12"><a href="#cb32-12"></a>[<span class="dv">1</span>] <span class="dv">20</span></span>
+<span id="cb32-13"><a href="#cb32-13"></a>[<span class="dv">1</span>] <span class="dv">25</span></span></code></pre></div>
 </div>
 <div id="cicli-1" class="section level2">
 <h2>Cicli</h2>
 <p>Attenzione a non creare delle ripetizioni senza fine!</p>
 <p>Il codice seguente richiede l’interruzione forzata della sessione di <strong>R</strong> oppure, nella peggiore delle ipotesi, il riavvio del computer.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># NON ESEGUIRE IL SEGUENTE CODICE!</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co">#</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="co"># La condizione i &lt;= 25 è sempre vera</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="co"># perché i non viene aggiornato</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a>i &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) {</span>
-<span id="cb31-7"><a href="#cb31-7"></a>  <span class="kw">print</span>(i)</span>
-<span id="cb31-8"><a href="#cb31-8"></a></span>
-<span id="cb31-9"><a href="#cb31-9"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
-<span id="cb31-10"><a href="#cb31-10"></a>  <span class="co"># ...</span></span>
-<span id="cb31-11"><a href="#cb31-11"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># NON ESEGUIRE IL SEGUENTE CODICE!</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co">#</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="co"># La condizione i &lt;= 25 è sempre vera</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># perché i non viene aggiornato</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>i &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) {</span>
+<span id="cb33-7"><a href="#cb33-7"></a>  <span class="kw">print</span>(i)</span>
+<span id="cb33-8"><a href="#cb33-8"></a></span>
+<span id="cb33-9"><a href="#cb33-9"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a>  <span class="co"># ...</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a>}</span></code></pre></div>
 </div>
 <div id="cicli-for" class="section level2">
 <h2>Cicli <code>for</code></h2>
 <p>In alternativa ai cicli <code>while</code>, si può usare la sintassi più esplicita dei cicli <code>for</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>values &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">25</span>, <span class="dt">by =</span> <span class="dv">5</span>)</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="cf">for</span> (i <span class="cf">in</span> values) {</span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="kw">print</span>(i) <span class="co"># Mostra a schermo il valore di i</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a></span>
-<span id="cb32-5"><a href="#cb32-5"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
-<span id="cb32-6"><a href="#cb32-6"></a>  <span class="co"># ...</span></span>
-<span id="cb32-7"><a href="#cb32-7"></a>}</span>
-<span id="cb32-8"><a href="#cb32-8"></a>[<span class="dv">1</span>] <span class="dv">5</span></span>
-<span id="cb32-9"><a href="#cb32-9"></a>[<span class="dv">1</span>] <span class="dv">10</span></span>
-<span id="cb32-10"><a href="#cb32-10"></a>[<span class="dv">1</span>] <span class="dv">15</span></span>
-<span id="cb32-11"><a href="#cb32-11"></a>[<span class="dv">1</span>] <span class="dv">20</span></span>
-<span id="cb32-12"><a href="#cb32-12"></a>[<span class="dv">1</span>] <span class="dv">25</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>values &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">25</span>, <span class="dt">by =</span> <span class="dv">5</span>)</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="cf">for</span> (i <span class="cf">in</span> values) {</span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="kw">print</span>(i) <span class="co"># Mostra a schermo il valore di i</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a></span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="co"># Altre operazioni da eseguire</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a>  <span class="co"># ...</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a>}</span>
+<span id="cb34-8"><a href="#cb34-8"></a>[<span class="dv">1</span>] <span class="dv">5</span></span>
+<span id="cb34-9"><a href="#cb34-9"></a>[<span class="dv">1</span>] <span class="dv">10</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a>[<span class="dv">1</span>] <span class="dv">15</span></span>
+<span id="cb34-11"><a href="#cb34-11"></a>[<span class="dv">1</span>] <span class="dv">20</span></span>
+<span id="cb34-12"><a href="#cb34-12"></a>[<span class="dv">1</span>] <span class="dv">25</span></span></code></pre></div>
 </div>
 <div id="cicli-for-esempio" class="section level2">
 <h2>Cicli <code>for</code>: esempio</h2>
@@ -531,49 +545,49 @@ d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
 </div>
 <div id="cicli-for-esempio-1" class="section level2">
 <h2>Cicli <code>for</code>: esempio</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>distances &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb33-2"><a href="#cb33-2"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x) <span class="co"># Ottengo la lunghezza del vettore x</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>  D &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> n, <span class="dt">ncol =</span> n) <span class="co"># Creazione matrice vuota</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a></span>
-<span id="cb33-5"><a href="#cb33-5"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
-<span id="cb33-6"><a href="#cb33-6"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
-<span id="cb33-7"><a href="#cb33-7"></a>      D[i, j] &lt;-<span class="st"> </span>(x[i] <span class="op">-</span><span class="st"> </span>x[j])<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb33-8"><a href="#cb33-8"></a>    }</span>
-<span id="cb33-9"><a href="#cb33-9"></a>  }</span>
-<span id="cb33-10"><a href="#cb33-10"></a>  D</span>
-<span id="cb33-11"><a href="#cb33-11"></a>}</span>
-<span id="cb33-12"><a href="#cb33-12"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">24</span>)</span>
-<span id="cb33-13"><a href="#cb33-13"></a><span class="kw">distances</span>(x)</span>
-<span id="cb33-14"><a href="#cb33-14"></a>     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</span>
-<span id="cb33-15"><a href="#cb33-15"></a>[<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">9</span>   <span class="dv">16</span>  <span class="dv">361</span></span>
-<span id="cb33-16"><a href="#cb33-16"></a>[<span class="dv">2</span>,]    <span class="dv">9</span>    <span class="dv">0</span>    <span class="dv">1</span>  <span class="dv">484</span></span>
-<span id="cb33-17"><a href="#cb33-17"></a>[<span class="dv">3</span>,]   <span class="dv">16</span>    <span class="dv">1</span>    <span class="dv">0</span>  <span class="dv">529</span></span>
-<span id="cb33-18"><a href="#cb33-18"></a>[<span class="dv">4</span>,]  <span class="dv">361</span>  <span class="dv">484</span>  <span class="dv">529</span>    <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>distances &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb35-2"><a href="#cb35-2"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x) <span class="co"># Ottengo la lunghezza del vettore x</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  D &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> n, <span class="dt">ncol =</span> n) <span class="co"># Creazione matrice vuota</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a></span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb35-6"><a href="#cb35-6"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb35-7"><a href="#cb35-7"></a>      D[i, j] &lt;-<span class="st"> </span>(x[i] <span class="op">-</span><span class="st"> </span>x[j])<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>    }</span>
+<span id="cb35-9"><a href="#cb35-9"></a>  }</span>
+<span id="cb35-10"><a href="#cb35-10"></a>  D</span>
+<span id="cb35-11"><a href="#cb35-11"></a>}</span>
+<span id="cb35-12"><a href="#cb35-12"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">24</span>)</span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="kw">distances</span>(x)</span>
+<span id="cb35-14"><a href="#cb35-14"></a>     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</span>
+<span id="cb35-15"><a href="#cb35-15"></a>[<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">9</span>   <span class="dv">16</span>  <span class="dv">361</span></span>
+<span id="cb35-16"><a href="#cb35-16"></a>[<span class="dv">2</span>,]    <span class="dv">9</span>    <span class="dv">0</span>    <span class="dv">1</span>  <span class="dv">484</span></span>
+<span id="cb35-17"><a href="#cb35-17"></a>[<span class="dv">3</span>,]   <span class="dv">16</span>    <span class="dv">1</span>    <span class="dv">0</span>  <span class="dv">529</span></span>
+<span id="cb35-18"><a href="#cb35-18"></a>[<span class="dv">4</span>,]  <span class="dv">361</span>  <span class="dv">484</span>  <span class="dv">529</span>    <span class="dv">0</span></span></code></pre></div>
 </div>
 <div id="la-funzione-apply" class="section level2">
 <h2>La funzione <code>apply</code></h2>
 <p>Ove possibile, sarebbe meglio evitare l’utilizzo dei cicli <code>for</code>, perchè questi tendono ad essere lenti in <strong>R</strong>.</p>
 <p>In alcuni casi, questo è possibile tramite la funzione <code>apply</code>. Sostanzialmente, la stessa funzione viene applicata ad ogni riga / colonna di una matrice / dataframe.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="kw">apply</span>(dde, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> sum) <span class="co"># Somma gli elementi di ciascuna colonna di DDE</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>      DDE       GAD </span>
-<span id="cb34-3"><a href="#cb34-3"></a> <span class="fl">69925.31</span> <span class="fl">635477.00</span> </span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="kw">apply</span>(dde, <span class="dv">2</span>, sum) <span class="co"># Comando equivalente, più compatto</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a>      DDE       GAD </span>
-<span id="cb34-6"><a href="#cb34-6"></a> <span class="fl">69925.31</span> <span class="fl">635477.00</span> </span>
-<span id="cb34-7"><a href="#cb34-7"></a></span>
-<span id="cb34-8"><a href="#cb34-8"></a><span class="co"># Somma di tutti gli elementi al quadrato di ciascuna colonna di DDE</span></span>
-<span id="cb34-9"><a href="#cb34-9"></a><span class="kw">apply</span>(dde, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">sum</span>(x<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb34-10"><a href="#cb34-10"></a>      DDE       GAD </span>
-<span id="cb34-11"><a href="#cb34-11"></a>  <span class="dv">3039342</span> <span class="dv">175462207</span> </span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="kw">apply</span>(dde, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> sum) <span class="co"># Somma gli elementi di ciascuna colonna di DDE</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>      DDE       GAD </span>
+<span id="cb36-3"><a href="#cb36-3"></a> <span class="fl">69925.31</span> <span class="fl">635477.00</span> </span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="kw">apply</span>(dde, <span class="dv">2</span>, sum) <span class="co"># Comando equivalente, più compatto</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>      DDE       GAD </span>
+<span id="cb36-6"><a href="#cb36-6"></a> <span class="fl">69925.31</span> <span class="fl">635477.00</span> </span>
+<span id="cb36-7"><a href="#cb36-7"></a></span>
+<span id="cb36-8"><a href="#cb36-8"></a><span class="co"># Somma di tutti gli elementi al quadrato di ciascuna colonna di DDE</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a><span class="kw">apply</span>(dde, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">sum</span>(x<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb36-10"><a href="#cb36-10"></a>      DDE       GAD </span>
+<span id="cb36-11"><a href="#cb36-11"></a>  <span class="dv">3039342</span> <span class="dv">175462207</span> </span></code></pre></div>
 <p>Se l’opzione <code>MARGIN = 1</code>, allora l’operazione viene effettuata riga per riga.</p>
 </div>
 <div id="pacchetti-r" class="section level2">
 <h2>Pacchetti R</h2>
 <p>Come menzionato in precedenza, <strong>R</strong> è organizzato in pacchetti. Se vogliamo utilizzare delle funzioni aggiuntive, un pacchetto può essere richiamato come segue:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">library</span>(MASS) <span class="co"># Carica in memoria il pacchetto MASS</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="kw">library</span>(knitr) <span class="co"># Carica in memoria il pacchetto knitr</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">library</span>(MASS) <span class="co"># Carica in memoria il pacchetto MASS</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="kw">library</span>(knitr) <span class="co"># Carica in memoria il pacchetto knitr</span></span></code></pre></div>
 <p>Se un pacchetto non è presente nel computer è necessario installarlo. Si può usare il comando seguente oppure usare la finestra <code>Packages</code> presente in RStudio.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>) <span class="co"># Installa il pacchetto knitr</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>) <span class="co"># Installa il pacchetto knitr</span></span></code></pre></div>
 </div>
 </div>
 </div>
