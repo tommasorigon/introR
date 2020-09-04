@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-09-01" />
+<meta name="date" content="2020-09-04" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -81,19 +81,19 @@ code span.ot { color: #007020; }
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
 <h2 class="subtitle">Esercizi 1</h2>
-<h3 class="date">2020-09-01</h3>
+<h3 class="date">2020-09-04</h3>
 </header>
 
 <hr>
 
 
 
-<div id="esercizio" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-1" class="section level2">
+<h2>Esercizio 1</h2>
 <p>Costruire un vettore <code>x</code> che contiene numeri interi, numeri reali, una sequenza di parola e numerosi valori mancanti (<code>NA</code>). Si individui la posizione dei valori mancanti usando la funzione <code>is.na</code> e si consulti la documentazione per capirne il funzionamento.</p>
 </div>
-<div id="esercizio-1" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-2" class="section level2">
+<h2>Esercizio 2</h2>
 <p>Si scriva in <strong>R</strong> la funzione <code>f(x)</code> associata a</p>
 <p><span class="math display">\[f(x) = \frac{|\sin(\pi/4 x^2)|}{x}, \qquad x \neq 0.\]</span></p>
 <ol style="list-style-type: decimal">
@@ -102,8 +102,8 @@ code span.ot { color: #007020; }
 <li><p>Si calcoli <span class="math inline">\(\sum_{k=1}^{K} f(k)\)</span>, per <span class="math inline">\(K = 500\)</span>.</p></li>
 </ol>
 </div>
-<div id="esercizio-2" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-3" class="section level2">
+<h2>Esercizio 3</h2>
 <p>Si verifichino numericamente le seguenti identità per <span class="math inline">\(n = 10, 100, 1000\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math display">\[
@@ -117,8 +117,8 @@ code span.ot { color: #007020; }
 \]</span></p></li>
 </ol>
 </div>
-<div id="esercizio-3" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-4" class="section level2">
+<h2>Esercizio 4</h2>
 <p>Si scriva in <strong>R</strong> una funzione <code>roots(a, b, c)</code> che riceve come input i coefficienti del polinomio</p>
 <p><span class="math display">\[
 a x^2 + b x + c,
@@ -129,8 +129,8 @@ a x^2 + b x + c,
 <li><p>Si calcoli <code>roots(1, 1, 1)</code> e si commenti il risultato.</p></li>
 </ol>
 </div>
-<div id="esercizio-4" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-5" class="section level2">
+<h2>Esercizio 5</h2>
 <p>Si definisca in <strong>R</strong> una matrice simmetrica <span class="math inline">\({\bf A}\)</span> di dimensione <span class="math inline">\(5 \times 5\)</span>, i cui elementi sono <span class="math display">\[
 {\bf A} = \begin{pmatrix}
 26 &amp;  22 &amp;  17 &amp;  22 &amp;  23 \\ 
@@ -147,24 +147,24 @@ a x^2 + b x + c,
 <li><p>Se verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}) = \prod_{i=1}^n \lambda_i\)</span>, dove <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span> sono gli autovalori di <span class="math inline">\({\bf A}\)</span>.</p></li>
 </ol>
 </div>
-<div id="esercizio-5" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-6" class="section level2">
+<h2>Esercizio 6</h2>
 <p>La distanza euclidea tra due vettori <span class="math inline">\({\bf x}\)</span> e <span class="math inline">\({\bf y}\)</span> in <span class="math inline">\(\mathbb{R}^p\)</span> è definita come <span class="math display">\[d({\bf x},{\bf y}) = \sqrt{\sum_{j=1}^p(x_j - y_j)^2}.\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Si scriva la funzione <strong>R</strong> <code>dist_euclid(x, y)</code> che calcola la distanza euclidea tra due vettori.</p></li>
 <li><p>Se <code>x = c(1, 4, 2, 2, 10)</code> e <code>y = c(8, 1, 8, 3, 6)</code>, quanto vale <code>dist_euclid(x, y)</code>?</p></li>
 </ol>
 </div>
-<div id="esercizio-6" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-7" class="section level2">
+<h2>Esercizio 7</h2>
 <p>La norma di Frobenius <span class="math inline">\(||{\bf A}||_F\)</span> di una matrice <span class="math inline">\({\bf A}\)</span> a valori reali di dimensione <span class="math inline">\(n \times m\)</span> è definita come <span class="math display">\[||{\bf A}||_F = \sqrt{\sum_{i=1}^n \sum_{j=1}^m a_{ij}^2}.\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Si scriva la funzione <strong>R</strong> <code>frobenius_norm(A)</code> che calcola la norma di Frobenius per una matrice <code>A</code>.</p></li>
 <li><p>Se <code>A = cbind(1:5,6:10,11:15)</code>, quanto vale <code>frobenius_norm(A)</code>?</p></li>
 </ol>
 </div>
-<div id="esercizio-7" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-8" class="section level2">
+<h2>Esercizio 8</h2>
 <p><strong>Fizzbuzz</strong> è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.</p>
 <p>Il compito è il seguente: per tutti i numeri da <span class="math inline">\(1\)</span> a <span class="math inline">\(100\)</span> si stampi a schemo la parola <strong>fizz</strong> se il numero è un multiplo di <span class="math inline">\(3\)</span>, la parola <strong>buzz</strong> se è multiplo di <span class="math inline">\(5\)</span> e la parola <strong>fizzbuzz</strong> se il numero è un multiplo sia di <span class="math inline">\(3\)</span> che di <span class="math inline">\(5\)</span>. Altrimenti, si restituisca il numero stesso.</p>
 <p><strong>Suggerimento</strong>. Si usi la funzione <code>print</code> e la funzione resto <code>%%</code> di <strong>R</strong>.</p>
