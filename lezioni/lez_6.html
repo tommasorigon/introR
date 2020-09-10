@@ -310,11 +310,11 @@ S^2_1 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar{X})^2, \qquad S^2_2 = \frac{1}{n -1}\
 <span id="cb12-15"><a href="#cb12-15"></a>S2_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var3</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
 <span id="cb12-16"><a href="#cb12-16"></a></span>
 <span id="cb12-17"><a href="#cb12-17"></a><span class="co"># Distorsioni (approssimate)</span></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sigma2),<span class="dv">2</span>)</span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
 <span id="cb12-19"><a href="#cb12-19"></a>[<span class="dv">1</span>] <span class="fl">-0.85</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>sigma2),<span class="dv">2</span>)</span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
 <span id="cb12-21"><a href="#cb12-21"></a>[<span class="dv">1</span>] <span class="dv">0</span></span>
-<span id="cb12-22"><a href="#cb12-22"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>sigma2),<span class="dv">2</span>)</span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
 <span id="cb12-23"><a href="#cb12-23"></a>[<span class="dv">1</span>] <span class="fl">-0.03</span></span></code></pre></div>
 <p>Pertanto, la simulazione permette di concludere che la distorsione è rilevante per il primo stimatore <span class="math inline">\(S_1^2\)</span> mentre è circa pari negli altri due. Ci si poteva attendere questo risultato?</p>
 </div>
