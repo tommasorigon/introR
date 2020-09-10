@@ -143,7 +143,7 @@ G = 1 - \sum_{j=1}^k f_j^2,
 <li><p><code>Date</code> indica la data della partita.</p></li>
 <li><p><code>HomeTeam</code> e <code>AwayTeam</code> indicano, rispettivamente, la squadra che gioca in casa e la squadra ospite per ciascuna partita.</p></li>
 <li><p><code>FTR</code> indica se la squadra che giocava in casa ha vinto (H), pareggiato (D), oppure perso (A).</p></li>
-<li><p>Le variabili <code>B365H</code>, <code>B365D</code>, <code>B365A</code> sono le quote per la vittoria, pareggio, sconfitta, rispettivamente.</p></li>
+<li><p>Le variabili <code>B365H</code>, <code>B365D</code>, <code>B365A</code> sono le quote per la vittoria, pareggio, sconfitta della squadra di casa.</p></li>
 </ul>
 <p>Supponendo di scommettere sulla vittoria della squadra di casa, puntando un euro su di essa si otterrebbero <code>B365H</code> euro in caso di vittoria.</p>
 <hr />
@@ -163,11 +163,11 @@ G = 1 - \sum_{j=1}^k f_j^2,
 <h2>Esercizio 5</h2>
 <p>Nel dataset <code>imdb</code> disponibile al link <a href="https://tommasorigon.github.io/introR/data/imdb.RData">https://tommasorigon.github.io/introR/data/imdb.RData</a>, ciascuna unità statistica è un film estratto dal sito <a href="http://www.imdb.com/" class="uri">http://www.imdb.com/</a> (Internet Movie Data Base). Per ciascun film, sono a disposizione le seguenti variabili:</p>
 <ul>
-<li><code>movie_title</code> è il titolo del film.</li>
-<li><code>duration</code> è la durata del film espressa in minuti.</li>
-<li><code>lgross</code>è la trasformazione logaritmica dell’incasso lordo, espresso in dollari.</li>
-<li><code>lbudget</code>è la trasformazione logaritmica del budget, espresso in dollari.</li>
-<li><code>Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Romance, SciFi, Thriller, War, Western</code>, sono variabili qualitative che indicano se il film appartiene o meno al genere. Ciascun film può appartenere a più generi contemporaneamente.</li>
+<li><p><code>movie_title</code> è il titolo del film.</p></li>
+<li><p><code>duration</code> è la durata del film espressa in minuti.</p></li>
+<li><p><code>lgross</code>è la trasformazione logaritmica dell’incasso lordo, espresso in dollari.</p></li>
+<li><p><code>lbudget</code>è la trasformazione logaritmica del budget, espresso in dollari.</p></li>
+<li><p><code>Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Romance, SciFi, Thriller, War, Western</code>, sono variabili qualitative che indicano se il film appartiene o meno al genere. Ciascun film può appartenere a più generi contemporaneamente.</p></li>
 </ul>
 <hr />
 <ol style="list-style-type: decimal">
