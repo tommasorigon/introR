@@ -86,8 +86,48 @@ code span.ot { color: #007020; }
 
 
 
-<div id="esercizio" class="section level2">
-<h2>Esercizio</h2>
+<div id="esercizio-1" class="section level2">
+<h2>Esercizio 1</h2>
+<p>Siano <span class="math inline">\(X_1,\dots,X_n\)</span> delle variabili aleatorie uniformi indipendenti in <span class="math inline">\((0,1)\)</span>. Si verifichi graficamente se vale l’approssimazione fornita dal teorema del limite centrale per <span class="math inline">\(n= 30\)</span>.</p>
+</div>
+<div id="esercizio-2" class="section level2">
+<h2>Esercizio 2</h2>
+<p>Siano <span class="math inline">\(X_1,\dots,X_n\)</span> delle variabili aleatorie indipendenti normali di media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>.</p>
+<hr />
+<p>Supponendo che i veri valori siano <span class="math inline">\(\mu = 5\)</span> e <span class="math inline">\(\sigma^2 = 12\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Si verifichi empiricamente se la mediana costituisce uno stimatore consistente per la media <span class="math inline">\(\mu\)</span>. Si tratta di uno stimatore distorto? Si risponda tramite similazione.</p></li>
+<li><p>Si confrontino gli stimatori media aritmetica e la mediana in termini di errore quadratico medio, con <span class="math inline">\(n = 30\)</span>. Quale stimatore è preferibile?</p></li>
+<li><p>È verosimile pensare che lo stimatore mediana abbia una distribuzione asintoticamente normale? Si risponda tramite un’analisi grafica.</p></li>
+</ol>
+</div>
+<div id="esercizio-3" class="section level2">
+<h2>Esercizio 3</h2>
+<p>Mediante un opportuno studio di simulazione, si mostri che la varianza campionaria e la varianza campionaria corretta sono stimatori consistenti per la varianza della popolazione nei seguenti casi</p>
+<ol style="list-style-type: decimal">
+<li><p>I dati <span class="math inline">\(x_1,\dots,x_n\)</span> sono realizzazioni indipendenti da <span class="math inline">\(X\)</span>, dove <span class="math inline">\(X \sim \text{N}(0, 10)\)</span>;</p></li>
+<li><p>I dati <span class="math inline">\(x_1,\dots,x_n\)</span> sono realizzazioni indipendenti da <span class="math inline">\(X\)</span>, dove <span class="math inline">\(X \sim \text{Ga}(2, 10)\)</span>.</p></li>
+</ol>
+</div>
+<div id="esercizio-4" class="section level2">
+<h2>Esercizio 4</h2>
+<p>L’indice di asimmetria standardizzato per una variabile aleatoria <span class="math inline">\(X\)</span> è definito come</p>
+<p><span class="math display">\[
+\gamma = \mathbb{E}\left(\frac{X - \mu}{\sigma}\right),
+\]</span> dove <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> rappresentano, rispettivamente, media e varianza di <span class="math inline">\(X\)</span>. Lo stimatore usuale di <span class="math inline">\(\gamma\)</span> è</p>
+<p><span class="math display">\[
+\hat{\gamma}_n = \frac{1}{n}\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{S}\right),
+\]</span> dove <span class="math inline">\(\bar{X} = 1/\sum_{i=1}^nX_i\)</span> e <span class="math inline">\(S^2 = 1/n\sum_{i=1}^n(X_i - \bar{X})^2\)</span> indicano la media aritmetica e la varianza campionaria (non corretta).</p>
+<hr />
+<p>Sia <span class="math inline">\(X \sim \text{N}(3, 10)\)</span> e si noti che in questo caso <span class="math inline">\(\gamma = 0\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Lo stimatore <span class="math inline">\(\hat{\gamma}_n\)</span> è consistente per <span class="math inline">\(\gamma\)</span>?</p></li>
+<li><p>Lo stimatore <span class="math inline">\(\hat{\gamma}_n\)</span> è distorto per <span class="math inline">\(n = 100\)</span>? Se si, di quanto?</p></li>
+<li><p>A quanto è pari lo scarto quadratico medio dello stimatore <span class="math inline">\(\hat{\gamma}_n\)</span> se <span class="math inline">\(n = 100\)</span>?</p></li>
+<li><p>La distribuzione di <span class="math inline">\(\hat{\gamma}_n\)</span> è approssimativamente normale, per <span class="math inline">\(n = 100\)</span>?</p></li>
+<li><p>Si risponda a tutte le domande precedenti assumendo <span class="math inline">\(X \sim \text{Ga}(10,2)\)</span> e <span class="math inline">\(X \sim \text{Logistica}(0,1)\)</span>.</p></li>
+</ol>
+<p><strong>Suggerimenti</strong>: Si utilizzi la classe di funzioni <code>*logis</code>. È inoltre lecito utilizzare le pagine di Wikipedia <a href="https://it.wikipedia.org/wiki/Distribuzione_Gamma">distribuzione Gamma</a> e <a href="https://it.wikipedia.org/wiki/Distribuzione_logistica">distribuzione logistica</a> per identificare i corrispettivi indici di asimmetria.</p>
 </div>
 </div>
 </div>
