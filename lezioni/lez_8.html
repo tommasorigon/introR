@@ -88,7 +88,43 @@ code span.ot { color: #007020; }
 
 
 
-
+<div id="esercizio-1" class="section level2">
+<h2>Esercizio 1</h2>
+<p>Sia <span class="math inline">\(X\)</span> una variabile casuale uniforme discreta avente supporto sugli interi da <span class="math inline">\(1\)</span> a <span class="math inline">\(365\)</span>. Si assuma che il supporto di <span class="math inline">\(X\)</span> sia associato ad ognuno dei giorni dell’anno (non bisestile); in particolare, <span class="math inline">\(1\)</span> indica il primo Gennaio, mentre <span class="math inline">\(365\)</span> il 31 Dicembre.</p>
+<hr />
+<ol style="list-style-type: decimal">
+<li><p>A partire da queste informazioni si imposti uno studio di simulazione basato su <span class="math inline">\(15033\)</span> repliche per stimare la probabilità che in un gruppo di <span class="math inline">\(19\)</span> persone tutte siano nate in giorni diversi.</p></li>
+<li><p>Si stimi la probabilità dell’evento al punto precedente sotto l’ipotesi che nei primi <span class="math inline">\(35\)</span> giorni dell’anno la probabilità di nascere sia doppia rispetto agli altri giorni dell’anno; si utilizzi lo stesso numero di repliche del punto precedente.</p></li>
+</ol>
+</div>
+<div id="esercizio-2" class="section level2">
+<h2>Esercizio 2</h2>
+<p>E noto che per generare numeri pseudo-casuali da una variabile casuale continua <span class="math inline">\(Z\)</span> è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo <span class="math inline">\([0,1]\)</span>.</p>
+<p>Infatti, si ha <span class="math inline">\(z_\text{pc} = F^{-1}_Z(u_\text{pc})\)</span> in cui <span class="math inline">\(z_\text{pc}\)</span> è un numero pseudo-casuale da <span class="math inline">\(Z\)</span>, <span class="math inline">\(u_\text{pc}\)</span> è un numero pseudo-casuale da una variabile casuale uniforme in <span class="math inline">\([0,1]\)</span> e <span class="math inline">\(F^{−1}_Z(\cdot)\)</span> è l’inversa della funzione di ripartizione di <span class="math inline">\(Z\)</span>, ovvero la funzione quantile.</p>
+<hr />
+<p>Si supponga che <span class="math inline">\(Z\)</span> sia una variabile casuale continua con supporto <span class="math inline">\(\mathcal{S}_Z = [2.52, 20.6]\)</span> e con funzione di densità <span class="math inline">\(f(z) \propto \exp\{z\}\)</span>, <span class="math inline">\(z \in \mathcal{S}_Z\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Si normalizzi opportunamente <span class="math inline">\(f(z)\)</span> e si generino, secondo la definizione <span class="math inline">\(F^{-1}_Z(u_\text{pc})\)</span>, <span class="math inline">\(6944\)</span> numeri pseudo-casuali da <span class="math inline">\(Z\)</span>.</p></li>
+<li><p>Utilizzando i numeri pseudo-casuali generati al punto precedente, si approssimino <span class="math inline">\(\mathbb{E}(Z), \text{var}(Z)\)</span> e la probabilità che <span class="math inline">\(Z\)</span> sia compresa tra <span class="math inline">\(4.52\)</span> e <span class="math inline">\(17.6\)</span>.</p></li>
+</ol>
+</div>
+<div id="esercizio-3" class="section level2">
+<h2>Esercizio 3</h2>
+<p>Nel file <code>auto.txt</code> si riportano dati relativi ad alcuni modelli di autobili presenti in commercio negli Stati Uniti tra il 1973 e il 1974. Le variabili presenti nell’insieme di dati fornito sono</p>
+<ol style="list-style-type: decimal">
+<li><code>mpg</code>: consumo (miglia / galloni)</li>
+<li><code>cyl</code>: numero di cilindri</li>
+<li><code>disp</code>: cilindrata (pollici cubici)</li>
+<li><code>hp</code>: cavalli</li>
+<li><code>drat</code>: rapporto ase posteriore/anteriore</li>
+<li><code>wt</code>: peso (in libbre)</li>
+<li><code>qsec</code>: tempo a percorrere 1/4 di miglio con partenza da fermo</li>
+<li><code>vs</code>: disposizione dei cilindri (<code>0</code> = a V, <code>1</code> = in linea)</li>
+<li><code>am</code>: cambio (<code>0</code> = automatico, <code>1</code> = manuale)</li>
+<li><code>gear</code>: numero di marce</li>
+<li><code>carb</code>: numero di carburatori</li>
+</ol>
+</div>
 </div>
 </div>
 
