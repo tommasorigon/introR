@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-09-21" />
+<meta name="date" content="2020-09-22" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -174,7 +174,7 @@ code span.ot { color: #007020; }
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
 <h2 class="subtitle">Inferenza statistica e proprietà degli stimatori</h2>
-<h3 class="date">2020-09-21</h3>
+<h3 class="date">2020-09-22</h3>
 </header>
 
 <hr>
@@ -471,17 +471,18 @@ Z_n = \lambda \sqrt{n} ( \bar{X} - 1/\lambda) \overset{\text{d}}{\longrightarrow
 <span id="cb24-15"><a href="#cb24-15"></a>    }</span>
 <span id="cb24-16"><a href="#cb24-16"></a>    <span class="kw">abline</span>(int, slope, ...)</span>
 <span id="cb24-17"><a href="#cb24-17"></a>}</span>
-<span id="cb24-18"><a href="#cb24-18"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x7f9b636be068</span><span class="op">&gt;</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x7ff324847670</span><span class="op">&gt;</span></span>
 <span id="cb24-19"><a href="#cb24-19"></a><span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div id="normalità-asintotica-degli-stimatori" class="section level2">
 <h2>Normalità asintotica degli stimatori</h2>
 <p>Supponiamo che <span class="math inline">\(\hat{\theta}_n = \hat{\theta}({ \bf X })\)</span> sia lo stimatore di massima verosimiglianza per un modello parametrico <span class="math inline">\(f(x; \theta)\)</span> il cui vero valore è <span class="math inline">\(\theta\)</span>.</p>
-<p>Se i dati sono variabili aleatori iid da <span class="math inline">\(f(x;\theta)\)</span>, sotto opportune condizioni, lo stimatore di massima verosimiglianza è consistente, ovvero: <span class="math inline">\(\theta_n \overset{p}{\longrightarrow} \theta\)</span>. Inoltre, sotto opportune condizioni di regolarità vale che</p>
+<p>Se i dati sono variabili aleatori iid da <span class="math inline">\(f(x;\theta)\)</span>, sotto opportune condizioni, lo stimatore di massima verosimiglianza è consistente, ovvero: <span class="math inline">\(\hat{\theta}_n \overset{p}{\longrightarrow} \theta\)</span>. Inoltre, sotto opportune condizioni di regolarità vale che</p>
 <p><span class="math display">\[
-\frac{\sqrt{n}(\hat{\theta}_n - \theta)}{i_1(\hat{\theta})^{-1/2}} \overset{d}{\longrightarrow} N(0,1), \qquad n \rightarrow \infty.
-\]</span> dove <span class="math inline">\(i_1(\theta)\)</span> rappresenta l’informazione attesa del modello <span class="math inline">\(f(x;\theta)\)</span>, ovvero <span class="math inline">\(i_1(\theta) = \mathbb{E}\{\log{f(X;\theta)}\}\)</span>.</p>
+\sqrt{n}\frac{\hat{\theta}_n - \theta}{i_1(\hat{\theta}_n)^{-1/2}} \overset{d}{\longrightarrow} N(0,1), \qquad n \rightarrow \infty.
+\]</span> dove <span class="math inline">\(i_1(\theta)\)</span> rappresenta l’informazione attesa del modello <span class="math inline">\(f(x;\theta)\)</span>, ovvero</p>
+<p><span class="math display">\[i_1(\theta) = \mathbb{E}\left\{\left(\frac{\partial}{\partial \theta}\log{f(X;\theta)}\right)^2\right\} = - \mathbb{E}\left(\frac{\partial^2}{\partial \theta^2}\log{f(X;\theta)}\right).\]</span></p>
 <div id="il-modello-di-bernoulli" class="section level3">
 <h3>Il modello di Bernoulli</h3>
 <p>Siano <span class="math inline">\(X_i \overset{\text{iid}}{\sim} \text{Ber}(\theta)\)</span> per <span class="math inline">\(i=1,\dots,n\)</span> delle variabili aleatorie indipendenti ed identicamente distribuite. Lo stimatore di massima verosimiglianza è quindi pari a</p>
