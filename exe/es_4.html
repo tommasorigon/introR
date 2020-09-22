@@ -33,6 +33,99 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
+a.sourceLine {
+  pointer-events: auto;
+}
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -128,6 +221,60 @@ code span.ot { color: #007020; }
 <li><p>Si risponda a tutte le domande precedenti assumendo <span class="math inline">\(X \sim \text{Ga}(10,2)\)</span> e <span class="math inline">\(X \sim \text{Logistica}(0,1)\)</span>.</p></li>
 </ol>
 <p><strong>Suggerimenti</strong>: Si utilizzi la classe di funzioni <code>*logis</code>. È inoltre lecito utilizzare le pagine di Wikipedia <a href="https://it.wikipedia.org/wiki/Distribuzione_Gamma">distribuzione Gamma</a> e <a href="https://it.wikipedia.org/wiki/Distribuzione_logistica">distribuzione logistica</a> per identificare i corrispettivi indici di asimmetria.</p>
+</div>
+<div id="esercizio-5" class="section level2">
+<h2>Esercizio 5</h2>
+<p>La funzione <code>nlminb</code> di <strong>R</strong> può essere usata per il minimo di una funzione. Per esempio, supponendo che <span class="math inline">\(f(x) = 12 + (x-4)^2\)</span> allora in <strong>R</strong> avremo in <strong>R</strong> avremo il seguente risultato.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb1-2"><a href="#cb1-2"></a> <span class="dv">12</span> <span class="op">+</span><span class="st">  </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">4</span>)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>start &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Valore iniziale</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>lower_bound &lt;-<span class="st"> </span><span class="op">-</span><span class="ot">Inf</span> <span class="co"># Minimo valore in cui cercare la soluzione</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>upper_bound &lt;-<span class="st"> </span><span class="ot">Inf</span> <span class="co"># Massimo valore in cui cercare la soluzione</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">nlminb</span>(<span class="dt">start =</span> start, <span class="dt">objective =</span> f, <span class="dt">lower =</span> lower_bound, <span class="dt">upper =</span> upper_bound)</span></code></pre></div>
+<pre><code>$par
+[1] 4
+
+$objective
+[1] 12
+
+$convergence
+[1] 0
+
+$iterations
+[1] 2
+
+$evaluations
+function gradient 
+       4        2 
+
+$message
+[1] &quot;relative convergence (4)&quot;</code></pre>
+<p>Il valore <code>par</code> è pari a <span class="math inline">\(\arg \min_x f(x)\)</span> mentre il valore <code>objective</code> è pari a <span class="math inline">\(\min_x f(x)\)</span>.</p>
+<hr />
+<ol style="list-style-type: decimal">
+<li><p>Si ottenga il valore minimo della funzione <span class="math inline">\(f(x) = (x-2)^3 - x^2 + 4\)</span> nell’intervallo <span class="math inline">\((0,4)\)</span>.</p></li>
+<li><p>Si ottenga quindi il valore massimo di <span class="math inline">\(f(x)\)</span> nello stesso intervallo. Si noti che tale valore coincide con il minimo di <span class="math inline">\(-f(x)\)</span>.</p></li>
+</ol>
+</div>
+<div id="esercizio-6-difficile" class="section level2">
+<h2>Esercizio 6 (difficile)</h2>
+<p>Siano <span class="math inline">\(x_1,\dots,x_n\)</span> delle realizzazione indipendenti ed identicamente distribuite da una variabile aleatoria Weibull di parametri <span class="math inline">\(\alpha, \lambda\)</span>, la cui densità è pari a</p>
+<p><span class="math display">\[
+f(x; \alpha, \lambda) = \left(\frac{\alpha}{\lambda}\right)\left(\frac{x}{\lambda}\right)^{\alpha - 1}\exp\left\{- \left(\frac{x}{\lambda}\right)^\alpha\right\}, \qquad \alpha &gt; 0, \quad \lambda &gt; 0. 
+\]</span> Si consideriano inoltre i dati seguenti:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">225</span>, <span class="dv">171</span>, <span class="dv">198</span>, <span class="dv">189</span>, <span class="dv">189</span>, <span class="dv">135</span>, <span class="dv">162</span>, <span class="dv">135</span>, <span class="dv">117</span>, <span class="dv">162</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>x</span>
+<span id="cb3-3"><a href="#cb3-3"></a> [<span class="dv">1</span>] <span class="dv">225</span> <span class="dv">171</span> <span class="dv">198</span> <span class="dv">189</span> <span class="dv">189</span> <span class="dv">135</span> <span class="dv">162</span> <span class="dv">135</span> <span class="dv">117</span> <span class="dv">162</span></span></code></pre></div>
+<hr />
+<ol style="list-style-type: decimal">
+<li><p>Si crei in <strong>R</strong> la funzione <code>loglik(alpha, lambda, x)</code>, ovvero la funzione di log-verosimiglianza, definita come <span class="math display">\[l(\alpha,\lambda) = \sum_{i=1}^n\log f(x_i; \alpha,\lambda).\]</span> Se ritenuto utile, si noti che in <strong>R</strong> esiste la funzione <code>dweibull</code>.</p></li>
+<li><p>Utilizzando la funzione del punto precedente, si calcoli il valore della verosimiglianza per <span class="math inline">\(\alpha = 6\)</span> e <span class="math inline">\(\lambda = 200\)</span>.</p></li>
+<li><p><strong>Difficile</strong>. Non è possibile calcolare in forma chiusa la stima di massima verosimiglianza <span class="math inline">\((\hat{\alpha},\hat{\lambda})\)</span>. Si utilizzi quindi la funzione <code>nlminb</code> applicata a <code>loglik</code> per ottenerla. Si consulti la documentazione per capire come gestire il caso con due parametri.</p></li>
+<li><p>Si rappresentino i dati tramite istogramma e si rappresenti la curva <span class="math inline">\(f(x,\hat{\alpha},\hat{\lambda})\)</span>. La stima ottenuta sembra ragionevole?</p></li>
+</ol>
 </div>
 </div>
 </div>
