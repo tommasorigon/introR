@@ -113,10 +113,10 @@ code span.ot { color: #007020; }
 <h2>Esercizio 4</h2>
 <p>L’indice di asimmetria standardizzato per una variabile aleatoria <span class="math inline">\(X\)</span> è definito come</p>
 <p><span class="math display">\[
-\gamma = \mathbb{E}\left(\frac{X - \mu}{\sigma}\right),
+\gamma = \mathbb{E}\left\{\left(\frac{X - \mu}{\sigma}\right)^3\right\},
 \]</span> dove <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> rappresentano, rispettivamente, media e varianza di <span class="math inline">\(X\)</span>. Lo stimatore usuale di <span class="math inline">\(\gamma\)</span> è</p>
 <p><span class="math display">\[
-\hat{\gamma}_n = \frac{1}{n}\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{S}\right),
+\hat{\gamma}_n = \frac{1}{n}\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{S}\right)^3,
 \]</span> dove <span class="math inline">\(\bar{X} = 1/\sum_{i=1}^nX_i\)</span> e <span class="math inline">\(S^2 = 1/n\sum_{i=1}^n(X_i - \bar{X})^2\)</span> indicano la media aritmetica e la varianza campionaria (non corretta).</p>
 <hr />
 <p>Sia <span class="math inline">\(X \sim \text{N}(3, 10)\)</span> e si noti che in questo caso <span class="math inline">\(\gamma = 0\)</span>.</p>
