@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2020-09-22" />
+<meta name="date" content="2020-09-28" />
 
 <title>R per l’analisi statistica multivariata</title>
 
@@ -174,7 +174,7 @@ code span.ot { color: #007020; }
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
 <h2 class="subtitle">Inferenza statistica e proprietà degli stimatori</h2>
-<h3 class="date">2020-09-22</h3>
+<h3 class="date">2020-09-28</h3>
 </header>
 
 <hr>
@@ -291,7 +291,10 @@ S^2 \sim \frac{\sigma^2}{n-1}\chi^2_{n-1}, \qquad \text{ovvero} \qquad S^2 \sim 
 \]</span> Possiamo quindi calcolare la distorsione di un determinato stimatore tramite simulazione, sfruttando la legge dei grandi numeri. Ad esempio, si supponga che <span class="math inline">\(X_1,\dots,X_n\)</span> sono variabili aleatorie iid distribuite come un normale di media <span class="math inline">\(\mathbb{E}(X_1) = 0\)</span> e varianza <span class="math inline">\(\sigma^2 = 16\)</span>, con <span class="math inline">\(n = 20\)</span>.</p>
 <p>Vogliamo quindi calcolare tramite simulazione la distorsione dei seguenti stimatori della varianza</p>
 <p><span class="math display">\[
-S^2_1 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar{X})^2, \qquad S^2_2 = \frac{1}{n -1}\sum_{i=1}^n(X_i - \bar{X})^2,\qquad S^2_3 = \frac{1}{n}\sum_{i=1}^nX_i^2,
+S^2_1 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar{X})^2, \quad S^2_2 = \frac{1}{n -1}\sum_{i=1}^n(X_i - \bar{X})^2,
+\]</span></p>
+<p><span class="math display">\[
+S^2_3 = \frac{1}{n}\sum_{i=1}^nX_i^2, \quad S_4 = \frac{1}{n+1}\sum_{i=1}^n(X_i - \bar{X})^2.
 \]</span></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">set.seed</span>(<span class="dv">520</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>R &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">5</span></span>
@@ -303,19 +306,23 @@ S^2_1 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar{X})^2, \qquad S^2_2 = \frac{1}{n -1}\
 <span id="cb12-8"><a href="#cb12-8"></a>var1 &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">mean</span>(x<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)<span class="op">^</span><span class="dv">2</span></span>
 <span id="cb12-9"><a href="#cb12-9"></a>var2 &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">var</span>(x) <span class="co"># Coincide con la definizione di R</span></span>
 <span id="cb12-10"><a href="#cb12-10"></a>var3 &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">mean</span>(x<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb12-11"><a href="#cb12-11"></a></span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="co"># Esecuzione della simulazione</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a>S2_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var1</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
-<span id="cb12-14"><a href="#cb12-14"></a>S2_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var2</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
-<span id="cb12-15"><a href="#cb12-15"></a>S2_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var3</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
-<span id="cb12-16"><a href="#cb12-16"></a></span>
-<span id="cb12-17"><a href="#cb12-17"></a><span class="co"># Distorsioni (approssimate)</span></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
-<span id="cb12-19"><a href="#cb12-19"></a>[<span class="dv">1</span>] <span class="fl">-0.85</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
-<span id="cb12-21"><a href="#cb12-21"></a>[<span class="dv">1</span>] <span class="dv">0</span></span>
-<span id="cb12-22"><a href="#cb12-22"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
-<span id="cb12-23"><a href="#cb12-23"></a>[<span class="dv">1</span>] <span class="fl">-0.03</span></span></code></pre></div>
+<span id="cb12-11"><a href="#cb12-11"></a>var4 &lt;-<span class="st"> </span><span class="cf">function</span>(x) (<span class="kw">length</span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">length</span>(x) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">var</span>(x) <span class="co"># Coincide con la definizione di R</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># Esecuzione della simulazione</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>S2_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var1</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
+<span id="cb12-15"><a href="#cb12-15"></a>S2_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var2</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
+<span id="cb12-16"><a href="#cb12-16"></a>S2_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var3</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
+<span id="cb12-17"><a href="#cb12-17"></a>S2_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">replicate</span>(R, <span class="kw">var4</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> mu, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))))</span>
+<span id="cb12-18"><a href="#cb12-18"></a></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="co"># Distorsioni (approssimate)</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
+<span id="cb12-21"><a href="#cb12-21"></a>[<span class="dv">1</span>] <span class="fl">-0.85</span></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
+<span id="cb12-23"><a href="#cb12-23"></a>[<span class="dv">1</span>] <span class="dv">0</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
+<span id="cb12-25"><a href="#cb12-25"></a>[<span class="dv">1</span>] <span class="fl">-0.03</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a><span class="kw">round</span>(<span class="kw">mean</span>(S2_<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>sigma2), <span class="dv">2</span>)</span>
+<span id="cb12-27"><a href="#cb12-27"></a>[<span class="dv">1</span>] <span class="fl">-1.56</span></span></code></pre></div>
 <p>Pertanto, la simulazione permette di concludere che la distorsione è rilevante per il primo stimatore <span class="math inline">\(S_1^2\)</span> mentre è circa pari a zero negli altri due. Ci si poteva attendere questo risultato?</p>
 </div>
 <div id="errore-quadratico-medio" class="section level2">
@@ -323,15 +330,17 @@ S^2_1 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar{X})^2, \qquad S^2_2 = \frac{1}{n -1}\
 <p>L’errore quadratico medio di uno stimatore <span class="math inline">\(\hat{\theta}_n = \hat{\theta}({ \bf X})\)</span> è definito come segue</p>
 <p><span class="math display">\[
 \text{Errore quadratico medio} = \mathbb{E}\{(\hat{\theta}_n - \theta)^2\}.
-\]</span> Siamo interessati a valutare l’errore quadratico degli stimatori <span class="math inline">\(S_1^2, S_2^2\)</span> ed <span class="math inline">\(S_3^2\)</span> calcolati al punto precedente utilizzando le quantità appena calcolate. Pertanto, è sufficiente usare il seguente codice</p>
+\]</span> Siamo interessati a valutare l’errore quadratico degli stimatori <span class="math inline">\(S_1^2, S_2^2, S_3^2, S_4^2\)</span> calcolati al punto precedente utilizzando le quantità appena calcolate. Pertanto, è sufficiente usare il seguente codice</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Errore quadratico medio (approssimato)</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="kw">mean</span>((S2_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sigma2)<span class="op">^</span><span class="dv">2</span>)</span>
 <span id="cb13-3"><a href="#cb13-3"></a>[<span class="dv">1</span>] <span class="fl">24.96644</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="kw">mean</span>((S2_<span class="dv">2</span> <span class="op">-</span><span class="st"> </span>sigma2)<span class="op">^</span><span class="dv">2</span>)</span>
 <span id="cb13-5"><a href="#cb13-5"></a>[<span class="dv">1</span>] <span class="fl">27.09368</span></span>
 <span id="cb13-6"><a href="#cb13-6"></a><span class="kw">mean</span>((S2_<span class="dv">3</span> <span class="op">-</span><span class="st"> </span>sigma2)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb13-7"><a href="#cb13-7"></a>[<span class="dv">1</span>] <span class="fl">25.40207</span></span></code></pre></div>
-<p>Da questi risultati concludiamo che lo stimatore <span class="math inline">\(S^2_1\)</span> sembra essere quello preferibile in termini di errore quadratico medio, sebbene si tratti di uno stimatore distorto.</p>
+<span id="cb13-7"><a href="#cb13-7"></a>[<span class="dv">1</span>] <span class="fl">25.40207</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">mean</span>((S2_<span class="dv">4</span> <span class="op">-</span><span class="st"> </span>sigma2)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>[<span class="dv">1</span>] <span class="fl">24.36703</span></span></code></pre></div>
+<p>Da questi risultati concludiamo che lo stimatore <span class="math inline">\(S^2_4\)</span> sembra essere quello preferibile in termini di errore quadratico medio, sebbene si tratti di uno stimatore distorto.</p>
 </div>
 <div id="consistenza-di-uno-stimatore" class="section level2">
 <h2>Consistenza di uno stimatore</h2>
@@ -471,7 +480,7 @@ Z_n = \lambda \sqrt{n} ( \bar{X} - 1/\lambda) \overset{\text{d}}{\longrightarrow
 <span id="cb24-15"><a href="#cb24-15"></a>    }</span>
 <span id="cb24-16"><a href="#cb24-16"></a>    <span class="kw">abline</span>(int, slope, ...)</span>
 <span id="cb24-17"><a href="#cb24-17"></a>}</span>
-<span id="cb24-18"><a href="#cb24-18"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x7fe16d218558</span><span class="op">&gt;</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x7f80d53c1870</span><span class="op">&gt;</span></span>
 <span id="cb24-19"><a href="#cb24-19"></a><span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></span></code></pre></div>
 </div>
 </div>
