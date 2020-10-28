@@ -9,3 +9,16 @@ slides/sl_A.Rmd
 slides/template.tex
 *.Rmd
 .DS_Store
+lezioni/lez_4_files/fonts/KaTeX_AMS-Regular.woff
+*.rdb
+*.rdx
+*.png
+*.RData
+*.woff
+*.css
+*.js
+*.jpg
+lezioni/lez_4_cache/html/__packages
+exe/es_2_cache/html/__packages
+*.md
+lezioni/lez_6_cache/html/__packages
