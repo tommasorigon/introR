@@ -30,6 +30,45 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
 
 
 
@@ -96,7 +135,7 @@ code span.ot { color: #007020; }
 </div>
 <div id="esercizio-2" class="section level2">
 <h2>Esercizio 2</h2>
-<p>E noto che per generare numeri pseudo-casuali da una variabile casuale continua <span class="math inline">\(Z\)</span> è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo <span class="math inline">\([0,1]\)</span>.</p>
+<p>È noto che per generare numeri pseudo-casuali da una variabile casuale continua <span class="math inline">\(Z\)</span> è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo <span class="math inline">\([0,1]\)</span>.</p>
 <p>Infatti, si ha <span class="math inline">\(z_\text{pc} = F^{-1}_Z(u_\text{pc})\)</span> in cui <span class="math inline">\(z_\text{pc}\)</span> è un numero pseudo-casuale da <span class="math inline">\(Z\)</span>, <span class="math inline">\(u_\text{pc}\)</span> è un numero pseudo-casuale da una variabile casuale uniforme in <span class="math inline">\([0,1]\)</span> e <span class="math inline">\(F^{−1}_Z(\cdot)\)</span> è l’inversa della funzione di ripartizione di <span class="math inline">\(Z\)</span>, ovvero la funzione quantile.</p>
 <hr />
 <p>Si supponga che <span class="math inline">\(Z\)</span> sia una variabile casuale continua con supporto <span class="math inline">\(\mathcal{S}_Z = [2.52, 20.6]\)</span> e con funzione di densità <span class="math inline">\(f(z) \propto \exp\{z\}\)</span>, <span class="math inline">\(z \in \mathcal{S}_Z\)</span>.</p>

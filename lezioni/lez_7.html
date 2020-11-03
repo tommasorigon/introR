@@ -30,6 +30,45 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -229,7 +268,7 @@ code span.ot { color: #007020; }
 <p>Siano <code>n = 94</code> e <code>n.norm = 7</code>. La sequenza di comandi</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n.norm)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>y &lt;-<span class="st"> </span><span class="kw">rchisq</span>(<span class="dv">1</span>, <span class="dt">df =</span> n)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>x <span class="op">/</span><span class="st"> </span>(y <span class="op">*</span><span class="st"> </span>n)<span class="op">^</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a>x <span class="op">/</span><span class="st"> </span>(y <span class="op">/</span><span class="st"> </span>n)<span class="op">^</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
 <p>restituisce:</p>
 <ol style="list-style-type: lower-alpha">
 <li>93 numeri pseudocasuali, ciascuno da una variabile chi-quadrato con 1 grado di libertà.</li>
