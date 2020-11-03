@@ -295,16 +295,12 @@ code span.ot { color: #007020; }
 <li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è la somma dell’<span class="math inline">\(i\)</span>-sima riga di <span class="math inline">\({\bf M}\)</span>.</li>
 <li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è la somma dell’<span class="math inline">\(i\)</span>-sima colonna di <span class="math inline">\({\bf M}\)</span>.</li>
 </ol>
-</div>
-<div id="domanda-6" class="section level2">
-<h2>Domanda 6</h2>
-<p>Sia <code>my.data</code> un oggetto di classe <code>data.frame</code> composto da <code>888</code> righe e <code>4</code> colonne. Le colonne sono denominate <span class="math inline">\(J, I, L, U\)</span>. Si vogliono estrarre da <code>my.data</code> le prime <span class="math inline">\(13\)</span> righe e le ultime <span class="math inline">\(27\)</span> righe tali per cui <span class="math inline">\(U &gt; 0.78\)</span> e <span class="math inline">\(I = 961.01\)</span>. Indicare quale delle seguenti istruzioni `e corretta</p>
-<ol style="list-style-type: lower-alpha">
-<li><code>subset(my.data[c(1:13,861:888),], subset=(U&gt;0.78) &amp; (I&gt;=961.01))</code></li>
-<li><code>my.data[c(1:13,861:888),c(1,4)]</code></li>
-<li><code>subset(my.data[c(1:13,861:888),], subset=(U&gt;0.78) &amp; (I&lt;=961.01))</code></li>
-<li><code>subset(my.data[c(1:13,861:888,], select=(U&gt;0.78) &amp; (I==961.01))</code></li>
-</ol>
+<!-- ## Domanda 6 -->
+<!-- Sia `my.data` un oggetto di classe `data.frame` composto da `888` righe e `4` colonne. Le colonne sono denominate $J, I, L, U$. Si vogliono estrarre da `my.data` le prime $13$ righe e le ultime $27$ righe tali per cui $U > 0.78$ e $I = 961.01$. Indicare quale delle seguenti istruzioni `e corretta -->
+<!-- a. `subset(my.data[c(1:13,861:888),], subset=(U>0.78) & (I>=961.01))`  -->
+<!-- a. `my.data[c(1:13,861:888),c(1,4)]` -->
+<!-- a. `subset(my.data[c(1:13,861:888),], subset=(U>0.78) & (I<=961.01))` -->
+<!-- a. `subset(my.data[c(1:13,861:888,], select=(U>0.78) & (I==961.01))` -->
 </div>
 </div>
 </div>
