@@ -23,13 +23,14 @@ boxplot.stats(forbes$pres)
 # In alternativa si poteva fare un grafico tramite il comando boxplot
 
 # Punto 6.3
-par(mfrow = c(1, 1))
-hist(forbes$bp, breaks = 5)
-hist(forbes$pres, breaks = 5)
+par(mfrow = c(1, 2))
+hist(forbes$bp) # Senza specificare niente, il numero di intervalli viene automaticamente selezionato in maniera corretta
+# Ulteriori abbellimenti grafici sono apprezzati ma non necessari
+hist(forbes$pres)
 
 # Punto 6.4
 par(mfrow = c(1, 1))
-plot(forbes$bp, forbes$pres) # Ulteriori abbellimenti grafici erano apprezzati ma non necessari
+plot(forbes$bp, forbes$pres) # Ulteriori abbellimenti grafici sono apprezzati ma non necessari
 
 # Punto 6.5
 cor(forbes$bp, forbes$pres)
@@ -43,10 +44,12 @@ ols <- function(x, y) {
 ols_est <- ols(forbes$bp, forbes$pres)
 ols_est
 
-# Nota: non era necessario creare una funzione, l'importante era ottenere i valori contenuti in ols_est
+# Nota: non è necessario creare una funzione, l'importante è ottenere i valori contenuti in ols_est
 
 # Punto 6.7
 abline(ols_est) # Questo è il comando più semplice in assoluto, ma esistono varie alternative più complesse
+
+# Il modello sembra adattarsi estremamente bene ai dati.
 
 # ----------------------------------------
 # Domanda 7
