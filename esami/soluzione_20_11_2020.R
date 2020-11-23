@@ -52,7 +52,6 @@ abline(ols_est) # Questo è il comando più semplice in assoluto, ma esistono va
 # Domanda 7
 # ----------------------------------------
 
-
 # Punto 7.1
 dburr <- function(x, alpha, beta) {
   alpha * beta * x^(alpha - 1) / (1 + x^alpha)^(beta + 1)
