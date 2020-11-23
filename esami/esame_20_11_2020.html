@@ -71,6 +71,99 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
+a.sourceLine {
+  pointer-events: auto;
+}
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -117,169 +210,109 @@ code span.ot { color: #007020; }
 <div class="inner">
 <header>
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
-<h2 class="subtitle">CdL in Scienze Statistiche ed Economiche, Università Milano-Bicocca</h2>
-<h3 class="author">Tommaso Rigon</h3>
-<address class="author_afil">
-DEMS<br></header>
+<h2 class="subtitle">Esame 20 Novembre 2020</h2>
+</header>
 
 <hr>
 
 
 
-<p>L’insegnamento di <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a> (15 CFU) è articolato nelle seguenti parti:</p>
+<div id="domanda-1" class="section level2">
+<h2>Domanda 1</h2>
+<p>Sia <code>dataset</code> un <code>data.frame</code> composto da <code>100</code> osservazioni e <code>3</code> variabili numeriche, chiamate <code>x</code>, <code>y</code>, <code>z</code>. Si consideri quindi:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">colMeans</span>(dataset)</span></code></pre></div>
+<p>Questo comando restituisce:</p>
 <ol style="list-style-type: decimal">
-<li><p>R per l’Analisi Statistica Multivariata (3 CFU) che fornisce un’introduzione al linguaggio <strong>R</strong>. Il corso sarà erogato nel I ciclo.</p></li>
-<li><p><a href="https://aldosolari.github.io/AE/">Analisi Esplorativa</a> (6 CFU). Il corso sarà erogato nel II ciclo.</p></li>
-<li><p>Modelli Statistici (6 CFU). Il corso sarà erogato nel III ciclo.</p></li>
+<li>Un vettore di lunghezza <code>3</code></li>
+<li>Un vettore di lunghezza <code>100</code></li>
+<li>Un messaggio di errore</li>
+<li>La somma di tutti i valori dell’oggetto <code>dataset</code></li>
 </ol>
-<div id="materiale-didattico" class="section level2">
-<h2>Materiale didattico</h2>
-<p>Il materiale didattico di ciascuna lezione è scaricabile utilizzando i <a href>collegamenti ipertestuali</a>. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.</p>
-<div id="il-software-r" class="section level3">
-<h3>Il software R</h3>
-<ul>
-<li><p><strong>R</strong> è un software <strong>open source</strong> ed è possibile scaricarlo al link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a>.</p></li>
-<li><p>L’uso di <strong>Rstudio</strong> è <strong>facoltativo</strong> in questo corso, anche se consigliato. È possibile scaricarlo al link <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a>.</p></li>
-<li><p>La documentazione del software <strong>R</strong> è parte integrante del materiale didattico.</p></li>
-</ul>
 </div>
-<div id="libro-di-testo" class="section level3">
-<h3>Libro di testo</h3>
-<ul>
-<li>Agresti, C. Franklin (2016) <em>Statistica: l’arte e la scienza d’imparare dai dati</em>. Ediz. mylab, Pearson Education Italia</li>
-</ul>
+<div id="domanda-2" class="section level2">
+<h2>Domanda 2</h2>
+<p>Si supponga di voler calcolare la seguente quantità <span class="math display">\[
+\text{Pr}(X &gt; 10), \qquad X \sim N(\mu,\sigma^2),
+\]</span> con media <span class="math inline">\(\mu = 4\)</span> e varianza <span class="math inline">\(\sigma^2 = 9\)</span>. Il comando per ottenere tale quantità in <strong>R</strong> è:</p>
+<ol style="list-style-type: decimal">
+<li><code>solve(pnorm(10, 4, 3))</code></li>
+<li><code>pnorm(10, 4, 3, lower.tail=FALSE)</code></li>
+<li><code>pnorm(10, 4, 9, lower.tail=FALSE)</code></li>
+<li><code>pnorm(10, 4, 3, lower.tail=TRUE)</code></li>
+</ol>
 </div>
-<div id="materiale-didattico-aggiuntivo" class="section level3">
-<h3>Materiale didattico aggiuntivo</h3>
-<table>
-<thead>
-<tr class="header">
-<th>N</th>
-<th>Tipologia</th>
-<th>Argomento</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_intro.html">Introduzione al corso</a></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_1.html">Introduzione ad R &amp; algebra lineare</a></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_2.html">Dataframes &amp; elementi di programmazione</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_1.html">Esercizi 1</a></td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_3.html">Rappresentazioni grafiche</a></td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_4.html">Statistica descrittiva</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_2.html">Esercizi 2</a></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_5.html">Calcolo delle probabilità</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_3.html">Esercizi 3</a></td>
-</tr>
-<tr class="even">
-<td>7</td>
-<td>Lezione</td>
-<td><a href="lezioni/lez_6.html">Inferenza statistica</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_4.html">Esercizi 4</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><em>Esercizi</em></td>
-<td><a href="esami/esami_passati.html">Esami passati</a></td>
-</tr>
-</tbody>
-</table>
+<div id="domanda-3" class="section level2">
+<h2>Domanda 3</h2>
+<p>Sia <span class="math inline">\(A\)</span> una matrice quadrata di dimensione <span class="math inline">\(n \times n\)</span> tale che <span class="math inline">\(\text{det}(A) \neq 0\)</span>. Il comando</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">sum</span>(A <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(A))</span></code></pre></div>
+<p>restituisce:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(n\)</span></li>
+<li>0</li>
+<li><span class="math inline">\(n^2\)</span></li>
+<li>un messaggio di errore</li>
+<li>un risultato che dipende dai valori di <span class="math inline">\(A\)</span></li>
+</ol>
 </div>
+<div id="domanda-4" class="section level2">
+<h2>Domanda 4</h2>
+<p>Sia <code>x</code> un vettore numerico ordinato di dimensione <code>n</code>. Supponendo che <code>n</code> sia dispari, quale dei seguenti comandi restituisce la mediana?</p>
+<ol style="list-style-type: decimal">
+<li><code>x[(n + 1)/2]</code></li>
+<li><code>x((n + 1)/2)</code></li>
+<li><code>(x[n/2] + x[n/2 +1])/2</code></li>
+<li>Nessuna delle alternative</li>
+<li><code>x[n/2]</code></li>
+</ol>
 </div>
-<div id="tutorato" class="section level2">
-<h2>Tutorato</h2>
-<p>Il tutorato verrà gestito dal dottor Roberto Ascari.</p>
+<div id="domanda-5" class="section level2">
+<h2>Domanda 5</h2>
+<p>Si supponga di voler calcolare <span class="math inline">\(n!\)</span>. Il comando corretto in <strong>R</strong> è</p>
+<ol style="list-style-type: decimal">
+<li><code>prod(0:n)</code></li>
+<li><code>exp(sum(log(1:n)))</code></li>
+<li><code>log(sum(1:n))</code></li>
+<li><code>n!</code></li>
+</ol>
 </div>
-<div id="esame-e-verbalizzazione-del-voto" class="section level2">
-<h2>Esame e verbalizzazione del voto</h2>
-<div id="modalità-desame" class="section level3">
-<h3>Modalità d’esame</h3>
-<ul>
-<li>L’esame si svolge tramite <strong>computer</strong> e consiste in:
-<ul>
-<li>Una prima prova con 10 domande a risposta multipla.</li>
-<li>Una seconda prova in cui verrà richiesto di svolgere esercizi con <strong>R</strong>: oltre a saper programmare in <strong>R</strong> si dovrà essere in grado di interpretare il problema dato e i risultati ottenuti</li>
-</ul></li>
-</ul>
-<p>Il risultato della prova parziale di <strong>R</strong> per l’analisi statistica multivariata <strong>rimane valido per 4 anni</strong>.</p>
+<div id="domanda-6" class="section level2">
+<h2>Domanda 6</h2>
+<p>Dopo aver caricato in memoria la libreria <code>MASS</code>, si acceda al dataset <code>forbes</code> contenuto in tale libreria.</p>
+<ol style="list-style-type: decimal">
+<li><p>Si acceda alla documentazione del dataset <code>forbes</code> e si descriva il contenuto del dataset: cosa rappresentano le variabili contenute in tale insieme di dati?</p></li>
+<li><p>Si ottengano le medie campionarie e le mediane per le variabili <code>bp</code> e <code>pres</code>. Si ottengano quindi il primo ed il terzo quartile. Sono presenti outlier nelle due distribuzioni?</p></li>
+<li><p>Si ottengano gli istogrammi di tali variabili, scegliendo opportunamente il numero di intervalli.</p></li>
+<li><p>Si ottenga un grafico che metta in relazione le variabili <code>bp</code> e <code>pres</code>.</p></li>
+<li><p>Si calcoli la correlazione tra le variabili <code>bp</code> e <code>pres</code>.</p></li>
+<li><p>In un modello di regressione lineare semplice <span class="math inline">\(y = \alpha + \beta x\)</span>, dove <code>bp</code> rappresenta la variabile esplicativa (<span class="math inline">\(x\)</span>) e <code>pres</code> rappresenta la variabile risposta (<span class="math inline">\(y\)</span>), le stime ai minimi quadrati sono pari a <span class="math display">\[
+\hat{\alpha} = \bar{y} - \hat{\beta}\bar{x}, \qquad \hat{\beta} = \frac{\text{cov}(x,y)}{\text{var}(x)}.
+\]</span></p></li>
+<li><p>Si rappresenti la retta di regressione ottenuta congiuntamenti ai dati. Il modello sembra adattarsi bene ai dati?</p></li>
+</ol>
 </div>
-<div id="verbalizzazione-del-voto" class="section level3">
-<h3>Verbalizzazione del voto</h3>
-<ul>
-<li>Per poter verbalizzare il voto è necessario
-<ul>
-<li>Aver superato le prove di tutte le parti che compongono l’insegnamento (<strong>R</strong> per l’Analisi Statistica Multivariata, Analisi Esplorativa, Modelli Statistici)</li>
-<li>Iscriversi all’appello di Analisi Statistica Multivariata (iscrizione mediante piattaforma Esse3)</li>
-</ul></li>
-<li>Il voto di Analisi Statistica Multivariata è ottenuto come media pesata dei voti conseguiti nelle 3 parti che compongono l’insegnamento. I pesi sono proporzionali al numero di crediti di ciascuna delle parti:</li>
-</ul>
-<p><span class="math display">\[ \text{Voto}_{ASM} = \frac{3}{15}\text{Voto}_{R} + \frac{6}{15}\text{Voto}_{AE} + \frac{6}{15}\text{Voto}_{MS}  \]</span></p>
-<p>con</p>
-<ul>
-<li><span class="math inline">\(\text{Voto}_{ASM}\)</span>: voto di Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{R}\)</span>: voto di <strong>R</strong> per l’Analisi Statistica Multivariata</li>
-<li><span class="math inline">\(\text{Voto}_{AE}\)</span>: voto di Analisi Esplorativa</li>
-<li><span class="math inline">\(\text{Voto}_{MS}\)</span>: voto di Modelli Statistici</li>
-</ul>
-</div>
-<div id="note" class="section level3">
-<h3>Note</h3>
-<ul>
-<li>Per <strong>ogni prova</strong> è necessaria l’iscrizione</li>
-<li>È prevista un’<strong>unica data</strong> per la visione della seconda prova (esercizi con <strong>R</strong>)</li>
-</ul>
-</div>
-</div>
-<div id="propedeuticità" class="section level2">
-<h2>Propedeuticità</h2>
-<p>Questa attività formativa <strong>deve</strong> essere preceduta dal superamento degli esami di Algebra lineare, Analisi Matematica I, Calcolo delle Probabilità e Statistica I.</p>
-</div>
-<div id="ricevimento" class="section level2">
-<h2>Ricevimento</h2>
-<p>Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo <code>tommaso.rigon@unimib.it</code>. Il ricevimento è fissato ogni <strong>martedì alle ore 17.30</strong>.</p>
-<hr />
-<div id="ringraziamenti" class="section level4">
-<h4>Ringraziamenti</h4>
-<p>La struttura di questo sito web è largamente ispirata dal sito web dei corsi di Aldo Solari. Si ringrazia inoltre il prof. Nicola Lunardon per aver messo a disposizione e concesso l’uso del materiale dell’A.A. 2019-2020</p>
-</div>
+<div id="domanda-7" class="section level2">
+<h2>Domanda 7</h2>
+<p>Una variabile aleatoria <span class="math inline">\(X \sim \text{Burr}(\alpha,\beta)\)</span> segue una distribuzione di Burr di parametri <span class="math inline">\(\alpha, \beta &gt; 0\)</span>. Si tratta di una variabile casuale assolutamente continua e a valori positivi avente la seguente densità:</p>
+<p><span class="math display">\[
+f(x ; \alpha, \beta) = \alpha \beta \frac{x^{\alpha-1}}{(1 + x^\alpha)^{\beta+1}}, \qquad x &gt; 0.
+\]</span></p>
+<p>È facile verificare che la funzione di ripartizione coincide con</p>
+<p><span class="math display">\[
+F(x; \alpha, \beta) = 1 - \frac{1}{(1 + x^\alpha)^\beta}, \qquad x &gt; 0.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Si ottenga analiticamente (ovvero utilizzando carta e penna) la funzione quantile <span class="math inline">\(F^{-1}(p; \alpha,\beta)\)</span> della distribuzione di Burr, ovvero la funzione inversa di <span class="math inline">\(F(x;\alpha,\beta) = p\)</span>. Quindi, si scrivano in <strong>R</strong> le funzioni per il calcolo della densità, della funzione di ripartizione e la funzione quantile. Si chiamino queste funzioni <code>dburr(x, alpha, beta)</code>, <code>pburr(x, alpha, beta)</code> e <code>qburr(x, alpha, beta)</code>, rispettivamente.</p></li>
+<li><p>Si faccia un grafico della funzione di densità <span class="math inline">\(f(x ; \alpha, \beta)\)</span> con <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 1\)</span>, in un intervallo opportuno.</p></li>
+<li><p>Per generare valori (pseudo) casuali dalla distribuzione di Burr è possibile utilizzare il metodo dell’inversione. Un singolo valore da una distribuzione di Burr si ottiene tramite il comando <code>qburr(runif(1), alpha, beta)</code>. Si definisca quindi la funzione <code>rburr(R, alpha, beta)</code> che genera <code>R</code> valori pseudo casuali da una distribuzione di Burr.</p></li>
+<li><p>Utilizzando i numeri pseudo-casuali generati tramite la funzione <code>rburr</code> con <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 1\)</span> si approssimino:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Il valore atteso <span class="math inline">\(E(X)\)</span>.</li>
+<li>La varianza <span class="math inline">\(\text{var}(X)\)</span>.</li>
+<li>La probabilità che <span class="math inline">\(X\)</span> sia compresa tra <span class="math inline">\(2\)</span> e <span class="math inline">\(3\)</span>.</li>
+</ol></li>
+<li><p>Si faccia un istogramma dei valori simulati al punto precedente e lo si confronti con la densità <span class="math inline">\(f(x;\alpha,\beta)\)</span> per <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 1\)</span>.</p></li>
+<li><p>Si ottenga la funzione di ripartizione empirica dei valori simulati in precedenza e la si confronti con la funzione di ripartizione teorica <span class="math inline">\(F(x;\alpha,\beta)\)</span> per <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 1\)</span>.</p></li>
+</ol>
 </div>
 </div>
 </div>
