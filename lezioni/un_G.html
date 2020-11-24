@@ -213,9 +213,6 @@ code span.ot { color: #007020; }
 
 
 <section class="main-content">
-<div id="calcolo-delle-probabilità-con-r" class="section level2">
-<h2>Calcolo delle probabilità con <strong>R</strong></h2>
-<p>In questa lezione ci occuperemo di calcolo delle probabilià. Per cominciare, introduciamo e calcoliamo in <strong>R</strong> alcuni quantità legate al calcolo combinatorio.</p>
 <!-- ## Calcolo combinatorio -->
 <!-- Il **fattoriale** di un numero $n$, indicato con $n!$ è il prodotto dei numeri da $1$ ad $n$, ovvero -->
 <!-- $$ -->
@@ -249,7 +246,6 @@ code span.ot { color: #007020; }
 <!-- factorial(n) / (factorial(k) * factorial(n - k)) # Coefficiente binomiale -->
 <!-- choose(n, k) # Comando equivalente -->
 <!-- ``` -->
-</div>
 <div id="variabili-casuali-in-r" class="section level2">
 <h2>Variabili casuali in R</h2>
 <p><code>R</code> dispone di un’estesa serie di funzioni dedicate alle principali distribuzioni di probabilità. Sia <span class="math inline">\(X\)</span> una variabile casuale.</p>
@@ -436,7 +432,7 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x - \mu)^2
 <p><span class="math display">\[X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5\]</span> possiamo usare in <strong>R</strong> il comando seguente:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>R &lt;-<span class="st"> </span><span class="dv">5</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="kw">rnorm</span>(R, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>[<span class="dv">1</span>] <span class="fl">-0.4564653</span> <span class="fl">-0.9813794</span> <span class="fl">-2.6552292</span> <span class="fl">-1.8147185</span> <span class="fl">-0.1188416</span></span></code></pre></div>
+<span id="cb14-3"><a href="#cb14-3"></a>[<span class="dv">1</span>]  <span class="fl">0.3364021</span> <span class="fl">-0.6655561</span>  <span class="fl">0.2722005</span>  <span class="fl">0.1652452</span>  <span class="fl">1.3456718</span></span></code></pre></div>
 <p>Questo tipo di operazione è enormemente utile per compiere <strong>studi di simulazione</strong>.</p>
 </div>
 </section>
