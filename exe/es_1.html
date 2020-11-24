@@ -213,12 +213,12 @@ code span.ot { color: #007020; }
 
 
 <section class="main-content">
-<div id="esercizio-1" class="section level2">
-<h2>Esercizio 1</h2>
+<div id="esercizio-a" class="section level2">
+<h2>Esercizio A</h2>
 <p>Costruire un vettore <code>x</code> che contiene numeri interi, numeri reali, una sequenza di parole e numerosi valori mancanti (<code>NA</code>). Si individui la posizione dei valori mancanti usando la funzione <code>is.na</code> e si consulti la documentazione per capirne il funzionamento.</p>
 </div>
-<div id="esercizio-2" class="section level2">
-<h2>Esercizio 2</h2>
+<div id="esercizio-b" class="section level2">
+<h2>Esercizio B</h2>
 <p>Si scriva in <strong>R</strong> la funzione <code>f(x)</code> associata a</p>
 <p><span class="math display">\[
 f(x) = \frac{|\sin(\pi/4 x^2)|}{x}, \qquad x \neq 0.
@@ -226,14 +226,15 @@ f(x) = \frac{|\sin(\pi/4 x^2)|}{x}, \qquad x \neq 0.
 <ol style="list-style-type: decimal">
 <li><p>Quanto vale <span class="math inline">\(f(1)\)</span>? Quanto vale <span class="math inline">\(f(10^8)\)</span>?</p></li>
 <li><p>Si approssimino <span class="math inline">\(f(1)\)</span> ed <span class="math inline">\(f(10)\)</span> alle prime due cifre decimali.</p></li>
+<li><p>Si faccia un grafico della funzione <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((1,3)\)</span>.</p></li>
 <li><p>Si calcoli <span class="math inline">\(\sum_{k=1}^{K} f(k)\)</span>, per <span class="math inline">\(K = 500\)</span>.</p></li>
 <li><p><strong>Difficile</strong>. La funzione <code>integrate</code> di <strong>R</strong> (si veda la documentazione), permette di calcolare <strong>numericamente</strong> integrali del tipo <span class="math display">\[
 I = \int_a^b f(x)\mathrm{d}x,
 \]</span> dove <span class="math inline">\(a &lt; b\)</span> sono due valori reali. Si calcoli il valore dell’integrale <span class="math inline">\(\int_1^3 f(x)\mathrm{d}x\)</span>, dove <span class="math inline">\(f(x)\)</span> è la funzione usata nei punti precedenti.</p></li>
 </ol>
 </div>
-<div id="esercizio-3" class="section level2">
-<h2>Esercizio 3</h2>
+<div id="esercizio-c" class="section level2">
+<h2>Esercizio C</h2>
 <p>Si verifichino numericamente le seguenti identità per <span class="math inline">\(n = 10, 100, 1000\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math display">\[
@@ -247,8 +248,8 @@ I = \int_a^b f(x)\mathrm{d}x,
 \]</span></p></li>
 </ol>
 </div>
-<div id="esercizio-4" class="section level2">
-<h2>Esercizio 4</h2>
+<div id="esercizio-d" class="section level2">
+<h2>Esercizio D</h2>
 <p>Si scriva in <strong>R</strong> una funzione <code>roots(a, b, c)</code> che riceve come input i coefficienti del polinomio</p>
 <p><span class="math display">\[
 a x^2 + b x + c,
@@ -260,8 +261,8 @@ a x^2 + b x + c,
 <li><p><strong>Difficile</strong>. Si risolva nuovamente l’esercizio utilizzando la funzione <code>uniroot</code> di <strong>R</strong>; si veda la documentazione per i dettagli.</p></li>
 </ol>
 </div>
-<div id="esercizio-5" class="section level2">
-<h2>Esercizio 5</h2>
+<div id="esercizio-e" class="section level2">
+<h2>Esercizio E</h2>
 <p>Si definisca in <strong>R</strong> una matrice simmetrica <span class="math inline">\({\bf A}\)</span> di dimensione <span class="math inline">\(5 \times 5\)</span>, i cui elementi sono <span class="math display">\[
 {\bf A} = \begin{pmatrix}
 26 &amp;  22 &amp;  17 &amp;  22 &amp;  23 \\ 
@@ -278,30 +279,30 @@ a x^2 + b x + c,
 <li><p>Se verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}) = \prod_{i=1}^n \lambda_i\)</span>, dove <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span> sono gli autovalori di <span class="math inline">\({\bf A}\)</span>.</p></li>
 </ol>
 </div>
-<div id="esercizio-6" class="section level2">
-<h2>Esercizio 6</h2>
+<div id="esercizio-f" class="section level2">
+<h2>Esercizio F</h2>
 <p>La distanza euclidea tra due vettori <span class="math inline">\({\bf x}\)</span> e <span class="math inline">\({\bf y}\)</span> in <span class="math inline">\(\mathbb{R}^p\)</span> è definita come <span class="math display">\[d({\bf x},{\bf y}) = \sqrt{\sum_{j=1}^p(x_j - y_j)^2}.\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Si scriva la funzione <strong>R</strong> <code>dist_euclid(x, y)</code> che calcola la distanza euclidea tra due vettori.</p></li>
 <li><p>Se <code>x = c(1, 4, 2, 2, 10)</code> e <code>y = c(8, 1, 8, 3, 6)</code>, quanto vale <code>dist_euclid(x, y)</code>?</p></li>
 </ol>
 </div>
-<div id="esercizio-7" class="section level2">
-<h2>Esercizio 7</h2>
+<div id="esercizio-g" class="section level2">
+<h2>Esercizio G</h2>
 <p>La norma di Frobenius <span class="math inline">\(||{\bf A}||_F\)</span> di una matrice <span class="math inline">\({\bf A}\)</span> a valori reali di dimensione <span class="math inline">\(n \times m\)</span> è definita come <span class="math display">\[||{\bf A}||_F = \sqrt{\sum_{i=1}^n \sum_{j=1}^m a_{ij}^2}.\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Si scriva la funzione <strong>R</strong> <code>frobenius_norm(A)</code> che calcola la norma di Frobenius per una matrice <code>A</code>.</p></li>
 <li><p>Se <code>A = cbind(1:5,6:10,11:15)</code>, quanto vale <code>frobenius_norm(A)</code>?</p></li>
 </ol>
 </div>
-<div id="esercizio-8" class="section level2">
-<h2>Esercizio 8</h2>
+<div id="esercizio-h" class="section level2">
+<h2>Esercizio H</h2>
 <p><strong>Fizzbuzz</strong> è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.</p>
 <p>Il compito è il seguente: per tutti i numeri da <span class="math inline">\(1\)</span> a <span class="math inline">\(100\)</span> si stampi a schemo la parola <strong>fizz</strong> se il numero è un multiplo di <span class="math inline">\(3\)</span>, la parola <strong>buzz</strong> se è multiplo di <span class="math inline">\(5\)</span> e la parola <strong>fizzbuzz</strong> se il numero è un multiplo sia di <span class="math inline">\(3\)</span> che di <span class="math inline">\(5\)</span>. Altrimenti, si restituisca il numero stesso.</p>
 <p><strong>Suggerimento</strong>. Si usi la funzione <code>print</code> e la funzione resto <code>%%</code> di <strong>R</strong>.</p>
 </div>
-<div id="esercizio-9" class="section level2">
-<h2>Esercizio 9</h2>
+<div id="esercizio-i" class="section level2">
+<h2>Esercizio I</h2>
 <p>Si consideri il dataset <code>data(mtcars)</code>, che è presente in <strong>R</strong>. Si risponda quindi alle seguendi domande:</p>
 <ol style="list-style-type: decimal">
 <li><p>Quante righe e quante colonne compongono tale dataset?</p></li>
@@ -313,12 +314,12 @@ a x^2 + b x + c,
 <span id="cb1-3"><a href="#cb1-3"></a>mtcars[mtcars<span class="op">$</span>cyl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span>] </span>
 <span id="cb1-4"><a href="#cb1-4"></a>mtcars[mtcars<span class="op">$</span>cyl <span class="op">==</span><span class="st"> </span><span class="dv">4</span> <span class="op">|</span><span class="st"> </span><span class="dv">6</span>, ]</span></code></pre></div>
 </div>
-<div id="esercizio-10" class="section level2">
-<h2>Esercizio 10</h2>
+<div id="esercizio-l" class="section level2">
+<h2>Esercizio L</h2>
 <p>Sia <span class="math inline">\({\bf A}\)</span> una matrice di dimensione <span class="math inline">\(n \times n\)</span>. Si implementi una funzione che estrae gli elementi della diagonale <span class="math inline">\(a_{ii}\)</span>, per <span class="math inline">\(i = 1,\dots,n\)</span> della matrice <span class="math inline">\({\bf A}\)</span>. La si confronti quindi con la funzione <code>diag</code> di <strong>R</strong>.</p>
 </div>
-<div id="esercizio-11" class="section level2">
-<h2>Esercizio 11</h2>
+<div id="esercizio-m" class="section level2">
+<h2>Esercizio M</h2>
 <p>Che cosa restituisce la funzione <code>f(10)</code>? Si discuta il risultato senza eseguire il seguente codice</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>h &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  x<span class="op">^</span><span class="dv">2</span> </span>
@@ -334,8 +335,8 @@ a x^2 + b x + c,
 <span id="cb2-12"><a href="#cb2-12"></a></span>
 <span id="cb2-13"><a href="#cb2-13"></a><span class="kw">f</span>(<span class="dv">10</span>)</span></code></pre></div>
 </div>
-<div id="esercizio-12" class="section level2">
-<h2>Esercizio 12</h2>
+<div id="esercizio-n" class="section level2">
+<h2>Esercizio N</h2>
 <p>La funzione <code>nlminb</code> di <strong>R</strong> può essere usata per identificare numericamente il minimo di una funzione. Per esempio, supponendo che <span class="math inline">\(f(x) = 12 + (x-4)^2\)</span> allora in <strong>R</strong> avremo in <strong>R</strong> avremo il seguente risultato.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
 <span id="cb3-2"><a href="#cb3-2"></a> <span class="dv">12</span> <span class="op">+</span><span class="st">  </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">4</span>)<span class="op">^</span><span class="dv">2</span></span>
