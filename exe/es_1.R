@@ -109,11 +109,11 @@ A <- rbind(
 # E.1
 
 det(solve(A)) # 0.0006493506
-1/det(A) # Stesso valore
+1 / det(A) # Stesso valore
 
 # E.2
 
-det(A%*%A) # 2371600
+det(A %*% A) # 2371600
 det(A)^2 # Stesso valore
 
 # E.3
