@@ -2,7 +2,7 @@
 
 x <- c(10, 20, NA, 20.5, pi, "banana", "mela", "pera", NA, NA, NA)
 
-is.na(x)
+is.na(x) # TRUE/FALSE a seconda che il valore sia mancante o meno
 
 ? is.na
 
@@ -75,3 +75,23 @@ n <- 1000
 sum((-1)^(1:n) * (1:n) * choose(n, 1:n)) # ERRORE NUMERICO!
 
 # Esercizio D ----------------------
+
+# La soluzione di un'equazione di secondo grado è ovviamente disponibile in forma chiusa
+
+roots <- function(a,b,c){
+  Delta <- b^2 - 4*a*c
+  if(Delta < 0) stop("Il delta deve essere non negativo")
+  (- b + c(-1, 1)*sqrt(Delta)) / (2 * a)
+}
+
+# D.1
+
+roots(1, 5, 2)
+
+# D.2
+
+roots(1, 2, 1)
+
+# D.3
+
+roots(1, 1, 1) # Non esistono soluzioni reali
