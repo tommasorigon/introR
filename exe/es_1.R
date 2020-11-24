@@ -198,7 +198,7 @@ mtcars[mtcars$cyl == 4 | mtcars$cyl == 6, ] # COMANDO CORRETTO
 
 diag2 <- function(A) {
   n <- nrow(A)
-  diagonal <- numeric()
+  diagonal <- numeric(n)
   for (i in 1:n) {
     diagonal[i] <- A[i, i]
   }
