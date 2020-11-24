@@ -333,44 +333,22 @@ a x^2 + b x + c,
 <span id="cb2-11"><a href="#cb2-11"></a>}</span>
 <span id="cb2-12"><a href="#cb2-12"></a></span>
 <span id="cb2-13"><a href="#cb2-13"></a><span class="kw">f</span>(<span class="dv">10</span>)</span></code></pre></div>
-</div>
-<div id="esercizio-n" class="section level2">
-<h2>Esercizio N</h2>
-<p>La funzione <code>nlminb</code> di <strong>R</strong> può essere usata per identificare numericamente il minimo di una funzione. Per esempio, supponendo che <span class="math inline">\(f(x) = 12 + (x-4)^2\)</span> allora in <strong>R</strong> avremo il seguente risultato.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb3-2"><a href="#cb3-2"></a> <span class="dv">12</span> <span class="op">+</span><span class="st">  </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">4</span>)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>}</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>start &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Valore iniziale</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>lower_bound &lt;-<span class="st"> </span><span class="op">-</span><span class="ot">Inf</span> <span class="co"># Minimo valore in cui cercare la soluzione</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>upper_bound &lt;-<span class="st"> </span><span class="ot">Inf</span> <span class="co"># Massimo valore in cui cercare la soluzione</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">nlminb</span>(<span class="dt">start =</span> start, <span class="dt">objective =</span> f, <span class="dt">lower =</span> lower_bound, <span class="dt">upper =</span> upper_bound)</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="op">$</span>par</span>
-<span id="cb3-11"><a href="#cb3-11"></a>[<span class="dv">1</span>] <span class="dv">4</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="op">$</span>objective</span>
-<span id="cb3-14"><a href="#cb3-14"></a>[<span class="dv">1</span>] <span class="dv">12</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="op">$</span>convergence</span>
-<span id="cb3-17"><a href="#cb3-17"></a>[<span class="dv">1</span>] <span class="dv">0</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="op">$</span>iterations</span>
-<span id="cb3-20"><a href="#cb3-20"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="op">$</span>evaluations</span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="cf">function</span> gradient </span>
-<span id="cb3-24"><a href="#cb3-24"></a>       <span class="dv">4</span>        <span class="dv">2</span> </span>
-<span id="cb3-25"><a href="#cb3-25"></a></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="op">$</span>message</span>
-<span id="cb3-27"><a href="#cb3-27"></a>[<span class="dv">1</span>] <span class="st">&quot;relative convergence (4)&quot;</span></span></code></pre></div>
-<p>Il valore <code>par</code> è pari a <span class="math inline">\(\arg \min_x f(x)\)</span> mentre il valore <code>objective</code> è pari a <span class="math inline">\(\min_x f(x)\)</span>.</p>
-<hr />
-<ol style="list-style-type: decimal">
-<li><p>Si ottenga il valore minimo della funzione <span class="math inline">\(f(x) = (x-2)^3 - x^2 + 4\)</span> nell’intervallo <span class="math inline">\((0,4)\)</span>.</p></li>
-<li><p>Si ottenga quindi il valore massimo di <span class="math inline">\(f(x)\)</span> nello stesso intervallo. Si noti che tale valore coincide con il minimo di <span class="math inline">\(-f(x)\)</span>.</p></li>
-<li><p>Si rappresenti graficamente la funzione <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((0,4)\)</span> usando il comando <code>curve(f(x), 0, 4)</code>. I risultato ottenuti nei punti precedenti sono coerenti col grafico?</p></li>
-</ol>
+<!-- ## Esercizio N -->
+<!-- La funzione `nlminb` di **R** può essere usata per identificare numericamente il minimo di una funzione. Per esempio, supponendo che $f(x) = 12 + (x-4)^2$ allora in **R** avremo il seguente risultato. -->
+<!-- ```{r, echo=TRUE, include=TRUE} -->
+<!-- f <- function(x) { -->
+<!--  12 +  (x - 4)^2 -->
+<!-- } -->
+<!-- start <- 0 # Valore iniziale -->
+<!-- lower_bound <- -Inf # Minimo valore in cui cercare la soluzione -->
+<!-- upper_bound <- Inf # Massimo valore in cui cercare la soluzione -->
+<!-- nlminb(start = start, objective = f, lower = lower_bound, upper = upper_bound) -->
+<!-- ``` -->
+<!-- Il valore `par` è pari a $\arg \min_x f(x)$ mentre il valore `objective` è pari a $\min_x f(x)$. -->
+<!-- -------------------------------------------- -->
+<!-- 1. Si ottenga il valore minimo della funzione $f(x) = (x-2)^3 - x^2 + 4$ nell'intervallo $(0,4)$. -->
+<!-- 1. Si ottenga quindi il valore massimo di $f(x)$ nello stesso intervallo. Si noti che tale valore coincide con il minimo di $-f(x)$. -->
+<!-- 1. Si rappresenti graficamente la funzione $f(x)$ nell'intervallo $(0,4)$ usando il comando `curve(f(x), 0, 4)`. I risultato ottenuti nei punti precedenti sono coerenti col grafico? -->
 </div>
 </section>
 

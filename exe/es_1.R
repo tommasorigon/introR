@@ -118,11 +118,105 @@ det(A)^2 # Stesso valore
 
 # E.3
 
-sum(diag(A))
+sum(diag(A)) # 96
 
 # E.4
 
-det(A)
-prod(eigen(A)$values)
+det(A) # 1540
+prod(eigen(A)$values) # Stesso valore
 
 # Esercizio F -----------------------
+
+# F.1
+
+dist_euclid <- function(x, y) {
+  sqrt(crossprod(x - y))
+}
+
+# F.2
+
+x <- c(1, 4, 2, 2, 10)
+y <- c(8, 1, 8, 3, 6)
+dist_euclid(x, y) # 10.53565
+
+# Esercizio G ------------------------
+
+# G.1
+
+frobenius_norm <- function(A) {
+  sqrt(sum(A^2))
+}
+
+A <- cbind(1:5, 6:10, 11:15)
+frobenius_norm(A) # 35.21363
+
+# Esercizio H --------------------------
+
+for (i in 1:100) {
+  condA <- (i %% 3) == 0
+  condB <- (i %% 5) == 0
+  if (condA & condB) {
+    print("fizzbuzz")
+  } else if (condA) {
+    print("fizz")
+  } else if (condB) {
+    print("buzz")
+  } else {
+    print(i)
+  }
+}
+
+# Esercizio I ------------------------------
+
+data(mtcars)
+
+# I.1
+
+dim(mtcars) # 32 righe, 11 colonne
+
+# I.2
+
+mtcars[1:20] # Bisogna aggiungere una virgola
+mtcars[1:20, ] # Comando corretto
+
+# I.3
+
+# mtcars[mtcars$cyl = 4, ] # COMANDO ERRATO
+mtcars[mtcars$cyl == 4, ] # COMANDO CORRETTO
+
+# mtcars[-1:4, ] # COMANDO ERRATO
+mtcars[-(1:4), ] # COMANDO CORRETTO (elimina le prima 4 righe)
+
+# mtcars[mtcars$cyl <= 5] # COMANDO ERRATO
+mtcars[mtcars$cyl <= 5, ] # COMANDO CORRETTO
+
+# mtcars[mtcars$cyl == 4 | 6, ] # COMANDO ERRATO
+mtcars[mtcars$cyl == 4 | mtcars$cyl == 6, ] # COMANDO CORRETTO
+
+
+# Esercizio L -------------------------------
+
+diag2 <- function(A) {
+  n <- nrow(A)
+  diagonal <- numeric()
+  for (i in 1:n) {
+    diagonal[i] <- A[i, i]
+  }
+  diagonal
+}
+
+A <- rbind(
+  c(26, 22, 17, 22, 23),
+  c(22, 18, 14, 23, 27),
+  c(17, 14, 14, 20, 24),
+  c(22, 23, 20, 26, 23),
+  c(23, 27, 24, 23, 12)
+)
+
+diag(A)
+diag2(A)
+
+# Esercizio M ----------------------------------
+
+# La consegna chiedeva di indovinare il risultato senza eseguire il codice.
+# Se eseguito, si ottiene 202.
