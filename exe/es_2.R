@@ -19,7 +19,7 @@ var3 <- function(x) {
   sum(D) / (2 * n^2)
 }
 
-# A.3 
+# A.3
 
 x <- c(1, 4, 2, 2, 10)
 c(var2(x), var3(x))
@@ -57,7 +57,7 @@ table(elez$Lista)
 barplot((table(elez$Lista)))
 
 # Percentuale di voti (approssimata)
-round(100*table(elez$Lista) / nrow(elez),2)
+round(100 * table(elez$Lista) / nrow(elez), 2)
 
 # B.5
 
@@ -89,7 +89,7 @@ province <- read.table("../data/province.csv", header = TRUE)
 
 # C.2
 
-str(province) # Sono presenti tre variabili numeriche: "fertilità", "agricoltura" e "istruzione". 
+str(province) # Sono presenti tre variabili numeriche: "fertilità", "agricoltura" e "istruzione".
 
 # C.3
 
@@ -151,7 +151,7 @@ cor(calcio$B365H, calcio$B365A) # Il commento è lasciato allo studente
 
 # D.7
 
-par(mfrow=c(1,1))
+par(mfrow = c(1, 1))
 plot(log(calcio$B365H), log(calcio$B365A)) # Il commento è lasciato allo studente
 
 # D.8
@@ -203,4 +203,3 @@ cor(imdb$lbudget, imdb$lgross) # Il commento è lasciato allo studente
 # E.8
 
 cor(imdb$duration, imdb$lgross) # Il commento è lasciato allo studente
-
