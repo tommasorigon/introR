@@ -22,7 +22,7 @@ var3 <- function(x) {
 # A.3 
 
 x <- c(1, 4, 2, 2, 10)
-c(var2(x), var3(x), var(x))
+c(var2(x), var3(x))
 
 # A.4
 
@@ -42,7 +42,7 @@ load("../data/elezioni.RData")
 
 # B.2
 
-str(elez)
+str(elez) # Due variabili di tipo "factor" chiamate "Lista" e "Municipio".
 
 # B.3
 
@@ -89,7 +89,7 @@ province <- read.table("../data/province.csv", header = TRUE)
 
 # C.2
 
-str(province)
+str(province) # Sono presenti tre variabili numeriche: "fertilità", "agricoltura" e "istruzione". 
 
 # C.3
 
@@ -127,8 +127,8 @@ str(calcio)
 
 # D.3
 
-summary(calcio)
-calcio <- na.omit(calcio)
+summary(calcio) # Sono presenti 3 dati mancanti
+calcio <- na.omit(calcio) # I dati mancanti vengono esclusi e il dataset sovrascritto
 
 # D.4
 
@@ -136,4 +136,71 @@ summary(calcio$B365H)
 
 par(mfrow = (c(1, 2)))
 hist(calcio$B365H, breaks = 20)
-boxplot(calcio$B365H)
+boxplot(calcio$B365H) # Dal grafico è possibile capire che sono presenti vari outliers
+
+# D.5
+
+summary(log(calcio$B365H))
+par(mfrow = (c(1, 2)))
+hist(log(calcio$B365H), breaks = 20)
+boxplot(log(calcio$B365H)) # Sono ancora presenti valori anomali, ma il fenomeno si è ridotto
+
+# D.6
+
+cor(calcio$B365H, calcio$B365A) # Il commento è lasciato allo studente
+
+# D.7
+
+par(mfrow=c(1,1))
+plot(log(calcio$B365H), log(calcio$B365A)) # Il commento è lasciato allo studente
+
+# D.8
+
+tapply(calcio$B365H, calcio$FTR, mean) # Il commento è lasciato allo studente
+
+# D.9
+
+plot(calcio$B365H ~ calcio$FTR) # Il commento è lasciato allo studente
+
+# Esercizio E ------------------------------------
+
+# E.1
+
+# Supponiamo che di aver scaricato il file nel proprio computer e che il "path" sia quello corretto, quindi:
+load("../data/imdb.RData")
+
+# E.2
+
+nrow(imdb)
+
+# E.3
+
+mean(imdb$duration)
+mean(exp(imdb$lgross))
+
+# E.4
+
+tapply(imdb$duration, imdb$Drama, mean)
+tapply(imdb$duration, imdb$Drama, median)
+plot(imdb$duration ~ imdb$Drama) # Boxplot
+
+# E.5
+
+imdb$movie_title[order(imdb$lgross, decreasing = TRUE)][1:5]
+
+# E.6
+
+par(mfrow = c(1, 3))
+hist(imdb$lbudget)
+hist(imdb$lgross)
+plot(imdb$lbudget, imdb$lgross)
+par(mfrow = c(1, 1))
+
+# E.7
+
+cor(imdb$lbudget, imdb$lgross) # Il commento è lasciato allo studente
+
+# E.8
+
+cor(imdb$duration, imdb$lgross) # Il commento è lasciato allo studente
+
