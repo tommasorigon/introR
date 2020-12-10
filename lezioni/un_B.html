@@ -1660,8 +1660,8 @@ div.tocify {
 
 <div id="dataframe" class="section level2">
 <h2>Dataframe</h2>
-<p>Un <code>dataframe</code> è essenzialmente una matrice dei dati. Ciascuna riga rappresenta un’<strong>unità statistica</strong>, ciascuna colonna rappresenta invece una <strong>variabile</strong>.</p>
-<p>Un <code>dataframe</code> assomiglia ad una matrice, ma può contenere anche valori non numerici.</p>
+<p>Un <code>dataframe</code> corrisponde alla <strong>matrice dei dati</strong>. Ciascuna riga rappresenta un’<strong>unità statistica</strong>, ciascuna colonna rappresenta invece una <strong>variabile</strong>.</p>
+<p>Un <code>dataframe</code> assomiglia ad una matrice, con la differenza che può contenere anche valori non numerici (variabili qualitative).</p>
 <p>Come vedremo, il <code>dataframe</code> viene generalmente caricato all’interno di <strong>R</strong> utilizzando ad esempio la funzione <code>read.table</code>.</p>
 <p>Per cominciare, consideriamo un <code>dataframe</code> già presente in <strong>R</strong>, a scopo illustrativo.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Dataset di esempio già presente in R</span></span>
@@ -1819,7 +1819,7 @@ div.tocify {
 <span id="cb5-4"><a href="#cb5-4"></a>[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a><span class="kw">is.character</span>(x) <span class="co"># Controlla se si tratta di un oggetto character</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
-<p>La lista delle variabili in un <code>data.frame</code> e la loro tipologia, si ottiene tramite il comando <code>str</code>.</p>
+<p>L’elenco delle variabili presenti in un <code>data.frame</code> e la loro tipologia, si ottengono tramite il comando <code>str</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">str</span>(iris) <span class="co"># Schema delle variabili</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">   </span><span class="dv">150</span> obs. of  <span class="dv">5</span> variables<span class="op">:</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="st"> </span><span class="er">$</span><span class="st"> </span>Sepal.Length<span class="op">:</span><span class="st"> </span>num  <span class="fl">5.1</span> <span class="fl">4.9</span> <span class="fl">4.7</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">5.4</span> <span class="fl">4.6</span> <span class="dv">5</span> <span class="fl">4.4</span> <span class="fl">4.9</span> ...</span>
@@ -2126,8 +2126,8 @@ div.tocify {
 </div>
 <div id="importazione-di-un-data.frame" class="section level2">
 <h2>Importazione di un <code>data.frame</code></h2>
-<p>Il modo più frequente di caricare un dataset in memoria è importarlo da un file esterno. Se i dati hanno dimensioni moderate (&lt; 3-4 Gb), essi sono spesso salvati in formato <code>.csv</code> oppure <code>.txt</code>.</p>
-<p><strong>Nota</strong>. Per poter procedere con i prossimi comandi, è necessario scaricare il file <a href="../data/dde.csv">dde.csv</a> e salvarlo nel proprio computer.</p>
+<p>Il modo più frequente di caricare un dataset in memoria è importarlo da un file esterno. Se i dati hanno dimensioni moderate (dimensione file &lt; 3-4 Gb), essi sono spesso salvati in formato <code>.csv</code> oppure <code>.txt</code>.</p>
+<p><strong>Nota</strong>. Per poter procedere con i prossimi comandi, è necessario scaricare il file <a href="../data/dde.csv">dde.csv</a> e salvarlo nel proprio computer. Se il file viene modificato (ad esempio perchè aperto con Excel e successivamente salvato) i comandi seguenti potrebbero non funzionare.</p>
 <p><strong>R</strong> è aperto in una cartella specifica, identificata dal comando seguente.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">getwd</span>() <span class="co"># Identifica la cartella di lavoro (get working directory)</span></span></code></pre></div>
 <p>Per aprire il file <code>dde.csv</code>, bisogna fornire ad <strong>R</strong> il percorso del file, che dipende da dove questo è stato salvato.</p>
