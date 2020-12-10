@@ -1661,7 +1661,10 @@ div.tocify {
 <p>In questa lezione ci occuperemo di inferenza statistica e studieremo le proprietà degli stimatori utilizzando <strong>R</strong>. Procederemo tramite esempi, valutando le proprietà di alcuni specifici stimatori.</p>
 <div id="dati-gaussiani-e-distribuzione-degli-stimatori" class="section level2">
 <h2>Dati Gaussiani e distribuzione degli stimatori</h2>
-<p>Supponiamo che <span class="math inline">\(X_1,\dots,X_n\)</span> siano delle variabili aleatorie <strong>normali</strong> indipendenti ed identicamente distribuite, aventi media <span class="math inline">\(\mathbb{E}(X_1) = \mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>, ovvero <span class="math inline">\(X_i \overset{\text{iid}}{\sim} \text{N}(\mu, \sigma^2)\)</span>.</p>
+<p>Supponiamo che <span class="math inline">\(X_1,\dots,X_n\)</span> siano delle variabili aleatorie <strong>normali</strong> indipendenti ed identicamente distribuite, aventi media <span class="math inline">\(\mathbb{E}(X_1) = \mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>, ovvero</p>
+<p><span class="math display">\[
+X_i \overset{\text{iid}}{\sim} \text{N}(\mu, \sigma^2), \qquad i=1,\dots,n.
+\]</span></p>
 <p>I valori <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span> sono ignoti e siamo interessati a stimarli.</p>
 <div id="la-media-campionaria" class="section level3">
 <h3>La media campionaria</h3>
@@ -1832,7 +1835,7 @@ S^2_3 = \frac{1}{n}\sum_{i=1}^nX_i^2, \quad S_4 = \frac{1}{n+1}\sum_{i=1}^n(X_i 
 <h2>Consistenza di uno stimatore</h2>
 <p>Supponiamo che <span class="math inline">\(\hat{\theta}_n = \hat{\theta}({ \bf X })\)</span> sia lo stimatore di massima verosimiglianza per un modello parametrico <span class="math inline">\(f(x; \theta)\)</span> il cui vero valore è <span class="math inline">\(\theta\)</span>.</p>
 <p>Se i dati sono variabili aleatori iid da <span class="math inline">\(f(x;\theta)\)</span>, <strong>sotto opportune condizioni</strong> lo stimatore di massima verosimiglianza è consistente, ovvero:</p>
-<p><span class="math display">\[\hat{\theta}_n \overset{p}{\longrightarrow} \theta.\]</span></p>
+<p><span class="math display">\[\hat{\theta}_n \overset{p}{\longrightarrow} \theta,\]</span> dove il simbolo <span class="math inline">\(\overset{p}{\longrightarrow}\)</span> indica la <strong>convergenza in probabilità</strong>.</p>
 <div id="esempio-2" class="section level3">
 <h3>Esempio</h3>
 <p>Siano <span class="math inline">\(X_1,\dots,X_n\)</span> delle variabili aleatorie iid da una distribuzione uniforme in <span class="math inline">\((0,\theta)\)</span>, dove <span class="math inline">\(\theta &gt; 0\)</span> è un parametro ignoto. La stima di massima verosimiglianza in questo caso è pari a</p>
