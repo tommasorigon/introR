@@ -83,7 +83,7 @@ curve(dcauchy(x), -4, 4, add = TRUE) # Curva della densità di Cauchy
 
 set.seed(100)
 mean(rcauchy(10^5) > 3) # Valore tramite simulazione
-1 - pcauchy(3)  # Valore teorico
+1 - pcauchy(3) # Valore teorico
 # I due valori sono molto simili tra loro
 
 # D.3
@@ -110,7 +110,7 @@ Q1 <- qnorm(0.25, 5, 5)
 Q2 <- qnorm(0.5, 5, 5)
 Q3 <- qnorm(0.75, 5, 5)
 
-(Q3 - 2*Q2 + Q1)/(Q3 - Q1) # Circa pari a zero
+(Q3 - 2 * Q2 + Q1) / (Q3 - Q1) # Circa pari a zero
 
 # E.2
 
@@ -118,7 +118,7 @@ Q1 <- qgamma(0.25, 2, 4)
 Q2 <- qgamma(0.5, 2, 4)
 Q3 <- qgamma(0.75, 2, 4)
 
-(Q3 - 2*Q2 + Q1)/(Q3 - Q1) # Asimmetria positiva
+(Q3 - 2 * Q2 + Q1) / (Q3 - Q1) # Asimmetria positiva
 
 # Non richiesto, ma si poteva anche fare il grafico per averne conferma:
 curve(dgamma(x, 2, 4), 0, 3)
@@ -129,7 +129,7 @@ Q1 <- qgamma(0.25, 200, 400)
 Q2 <- qgamma(0.5, 200, 400)
 Q3 <- qgamma(0.75, 200, 400)
 
-(Q3 - 2*Q2 + Q1)/(Q3 - Q1) # La distribuzione è sostanzialmente simmetrica
+(Q3 - 2 * Q2 + Q1) / (Q3 - Q1) # La distribuzione è sostanzialmente simmetrica
 
 # Non richiesto, ma si poteva anche fare il grafico per averne conferma:
 curve(dgamma(x, 200, 400), 0.3, 0.7)
@@ -140,16 +140,16 @@ curve(dgamma(x, 200, 400), 0.3, 0.7)
 # F.1
 
 # Implementazione "diretta", numericamente un po' instabile
-dbetabinom <- function(k, n, alpha, beta){
-  choose(n, k)*beta(k + alpha, n - k + beta)/beta(alpha, beta)
+dbetabinom <- function(k, n, alpha, beta) {
+  choose(n, k) * beta(k + alpha, n - k + beta) / beta(alpha, beta)
 }
 
 # Implementazione numericamente stabile sfruttando i logaritmi
-dbetabinom <- function(k, n, alpha, beta){
-    exp(lchoose(n, k) + lbeta(k + alpha, n - k + beta) - lbeta(alpha, beta))
+dbetabinom <- function(k, n, alpha, beta) {
+  exp(lchoose(n, k) + lbeta(k + alpha, n - k + beta) - lbeta(alpha, beta))
 }
 
-pbetabinom <- function(k, n, alpha, beta){
+pbetabinom <- function(k, n, alpha, beta) {
   sum(dbetabinom(0:k, n = n, alpha = alpha, beta = beta))
 }
 
@@ -161,12 +161,12 @@ alpha <- beta <- 2
 sum(dbetabinom(0:n, n, alpha, beta))
 pbetabinom(n, n, alpha, beta)
 
-plot(0:n, dbetabinom(0:n, n, alpha, beta), type="h")
+plot(0:n, dbetabinom(0:n, n, alpha, beta), type = "h")
 
 # F.3
 
-media <- sum(0:n*dbetabinom(0:n, n, alpha, beta))
-varianza <- sum((0:n)^2*dbetabinom(0:n, n, alpha, beta)) - media^2
+media <- sum(0:n * dbetabinom(0:n, n, alpha, beta))
+varianza <- sum((0:n)^2 * dbetabinom(0:n, n, alpha, beta)) - media^2
 
 media
 varianza
@@ -183,24 +183,24 @@ x <- rnorm(10^5)
 g <- function(x) x^2
 
 k <- 1
-mean(g(x) >= k) <= mean(g(x))/k
+mean(g(x) >= k) <= mean(g(x)) / k
 k <- 2
-mean(g(x) >= k) <= mean(g(x))/k
+mean(g(x) >= k) <= mean(g(x)) / k
 k <- 3
-mean(g(x) >= k) <= mean(g(x))/k
+mean(g(x) >= k) <= mean(g(x)) / k
 
 # H.2
 
 x <- rgamma(10^5, 10, 0.1)
-g <- function(x) exp(x/100)
+g <- function(x) exp(x / 100)
 hist(g(x))
 
 k <- 1
-mean(g(x) >= k) <= mean(g(x))/k
+mean(g(x) >= k) <= mean(g(x)) / k
 k <- 2
-mean(g(x) >= k) <= mean(g(x))/k
+mean(g(x) >= k) <= mean(g(x)) / k
 k <- 3
-mean(g(x) >= k) <= mean(g(x))/k
+mean(g(x) >= k) <= mean(g(x)) / k
 
 # Esercizio I ---------------------------------
 
