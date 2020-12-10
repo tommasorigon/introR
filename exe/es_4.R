@@ -1,3 +1,0 @@
-# Esercizio A ----------------------
-
-# In costruzione
