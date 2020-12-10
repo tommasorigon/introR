@@ -1660,7 +1660,7 @@ div.tocify {
 
 <div id="funzioni" class="section level2">
 <h2>Funzioni</h2>
-<p><strong>R</strong> è anche e soprattutto un linguaggio di programmazione. È possibile quindi definire nuove funzioni.</p>
+<p><strong>R</strong> è anche e soprattutto un linguaggio di programmazione. È possibile quindi definire nuove funzioni, in aggiunta a quelle già esistenti. È possibile farlo tramite il comando <code>function</code>, come illustrato nel seguito.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>cube &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  out &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">3</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>  out</span>
@@ -1686,6 +1686,7 @@ div.tocify {
 </div>
 <div id="if-e-else" class="section level2">
 <h2><code>If</code> e <code>else</code></h2>
+<p>I comandi <code>if</code> ed <code>else</code> permettono di eseguire delle istruzioni solamente se una determinata condizione è verificata. Ad esempio:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>condizione &lt;-<span class="st"> </span>pi<span class="op">^</span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> <span class="co"># Valore booleano</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="cf">if</span> (condizione) {</span>
