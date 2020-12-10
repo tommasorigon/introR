@@ -1693,7 +1693,7 @@ div.tocify {
 <!-- ``` -->
 <div id="variabili-casuali-in-r" class="section level2">
 <h2>Variabili casuali in <strong>R</strong></h2>
-<p><code>R</code> dispone di un’estesa serie di funzioni dedicate alle principali distribuzioni di probabilità. Sia <span class="math inline">\(X\)</span> una variabile casuale.</p>
+<p><code>R</code> dispone di un’estesa collezione di funzioni dedicate alle principali distribuzioni di probabilità. Sia <span class="math inline">\(X\)</span> una variabile casuale.</p>
 <ul>
 <li><p><strong>d</strong>dist (dove la “d” iniziale sta per <em>density</em>). Calcola la densità <span class="math inline">\(f(x)\)</span> di una variabile continua <span class="math inline">\(X\)</span> oppure la funzione di probabilità <span class="math inline">\(p(x) = \mathbb{P}(X = x)\)</span> nel caso <span class="math inline">\(X\)</span> sia discreta.</p></li>
 <li><p><strong>p</strong>dist (dove la “p” iniziale sta per <em>probability</em>), che permette di calcolare il valore della funzione di ripartizione in un punto specificato, ovvero calcola <span class="math inline">\(F(x) = \mathbb{P}(X \le x)\)</span>.</p></li>
@@ -1877,7 +1877,7 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x - \mu)^2
 <p><span class="math display">\[X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5\]</span> possiamo usare in <strong>R</strong> il comando seguente:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>R &lt;-<span class="st"> </span><span class="dv">5</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="kw">rnorm</span>(R, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>[<span class="dv">1</span>] <span class="fl">-0.6669402</span>  <span class="fl">1.7448983</span>  <span class="fl">0.4045227</span> <span class="fl">-0.9833739</span>  <span class="fl">0.6834098</span></span></code></pre></div>
+<span id="cb14-3"><a href="#cb14-3"></a>[<span class="dv">1</span>]  <span class="fl">1.6100473</span>  <span class="fl">2.8146935</span>  <span class="fl">0.6898495</span> <span class="fl">-1.1194686</span>  <span class="fl">1.5277250</span></span></code></pre></div>
 <p>Questo tipo di operazione è enormemente utile per compiere <strong>studi di simulazione</strong>.</p>
 </div>
 
