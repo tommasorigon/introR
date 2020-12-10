@@ -1660,7 +1660,7 @@ div.tocify {
 
 <div id="i-dati-dde" class="section level2">
 <h2>I dati <code>dde</code></h2>
-<p>In questa lezione ci occuperemo di rappresentazioni grafiche di dati reali. Per fare questo, ci serviremo del dataset chiamato <code>dde</code>. Per un campione di <code>2312</code> donne in gravidanza, viene misurato il <code>DDE</code>, ovvero una sostanza connessa al DDT, presente nel siero materno durante il terzo trimestre della gravidanza.</p>
+<p>In questa lezione ci occuperemo di rappresentazioni grafiche di dati reali. Per fare questo, ci serviremo del dataset chiamato <code>dde</code>, che è stato descritto e analizzato nell’<a href="https://tommasorigon.github.io/StatI/slides/sl_B.pdf">unità B</a> del corso Statistica I. Per un campione di <code>2312</code> donne in gravidanza, viene misurato il <code>DDE</code>, ovvero una sostanza connessa al DDT, presente nel siero materno durante il terzo trimestre della gravidanza.</p>
 <p>La variabile <code>GAD</code> (Gestational Age at Delivery) misura invece a quale giorno della gravidanza è avvenuto il parto.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>path &lt;-<span class="st"> &quot;https://tommasorigon.github.io/introR/data/dde.csv&quot;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>dde &lt;-<span class="st"> </span><span class="kw">read.table</span>(path, <span class="dt">header =</span> <span class="ot">TRUE</span>) <span class="co"># Scarica il file da internet</span></span>
@@ -1810,7 +1810,7 @@ div.tocify {
 <p>Sebbene <strong>R</strong> scelga in automatico il numero di intervalli, possiamo modificarne il numero e la posizione la posizione a nostro piacimento.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Primo grafico, pochi intervalli</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Primo grafico, POCHI intervalli</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a>breaks &lt;-<span class="st"> </span><span class="dv">45</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">0</span><span class="op">:</span><span class="dv">4</span>) <span class="co"># Definizione degli intervalli</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a><span class="kw">hist</span>(dde<span class="op">$</span>DDE,</span>
 <span id="cb7-6"><a href="#cb7-6"></a>  <span class="dt">freq =</span> <span class="ot">TRUE</span>,</span>
@@ -1820,7 +1820,7 @@ div.tocify {
 <span id="cb7-10"><a href="#cb7-10"></a>  <span class="dt">ylab =</span> <span class="st">&quot;Frequenze assolute&quot;</span></span>
 <span id="cb7-11"><a href="#cb7-11"></a>)</span>
 <span id="cb7-12"><a href="#cb7-12"></a></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># Secondo grafico, troppi intervalli</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># Secondo grafico, TROPPI intervalli</span></span>
 <span id="cb7-14"><a href="#cb7-14"></a>breaks &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">180</span> <span class="co"># Definizione degli intervalli</span></span>
 <span id="cb7-15"><a href="#cb7-15"></a><span class="kw">hist</span>(dde<span class="op">$</span>DDE,</span>
 <span id="cb7-16"><a href="#cb7-16"></a>  <span class="dt">freq =</span> <span class="ot">TRUE</span>,</span>
