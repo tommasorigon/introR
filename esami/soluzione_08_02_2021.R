@@ -106,7 +106,7 @@ loglik <- function(x, alpha, lambda) {
 # 8.3
 loglik(x, 2, 1) # -11.50288
 loglik(x, 2, lambda_hat) # -10.60933
-# Per definizione, la stima di massima verosimiglianza è il valore che rende "massima" la funzione di verosimiglianza.
+# Per definizione, la stima di massima verosimiglianza è il valore che rende massima la funzione di verosimiglianza.
 
 # 8.4
 
