@@ -343,134 +343,126 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">R per l’analisi statistica multivariata</h1>
-<h3 class="subtitle">Simulazione d’esame</h3>
+<h3 class="subtitle">Esame 8 Febbraio 2021</h3>
 
 </div>
 
 
 <div id="esercizio-1" class="section level2">
 <h2>Esercizio 1</h2>
-<p>Si considerino i seguenti comandi</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>M[, <span class="dv">1</span>] <span class="ot">&lt;-</span> x</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>M[, <span class="dv">2</span>] <span class="ot">&lt;-</span> y</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>, ] <span class="sc">*</span> M[<span class="dv">2</span>, ]</span></code></pre></div>
-<p>L’ultimo comando restituisce:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Un messaggio di errore.</li>
-<li>Lo scalare <code>14</code></li>
-<li>Un vettore i cui elementi sono <code>4</code>, <code>6</code>.</li>
-<li>Un vettore i cui elementi sono <code>2</code>, <code>12</code>.</li>
+<p>Si considerino i seguenti comandi:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">-</span> <span class="fu">mean</span>(x))</span></code></pre></div>
+<p>Questo comando restituisce:</p>
+<ol style="list-style-type: decimal">
+<li>un numero molto vicino a <code>0</code></li>
+<li>la media di <code>x</code></li>
+<li>un indice di variabilità</li>
+<li>la varianza di <code>x</code></li>
 </ol>
 </div>
 <div id="esercizio-2" class="section level2">
 <h2>Esercizio 2</h2>
-<p>Sia <span class="math inline">\(x\)</span> un vettore di lunghezza <span class="math inline">\(n\)</span>. Si consideri la seguente sequenza di comandi:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<p>Il risultato è</p>
-<ol style="list-style-type: lower-alpha">
-<li>La media aritmetica di <span class="math inline">\(x^2\)</span></li>
-<li><code>1</code></li>
-<li><span class="math inline">\(n^2\)</span></li>
-<li>Il quadrato della norma euclidea di <span class="math inline">\(x\)</span></li>
+<p>Si supponga di voler calcolare la seguente quantità: <span class="math display">\[
+\text{Pr}(X = 7), \qquad X \sim \text{Bin}(10, 1/2),
+\]</span> ovvero la probabilità di ottenere 7 volte croce lanciando 10 volte una moneta. Il comando per ottenere tale quantità in <strong>R</strong> è:</p>
+<ol style="list-style-type: decimal">
+<li><code>pbinom(7, 10, 1/2)</code></li>
+<li><code>dbinom(7, 10, 1/2)</code></li>
+<li><code>qbinom(1/10, 7, 1/2)</code></li>
+<li><code>sample(10, 7, 1/2)</code></li>
 </ol>
 </div>
 <div id="esercizio-3" class="section level2">
 <h2>Esercizio 3</h2>
-<p>Sia <span class="math inline">\(x\)</span> un vettore di lunghezza <span class="math inline">\(69\)</span> a valori positivi. I due comandi elencati di seguito</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">sqrt</span>(x)) <span class="sc">%*%</span> <span class="fu">sqrt</span>(x)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
+<p>I seguenti comandi di <strong>R</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, pi), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">9</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">crossprod</span>(x, y)</span></code></pre></div>
 <p>restituiscono:</p>
-<ol style="list-style-type: lower-alpha">
-<li>La radice quadrata della norma euclidea di <span class="math inline">\(x\)</span>.</li>
-<li>Risultati uguali</li>
-<li>Due vettori</li>
-<li>Risultati che, in valore assoluto, sono proporzionali alla radice quadrata di <span class="math inline">\(x\)</span></li>
+<ol style="list-style-type: decimal">
+<li>il numero reale <span class="math inline">\(\sum_{i=1}^5x_iy_i\)</span></li>
+<li>una matrice di dimensione <span class="math inline">\(5 \times 5\)</span></li>
+<li>un vettore di dimensione <span class="math inline">\(5\)</span></li>
+<li>un messaggio di errore</li>
+<li>le rispettive somme di <code>x</code> ed <code>y</code></li>
 </ol>
 </div>
 <div id="esercizio-4" class="section level2">
 <h2>Esercizio 4</h2>
-<p>Siano <code>n = 94</code> e <code>n.norm = 7</code>. La sequenza di comandi</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.norm)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rchisq</span>(<span class="dv">1</span>, <span class="at">df =</span> n)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> (y <span class="sc">/</span> n)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
-<p>restituisce:</p>
-<ol style="list-style-type: lower-alpha">
-<li>93 numeri pseudocasuali, ciascuno da una variabile chi-quadrato con 1 grado di libertà.</li>
-<li>7 numeri pseudocasuali, ciascuno da una variabile T di student con 94 gradi di libertà.</li>
-<li>Un numero pseudocasuale da una variabile chi-quadrato con 94 gradi di libertà.</li>
-<li>Un numero pseudocasuale da una variabile chi-quadrato con 93 gradi di libertà.</li>
+<p>I seguenti comandi</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">p =</span> <span class="dv">2</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> x<span class="sc">^</span>p</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">power</span>(<span class="dv">2</span>)</span></code></pre></div>
+<p>restituiscono:</p>
+<ol style="list-style-type: decimal">
+<li>nessun risultato</li>
+<li><span class="math inline">\(16\)</span></li>
+<li><span class="math inline">\(64\)</span></li>
+<li>un messaggio d’errore</li>
+<li><span class="math inline">\(4\)</span></li>
 </ol>
 </div>
 <div id="esercizio-5" class="section level2">
 <h2>Esercizio 5</h2>
-<p>Sia <span class="math inline">\({\bf M}\)</span> una matrice di dimensione <span class="math inline">\(n \times n\)</span>. Si considerino le seguenti istruzioni</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n, <span class="at">mode =</span> <span class="st">&quot;numeric&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n, <span class="at">mode =</span> <span class="st">&quot;numeric&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    res1[k] <span class="ot">&lt;-</span> res1[k] <span class="sc">+</span> M[j, k]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    res2[j] <span class="ot">&lt;-</span> res2[j] <span class="sc">+</span> M[k, j]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Indicare quale affermazione è corretta:</p>
-<ol style="list-style-type: lower-alpha">
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è, rispettivamente, la somma dell’<span class="math inline">\(i\)</span>-sima colonna e dell’<span class="math inline">\(i\)</span>-sima riga di <span class="math inline">\({\bf M}\)</span>.</li>
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è, rispettivamente, la somma dell’<span class="math inline">\(i\)</span>-sima riga e dell’<span class="math inline">\(i\)</span>-sima colonna di <span class="math inline">\({\bf M}\)</span>.</li>
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è la somma dell’<span class="math inline">\(i\)</span>-sima riga di <span class="math inline">\({\bf M}\)</span>.</li>
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è la somma dell’<span class="math inline">\(i\)</span>-sima colonna di <span class="math inline">\({\bf M}\)</span>.</li>
+<p>I seguenti comandi</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">qnorm</span>(p))</span></code></pre></div>
+<p>restituiscono:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(1/4\)</span></li>
+<li><span class="math inline">\(1/\sqrt{2 \pi}\)</span></li>
+<li>un messaggio di errore</li>
+<li>la mediana di una normale standard</li>
 </ol>
 </div>
 <div id="esercizio-6" class="section level2">
 <h2>Esercizio 6</h2>
-<p>Sia <span class="math inline">\(X\)</span> una variabile casuale uniforme discreta avente supporto sugli interi da <span class="math inline">\(1\)</span> a <span class="math inline">\(365\)</span>. Si assuma che il supporto di <span class="math inline">\(X\)</span> sia associato ad ognuno dei giorni dell’anno (non bisestile); in particolare, <span class="math inline">\(1\)</span> indica il primo Gennaio, mentre <span class="math inline">\(365\)</span> il 31 Dicembre.</p>
-<hr />
+<p>La funzione <span class="math inline">\(f(x)\)</span> è definita come segue</p>
+<p><span class="math display">\[
+f(x) = \frac{e^x - 1}{1 + e^x}.
+\]</span></p>
 <ol style="list-style-type: decimal">
-<li><p>A partire da queste informazioni si imposti uno studio di simulazione basato su <span class="math inline">\(30000\)</span> repliche per stimare la probabilità che in un gruppo di <span class="math inline">\(39\)</span> persone tutte siano nate in giorni diversi.</p></li>
-<li><p>Si stimi la probabilità dell’evento al punto precedente sotto l’ipotesi che nei primi <span class="math inline">\(35\)</span> giorni dell’anno la probabilità di nascere sia doppia rispetto agli altri giorni dell’anno; si utilizzi lo stesso numero di repliche del punto precedente.</p></li>
+<li><p>Si scriva in <strong>R</strong> la funzione <code>f(x)</code> associata ad <span class="math inline">\(f(x)\)</span>.</p></li>
+<li><p>Si calcoli il valore di <span class="math inline">\(f(x)\)</span> nel punto <span class="math inline">\(x = 4\)</span>.</p></li>
+<li><p>Si approssimi il valore di <span class="math inline">\(f(4)\)</span> alla seconda cifra decimale utilizzando il comando <strong>R</strong> appropriato.</p></li>
+<li><p>Si faccia il grafico di <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((-2, 4)\)</span>.</p></li>
+<li><p>Si calcolino i valori delle seguenti sommatorie: <span class="math display">\[\sum_{k=5}^{10} \frac{e^k - 1}{1 + e^k},\]</span> <span class="math display">\[\sum_{k=5}^{100} \frac{e^k - 1}{1 + e^k}.\]</span></p></li>
+<li><p>Utilizzando la funzione <code>integrate</code> di <strong>R</strong>, si calcoli numericamente il valore dell’integrale</p></li>
 </ol>
+<p><span class="math display">\[
+\int_1^4\frac{e^x - 1}{1 + e^x} \mathrm{d}x.
+\]</span></p>
 </div>
 <div id="esercizio-7" class="section level2">
 <h2>Esercizio 7</h2>
-<p>È noto che per generare numeri pseudo-casuali da una variabile casuale continua <span class="math inline">\(Z\)</span> è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo <span class="math inline">\([0,1]\)</span>.</p>
-<p>Infatti, si ha <span class="math inline">\(z_\text{pc} = F^{-1}_Z(u_\text{pc})\)</span> in cui <span class="math inline">\(z_\text{pc}\)</span> è un numero pseudo-casuale da <span class="math inline">\(Z\)</span>, <span class="math inline">\(u_\text{pc}\)</span> è un numero pseudo-casuale da una variabile casuale uniforme in <span class="math inline">\([0,1]\)</span> e <span class="math inline">\(F^{−1}_Z(\cdot)\)</span> è l’inversa della funzione di ripartizione di <span class="math inline">\(Z\)</span>, ovvero la funzione quantile.</p>
-<p>Si supponga che <span class="math inline">\(Z\)</span> sia una variabile casuale continua con funzione di ripartizione <span class="math display">\[
-F(z) = \frac{e^z}{1 + e^z}.
-\]</span> Si generino, secondo la definizione <span class="math inline">\(F^{-1}_Z(u_\text{pc})\)</span>, <span class="math inline">\(10000\)</span> numeri pseudo-casuali da <span class="math inline">\(Z\)</span>. Quindi, utilizzando i numeri pseudo-casuali generati al punto precedente, si approssimino:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Il valore atteso <span class="math inline">\(\mathbb{E}(Z)\)</span></li>
-<li>La varianza <span class="math inline">\(\text{var}(Z)\)</span></li>
-<li>La probabilità che <span class="math inline">\(Z\)</span> sia compresa tra <span class="math inline">\(1\)</span> e <span class="math inline">\(2\)</span>.</li>
+<p>Si consideri il dataset di <strong>R</strong> <code>Pima.te</code> presente nella libreria <code>MASS</code>. Se ne consulti la documentazione per ulteriori informazioni.</p>
+<ol style="list-style-type: decimal">
+<li><p>Quante osservazioni sono contenute nel dataset <code>Pima.te</code>? Quante variabili sono presenti?</p></li>
+<li><p>Si calcoli la media aritmetica della pressione sanguigna (variabile <code>bp</code>).</p></li>
+<li><p>La variabile <code>bmi</code> rappresenta il “body mass index”. Si crei la variabile <code>bmi_log</code>, contenente il logaritmo della variabile <code>bmi</code>. Si ottenga un istogramma di <code>bmi_log</code>, scegliendo opportunamente il numero di intervalli.</p></li>
+<li><p>Si scriva la funzione <strong>R</strong> <code>asym(x)</code> che calcola il coefficiente di asimmetria secondo Pearson, definito come <span class="math display">\[
+\gamma = \frac{1}{\text{sqm}(x)^3} \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^3,\]</span> per dei dati <span class="math inline">\(x_1,\dots,x_n\)</span> aventi media <span class="math inline">\(\bar{x}\)</span>. Per calcolare lo scarto quadratico medio <span class="math inline">\(\text{sqm(x)}\)</span> si faccia uso della funzione <code>sd</code>.</p></li>
+<li><p>Si calcoli il coefficiente di asimmetria secondo Pearson per le variabili <code>bmi</code> e <code>bmi_log</code>. Quale delle due variabili risulta maggiormente asimmetrica?</p></li>
+<li><p>È ragionevole supporre i dati della variabile <code>bmi</code> provengano una distribuzione gaussiana? E i dati di <code>bmi_log</code>? Si risponda tramite strumenti grafici.</p></li>
+<li><p>Si creino le variabili <code>bmi_yes</code> e <code>bmi_no</code>, contenenti rispettivamente i valori della variabile <code>bmi</code> per le donne aventi il diabete (<code>type</code> = <code>Yes</code>) e per le donne <strong>non</strong> aventi il diabete (<code>type</code> = <code>No</code>).</p></li>
+<li><p>Si confrontino le funzioni di ripartizioni empiriche delle variabili <code>bmi_yes</code> e <code>bmi_no</code>. Inoltre, si calcolino media e mediana delle variabili <code>bmi_yes</code> e <code>bmi_no</code>.</p></li>
 </ol>
 </div>
 <div id="esercizio-8" class="section level2">
 <h2>Esercizio 8</h2>
-<p>Nel file <code>auto.txt</code> disponibile al link <a href="https://tommasorigon.github.io/introR/data/auto.txt">https://tommasorigon.github.io/introR/data/auto.txt</a> si riportano dati relativi ad alcuni modelli di autobili presenti in commercio negli Stati Uniti tra il 1973 e il 1974. Le variabili presenti nell’insieme di dati fornito sono</p>
+<p>Se <span class="math inline">\(x_1,\dots,x_n\)</span> sono un campione casuale semplice (iid) con numerosità <span class="math inline">\(n\)</span> tratto da una distribuzione <span class="math inline">\(\text{Ga}(\alpha,\lambda)\)</span>, allora la funzione di <strong>log-verosimiglianza</strong> è pari a</p>
+<p><span class="math display">\[
+\ell(x;\alpha, \lambda) = \sum_{i=1}^n\log{f(x_i; \alpha, \lambda)}, \qquad  f(x; \alpha, \lambda) = \frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}.
+\]</span> Se <span class="math inline">\(\alpha\)</span> è noto, allora la stima di massima verosimiglianza per <span class="math inline">\(\lambda\)</span> è pari a <span class="math display">\[\hat{\lambda} = \frac{n \alpha}{\sum_{i=1}^n x_i}.\]</span> Si supponga di aver osservato le seguenti <span class="math inline">\(6\)</span> osservazioni da una distribuzione gamma di parametri <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\lambda &gt; 0\)</span>. Il parametro <span class="math inline">\(\lambda\)</span> è ignoto e siamo interessati ad una sua stima.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vettore delle osservazioni</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1499496</span>, <span class="fl">5.0539201</span>, <span class="fl">3.1207749</span>, <span class="fl">1.4512639</span>, <span class="fl">3.8040806</span>, <span class="fl">1.6647759</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
-<li><code>mpg</code>: consumo (miglia / galloni)</li>
-<li><code>cyl</code>: numero di cilindri</li>
-<li><code>disp</code>: cilindrata (pollici cubici)</li>
-<li><code>hp</code>: cavalli</li>
-<li><code>drat</code>: rapporto ase posteriore/anteriore</li>
-<li><code>wt</code>: peso (in libbre)</li>
-<li><code>qsec</code>: tempo a percorrere 1/4 di miglio con partenza da fermo</li>
-<li><code>vs</code>: disposizione dei cilindri (<code>0</code> = a V, <code>1</code> = in linea)</li>
-<li><code>am</code>: cambio (<code>0</code> = automatico, <code>1</code> = manuale)</li>
-<li><code>gear</code>: numero di marce</li>
-<li><code>carb</code>: numero di carburatori</li>
-</ol>
-<hr />
-<p>Una volta caricati i dati in <strong>R</strong>:</p>
-<ol style="list-style-type: decimal">
-<li><p>Indicare la classe dell’oggetto importato.</p></li>
-<li><p>Indicare il numero di righe e colonne dell’oggetto importato.</p></li>
-<li><p>Indicare la classe della variabile <code>vs</code>: se diversa da <code>factor</code>, convertirla e rinominare opportunamente i livelli come <code>V</code> e <code>Linea</code>.</p></li>
-<li><p>Calcolare le frequenze relative di <code>cyl</code> condizionate a <code>gear=3</code>.</p></li>
-<li><p>Dire se è corretto affermare che “il <span class="math inline">\(60\)</span>-simo percentile della distribuzione dei cavalli delle auto con disposizione dei cilindri a V è maggiore rispetto al numero medio di cavalli delle auto con disposizione dei cilindri in linea”.</p></li>
+<li><p>Si ottenga la stima di massima verosimiglianza per <span class="math inline">\(\lambda\)</span> con i dati a disposizione e supponendo <span class="math inline">\(\alpha = 2\)</span>.</p></li>
+<li><p>Si scriva una funzione <strong>R</strong> <code>loglik(x, alpha, lambda)</code> che calcola la funzione di log-verosimiglianza.</p></li>
+<li><p>Si ottenga il valore della log-verosimiglianza <span class="math inline">\(\ell(x; 2, 1)\)</span>. Si verifichi che tale valore è minore di <span class="math inline">\(\ell(x; 2, \hat{\lambda})\)</span> e se ne spieghi il motivo.</p></li>
+<li><p>Si “verifichi” tramite simulazione la <strong>consistenza</strong> dello stimatore di massima verosimiglianza per <span class="math inline">\(\lambda\)</span>, quando <span class="math inline">\(\alpha\)</span> è noto. Per fare ciò, si ottengano le stime di massima verosimiglianza di <span class="math inline">\(4\)</span> campioni simulati aventi numerosità <span class="math inline">\(n = 100, 500, 1000, 10000\)</span>, campionando da una distribuzione gamma di parametri <span class="math inline">\((\alpha, \lambda) = (2, 1)\)</span>.</p></li>
 </ol>
 </div>
 
