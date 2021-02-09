@@ -95,6 +95,8 @@ summary(bmi_no)
 # Caricamento dei dati in memoria
 x <- c(2.1499496, 5.0539201, 3.1207749, 1.4512639, 3.8040806, 1.6647759)
 
+# Nel testo dell'esame era erroneamente scritto n = 5 mentre, ovviamente, n = 6. Nei rari casi in cui questo ha causato confusione, ho corretto manualmente il codice inviatomi e assegnato il punteggio pieno. 
+
 # 8.1
 alpha <- 2
 lambda_hat <- alpha / mean(x)
