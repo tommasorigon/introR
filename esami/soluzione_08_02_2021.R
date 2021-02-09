@@ -66,13 +66,13 @@ asym(bmi_log) # 0.06305837
 # 7.6
 qqnorm(bmi)
 qqline(bmi)
-# L'assunzione di normalità per la variabile bmi non sembra essere verificata
+# L'assunzione di normalità per la variabile bmi sembra NON essere verificata
 
 qqnorm(bmi_log)
 qqline(bmi_log)
 # L'assunzione di normalità per la variabile bmi_log sembra essere ragionevole
 
-# Nota: alcuni studenti hanno sovrapposto la densità di una gaussiana (con opportuna media e varianza) all'istogramma dei dati. Tale strategia è stata considerata valida, sebbene leggermente meno appropriata di qqplot, il cui scopo esplicito è verificare la somiglianza tra i dati ed una specifica distribuzione. 
+# Nota: alcuni studenti hanno sovrapposto la densità di una gaussiana (con opportuna media e varianza) all'istogramma dei dati. Tale strategia è stata considerata valida (= punteggio pieno), sebbene leggermente meno appropriata di qqplot, il cui scopo esplicito è verificare la somiglianza tra i dati ed una specifica distribuzione. 
 
 # 7.7
 bmi_yes <- bmi[Pima.te$type == "Yes"]
@@ -95,7 +95,7 @@ summary(bmi_no)
 # Caricamento dei dati in memoria
 x <- c(2.1499496, 5.0539201, 3.1207749, 1.4512639, 3.8040806, 1.6647759)
 
-# Nel testo dell'esame era erroneamente scritto n = 5 mentre, ovviamente, n = 6. Nei rari casi in cui questo ha causato confusione, ho corretto manualmente il codice inviatomi e assegnato il punteggio pieno. 
+# Nel testo dell'esame era erroneamente scritto n = 5 mentre, ovviamente, si ha che n = 6. Nei rari casi in cui questo ha causato confusione, ho corretto manualmente il codice inviatomi e assegnato il punteggio pieno. 
 
 # 8.1
 alpha <- 2
