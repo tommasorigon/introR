@@ -22,6 +22,8 @@ curve(f, -2, 4)
 sum(f(5:10)) # 5.978839
 sum(f(5:100)) # 95.97879
 
+# Qualche studente ha utilizzato dei cicli "for" per ottenere la risposta. Sono stati assegnati alcuni punti ugualmente, ma non il punteggio pieno. 
+
 # 6.6
 integrate(f, 1, 4) # 2.409776 with absolute error < 2.7e-14
 
