@@ -4,27 +4,27 @@
 # Domanda 6
 # ----------------------------------------
 
-# 6.1
+# 1.1
 f <- function(x) {
   (exp(x) - 1) / (1 + exp(x))
 }
 
-# 6.2
+# 1.2
 f(4) # 0.9640276
 
-# 6.3
+# 1.3
 round(f(4), 2) # 0.96
 
-# 6.4
+# 1.4
 curve(f, -2, 4)
 
-# 6.5
+# 1.5
 sum(f(5:10)) # 5.978839
 sum(f(5:100)) # 95.97879
 
 # Qualche studente ha utilizzato dei cicli "for" per ottenere la risposta. Sono stati assegnati alcuni punti ugualmente, ma non il punteggio pieno. 
 
-# 6.6
+# 1.6
 integrate(f, 1, 4) # 2.409776 with absolute error < 2.7e-14
 
 # ----------------------------------------
@@ -38,32 +38,32 @@ data(Pima.te)
 # Per accedere alla documentazione
 # ? Pima.te
 
-# 7.1
+# 2.1
 str(Pima.te) # 'data.frame':	332 obs. of  8 variables:
 # In realtà, può essere sufficiente guardare nella casella inferiore del "global environment"
 
-# 7.2
+# 2.2
 mean(Pima.te$bp) # 71.65361
 
-# 7.3
+# 2.3
 bmi <- Pima.te$bmi
 bmi_log <- log(Pima.te$bmi)
 
 hist(bmi_log) # Utilizzo il numero di intervalli di default
 
-# 7.4
+# 2.4
 asym <- function(x) {
   mean((x - mean(x))^3) / sd(x)^3
 }
 # Questa è l'implementazione più concisa. Variazioni sul tema sono state accettate ugualmente.
 
 
-# 7.5
+# 2.5
 asym(bmi) # 0.7980727
 asym(bmi_log) # 0.06305837
 # La variabile bmi risulta pertanto maggiormente asimmetrica
 
-# 7.6
+# 2.6
 qqnorm(bmi)
 qqline(bmi)
 # L'assunzione di normalità per la variabile bmi sembra NON essere verificata
@@ -74,11 +74,11 @@ qqline(bmi_log)
 
 # Nota: alcuni studenti hanno sovrapposto la densità di una gaussiana (con opportuna media e varianza) all'istogramma dei dati. Tale strategia è stata considerata valida (= punteggio pieno), sebbene leggermente meno appropriata di qqplot, il cui scopo esplicito è verificare la somiglianza tra i dati ed una specifica distribuzione. 
 
-# 7.7
+# 2.7
 bmi_yes <- bmi[Pima.te$type == "Yes"]
 bmi_no <- bmi[Pima.te$type == "No"]
 
-# 7.8
+# 2.8
 
 # Funzioni di ripartizione empiriche
 plot(ecdf(bmi_yes))
@@ -97,22 +97,22 @@ x <- c(2.1499496, 5.0539201, 3.1207749, 1.4512639, 3.8040806, 1.6647759)
 
 # Nel testo dell'esame era erroneamente scritto n = 5 mentre, ovviamente, si ha che n = 6. Nei rari casi in cui questo ha causato confusione, ho corretto manualmente il codice inviatomi e assegnato il punteggio pieno. 
 
-# 8.1
+# 3.1
 alpha <- 2
 lambda_hat <- alpha / mean(x)
 lambda_hat # 0.6958634
 
-# 8.2
+# 3.2
 loglik <- function(x, alpha, lambda) {
   sum(dgamma(x, alpha, lambda, log = TRUE))
 }
 
-# 8.3
+# 3.3
 loglik(x, 2, 1) # -11.50288
 loglik(x, 2, lambda_hat) # -10.60933
 # Per definizione, la stima di massima verosimiglianza è il valore che rende massima la funzione di verosimiglianza.
 
-# 8.4
+# 3.4
 
 # Nota: alcuni studenti hanno fornito soluzioni "alternative" a quella seguente, basandosi sulla convergenza dell'MSE. Quest'ultimo approccio è stato considerato come corretto, ma non è riportato nel seguito. 
 

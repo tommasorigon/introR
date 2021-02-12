@@ -37,101 +37,6 @@
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    background-color: #ffffff;
-    color: #a0a0a0;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
-div.sourceCode
-  { color: #1f1c1b; background-color: #ffffff; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span { color: #1f1c1b; } /* Normal */
-code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
-code span.an { color: #ca60ca; } /* Annotation */
-code span.at { color: #0057ae; } /* Attribute */
-code span.bn { color: #b08000; } /* BaseN */
-code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #924c9d; } /* Char */
-code span.cn { color: #aa5500; } /* Constant */
-code span.co { color: #898887; } /* Comment */
-code span.cv { color: #0095ff; } /* CommentVar */
-code span.do { color: #607880; } /* Documentation */
-code span.dt { color: #0057ae; } /* DataType */
-code span.dv { color: #b08000; } /* DecVal */
-code span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code span.fl { color: #b08000; } /* Float */
-code span.fu { color: #644a9b; } /* Function */
-code span.im { color: #ff5500; } /* Import */
-code span.in { color: #b08000; } /* Information */
-code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code span.op { color: #1f1c1b; } /* Operator */
-code span.ot { color: #006e28; } /* Other */
-code span.pp { color: #006e28; } /* Preprocessor */
-code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
-code span.sc { color: #3daee9; } /* SpecialChar */
-code span.ss { color: #ff5500; } /* SpecialString */
-code span.st { color: #bf0303; } /* String */
-code span.va { color: #0057ae; } /* Variable */
-code span.vs { color: #bf0303; } /* VerbatimString */
-code span.wa { color: #bf0303; } /* Warning */
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
 <style type="text/css">
@@ -348,85 +253,8 @@ div.tocify {
 </div>
 
 
-<div id="esercizio-1" class="section level2">
-<h2>Esercizio 1</h2>
-<p>Si considerino i seguenti comandi</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>M[, <span class="dv">1</span>] <span class="ot">&lt;-</span> x</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>M[, <span class="dv">2</span>] <span class="ot">&lt;-</span> y</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>, ] <span class="sc">*</span> M[<span class="dv">2</span>, ]</span></code></pre></div>
-<p>L’ultimo comando restituisce:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Un messaggio di errore.</li>
-<li>Lo scalare <code>14</code></li>
-<li>Un vettore i cui elementi sono <code>4</code>, <code>6</code>.</li>
-<li>Un vettore i cui elementi sono <code>2</code>, <code>12</code>.</li>
-</ol>
-</div>
-<div id="esercizio-2" class="section level2">
-<h2>Esercizio 2</h2>
-<p>Sia <span class="math inline">\(x\)</span> un vettore di lunghezza <span class="math inline">\(n\)</span>. Si consideri la seguente sequenza di comandi:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<p>Il risultato è</p>
-<ol style="list-style-type: lower-alpha">
-<li>La media aritmetica di <span class="math inline">\(x^2\)</span></li>
-<li><code>1</code></li>
-<li><span class="math inline">\(n^2\)</span></li>
-<li>Il quadrato della norma euclidea di <span class="math inline">\(x\)</span></li>
-</ol>
-</div>
-<div id="esercizio-3" class="section level2">
-<h2>Esercizio 3</h2>
-<p>Sia <span class="math inline">\(x\)</span> un vettore di lunghezza <span class="math inline">\(69\)</span> a valori positivi. I due comandi elencati di seguito</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">sqrt</span>(x)) <span class="sc">%*%</span> <span class="fu">sqrt</span>(x)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
-<p>restituiscono:</p>
-<ol style="list-style-type: lower-alpha">
-<li>La radice quadrata della norma euclidea di <span class="math inline">\(x\)</span>.</li>
-<li>Risultati uguali</li>
-<li>Due vettori</li>
-<li>Risultati che, in valore assoluto, sono proporzionali alla radice quadrata di <span class="math inline">\(x\)</span></li>
-</ol>
-</div>
-<div id="esercizio-4" class="section level2">
-<h2>Esercizio 4</h2>
-<p>Siano <code>n = 94</code> e <code>n.norm = 7</code>. La sequenza di comandi</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.norm)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rchisq</span>(<span class="dv">1</span>, <span class="at">df =</span> n)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> (y <span class="sc">/</span> n)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
-<p>restituisce:</p>
-<ol style="list-style-type: lower-alpha">
-<li>93 numeri pseudocasuali, ciascuno da una variabile chi-quadrato con 1 grado di libertà.</li>
-<li>7 numeri pseudocasuali, ciascuno da una variabile T di student con 94 gradi di libertà.</li>
-<li>Un numero pseudocasuale da una variabile chi-quadrato con 94 gradi di libertà.</li>
-<li>Un numero pseudocasuale da una variabile chi-quadrato con 93 gradi di libertà.</li>
-</ol>
-</div>
-<div id="esercizio-5" class="section level2">
-<h2>Esercizio 5</h2>
-<p>Sia <span class="math inline">\({\bf M}\)</span> una matrice di dimensione <span class="math inline">\(n \times n\)</span>. Si considerino le seguenti istruzioni</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n, <span class="at">mode =</span> <span class="st">&quot;numeric&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n, <span class="at">mode =</span> <span class="st">&quot;numeric&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    res1[k] <span class="ot">&lt;-</span> res1[k] <span class="sc">+</span> M[j, k]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    res2[j] <span class="ot">&lt;-</span> res2[j] <span class="sc">+</span> M[k, j]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Indicare quale affermazione è corretta:</p>
-<ol style="list-style-type: lower-alpha">
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è, rispettivamente, la somma dell’<span class="math inline">\(i\)</span>-sima colonna e dell’<span class="math inline">\(i\)</span>-sima riga di <span class="math inline">\({\bf M}\)</span>.</li>
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è, rispettivamente, la somma dell’<span class="math inline">\(i\)</span>-sima riga e dell’<span class="math inline">\(i\)</span>-sima colonna di <span class="math inline">\({\bf M}\)</span>.</li>
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è la somma dell’<span class="math inline">\(i\)</span>-sima riga di <span class="math inline">\({\bf M}\)</span>.</li>
-<li>L’<span class="math inline">\(i\)</span>-simo elemento di <code>res1</code> e <code>res2</code> è la somma dell’<span class="math inline">\(i\)</span>-sima colonna di <span class="math inline">\({\bf M}\)</span>.</li>
-</ol>
-</div>
-<div id="esercizio-6" class="section level2">
-<h2>Esercizio 6</h2>
+<div id="problema-1" class="section level2">
+<h2>Problema 1</h2>
 <p>Sia <span class="math inline">\(X\)</span> una variabile casuale uniforme discreta avente supporto sugli interi da <span class="math inline">\(1\)</span> a <span class="math inline">\(365\)</span>. Si assuma che il supporto di <span class="math inline">\(X\)</span> sia associato ad ognuno dei giorni dell’anno (non bisestile); in particolare, <span class="math inline">\(1\)</span> indica il primo Gennaio, mentre <span class="math inline">\(365\)</span> il 31 Dicembre.</p>
 <hr />
 <ol style="list-style-type: decimal">
@@ -434,8 +262,8 @@ div.tocify {
 <li><p>Si stimi la probabilità dell’evento al punto precedente sotto l’ipotesi che nei primi <span class="math inline">\(35\)</span> giorni dell’anno la probabilità di nascere sia doppia rispetto agli altri giorni dell’anno; si utilizzi lo stesso numero di repliche del punto precedente.</p></li>
 </ol>
 </div>
-<div id="esercizio-7" class="section level2">
-<h2>Esercizio 7</h2>
+<div id="problema-2" class="section level2">
+<h2>Problema 2</h2>
 <p>È noto che per generare numeri pseudo-casuali da una variabile casuale continua <span class="math inline">\(Z\)</span> è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo <span class="math inline">\([0,1]\)</span>.</p>
 <p>Infatti, si ha <span class="math inline">\(z_\text{pc} = F^{-1}_Z(u_\text{pc})\)</span> in cui <span class="math inline">\(z_\text{pc}\)</span> è un numero pseudo-casuale da <span class="math inline">\(Z\)</span>, <span class="math inline">\(u_\text{pc}\)</span> è un numero pseudo-casuale da una variabile casuale uniforme in <span class="math inline">\([0,1]\)</span> e <span class="math inline">\(F^{−1}_Z(\cdot)\)</span> è l’inversa della funzione di ripartizione di <span class="math inline">\(Z\)</span>, ovvero la funzione quantile.</p>
 <p>Si supponga che <span class="math inline">\(Z\)</span> sia una variabile casuale continua con funzione di ripartizione <span class="math display">\[
@@ -447,8 +275,8 @@ F(z) = \frac{e^z}{1 + e^z}.
 <li>La probabilità che <span class="math inline">\(Z\)</span> sia compresa tra <span class="math inline">\(1\)</span> e <span class="math inline">\(2\)</span>.</li>
 </ol>
 </div>
-<div id="esercizio-8" class="section level2">
-<h2>Esercizio 8</h2>
+<div id="problema-3" class="section level2">
+<h2>Problema 3</h2>
 <p>Nel file <code>auto.txt</code> disponibile al link <a href="https://tommasorigon.github.io/introR/data/auto.txt">https://tommasorigon.github.io/introR/data/auto.txt</a> si riportano dati relativi ad alcuni modelli di autobili presenti in commercio negli Stati Uniti tra il 1973 e il 1974. Le variabili presenti nell’insieme di dati fornito sono</p>
 <ol style="list-style-type: decimal">
 <li><code>mpg</code>: consumo (miglia / galloni)</li>

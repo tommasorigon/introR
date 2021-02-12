@@ -348,77 +348,8 @@ div.tocify {
 </div>
 
 
-<div id="esercizio-1" class="section level2">
-<h2>Esercizio 1</h2>
-<p>Si considerino i seguenti comandi:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">-</span> <span class="fu">mean</span>(x))</span></code></pre></div>
-<p>Questo comando restituisce:</p>
-<ol style="list-style-type: decimal">
-<li>un numero molto vicino a <code>0</code></li>
-<li>la media di <code>x</code></li>
-<li>un indice di variabilità</li>
-<li>la varianza di <code>x</code></li>
-</ol>
-</div>
-<div id="esercizio-2" class="section level2">
-<h2>Esercizio 2</h2>
-<p>Si supponga di voler calcolare la seguente quantità: <span class="math display">\[
-\text{Pr}(X = 7), \qquad X \sim \text{Bin}(10, 1/2),
-\]</span> ovvero la probabilità di ottenere 7 volte croce lanciando 10 volte una moneta. Il comando per ottenere tale quantità in <strong>R</strong> è:</p>
-<ol style="list-style-type: decimal">
-<li><code>pbinom(7, 10, 1/2)</code></li>
-<li><code>dbinom(7, 10, 1/2)</code></li>
-<li><code>qbinom(1/10, 7, 1/2)</code></li>
-<li><code>sample(10, 7, 1/2)</code></li>
-</ol>
-</div>
-<div id="esercizio-3" class="section level2">
-<h2>Esercizio 3</h2>
-<p>I seguenti comandi di <strong>R</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, pi), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">9</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">crossprod</span>(x, y)</span></code></pre></div>
-<p>restituiscono:</p>
-<ol style="list-style-type: decimal">
-<li>il numero reale <span class="math inline">\(\sum_{i=1}^5x_iy_i\)</span></li>
-<li>una matrice di dimensione <span class="math inline">\(5 \times 5\)</span></li>
-<li>un vettore di dimensione <span class="math inline">\(5\)</span></li>
-<li>un messaggio di errore</li>
-<li>le rispettive somme di <code>x</code> ed <code>y</code></li>
-</ol>
-</div>
-<div id="esercizio-4" class="section level2">
-<h2>Esercizio 4</h2>
-<p>I seguenti comandi</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">p =</span> <span class="dv">2</span>) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> x<span class="sc">^</span>p</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">power</span>(<span class="dv">2</span>)</span></code></pre></div>
-<p>restituiscono:</p>
-<ol style="list-style-type: decimal">
-<li>nessun risultato</li>
-<li><span class="math inline">\(16\)</span></li>
-<li><span class="math inline">\(64\)</span></li>
-<li>un messaggio d’errore</li>
-<li><span class="math inline">\(4\)</span></li>
-</ol>
-</div>
-<div id="esercizio-5" class="section level2">
-<h2>Esercizio 5</h2>
-<p>I seguenti comandi</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">qnorm</span>(p))</span></code></pre></div>
-<p>restituiscono:</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(1/4\)</span></li>
-<li><span class="math inline">\(1/\sqrt{2 \pi}\)</span></li>
-<li>un messaggio di errore</li>
-<li>la mediana di una normale standard</li>
-</ol>
-</div>
-<div id="esercizio-6" class="section level2">
-<h2>Esercizio 6</h2>
+<div id="problema-1" class="section level2">
+<h2>Problema 1</h2>
 <p>La funzione <span class="math inline">\(f(x)\)</span> è definita come segue</p>
 <p><span class="math display">\[
 f(x) = \frac{e^x - 1}{1 + e^x}.
@@ -435,8 +366,8 @@ f(x) = \frac{e^x - 1}{1 + e^x}.
 \int_1^4\frac{e^x - 1}{1 + e^x} \mathrm{d}x.
 \]</span></p>
 </div>
-<div id="esercizio-7" class="section level2">
-<h2>Esercizio 7</h2>
+<div id="problema-2" class="section level2">
+<h2>Problema 2</h2>
 <p>Si consideri il dataset di <strong>R</strong> <code>Pima.te</code> presente nella libreria <code>MASS</code>. Se ne consulti la documentazione per ulteriori informazioni.</p>
 <ol style="list-style-type: decimal">
 <li><p>Quante osservazioni sono contenute nel dataset <code>Pima.te</code>? Quante variabili sono presenti?</p></li>
@@ -450,14 +381,14 @@ f(x) = \frac{e^x - 1}{1 + e^x}.
 <li><p>Si confrontino le funzioni di ripartizioni empiriche delle variabili <code>bmi_yes</code> e <code>bmi_no</code>. Inoltre, si calcolino media e mediana delle variabili <code>bmi_yes</code> e <code>bmi_no</code>.</p></li>
 </ol>
 </div>
-<div id="esercizio-8" class="section level2">
-<h2>Esercizio 8</h2>
+<div id="problema-3" class="section level2">
+<h2>Problema 3</h2>
 <p>Se <span class="math inline">\(x_1,\dots,x_n\)</span> sono un campione casuale semplice (iid) con numerosità <span class="math inline">\(n\)</span> tratto da una distribuzione <span class="math inline">\(\text{Ga}(\alpha,\lambda)\)</span>, allora la funzione di <strong>log-verosimiglianza</strong> è pari a</p>
 <p><span class="math display">\[
 \ell(x;\alpha, \lambda) = \sum_{i=1}^n\log{f(x_i; \alpha, \lambda)}, \qquad  f(x; \alpha, \lambda) = \frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}.
 \]</span> Se <span class="math inline">\(\alpha\)</span> è noto, allora la stima di massima verosimiglianza per <span class="math inline">\(\lambda\)</span> è pari a <span class="math display">\[\hat{\lambda} = \frac{n \alpha}{\sum_{i=1}^n x_i}.\]</span> Si supponga di aver osservato le seguenti <span class="math inline">\(6\)</span> osservazioni da una distribuzione gamma di parametri <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\lambda &gt; 0\)</span>. Il parametro <span class="math inline">\(\lambda\)</span> è ignoto e siamo interessati ad una sua stima.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vettore delle osservazioni</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1499496</span>, <span class="fl">5.0539201</span>, <span class="fl">3.1207749</span>, <span class="fl">1.4512639</span>, <span class="fl">3.8040806</span>, <span class="fl">1.6647759</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vettore delle osservazioni</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1499496</span>, <span class="fl">5.0539201</span>, <span class="fl">3.1207749</span>, <span class="fl">1.4512639</span>, <span class="fl">3.8040806</span>, <span class="fl">1.6647759</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Si ottenga la stima di massima verosimiglianza per <span class="math inline">\(\lambda\)</span> con i dati a disposizione e supponendo <span class="math inline">\(\alpha = 2\)</span>.</p></li>
 <li><p>Si scriva una funzione <strong>R</strong> <code>loglik(x, alpha, lambda)</code> che calcola la funzione di log-verosimiglianza.</p></li>
