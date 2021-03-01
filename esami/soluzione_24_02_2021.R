@@ -68,7 +68,7 @@ rzipf <- function(R, n, alpha) {
   sample(1:n, size = R, prob = dzipf(1:n, n, alpha), replace = TRUE)
 }
 
-# Non richiesto, ma per verificare che tutto funzioni
+# Non richiesto, ma per verificare che tutto funzioni si potevano usare i comandi:
 set.seed(123)
 rzipf(R = 10, n, alpha) # 1 3 1 5 9 1 1 5 1 1
 
