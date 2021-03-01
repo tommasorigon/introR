@@ -1,6 +1,6 @@
 # Esame 24 Febbraio 2021
 
-# Il seguente file costituisce uno schema di una possibile soluzione.
+# Il seguente file costituisce uno SCHEMA di una possibile soluzione.
 
 # ----------------------------------------
 # Domanda 1
@@ -12,7 +12,7 @@ stirling2 <- function(n, k) {
   1 / factorial(k) * sum((-1)^(k - idx) * choose(k, idx) * idx^n)
 }
 
-# Questa soluzione basata sui cicli for era accettabile
+# Questa soluzione basata sui "cicli for" è accettabile
 Bell <- function(n, k) {
   stirlings2 <- numeric(n)
   for (k in 1:n) {
@@ -21,7 +21,7 @@ Bell <- function(n, k) {
   sum(stirlings2)
 }
 
-# Soluzione "elegante", NON richiesta
+# Soluzione "elegante", sebbene NON richiesta
 stirling2 <- Vectorize(stirling2, vectorize.args = "k") # Questo comando è cruciale, altrimenti si ottiene un valore negativo (privo di ogni senso)
 Bell <- function(n){
   sum(stirling2(n, 1:n))
@@ -117,6 +117,8 @@ prop.table(tab, 2)
 #  n 0.05882353 0.45454545 0.41666667
 #  y 0.94117647 0.54545455 0.58333333
 
+# I suggeriscono che la somministrazione del farmaco ha un effetto sui pazienti.
+
 # 3.4
 levels(bacteria2$trt) <- c("placebo", "drug_and_drug+", "drug_and_drug+")
 tab <- table(bacteria2$y, bacteria2$trt)
@@ -132,3 +134,5 @@ prop.table(tab, 2)
 #       placebo drug_and_drug+
 #  n 0.05882353     0.43478261
 #  y 0.94117647     0.56521739
+
+# I risultati confermano che la sommonistrazione del farmaco ha un effetto sui pazienti.
