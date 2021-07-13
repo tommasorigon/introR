@@ -31,6 +31,9 @@ hist(sim)
 # Domanda 2
 # ----------------------------------------
 
+# Le variabili aleatorie binarie coinvolte sono indipendenti tra loro ma NON identicamente distribuite
+# Di conseguenza, la loro somma NON segue una distribuzione binomiale!
+
 # 2.1 (4pt)
 rS1 <- function(n, alpha){
   probs <- alpha / (alpha + (2:n) - 1)
