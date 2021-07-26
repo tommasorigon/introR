@@ -4,8 +4,8 @@
 
 # 1.1 (5pt)
 set.seed(123)
-R <- 10^6 # In questo caso è talmente veloce che uso un numero R elevato per aumentare la precisione
-X <- rexp(R, 2) # Attenzione che il parametro dell'esponenziale è "rate", non la media
+R <- 10^6 # In questo caso l'esecuzione è talmente rapida che posso usare un numero R elevato, per aumentare la precisione
+X <- rexp(R, 2) # Attenzione che il parametro della funzione rexp è "rate", non la media.
 Y <- rpois(R, exp(X / 4))
 mean(Y^2) # 2.476926
 
@@ -62,6 +62,7 @@ abline(h = theta)
 # Domanda 3
 # ----------------------------------------
 
+# In alternativa al comando seguente, era possibile scaricare il file in locale.
 dataset <- read.table("https://tommasorigon.github.io/introR/data/province.csv", header = TRUE)
 
 # 3.1 (1pt)
