@@ -23,7 +23,7 @@
 # 1. Si ottenga un indice di bontà di adattamento ai dati della curva ottenuta e lo si interpreti nel contesto del problema.
 
 rm(list=ls())
-forbes <- read.table("https://tommasorigon.github.io/introR/data/forbes.csv", header=T, sep = ",")
+forbes <- read.table("https://tommasorigon.github.io/introR/data/forbes2.csv", header = TRUE, sep = ",")
 head(forbes)
 dim(forbes)
 colnames(forbes) <- c("TempF", "Pressione")
