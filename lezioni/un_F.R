@@ -22,11 +22,12 @@
 # 
 # 1. Si ottenga un indice di bontà di adattamento ai dati della curva ottenuta e lo si interpreti nel contesto del problema.
 
+rm(list=ls())
+forbes <- read.table("https://tommasorigon.github.io/introR/data/forbes.csv", header=T, sep = ",")
+head(forbes)
+dim(forbes)
+colnames(forbes) <- c("TempF", "Pressione")
 
-library(MASS)
-data("forbes")
-colnames(forbes)  <- c("Temperatura","Pressione")
-forbes$Temperatura <- (forbes$Temperatura - 32)*5/9
-forbes <- round(forbes,2)
-y <- forbes$Pressione
-x <- forbes$Temperatura
+forbes$TempC <- (forbes$TempF - 32) * 5 / 9 # Da Farenheit a Celsius
+
+
