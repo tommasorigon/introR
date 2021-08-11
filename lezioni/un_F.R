@@ -23,13 +23,17 @@
 # 1. Si ottenga un indice di bontà di adattamento ai dati della curva ottenuta e lo si interpreti nel contesto del problema.
 
 rm(list = ls())
-forbes <- read.table("https://tommasorigon.github.io/introR/data/forbes.csv", header = TRUE, sep = ",")
-head(forbes)
-dim(forbes)
+forbes <- read.table("https://tommasorigon.github.io/introR/data/forbes.csv",
+  header = TRUE, sep = ","
+)
+str(forbes)
+
 colnames(forbes) <- c("TempF", "Pressione")
 
 # Creazione variabile in celsius
-forbes$TempC <- (forbes$TempF - 32) * 5 / 9 # Da Farenheit a Celsius
+forbes$TempC <- round((forbes$TempF - 32) * 5 / 9, 2) # Da Farenheit a Celsius
+
+summary(forbes)
 
 par(mfrow = c(1, 2))
 hist(forbes$TempC, breaks = "sturges")
@@ -40,18 +44,60 @@ hist(forbes$TempC, breaks = breaks)
 mean(forbes$TempC)
 mean(forbes$Pressione)
 
-mean(forbes$TempF)
 32 + 9 / 5 * mean(forbes$TempC)
+mean(forbes$TempF)
+
 
 my_var <- function(x) mean(x^2) - mean(x)^2
 
 my_var(forbes$TempC)
 my_var(forbes$Pressione)
 
-par(mfrow=c(1, 1))
+par(mfrow = c(1, 1))
 plot(forbes$TempC, forbes$Pressione)
 plot(forbes$TempC, forbes$Pressione, pch = 16, xlab = "Temperatura", ylab = "Pressione")
 
-my_cov <- function(x, y) mean(x * y) - mean(x)*mean(y)
+my_cov <- function(x, y) mean(x * y) - mean(x) * mean(y)
+my_cov(forbes$TempC, forbes$Pressione)
+my_cov(forbes$Pressione, forbes$TempC)
+cov(forbes$Pressione, forbes$TempC)
 
-my_cov
+
+my_cov(forbes$TempC, forbes$Pressione) / sqrt(my_var(forbes$TempC) * my_var(forbes$Pressione))
+cov(forbes$TempC, forbes$Pressione) / sqrt(var(forbes$TempC) * var(forbes$Pressione))
+
+correlation <- cor(forbes$TempC, forbes$Pressione)
+correlation
+
+beta_hat <- my_cov(forbes$TempC, forbes$Pressione) / my_var(forbes$TempC)
+alpha_hat <- mean(forbes$Pressione) - mean(forbes$TempC) * beta_hat
+
+c(alpha_hat, beta_hat)
+
+plot(forbes$TempC, forbes$Pressione, pch = 16, xlab = "Temperatura", ylab = "Pressione")
+abline(a = alpha_hat, b = beta_hat)
+
+x <- seq(from = 90, to = 100, length = 20)
+alpha_hat + beta_hat * x
+alpha_hat + beta_hat * 97
+
+residuals <- forbes$Pressione - (alpha_hat + beta_hat * forbes$TempC)
+residuals
+
+mean(residuals)
+correlation^2
+1 - var(residuals) / var(forbes$Pressione)
+
+lPres <- log(forbes$Pressione)
+Temp <- forbes$TempC
+
+lambda_hat <- cov(lPres, Temp) / var(Temp)
+gamma_hat <- exp(mean(lPres) - mean(Temp) * lambda_hat)
+
+c(gamma_hat, lambda_hat)
+
+gamma_hat * exp(lambda_hat * Temp)
+
+plot(forbes$TempC, forbes$Pressione, pch = 16, xlab = "Temperatura", ylab = "Pressione")
+abline(a = alpha_hat, b = beta_hat)
+curve(gamma_hat * exp(lambda_hat * x), add = TRUE, col = "red")
