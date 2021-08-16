@@ -55,3 +55,6 @@ chi_squared <- function(x, y) {
   f_e <- outer(f_x, f_y)
   n * (sum(ff^2 / f_e) - 1)
 }
+
+chi_squared(titanic$Salvato, titanic$Classe)
+chisq.test(table(titanic))
