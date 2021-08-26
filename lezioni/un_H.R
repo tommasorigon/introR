@@ -63,3 +63,33 @@ runif.wh <- function(n) {
 runif.wh(5)
 
 .current.seed
+
+rbinom.wh <- function(n, size, prob){
+  u <- runif.wh(n)
+  probs <- dbinom(0:size, size = size, prob = prob)
+  breaks <- cumsum(c(0, probs))
+  as.numeric(cut(u, breaks)) - 1 # Converte la variabile "factor" in numeri interi
+}
+
+.current.seed <- c(100, 200, 300)
+rbinom.wh(20, size = 5, prob = 0.5)
+
+rnorm.wh <- function(n, mean, sd){
+  u <- runif.wh(n)
+  qnorm(u, mean = mean, sd = sd)
+}
+
+.current.seed <- c(100, 200, 300)
+rnorm.wh(10, mean = 0, sd = 1)
+
+
+rbinom.wh2 <- function(n, size, prob){
+  u <- runif.wh(n)
+  qbinom(u, size = size, prob = prob)
+}
+
+.current.seed <- c(100, 200, 300)
+rbinom.wh(n = 10, size = 5, prob = 0.5)
+.current.seed <- c(100, 200, 300)
+rbinom.wh2(n = 10, size = 5, prob = 0.5)
+
