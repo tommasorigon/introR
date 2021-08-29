@@ -102,7 +102,7 @@ Gini(bacteria$trt) # 0.6507438
 bacteria2 <- bacteria[bacteria$week == 6, ]
 nrow(bacteria2) # 40
 
-# 3.2
+# 3.3
 tab <- table(bacteria2$y, bacteria2$trt)
 tab
 
@@ -110,7 +110,7 @@ tab
 #  n       1    5     5
 #  y      16    6     7
 
-# 3.3
+# 3.4
 prop.table(tab, 2)
 
 #       placebo       drug      drug+
@@ -119,7 +119,7 @@ prop.table(tab, 2)
 
 # I suggeriscono che la somministrazione del farmaco ha un effetto sui pazienti.
 
-# 3.4
+# 3.5
 levels(bacteria2$trt) <- c("placebo", "drug_and_drug+", "drug_and_drug+")
 tab <- table(bacteria2$y, bacteria2$trt)
 tab
@@ -128,7 +128,6 @@ tab
 #  n       1             10
 #  y      16             13
 
-# 3.3
 prop.table(tab, 2)
 
 #       placebo drug_and_drug+
