@@ -24,7 +24,7 @@ cohenD(rnorm(500, 0, 10), rnorm(2000, 10, 10)) # circa 0.9551635, forte
 
 # 1.5 (4pt)
 set.seed(123)
-sim <- replicate(5000, cohenD(rnorm(500, 0, 10), rnorm(2000, 10, 10)))
+sim <- replicate(1000, cohenD(rnorm(500, 0, 10), rnorm(2000, 10, 10)))
 hist(sim)
 
 # ----------------------------------------
