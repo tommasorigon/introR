@@ -353,19 +353,19 @@ s^2 = \frac{1}{n_x + n_y - 2}\left\{\sum_{i=1}^{n_x}(x_i - \bar{x})^2 + \sum_{i=
 </div>
 <div id="problema-2" class="section level2">
 <h2>Problema 2</h2>
-<p>Si ponga <span class="math inline">\(X_1 = 1\)</span>. Si consideri una sequenza di variabile casuali <strong>binarie ed indipendenti</strong> <span class="math inline">\((X_n)_{n \ge 1}\)</span>, tali per per cui</p>
+<p>Si ponga <span class="math inline">\(X_1 = 1\)</span>. Si consideri una collezione di variabile casuali <strong>binarie ed indipendenti</strong> <span class="math inline">\(X_1,\dots,X_n\)</span>, tali per per cui</p>
 <p><span class="math display">\[
-\text{P}(X_n = 1) = \frac{\alpha}{\alpha + n - 1}, \qquad n \ge 2,
+\text{P}(X_i = 1) = \frac{\alpha}{\alpha + i - 1}, \qquad i = 2,\dots,n,
 \]</span></p>
 <p>dove <span class="math inline">\(\alpha &gt; 0\)</span> è un parametro positivo. Inoltre, si definisca</p>
 <p><span class="math display">\[
-S_n = \sum_{i=1}^nX_i.
-\]</span></p>
+S = \sum_{i=1}^n X_i.
+\]</span> <strong>Nota</strong>. La variabile <span class="math inline">\(S\)</span> <strong>non</strong> si distribuisce come una binomiale, essendo somma di bernoulli con diverse probabilità.</p>
 <ol style="list-style-type: decimal">
-<li><p>(4pt) Si scriva in <strong>R</strong> la funzione <code>rS(R, n, alpha)</code> che simula un <code>R</code> valori pseudo-casuali distribuiti come la variable <span class="math inline">\(S_n\)</span>.</p></li>
-<li><p>(2pt) Utilizzando <span class="math inline">\(n = 100\)</span> e <span class="math inline">\(\alpha = 1\)</span>, si ottenga una stima Monte Carlo del valore atteso <span class="math inline">\(\text{E}(S_n)\)</span>, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
-<li><p>(2pt) Utilizzando <span class="math inline">\(n = 500\)</span> e <span class="math inline">\(\alpha = \pi / 4\)</span>, si ottenga una stima Monte Carlo dell’evento <span class="math inline">\(\text{P}(3 \le S_n \le 5)\)</span>, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
-<li><p>(2pt) 1. Utilizzando <span class="math inline">\(n = 500\)</span> e <span class="math inline">\(\alpha = \sqrt{2}\)</span>, si ottenga una stima Monte Carlo della distribuzione di <span class="math inline">\(S_n\)</span> e se ne faccia un grafico, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
+<li><p>(4pt) Si scriva in <strong>R</strong> la funzione <code>rS(R, n, alpha)</code> che simula un <code>R</code> valori pseudo-casuali distribuiti come la variable <span class="math inline">\(S\)</span>.</p></li>
+<li><p>(2pt) Utilizzando <span class="math inline">\(n = 100\)</span> e <span class="math inline">\(\alpha = 1\)</span>, si ottenga una stima Monte Carlo del valore atteso <span class="math inline">\(\text{E}(S)\)</span>, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
+<li><p>(2pt) Utilizzando <span class="math inline">\(n = 500\)</span> e <span class="math inline">\(\alpha = \pi / 4\)</span>, si ottenga una stima Monte Carlo dell’evento <span class="math inline">\(\text{P}(3 \le S \le 5)\)</span>, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
+<li><p>(2pt) 1. Utilizzando <span class="math inline">\(n = 500\)</span> e <span class="math inline">\(\alpha = \sqrt{2}\)</span>, si ottenga una stima Monte Carlo della distribuzione di <span class="math inline">\(S\)</span> e se ne faccia un grafico, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
 </ol>
 </div>
 <div id="problema-3" class="section level2">
