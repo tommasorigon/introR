@@ -360,7 +360,7 @@ s^2 = \frac{1}{n_x + n_y - 2}\left\{\sum_{i=1}^{n_x}(x_i - \bar{x})^2 + \sum_{i=
 <p>dove <span class="math inline">\(\alpha &gt; 0\)</span> è un parametro positivo. Inoltre, si definisca</p>
 <p><span class="math display">\[
 S = \sum_{i=1}^n X_i.
-\]</span> <strong>Nota</strong>. La variabile <span class="math inline">\(S\)</span> <strong>non</strong> si distribuisce come una binomiale, essendo somma di bernoulli con diverse probabilità.</p>
+\]</span> <strong>Nota</strong>. La variabile <span class="math inline">\(S\)</span> <strong>non</strong> si distribuisce come una binomiale, essendo somma di variabili Bernoulli con probabilità <strong>differenti</strong>.</p>
 <ol style="list-style-type: decimal">
 <li><p>(4pt) Si scriva in <strong>R</strong> la funzione <code>rS(R, n, alpha)</code> che simula un <code>R</code> valori pseudo-casuali distribuiti come la variable <span class="math inline">\(S\)</span>.</p></li>
 <li><p>(2pt) Utilizzando <span class="math inline">\(n = 100\)</span> e <span class="math inline">\(\alpha = 1\)</span>, si ottenga una stima Monte Carlo del valore atteso <span class="math inline">\(\text{E}(S)\)</span>, utilizzando un numero di repliche <code>R</code> appropriato.</p></li>
