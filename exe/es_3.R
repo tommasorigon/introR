@@ -266,14 +266,3 @@ par(mfrow = c(1, 1))
 x <- rsn(10^5, 7)
 hist(x, freq = FALSE, breaks = 100)
 curve(dsn(x, 7), add = TRUE)
-
-# Esercizio M ---------------------------------------
-
-R <- 10^4 # Numero di simulazioni Monte Carlo
-Xbar <- replicate(R, mean(runif(30)))
-
-hist(Xbar) # Istogramma
-qqnorm(Xbar) # QQplot
-qqline(Xbar)
-
-# L'approssimazione Gaussiana sembra essere buona
