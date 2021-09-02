@@ -74,6 +74,18 @@ rbinom.wh <- function(n, size, prob){
 .current.seed <- c(100, 200, 300)
 rbinom.wh(20, size = 5, prob = 0.5)
 
+dice <- 1:6
+
+set.seed(123)
+sample(x = dice, size = 1)
+
+set.seed(140)
+n <- 10
+x <- sample(dice, size = n, replace = TRUE)
+x
+
+sample(dice)
+
 rnorm.wh <- function(n, mean, sd){
   u <- runif.wh(n)
   qnorm(u, mean = mean, sd = sd)
