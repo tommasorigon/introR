@@ -49,7 +49,7 @@ lambda[1] <- 0.005 # Punto iniziale
 n <- length(y)
 sum_y <- sum(y)
 
-for(k in 1:5){
+for (k in 1:5) {
   score <- n / lambda[k] - sum_y
   obs_info <- n / lambda[k]^2
   lambda[k + 1] <- lambda[k] + score / obs_info
@@ -80,7 +80,7 @@ obs_info <- length(y) / lambda_hat^2
 obs_info
 
 optim(
-  par = 1, fn = function(lambda) - loglik(lambda, y), lower = 1e-5,
+  par = 1, fn = function(lambda) -loglik(lambda, y), lower = 1e-5,
   method = "L-BFGS-B", hessian = TRUE
 )
 
