@@ -48,7 +48,7 @@ pnorm(2) - pnorm(1)
 
 
 
-
+curve((cos(50 * x) + sin(20 * x))^2, 0, 1, n = 10000)
 U <- runif(10^6)
 mean((cos(50 * U) + sin(20 * U))^2)
 
