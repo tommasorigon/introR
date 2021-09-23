@@ -1,40 +1,40 @@
-
+rm(list=ls())
 # Gioco 50 volte ai dadi contro il banco
 set.seed(123)
-sample(c(-1, 1), 50, replace = TRUE)
+sample(c(-10, 10), 50, replace = TRUE)
 
-# Calcolo il mio budget cumulato
+# Calcolo il mio guadagno (o perdita) cumulato
 set.seed(123)
-cumsum(sample(c(-1, 1), 50, replace = TRUE))
+cumsum(sample(c(-10, 10), 50, replace = TRUE))
 
 # Un paio di traiettorie di partite
 par(mfrow=c(1,2))
 set.seed(250)
-plot(1:50, cumsum(sample(c(-1, 1), 50, replace = TRUE)), type = "b", xlab = "# Partita", ylab = "Budget")
+plot(1:50, cumsum(sample(c(-10, 10), 50, replace = TRUE)), type = "b", xlab = "# Partita", ylab = "guadagno")
 abline(h = 0, lty = "dotted")
-plot(1:50, cumsum(sample(c(-1, 1), 50, replace = TRUE)), type = "b", xlab = "# Partita", ylab = "Budget")
+plot(1:50, cumsum(sample(c(-10, 10), 50, replace = TRUE)), type = "b", xlab = "# Partita", ylab = "guadagno")
 abline(h = 0, lty = "dotted")
 
 # Ottengo il valore complessivo (una volta sola)
-sum(sample(c(-1, 1), 50, replace = TRUE))
+sum(sample(c(-10, 10), 50, replace = TRUE))
 
 # Ripeto questa operazione R volte
 set.seed(123)
 R <- 10^5
-final_budget <- replicate(R, sum(sample(c(-1, 1), 50, replace = TRUE)))
+final_earning <- replicate(R, sum(sample(c(-10, 10), 50, replace = TRUE)))
 
-# Distribuzione budget finale
+# Distribuzione guadagno finale
 par(mfrow = c(1, 1))
-plot(table(final_budget) / R, xlab = "Budget finale (50 partite)", ylab = "Funzione di probabilità")
+plot(table(final_earning) / R, xlab = "guadagno finale (50 partite)", ylab = "Funzione di probabilità")
 
-# Media del budget finale
-mean(final_budget)
+# Media del guadagno finale
+mean(final_earning)
 
-# Deviazione standard del budget finale
-sd(final_budget)
+# Deviazione standard del guadagno finale
+sd(final_earning)
 
 # Probabilità di vincere, ovvero P(S > 0)
-mean(final_budget > 0)
+mean(final_earning > 0)
 
 # ---------------------------------------
 # Secondo scenario, probabilità non eque (roulette americana )
@@ -44,24 +44,58 @@ p_winning <- 18 / 38
 p_winning
 
 # Ottengo il valore complessivo (una volta sola)
-sum(sample(c(-1, 1), 50, replace = TRUE, prob = c(1 - p_winning, p_winning)))
+sum(sample(c(-10, 10), 50, replace = TRUE, prob = c(1 - p_winning, p_winning)))
 
 # Ripeto questa operazione R volte
 set.seed(123)
 R <- 10^5
-final_budget <- replicate(R, sum(sample(c(-1, 1), 50, replace = TRUE, prob = c(1 - p_winning, p_winning))))
+final_earning <- replicate(R, sum(sample(c(-10, 10), 50, replace = TRUE, prob = c(1 - p_winning, p_winning))))
 
-# Distribuzione budget finale
+# Distribuzione guadagno finale
 par(mfrow = c(1, 1))
-plot(table(final_budget) / R, xlab = "Budget finale (50 partite)", ylab = "Funzione di probabilità")
+plot(table(final_earning) / R, xlab = "guadagno finale (50 partite)", ylab = "Funzione di probabilità")
 
-# Media del budget finale
-mean(final_budget)
+# Media del guadagno finale
+mean(final_earning)
 
-# Deviazione standard del budget finale
-sd(final_budget)
+# Deviazione standard del guadagno finale
+sd(final_earning)
 
 # Probabilità di vincere, ovvero P(S > 0)
-mean(final_budget > 0)
+mean(final_earning > 0)
 
 # Supponiamo inoltre che il banco abbia un budget pari a 1000, mentre il giocatore abbia un budget pari a 10
+
+sim_match <- function(player_budget, casino_budget, p_winning){
+  
+  player_money <- player_budget
+  casino_money <- casino_budget
+  
+  for(r in 1:50){
+    outcome <- sample(c(-10, 10), 1, prob = c(1 - p_winning, p_winning))
+    player_money <- player_money + outcome 
+    casino_money <- casino_money - outcome
+    if(player_money <= 0){
+      # Giocatore in rovina: il giocatore perde tutto il budget
+      return(- player_budget)
+    }
+    if(casino_money <= 0){
+      # Casinò in rovina: il casinò perde tutto il budget
+      return(- casino_budget)
+    }
+  }
+  player_money - player_budget # guadagno rispetto al valore iniziale
+}
+
+final_earning <- replicate(10^5, sim_match(100, 100000, p_winning))
+plot(table(final_earning) / R, xlab = "guadagno finale (50 partite)", ylab = "Funzione di probabilità")
+
+
+# Media del guadagno finale
+mean(final_earning)
+
+# Deviazione standard del guadagno finale
+sd(final_earning)
+
+# Probabilità di vincere, ovvero P(S > 0)
+mean(final_earning > 0)
