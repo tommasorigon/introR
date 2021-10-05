@@ -10,6 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<meta name="author" content="Tommaso Rigon &amp; Alice Giampino" />
 
 
 <title>R per l’analisi statistica multivariata</title>
@@ -22,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -143,6 +145,7 @@ a.sourceLine {
 <section class="page-header">
 <h1 class="title toc-ignore project-name">R per l’analisi statistica multivariata</h1>
 <h3 class="subtitle project-tagline">Esercizi 4</h3>
+<h4 class="author project-author">Tommaso Rigon &amp; Alice Giampino</h4>
 </section>
 
 
@@ -197,9 +200,40 @@ f(x; \alpha, \lambda) = \left(\frac{\alpha}{\lambda}\right)\left(\frac{x}{\lambd
 <ol style="list-style-type: decimal">
 <li><p>Si crei in <strong>R</strong> la funzione <code>loglik(alpha, lambda, x)</code>, ovvero la funzione di log-verosimiglianza, pari a <span class="math display">\[\ell(\alpha,\lambda) = \sum_{i=1}^n\log f(x_i; \alpha,\lambda).\]</span> Se ritenuto utile, si noti che in <strong>R</strong> esiste la funzione <code>dweibull</code>.</p></li>
 <li><p>Utilizzando la funzione del punto precedente, si calcoli il valore della verosimiglianza quando <span class="math inline">\(\alpha = 6\)</span> e <span class="math inline">\(\lambda = 200\)</span>.</p></li>
-<li><p><strong>Difficile</strong>. Non è possibile calcolare in forma chiusa la stima di massima verosimiglianza <span class="math inline">\((\hat{\alpha},\hat{\lambda})\)</span>. Si utilizzi quindi la funzione <code>nlminb</code> applicata a <code>loglik</code> per ottenerla. Si consulti la documentazione per capire come gestire il caso con due parametri.</p></li>
+<li><p>Non è possibile calcolare in forma chiusa la stima di massima verosimiglianza <span class="math inline">\((\hat{\alpha},\hat{\lambda})\)</span>. Si utilizzi quindi la funzione <code>nlminb</code> applicata a <code>loglik</code> per ottenerla. Si consulti la documentazione per capire come gestire il caso con due parametri.</p></li>
 <li><p>Si rappresentino i dati tramite istogramma e si rappresenti la curva <span class="math inline">\(f(x,\hat{\alpha},\hat{\lambda})\)</span>. La stima ottenuta sembra ragionevole?</p></li>
 </ol>
+</div>
+<div id="esercizio-e" class="section level2">
+<h2>Esercizio E</h2>
+<p>Siano <span class="math inline">\(X_1,X_2, \ldots,X_n\)</span> variabili aleatorie iid (indipendenti ed identicamente distribuite) di Poisson di parametro <span class="math inline">\(\lambda\)</span>. Si considerino, inoltre, i seguenti stimatori:</p>
+<p><span class="math display">\[ 
+T_1 = \sum_{i=1}^n X_i, \qquad T_2 = \sum_{i=1}^n i \cdot X_i, \qquad T_3 = \frac{1}{n} \sum_{i=1}^n X_i.
+\]</span> Supponendo che il vero valore sia <span class="math inline">\(\lambda = 3\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Si verifichi empiricamente se costituiscono stimatori consistenti per <span class="math inline">\(\lambda\)</span>. Si tratta di stimatori distorti? Si risponda tramite simulazione.</p></li>
+<li><p>Si confrontino gli stimatori in termini di errore quadratico medio, con <span class="math inline">\(n = 50\)</span>. Quale stimatore è preferibile?</p></li>
+<li><p>È verosimile pensare che abbiano distribuzione asintoticamente normale? Si risponda tramite un’analisi grafica.</p></li>
+</ol>
+</div>
+<div id="esercizio-f" class="section level2">
+<h2>Esercizio F</h2>
+<p>Si consideri un campione casuale di <span class="math inline">\(n\)</span> osservazioni da una popolazione normale <span class="math inline">\(N(0, \theta)\)</span>, dove <span class="math inline">\(\theta\)</span> rappresenta la varianza incognita della variabile aleatoria. Supponendo di avere osservato il seguente campione di <span class="math inline">\(10\)</span> osservazioni:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.52</span>, <span class="fl">0.76</span>, <span class="fl">1.55</span>, <span class="fl">0.98</span>, <span class="fl">4.03</span>, <span class="fl">0.09</span>, <span class="sc">-</span><span class="fl">2.27</span>, <span class="fl">1.67</span>, <span class="sc">-</span><span class="fl">0.54</span>, <span class="sc">-</span><span class="fl">0.27</span>)</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>Si crei in <strong>R</strong> la funzione <code>loglik(theta, x)</code>, ovvero la funzione di log-verosimiglianza, pari al logaritmo di <span class="math display">\[\ell(\theta) = (2\pi\theta)^{-n/2} e^{-\frac{1}{2 \theta}\sum_{i=1}^n x_i^2}.\]</span></p></li>
+<li><p>Utilizzando la funzione del punto precedente, si calcoli il valore della verosimiglianza quando <span class="math inline">\(\theta=3\)</span> e <span class="math inline">\(\theta=5\)</span>. Quale è il valore più ``verosimile’’?</p></li>
+<li><p>Si utilizzi la funzione <code>nlminb</code> applicata a <code>loglik</code> per ottenere la stima di massima verosimiglianza.</p></li>
+<li><p>Si rappresentino i dati tramite istogramma e si rappresenti la curva <span class="math inline">\(f(x,\theta})\)</span>. La stima ottenuta sembra ragionevole?</p></li>
+</ol>
+</div>
+<div id="esercizio-e-1" class="section level2">
+<h2>Esercizio E</h2>
+<p>Siano <span class="math inline">\(x_1, \ldots, x_n\)</span> delle realizzazioni iid da <span class="math inline">\(X \sim \text{N}(5, 15)\)</span>. Si realizzi uno studio di simulazione che confronti la media campionaria e la media troncata di livello <span class="math inline">\(\alpha = 5\%\)</span>. Si tratta di stimatori consistenti per la media della popolazione?</p>
+<p>La media troncata non considera le prime ed ultime <span class="math inline">\(k\)</span> osservazioni, dove <span class="math inline">\(k = n \cdot\alpha\)</span> (approssimato all’intero più vicino). Se <span class="math inline">\(x_{(1)},\dots,x_{(n)}\)</span> è il campione ordinato, la media troncata è quindi definita come</p>
+<p><span class="math display">\[
+\hat{\mu}_\text{tr} = \frac{1}{n - 2 k } \sum_{i=k+1}^{n-k} x_{(i)}.
+\]</span> In <strong>R</strong> si può usare il comando <code>mean(x, trim = alpha)</code>.</p>
 </div>
 </section>
 

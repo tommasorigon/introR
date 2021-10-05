@@ -62,7 +62,7 @@ nn <- c(50, 100, 1000, 5000, 10000, 50000, 100000)
 var2 <- function(x) mean(x^2) - mean(x)^2
 
 # Parametri della simulazione
-media <- 10
+media <- 0
 varianza <- 10
 scarto <- sqrt(varianza)
 
@@ -151,6 +151,10 @@ mean(stimatore - 0) # Lo stimatore presenta una leggerissima distorsione
 
 # C.3
 
+n <- 100
+set.seed(520)
+stimatore <- replicate(R, pearson_sym(rnorm(n = n, mean = media, sd = scarto)))
+
 # Errore quadratico medio
 mean((stimatore - 0)^2)
 
@@ -177,13 +181,201 @@ loglik <- function(alpha, lambda, x) {
 # D.2
 
 loglik(alpha = 6, lambda = 200, x = x) # -1026.19
+# -50.17214
 
 # D.3
 
 fit <- nlminb(start = c(1, 1), function(param) -loglik(param[1], param[2], x), lower = c(1e-10, 1e-10))
 theta_hat <- fit$par
+# 5.976923 181.405558
 
 # D.4
 
-hist(x, breaks = 8, freq = FALSE, xlim = c(0, 2))
+hist(x, breaks = 8, freq = FALSE)
 curve(dweibull(x, shape = theta_hat[1], scale = theta_hat[2]), add = TRUE)
+
+# Esercizio E --------------------------------
+
+# E.1
+
+lambda <- 3
+
+# Numerosità campionarie
+nn <- c(50, 100, 1000, 5000, 10000, 50000, 100000)
+
+# simulazioni
+set.seed(150)
+T1_hat <- c(
+  sum(rpois(nn[1], lambda = lambda)),
+  sum(rpois(nn[2], lambda = lambda)),
+  sum(rpois(nn[3], lambda = lambda)),
+  sum(rpois(nn[4], lambda = lambda)),
+  sum(rpois(nn[5], lambda = lambda)),
+  sum(rpois(nn[6], lambda = lambda)),
+  sum(rpois(nn[7], lambda = lambda))
+)
+
+T2_hat <- c(
+  sum(1:nn[1] * rpois(nn[1], lambda = lambda)),
+  sum(1:nn[2] * rpois(nn[2], lambda = lambda)),
+  sum(1:nn[3] * rpois(nn[3], lambda = lambda)),
+  sum(1:nn[4] * rpois(nn[4], lambda = lambda)),
+  sum(1:nn[5] * rpois(nn[5], lambda = lambda)),
+  sum(1:nn[6] * rpois(nn[6], lambda = lambda)),
+  sum(1:nn[7] * rpois(nn[7], lambda = lambda))
+)
+
+T3_hat <- c(
+  mean(rpois(nn[1], lambda = lambda)),
+  mean(rpois(nn[2], lambda = lambda)),
+  mean(rpois(nn[3], lambda = lambda)),
+  mean(rpois(nn[4], lambda = lambda)),
+  mean(rpois(nn[5], lambda = lambda)),
+  mean(rpois(nn[6], lambda = lambda)),
+  mean(rpois(nn[7], lambda = lambda))
+)
+
+plot(nn, T1_hat,
+  type = "b",
+  xlab = "Numerosità campionaria",
+  ylab = "Stimatori"
+)
+abline(h = lambda, lty = 2) # Lo stimatore NON sembra essere consistente.
+
+plot(nn, T2_hat,
+  type = "b",
+  xlab = "Numerosità campionaria",
+  ylab = "Stimatori"
+)
+abline(h = lambda, lty = 2) # Lo stimatore NON sembra essere consistente.
+
+
+plot(nn, T3_hat,
+  type = "b",
+  xlab = "Numerosità campionaria",
+  ylab = "Stimatori"
+)
+abline(h = lambda, lty = 2) # Lo stimatore sembra essere consistente.
+
+
+# E.2
+
+R <- 10^5
+n <- 50
+
+# Esecuzione della simulazione
+set.seed(520)
+stimatore1 <- replicate(R, sum(rpois(n, lambda = lambda)))
+stimatore2 <- replicate(R, sum(1:n * rpois(n = n, lambda = lambda)))
+stimatore3 <- replicate(R, mean(rpois(n = n, lambda = lambda)))
+
+# Errore quadratico
+mean((stimatore1 - lambda)^2)
+mean((stimatore2 - lambda)^2)
+mean((stimatore3 - lambda)^2)
+
+
+# La media sembra essere uno stimatore migliore in termini di errore quadratico medio
+
+# E.3
+
+hist(stimatore1, breaks = 50)
+qqnorm(stimatore2)
+qqline(stimatore2)
+
+hist(stimatore2, breaks = 50)
+qqnorm(stimatore2)
+qqline(stimatore2)
+
+hist(stimatore3, breaks = 50)
+qqnorm(stimatore2)
+qqline(stimatore2)
+
+# L'approssimazione gaussiana sembra essere buona.
+
+
+# Esercizio F -------------------------------------------------------------
+
+x <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)
+
+# D.1
+
+loglik <- function(theta, x) {
+  theta^(-5) * exp(-34.83 / (2 * theta))
+}
+
+# D.2
+
+loglik(theta = 3, x = x) # 1.239693e-05
+loglik(theta = 5, x = x) # 9.828841e-06
+loglik(theta = 3, x = x) / loglik(theta = 5, x = x) # 1.261281
+# E' piú verosimile theta=3
+
+
+# D.3
+
+fit <- nlminb(start = 1, function(param) -loglik(param, x), lower = 1e-10)
+theta_hat <- fit$par
+# 3.483
+
+# D.4
+
+hist(x, breaks = 8, freq = FALSE)
+curve(dnorm(x, mean = 0, sd = sqrt(theta_hat)), add = TRUE)
+curve(dnorm(x, mean = 0, sd = sqrt(3)), add = T, col = 2)
+
+# Esercizio G -----------------------------------------
+
+# G.1
+
+# Numerosità campionarie
+nn <- c(50, 100, 1000, 5000, 10000, 50000, 100000)
+
+# Media troncata
+alpha <- 0.05
+
+trunc_mean <- function(x, alpha) {
+  mean(variabile, trim = alpha)
+}
+
+# Parametri della simulazione
+media <- 5
+varianza <- 15
+scarto <- sqrt(varianza)
+
+set.seed(150)
+media_camp <- c(
+  mean(rnorm(nn[1], mean = media, sd = scarto)),
+  mean(rnorm(nn[2], mean = media, sd = scarto)),
+  mean(rnorm(nn[3], mean = media, sd = scarto)),
+  mean(rnorm(nn[4], mean = media, sd = scarto)),
+  mean(rnorm(nn[5], mean = media, sd = scarto)),
+  mean(rnorm(nn[6], mean = media, sd = scarto)),
+  mean(rnorm(nn[7], mean = media, sd = scarto))
+)
+
+set.seed(150)
+trunc_mean_hat <- c(
+  trunc_mean(rnorm(nn[1], mean = media, sd = scarto), alpha = alpha),
+  trunc_mean(rnorm(nn[2], mean = media, sd = scarto), alpha = alpha),
+  trunc_mean(rnorm(nn[3], mean = media, sd = scarto), alpha = alpha),
+  trunc_mean(rnorm(nn[4], mean = media, sd = scarto), alpha = alpha),
+  trunc_mean(rnorm(nn[5], mean = media, sd = scarto), alpha = alpha),
+  trunc_mean(rnorm(nn[6], mean = media, sd = scarto), alpha = alpha),
+  trunc_mean(rnorm(nn[7], mean = media, sd = scarto), alpha = alpha)
+)
+
+plot(nn, media_camp,
+  type = "b",
+  xlab = "Numerosità campionaria",
+  ylab = "Media campionaria"
+)
+# lines(nn, trunc_mean_hat, col=2)
+abline(h = media, lty = 2) # Lo stimatore sembra essere consistente.
+
+plot(nn, trunc_mean_hat,
+  type = "b",
+  xlab = "Numerosità campionaria",
+  ylab = "Media troncata campionaria"
+)
+abline(h = media, lty = 2) # Lo stimatore sembra essere consistente.
