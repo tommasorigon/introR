@@ -25,7 +25,6 @@ hist(mu_hat, breaks = 100, freq = F)
 curve(dnorm(x, mean = mu, sd = sqrt(sigma2 / n)), add = T)
 
 # Rappresentazione grafica
-par(mfrow=c(1,2))
+par(mfrow = c(1, 2))
 hist(mu_hat, breaks = 100, freq = F)
 hist(median_hat, breaks = 100, freq = F)
-
