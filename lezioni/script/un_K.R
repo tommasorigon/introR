@@ -41,10 +41,12 @@ microbenchmark(
   L3 = loglik3(c(0.01, 0.02, 0.03), y)
 )
 
-lambda <- numeric(10); lambda[1] <- 0.005 # Punto iniziale (cosa succede cambiandolo?)
-n <- length(y); sum_y <- sum(y)
+lambda <- numeric(10)
+lambda[1] <- 0.005 # Punto iniziale (cosa succede cambiandolo?)
+n <- length(y)
+sum_y <- sum(y)
 # Algorithmo Newton-Raphson
-for(k in 1:5){
+for (k in 1:5) {
   score <- n / lambda[k] - sum_y # Funzione score
   obs_info <- n / lambda[k]^2 # Informazione osservata
   lambda[k + 1] <- lambda[k] + score / obs_info # Passo iterativo
@@ -57,7 +59,7 @@ c(lambda_hat, loglik(lambda_hat, y))
 library(numDeriv) # Libreria per il calcolo di derivate numeriche
 hessian(func = function(lambda) loglik(lambda, y), x = lambda_hat) # Derivata seconda
 
-fit_exp <- nlminb(start = 1, objective = function(lambda) - loglik(lambda, y), lower = 1e-5)
+fit_exp <- nlminb(start = 1, objective = function(lambda) -loglik(lambda, y), lower = 1e-5)
 fit_exp
 
 lambda_hat <- fit_exp$par # Stima di massima verosimiglianza
@@ -67,9 +69,9 @@ abline(v = lambda_hat, lty = "dotted")
 obs_info <- length(y) / lambda_hat^2
 obs_info
 
-optim(par = 1, fn = function(lambda) - loglik(lambda, y), lower = 1e-5, method = "L-BFGS-B", hessian = TRUE)
+optim(par = 1, fn = function(lambda) -loglik(lambda, y), lower = 1e-5, method = "L-BFGS-B", hessian = TRUE)
 
-fit_exp_reparam <- nlminb(start = 1, objective = function(psi) - loglik(exp(psi), y))
+fit_exp_reparam <- nlminb(start = 1, objective = function(psi) -loglik(exp(psi), y))
 exp(fit_exp_reparam$par) # Trasformazione inversa
 
 plot(ecdf(y))
@@ -87,7 +89,7 @@ y <- aircondit7$hours
 gamma <- seq(0.1, 2.25, length = 200)
 beta <- seq(0.5, 400, length = 200)
 
-# Ottenimento della griglia tramite prodotto cartesiano 
+# Ottenimento della griglia tramite prodotto cartesiano
 parvalues <- expand.grid(gamma, beta)
 
 # Calcolo valori di verosimiglianza
@@ -97,14 +99,16 @@ llikvalues <- apply(parvalues, 1, loglik, y = y)
 llikvalues <- matrix(llikvalues, nrow = length(gamma), ncol = length(beta), byrow = F)
 
 contour(gamma, beta, llikvalues,
-        xlab = expression(gamma), ylab = expression(beta), # Produce le lettere greche nel grafico
-        levels = seq(from = -140, to = -120, by = 2),
-        main = "Log-verosimiglianza (Modello Weibull)")
+  xlab = expression(gamma), ylab = expression(beta), # Produce le lettere greche nel grafico
+  levels = seq(from = -140, to = -120, by = 2),
+  main = "Log-verosimiglianza (Modello Weibull)"
+)
 
 filled.contour(gamma, beta, llikvalues,
-               xlab = expression(gamma), ylab = expression(beta),
-               levels = seq(from = -140, to = -120, by = 1),
-               col = terrain.colors(20), main = "Log-verosimiglianza (Modello Weibull)")
+  xlab = expression(gamma), ylab = expression(beta),
+  levels = seq(from = -140, to = -120, by = 1),
+  col = terrain.colors(20), main = "Log-verosimiglianza (Modello Weibull)"
+)
 
 fit_weibull <- nlminb(start = c(1, 1), function(par) -loglik(par, y), lower = c(1e-7, 1e-7))
 fit_weibull
