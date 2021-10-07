@@ -66,7 +66,7 @@ calcio[rowSums(is.na(calcio)) > 0, ] # Identifica le righe con valori mancanti
 calcio_no_na <- na.omit(calcio)
 dim(calcio_no_na)
 
-calcio_home <- subset(calcio, subset = B365H > 9) 
+calcio_home <- subset(calcio, subset = B365H > 9)
 calcio_home
 
 calcio_B365 <- subset(calcio, select = c(B365H, B365D, B365A))
@@ -87,7 +87,3 @@ calcio[which.max(calcio$aggio), ]
 # Il campionato di Serie A inizia a fine Agosto e finisce a fine Maggio
 calcio2009_2010 <- subset(calcio, Date <= "2009-08-15" & Date <= "2010-06-15")
 calcio2009_2010[which.max(calcio2009_2010$aggio), ]
-
-
-
-
