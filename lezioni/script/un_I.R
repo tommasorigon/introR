@@ -18,7 +18,7 @@ MonteCarlo(5000) # R = 5000 conduce a uno std.error ragionevole
 MonteCarlo(10^6) # R = 10^6 conduce a uno std.error basso
 
 
-MonteCarlo <- function(R){
+MonteCarlo <- function(R) {
   X <- rnorm(R)
   Z <- (X > 1) & (X < 2)
   estimate <- mean(Z)
@@ -38,7 +38,7 @@ U <- runif(10^6)
 I_hat <- mean((cos(50 * U) + sin(20 * U))^2)
 I_hat
 
-MonteCarlo <- function(R){
+MonteCarlo <- function(R) {
   U <- runif(R)
   hU <- (cos(50 * U) + sin(20 * U))^2
   estimate <- mean(hU)
@@ -74,5 +74,7 @@ freq_rel <- table(X) / n # Calcolo delle frequenze relative
 
 par(mfrow = c(1, 2)) # Grafici
 plot(freq_rel, ylab = "P(X = k)", xlab = "k", main = "Distribuzione empirica")
-plot(0:28, dpois(0:28, 10), type = "h", ylab = "P(X = k)", 
-     xlab = "k", main = "Distribuzione teorica")
+plot(0:28, dpois(0:28, 10),
+  type = "h", ylab = "P(X = k)",
+  xlab = "k", main = "Distribuzione teorica"
+)
