@@ -20,7 +20,7 @@ ls() # Nel workspace è presente l'oggetto y
 
 rm(list = ls())
 
-x <- 1/2 # Esempio di numero reale
+x <- 1 / 2 # Esempio di numero reale
 
 exp(x) # Esponenziale e logaritmo naturale
 log(x)
@@ -36,8 +36,10 @@ asin(x) # Funzioni trigonometriche inverse
 acos(x)
 atan(x)
 
-x <- 1 / 2; y <- 1 / 3 # Numeri reali 
-n <- 5; k <- 2 # Numeri naturali
+x <- 1 / 2
+y <- 1 / 3 # Numeri reali
+n <- 5
+k <- 2 # Numeri naturali
 
 factorial(n) # n!
 choose(n, k) # Coefficiente binomiale
@@ -73,7 +75,7 @@ b <- TRUE
 a & b # a AND b. I valori booleani a e b sono entrambi veri?
 a | b # a OR b. Almeno uno tra a ed b è vero?
 
-x <- c(4, 2, 2, 8, 10) 
+x <- c(4, 2, 2, 8, 10)
 x
 
 x <- c("A", "B", 2, 8, 10)
