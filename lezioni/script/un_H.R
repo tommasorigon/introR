@@ -10,12 +10,12 @@ sum(dbinom(0:5, size = n, prob = p))
 pbinom(5, size = n, prob = p) # Funzione specifica di R
 
 1 - pbinom(5, size = n, prob = p)
-pbinom(5, size = n, prob = p, lower.tail = FALSE) 
+pbinom(5, size = n, prob = p, lower.tail = FALSE)
 
 n * p # Valore atteso ottenuto tramite calcoli analitici
-sum(0:n * dbinom(0:n, size = n, prob = 0.6)) # Calcolo numerico 
+sum(0:n * dbinom(0:n, size = n, prob = 0.6)) # Calcolo numerico
 
-sum(sqrt(0:n) * dbinom(0:n, size = n, prob = 0.6)) 
+sum(sqrt(0:n) * dbinom(0:n, size = n, prob = 0.6))
 
 qbinom(0.25, size = 10, prob = 0.6) # Primo quartile
 
@@ -64,7 +64,7 @@ runif.wh(5)
 
 .current.seed
 
-rbinom.wh <- function(n, size, prob){
+rbinom.wh <- function(n, size, prob) {
   u <- runif.wh(n)
   probs <- dbinom(0:size, size = size, prob = prob)
   breaks <- cumsum(c(0, probs))
@@ -82,14 +82,14 @@ sample(x = dice, size = 1) # size = 1 implica che viene lanciato un solo dado
 set.seed(140)
 n <- 10
 # replace = TRUE implica che il dado è lanciato 10 volte
-sim <- sample(dice, size = n, replace = TRUE) 
+sim <- sample(dice, size = n, replace = TRUE)
 sim
 
 sample(1:90, size = 5, replace = FALSE)
 
 sample(dice)
 
-rnorm.wh <- function(n, mean, sd){
+rnorm.wh <- function(n, mean, sd) {
   u <- runif.wh(n)
   qnorm(u, mean = mean, sd = sd)
 }
@@ -97,7 +97,7 @@ rnorm.wh <- function(n, mean, sd){
 .current.seed <- c(100, 200, 300)
 rnorm.wh(n = 10, mean = 0, sd = 1) # 10 valori da una normale standard
 
-rbinom.wh2 <- function(n, size, prob){
+rbinom.wh2 <- function(n, size, prob) {
   u <- runif.wh(n)
   qbinom(u, size = size, prob = prob)
 }
@@ -108,8 +108,8 @@ rbinom.wh(n = 10, size = 5, prob = 0.5)
 .current.seed <- c(100, 200, 300)
 rbinom.wh2(n = 10, size = 5, prob = 0.5)
 
-dhalf <- function(y){
-  sqrt(2 / pi) * exp(- y^2 / 2)
+dhalf <- function(y) {
+  sqrt(2 / pi) * exp(-y^2 / 2)
 }
 
 # Non richiesto, controllo che integri a 1
