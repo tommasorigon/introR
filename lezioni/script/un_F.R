@@ -59,3 +59,10 @@ x <- seq(from = 90, to = 100, length = 20)
 alpha_hat + beta_hat * x
 
 alpha_hat + beta_hat * 97
+
+residuals <- forbes$Pressione - (alpha_hat + beta_hat * forbes$TempC)
+correlation^2
+1 - my_var(residuals) / my_var(forbes$Pressione)
+
+
+
