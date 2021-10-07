@@ -23,7 +23,7 @@ Bell <- function(n, k) {
 
 # Soluzione "elegante", sebbene NON richiesta
 stirling2 <- Vectorize(stirling2, vectorize.args = "k") # Questo comando è cruciale, altrimenti si ottiene un valore negativo (privo di ogni senso)
-Bell <- function(n){
+Bell <- function(n) {
   sum(stirling2(n, 1:n))
 }
 

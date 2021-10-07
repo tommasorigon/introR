@@ -3,7 +3,7 @@
 # ----------------------------------------
 
 # 1.1 (3pt)
-cohenD <- function(x, y){
+cohenD <- function(x, y) {
   xbar <- mean(x)
   ybar <- mean(y)
   s2 <- (sum((x - xbar)^2) + sum((y - ybar)^2)) / (length(x) + length(y) - 2)
@@ -35,12 +35,12 @@ hist(sim)
 # Di conseguenza, la loro somma NON segue una distribuzione binomiale!
 
 # 2.1 (4pt)
-rS1 <- function(n, alpha){
+rS1 <- function(n, alpha) {
   probs <- alpha / (alpha + (2:n) - 1)
   1 + sum(rbinom(n = n - 1, size = 1, prob = probs))
 }
 
-rS <- function(R, n, alpha){
+rS <- function(R, n, alpha) {
   replicate(R, rS1(n, alpha))
 }
 

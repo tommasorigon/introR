@@ -26,7 +26,7 @@ set.seed(123)
 R <- 50000
 
 T1_sim <- function(n, theta) {
-  4 / 3 * mean(runif(n, theta / 2, theta)) 
+  4 / 3 * mean(runif(n, theta / 2, theta))
 }
 
 T2_sim <- function(n, theta) {
