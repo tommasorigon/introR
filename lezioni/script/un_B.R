@@ -58,7 +58,7 @@ i <- 5 # Partiamo con i = 25
 while (i <= 25) { # Ripete l'operazione fintanto che i non è minore o uguale di 25
   print(i) # Mostra a schermo il valore di i
   i <- i + 5 # Incrementa il valore di i
-  
+
   # In contesti reali, qui ovviamente ci sono altre operazioni da eseguire
   # ...
 }
@@ -69,7 +69,7 @@ while (i <= 25) { # Ripete l'operazione fintanto che i non è minore o uguale di
 i <- 5
 while (i <= 25) {
   print(i)
-  
+
   # Altre operazioni da eseguire
   # ...
 }
@@ -79,7 +79,7 @@ values
 
 for (i in values) {
   print(i + 2) # Mostra a schermo il valore di i + 2
-  
+
   # Altre operazioni da eseguire
   # ...
 }
@@ -87,7 +87,7 @@ for (i in values) {
 distances <- function(x) {
   n <- length(x) # Ottengo la lunghezza del vettore x
   D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota
-  
+
   for (i in 1:n) {
     for (j in 1:n) {
       D[i, j] <- (x[i] - x[j])^2
@@ -102,7 +102,7 @@ distances(x)
 for (i in 1:100) {
   condA <- (i %% 3) == 0 # Il numero è un multiplo di 3?
   condB <- (i %% 5) == 0 # Il numero è un multiplot di 5?
-  
+
   if (condA & condB) {
     print("fizzbuzz")
   } else if (condA) {
