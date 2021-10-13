@@ -28,6 +28,8 @@ power(x = 4, p = 3) # Calcola il cubo del valore 4
 
 power(4, 3) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti
 
+condizione <- pi^2 > 10
+
 if (condizione) {
   print("La condizione è vera")
   # Alcuni comandi da eseguire
@@ -53,7 +55,7 @@ square_root(-2) # La condizione x < 0 è verificata
 
 square_root(36) # La condizione x < 0 NON è verificata
 
-i <- 5 # Partiamo con i = 25
+i <- 5 # Partiamo con i = 5
 
 while (i <= 25) { # Ripete l'operazione fintanto che i non è minore o uguale di 25
   print(i) # Mostra a schermo il valore di i

@@ -2,7 +2,7 @@ getwd() # Identifica la cartella di lavoro (get working directory)
 # [1] "/Users/tommaso/Google Drive/University/Bicocca/Didattica/Laboratorio Statistica/introR"
 
 # LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv NEL PROPRIO PC
-path <- "data/calcio.csv" # Questo è il percorso del file, relativo a getwd()
+path <- "calcio.csv" # Questo è il percorso del file, relativo a getwd()
 
 path <- "https://tommasorigon.github.io/introR/data/calcio.csv"
 
@@ -14,7 +14,7 @@ dim(calcio) # Equivalente a c(nrow(calcio), ncol(calcio))
 
 head(calcio) # Comando equivalente: calcio[1:6, ]
 
-tail(calcio) # Comando equivalente: calcio[1885:1900, ]
+tail(calcio) # Comando equivalente: calcio[1895:1900, ]
 
 colnames(calcio) # Per accedere ai nomi delle variabili
 
@@ -54,7 +54,6 @@ max(calcio$Date) # Ultima partita giocata
 
 calcio[c(1806, 501, 109), ]
 
-calcio[c(1806, 501, 109), ]
 calcio_draw <- calcio[calcio$FTR == "Draw", ]
 head(calcio_draw)
 
