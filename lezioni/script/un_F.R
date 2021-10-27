@@ -42,6 +42,7 @@ my_cov(forbes$TempC, forbes$Pressione) # = my_cov(forbes$Pressione, forbes$TempC
 cov(forbes$Pressione, forbes$TempC) # = 17 / 16 * my_cov(forbes$TempC, forbes$Pressione)
 
 my_cov(forbes$TempC, forbes$Pressione) / sqrt(my_var(forbes$TempC) * my_var(forbes$Pressione))
+
 cov(forbes$TempC, forbes$Pressione) / sqrt(var(forbes$TempC) * var(forbes$Pressione))
 
 correlation <- cor(forbes$TempC, forbes$Pressione)
