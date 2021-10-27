@@ -26,9 +26,9 @@ prop.table(tab, 2)
 chi_squared <- function(x, y) {
   nn <- table(x, y)
   n <- sum(nn)
-  ff <- nn / n
-  f_x <- table(x) / n
-  f_y <- table(y) / n
+  ff <- nn / n # Frequenze relative congiunte
+  f_x <- table(x) / n # Frequenze relative marginali di x
+  f_y <- table(y) / n # Frequenze relative marginali di y
   S <- 0
   for (i in 1:length(f_x)) {
     for (j in 1:length(f_y)) {
