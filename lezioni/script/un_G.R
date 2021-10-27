@@ -27,6 +27,22 @@ chi_squared <- function(x, y) {
   nn <- table(x, y)
   n <- sum(nn)
   ff <- nn / n
+  f_x <- table(x) / n
+  f_y <- table(y) / n
+  S <- 0
+  for(i in 1:length(f_x)){
+    for(j in 1:length(f_y)){
+      S <- S + ff[i, j]^2 / (f_x[i] * f_y[j])
+    }
+  }
+  n * (S - 1)
+}
+chi_squared(titanic$Salvato, titanic$Classe)
+
+chi_squared <- function(x, y) {
+  nn <- table(x, y)
+  n <- sum(nn)
+  ff <- nn / n
   f_x <- apply(ff, 1, sum)
   f_y <- apply(ff, 2, sum)
   f_e <- outer(f_x, f_y) # Prodotto "esterno" tra vettori
