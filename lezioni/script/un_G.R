@@ -30,8 +30,8 @@ chi_squared <- function(x, y) {
   f_x <- table(x) / n
   f_y <- table(y) / n
   S <- 0
-  for(i in 1:length(f_x)){
-    for(j in 1:length(f_y)){
+  for (i in 1:length(f_x)) {
+    for (j in 1:length(f_y)) {
       S <- S + ff[i, j]^2 / (f_x[i] * f_y[j])
     }
   }
