@@ -15,7 +15,6 @@ lezioni/lez_4_files/fonts/KaTeX_AMS-Regular.woff
 *.png
 *.RData
 *.woff
-*.jpg
 lezioni/lez_4_cache/html/__packages
 exe/es_2_cache/html/__packages
 *.md
@@ -55,3 +54,4 @@ lezioni/OLD/ASMR_1920/Lezione6/ASM_Lab_6_1920.pdf
 lezioni/OLD/ASMR_1920/Lezione7/1.pdf
 lezioni/OLD/ASMR_1920/Lezione7/ESM1.pdf
 lezioni/OLD/ASMR_1920/Lezione7/QUIZ_ESM1.pdf
+*.jpg
