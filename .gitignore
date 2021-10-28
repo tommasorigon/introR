@@ -15,8 +15,6 @@ lezioni/lez_4_files/fonts/KaTeX_AMS-Regular.woff
 *.png
 *.RData
 *.woff
-*.css
-*.js
 *.jpg
 lezioni/lez_4_cache/html/__packages
 exe/es_2_cache/html/__packages
