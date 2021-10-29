@@ -13,11 +13,6 @@ set.seed(100) # Imposto un seed diverso da prima
 Z <- cos(rnorm(R, 0, 1)) > 0 # Calcolo gli indicatori (codice in forma compatta)
 mean(Z)
 
-MonteCarlo(100) # R = 100 conduce a uno std.error elevato
-MonteCarlo(5000) # R = 5000 conduce a uno std.error ragionevole
-MonteCarlo(10^6) # R = 10^6 conduce a uno std.error basso
-
-
 MonteCarlo <- function(R) {
   X <- rnorm(R)
   Z <- (X > 1) & (X < 2)
