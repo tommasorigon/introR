@@ -9,6 +9,19 @@ Z[1:10]
 prop.table(table(Z)) # Considero la frequenza relativa
 mean(Z) # Oppure, più semplicemente
 
+MonteCarlo <- function(R){
+  Z <- cos(rnorm(R, 0, 1)) > 0
+  estimate <- mean(Z)
+  std.error <- sqrt(estimate * (1 - estimate) / R)
+  out <- c(estimate, std.error)
+  names(out) <- c("estimate", "std.error") # Aggiungo solo per ragioni estetiche 
+  out
+}
+
+MonteCarlo(100) # R = 100 conduce a std.error elevato
+MonteCarlo(5000) # R = 5000 conduce a std.error ragionevole
+MonteCarlo(10^6) # R = 10^6 conduce a std.error basso
+
 set.seed(100) # Imposto un seed diverso da prima
 Z <- cos(rnorm(R, 0, 1)) > 0 # Calcolo gli indicatori (codice in forma compatta)
 mean(Z)
