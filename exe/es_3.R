@@ -209,7 +209,7 @@ mean(g(x) >= k) <= mean(g(x)) / k
 R <- 10^4 # Numero di simulazioni montecarlo
 set.seed(1500)
 
-# Soluzione usando cicli for (inefficiente)
+# Soluzione usando cicli for
 y <- numeric(R)
 n <- 50
 for (r in 1:R) {
@@ -228,7 +228,7 @@ mean(y)
 
 # I.3
 
-# Soluzione usando replicate: più efficiente e concisa
+# Soluzione usando replicate: più concisa
 n <- 50
 y <- replicate(R, sum(duplicated(sample(365, size = n, replace = TRUE))) > 0)
 mean(y)
