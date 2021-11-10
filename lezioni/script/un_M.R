@@ -3,7 +3,7 @@ n <- 20 # Numerosità campionaria
 mu <- 10 # Media teorica (solitamente ignota)
 
 # Campione y_1,...,y_n
-y <- rnorm(n, mean = mu, sd = sqrt(16))
+x <- rnorm(n, mean = mu, sd = sqrt(16))
 
 # Vero valore è mu = 10
 mean(x)
