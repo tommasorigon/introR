@@ -56,9 +56,6 @@ for (k in 1:5) {
 lambda_hat <- 1 / mean(y)
 c(lambda_hat, loglik(lambda_hat, y))
 
-library(numDeriv) # Libreria per il calcolo di derivate numeriche
-hessian(func = function(lambda) loglik(lambda, y), x = lambda_hat) # Derivata seconda
-
 fit_exp <- nlminb(start = 1, objective = function(lambda) -loglik(lambda, y), lower = 1e-5)
 fit_exp
 
@@ -112,9 +109,6 @@ filled.contour(gamma, beta, llikvalues,
 
 fit_weibull <- nlminb(start = c(1, 1), function(par) -loglik(par, y), lower = c(1e-7, 1e-7))
 fit_weibull
-
-obs_info <- -hessian(func = function(par) loglik(par, y), x = fit_weibull$par)
-solve(obs_info)
 
 plot(ecdf(y))
 curve(pexp(x, fit_exp$par), col = "red", add = TRUE)
