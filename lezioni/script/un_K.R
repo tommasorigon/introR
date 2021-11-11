@@ -68,9 +68,6 @@ obs_info
 
 optim(par = 1, fn = function(lambda) -loglik(lambda, y), lower = 1e-5, method = "L-BFGS-B", hessian = TRUE)
 
-fit_exp_reparam <- nlminb(start = 1, objective = function(psi) -loglik(exp(psi), y))
-exp(fit_exp_reparam$par) # Trasformazione inversa
-
 plot(ecdf(y))
 curve(pexp(x, lambda_hat), col = "red", add = TRUE)
 
