@@ -74,7 +74,7 @@ sim_match <- function(player_budget, casino_budget, p_winning) {
     }
     if (casino_money <= 0) {
       # Casinò in rovina: il casinò perde tutto il budget
-      return(-casino_budget)
+      return(casino_budget)
     }
   }
   player_money - player_budget # guadagno rispetto al valore iniziale
