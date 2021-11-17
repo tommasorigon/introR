@@ -160,7 +160,10 @@ mean((stimatore - 0)^2)
 
 # C.4
 
-hist(stimatore, breaks = 50)
+hist(stimatore, breaks = 50, freq = F)
+curve(dnorm(x, mean(stimatore), sd(stimatore)), add = T)
+
+# Comando alternativo
 qqnorm(stimatore)
 qqline(stimatore) # La distribuzione NON sembra essere gaussiana
 
@@ -279,17 +282,26 @@ mean((stimatore3 - lambda)^2)
 
 # E.3
 
-hist(stimatore1, breaks = 50)
+hist(stimatore1, breaks = 50, freq = FALSE)
+curve(dnorm(x, mean(stimatore1), sd(stimatore1)), add = T)
+
+# Comando alternativo
+qqnorm(stimatore1)
+qqline(stimatore1)
+
+hist(stimatore2, breaks = 50, freq = FALSE)
+curve(dnorm(x, mean(stimatore2), sd(stimatore2)), add = T)
+
+# Comando alternativo
 qqnorm(stimatore2)
 qqline(stimatore2)
 
-hist(stimatore2, breaks = 50)
-qqnorm(stimatore2)
-qqline(stimatore2)
+hist(stimatore3, breaks = 50, freq = FALSE)
+curve(dnorm(x, mean(stimatore3), sd(stimatore3)), add = T)
 
-hist(stimatore3, breaks = 50)
-qqnorm(stimatore2)
-qqline(stimatore2)
+# Comando alternativo
+qqnorm(stimatore3)
+qqline(stimatore3)
 
 # L'approssimazione gaussiana sembra essere buona.
 
