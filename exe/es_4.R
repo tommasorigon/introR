@@ -335,7 +335,6 @@ theta_hat
 
 hist(y, breaks = 8, freq = FALSE)
 curve(dnorm(x, mean = 0, sd = sqrt(theta_hat)), add = TRUE)
-curve(dnorm(x, mean = 0, sd = sqrt(3)), add = T, col = 2)
 
 # Esercizio G -----------------------------------------
 
