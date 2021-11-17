@@ -308,30 +308,29 @@ qqline(stimatore3)
 
 # Esercizio F -------------------------------------------------------------
 
-y <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)
+x <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)
 
 # D.1
-loglik <- function(theta, y) {
+loglik <- function(theta, x) {
   n <- length(y)
-  - n / 2 * log(theta) - sum(y^2) / (2 * theta)
+  - n / 2 * log(theta) - sum(x^2) / (2 * theta)
 }
 
 # D.2
-loglik(theta = 3, y = y) # -11.30076
-loglik(theta = 5, y = y) # -11.53181
+loglik(theta = 3, x) # -11.30076
+loglik(theta = 5, x) # -11.53181
 
 # E' piú verosimile theta = 3
 
 # D.3
 
-fit <- nlminb(start = 1, function(param) -loglik(param, y), lower = 1e-10)
+fit <- nlminb(start = 1, function(param) -loglik(param, x), lower = 1e-10)
 theta_hat <- fit$par
-theta_hat 
-# 3.48462
+theta_hat  # 3.48462
 
 # D.4
 
-hist(y, breaks = 8, freq = FALSE)
+hist(y,freq = FALSE)
 curve(dnorm(x, mean = 0, sd = sqrt(theta_hat)), add = TRUE)
 
 # Esercizio G -----------------------------------------
