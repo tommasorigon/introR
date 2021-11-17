@@ -320,8 +320,6 @@ loglik <- function(theta, y) {
 loglik(theta = 3, y = y) # -11.30076
 loglik(theta = 5, y = y) # -11.53181
 
-curve(loglik())
-
 # E' piú verosimile theta = 3
 
 # D.3
