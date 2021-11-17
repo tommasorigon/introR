@@ -296,31 +296,32 @@ qqline(stimatore2)
 
 # Esercizio F -------------------------------------------------------------
 
-x <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)
+y <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)
 
 # D.1
-
-loglik <- function(theta, x) {
-  theta^(-5) * exp(-34.83 / (2 * theta))
+loglik <- function(theta, y) {
+  n <- length(y)
+  - n / 2 * log(theta) - sum(y^2) / (2 * theta)
 }
 
 # D.2
+loglik(theta = 3, y = y) # -11.30076
+loglik(theta = 5, y = y) # -11.53181
 
-loglik(theta = 3, x = x) # 1.239693e-05
-loglik(theta = 5, x = x) # 9.828841e-06
-loglik(theta = 3, x = x) / loglik(theta = 5, x = x) # 1.261281
-# E' piú verosimile theta=3
+curve(loglik())
 
+# E' piú verosimile theta = 3
 
 # D.3
 
-fit <- nlminb(start = 1, function(param) -loglik(param, x), lower = 1e-10)
+fit <- nlminb(start = 1, function(param) -loglik(param, y), lower = 1e-10)
 theta_hat <- fit$par
-# 3.483
+theta_hat 
+# 3.48462
 
 # D.4
 
-hist(x, breaks = 8, freq = FALSE)
+hist(y, breaks = 8, freq = FALSE)
 curve(dnorm(x, mean = 0, sd = sqrt(theta_hat)), add = TRUE)
 curve(dnorm(x, mean = 0, sd = sqrt(3)), add = T, col = 2)
 
