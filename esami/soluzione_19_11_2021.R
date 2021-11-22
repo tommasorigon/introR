@@ -38,6 +38,9 @@ delta2 <- function(x) {
   n <- length(x)
   4 * sum(sort(x) * 1:n) / (n * (n - 1)) - 2 * mean(x) * (n + 1) / (n - 1)
 }
+
+# NOTA: attenzione non dimenticarsi del comando "sort"!
+
 delta2(x_river) # 2.484511
 delta2(x_no_river) # 6.02453
 
