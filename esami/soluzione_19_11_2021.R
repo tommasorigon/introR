@@ -104,7 +104,7 @@ theta_hat <- nlminb(start = 1, function(theta) - loglik(theta, y))$par
 loglik(theta_hat, y) # - 43
 loglik(10 + pi / 4, y) # -43
 
-# La stima di massima verosimiglianza, come si evince dal grafico e dal risultato del punto precedente, non è unica. Infatti, la massimizzazione della funzione di log-verosimiglianza coincide con la minimizzazione della somma degli scarti in valore assoluto. Qualsiasi valore compreso nell'intervallo [10,12] produce il valore -43, ovvero l'insieme delle possibili mediane.
+# La stima di massima verosimiglianza, come si evince dal grafico e dal risultato del punto precedente, non è unica. Infatti, la massimizzazione della funzione di log-verosimiglianza coincide con la minimizzazione della somma degli scarti in valore assoluto. Di conseguenza (si veda il programma di Statistica I), qualsiasi valore compreso nell'intervallo [10,12] produce il valore -43, ovvero l'insieme delle possibili mediane.
 
 # Si noti infatti (non richiesto) che:
 loglik(median(y), y) # - 43
