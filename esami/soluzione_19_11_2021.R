@@ -83,7 +83,6 @@ curve(dnorm(x), add = T)
 
 # Per chi fosse interessato, si veda in proposito: https://it.wikipedia.org/wiki/Trasformazione_di_Box-Muller
 
-
 # Esercizio 3 -----------------------------------------------
 
 # 3.1
