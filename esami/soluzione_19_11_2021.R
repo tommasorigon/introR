@@ -96,6 +96,8 @@ curve(loglik(x, y), 0, 30)
 # 3.3
 theta_hat <- nlminb(start = 1, function(theta) - loglik(theta, y))$par
 
+# NOTA: non è necessario (anzi, è errato) specificare lower = 1e-5 o in generale lower = "numero vicino a zero". Il parametro theta infatti è un numero reale che, in linea di principio, potrebbe anche essere negativo. 
+
 # 3.4
 loglik(theta_hat, y) # - 43
 loglik(10 + pi / 4, y) # -43
