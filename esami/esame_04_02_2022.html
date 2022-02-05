@@ -50,288 +50,55 @@
 
 <section class="page-header">
 <h1 class="title toc-ignore project-name">R per l’analisi statistica multivariata</h1>
-<h3 class="subtitle project-tagline">CdL in Scienze Statistiche ed Economiche, Università Milano-Bicocca</h3>
-<h4 class="author project-author">Tommaso Rigon</h4>
-<address class="author_afil">
-DEMS<br></section>
+<h3 class="subtitle project-tagline">Esame 4 Febbraio 2022</h3>
+</section>
 
 
 
 <section class="main-content">
-<p>L’insegnamento di <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a> (15 CFU) è articolato nelle seguenti parti:</p>
+<div id="problema-1" class="section level2">
+<h2>Problema 1</h2>
+<p>Si carichi in memoria il dataset <code>birthwt</code> della libreria <code>MASS</code>. Il dataset si riferisce a <span class="math inline">\(n = 189\)</span> donne in gravidanza. Si consiglia di consultare la documentazione per la descrizione delle variabili coinvolte.</p>
 <ol style="list-style-type: decimal">
-<li><p>R per l’Analisi Statistica Multivariata (R), 3 CFU, I Ciclo, Prof. Rigon.</p></li>
-<li><p><a href="https://aldosolari.github.io/AE/">Analisi Esplorativa (AE)</a>, 6 CFU, II Ciclo, Prof. Solari.</p></li>
-<li><p>Modelli Statistici (MS), 6 CFU, III Ciclo, Prof. Nipoti.</p></li>
+<li><p>(1pt) Si aggiunga al dataset <code>birthwt</code> la nuova variabile qualitativa <code>age_class</code>, la quale suddivide i valori della variabile <code>age</code> in 3 classi: <code>low</code> (età comprese tra 14 e 22), <code>medium</code> (età comprese tra 23 e 28) e <code>high</code> (età <span class="math inline">\(\ge 29\)</span>).</p></li>
+<li><p>(1pt) Si ottengano le frequenze assolute della variabile <code>age_class</code>.</p></li>
+<li><p>(2pt) La variabile <code>bwt</code> è espressa in grammi. La si converta in chilogrammi, sovrascrivendo quella presente nel dataset <code>birthwt</code>. Se ne faccia quindi un istogramma, considerando un numero di classi appropriato.</p></li>
+<li><p>(1pt) Si confrontino i tre boxplot della variabile <code>bwt</code> (espressa in chilogrammi) condizionatamente a ciascuna modalità della variabile <code>age_class</code>.</p></li>
+<li><p>(1pt) Si crei un nuovo dataset, chiamato <code>birthwt_no_smoke</code> contenente esclusivamente i valori delle donne non-fumatrici e si esegua la stessa analisi condotta al punto precedente. Suggerimento: si consulti la documentazione del dataset.</p></li>
+<li><p>(4pt) Si consideri nuovamente il dataset <code>birthwt</code>. Si costruisca una matrice <span class="math inline">\(\textbf{X}\)</span> di dimensione <span class="math inline">\(n \times 3\)</span> le cui colonne sono i vettori <span class="math inline">\(x_1, x_2, x_3\)</span>, ciascuno di dimensione <span class="math inline">\(n \times 1\)</span>. Più precisamente, il primo vettore colonna è pari a <span class="math inline">\(x_1 = (1,\dots,1)^T\)</span>, mentre i vettori colonna <span class="math inline">\(x_2\)</span> ed <span class="math inline">\(x_3\)</span> contengono i valori delle variabili <code>age</code> e <code>ftv</code>. Inoltre, il vettore colonna <span class="math inline">\(y\)</span> contiene i valori della variabile <code>bwt</code>. Si ottenga il vettore <span class="math inline">\(\beta\)</span> di dimensione <span class="math inline">\(3 \times 1\)</span>, definito come segue: <span class="math display">\[
+\hat{\beta} = (\textbf{X}^T\textbf{X})^{-1} \textbf{X}^T y,
+\]</span> la cui utilità ed interpretazione risulterà chiara in corsi successivi.</p></li>
 </ol>
-<p><strong>Nota</strong>: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d’appello sono spiegate nella pagina principale: <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a>.</p>
-<div id="materiale-didattico" class="section level2">
-<h2>Materiale didattico</h2>
-<p>Il materiale didattico di ciascuna lezione è scaricabile utilizzando i <a href>collegamenti ipertestuali</a>. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.</p>
-<div id="il-software-r" class="section level3">
-<h3>Il software R</h3>
-<ul>
-<li><p><strong>R</strong> è un software <strong>open source</strong> ed è possibile scaricarlo al link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a>.</p></li>
-<li><p>L’uso di <strong>Rstudio</strong> è <strong>facoltativo</strong> in questo corso, anche se fortemente consigliato. È possibile scaricarlo al link <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a>.</p></li>
-<li><p>La documentazione del software <strong>R</strong> è parte integrante del materiale didattico.</p></li>
-</ul>
 </div>
-<div id="testi-di-riferimento" class="section level3">
-<h3>Testi di riferimento</h3>
-<ul>
-<li>Albert, J. &amp; M. Rizzo (2012). <a href="https://link.springer.com/content/pdf/10.1007%2F978-1-4614-1365-3.pdf"><em>R by Example</em></a>. Springer.<br />
-</li>
-<li>Robert, C. &amp; G. Casella (2010). <a href="https://link.springer.com/content/pdf/10.1007%2F978-1-4419-1576-4.pdf"><em>Introducing Monte Carlo Methods with R</em></a>. Springer</li>
-</ul>
+<div id="problema-2" class="section level2">
+<h2>Problema 2</h2>
+<p>Siano <span class="math inline">\(p_1(x)\)</span> e <span class="math inline">\(p_2(x)\)</span> due funzioni di probabilità relative a due variabili aleatorie discrete <span class="math inline">\(X_1,X_2\)</span> aventi lo stesso supporto <span class="math inline">\(\mathcal{S} = \{x_1,\dots, x_k\}\)</span>. La divergenza di Kullback-Leibler di <span class="math inline">\(X_1\)</span> da <span class="math inline">\(X_2\)</span> è definita come segue</p>
+<p><span class="math display">\[
+\text{KL}(p_1 \mid \mid p_2) = \sum_{j=1}^k p_1(x_j) \log\left\{\frac{p_1(x_j) }{p_2(x_j) }\right\}.
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>(3pt) Si supponga che <span class="math inline">\(X_1, X_2\)</span> siano due distribuzioni binomiali di parametro <span class="math inline">\(n = 20\)</span> e differenti probabilità di successo <span class="math inline">\(\theta_1 = 0.5\)</span> e <span class="math inline">\(\theta_2 = 0.2\)</span>. Si calcoli la divergenza di Kullback-Leibler di <span class="math inline">\(X_1\)</span> da <span class="math inline">\(X_2\)</span>.</p></li>
+<li><p>(3pt) Si noti che: <span class="math display">\[
+\text{KL}(p_1 \mid \mid p_2) = E\left[\log\left\{\frac{p_1(X_1) }{p_2(X_1) }\right\}\right].
+\]</span> Si sfrutti questo risultato per ottenere una stima Monte Carlo della divergenza di  del punto precedente. Si quantifichi inoltre l’errore commesso.</p></li>
+<li><p>(4pt) Siano <span class="math inline">\(X_1, X_2\)</span> due distribuzioni Poisson di media <span class="math inline">\(\lambda_1\)</span> e <span class="math inline">\(\lambda_2\)</span>. In questo caso la dimensione del supporto è <span class="math inline">\(k = \infty\)</span> e pertanto la definizione di divergenza di  di <span class="math inline">\(X_1\)</span> da <span class="math inline">\(X_2\)</span> coinvolge una somma infinita. Si proponga una strategia appropriata per ottenere la divergenza  e la si calcoli per <span class="math inline">\(\lambda_1 = 1\)</span> e <span class="math inline">\(\lambda_2 = 4\)</span>.</p></li>
+</ol>
 </div>
-<div id="testi-di-consultazione" class="section level3">
-<h3>Testi di consultazione</h3>
-<ul>
-<li>Il materiale didattico aggiuntivo fornito su questa pagina web.</li>
-<li>Adler, J. (2012). <em>R in a nutshell</em>. O’Reilly.</li>
-<li>Grolemund, G. &amp; Wickham, H. (2016). <em>R for Data Science</em>. O’Reilly.</li>
-<li>Venables, W. N., Smith D. M. &amp; the R Core Team (2021). <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf"><em>An Introduction to R</em></a>.</li>
-</ul>
-</div>
-<div id="materiale-didattico-1" class="section level3">
-<h3>Materiale didattico</h3>
-<p>La sigla <strong>AR</strong> corrisponde al libro di Albert &amp; Rizzo. La sigla <strong>RC</strong> corrisponde al libro Robert &amp; Casella.</p>
-<table>
-<colgroup>
-<col width="36%" />
-<col width="36%" />
-<col width="4%" />
-<col width="24%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Argomenti</th>
-<th>Materiale didattico</th>
-<th>Materiale aggiuntivo</th>
-<th>Sezioni libro di testo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Introduzione al corso</td>
-<td><a href="lezioni/un_intro.pdf">Unità introduttiva</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><strong>INTRODUZIONE AD R</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>A-B-C: calcolo scientifico ed algebra lineare</td>
-<td><a href="lezioni/un_A.pdf">Slides unità A</a></td>
-<td><a href="lezioni/script/un_A.R">Codice R</a></td>
-<td><strong>AR</strong> §1.1, §1.3, §A1 — §A3</td>
-</tr>
-<tr class="even">
-<td>Elementi di programmazione</td>
-<td><a href="lezioni/un_B.pdf">Slides unità B</a></td>
-<td><a href="lezioni/script/un_B.R">Codice R</a></td>
-<td><strong>AR</strong> §1.2, §1.6 — §1.8</td>
-</tr>
-<tr class="odd">
-<td>I dataframes</td>
-<td><a href="lezioni/un_C.pdf">Slides unità C</a></td>
-<td><a href="lezioni/script/un_C.R">Codice R</a></td>
-<td><strong>AR</strong> §1.4 — §1.5</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_1.html">Esercizi 1</a></td>
-<td><a href="exe/es_1.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>STATISTICA DESCRITTIVA</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Analisi descrittiva dei dati <code>dde</code></td>
-<td><a href="lezioni/un_D.pdf">Slides unità D</a></td>
-<td><a href="lezioni/script/un_D.R">Codice R</a></td>
-<td><strong>AR</strong> §2.1 — §2.3, §2.7</td>
-</tr>
-<tr class="odd">
-<td>Analisi descrittiva dei dati <code>emoglobina</code></td>
-<td><a href="lezioni/un_E.pdf">Slides unità E</a></td>
-<td><a href="lezioni/script/un_E.R">Codice R</a></td>
-<td><strong>AR</strong> §2.1 — §2.3, §2.7</td>
-</tr>
-<tr class="even">
-<td><strong>Esercitazione</strong></td>
-<td><a href="lezioni/un_F.pdf">Slides unità F</a></td>
-<td><a href="lezioni/script/un_F.R">Codice R</a></td>
-<td><strong>AR</strong> 7.1, §7.2</td>
-</tr>
-<tr class="odd">
-<td>Analisi descrittiva dei dati <code>titanic</code></td>
-<td><a href="lezioni/un_G.pdf">Slides unità G</a></td>
-<td><a href="lezioni/script/un_G.R">Codice R</a></td>
-<td><strong>AR</strong> §3.1 — §3.5</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_2.html">Esercizi 2</a></td>
-<td><a href="exe/es_2.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>CALCOLO DELLE PROBABILITÀ</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Variabili aleatorie</td>
-<td><a href="lezioni/un_H.pdf">Slides unità H</a></td>
-<td><a href="lezioni/script/un_H.R">Codice R</a></td>
-<td><strong>RC</strong> §2.1, §2.2</td>
-</tr>
-<tr class="odd">
-<td>Metodi Monte Carlo</td>
-<td><a href="lezioni/un_I.pdf">Slides unità I</a></td>
-<td><a href="lezioni/script/un_I.R">Codice R</a></td>
-<td><strong>AR</strong> §11.1 — §11.5, §13.1, §13.2; <strong>RC</strong> §3.1, §3.2</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_3.html">Esercizi 3</a></td>
-<td><a href="exe/es_3.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>INFERENZA STATISTICA</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Metodi numerici per l’analisi di verosimiglianza</td>
-<td><a href="lezioni/un_K.pdf">Slides unità K</a></td>
-<td><a href="lezioni/script/un_K.R">Codice R</a></td>
-<td><strong>RC</strong> §5.1, §5.2</td>
-</tr>
-<tr class="odd">
-<td>Proprietà degli stimatori</td>
-<td><a href="lezioni/un_M.pdf">Slides unità M</a></td>
-<td><a href="lezioni/script/un_M.R">Codice R</a></td>
-<td><strong>AR</strong> §13.3</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_4.html">Esercizi 4</a></td>
-<td><a href="exe/es_4.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>LEZIONI AGGIUNTIVE</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Casinò, roulette e metodi Monte Carlo</td>
-<td><a href="lezioni/un_J.pdf">Slides unità J</a></td>
-<td><a href="lezioni/script/un_J.R">Codice R</a></td>
-<td><strong>AR</strong> §11.2</td>
-</tr>
-<tr class="odd">
-<td>Minimi quadrati non lineari</td>
-<td><a href="lezioni/un_L.pdf">Slides unità L</a></td>
-<td><a href="lezioni/script/un_L.R">Codice R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><strong>ESAMI PASSATI</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 4 Febbraio 2021</td>
-<td><a href="esami/esame_04_02_2022.html">Esame</a></td>
-<td><a href="esami/soluzione_04_02_2022.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Esame 19 Novembre 2021</td>
-<td><a href="esami/esame_19_11_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_19_11_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 22 Luglio 2021</td>
-<td><a href="esami/esame_22_07_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_22_07_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Esame 30 Giugno 2021</td>
-<td><a href="esami/esame_30_06_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_30_06_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 24 Febbraio 2021</td>
-<td><a href="esami/esame_24_02_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_24_02_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Esame 08 Febbraio 2021</td>
-<td><a href="esami/esame_08_02_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_08_02_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="approfondimenti" class="section level3">
-<h3>Approfondimenti</h3>
-<div id="articoli-scientifici-in-inglese" class="section level4">
-<h4>Articoli scientifici (in inglese)</h4>
-<ul>
-<li><p><a href="approfondimenti/Hyndman1996.pdf">Hyndman, R. J. and Yanan, F. (1996)</a>. Sample quantiles in statistical packages. <em>The American Statistician</em> <strong>50</strong>(4), 361–365.</p></li>
-<li><p><a href="approfondimenti/Hitchcock2003.pdf">Hitchcock (2003)</a>. A history of the Metropolis-Hastings algorithm. <em>The American Statistician</em> <strong>57</strong>(4), 254–257.</p></li>
-<li><p><a href="approfondimenti/Oldford2016.pdf">Oldford (2016)</a>. Self-calibrating quantile–quantile plots. <em>The American Statistician</em> <strong>70</strong>(1), 74–90.</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="modalità-desame" class="section level2">
-<h2>Modalità d’esame</h2>
-<p>L’esame si svolge tramite <strong>computer</strong> e consiste tipicamente in <span class="math inline">\(3\)</span> esercizi da svolgere in <strong>R</strong>. Lo studente deve consegnare un file <code>nome_cognome.R</code> con i comandi utilizzati. L’esame si svolgerà sulla <a href="https://esamionline.elearning.unimib.it/login/index.php">Piattaforma Esami Informatizzati</a>.</p>
-<p>Lo studente all’esame può consultare sia la documentazione ufficiale di <strong>R</strong> che il codice utilizzato a lezione, disponibile a <a href="https://github.com/tommasorigon/introR/tree/master/lezioni/script">questo link</a>.</p>
-<p>Per visionare la prova, è possibile venire a ricevimento. Per ulteriori informazioni relative alla registrazione del voto, al calendario delle verbalizzazioni e al salto d’appello si visiti la pagina: <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a>.</p>
-</div>
-<div id="propedeuticità" class="section level2">
-<h2>Propedeuticità</h2>
-<p>Si veda la pagina <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a>.</p>
-</div>
-<div id="ricevimento" class="section level2">
-<h2>Ricevimento</h2>
-<p>Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo <code>tommaso.rigon@unimib.it</code>. Il ricevimento è fissato ogni <strong>martedì alle ore 17.30</strong>.</p>
-<hr />
-<!-- #### Ringraziamenti -->
-<!-- La struttura di questo sito web è largamente ispirata dal sito web dei corsi di Aldo Solari. Si ringrazia inoltre il prof. Nicola Lunardon per aver messo a disposizione e concesso l'uso del materiale dell'A.A. 2019-2020 -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-107301343-1', 'auto');
-  ga('send', 'pageview');
-</script>
+<div id="problema-3" class="section level2">
+<h2>Problema 3</h2>
+<p>Siano <span class="math inline">\(y = (y_1,\dots,y_n)\)</span> delle realizzazioni iid di una variabile aleatoria discreta con legge bernoulli di parametro <span class="math inline">\(\theta \in (0,1)\)</span>. La funzione di log-verosimiglianza, a meno di una costante additiva, è pari a</p>
+<p><span class="math display">\[
+\ell(\theta) = \ell(\theta; y) = \sum_{i=1}^ny_i\log\theta + \sum_{i=1}^n(1 - y_i)\log(1-\theta).
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>(2pt) Si implementi la funzione <code>loglik(theta, y)</code> che calcola la funzione di log-verosimiglianza.</p></li>
+<li><p>(2pt) Si considerino le osservazioni <code>0, 0, 1, 0, 0, 0, 0, 1</code>. Si disegni la funzione di log-verosimiglianza corrispondente nell’intervallo <span class="math inline">\((0, 1)\)</span>.</p></li>
+<li><p>(2pt) Utilizzando opportuni strumenti di approssimazione numerica si calcoli la stima di massima verosimiglianza <span class="math inline">\(\hat{\theta}\)</span>.</p></li>
+<li><p>(2pt) L’approssimazione parabolica della funzione di log-verosimiglianza, nel suo punto di massimo, è la seguente <span class="math display">\[
+\ell(\theta) \approx \ell(\hat{\theta}) - \frac{n}{2 \hat{\theta}(1 - \hat{\theta})}(\theta - \hat{\theta})^2.
+\]</span> Si implementi la funzione <code>loglik_approx(theta, y)</code> che calcola tale approssimazione, sapendo che <span class="math inline">\(\hat{\theta} = \bar{y}\)</span>. Si confrontino graficamente la log-verosimiglianza e la sua approssimazione in <span class="math inline">\((1/10, 1/2)\)</span>, utilizzando i dati forniti in precedenza.</p></li>
+<li><p>(2pt) Si considerino le osservazioni <code>0, 0, 0, 0, 0, 0, 0, 0</code>. Si disegni la funzione di log-verosimiglianza nell’intervallo <span class="math inline">\((0, 1)\)</span> e si calcoli la stima di massima verosimiglianza <span class="math inline">\(\hat{\theta}\)</span>. Si provi quindi a disegnare l’approssimazione quadratica della verosimiglianza. Si commentino i risultati e/o eventuali errori.</p></li>
+</ol>
 </div>
 </section>
 
