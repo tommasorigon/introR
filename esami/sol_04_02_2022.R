@@ -25,22 +25,18 @@ X <- cbind(1, birthwt$age, birthwt$ftv)
 y <- birthwt$bwt
 beta <- solve(t(X) %*% X) %*% t(X) %*% y
 beta
+# Ovviamente, il simbolo (-1) indica la matrice inversa.
 
 # Problema 2 ----------------------------------------
 
 # 2.1
 n <- 20
 
-# Soluzione diretta (numericamente instabile per n elevato, ad es. n = 1000)
-kl <- sum(dbinom(0:n, n, 0.5) * log(dbinom(0:n, n, 0.5) / dbinom(0:n, n, 0.2))) #
-kl # 4.462871
-
-# Soluzione indiretta (numericamente stabile per n elevato)
-kl <- sum(dbinom(0:n, n, 0.5) * dbinom(0:n, n, 0.5, log = TRUE)) - sum(dbinom(0:n, n, 0.5) * dbinom(0:n, n, 0.2, log = TRUE))
+# Questa soluzione è accettabile, anche se un po' instabile numericamente per n elevato
+kl <- sum(dbinom(0:n, n, 0.5) * log(dbinom(0:n, n, 0.5) / dbinom(0:n, n, 0.2)))
 kl # 4.462871
 
 # 2.2
-
 set.seed(123)
 R <- 10^5
 X <- rbinom(R, n, 0.5)
@@ -54,7 +50,7 @@ sd(sim_kl) / sqrt(R) # 0.009778728
 
 # 2.3
 
-# Gli approcci possibili sono almeno due, ovvero quelli dei punti 2.1 e 2.2 di questo esercizio. In questo caso, approccio 2.2 è più semplice. In alternativa, si poteva procedere come in 2.1, troncando opportunamente la serie ad un valore "grande".
+# Gli approcci possibili sono almeno due, ovvero quelli dei punti 2.1 e 2.2. L'approccio Monte Carlo sembra essere il più semplice. In alternativa, si poteva procedere come in 2.1, troncando opportunamente la serie ad un valore "grande".
 
 set.seed(123)
 R <- 10^5
@@ -71,8 +67,9 @@ loglik <- function(theta, y) {
   log(theta) * sum(y) + log(1 - theta) * sum(1 - y)
 }
 
-# Non serve vettorizzare se il codice è stato scritto come sopra
-# Se necessario, la funziona andava vettorizzata
+# Non serve vettorizzare se il codice è stato scritto come nelle righe precedenti
+
+# Se necessario (dipende dall'implementazione), si poteva aggiungere:
 # loglik <- Vectorize(loglik, vectorize.args = "theta")
 
 # 3.2
@@ -83,7 +80,7 @@ curve(loglik(x, y), 0, 1)
 theta_hat <- nlminb(start = 0.5, function(theta) -loglik(theta, y), lower = 1e-10, upper = 1 - 1e-10)$par
 theta_hat # 0.25
 
-# La verosimiglianza è definita tra (0,1). Per cui è necessario usare le opzioni "upper" e "lower". Inoltre, la procedura va inizializzata ad un valore interno a (0,1), come ad esempio start = 0.5.
+# La verosimiglianza è definita tra (0,1). Per cui è necessario usare le opzioni "lower" ed "upper". Inoltre, la procedura di ottimizzazione va inizializzata ad un valore interno a (0,1), come ad esempio start = 0.5.
 
 # 3.4
 loglik_approx <- function(theta, y) {
@@ -98,6 +95,8 @@ curve(loglik_approx(x, y), add = TRUE, lty = "dotted", col = "red")
 # 3.5
 
 y <- c(0, 0, 0, 0, 0, 0, 0, 0)
+
+# Calcolo la stima di massima verosimiglianza usando la formula. Anche la procedura con nlminb è stata considerata corretta.
 mean(y) # 0
 
 curve(loglik(x, y), 0, 1)
