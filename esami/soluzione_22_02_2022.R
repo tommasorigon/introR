@@ -22,8 +22,11 @@ cor(subset(swiss, select = c(Agriculture, Fertility, logEducation)))
 # Fertility      0.3530792  1.0000000   -0.5242985
 # logEducation  -0.6759136 -0.5242985    1.0000000
 
-
 # 1.4
+summary(swiss$Agriculture)
+var(swiss$Agriculture)
+
+# 1.5
 resid <- function(x, y) {
   beta_hat <- cov(x, y) / var(x)
   alpha_hat <- mean(y) - beta_hat * mean(x)
@@ -119,8 +122,8 @@ T1_sim <- replicate(R, T1(rpois(n = n, lambda0)))
 T2_sim <- replicate(R, T2(rpois(n = n, lambda0)))
 
 # Distorsioni (approssimate)
-round(mean(T1_sim - psi0), 2)
-round(mean(T2_sim - psi0), 2)
+round(mean(T1_sim - psi0), 3)
+round(mean(T2_sim - psi0), 3)
 
 # Errore quadratico medio (approssimato)
 mean((T1_sim - psi0)^2)
