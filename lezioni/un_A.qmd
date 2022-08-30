@@ -19,7 +19,7 @@ execute:
 ---
 
 ```{r}
-knitr::opts_knit$set(base.url='https://github.com/tommasorigon/introR/blob/master/lezioni/img/')
+knitr::opts_knit$set(base.url='https://github.com/tommasorigon/introR/blob/master/lezioni/')
 ```
 
 
