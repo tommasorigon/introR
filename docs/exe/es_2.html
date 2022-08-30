@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.163">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R per l’analisi statistica multivariata</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenuto della pagina</h2>
+   
+  <ul>
+  <li><a href="#esercizio-a" id="toc-esercizio-a" class="nav-link active" data-scroll-target="#esercizio-a">Esercizio A</a></li>
+  <li><a href="#esercizio-b" id="toc-esercizio-b" class="nav-link" data-scroll-target="#esercizio-b">Esercizio B</a></li>
+  <li><a href="#esercizio-c" id="toc-esercizio-c" class="nav-link" data-scroll-target="#esercizio-c">Esercizio C</a></li>
+  <li><a href="#esercizio-d" id="toc-esercizio-d" class="nav-link" data-scroll-target="#esercizio-d">Esercizio D</a></li>
+  <li><a href="#esercizio-e" id="toc-esercizio-e" class="nav-link" data-scroll-target="#esercizio-e">Esercizio E</a></li>
+  <li><a href="#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar" id="toc-esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar" class="nav-link" data-scroll-target="#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar">Esercizi tratti dai libro di testo Albert &amp; Rizzo (<strong>AR</strong>)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Esercizi 2</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="esercizio-a" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-a">Esercizio A</h2>
+<p>La varianza campionaria dei dati <span class="math inline">\({\bf x} = (x_1,\dots,x_n)\)</span> è definita come</p>
+<p><span class="math display">\[
+\text{var}({\bf x}) = \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^2,
+\]</span> dove <span class="math inline">\(\bar{x}\)</span> è la media campionaria. Si noti che <span class="math inline">\(\text{var}({\bf x})\)</span> ammette la rappresentazione alternativa</p>
+<p><span class="math display">\[\text{var}({\bf x}) = \frac{1}{2 n^2} \sum_{i=1}^n \sum_{j = 1}^n (x_i - x_j)^2.\]</span></p>
+<hr>
+<ol type="1">
+<li><p>Si scriva una funzione <code>var2(x)</code> che calcola la varianza di <span class="math inline">\({\bf x}\)</span> utilizzando la definizione.</p></li>
+<li><p>Si scriva una funzione <code>var3(x)</code> che calcola la varianza di <span class="math inline">\({\bf x}\)</span> utilizzando la formula basata sulle distanze tra coppie di elementi.</p></li>
+<li><p>Si supponga che <code>x = c(1, 4, 2, 2, 10)</code>. Si verifichi che le due funzioni <code>var2(x)</code> e <code>var3(x)</code> forniscono lo stesso risultato.</p></li>
+<li><p>Si supponga ora che <code>x &lt;- 1:3000</code>. Si notano differenze rispetto al punto precedente?</p></li>
+<li><p>Si confrontino le funzioni <code>var2</code> e <code>var3</code> con la funzione <code>var</code> implementata in <strong>R</strong>, utilizzando i dati del punto 3. Come mai i risultati differiscono, anche se di poco? Si consulti la documentazione per rispondere.</p></li>
+</ol>
+</section>
+<section id="esercizio-b" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-b">Esercizio B</h2>
+<p>Questo esercizio ripercorre l’<a href="https://tommasorigon.github.io/StatI/slides/sl_I.pdf">unità I</a> del corso <a href="https://tommasorigon.github.io/StatI">Statistica I</a>, a cui si rimanda per un ripasso sugll’indice di Gini e una descrizione del problema.</p>
+<p>Al link <a href="https://tommasorigon.github.io/introR/dataset/elezioni.RData" class="uri">https://tommasorigon.github.io/introR/dataset/elezioni.RData</a> sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.</p>
+<hr>
+<ol type="1">
+<li>Si carichino in memoria i dati.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../dataset/elezioni.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Quali variabili contiene il dataset <code>elez</code>? Di quale tipologia sono?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(elez)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   537619 obs. of  2 variables:
+ $ Lista    : Factor w/ 9 levels "Rizzo, B. V.",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ Municipio: Factor w/ 9 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><p>Si ottenga il numero di voti ottenuti da ciascun candidato nei differenti Municipi di Milano.</p></li>
+<li><p>Si ottenga il numero di voti ottenuti da ciascun candidato e se ne faccia un grafico. Si ottenga inoltre la percentuale di voti ottenuti da ciascun candidato.</p></li>
+<li><p>Si scriva la funzione <code>Gini(x)</code> che calcola l’indice di Gini per una variabile qualitativa. L’indice di Gini è definito come <span class="math display">\[
+G = 1 - \sum_{j=1}^k f_j^2,
+\]</span> dove <span class="math inline">\(f_1,\dots,f_k\)</span> sono le frequenze relative delle <span class="math inline">\(k\)</span> modalità.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Gini <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  freq <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(x))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  freq_rel <span class="ot">&lt;-</span> freq <span class="sc">/</span> <span class="fu">sum</span>(freq)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(freq_rel<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Si scriva una funzione <code>Gini_norm(x)</code>che calcola l’indice di Gini normalizzato, ovvero <span class="math display">\[G_\text{norm} = \frac{k}{k-1} G.\]</span></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Gini_norm <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  freq <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(x))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  freq_rel <span class="ot">&lt;-</span> freq <span class="sc">/</span> <span class="fu">sum</span>(freq)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(freq)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">/</span> (k <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(freq_rel<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Si valuti la polarizzazione dei voti tra i candidati nelle diverse municipalità utilizzando l’indice di Gini normalizzato. Si organizzino quindi i risultati in una tabella e si dica quale municipalità presenta la polarizzazione maggiore.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(elez<span class="sc">$</span>Lista, elez<span class="sc">$</span>Municipio, Gini_norm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        1         2         3         4         5         6         7         8 
+0.6865002 0.7315898 0.7237984 0.7260422 0.7303878 0.7287159 0.7295412 0.7352783 
+        9 
+0.7436358 </code></pre>
+</div>
+</div>
+</section>
+<section id="esercizio-c" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-c">Esercizio C</h2>
+<p>Questo esercizio riprende i dati considerati nell’<a href="https://tommasorigon.github.io/StatI/slides/sl_J.pdf">unità J</a> del corso <a href="https://tommasorigon.github.io/StatI">Statistica I</a>, a cui si rimanda per una descrizione più approfondita del dataset.</p>
+<p>I dati sono disponibili al link <a href="https://tommasorigon.github.io/introR/dataset/province.csv" class="uri">https://tommasorigon.github.io/introR/dataset/province.csv</a>.</p>
+<hr>
+<ol type="1">
+<li>Si carichino i dati in memoria e si salvi il dataset nell’oggetto <code>province</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>province <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/province.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p>Quali variabili contiene il dataset <code>province</code>? Di quale tipologia sono?</p></li>
+<li><p>Si rappresenti graficamente la variabile <code>istruzione</code> tramite istogramma. Si calcoli quindi media, mediana e varianza.</p></li>
+<li><p>Si rappresenti graficamente la funzione di ripartizione della variabile <code>agricoltura</code>.</p></li>
+<li><p>Si rappresenti il diagramma a dispersione delle variabili <code>agricoltura</code> e <code>istruzione</code>. Si può notare una qualche relazione?</p></li>
+<li><p>Si ottenga la matrice di varianza e covarianza.</p></li>
+<li><p>Si ottenga la matrice di correlazione. Si commenti la relazione esistente tra <code>agricoltura</code> e <code>istruzione</code>.</p></li>
+</ol>
+</section>
+<section id="esercizio-d" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-d">Esercizio D</h2>
+<p>Nel dataset <code>calcio</code> disponibile al link <a href="https://tommasorigon.github.io/introR/dataset/calcio.RData" class="uri">https://tommasorigon.github.io/introR/dataset/calcio.RData</a>, ciascuna unità statistica rappresenta una partita di calcio della Serie A italiana, relativa ai campionati 2008-2015. Il dataset è composto dalle seguenti variabili:</p>
+<ul>
+<li><p><code>Date</code> indica la data della partita.</p></li>
+<li><p><code>HomeTeam</code> e <code>AwayTeam</code> indicano, rispettivamente, la squadra che gioca in casa e la squadra ospite per ciascuna partita.</p></li>
+<li><p><code>FTR</code> indica se la squadra che giocava in casa ha vinto (H), pareggiato (D), oppure perso (A).</p></li>
+<li><p>Le variabili <code>B365H</code>, <code>B365D</code>, <code>B365A</code> sono le quote per la vittoria, pareggio, sconfitta della squadra di casa.</p></li>
+</ul>
+<p>Supponendo di scommettere sulla vittoria della squadra di casa, puntando un euro su di essa si otterrebbero <code>B365H</code> euro in caso di vittoria.</p>
+<hr>
+<ol type="1">
+<li>Si carichi il dataset in memoria.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../dataset/calcio.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Verificare le tipologie di variabili presenti nel dataset <code>calcio</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1900 obs. of  7 variables:
+ $ Date    : Date, format: "2014-08-30" "2014-08-30" ...
+ $ HomeTeam: Factor w/ 28 levels "Atalanta","Bari",..: 8 22 1 7 11 17 19 24 26 27 ...
+ $ AwayTeam: Factor w/ 28 levels "Atalanta","Bari",..: 13 10 28 20 18 14 23 5 12 9 ...
+ $ FTR     : Factor w/ 3 levels "A","D","H": 1 3 2 3 1 3 2 2 2 3 ...
+ $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...
+ $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...
+ $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ...</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Controllare se esistono dei dati mancanti nel dataset. Se presenti, si escludano le righe contenenti dei valori mancanti dall’analisi. <strong>Suggerimento</strong>: si usi la funzione <code>na.omit</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Date                  HomeTeam          AwayTeam    FTR    
+ Min.   :2008-08-30   Cagliari  :  95   Cagliari  :  95   A:506  
+ 1st Qu.:2009-10-28   Chievo    :  95   Chievo    :  95   D:504  
+ Median :2011-01-16   Fiorentina:  95   Fiorentina:  95   H:890  
+ Mean   :2011-10-31   Genoa     :  95   Genoa     :  95          
+ 3rd Qu.:2014-03-23   Inter     :  95   Inter     :  95          
+ Max.   :2015-05-31   Juventus  :  95   Juventus  :  95          
+                      (Other)   :1330   (Other)   :1330          
+     B365H            B365D           B365A       
+ Min.   : 1.090   Min.   :1.400   Min.   : 1.100  
+ 1st Qu.: 1.670   1st Qu.:3.200   1st Qu.: 2.630  
+ Median : 2.100   Median :3.300   Median : 3.600  
+ Mean   : 2.484   Mean   :3.557   Mean   : 4.564  
+ 3rd Qu.: 2.800   3rd Qu.:3.600   3rd Qu.: 5.500  
+ Max.   :21.000   Max.   :9.000   Max.   :26.000  
+ NA's   :3        NA's   :3       NA's   :3       </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Calcolare i principali indici descrittivi per la variabile <code>B365H</code>. Rappresentarla poi tramite istogramma ed il boxplot. Sono presenti valori anomali? Da cosa è possibile intuirlo?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(calcio<span class="sc">$</span>B365H)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.090   1.670   2.100   2.484   2.800  21.000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> (<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(calcio<span class="sc">$</span>B365H, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(calcio<span class="sc">$</span>B365H)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="es_2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol type="1">
+<li>Effettuare l’analisi del punto precedenti sulla trasformazione logaritmica di <code>B365H</code>. Sono presenti valori anomali?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.08618 0.51282 0.74194 0.81273 1.02962 3.04452 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> (<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H), <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="es_2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol type="1">
+<li>Valutare la correlazione presente tra <code>B365H</code> e <code>B365A</code>. Ci si poteva aspettare un risultato simile? Cosa implicherebbe una correlazione positiva?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(calcio<span class="sc">$</span>B365H, calcio<span class="sc">$</span>B365A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5848867</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Rappresentare con un grafico opportuno la relazione tra le trasformate logaritmiche delle variabili <code>B365H</code> e <code>B365A</code>. Si commenti il risultato.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H), <span class="fu">log</span>(calcio<span class="sc">$</span>B365A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="es_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol type="1">
+<li>Valutare la quota media <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Come si interpreta questo risultato?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(calcio<span class="sc">$</span>B365H, calcio<span class="sc">$</span>FTR, mean) <span class="co"># Comando rapido</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       A        D        H 
+3.189565 2.512247 2.065518 </code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Rappresentare tramite boxplot la variabile <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Si commenti il risultato.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calcio<span class="sc">$</span>B365H <span class="sc">~</span> calcio<span class="sc">$</span>FTR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="es_2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="esercizio-e" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-e">Esercizio E</h2>
+<p>Nel dataset <code>imdb</code> disponibile al link <a href="https://tommasorigon.github.io/introR/dataset/imdb.RData" class="uri">https://tommasorigon.github.io/introR/dataset/imdb.RData</a>, ciascuna unità statistica è un film estratto dal sito http://www.imdb.com/ (Internet Movie Data Base). Per ciascun film, sono a disposizione le seguenti variabili:</p>
+<ul>
+<li><p><code>movie_title</code> è il titolo del film.</p></li>
+<li><p><code>duration</code> è la durata del film espressa in minuti.</p></li>
+<li><p><code>lgross</code>è la trasformazione logaritmica dell’incasso lordo, espresso in dollari.</p></li>
+<li><p><code>lbudget</code>è la trasformazione logaritmica del budget, espresso in dollari.</p></li>
+<li><p><code>Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Romance, SciFi, Thriller, War, Western</code>, sono variabili qualitative che indicano se il film appartiene o meno al genere. Ciascun film può appartenere a più generi contemporaneamente.</p></li>
+</ul>
+<hr>
+<ol type="1">
+<li>Si carichi il dataset in memoria. Si controlli la tipologia delle variabili.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../dataset/imdb.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Quante sono le unità statistiche?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(imdb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3227</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Qual è la durata media dei film del dataset? E l’incasso medio?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(imdb<span class="sc">$</span>duration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 111.2699</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">exp</span>(imdb<span class="sc">$</span>lgross))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58503794</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Ci sono differenze tra la distribuzione della durata (<code>duration</code>) dei film drammatici (<code>Drama</code>) e quelli non drammatici? Si risponda tramite opportuni indici descrittivi ed analisi grafiche.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(imdb<span class="sc">$</span>duration <span class="sc">~</span> imdb<span class="sc">$</span>Drama)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="es_2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol type="1">
+<li>Quali sono i 5 film che presentano, all’interno del dataset, i maggiori incassi? <strong>Suggerimento</strong>: si usi la funzione <code>order</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>imdb<span class="sc">$</span>movie_title[<span class="fu">order</span>(imdb<span class="sc">$</span>lgross, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)][<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Avatar&nbsp;"          "Titanic&nbsp;"         "Jurassic World&nbsp;"  "The Avengers&nbsp;"   
+[5] "The Dark Knight&nbsp;"</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Rappresentare con grafici appropriati le distribuzioni marginali e la distribuzione congiunta delle variabili <code>lbudget</code> e <code>lgross</code>. Che tipo di relazione sembra esserci tra le due variabili?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(imdb<span class="sc">$</span>lbudget)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(imdb<span class="sc">$</span>lgross)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(imdb<span class="sc">$</span>lbudget, imdb<span class="sc">$</span>lgross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="es_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Si calcoli la correlazione tra <code>lbudget</code> e <code>lgross</code> e si commenti il risultato.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(imdb<span class="sc">$</span>lbudget, imdb<span class="sc">$</span>lgross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5673974</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Si calcoli la correlazione tra <code>duration</code> e <code>lgross</code> e si commenti il risultato. Possiamo quindi concludere che, per guodagnare molto, sia sufficiente produrre un film della durata di 12 ore?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(imdb<span class="sc">$</span>duration, imdb<span class="sc">$</span>lgross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1783172</code></pre>
+</div>
+</div>
+</section>
+<section id="esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar" class="level2">
+<h2 class="anchored" data-anchor-id="esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar">Esercizi tratti dai libro di testo Albert &amp; Rizzo (<strong>AR</strong>)</h2>
+<ul>
+<li>Esercizio 1.14, pag. 41.</li>
+<li>Esercizio 2.1, pag. 75.</li>
+<li>Esercizio 2.2, pag. 75.</li>
+<li>Esercizio 2.3, pag. 75.</li>
+<li>Esercizi 2.4 e 2.5, pag. 75-76.</li>
+<li>Esercizio 2.10, pag. 77.</li>
+<li>Esercizio 2.12, pag. 77.</li>
+<li>Esercizio 3.1, pag. 96.</li>
+<li>Esercizio 3.4, pag. 98.</li>
+</ul>
+<!-- ## Esercizio F -->
+<!-- Uno studente è nato il 15 Aprile 1999.  -->
+<!-- 1. Quanti giorni di vita ha compito lo studente il giorno 30 Settembre 2020?  -->
+<!-- 1. In quale giorno lo studente compirà 10.000 giorni di vita? -->
+<!-- ```{r} -->
+<!-- born <- as.Date("1999-04-15") -->
+<!-- date <- as.Date("2020-09-30") -->
+<!-- date - born -->
+<!-- born + 10000 -->
+<!-- ``` -->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

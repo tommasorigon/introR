@@ -3,10 +3,6 @@ title: "R per l'analisi statistica multivariata"
 subtitle: 'Esercizi 2'
 ---
 
-```{r startup, include = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = F, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = F, R.options = list(width = 100), collapse = T, dpi = 200, fig.align = "center")
-```
-
 ## Esercizio A
 
 La varianza campionaria dei dati ${\bf x} = (x_1,\dots,x_n)$ è definita come
@@ -33,14 +29,14 @@ $$\text{var}({\bf x}) = \frac{1}{2 n^2} \sum_{i=1}^n \sum_{j = 1}^n (x_i - x_j)^
 
 Questo esercizio ripercorre l'[unità I](https://tommasorigon.github.io/StatI/slides/sl_I.pdf) del corso [Statistica I](https://tommasorigon.github.io/StatI), a cui si rimanda per un ripasso sugll'indice di Gini e una descrizione del problema.
 
-Al link <https://tommasorigon.github.io/introR/data/elezioni.RData> sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.
+Al link <https://tommasorigon.github.io/introR/dataset/elezioni.RData> sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.
 
 ------------------------------------------------------------------------
 
 1.  Si carichino in memoria i dati.
 
 ```{r}
-load("../data/elezioni.RData")
+load("../dataset/elezioni.RData")
 ```
 
 1.  Quali variabili contiene il dataset `elez`? Di quale tipologia sono?
@@ -86,14 +82,14 @@ tapply(elez$Lista, elez$Municipio, Gini_norm)
 
 Questo esercizio riprende i dati considerati nell'[unità J](https://tommasorigon.github.io/StatI/slides/sl_J.pdf) del corso [Statistica I](https://tommasorigon.github.io/StatI), a cui si rimanda per una descrizione più approfondita del dataset.
 
-I dati sono disponibili al link <https://tommasorigon.github.io/introR/data/province.csv>.
+I dati sono disponibili al link <https://tommasorigon.github.io/introR/dataset/province.csv>.
 
 ------------------------------------------------------------------------
 
 1.  Si carichino i dati in memoria e si salvi il dataset nell'oggetto `province`.
 
 ```{r}
-province <- read.table("../data/province.csv", header = TRUE)
+province <- read.table("../dataset/province.csv", header = TRUE)
 ```
 
 1.  Quali variabili contiene il dataset `province`? Di quale tipologia sono?
@@ -110,7 +106,7 @@ province <- read.table("../data/province.csv", header = TRUE)
 
 ## Esercizio D
 
-Nel dataset `calcio` disponibile al link <https://tommasorigon.github.io/introR/data/calcio.RData>, ciascuna unità statistica rappresenta una partita di calcio della Serie A italiana, relativa ai campionati 2008-2015. Il dataset è composto dalle seguenti variabili:
+Nel dataset `calcio` disponibile al link <https://tommasorigon.github.io/introR/dataset/calcio.RData>, ciascuna unità statistica rappresenta una partita di calcio della Serie A italiana, relativa ai campionati 2008-2015. Il dataset è composto dalle seguenti variabili:
 
 -   `Date` indica la data della partita.
 
@@ -127,7 +123,7 @@ Supponendo di scommettere sulla vittoria della squadra di casa, puntando un euro
 1.  Si carichi il dataset in memoria.
 
 ```{r}
-load("../data/calcio.RData")
+load("../dataset/calcio.RData")
 ```
 
 1.  Verificare le tipologie di variabili presenti nel dataset `calcio`.
@@ -188,7 +184,7 @@ plot(calcio$B365H ~ calcio$FTR)
 
 ## Esercizio E
 
-Nel dataset `imdb` disponibile al link <https://tommasorigon.github.io/introR/data/imdb.RData>, ciascuna unità statistica è un film estratto dal sito http://www.imdb.com/ (Internet Movie Data Base). Per ciascun film, sono a disposizione le seguenti variabili:
+Nel dataset `imdb` disponibile al link <https://tommasorigon.github.io/introR/dataset/imdb.RData>, ciascuna unità statistica è un film estratto dal sito http://www.imdb.com/ (Internet Movie Data Base). Per ciascun film, sono a disposizione le seguenti variabili:
 
 -   `movie_title` è il titolo del film.
 
@@ -205,7 +201,7 @@ Nel dataset `imdb` disponibile al link <https://tommasorigon.github.io/introR/da
 1.  Si carichi il dataset in memoria. Si controlli la tipologia delle variabili.
 
 ```{r}
-load("../data/imdb.RData")
+load("../dataset/imdb.RData")
 ```
 
 1.  Quante sono le unità statistiche?

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.163">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R per l’analisi statistica multivariata</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenuto della pagina</h2>
+   
+  <ul>
+  <li><a href="#problema-1" id="toc-problema-1" class="nav-link active" data-scroll-target="#problema-1">Problema 1</a></li>
+  <li><a href="#problema-2" id="toc-problema-2" class="nav-link" data-scroll-target="#problema-2">Problema 2</a></li>
+  <li><a href="#problema-3" id="toc-problema-3" class="nav-link" data-scroll-target="#problema-3">Problema 3</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Esame 24 Febbraio 2021</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="problema-1" class="level2">
+<h2 class="anchored" data-anchor-id="problema-1">Problema 1</h2>
+<p>I numeri di <strong>Stirling del secondo tipo</strong> <span class="math inline">\(S(n,k)\)</span> rappresentano il numero di possibili partizioni di un insieme di <span class="math inline">\(n\)</span> elementi formate da <span class="math inline">\(k\)</span> termini. È possibile dimostrare che</p>
+<p><span class="math display">\[
+S(n, k) = \frac{1}{k!}\sum_{j=0}^k(-1)^{k-j}\binom{k}{j}j^n,
+\]</span> per qualsiasi valore di <span class="math inline">\(k =1,\dots,n\)</span>. I <strong>numeri di Bell</strong> <span class="math inline">\(B(n)\)</span> rappresentano invece il numero di possibili partizioni di un insieme di <span class="math inline">\(n\)</span> elementi, independentemente dal numero di termini, ovvero</p>
+<p><span class="math display">\[
+B(n) = \sum_{k=1}^n S(n, k).
+\]</span></p>
+<ol type="1">
+<li><p>(6pt) Si scrivano in <strong>R</strong> le funzioni <code>stirling2(n, k)</code> e <code>Bell(n)</code> che calcolano, rispettivamente, i coefficienti <span class="math inline">\(S(n,k)\)</span> e <span class="math inline">\(B(n)\)</span>.</p></li>
+<li><p>(1pt) Utilizzando le funzioni del punto precedente, si dica in quanti modi è possibile dividere un insieme di <span class="math inline">\(10\)</span> elementi utilizzando <span class="math inline">\(5\)</span> gruppi.</p></li>
+<li><p>(1pt) Utilizzando le funzioni dei punti precedenti, si dica in quanti modi è possibile partizionare un insieme di <span class="math inline">\(10\)</span> elementi.</p></li>
+</ol>
+</section>
+<section id="problema-2" class="level2">
+<h2 class="anchored" data-anchor-id="problema-2">Problema 2</h2>
+<p>Il <strong>numero armonico generalizzato</strong> è definito come</p>
+<p><span class="math display">\[
+H(n,\alpha) = 1 + \frac{1}{2^\alpha} + \cdots + \frac{1}{n^\alpha} = \sum_{k=1}^n\frac{1}{k^\alpha}, \qquad \alpha &gt; 0.
+\]</span></p>
+<p>Inoltre, una variabile aleatoria discreta <span class="math inline">\(X\)</span> con supporto <span class="math inline">\(\{1,\dots, n\}\)</span> segue una <strong>distribuzione di Zipf</strong> se</p>
+<p><span class="math display">\[
+P(X = k) = \frac{k^{-\alpha}}{H(n, \alpha)}, \qquad k=1,\dots,n,
+\]</span> ed è pari a <span class="math inline">\(0\)</span> altrimenti.</p>
+<ol type="1">
+<li><p>(2pt) Si scriva in <strong>R</strong> la funzione <code>H(n, alpha)</code> che calcola il numero armonico generalizzato. Quanto vale <code>H(10, 1)</code>?</p></li>
+<li><p>(2pt) Si scriva in <strong>R</strong> la funzione di probabilità <code>dzipf(k, n, alpha)</code> di una legge Zipf di parametri <span class="math inline">\(n\)</span> ed <span class="math inline">\(\alpha\)</span> e la si calcoli nei valori <code>dzipf(5, 10, 2)</code>.</p></li>
+<li><p>(2pt) Per <span class="math inline">\(n = 50\)</span> e <span class="math inline">\(\alpha = 1\)</span>, si rappresenti graficamente la legge di probabilità di una distribuzione Zipf tramite un diagramma a bastoncini.</p></li>
+<li><p>(2pt) Si supponga che <span class="math inline">\(X\)</span> segua una Zipf di parametri <span class="math inline">\(n = 100\)</span> e <span class="math inline">\(\alpha = 2\)</span>. Si calcoli la probabilità <span class="math inline">\(P(X \ge 10)\)</span>.</p></li>
+<li><p>(3pt) Si scriva in <strong>R</strong> la funzione <code>rzipf(R, n, alpha)</code> che simula <code>R</code> valori casuali da una distribuzione Zipf. <strong>Suggerimento</strong>: si faccia uso della funzione <code>sample</code>.</p></li>
+<li><p>(2pt) Sfruttando la funzione <code>rzipf</code>, si ottenga un’approssimazione del valore atteso <span class="math inline">\(E(X)\)</span>, quando <span class="math inline">\(n = 50\)</span> e <span class="math inline">\(\alpha = 1\)</span>.</p></li>
+</ol>
+</section>
+<section id="problema-3" class="level2">
+<h2 class="anchored" data-anchor-id="problema-3">Problema 3</h2>
+<p>Si consideri il dataset <code>bacteria</code> della libreria <code>MASS</code> e lo si carichi in memoria. La variabile <code>y</code> indica la presenza (<code>y</code>) o l’assenza (<code>n</code>) del batterio <em>“H influenzae”</em> in alcuni bambini. La variabile <code>trt</code> indica invece il trattamento ricevuto.</p>
+<ol type="1">
+<li><p>(3pt) L’indice di eterogeneità di Gini è definito come <span class="math inline">\(G = 1 - \sum_{j=1}^kf_j^2\)</span>, dove <span class="math inline">\(f_1,\dots,f_k\)</span> sono le frequenze relative di una variabile qualitativa con modalità <span class="math inline">\(c_1,\dots,c_k\)</span>. Si costruisca in <strong>R</strong> la funzione <code>Gini(x)</code> che calcola l’indice di Gini di una variabile qualitativa <code>x</code>. Si ottenga quindi <code>Gini(bacteria$trt)</code>.</p></li>
+<li><p>(1pt) Si costruisca dataset <code>bacteria2</code> contenente le osservazioni relative alla sesta settimana di sorveglianza (<code>week</code> = <code>6</code>). Da quante osservazioni è composto?</p></li>
+<li><p>(1pt) Utilizzando il dataset <code>bacteria2</code>, si costruisca una tabella di contingenza che mette in relazione le variabili <code>y</code> e <code>trt</code>.</p></li>
+<li><p>(2pt) Utilizzando il dataset <code>bacteria2</code>, si ottengano le distribuzioni di frequenza condizionate della variabile <code>y</code>, per ciascun valore della variabile <code>trt</code>. Ci sono delle differenze tra queste distribuzioni?</p></li>
+<li><p>(2pt) Utilizzando il dataset <code>bacteria2</code>, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori <code>drug</code> e <code>drug+</code> della variabile <code>trt</code> in un unico valore, chiamato ad esempio <code>drug_and_drug+</code>. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
