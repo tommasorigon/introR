@@ -50,294 +50,57 @@
 
 <section class="page-header">
 <h1 class="title toc-ignore project-name">R per l’analisi statistica multivariata</h1>
-<h3 class="subtitle project-tagline">CdL in Scienze Statistiche ed Economiche, Università Milano-Bicocca</h3>
-<h4 class="author project-author">Tommaso Rigon</h4>
-<address class="author_afil">
-DEMS<br></section>
+<h3 class="subtitle project-tagline">Esame 22 Febbraio 2022</h3>
+</section>
 
 
 
 <section class="main-content">
-<p>L’insegnamento di <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a> (15 CFU) è articolato nelle seguenti parti:</p>
+<div id="problema-1" class="section level2">
+<h2>Problema 1</h2>
+<p>Si carichi in memoria il dataset <code>swiss</code> presente in <strong>R</strong>. Il dataset si riferisce a <span class="math inline">\(n = 47\)</span> province della svizzera Francese.</p>
 <ol style="list-style-type: decimal">
-<li><p>R per l’Analisi Statistica Multivariata (R), 3 CFU, I Ciclo, Prof. Rigon.</p></li>
-<li><p><a href="https://aldosolari.github.io/AE/">Analisi Esplorativa (AE)</a>, 6 CFU, II Ciclo, Prof. Solari.</p></li>
-<li><p>Modelli Statistici (MS), 6 CFU, III Ciclo, Prof. Nipoti.</p></li>
+<li><p>(1pt) Si aggiunga al dataset una nuova variabile, chiamata <code>logEducation</code>, la quale contiene il logaritmo della variabile <code>Education</code>.</p></li>
+<li><p>(1pt) Si produca un grafico opportuno che metta in relazione la variabile <code>logEducation</code> e <code>Agriculture</code>.</p></li>
+<li><p>(2pt) Si ottengano le matrici di covarianza e di correlazione relative alle variabili <code>Fertility</code>, <code>Agriculture</code> e <code>logEducation</code>.</p></li>
+<li><p>(2pt) Si calcolino degli opportuni indici di posizione e variabilità per la variabile <code>Agriculture</code>.</p></li>
+<li><p>(6pt) Si calcoli la correlazione parziale tra le variabili <code>Agriculture</code> e <code>Fertility</code> al netto della variabile <code>logEducation</code>, che si ottiene come segue. Si costruisca un modello di regressione lineare usando <code>Agriculture</code> come variabile risposta (<span class="math inline">\(y\)</span>) e <code>logEducation</code> (<span class="math inline">\(x\)</span>) come variabile esplicativa. Analogamente, si costruisca un modello di regressione usando <code>Fertility</code> come variabile risposta e <code>logEducation</code> come variabile esplicativa. Si ricordi che le stime ai minimi quadrati sono pari a <span class="math display">\[
+\hat{\alpha} = \bar{y} - \hat{\beta}\bar{x}, \qquad \hat{\beta} = \frac{\text{cov}(x,y)}{\text{var}(x)}.
+\]</span> Il coefficiente di correlazione parziale si ottiene quindi calcolando il coefficiente di correlazione tra i residui di entrambi i modelli.</p></li>
 </ol>
-<p><strong>Nota</strong>: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d’appello sono spiegate nella pagina principale: <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a>.</p>
-<div id="materiale-didattico" class="section level2">
-<h2>Materiale didattico</h2>
-<p>Il materiale didattico di ciascuna lezione è scaricabile utilizzando i <a href>collegamenti ipertestuali</a>. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.</p>
-<div id="il-software-r" class="section level3">
-<h3>Il software R</h3>
-<ul>
-<li><p><strong>R</strong> è un software <strong>open source</strong> ed è possibile scaricarlo al link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a>.</p></li>
-<li><p>L’uso di <strong>Rstudio</strong> è <strong>facoltativo</strong> in questo corso, anche se fortemente consigliato. È possibile scaricarlo al link <a href="https://rstudio.com/products/rstudio/">https://rstudio.com/products/rstudio/</a>.</p></li>
-<li><p>La documentazione del software <strong>R</strong> è parte integrante del materiale didattico.</p></li>
-</ul>
 </div>
-<div id="testi-di-riferimento" class="section level3">
-<h3>Testi di riferimento</h3>
-<ul>
-<li>Albert, J. &amp; M. Rizzo (2012). <a href="https://link.springer.com/content/pdf/10.1007%2F978-1-4614-1365-3.pdf"><em>R by Example</em></a>. Springer.<br />
-</li>
-<li>Robert, C. &amp; G. Casella (2010). <a href="https://link.springer.com/content/pdf/10.1007%2F978-1-4419-1576-4.pdf"><em>Introducing Monte Carlo Methods with R</em></a>. Springer</li>
-</ul>
+<div id="problema-2" class="section level2">
+<h2>Problema 2</h2>
+<p>Una variabile aleatoria continua <span class="math inline">\(X\)</span> segue una distribuzione di Kumaraswamy di parametri <span class="math inline">\(\alpha, \beta\)</span> se la sua densità è pari a:</p>
+<p><span class="math display">\[
+f(x) = \alpha \beta x^{\alpha - 1}(1 - x^\alpha)^{\beta - 1}, \qquad 0 &lt; x &lt; 1.
+\]</span></p>
+<p>È inoltre possibile dimostrare che la funzione di ripartizione è pari a</p>
+<p><span class="math display">\[
+F(x) = 1 - (1 - x^\alpha)^\beta, \qquad 0 &lt; x &lt; 1.
+\]</span> Infine, la funzione quantile è pari a</p>
+<p><span class="math display">\[
+\mathcal{Q}(p) = (1 - (1 - p)^{1/\beta})^{1/ \alpha}, \qquad 0 &lt; p &lt; 1. 
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>(4pt) Si implementino le funzioni <code>dkum(x, alpha, beta)</code>, <code>pkum(x, alpha, beta)</code> e <code>qkum(x, alpha, beta)</code> le quali fanno riferimento rispettivamente alla densità, alla funzione di ripartizione e alla funzione quantile.</p></li>
+<li><p>(2pt). Si faccia un grafico nell’intervallo <span class="math inline">\((0, 1)\)</span> di tutte e tre le funzioni precedenti, per <span class="math inline">\(\alpha = \beta = 2\)</span>.</p></li>
+<li><p>(2pt) Si costruisca una funzione <code>rkum(R, alpha, beta)</code> che campiona <code>R</code> valori pseudo-casuali dalla variabile aleatoria di Kumaraswamy.</p></li>
+<li><p>(2pt) Si ottenga una stima Monte Carlo della densità di <span class="math inline">\(X\)</span>, quando <span class="math inline">\(\alpha = \beta = 2\)</span> e la si confronti con la funzione di densità <code>dkum</code> ottenuta in precedenza.</p></li>
+<li><p>(2pt) Si ottenga un’approssimazione Monte Carlo della media <span class="math inline">\(E(X)\)</span>, quando <span class="math inline">\(\alpha = \beta = 2\)</span>. Si quantifichi opportunamente l’errore commesso.</p></li>
+</ol>
 </div>
-<div id="testi-di-consultazione" class="section level3">
-<h3>Testi di consultazione</h3>
-<ul>
-<li>Il materiale didattico aggiuntivo fornito su questa pagina web.</li>
-<li>Adler, J. (2012). <em>R in a nutshell</em>. O’Reilly.</li>
-<li>Grolemund, G. &amp; Wickham, H. (2016). <em>R for Data Science</em>. O’Reilly.</li>
-<li>Venables, W. N., Smith D. M. &amp; the R Core Team (2021). <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf"><em>An Introduction to R</em></a>.</li>
-</ul>
-</div>
-<div id="materiale-didattico-1" class="section level3">
-<h3>Materiale didattico</h3>
-<p>La sigla <strong>AR</strong> corrisponde al libro di Albert &amp; Rizzo. La sigla <strong>RC</strong> corrisponde al libro Robert &amp; Casella.</p>
-<table>
-<colgroup>
-<col width="36%" />
-<col width="36%" />
-<col width="4%" />
-<col width="24%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Argomenti</th>
-<th>Materiale didattico</th>
-<th>Materiale aggiuntivo</th>
-<th>Sezioni libro di testo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Introduzione al corso</td>
-<td><a href="lezioni/un_intro.pdf">Unità introduttiva</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><strong>INTRODUZIONE AD R</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>A-B-C: calcolo scientifico ed algebra lineare</td>
-<td><a href="lezioni/un_A.pdf">Slides unità A</a></td>
-<td><a href="lezioni/script/un_A.R">Codice R</a></td>
-<td><strong>AR</strong> §1.1, §1.3, §A1 — §A3</td>
-</tr>
-<tr class="even">
-<td>Elementi di programmazione</td>
-<td><a href="lezioni/un_B.pdf">Slides unità B</a></td>
-<td><a href="lezioni/script/un_B.R">Codice R</a></td>
-<td><strong>AR</strong> §1.2, §1.6 — §1.8</td>
-</tr>
-<tr class="odd">
-<td>I dataframes</td>
-<td><a href="lezioni/un_C.pdf">Slides unità C</a></td>
-<td><a href="lezioni/script/un_C.R">Codice R</a></td>
-<td><strong>AR</strong> §1.4 — §1.5</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_1.html">Esercizi 1</a></td>
-<td><a href="exe/es_1.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>STATISTICA DESCRITTIVA</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Analisi descrittiva dei dati <code>dde</code></td>
-<td><a href="lezioni/un_D.pdf">Slides unità D</a></td>
-<td><a href="lezioni/script/un_D.R">Codice R</a></td>
-<td><strong>AR</strong> §2.1 — §2.3, §2.7</td>
-</tr>
-<tr class="odd">
-<td>Analisi descrittiva dei dati <code>emoglobina</code></td>
-<td><a href="lezioni/un_E.pdf">Slides unità E</a></td>
-<td><a href="lezioni/script/un_E.R">Codice R</a></td>
-<td><strong>AR</strong> §2.1 — §2.3, §2.7</td>
-</tr>
-<tr class="even">
-<td><strong>Esercitazione</strong></td>
-<td><a href="lezioni/un_F.pdf">Slides unità F</a></td>
-<td><a href="lezioni/script/un_F.R">Codice R</a></td>
-<td><strong>AR</strong> 7.1, §7.2</td>
-</tr>
-<tr class="odd">
-<td>Analisi descrittiva dei dati <code>titanic</code></td>
-<td><a href="lezioni/un_G.pdf">Slides unità G</a></td>
-<td><a href="lezioni/script/un_G.R">Codice R</a></td>
-<td><strong>AR</strong> §3.1 — §3.5</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_2.html">Esercizi 2</a></td>
-<td><a href="exe/es_2.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>CALCOLO DELLE PROBABILITÀ</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Variabili aleatorie</td>
-<td><a href="lezioni/un_H.pdf">Slides unità H</a></td>
-<td><a href="lezioni/script/un_H.R">Codice R</a></td>
-<td><strong>RC</strong> §2.1, §2.2</td>
-</tr>
-<tr class="odd">
-<td>Metodi Monte Carlo</td>
-<td><a href="lezioni/un_I.pdf">Slides unità I</a></td>
-<td><a href="lezioni/script/un_I.R">Codice R</a></td>
-<td><strong>AR</strong> §11.1 — §11.5, §13.1, §13.2; <strong>RC</strong> §3.1, §3.2</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_3.html">Esercizi 3</a></td>
-<td><a href="exe/es_3.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>INFERENZA STATISTICA</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Metodi numerici per l’analisi di verosimiglianza</td>
-<td><a href="lezioni/un_K.pdf">Slides unità K</a></td>
-<td><a href="lezioni/script/un_K.R">Codice R</a></td>
-<td><strong>RC</strong> §5.1, §5.2</td>
-</tr>
-<tr class="odd">
-<td>Proprietà degli stimatori</td>
-<td><a href="lezioni/un_M.pdf">Slides unità M</a></td>
-<td><a href="lezioni/script/un_M.R">Codice R</a></td>
-<td><strong>AR</strong> §13.3</td>
-</tr>
-<tr class="even">
-<td><em>Esercizi</em></td>
-<td><a href="exe/es_4.html">Esercizi 4</a></td>
-<td><a href="exe/es_4.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><strong>LEZIONI AGGIUNTIVE</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Casinò, roulette e metodi Monte Carlo</td>
-<td><a href="lezioni/un_J.pdf">Slides unità J</a></td>
-<td><a href="lezioni/script/un_J.R">Codice R</a></td>
-<td><strong>AR</strong> §11.2</td>
-</tr>
-<tr class="odd">
-<td>Minimi quadrati non lineari</td>
-<td><a href="lezioni/un_L.pdf">Slides unità L</a></td>
-<td><a href="lezioni/script/un_L.R">Codice R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><strong>ESAMI PASSATI</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 22 Febbraio 2022</td>
-<td><a href="esami/esame_22_02_2022.html">Esame</a></td>
-<td><a href="esami/soluzione_22_02_2022.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Esame 4 Febbraio 2022</td>
-<td><a href="esami/esame_04_02_2022.html">Esame</a></td>
-<td><a href="esami/soluzione_04_02_2022.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 19 Novembre 2021</td>
-<td><a href="esami/esame_19_11_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_19_11_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Esame 22 Luglio 2021</td>
-<td><a href="esami/esame_22_07_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_22_07_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 30 Giugno 2021</td>
-<td><a href="esami/esame_30_06_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_30_06_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Esame 24 Febbraio 2021</td>
-<td><a href="esami/esame_24_02_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_24_02_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Esame 08 Febbraio 2021</td>
-<td><a href="esami/esame_08_02_2021.html">Esame</a></td>
-<td><a href="esami/soluzione_08_02_2021.R">soluzione.R</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="approfondimenti" class="section level3">
-<h3>Approfondimenti</h3>
-<div id="articoli-scientifici-in-inglese" class="section level4">
-<h4>Articoli scientifici (in inglese)</h4>
-<ul>
-<li><p><a href="approfondimenti/Hyndman1996.pdf">Hyndman, R. J. and Yanan, F. (1996)</a>. Sample quantiles in statistical packages. <em>The American Statistician</em> <strong>50</strong>(4), 361–365.</p></li>
-<li><p><a href="approfondimenti/Hitchcock2003.pdf">Hitchcock (2003)</a>. A history of the Metropolis-Hastings algorithm. <em>The American Statistician</em> <strong>57</strong>(4), 254–257.</p></li>
-<li><p><a href="approfondimenti/Oldford2016.pdf">Oldford (2016)</a>. Self-calibrating quantile–quantile plots. <em>The American Statistician</em> <strong>70</strong>(1), 74–90.</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="modalità-desame" class="section level2">
-<h2>Modalità d’esame</h2>
-<p>L’esame si svolge tramite <strong>computer</strong> e consiste tipicamente in <span class="math inline">\(3\)</span> esercizi da svolgere in <strong>R</strong>. Lo studente deve consegnare un file <code>nome_cognome.R</code> con i comandi utilizzati. L’esame si svolgerà sulla <a href="https://esamionline.elearning.unimib.it/login/index.php">Piattaforma Esami Informatizzati</a>.</p>
-<p>Lo studente all’esame può consultare sia la documentazione ufficiale di <strong>R</strong> che il codice utilizzato a lezione, disponibile a <a href="https://github.com/tommasorigon/introR/tree/master/lezioni/script">questo link</a>.</p>
-<p>Per visionare la prova, è possibile venire a ricevimento. Per ulteriori informazioni relative alla registrazione del voto, al calendario delle verbalizzazioni e al salto d’appello si visiti la pagina: <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a>.</p>
-</div>
-<div id="propedeuticità" class="section level2">
-<h2>Propedeuticità</h2>
-<p>Si veda la pagina <a href="https://aldosolari.github.io/ASM/">Analisi Statistica Multivariata</a>.</p>
-</div>
-<div id="ricevimento" class="section level2">
-<h2>Ricevimento</h2>
-<p>Per fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo <code>tommaso.rigon@unimib.it</code>. Il ricevimento è fissato ogni <strong>martedì alle ore 17.30</strong>.</p>
-<hr />
-<!-- #### Ringraziamenti -->
-<!-- La struttura di questo sito web è largamente ispirata dal sito web dei corsi di Aldo Solari. Si ringrazia inoltre il prof. Nicola Lunardon per aver messo a disposizione e concesso l'uso del materiale dell'A.A. 2019-2020 -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-107301343-1', 'auto');
-  ga('send', 'pageview');
-</script>
+<div id="problema-3" class="section level2">
+<h2>Problema 3</h2>
+<p>Siano <span class="math inline">\(y = (y_1,\dots,y_n)\)</span> delle realizzazioni iid di una variabile aleatoria discreta con legge Poisson di parametro <span class="math inline">\(\lambda\)</span>. Si considerino i seguenti stimatori per la probabilità <span class="math inline">\(\psi = P(Y = 0)\)</span>, dove <span class="math inline">\(Y \sim \text{Pois}(\lambda)\)</span></p>
+<p><span class="math display">\[
+T_1 = e^{-\bar{y}}, \qquad T_2 = \frac{1}{n}\sum_{i=1}^n I(y_i = 0),
+\]</span> in cui <span class="math inline">\(\bar{y}\)</span> e <span class="math inline">\(I(\cdot)\)</span> rappresentano la media aritmetica e la funzione indicatrice.</p>
+<ol style="list-style-type: decimal">
+<li><p>(4pt) Supponendo <span class="math inline">\(\lambda = 2\)</span>, si verifichi empiricamente se i due stimatori sono consistenti.</p></li>
+<li><p>(2pt) Supponendo <span class="math inline">\(\lambda = 2\)</span> e per <span class="math inline">\(n = 20\)</span>, si effettui uno studio di simulazione e si calcoli la distorsione degli stimatori <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span>.</p></li>
+<li><p>(2pt) Supponendo <span class="math inline">\(\lambda = 2\)</span> e per <span class="math inline">\(n = 20\)</span>, si stabilisca quale dei due stimatori è preferibile in termini di errore quadratico medio.</p></li>
+</ol>
 </div>
 </section>
 

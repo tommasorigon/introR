@@ -55,3 +55,6 @@ lezioni/OLD/ASMR_1920/Lezione7/1.pdf
 lezioni/OLD/ASMR_1920/Lezione7/ESM1.pdf
 lezioni/OLD/ASMR_1920/Lezione7/QUIZ_ESM1.pdf
 *.jpg
+
+/.quarto/
+.Rproj.user

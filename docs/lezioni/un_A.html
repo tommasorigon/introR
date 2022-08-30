@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.163">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="../site_libs/jquery-1.12.4/jquery.min.js"></script>
+<link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R per l’analisi statistica multivariata</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unità-a" id="toc-unità-a" class="nav-link active" data-scroll-target="#unità-a">Unità A</a></li>
+  <li><a href="#calcolatrice-scientifica" id="toc-calcolatrice-scientifica" class="nav-link" data-scroll-target="#calcolatrice-scientifica">Calcolatrice scientifica</a></li>
+  <li><a href="#assegnazione-di-un-valore" id="toc-assegnazione-di-un-valore" class="nav-link" data-scroll-target="#assegnazione-di-un-valore">Assegnazione di un valore</a></li>
+  <li><a href="#pulizia-del-workspace" id="toc-pulizia-del-workspace" class="nav-link" data-scroll-target="#pulizia-del-workspace">Pulizia del <em>workspace</em></a></li>
+  <li><a href="#alcune-funzioni-matematiche" id="toc-alcune-funzioni-matematiche" class="nav-link" data-scroll-target="#alcune-funzioni-matematiche">Alcune funzioni matematiche</a></li>
+  <li><a href="#ulteriori-funzioni-matematiche" id="toc-ulteriori-funzioni-matematiche" class="nav-link" data-scroll-target="#ulteriori-funzioni-matematiche">Ulteriori funzioni matematiche</a></li>
+  <li><a href="#grafico-di-una-funzione" id="toc-grafico-di-una-funzione" class="nav-link" data-scroll-target="#grafico-di-una-funzione">Grafico di una funzione</a></li>
+  <li><a href="#la-documentazione-ufficiale" id="toc-la-documentazione-ufficiale" class="nav-link" data-scroll-target="#la-documentazione-ufficiale">La documentazione ufficiale</a></li>
+  <li><a href="#simboli-speciali" id="toc-simboli-speciali" class="nav-link" data-scroll-target="#simboli-speciali">Simboli speciali</a></li>
+  <li><a href="#errori-di-approssimazione-numerica" id="toc-errori-di-approssimazione-numerica" class="nav-link" data-scroll-target="#errori-di-approssimazione-numerica">Errori di approssimazione numerica</a></li>
+  <li><a href="#operazioni-logiche" id="toc-operazioni-logiche" class="nav-link" data-scroll-target="#operazioni-logiche">Operazioni logiche</a></li>
+  <li><a href="#vettori" id="toc-vettori" class="nav-link" data-scroll-target="#vettori">Vettori</a></li>
+  <li><a href="#creazione-di-vettori" id="toc-creazione-di-vettori" class="nav-link" data-scroll-target="#creazione-di-vettori">Creazione di vettori</a></li>
+  <li><a href="#operazioni-sui-vettori-i" id="toc-operazioni-sui-vettori-i" class="nav-link" data-scroll-target="#operazioni-sui-vettori-i">Operazioni sui vettori I</a></li>
+  <li><a href="#operazioni-sui-vettori-ii" id="toc-operazioni-sui-vettori-ii" class="nav-link" data-scroll-target="#operazioni-sui-vettori-ii">Operazioni sui vettori II</a></li>
+  <li><a href="#operazioni-sui-vettori-iii" id="toc-operazioni-sui-vettori-iii" class="nav-link" data-scroll-target="#operazioni-sui-vettori-iii">Operazioni sui vettori III</a></li>
+  <li><a href="#operazione-sui-vettori-avvertenze" id="toc-operazione-sui-vettori-avvertenze" class="nav-link" data-scroll-target="#operazione-sui-vettori-avvertenze">Operazione sui vettori: avvertenze</a></li>
+  <li><a href="#matrici" id="toc-matrici" class="nav-link" data-scroll-target="#matrici">Matrici</a></li>
+  <li><a href="#vettori-riga-e-vettori-colonna" id="toc-vettori-riga-e-vettori-colonna" class="nav-link" data-scroll-target="#vettori-riga-e-vettori-colonna">Vettori riga e vettori colonna</a></li>
+  <li><a href="#vettori-riga-e-vettori-di-r" id="toc-vettori-riga-e-vettori-di-r" class="nav-link" data-scroll-target="#vettori-riga-e-vettori-di-r">Vettori riga e vettori di <strong>R</strong></a></li>
+  <li><a href="#operazioni-sulle-matrici-i" id="toc-operazioni-sulle-matrici-i" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-i">Operazioni sulle matrici I</a></li>
+  <li><a href="#pretty-code" id="toc-pretty-code" class="nav-link" data-scroll-target="#pretty-code">Pretty Code</a></li>
+  <li><a href="#code-animations" id="toc-code-animations" class="nav-link" data-scroll-target="#code-animations">Code Animations</a></li>
+  <li><a href="#line-highlighting" id="toc-line-highlighting" class="nav-link" data-scroll-target="#line-highlighting">Line Highlighting</a></li>
+  <li><a href="#executable-code" id="toc-executable-code" class="nav-link" data-scroll-target="#executable-code">Executable Code</a></li>
+  <li><a href="#latex-equations" id="toc-latex-equations" class="nav-link" data-scroll-target="#latex-equations">LaTeX Equations</a></li>
+  <li><a href="#column-layout" id="toc-column-layout" class="nav-link" data-scroll-target="#column-layout">Column Layout</a></li>
+  <li><a href="#incremental-lists" id="toc-incremental-lists" class="nav-link" data-scroll-target="#incremental-lists">Incremental Lists</a></li>
+  <li><a href="#fragments" id="toc-fragments" class="nav-link" data-scroll-target="#fragments">Fragments</a></li>
+  <li><a href="#slide-backgrounds" id="toc-slide-backgrounds" class="nav-link" data-scroll-target="#slide-backgrounds">Slide Backgrounds</a></li>
+  <li><a href="#media-backgrounds" id="toc-media-backgrounds" class="nav-link" data-scroll-target="#media-backgrounds">Media Backgrounds</a></li>
+  <li><a href="#auto-animate" id="toc-auto-animate" class="nav-link" data-scroll-target="#auto-animate">Auto-Animate</a></li>
+  <li><a href="#auto-animate-1" id="toc-auto-animate-1" class="nav-link" data-scroll-target="#auto-animate-1">Auto-Animate</a></li>
+  <li><a href="#slide-transitions" id="toc-slide-transitions" class="nav-link" data-scroll-target="#slide-transitions">Slide Transitions</a></li>
+  <li><a href="#tabsets" id="toc-tabsets" class="nav-link" data-scroll-target="#tabsets">Tabsets</a></li>
+  <li><a href="#interactive-slides" id="toc-interactive-slides" class="nav-link" data-scroll-target="#interactive-slides">Interactive Slides</a></li>
+  <li><a href="#preview-links" id="toc-preview-links" class="nav-link" data-scroll-target="#preview-links">Preview Links</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
+  <li><a href="#easy-navigation" id="toc-easy-navigation" class="nav-link" data-scroll-target="#easy-navigation">Easy Navigation</a></li>
+  <li><a href="#chalkboard" id="toc-chalkboard" class="nav-link" data-scroll-target="#chalkboard">Chalkboard</a></li>
+  <li><a href="#point-of-view" id="toc-point-of-view" class="nav-link" data-scroll-target="#point-of-view">Point of View</a></li>
+  <li><a href="#speaker-view" id="toc-speaker-view" class="nav-link" data-scroll-target="#speaker-view">Speaker View</a></li>
+  <li><a href="#authoring-tools" id="toc-authoring-tools" class="nav-link" data-scroll-target="#authoring-tools">Authoring Tools</a></li>
+  <li><a href="#authoring-tools-1" id="toc-authoring-tools-1" class="nav-link" data-scroll-target="#authoring-tools-1">Authoring Tools</a></li>
+  <li><a href="#and-more" id="toc-and-more" class="nav-link" data-scroll-target="#and-more">And More…</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Unità A: calcolo scientifico ed algebra lineare</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tommaso Rigon </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="unità-a" class="level2">
+<h2 class="anchored" data-anchor-id="unità-a">Unità A</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>A-B-C: il software <strong>R</strong> come calcolatrice scientifica</li>
+<li>Operazioni di routine: pulizia del <em>workspace</em>, simboli speciali</li>
+<li>Funzioni matematiche, grafico di una funzione, operazioni logiche</li>
+<li>Operazioni con vettori e matrici</li>
+<li>Esercizi <strong>R</strong> associati: <a href="https://tommasorigon.github.io/introR/exe/es_1.html">esercizi 1</a></li>
+</ul>
+</div>
+</section>
+<section id="calcolatrice-scientifica" class="level2">
+<h2 class="anchored" data-anchor-id="calcolatrice-scientifica">Calcolatrice scientifica</h2>
+<p>Anzitutto, <strong>R</strong> può essere usato come se fosse una <em>calcolatrice scientifica</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="co"># La somma entro parentesi viene eseguita per prima</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pi <span class="sc">/</span> <span class="dv">4</span> <span class="co"># Pi greco quarti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7853982</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>Per calcolare la potenza <span class="math inline">\(a^b\)</span> si usa:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span> <span class="co"># Sintassi alternativa: 2**5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>Le quantità <span class="math inline">\(\sqrt{2}\)</span> e <span class="math inline">\(\sin(\pi/4)\)</span> si ottengono invece con i comandi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.414214</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7071068</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p><strong>Nota</strong>. Tutto ciò che viene scritto dopo un cancelletto (<code>#</code>) è considerato un <strong>commento</strong>.</p>
+</div>
+</section>
+<section id="assegnazione-di-un-valore" class="level2">
+<h2 class="anchored" data-anchor-id="assegnazione-di-un-valore">Assegnazione di un valore</h2>
+<p>È possibile <strong>salvare un valore</strong> assegnandolo ad un oggetto tramite il simbolo <code>&lt;-</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assegna il valore 5 all'oggetto x</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>) <span class="co"># Sintassi alternativa (sconsigliata): x = sqrt(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="incremental">
+<p>Il valore contenuto in <code>x</code> può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio <code>y</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> pi <span class="co"># ovvero pi greco + radice quadrata di 5</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.377661</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>Per <strong>rimuovere un oggetto</strong> dalla memoria, si usa il comando <code>rm</code>, ovvero <em>remove</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x) <span class="co"># x non è più presente nel "workspace"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="incremental">
+<p><strong>Nota</strong>. <strong>R</strong> è <em>case sensitive</em>, pertanto l’oggetto <code>x</code> è diverso dall’oggetto <code>X</code>.</p>
+</div>
+</section>
+<section id="pulizia-del-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="pulizia-del-workspace">Pulizia del <em>workspace</em></h2>
+<p>È buona norma mantenere pulito il <em>workspace</em>, ovvero l’ambiente di lavoro.</p>
+<p>Se un oggetto non è più necessario, è possibile eliminarlo tramite il comando <code>rm</code>.</p>
+<div class="incremental">
+<p>È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>() <span class="co"># Nel workspace è presente l'oggetto y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "y"</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>Pertanto, per <strong>eliminare</strong> tutti gli <strong>oggetti</strong> salvati, si può usare</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="alcune-funzioni-matematiche" class="level2">
+<h2 class="anchored" data-anchor-id="alcune-funzioni-matematiche">Alcune funzioni matematiche</h2>
+<p>Supponiamo che <code>x</code> sia un <strong>numero reale</strong>.</p>
+<p>Ciò che seguono sono una lista di funzioni disponibili in <strong>R</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="co"># Esempio di numero reale</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(x) <span class="co"># Esponenziale e logaritmo naturale</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x) <span class="co"># Valore assoluto</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sign</span>(x) <span class="co"># Funzione segno</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tan</span>(x)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">asin</span>(x) <span class="co"># Funzioni trigonometriche inverse</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">acos</span>(x)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">atan</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="incremental">
+<p><strong>Nota</strong>. Le funzioni di <strong>R</strong> si possono combinare tra loro, ad esempio <code>log(abs(x))</code>.</p>
+</div>
+</section>
+<section id="ulteriori-funzioni-matematiche" class="level2">
+<h2 class="anchored" data-anchor-id="ulteriori-funzioni-matematiche">Ulteriori funzioni matematiche</h2>
+<p>Supponiamo che <code>x</code> e <code>y</code> siano due <strong>numeri reali</strong>. Inoltre, siano <code>n</code> e <code>k</code> due <strong>numeri naturali</strong>.</p>
+<p>Si noti l’uso del <code>;</code> che può essere usato per separare due comandi nella stessa riga.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span> <span class="co"># Numeri reali </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>; k <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Numeri naturali</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(n) <span class="co"># n!</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(n, k) <span class="co"># Coefficiente binomiale</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arrotonda x usando 2 cifre decimali</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">floor</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per difetto</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per eccesso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="incremental">
+<p>La funzione gamma <span class="math inline">\(\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s\)</span> si calcola in <strong>R</strong> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gamma</span>(x) <span class="co"># Funzione gamma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="incremental">
+<p>La funzione beta <span class="math inline">\(\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds\)</span> si calcola in <strong>R</strong> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">beta</span>(x, y) <span class="co"># Funzione beta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="grafico-di-una-funzione" class="level2">
+<h2 class="anchored" data-anchor-id="grafico-di-una-funzione">Grafico di una funzione</h2>
+<p>In <strong>R</strong> è possibile <strong>disegnare</strong> una qualsiasi funzione tramite il comando <code>curve</code>.</p>
+<p>Se ad esempio si considera la funzione <span class="math display">\[f(x) = \frac{\sin(x)}{x},\]</span> allora possiamo disegnare <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((0,15)\)</span> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x) <span class="sc">/</span> x, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_A_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+</section>
+<section id="la-documentazione-ufficiale" class="level2">
+<h2 class="anchored" data-anchor-id="la-documentazione-ufficiale">La documentazione ufficiale</h2>
+<p>La documentazione di <strong>R</strong> è la principale fonte di informazioni.</p>
+<p>A cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella <strong>documentazione ufficiale</strong> e non in queste slide.</p>
+<div class="incremental">
+<p>Il comando <code>? funzione</code> apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>? log <span class="co"># Documentazione della funzione log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="incremental">
+<p><br></p>
+<p><strong>Nota riguardante l’esame</strong>. Durante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.</p>
+</div>
+</section>
+<section id="simboli-speciali" class="level2">
+<h2 class="anchored" data-anchor-id="simboli-speciali">Simboli speciali</h2>
+<p>Numeri molto grandi, come <span class="math inline">\(10^{15}\)</span>, e molto piccoli, come <span class="math inline">\(10^{-15}\)</span>, in <strong>R</strong> vengono rappresentati come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1e+15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1e-15</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>Per questioni di approssimazione numerica, quando un numero è troppo grande <strong>R</strong> riporta <code>Inf</code>, ovvero <strong>infinito</strong>. Per esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">1000</span> <span class="co"># Numero molto grande, anche se finito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Inf</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>Il simbolo <code>NaN</code> significa invece <em>Not a Number</em> e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="co"># Questo comando genera inoltre un avviso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in log(-1): NaNs produced</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NaN</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="errori-di-approssimazione-numerica" class="level2">
+<h2 class="anchored" data-anchor-id="errori-di-approssimazione-numerica">Errori di approssimazione numerica</h2>
+<p>È ben noto che <span class="math inline">\(\sin(\pi) = 0\)</span>. Tuttavia, in <strong>R</strong> si ottiene un numero molto vicino a <span class="math inline">\(0\)</span>, ma strettamente positivo. Infatti:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.224647e-16</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p><strong>R</strong> è uno strumento di calcolo numerico e pertanto sono sempre presenti <strong>errori di approssimazione numerica</strong>.</p>
+<p>Fortunatamente, nella maggior parte dei casi pratici la differenza tra <span class="math inline">\(0\)</span> e <span class="math inline">\(10^{-16}\)</span> è del tutto irrilevante.</p>
+<p>In altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.</p>
+</div>
+<div class="incremental">
+<p>Ad ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="operazioni-logiche" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-logiche">Operazioni logiche</h2>
+<p>In <strong>R</strong> è spesso necessario verificare se una o più condizioni sono verificate o meno.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="co"># Il valore di x è minore di 0?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> (x <span class="sc">==</span> <span class="sc">-</span><span class="dv">3</span>) <span class="co"># Il valore di x è uguale a -3?</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>Il valore di <code>a</code> è un indicatore <strong>binario</strong> o <strong>booleano</strong>, ovvero può essere vero (<code>TRUE</code>) oppure falso (<code>FALSE</code>).</p>
+</div>
+<div class="incremental">
+<p>Altre <strong>funzioni logiche</strong> disponibili (assumendo che <code>y</code> sia un numero e <code>b</code> un booleano) sono:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span>; b <span class="ot">&lt;-</span> <span class="cn">FALSE</span>; x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> y <span class="co"># x è maggiore o uguale a y? (Si usa "&lt;=" per minore uguale)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> y <span class="co"># x è diverso da y?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&amp;</span> b <span class="co"># a AND b. I valori booleani a e b sono entrambi veri?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">|</span> b <span class="co"># a OR b. Almeno uno tra a ed b è vero?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="vettori" class="level2">
+<h2 class="anchored" data-anchor-id="vettori">Vettori</h2>
+<p>Un <strong>vettore</strong> in <strong>R</strong> viene definito tramite la funzione <code>c()</code>, come nel seguente esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>) </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  4  2  2  8 10</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p><strong>Nota</strong>. Con il termine generico “<strong>vettore</strong>” in <strong>R</strong> non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.</p>
+<p>Infatti il seguente oggetto è un <strong>vettore</strong> in <strong>R</strong>, nonostante l’oggetto <code>x</code> sia composto sia numeri che da lettere</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A"  "B"  "2"  "8"  "10"</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="creazione-di-vettori" class="level2">
+<h2 class="anchored" data-anchor-id="creazione-di-vettori">Creazione di vettori</h2>
+<p>Talvolta è comodo creare dei vettori i cui elementi sono dei <strong>numeri consecutivi</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Equivalente a: x &lt;- c(5, 6, 7, 8, 9, 10)</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>Per creare una successione di <strong>numeri reali</strong> si usa il comando <code>seq</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>Per creare un vettore di <strong>valori ripetuti</strong> si usa il comando <code>rep</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">7</span>) <span class="co"># Vettore in cui il numero 10 è ripetuto 7 volte</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 10 10 10 10 10 10</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-i" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sui-vettori-i">Operazioni sui vettori I</h2>
+<p>La maggior parte delle funzioni matematiche di <strong>R</strong> sono <strong>vettorizzate</strong>. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Esempio 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   4.218282   9.389056  22.585537  57.598150 151.913159 407.428793</code></pre>
+</div>
+</div>
+<div class="incremental">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># Esempio 2</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="co"># Esempio 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>Altre funzioni invece sono utili proprio nel caso in cui l’<strong>argomento</strong> sia un <strong>vettore</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x) <span class="co"># Lunghezza del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x) <span class="co"># Somma degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="co"># Somme cumulate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  5  6  9 19 24</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-ii" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sui-vettori-ii">Operazioni sui vettori II</h2>
+<p>Ulteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(x) <span class="co"># Prodotto degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 900</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumprod</span>(x) <span class="co"># Prodotti cumulati</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   2   6   6  18 180 900</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">FALSE</span>) <span class="co"># Vettore ordinato in ordine crescente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  2  3  3  5 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x) <span class="co"># Valore minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(x) <span class="co"># Posizione del valore corrispondente al minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>Infine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x) <span class="co"># Valore massimo</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(x) <span class="co"># Posizione del valore corrispondente al massimo</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x) <span class="co"># Equivalente a: c(min(x), max(x))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-iii" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sui-vettori-iii">Operazioni sui vettori III</h2>
+<p>È possibile <strong>selezionare gli elementi</strong> di un vettore usando le parentesi quadrate, come nei seguenti esempi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(pi, <span class="dv">2</span>), <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="co"># Estrae il terzo elemento dal vettore x, ovvero sqrt(2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.414214</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Estrae il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.141593 1.414214 7.000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Elimina il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  3.141593 10.000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="fl">3.5</span>] <span class="co"># Estrae gli elementi maggiori di 3.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10  7</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>L’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una <strong>condizione</strong> relativa al vettore stesso.</p>
+</div>
+</section>
+<section id="operazione-sui-vettori-avvertenze" class="level2">
+<h2 class="anchored" data-anchor-id="operazione-sui-vettori-avvertenze">Operazione sui vettori: avvertenze</h2>
+<p>Cosa succede quando vengono sommati due vettori di dimensioni diverse?</p>
+<p>La maggior parte dei linguaggi di programmazione restituisce un errore. <strong>R</strong> invece esegue ugualmente l’operazione “allungando” il vettore più corto.</p>
+<div class="incremental">
+<p>In questo primo esempio, quantomeno <strong>R</strong> restituisce un <em>warning</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x[1]) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in x + y: longer object length is not a multiple of shorter object
+length</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  4  6  8 10  7</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>In questo secondo esempio, invece, <strong>R</strong> non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4 6 5 7 9</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="matrici" class="level2">
+<h2 class="anchored" data-anchor-id="matrici">Matrici</h2>
+<p>Una <strong>matrice</strong> <span class="math inline">\({\bf A}\)</span> è una collezione di elementi <span class="math inline">\((a)_{ij}\)</span> per <span class="math inline">\(i=1,\dots,n\)</span> e <span class="math inline">\(j=1,\dots,m\)</span>.</p>
+<div class="incremental">
+<p>Per esempio, la matrice quadrata di dimensione <span class="math inline">\(2 \times 2\)</span></p>
+<p><span class="math display">\[{\bf A} = \begin{pmatrix}
+5 &amp; 2\\
+1 &amp; 4 \\
+\end{pmatrix},\]</span> si può definire in <strong>R</strong> tramite il comando <code>matrix</code> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    2
+[2,]    1    4</code></pre>
+</div>
+</div>
+</div>
+<div class="incremental">
+<p>È inoltre possibile elencare gli elementi <strong>riga per riga</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione equivalente</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="vettori-riga-e-vettori-colonna" class="level2">
+<h2 class="anchored" data-anchor-id="vettori-riga-e-vettori-colonna">Vettori riga e vettori colonna</h2>
+<p>Una matrice con una sola colonna è un <strong>vettore colonna</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>x_col <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>x_col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    1
+[2,]   10
+[3,]    3
+[4,]    5</code></pre>
+</div>
+</div>
+<div class="incremental">
+<p>Una matrice con una sola colonna è un <strong>vettore riga</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>x_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1   10    3    5</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="vettori-riga-e-vettori-di-r" class="level2">
+<h2 class="anchored" data-anchor-id="vettori-riga-e-vettori-di-r">Vettori riga e vettori di <strong>R</strong></h2>
+<p>Nella maggior parte dei casi, il <strong>{vettore riga</strong> <code>x_row</code> è intercambiabile col vettore <code>x</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># Simile, ma non identico, a x_row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ad esempio, le funzioni <code>sum(x_row)</code> e <code>sum(x)</code> forniscono lo stesso risultato.</p>
+<div class="incremental">
+<p>Ci sono tuttavia alcune lievi distinzioni. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x_row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<p>Il simbolo <code>NULL</code> significa <strong>non definito</strong>, perché non esiste la nozione di dimensione per un generico vettore <strong>R</strong>.</p>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-i" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-i">Operazioni sulle matrici I</h2>
+<p>È possibile <strong>selezionare gli elementi</strong> di una matrice in maniera analoga a quanto fatto con i vettori.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># Estrazione di elemento in posizione (1,2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>A[, <span class="dv">2</span>] <span class="co"># Estrazione seconda colonna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>, ] <span class="co"># Estrazione prima riga</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 2</code></pre>
+</div>
+</div>
+<p>Alcuni per manipolare le matrici sono i seguenti</p>
+<pre><code>```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici II}
+
+\bi
+\item Come per i vettori, le operazioni elementari (somma, prodotto, \texttt{log}, \texttt{exp}, etc.) vengono eseguite \empr{elemento per elemento}. 
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+exp(A)
+#            [,1]      [,2]
+# [1,] 148.413159  7.389056
+# [2,]   2.718282 54.598150
+\end{minted}
+
+\item Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
+
+$$
+{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+$$
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+B &lt;- A # Creo una matrice B identica ad A, per semplicità
+C &lt;- rbind(A, B)
+\end{minted}
+
+
+\item In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} &amp; {\bf B} \end{pmatrix}$.
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+C &lt;- cbind(A, B)
+\end{minted}
+\ei
+\end{frame}</code></pre>
+</section>
+<section id="pretty-code" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="pretty-code">Pretty Code</h2>
+<ul>
+<li>Over 20 syntax highlighting themes available</li>
+<li>Default theme optimized for accessibility</li>
+</ul>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a server for the Shiny app</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(input, output) {</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fill in the spot we created for a plot</span></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>phonePlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Render a barplot</span></span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/output-formats/html-code.html#highlighting">Syntax Highlighting</a></p>
+</div>
+</section>
+<section id="code-animations" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="code-animations">Code Animations</h2>
+<ul>
+<li>Over 20 syntax highlighting themes available</li>
+<li>Default theme optimized for accessibility</li>
+</ul>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a server for the Shiny app</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(input, output) {</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fill in the spot we created for a plot</span></span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>phonePlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Render a barplot</span></span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">barplot</span>(WorldPhones[,input<span class="sc">$</span>region]<span class="sc">*</span><span class="dv">1000</span>, </span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">main=</span>input<span class="sc">$</span>region,</span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">"Number of Telephones"</span>,</span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">"Year"</span>)</span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="line-highlighting" class="level2">
+<h2 class="anchored" data-anchor-id="line-highlighting">Line Highlighting</h2>
+<ul>
+<li>Highlight specific lines for emphasis</li>
+<li>Incrementally highlight additional lines</li>
+</ul>
+<div class="sourceCode" id="cb118"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb118-2"><a href="#cb118-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb118-3"><a href="#cb118-3"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb118-4"><a href="#cb118-4"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb118-5"><a href="#cb118-5"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
+<span id="cb118-6"><a href="#cb118-6"></a>ax.plot(theta, r)</span>
+<span id="cb118-7"><a href="#cb118-7"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb118-8"><a href="#cb118-8"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb118-9"><a href="#cb118-9"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#line-highlighting">Line Highlighting</a></p>
+</div>
+</section>
+<section id="executable-code" class="level2">
+<h2 class="anchored" data-anchor-id="executable-code">Executable Code</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_A_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#executable-code">Executable Code</a></p>
+</div>
+</section>
+<section id="latex-equations" class="level2">
+<h2 class="anchored" data-anchor-id="latex-equations">LaTeX Equations</h2>
+<p><a href="https://www.mathjax.org/">MathJax</a> rendering of equations to HTML</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="sourceCode" id="cb120"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">gather*</span>}</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="ss">a_1=b_1+c_1</span><span class="sc">\\</span></span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="ss">a_2=b_2+c_2-d_2+e_2</span></span>
+<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">gather*</span>}</span>
+<span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">align</span>}</span>
+<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="ss">a_{11}&amp; =b_{11}&amp;</span></span>
+<span id="cb120-7"><a href="#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="ss">  a_{12}&amp; =b_{12}</span><span class="sc">\\</span></span>
+<span id="cb120-8"><a href="#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="ss">a_{21}&amp; =b_{21}&amp;</span></span>
+<span id="cb120-9"><a href="#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="ss">  a_{22}&amp; =b_{22}+c_{22}</span></span>
+<span id="cb120-10"><a href="#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">align</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
+<span class="math display">\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</span>
+<span class="math display">\[\begin{align}
+a_{11}&amp; =b_{11}&amp;
+  a_{12}&amp; =b_{12}\\
+a_{21}&amp; =b_{21}&amp;
+  a_{22}&amp; =b_{22}+c_{22}
+\end{align}\]</span>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/authoring/markdown-basics.html#equations">LaTeX Equations</a></p>
+</div>
+</section>
+<section id="column-layout" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="column-layout">Column Layout</h2>
+<p>Arrange content into columns of varying widths:</p>
+<div class="columns">
+<div class="column" style="width:35%;">
+<section id="motor-trend-car-road-tests" class="level4">
+<h4 class="anchored" data-anchor-id="motor-trend-car-road-tests">Motor Trend Car Road Tests</h4>
+<p>The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.</p>
+</section>
+</div><div class="column" style="width:3%;">
+
+</div><div class="column" style="width:62%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(mtcars)[,<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"wt"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">mpg</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">disp</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">wt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">2.620</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">2.875</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">2.320</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">258</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.215</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hornet Sportabout</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.440</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valiant</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">3.460</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#multiple-columns">Multiple Columns</a></p>
+</div>
+</section>
+<section id="incremental-lists" class="level2">
+<h2 class="anchored" data-anchor-id="incremental-lists">Incremental Lists</h2>
+<p>Lists can optionally be displayed incrementally:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ul>
+</div>
+<div class="incremental">
+<p><br> Insert pauses to make other types of content display incrementally.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#incremental-lists">Incremental Lists</a></p>
+</div>
+</div>
+</section>
+<section id="fragments" class="level2">
+<h2 class="anchored" data-anchor-id="fragments">Fragments</h2>
+<p>Incremental text display and animation with fragments:</p>
+<p><br></p>
+<div class="fragment fade-in">
+<p>Fade in</p>
+</div>
+<div class="fragment fade-up">
+<p>Slide up while fading in</p>
+</div>
+<div class="fragment fade-left">
+<p>Slide left while fading in</p>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<p>Fade in then semi out</p>
+</div>
+<div class="incremental">
+<div class="fragment strike">
+<p>Strike</p>
+</div>
+<div class="fragment highlight-red">
+<p>Highlight red</p>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#fragments">Fragments</a></p>
+</div>
+</div>
+</section>
+<section id="slide-backgrounds" class="level2" data-background="#43464B">
+<h2 data-background="#43464B" class="anchored" data-anchor-id="slide-backgrounds">Slide Backgrounds</h2>
+<p>Set the <code>background</code> attribute on a slide to change the background color (all CSS color formats are supported).</p>
+<p>Different background transitions are available via the <code>background-transition</code> option.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#color-backgrounds">Slide Backgrounds</a></p>
+</div>
+</section>
+<section id="media-backgrounds" class="level2" data-background="#43464B" data-background-image="images/milky-way.jpeg">
+<h2 data-background="#43464B" data-background-image="images/milky-way.jpeg" class="anchored" data-anchor-id="media-backgrounds">Media Backgrounds</h2>
+<p>You can also use the following as a slide background:</p>
+<ul>
+<li><p>An image: <code>background-image</code></p></li>
+<li><p>A video: <code>background-video</code></p></li>
+<li><p>An iframe: <code>background-iframe</code></p></li>
+</ul>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#image-backgrounds">Media Backgrounds</a></p>
+</div>
+</section>
+<section id="auto-animate" class="level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-auto-animate="true" data-auto-animate-easing="ease-in-out" class="anchored" data-anchor-id="auto-animate">Auto-Animate</h2>
+<p>Automatically animate matching elements across slides with Auto-Animate.</p>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;">
+
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate">Auto-Animate</a></p>
+</div>
+</section>
+<section id="auto-animate-1" class="level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-auto-animate="true" data-auto-animate-easing="ease-in-out" class="anchored" data-anchor-id="auto-animate-1">Auto-Animate</h2>
+<p>Automatically animate matching elements across slides with Auto-Animate.</p>
+<div class="r-stack">
+<div data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;">
+
+</div>
+<div data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;">
+
+</div>
+<div data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;">
+
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate">Auto-Animate</a></p>
+</div>
+</section>
+<section id="slide-transitions" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="slide-transitions">Slide Transitions</h2>
+<p>The next few slides will transition using the <code>slide</code> transition</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Transition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>none</code></td>
+<td>No transition (default, switch instantly)</td>
+</tr>
+<tr class="even">
+<td><code>fade</code></td>
+<td>Cross fade</td>
+</tr>
+<tr class="odd">
+<td><code>slide</code></td>
+<td>Slide horizontally</td>
+</tr>
+<tr class="even">
+<td><code>convex</code></td>
+<td>Slide at a convex angle</td>
+</tr>
+<tr class="odd">
+<td><code>concave</code></td>
+<td>Slide at a concave angle</td>
+</tr>
+<tr class="even">
+<td><code>zoom</code></td>
+<td>Scale the incoming slide so it grows in from the center of the screen.</td>
+</tr>
+</tbody>
+</table>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions">Slide Transitions</a></p>
+</div>
+</section>
+<section id="tabsets" class="level2 smaller scrollable" data-transition="slide">
+<h2 class="smaller scrollable anchored" data-transition="slide" data-anchor-id="tabsets">Tabsets</h2>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_A_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">mpg</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">disp</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">drat</th>
+<th style="text-align: right;">wt</th>
+<th style="text-align: right;">qsec</th>
+<th style="text-align: right;">vs</th>
+<th style="text-align: right;">am</th>
+<th style="text-align: right;">gear</th>
+<th style="text-align: right;">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.620</td>
+<td style="text-align: right;">16.46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.875</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">108.0</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">3.85</td>
+<td style="text-align: right;">2.320</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">258.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.215</td>
+<td style="text-align: right;">19.44</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hornet Sportabout</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valiant</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">225.0</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.460</td>
+<td style="text-align: right;">20.22</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Duster 360</td>
+<td style="text-align: right;">14.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360.0</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">3.570</td>
+<td style="text-align: right;">15.84</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 240D</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">146.7</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">3.190</td>
+<td style="text-align: right;">20.00</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Merc 230</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">140.8</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.150</td>
+<td style="text-align: right;">22.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 280</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">167.6</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">18.30</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Merc 280C</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">167.6</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 450SE</td>
+<td style="text-align: right;">16.4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">275.8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3.07</td>
+<td style="text-align: right;">4.070</td>
+<td style="text-align: right;">17.40</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Merc 450SL</td>
+<td style="text-align: right;">17.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">275.8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3.07</td>
+<td style="text-align: right;">3.730</td>
+<td style="text-align: right;">17.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 450SLC</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">275.8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3.07</td>
+<td style="text-align: right;">3.780</td>
+<td style="text-align: right;">18.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cadillac Fleetwood</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">472.0</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">2.93</td>
+<td style="text-align: right;">5.250</td>
+<td style="text-align: right;">17.98</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lincoln Continental</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">460.0</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">5.424</td>
+<td style="text-align: right;">17.82</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chrysler Imperial</td>
+<td style="text-align: right;">14.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">440.0</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;">3.23</td>
+<td style="text-align: right;">5.345</td>
+<td style="text-align: right;">17.42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fiat 128</td>
+<td style="text-align: right;">32.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">78.7</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">2.200</td>
+<td style="text-align: right;">19.47</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Honda Civic</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">75.7</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">4.93</td>
+<td style="text-align: right;">1.615</td>
+<td style="text-align: right;">18.52</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Toyota Corolla</td>
+<td style="text-align: right;">33.9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">71.1</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">1.835</td>
+<td style="text-align: right;">19.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toyota Corona</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">120.1</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">3.70</td>
+<td style="text-align: right;">2.465</td>
+<td style="text-align: right;">20.01</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dodge Challenger</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">318.0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.520</td>
+<td style="text-align: right;">16.87</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMC Javelin</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">304.0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.435</td>
+<td style="text-align: right;">17.30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Camaro Z28</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">350.0</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">3.73</td>
+<td style="text-align: right;">3.840</td>
+<td style="text-align: right;">15.41</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pontiac Firebird</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">400.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.845</td>
+<td style="text-align: right;">17.05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fiat X1-9</td>
+<td style="text-align: right;">27.3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">1.935</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Porsche 914-2</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">120.3</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">2.140</td>
+<td style="text-align: right;">16.70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lotus Europa</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">95.1</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">1.513</td>
+<td style="text-align: right;">16.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ford Pantera L</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">351.0</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">3.170</td>
+<td style="text-align: right;">14.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ferrari Dino</td>
+<td style="text-align: right;">19.7</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">145.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: right;">2.770</td>
+<td style="text-align: right;">15.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maserati Bora</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">301.0</td>
+<td style="text-align: right;">335</td>
+<td style="text-align: right;">3.54</td>
+<td style="text-align: right;">3.570</td>
+<td style="text-align: right;">14.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Volvo 142E</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">121.0</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">2.780</td>
+<td style="text-align: right;">18.60</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#tabsets">Tabsets</a></p>
+</div>
+</section>
+<section id="interactive-slides" class="level2 smaller" data-transition="slide">
+<h2 class="smaller anchored" data-transition="slide" data-anchor-id="interactive-slides">Interactive Slides</h2>
+<p>Include Jupyter widgets and htmlwidgets in your presentations</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-dee68a6d5739b6e300ad" style="width:100%;height:464px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dee68a6d5739b6e300ad">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-36.852,174.768,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The birthplace of R",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-36.852,-36.852],"lng":[174.768,174.768]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/interactive/widgets/jupyter.html">Jupyter widgets</a>, <a href="https://quarto.org/docs/interactive/widgets/htmlwidgets.html">htmlwidgets</a></p>
+</div>
+</section>
+<section id="preview-links" class="level2">
+<h2 class="anchored" data-anchor-id="preview-links">Preview Links</h2>
+<p>Navigate to hyperlinks without disrupting the flow of your presentation.</p>
+<p>Use the <code>preview-links</code> option to open links in an iframe on top of your slides. Try clicking the link below for a demonstration:</p>
+<div style="text-align: center; margin-top: 1em">
+<p><a href="https://matplotlib.org/" data-preview-link="true" style="text-align: center">Matplotlib: Visualization with Python</a></p>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#preview-links">Preview Links</a></p>
+</div>
+</section>
+<section id="themes" class="level2">
+<h2 class="anchored" data-anchor-id="themes">Themes</h2>
+<p>10 Built-in Themes (or <a href="https://quarto.org/docs/presentations/revealjs/themes.html#creating-themes">create your own</a>)</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/moon.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/sky.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/themes.html">Themes</a></p>
+</div>
+</section>
+<section id="easy-navigation" class="level2">
+<h2 class="anchored" data-anchor-id="easy-navigation">Easy Navigation</h2>
+<div style="margin-bottom: 0.9em;">
+<p>Quickly jump to other parts of your presentation</p>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 4.8%;justify-content: center;">
+<p><img src="images/presentation-menu.png" class="img-fluid" width="41"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 95.2%;justify-content: center;">
+<p>Toggle the slide menu with the menu button (bottom left of slide) to go to other slides and access presentation tools.</p>
+</div>
+</div>
+</div>
+<p>You can also press <code>m</code> to toggle the menu open and closed.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu">Navigation</a></p>
+</div>
+</section>
+<section id="chalkboard" class="level2" data-chalkboard-buttons="true">
+<h2 data-chalkboard-buttons="true" class="anchored" data-anchor-id="chalkboard">Chalkboard</h2>
+<div style="margin-bottom: 0.9em;">
+<p>Free form drawing and slide annotations</p>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 4.8%;justify-content: center;">
+<p><img src="images/presentation-chalkboard.png" class="img-fluid" width="41"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 95.2%;justify-content: center;">
+<p>Use the chalkboard button at the bottom left of the slide to toggle the chalkboard.</p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 4.8%;justify-content: center;">
+<p><img src="images/presentation-notes-canvas.png" class="img-fluid" width="41"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 95.2%;justify-content: center;">
+<p>Use the notes canvas button at the bottom left of the slide to toggle drawing on top of the current slide.</p>
+</div>
+</div>
+</div>
+<p>You can also press <code>b</code> to toggle the chalkboard or <code>c</code> to toggle the notes canvas.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard">Chalkboard</a></p>
+</div>
+</section>
+<section id="point-of-view" class="level2">
+<h2 class="anchored" data-anchor-id="point-of-view">Point of View</h2>
+<p>Press <code>o</code> to toggle overview mode:</p>
+<p><img src="images/overview-mode.png" class="border img-fluid"></p>
+<p>Hold down the <code>Alt</code> key (or <code>Ctrl</code> in Linux) and click on any element to zoom towards it—try it now on this slide.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#overview-mode">Overview Mode</a>, <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#slide-zoom">Slide Zoom</a></p>
+</div>
+</section>
+<section id="speaker-view" class="level2">
+<h2 class="anchored" data-anchor-id="speaker-view">Speaker View</h2>
+<p>Press <code>s</code> (or use the presentation menu) to open speaker view</p>
+<div class="quarto-figure quarto-figure-center" style="border: 3px solid #dee2e6;">
+<figure class="figure">
+<p><img src="images/speaker-view.png" class="img-fluid figure-img" width="780"></p>
+</figure>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#speaker-view">Speaker View</a></p>
+</div>
+</section>
+<section id="authoring-tools" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="authoring-tools">Authoring Tools</h2>
+<p>Live side-by-side preview for any notebook or text editor including Jupyter and VS Code</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/jupyter-edit.png" class="border border-thick img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="images/jupyter-preview.png" class="border border-thick img-fluid"></p>
+</div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/tools/jupyter-lab.html">Jupyter</a>, <a href="https://quarto.org/docs/tools/vscode.html">VS Code</a>, <a href="https://quarto.org/docs/tools/text-editors.html">Text Editors</a></p>
+</div>
+</section>
+<section id="authoring-tools-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="authoring-tools-1">Authoring Tools</h2>
+<p>RStudio includes an integrated presentation preview pane</p>
+<p><img src="images/rstudio.png" class="border img-fluid" width="900"></p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/tools/rstudio.html">RStudio</a></p>
+</div>
+</section>
+<section id="and-more" class="level2">
+<h2 class="anchored" data-anchor-id="and-more">And More…</h2>
+<ul>
+<li><a href="https://quarto.org/docs/presentations/revealjs/advanced.html#touch-navigation">Touch</a> optimized (presentations look great on mobile, swipe to navigate slides)</li>
+<li><a href="https://quarto.org/docs/presentations/revealjs/#footer-logo">Footer &amp; Logo</a> (optionally specify custom footer per-slide)</li>
+<li><a href="https://quarto.org/docs/presentations/revealjs/presenting.html#auto-slide">Auto-Slide</a> (step through slides automatically, without any user input)</li>
+<li><a href="https://quarto.org/docs/presentations/revealjs/presenting.html#multiplex">Multiplex</a> (allows your audience to follow the slides of the presentation you are controlling on their own phone, tablet or laptop).</li>
+</ul>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/">Quarto Presentations</a></p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

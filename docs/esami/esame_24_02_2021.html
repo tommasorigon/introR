@@ -17,98 +17,6 @@
 <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
-/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
-a.sourceLine {
-  pointer-events: auto;
-}
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 
 
 
@@ -142,156 +50,56 @@ a.sourceLine {
 
 <section class="page-header">
 <h1 class="title toc-ignore project-name">R per l’analisi statistica multivariata</h1>
-<h3 class="subtitle project-tagline">Esercizi 1</h3>
+<h3 class="subtitle project-tagline">Esame 24 Febbraio 2021</h3>
 </section>
 
 
 
 <section class="main-content">
-<div id="esercizio-a" class="section level2">
-<h2>Esercizio A</h2>
-<p>Si scriva in <strong>R</strong> la funzione <code>f(x)</code> associata a</p>
+<div id="problema-1" class="section level2">
+<h2>Problema 1</h2>
+<p>I numeri di <strong>Stirling del secondo tipo</strong> <span class="math inline">\(S(n,k)\)</span> rappresentano il numero di possibili partizioni di un insieme di <span class="math inline">\(n\)</span> elementi formate da <span class="math inline">\(k\)</span> termini. È possibile dimostrare che</p>
 <p><span class="math display">\[
-f(x) = \frac{|\sin(\pi/4 x^2)|}{x}, \qquad x \neq 0.
+S(n, k) = \frac{1}{k!}\sum_{j=0}^k(-1)^{k-j}\binom{k}{j}j^n, 
+\]</span> per qualsiasi valore di <span class="math inline">\(k =1,\dots,n\)</span>. I <strong>numeri di Bell</strong> <span class="math inline">\(B(n)\)</span> rappresentano invece il numero di possibili partizioni di un insieme di <span class="math inline">\(n\)</span> elementi, independentemente dal numero di termini, ovvero</p>
+<p><span class="math display">\[
+B(n) = \sum_{k=1}^n S(n, k).
 \]</span></p>
 <ol style="list-style-type: decimal">
-<li><p>Quanto vale <span class="math inline">\(f(1)\)</span>? Quanto vale <span class="math inline">\(f(10^8)\)</span>?</p></li>
-<li><p>Si approssimino <span class="math inline">\(f(1)\)</span> ed <span class="math inline">\(f(10)\)</span> alle prime due cifre decimali.</p></li>
-<li><p>Si faccia un grafico della funzione <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((1,3)\)</span>.</p></li>
-<li><p>Si calcoli <span class="math inline">\(\sum_{k=1}^{K} f(k)\)</span>, per <span class="math inline">\(K = 500\)</span>.</p></li>
-<li><p><strong>Difficile</strong>. La funzione <code>integrate</code> di <strong>R</strong> (si veda la documentazione), permette di calcolare <strong>numericamente</strong> integrali del tipo <span class="math display">\[
-I = \int_a^b f(x)\mathrm{d}x,
-\]</span> dove <span class="math inline">\(a &lt; b\)</span> sono due valori reali. Si calcoli il valore dell’integrale <span class="math inline">\(\int_1^3 f(x)\mathrm{d}x\)</span>, dove <span class="math inline">\(f(x)\)</span> è la funzione usata nei punti precedenti.</p></li>
+<li><p>(6pt) Si scrivano in <strong>R</strong> le funzioni <code>stirling2(n, k)</code> e <code>Bell(n)</code> che calcolano, rispettivamente, i coefficienti <span class="math inline">\(S(n,k)\)</span> e <span class="math inline">\(B(n)\)</span>.</p></li>
+<li><p>(1pt) Utilizzando le funzioni del punto precedente, si dica in quanti modi è possibile dividere un insieme di <span class="math inline">\(10\)</span> elementi utilizzando <span class="math inline">\(5\)</span> gruppi.</p></li>
+<li><p>(1pt) Utilizzando le funzioni dei punti precedenti, si dica in quanti modi è possibile partizionare un insieme di <span class="math inline">\(10\)</span> elementi.</p></li>
 </ol>
 </div>
-<div id="esercizio-b" class="section level2">
-<h2>Esercizio B</h2>
-<p>Si verifichino numericamente le seguenti identità per <span class="math inline">\(n = 10, 100, 1000\)</span> (ove possibile).</p>
-<ol style="list-style-type: decimal">
-<li><p><span class="math display">\[
-\sum_{k=0}^n(-1)^k\binom{n}{k} = 0.
-\]</span></p></li>
-<li><p><span class="math display">\[
-\sum_{k=1}^n k \binom{n}{k} = n 2^{n-1}.
-\]</span></p></li>
-<li><p><span class="math display">\[
-\sum_{k=1}^n(-1)^{k+1}k \binom{n}{k} = 0.
-\]</span></p></li>
-</ol>
-</div>
-<div id="esercizio-c" class="section level2">
-<h2>Esercizio C</h2>
-<p>Si scriva in <strong>R</strong> una funzione <code>roots(a, b, c)</code> che riceve come input i coefficienti del polinomio</p>
+<div id="problema-2" class="section level2">
+<h2>Problema 2</h2>
+<p>Il <strong>numero armonico generalizzato</strong> è definito come</p>
 <p><span class="math display">\[
-a x^2 + b x + c,
-\]</span> e restituisce il vettore dei valori di <span class="math inline">\(x\)</span> che lo rendono pari a zero.</p>
-<ol style="list-style-type: decimal">
-<li><p>Si calcoli <code>roots(1, 5, 2)</code>;</p></li>
-<li><p>Si calcoli <code>roots(1, 2, 1)</code>;</p></li>
-<li><p>Si calcoli <code>roots(1, 1, 1)</code> e si commenti il risultato.</p></li>
-</ol>
-</div>
-<div id="esercizio-d" class="section level2">
-<h2>Esercizio D</h2>
-<p>Si definisca in <strong>R</strong> una matrice simmetrica <span class="math inline">\({\bf A}\)</span> di dimensione <span class="math inline">\(5 \times 5\)</span>, i cui elementi sono <span class="math display">\[
-{\bf A} = \begin{pmatrix}
-26 &amp;  22 &amp;  17 &amp;  22 &amp;  23 \\ 
-22 &amp;  18 &amp;  14 &amp;  23 &amp;  27 \\ 
-17 &amp;  14 &amp;  14 &amp;  20 &amp;  24 \\ 
-22 &amp;  23 &amp;  20 &amp;  26 &amp;  23 \\ 
-23 &amp;  27 &amp;  24 &amp;  23 &amp;  12 \\ 
-\end{pmatrix}.
+H(n,\alpha) = 1 + \frac{1}{2^\alpha} + \cdots + \frac{1}{n^\alpha} = \sum_{k=1}^n\frac{1}{k^\alpha}, \qquad \alpha &gt; 0.
 \]</span></p>
+<p>Inoltre, una variabile aleatoria discreta <span class="math inline">\(X\)</span> con supporto <span class="math inline">\(\{1,\dots, n\}\)</span> segue una <strong>distribuzione di Zipf</strong> se</p>
+<p><span class="math display">\[
+P(X = k) = \frac{k^{-\alpha}}{H(n, \alpha)}, \qquad k=1,\dots,n,
+\]</span> ed è pari a <span class="math inline">\(0\)</span> altrimenti.</p>
 <ol style="list-style-type: decimal">
-<li><p>Si verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}^{-1}) = 1 / \text{det}({\bf A})\)</span>.</p></li>
-<li><p>Si verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}^2) = \text{det}({\bf A})^2\)</span>.</p></li>
-<li><p>Si calcoli la traccia di <span class="math inline">\({\bf A}\)</span>, ovvero <span class="math inline">\(\text{tr}({\bf A}) = \sum_{i=1}^n a_{ii}\)</span>, per <span class="math inline">\(n = 5\)</span>.</p></li>
-<li><p>Se verifichi empiricamente che <span class="math inline">\(\text{det}({\bf A}) = \prod_{i=1}^n \lambda_i\)</span>, dove <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span> sono gli autovalori di <span class="math inline">\({\bf A}\)</span>.</p></li>
+<li><p>(2pt) Si scriva in <strong>R</strong> la funzione <code>H(n, alpha)</code> che calcola il numero armonico generalizzato. Quanto vale <code>H(10, 1)</code>?</p></li>
+<li><p>(2pt) Si scriva in <strong>R</strong> la funzione di probabilità <code>dzipf(k, n, alpha)</code> di una legge Zipf di parametri <span class="math inline">\(n\)</span> ed <span class="math inline">\(\alpha\)</span> e la si calcoli nei valori <code>dzipf(5, 10, 2)</code>.</p></li>
+<li><p>(2pt) Per <span class="math inline">\(n = 50\)</span> e <span class="math inline">\(\alpha = 1\)</span>, si rappresenti graficamente la legge di probabilità di una distribuzione Zipf tramite un diagramma a bastoncini.</p></li>
+<li><p>(2pt) Si supponga che <span class="math inline">\(X\)</span> segua una Zipf di parametri <span class="math inline">\(n = 100\)</span> e <span class="math inline">\(\alpha = 2\)</span>. Si calcoli la probabilità <span class="math inline">\(P(X \ge 10)\)</span>.</p></li>
+<li><p>(3pt) Si scriva in <strong>R</strong> la funzione <code>rzipf(R, n, alpha)</code> che simula <code>R</code> valori casuali da una distribuzione Zipf. <strong>Suggerimento</strong>: si faccia uso della funzione <code>sample</code>.</p></li>
+<li><p>(2pt) Sfruttando la funzione <code>rzipf</code>, si ottenga un’approssimazione del valore atteso <span class="math inline">\(E(X)\)</span>, quando <span class="math inline">\(n = 50\)</span> e <span class="math inline">\(\alpha = 1\)</span>.</p></li>
 </ol>
 </div>
-<div id="esercizio-e" class="section level2">
-<h2>Esercizio E</h2>
-<p>La distanza euclidea tra due vettori <span class="math inline">\({\bf x}\)</span> e <span class="math inline">\({\bf y}\)</span> in <span class="math inline">\(\mathbb{R}^p\)</span> è definita come <span class="math display">\[d({\bf x},{\bf y}) = \sqrt{\sum_{j=1}^p(x_j - y_j)^2}.\]</span></p>
+<div id="problema-3" class="section level2">
+<h2>Problema 3</h2>
+<p>Si consideri il dataset <code>bacteria</code> della libreria <code>MASS</code> e lo si carichi in memoria. La variabile <code>y</code> indica la presenza (<code>y</code>) o l’assenza (<code>n</code>) del batterio <em>“H influenzae”</em> in alcuni bambini. La variabile <code>trt</code> indica invece il trattamento ricevuto.</p>
 <ol style="list-style-type: decimal">
-<li><p>Si scriva la funzione <strong>R</strong> <code>dist_euclid(x, y)</code> che calcola la distanza euclidea tra due vettori.</p></li>
-<li><p>Se <code>x = c(1, 4, 2, 2, 10)</code> e <code>y = c(8, 1, 8, 3, 6)</code>, quanto vale <code>dist_euclid(x, y)</code>?</p></li>
+<li><p>(3pt) L’indice di eterogeneità di Gini è definito come <span class="math inline">\(G = 1 - \sum_{j=1}^kf_j^2\)</span>, dove <span class="math inline">\(f_1,\dots,f_k\)</span> sono le frequenze relative di una variabile qualitativa con modalità <span class="math inline">\(c_1,\dots,c_k\)</span>. Si costruisca in <strong>R</strong> la funzione <code>Gini(x)</code> che calcola l’indice di Gini di una variabile qualitativa <code>x</code>. Si ottenga quindi <code>Gini(bacteria$trt)</code>.</p></li>
+<li><p>(1pt) Si costruisca dataset <code>bacteria2</code> contenente le osservazioni relative alla sesta settimana di sorveglianza (<code>week</code> = <code>6</code>). Da quante osservazioni è composto?</p></li>
+<li><p>(1pt) Utilizzando il dataset <code>bacteria2</code>, si costruisca una tabella di contingenza che mette in relazione le variabili <code>y</code> e <code>trt</code>.</p></li>
+<li><p>(2pt) Utilizzando il dataset <code>bacteria2</code>, si ottengano le distribuzioni di frequenza condizionate della variabile <code>y</code>, per ciascun valore della variabile <code>trt</code>. Ci sono delle differenze tra queste distribuzioni?</p></li>
+<li><p>(2pt) Utilizzando il dataset <code>bacteria2</code>, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori <code>drug</code> e <code>drug+</code> della variabile <code>trt</code> in un unico valore, chiamato ad esempio <code>drug_and_drug+</code>. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?</p></li>
 </ol>
-</div>
-<div id="esercizio-f" class="section level2">
-<h2>Esercizio F</h2>
-<p>La norma di Frobenius <span class="math inline">\(||{\bf A}||_F\)</span> di una matrice <span class="math inline">\({\bf A}\)</span> a valori reali di dimensione <span class="math inline">\(n \times m\)</span> è definita come <span class="math display">\[||{\bf A}||_F = \sqrt{\sum_{i=1}^n \sum_{j=1}^m a_{ij}^2}.\]</span></p>
-<ol style="list-style-type: decimal">
-<li><p>Si scriva la funzione <strong>R</strong> <code>frobenius_norm(A)</code> che calcola la norma di Frobenius per una matrice <code>A</code>.</p></li>
-<li><p>Se <code>A = cbind(1:5,6:10,11:15)</code>, quanto vale <code>frobenius_norm(A)</code>?</p></li>
-</ol>
-</div>
-<div id="esercizio-g" class="section level2">
-<h2>Esercizio G</h2>
-<p>Si consideri il dataset <code>data(mtcars)</code>, che è presente in <strong>R</strong>. Si risponda quindi alle seguendi domande:</p>
-<ol style="list-style-type: decimal">
-<li><p>Quante righe e quante colonne compongono tale dataset?</p></li>
-<li><p>Come mai il comando <code>mtcars[1:20]</code> restituisce un errore? Qual è la differenza dal comando <code>mtcars[1:20, ]</code>?</p></li>
-<li><p>Ciascuna delle seguenti righe contiene degli errori (bug). Si propongano delle modifiche per sistemarlo</p></li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>cyl <span class="ot">=</span> <span class="dv">4</span>, ] </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, ] </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>cyl <span class="sc">&lt;=</span> <span class="dv">5</span>] </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>cyl <span class="sc">==</span> <span class="dv">4</span> <span class="sc">|</span> <span class="dv">6</span>, ]</span></code></pre></div>
-</div>
-<div id="esercizio-h" class="section level2">
-<h2>Esercizio H</h2>
-<p>Sia <span class="math inline">\({\bf A}\)</span> una matrice di dimensione <span class="math inline">\(n \times n\)</span>. Si implementi una funzione che estrae gli elementi della diagonale <span class="math inline">\(a_{ii}\)</span>, per <span class="math inline">\(i = 1,\dots,n\)</span> della matrice <span class="math inline">\({\bf A}\)</span>. La si confronti quindi con la funzione <code>diag</code> di <strong>R</strong>.</p>
-</div>
-<div id="esercizio-i" class="section level2">
-<h2>Esercizio I</h2>
-<p>Che cosa restituisce la funzione <code>f(10)</code>? Si discuta il risultato senza eseguire il seguente codice</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">^</span><span class="dv">2</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">h</span>(x) <span class="sc">+</span> <span class="dv">1</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">g</span>(x)<span class="sc">*</span><span class="dv">2</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code></pre></div>
-</div>
-<div id="esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar" class="section level2">
-<h2>Esercizi tratti dai libro di testo Albert &amp; Rizzo (<strong>AR</strong>)</h2>
-<ul>
-<li>Esercizio 1.2, pag. 39.</li>
-<li>Esercizio 1.3, pag. 39.</li>
-<li>Esercizio 1.11, pag. 41.</li>
-</ul>
-</div>
-<div id="esercizi-tratti-dai-libro-di-testo-robert-casella-rs" class="section level2">
-<h2>Esercizi tratti dai libro di testo Robert &amp; Casella (<strong>RS</strong>)</h2>
-<ul>
-<li>Esercizio 1.3, pag. 9.</li>
-<li>Esercizio 1.4, pag. 9.</li>
-<li>Esercizio 1.5, pag. 9.</li>
-<li>Esercizio 1.9, pag. 31.</li>
-<li>Esercizio 1.12, pag. 38.</li>
-</ul>
-<!-- ## Esercizio N -->
-<!-- La funzione `nlminb` di **R** può essere usata per identificare numericamente il minimo di una funzione. Per esempio, supponendo che $f(x) = 12 + (x-4)^2$ allora in **R** avremo il seguente risultato. -->
-<!-- ```{r, echo=TRUE, include=TRUE} -->
-<!-- f <- function(x) { -->
-<!--  12 +  (x - 4)^2 -->
-<!-- } -->
-<!-- start <- 0 # Valore iniziale -->
-<!-- lower_bound <- -Inf # Minimo valore in cui cercare la soluzione -->
-<!-- upper_bound <- Inf # Massimo valore in cui cercare la soluzione -->
-<!-- nlminb(start = start, objective = f, lower = lower_bound, upper = upper_bound) -->
-<!-- ``` -->
-<!-- Il valore `par` è pari a $\arg \min_x f(x)$ mentre il valore `objective` è pari a $\min_x f(x)$. -->
-<!-- -------------------------------------------- -->
-<!-- 1. Si ottenga il valore minimo della funzione $f(x) = (x-2)^3 - x^2 + 4$ nell'intervallo $(0,4)$. -->
-<!-- 1. Si ottenga quindi il valore massimo di $f(x)$ nello stesso intervallo. Si noti che tale valore coincide con il minimo di $-f(x)$. -->
-<!-- 1. Si rappresenti graficamente la funzione $f(x)$ nell'intervallo $(0,4)$ usando il comando `curve(f(x), 0, 4)`. I risultato ottenuti nei punti precedenti sono coerenti col grafico? -->
 </div>
 </section>
 
