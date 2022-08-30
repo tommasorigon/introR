@@ -398,13 +398,6 @@
   <p class="author">Tommaso Rigon</p>
 </section>
 
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Crucial command to make the images appear online</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">base.url=</span><span class="st">'https://github.com/tommasorigon/introR/blob/master/lezioni/'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="unità-a" class="slide level2">
 <h2>Unità A</h2>
 <div>
@@ -421,15 +414,15 @@
 <h2>Calcolatrice scientifica</h2>
 <p>Anzitutto, <strong>R</strong> può essere usato come se fosse una <em>calcolatrice scientifica</em>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="dv">4</span> <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="co"># La somma entro parentesi viene eseguita per prima</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">4</span> <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="co"># La somma entro parentesi viene eseguita per prima</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>pi <span class="sc">/</span> <span class="dv">4</span> <span class="co"># Pi greco quarti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>pi <span class="sc">/</span> <span class="dv">4</span> <span class="co"># Pi greco quarti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7853982</code></pre>
 </div>
@@ -437,7 +430,7 @@
 <div class="fragment">
 <p>Per calcolare la potenza <span class="math inline">\(a^b\)</span> si usa:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span> <span class="co"># Sintassi alternativa: 2**5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span> <span class="co"># Sintassi alternativa: 2**5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32</code></pre>
 </div>
@@ -446,11 +439,11 @@
 <div class="fragment">
 <p>Le quantità <span class="math inline">\(\sqrt{2}\)</span> e <span class="math inline">\(\sin(\pi/4)\)</span> si ottengono invece con i comandi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.414214</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7071068</code></pre>
 </div>
@@ -464,14 +457,14 @@
 <h2>Assegnazione di un valore</h2>
 <p>È possibile <strong>salvare un valore</strong> assegnandolo ad un oggetto tramite il simbolo <code>&lt;-</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Assegna il valore 5 all'oggetto x</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>) <span class="co"># Sintassi alternativa (sconsigliata): x = sqrt(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Assegna il valore 5 all'oggetto x</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>) <span class="co"># Sintassi alternativa (sconsigliata): x = sqrt(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>Il valore contenuto in <code>x</code> può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio <code>y</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> pi <span class="co"># ovvero pi greco + radice quadrata di 5</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> pi <span class="co"># ovvero pi greco + radice quadrata di 5</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.377661</code></pre>
 </div>
@@ -480,7 +473,7 @@
 <div class="fragment">
 <p>Per <strong>rimuovere un oggetto</strong> dalla memoria, si usa il comando <code>rm</code>, ovvero <em>remove</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">rm</span>(x) <span class="co"># x non è più presente nel "workspace"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">rm</span>(x) <span class="co"># x non è più presente nel "workspace"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -494,7 +487,7 @@
 <div class="fragment">
 <p>È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ls</span>() <span class="co"># Nel workspace è presente l'oggetto y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ls</span>() <span class="co"># Nel workspace è presente l'oggetto y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "y"</code></pre>
 </div>
@@ -503,7 +496,7 @@
 <div class="fragment">
 <p>Pertanto, per <strong>eliminare</strong> tutti gli <strong>oggetti</strong> salvati, si può usare</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -512,21 +505,21 @@
 <p>Supponiamo che <code>x</code> sia un <strong>numero reale</strong>.</p>
 <p>Ciò che seguono sono una lista di funzioni disponibili in <strong>R</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="co"># Esempio di numero reale</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="fu">exp</span>(x) <span class="co"># Esponenziale e logaritmo naturale</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">log</span>(x)</span>
-<span id="cb21-5"><a href="#cb21-5"></a></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="fu">abs</span>(x) <span class="co"># Valore assoluto</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="fu">sign</span>(x) <span class="co"># Funzione segno</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="fu">sin</span>(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="fu">cos</span>(x)</span>
-<span id="cb21-11"><a href="#cb21-11"></a><span class="fu">tan</span>(x)</span>
-<span id="cb21-12"><a href="#cb21-12"></a></span>
-<span id="cb21-13"><a href="#cb21-13"></a><span class="fu">asin</span>(x) <span class="co"># Funzioni trigonometriche inverse</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="fu">acos</span>(x)</span>
-<span id="cb21-15"><a href="#cb21-15"></a><span class="fu">atan</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="co"># Esempio di numero reale</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">exp</span>(x) <span class="co"># Esponenziale e logaritmo naturale</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">log</span>(x)</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">abs</span>(x) <span class="co"># Valore assoluto</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">sign</span>(x) <span class="co"># Funzione segno</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="fu">sin</span>(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a><span class="fu">cos</span>(x)</span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="fu">tan</span>(x)</span>
+<span id="cb20-12"><a href="#cb20-12"></a></span>
+<span id="cb20-13"><a href="#cb20-13"></a><span class="fu">asin</span>(x) <span class="co"># Funzioni trigonometriche inverse</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="fu">acos</span>(x)</span>
+<span id="cb20-15"><a href="#cb20-15"></a><span class="fu">atan</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><strong>Nota</strong>. Le funzioni di <strong>R</strong> si possono combinare tra loro, ad esempio <code>log(abs(x))</code>.</p>
@@ -537,26 +530,26 @@
 <p>Supponiamo che <code>x</code> e <code>y</code> siano due <strong>numeri reali</strong>. Inoltre, siano <code>n</code> e <code>k</code> due <strong>numeri naturali</strong>.</p>
 <p>Si noti l’uso del <code>;</code> che può essere usato per separare due comandi nella stessa riga.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span> <span class="co"># Numeri reali </span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>; k <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Numeri naturali</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="fu">factorial</span>(n) <span class="co"># n!</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">choose</span>(n, k) <span class="co"># Coefficiente binomiale</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a></span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arrotonda x usando 2 cifre decimali</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="fu">floor</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per difetto</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a><span class="fu">ceiling</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per eccesso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span> <span class="co"># Numeri reali </span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>; k <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Numeri naturali</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">factorial</span>(n) <span class="co"># n!</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">choose</span>(n, k) <span class="co"># Coefficiente binomiale</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arrotonda x usando 2 cifre decimali</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="fu">floor</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per difetto</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="fu">ceiling</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per eccesso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>La funzione gamma <span class="math inline">\(\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s\)</span> si calcola in <strong>R</strong> come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">gamma</span>(x) <span class="co"># Funzione gamma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">gamma</span>(x) <span class="co"># Funzione gamma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p>La funzione beta <span class="math inline">\(\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds\)</span> si calcola in <strong>R</strong> come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">beta</span>(x, y) <span class="co"># Funzione beta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">beta</span>(x, y) <span class="co"># Funzione beta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -565,10 +558,10 @@
 <p>In <strong>R</strong> è possibile <strong>disegnare</strong> una qualsiasi funzione tramite il comando <code>curve</code>.</p>
 <p>Se ad esempio si considera la funzione <span class="math display">\[f(x) = \frac{\sin(x)}{x},\]</span> allora possiamo disegnare <span class="math inline">\(f(x)\)</span> nell’intervallo <span class="math inline">\((0,15)\)</span> come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x) <span class="sc">/</span> x, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x) <span class="sc">/</span> x, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="un_A_files/figure-revealjs/unnamed-chunk-14-1.png" width="1152" class="r-stretch"></section>
+<img data-src="un_A_files/figure-revealjs/unnamed-chunk-13-1.png" width="1152" class="r-stretch"></section>
 <section id="la-documentazione-ufficiale" class="slide level2">
 <h2>La documentazione ufficiale</h2>
 <p>La documentazione di <strong>R</strong> è la principale fonte di informazioni.</p>
@@ -576,7 +569,7 @@
 <div class="fragment">
 <p>Il comando <code>? funzione</code> apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>? log <span class="co"># Documentazione della funzione log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>? log <span class="co"># Documentazione della funzione log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -588,11 +581,11 @@
 <h2>Simboli speciali</h2>
 <p>Numeri molto grandi, come <span class="math inline">\(10^{15}\)</span>, e molto piccoli, come <span class="math inline">\(10^{-15}\)</span>, in <strong>R</strong> vengono rappresentati come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1e+15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1e-15</code></pre>
 </div>
@@ -600,7 +593,7 @@
 <div class="fragment">
 <p>Per questioni di approssimazione numerica, quando un numero è troppo grande <strong>R</strong> riporta <code>Inf</code>, ovvero <strong>infinito</strong>. Per esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">1000</span> <span class="co"># Numero molto grande, anche se finito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">1000</span> <span class="co"># Numero molto grande, anche se finito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Inf</code></pre>
 </div>
@@ -609,7 +602,7 @@
 <div class="fragment">
 <p>Il simbolo <code>NaN</code> significa invece <em>Not a Number</em> e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="co"># Questo comando genera inoltre un avviso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="co"># Questo comando genera inoltre un avviso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in log(-1): NaNs produced</code></pre>
 </div>
@@ -623,7 +616,7 @@
 <h2>Errori di approssimazione numerica</h2>
 <p>È ben noto che <span class="math inline">\(\sin(\pi) = 0\)</span>. Tuttavia, in <strong>R</strong> si ottiene un numero molto vicino a <span class="math inline">\(0\)</span>, ma strettamente positivo. Infatti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">sin</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">sin</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.224647e-16</code></pre>
 </div>
@@ -636,7 +629,7 @@
 <div class="fragment">
 <p>Ad ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">cos</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">cos</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1</code></pre>
 </div>
@@ -647,13 +640,13 @@
 <h2>Operazioni logiche</h2>
 <p>In <strong>R</strong> è spesso necessario verificare se una o più condizioni sono verificate o meno.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a>x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="co"># Il valore di x è minore di 0?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="co"># Il valore di x è minore di 0?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>a <span class="ot">&lt;-</span> (x <span class="sc">==</span> <span class="sc">-</span><span class="dv">3</span>) <span class="co"># Il valore di x è uguale a -3?</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>a <span class="ot">&lt;-</span> (x <span class="sc">==</span> <span class="sc">-</span><span class="dv">3</span>) <span class="co"># Il valore di x è uguale a -3?</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -664,20 +657,20 @@
 <div class="fragment">
 <p>Altre <strong>funzioni logiche</strong> disponibili (assumendo che <code>y</code> sia un numero e <code>b</code> un booleano) sono:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span>; b <span class="ot">&lt;-</span> <span class="cn">FALSE</span>; x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a>x <span class="sc">&gt;=</span> y <span class="co"># x è maggiore o uguale a y? (Si usa "&lt;=" per minore uguale)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span>; b <span class="ot">&lt;-</span> <span class="cn">FALSE</span>; x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>x <span class="sc">&gt;=</span> y <span class="co"># x è maggiore o uguale a y? (Si usa "&lt;=" per minore uguale)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>x <span class="sc">!=</span> y <span class="co"># x è diverso da y?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>x <span class="sc">!=</span> y <span class="co"># x è diverso da y?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>a <span class="sc">&amp;</span> b <span class="co"># a AND b. I valori booleani a e b sono entrambi veri?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>a <span class="sc">&amp;</span> b <span class="co"># a AND b. I valori booleani a e b sono entrambi veri?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>a <span class="sc">|</span> b <span class="co"># a OR b. Almeno uno tra a ed b è vero?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>a <span class="sc">|</span> b <span class="co"># a OR b. Almeno uno tra a ed b è vero?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -688,8 +681,8 @@
 <h2>Vettori</h2>
 <p>Un <strong>vettore</strong> in <strong>R</strong> viene definito tramite la funzione <code>c()</code>, come nel seguente esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>) </span>
-<span id="cb52-2"><a href="#cb52-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>) </span>
+<span id="cb51-2"><a href="#cb51-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  4  2  2  8 10</code></pre>
 </div>
@@ -698,8 +691,8 @@
 <p><strong>Nota</strong>. Con il termine generico “<strong>vettore</strong>” in <strong>R</strong> non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.</p>
 <p>Infatti il seguente oggetto è un <strong>vettore</strong> in <strong>R</strong>, nonostante l’oggetto <code>x</code> sia composto sia numeri che da lettere</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
-<span id="cb54-2"><a href="#cb54-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb53-2"><a href="#cb53-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "A"  "B"  "2"  "8"  "10"</code></pre>
 </div>
@@ -710,8 +703,8 @@
 <h2>Creazione di vettori</h2>
 <p>Talvolta è comodo creare dei vettori i cui elementi sono dei <strong>numeri consecutivi</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Equivalente a: x &lt;- c(5, 6, 7, 8, 9, 10)</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Equivalente a: x &lt;- c(5, 6, 7, 8, 9, 10)</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  5  6  7  8  9 10</code></pre>
 </div>
@@ -719,8 +712,8 @@
 <div class="fragment">
 <p>Per creare una successione di <strong>numeri reali</strong> si usa il comando <code>seq</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
-<span id="cb58-2"><a href="#cb58-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb57-2"><a href="#cb57-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 </div>
@@ -729,8 +722,8 @@
 <div class="fragment">
 <p>Per creare un vettore di <strong>valori ripetuti</strong> si usa il comando <code>rep</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">7</span>) <span class="co"># Vettore in cui il numero 10 è ripetuto 7 volte</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">7</span>) <span class="co"># Vettore in cui il numero 10 è ripetuto 7 volte</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 10 10 10 10 10 10</code></pre>
 </div>
@@ -741,15 +734,15 @@
 <h2>Operazioni sui vettori I</h2>
 <p>La maggior parte delle funzioni matematiche di <strong>R</strong> sono <strong>vettorizzate</strong>. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">exp</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Esempio 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">exp</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Esempio 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   4.218282   9.389056  22.585537  57.598150 151.913159 407.428793</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># Esempio 2</span></span>
-<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">log</span>(x, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># Esempio 2</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="fu">log</span>(x, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5 6</code></pre>
 </div>
@@ -757,7 +750,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="co"># Esempio 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="co"># Esempio 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
@@ -766,16 +759,16 @@
 <div class="fragment">
 <p>Altre funzioni invece sono utili proprio nel caso in cui l’<strong>argomento</strong> sia un <strong>vettore</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb68-2"><a href="#cb68-2"></a><span class="fu">length</span>(x) <span class="co"># Lunghezza del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">length</span>(x) <span class="co"># Lunghezza del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">sum</span>(x) <span class="co"># Somma degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">sum</span>(x) <span class="co"># Somma degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">cumsum</span>(x) <span class="co"># Somme cumulate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">cumsum</span>(x) <span class="co"># Somme cumulate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  2  5  6  9 19 24</code></pre>
 </div>
@@ -786,24 +779,24 @@
 <h2>Operazioni sui vettori II</h2>
 <p>Ulteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb74-2"><a href="#cb74-2"></a><span class="fu">prod</span>(x) <span class="co"># Prodotto degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="fu">prod</span>(x) <span class="co"># Prodotto degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 900</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">cumprod</span>(x) <span class="co"># Prodotti cumulati</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">cumprod</span>(x) <span class="co"># Prodotti cumulati</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   2   6   6  18 180 900</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">FALSE</span>) <span class="co"># Vettore ordinato in ordine crescente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">FALSE</span>) <span class="co"># Vettore ordinato in ordine crescente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  3  3  5 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="fu">min</span>(x) <span class="co"># Valore minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">min</span>(x) <span class="co"># Valore minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">which.min</span>(x) <span class="co"># Posizione del valore corrispondente al minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">which.min</span>(x) <span class="co"># Posizione del valore corrispondente al minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -811,9 +804,9 @@
 <div class="fragment">
 <p>Infine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">max</span>(x) <span class="co"># Valore massimo</span></span>
-<span id="cb84-2"><a href="#cb84-2"></a><span class="fu">which.max</span>(x) <span class="co"># Posizione del valore corrispondente al massimo</span></span>
-<span id="cb84-3"><a href="#cb84-3"></a><span class="fu">range</span>(x) <span class="co"># Equivalente a: c(min(x), max(x))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">max</span>(x) <span class="co"># Valore massimo</span></span>
+<span id="cb83-2"><a href="#cb83-2"></a><span class="fu">which.max</span>(x) <span class="co"># Posizione del valore corrispondente al massimo</span></span>
+<span id="cb83-3"><a href="#cb83-3"></a><span class="fu">range</span>(x) <span class="co"># Equivalente a: c(min(x), max(x))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -821,21 +814,21 @@
 <h2>Operazioni sui vettori III</h2>
 <p>È possibile <strong>selezionare gli elementi</strong> di un vettore usando le parentesi quadrate, come nei seguenti esempi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="co"># Concatenazione di vettori</span></span>
-<span id="cb85-2"><a href="#cb85-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(pi, <span class="dv">2</span>), <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb85-3"><a href="#cb85-3"></a>x[<span class="dv">3</span>] <span class="co"># Estrae il terzo elemento dal vettore x, ovvero sqrt(2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb84-2"><a href="#cb84-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(pi, <span class="dv">2</span>), <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb84-3"><a href="#cb84-3"></a>x[<span class="dv">3</span>] <span class="co"># Estrae il terzo elemento dal vettore x, ovvero sqrt(2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.414214</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Estrae il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Estrae il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.141593 1.414214 7.000000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Elimina il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Elimina il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  3.141593 10.000000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>x[x <span class="sc">&gt;</span> <span class="fl">3.5</span>] <span class="co"># Estrae gli elementi maggiori di 3.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>x[x <span class="sc">&gt;</span> <span class="fl">3.5</span>] <span class="co"># Estrae gli elementi maggiori di 3.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10  7</code></pre>
 </div>
@@ -851,10 +844,10 @@
 <div class="fragment">
 <p>In questo primo esempio, quantomeno <strong>R</strong> restituisce un <em>warning</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="co"># Concatenazione di vettori</span></span>
-<span id="cb93-2"><a href="#cb93-2"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb93-3"><a href="#cb93-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb93-4"><a href="#cb93-4"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x[1]) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb92-3"><a href="#cb92-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb92-4"><a href="#cb92-4"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x[1]) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in x + y: longer object length is not a multiple of shorter object
 length</code></pre>
@@ -867,9 +860,9 @@ length</code></pre>
 <div class="fragment">
 <p>In questo secondo esempio, invece, <strong>R</strong> non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb96-2"><a href="#cb96-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb96-3"><a href="#cb96-3"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb95-2"><a href="#cb95-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb95-3"><a href="#cb95-3"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4 6 5 7 9</code></pre>
 </div>
@@ -886,8 +879,8 @@ length</code></pre>
 1 &amp; 4 \\
 \end{pmatrix},\]</span> si può definire in <strong>R</strong> tramite il comando <code>matrix</code> come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb98-2"><a href="#cb98-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb97-2"><a href="#cb97-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    5    2
@@ -898,8 +891,8 @@ length</code></pre>
 <div class="fragment">
 <p>È inoltre possibile elencare gli elementi <strong>riga per riga</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># Definizione equivalente</span></span>
-<span id="cb100-2"><a href="#cb100-2"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="co"># Definizione equivalente</span></span>
+<span id="cb99-2"><a href="#cb99-2"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -907,8 +900,8 @@ length</code></pre>
 <h2>Vettori riga e vettori colonna</h2>
 <p>Una matrice con una sola colonna è un <strong>vettore colonna</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a>x_col <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
-<span id="cb101-2"><a href="#cb101-2"></a>x_col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>x_col <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb100-2"><a href="#cb100-2"></a>x_col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]
 [1,]    1
@@ -920,8 +913,8 @@ length</code></pre>
 <div class="fragment">
 <p>Una matrice con una sola colonna è un <strong>vettore riga</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb103-2"><a href="#cb103-2"></a>x_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb102-2"><a href="#cb102-2"></a>x_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    1   10    3    5</code></pre>
@@ -933,18 +926,18 @@ length</code></pre>
 <h2>Vettori riga e vettori di <strong>R</strong></h2>
 <p>Nella maggior parte dei casi, il <strong>{vettore riga</strong> <code>x_row</code> è intercambiabile col vettore <code>x</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb105-2"><a href="#cb105-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># Simile, ma non identico, a x_row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb104-2"><a href="#cb104-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># Simile, ma non identico, a x_row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ad esempio, le funzioni <code>sum(x_row)</code> e <code>sum(x)</code> forniscono lo stesso risultato.</p>
 <div class="fragment">
 <p>Ci sono tuttavia alcune lievi distinzioni. Ad esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">dim</span>(x_row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="fu">dim</span>(x_row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
@@ -956,15 +949,15 @@ length</code></pre>
 <h2>Operazioni sulle matrici I</h2>
 <p>È possibile <strong>selezionare gli elementi</strong> di una matrice in maniera analoga a quanto fatto con i vettori.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>A[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># Estrazione di elemento in posizione (1,2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a>A[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># Estrazione di elemento in posizione (1,2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a>A[, <span class="dv">2</span>] <span class="co"># Estrazione seconda colonna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a>A[, <span class="dv">2</span>] <span class="co"># Estrazione seconda colonna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>A[<span class="dv">1</span>, ] <span class="co"># Estrazione prima riga</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a>A[<span class="dv">1</span>, ] <span class="co"># Estrazione prima riga</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 2</code></pre>
 </div>
@@ -1014,14 +1007,14 @@ C &lt;- cbind(A, B)
 <li>Over 20 syntax highlighting themes available</li>
 <li>Default theme optimized for accessibility</li>
 </ul>
-<div class="sourceCode" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb117-1" class="hljs-ln-code"><a href="#cb117-1"></a><span class="co"># Define a server for the Shiny app</span></span>
-<span id="cb117-2" class="hljs-ln-code"><a href="#cb117-2"></a><span class="cf">function</span>(input, output) {</span>
-<span id="cb117-3" class="hljs-ln-code"><a href="#cb117-3"></a>  </span>
-<span id="cb117-4" class="hljs-ln-code"><a href="#cb117-4"></a>  <span class="co"># Fill in the spot we created for a plot</span></span>
-<span id="cb117-5" class="hljs-ln-code"><a href="#cb117-5"></a>  output<span class="sc">$</span>phonePlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb117-6" class="hljs-ln-code"><a href="#cb117-6"></a>    <span class="co"># Render a barplot</span></span>
-<span id="cb117-7" class="hljs-ln-code"><a href="#cb117-7"></a>  })</span>
-<span id="cb117-8" class="hljs-ln-code"><a href="#cb117-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb116-1" class="hljs-ln-code"><a href="#cb116-1"></a><span class="co"># Define a server for the Shiny app</span></span>
+<span id="cb116-2" class="hljs-ln-code"><a href="#cb116-2"></a><span class="cf">function</span>(input, output) {</span>
+<span id="cb116-3" class="hljs-ln-code"><a href="#cb116-3"></a>  </span>
+<span id="cb116-4" class="hljs-ln-code"><a href="#cb116-4"></a>  <span class="co"># Fill in the spot we created for a plot</span></span>
+<span id="cb116-5" class="hljs-ln-code"><a href="#cb116-5"></a>  output<span class="sc">$</span>phonePlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb116-6" class="hljs-ln-code"><a href="#cb116-6"></a>    <span class="co"># Render a barplot</span></span>
+<span id="cb116-7" class="hljs-ln-code"><a href="#cb116-7"></a>  })</span>
+<span id="cb116-8" class="hljs-ln-code"><a href="#cb116-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p>Learn more: <a href="https://quarto.org/docs/output-formats/html-code.html#highlighting">Syntax Highlighting</a></p>
 </div>
@@ -1032,18 +1025,18 @@ C &lt;- cbind(A, B)
 <li>Over 20 syntax highlighting themes available</li>
 <li>Default theme optimized for accessibility</li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb118-1" class="hljs-ln-code"><a href="#cb118-1"></a><span class="co"># Define a server for the Shiny app</span></span>
-<span id="cb118-2" class="hljs-ln-code"><a href="#cb118-2"></a><span class="cf">function</span>(input, output) {</span>
-<span id="cb118-3" class="hljs-ln-code"><a href="#cb118-3"></a>  </span>
-<span id="cb118-4" class="hljs-ln-code"><a href="#cb118-4"></a>  <span class="co"># Fill in the spot we created for a plot</span></span>
-<span id="cb118-5" class="hljs-ln-code"><a href="#cb118-5"></a>  output<span class="sc">$</span>phonePlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb118-6" class="hljs-ln-code"><a href="#cb118-6"></a>    <span class="co"># Render a barplot</span></span>
-<span id="cb118-7" class="hljs-ln-code"><a href="#cb118-7"></a>    <span class="fu">barplot</span>(WorldPhones[,input<span class="sc">$</span>region]<span class="sc">*</span><span class="dv">1000</span>, </span>
-<span id="cb118-8" class="hljs-ln-code"><a href="#cb118-8"></a>            <span class="at">main=</span>input<span class="sc">$</span>region,</span>
-<span id="cb118-9" class="hljs-ln-code"><a href="#cb118-9"></a>            <span class="at">ylab=</span><span class="st">"Number of Telephones"</span>,</span>
-<span id="cb118-10" class="hljs-ln-code"><a href="#cb118-10"></a>            <span class="at">xlab=</span><span class="st">"Year"</span>)</span>
-<span id="cb118-11" class="hljs-ln-code"><a href="#cb118-11"></a>  })</span>
-<span id="cb118-12" class="hljs-ln-code"><a href="#cb118-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb117-1" class="hljs-ln-code"><a href="#cb117-1"></a><span class="co"># Define a server for the Shiny app</span></span>
+<span id="cb117-2" class="hljs-ln-code"><a href="#cb117-2"></a><span class="cf">function</span>(input, output) {</span>
+<span id="cb117-3" class="hljs-ln-code"><a href="#cb117-3"></a>  </span>
+<span id="cb117-4" class="hljs-ln-code"><a href="#cb117-4"></a>  <span class="co"># Fill in the spot we created for a plot</span></span>
+<span id="cb117-5" class="hljs-ln-code"><a href="#cb117-5"></a>  output<span class="sc">$</span>phonePlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb117-6" class="hljs-ln-code"><a href="#cb117-6"></a>    <span class="co"># Render a barplot</span></span>
+<span id="cb117-7" class="hljs-ln-code"><a href="#cb117-7"></a>    <span class="fu">barplot</span>(WorldPhones[,input<span class="sc">$</span>region]<span class="sc">*</span><span class="dv">1000</span>, </span>
+<span id="cb117-8" class="hljs-ln-code"><a href="#cb117-8"></a>            <span class="at">main=</span>input<span class="sc">$</span>region,</span>
+<span id="cb117-9" class="hljs-ln-code"><a href="#cb117-9"></a>            <span class="at">ylab=</span><span class="st">"Number of Telephones"</span>,</span>
+<span id="cb117-10" class="hljs-ln-code"><a href="#cb117-10"></a>            <span class="at">xlab=</span><span class="st">"Year"</span>)</span>
+<span id="cb117-11" class="hljs-ln-code"><a href="#cb117-11"></a>  })</span>
+<span id="cb117-12" class="hljs-ln-code"><a href="#cb117-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="line-highlighting" class="slide level2">
 <h2>Line Highlighting</h2>
@@ -1051,15 +1044,15 @@ C &lt;- cbind(A, B)
 <li>Highlight specific lines for emphasis</li>
 <li>Incrementally highlight additional lines</li>
 </ul>
-<div class="sourceCode" id="cb119" data-code-line-numbers="4-5|7|10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb119-2"><a href="#cb119-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb119-3"><a href="#cb119-3"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
-<span id="cb119-4"><a href="#cb119-4"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
-<span id="cb119-5"><a href="#cb119-5"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
-<span id="cb119-6"><a href="#cb119-6"></a>ax.plot(theta, r)</span>
-<span id="cb119-7"><a href="#cb119-7"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
-<span id="cb119-8"><a href="#cb119-8"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb119-9"><a href="#cb119-9"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb118" data-code-line-numbers="4-5|7|10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb118-2"><a href="#cb118-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb118-3"><a href="#cb118-3"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb118-4"><a href="#cb118-4"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb118-5"><a href="#cb118-5"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
+<span id="cb118-6"><a href="#cb118-6"></a>ax.plot(theta, r)</span>
+<span id="cb118-7"><a href="#cb118-7"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb118-8"><a href="#cb118-8"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb118-9"><a href="#cb118-9"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#line-highlighting">Line Highlighting</a></p>
 </div>
@@ -1067,14 +1060,14 @@ C &lt;- cbind(A, B)
 <section id="executable-code" class="slide level2">
 <h2>Executable Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb120-2"><a href="#cb120-2"></a><span class="co">#| fig-height: 4.5</span></span>
-<span id="cb120-3"><a href="#cb120-3"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb120-4"><a href="#cb120-4"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
-<span id="cb120-5"><a href="#cb120-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb119-2"><a href="#cb119-2"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb119-3"><a href="#cb119-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb119-4"><a href="#cb119-4"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
+<span id="cb119-5"><a href="#cb119-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="un_A_files/figure-revealjs/unnamed-chunk-44-1.png" width="960" class="r-stretch"><div class="footer">
+<img data-src="un_A_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" class="r-stretch"><div class="footer">
 <p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#executable-code">Executable Code</a></p>
 </div>
 </section>
@@ -1083,16 +1076,16 @@ C &lt;- cbind(A, B)
 <p><a href="https://www.mathjax.org/">MathJax</a> rendering of equations to HTML</p>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="sourceCode" id="cb121"><pre class="sourceCode numberSource tex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb121-1"><a href="#cb121-1"></a><span class="kw">\begin</span>{<span class="ex">gather*</span>}</span>
-<span id="cb121-2"><a href="#cb121-2"></a><span class="ss">a_1=b_1+c_1</span><span class="sc">\\</span></span>
-<span id="cb121-3"><a href="#cb121-3"></a><span class="ss">a_2=b_2+c_2-d_2+e_2</span></span>
-<span id="cb121-4"><a href="#cb121-4"></a><span class="kw">\end</span>{<span class="ex">gather*</span>}</span>
-<span id="cb121-5"><a href="#cb121-5"></a><span class="kw">\begin</span>{<span class="ex">align</span>}</span>
-<span id="cb121-6"><a href="#cb121-6"></a><span class="ss">a_{11}&amp; =b_{11}&amp;</span></span>
-<span id="cb121-7"><a href="#cb121-7"></a><span class="ss">  a_{12}&amp; =b_{12}</span><span class="sc">\\</span></span>
-<span id="cb121-8"><a href="#cb121-8"></a><span class="ss">a_{21}&amp; =b_{21}&amp;</span></span>
-<span id="cb121-9"><a href="#cb121-9"></a><span class="ss">  a_{22}&amp; =b_{22}+c_{22}</span></span>
-<span id="cb121-10"><a href="#cb121-10"></a><span class="kw">\end</span>{<span class="ex">align</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode numberSource tex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb120-1"><a href="#cb120-1"></a><span class="kw">\begin</span>{<span class="ex">gather*</span>}</span>
+<span id="cb120-2"><a href="#cb120-2"></a><span class="ss">a_1=b_1+c_1</span><span class="sc">\\</span></span>
+<span id="cb120-3"><a href="#cb120-3"></a><span class="ss">a_2=b_2+c_2-d_2+e_2</span></span>
+<span id="cb120-4"><a href="#cb120-4"></a><span class="kw">\end</span>{<span class="ex">gather*</span>}</span>
+<span id="cb120-5"><a href="#cb120-5"></a><span class="kw">\begin</span>{<span class="ex">align</span>}</span>
+<span id="cb120-6"><a href="#cb120-6"></a><span class="ss">a_{11}&amp; =b_{11}&amp;</span></span>
+<span id="cb120-7"><a href="#cb120-7"></a><span class="ss">  a_{12}&amp; =b_{12}</span><span class="sc">\\</span></span>
+<span id="cb120-8"><a href="#cb120-8"></a><span class="ss">a_{21}&amp; =b_{21}&amp;</span></span>
+<span id="cb120-9"><a href="#cb120-9"></a><span class="ss">  a_{22}&amp; =b_{22}+c_{22}</span></span>
+<span id="cb120-10"><a href="#cb120-10"></a><span class="kw">\end</span>{<span class="ex">align</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
 <span class="math display">\[\begin{gather*}
 a_1=b_1+c_1\\
@@ -1121,7 +1114,7 @@ a_{21}&amp; =b_{21}&amp;
 
 </div><div class="column" style="width:62%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(mtcars)[,<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"wt"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(mtcars)[,<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"wt"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1346,17 +1339,17 @@ a_{21}&amp; =b_{21}&amp;
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb123-2"><a href="#cb123-2"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
-<span id="cb123-3"><a href="#cb123-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb122-2"><a href="#cb122-2"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
+<span id="cb122-3"><a href="#cb122-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="un_A_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+<p><img data-src="un_A_files/figure-revealjs/unnamed-chunk-45-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table style="width:100%;">
 <colgroup>
@@ -1854,8 +1847,8 @@ a_{21}&amp; =b_{21}&amp;
 <p>Include Jupyter widgets and htmlwidgets in your presentations</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-02177f329653c3817b5c" style="width:960px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-02177f329653c3817b5c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-36.852,174.768,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The birthplace of R",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-36.852,-36.852],"lng":[174.768,174.768]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-92e7f034a0e5808c0a54" style="width:960px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92e7f034a0e5808c0a54">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-36.852,174.768,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The birthplace of R",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-36.852,-36.852],"lng":[174.768,174.768]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="footer">
