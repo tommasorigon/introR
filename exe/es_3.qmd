@@ -1,13 +1,6 @@
 ---
 title: "R per l'analisi statistica multivariata"
 subtitle: 'Esercizi 3'
-output: 
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
-    math: katex
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r startup, include = FALSE, message = FALSE, warning = FALSE}
@@ -18,11 +11,11 @@ knitr::opts_chunk$set(echo = F, eval = T, message = F, warning = F, error = F, c
 
 È ragionevole supporre che la durata dei voli diretti Milano - New York si distribuisca come una normale di media $\mu=500$ minuti e varianza $\sigma^2 = 625$.
 
-1. Con quale probabilità un volo impiegherà meno di 9 ore (540 min) per arrivare a destinazione?
+1.  Con quale probabilità un volo impiegherà meno di 9 ore (540 min) per arrivare a destinazione?
 
-1. Con quale probabilità un volo impiegherà più di 8 ore e mezza (510 min) per arrivare?
+2.  Con quale probabilità un volo impiegherà più di 8 ore e mezza (510 min) per arrivare?
 
-1. Si valuti la percentuale di aerei che impiega un tempo compreso tra 470 e 520 minuti.
+3.  Si valuti la percentuale di aerei che impiega un tempo compreso tra 470 e 520 minuti.
 
 ```{r}
 media <- 500
@@ -36,22 +29,19 @@ pnorm(520, media, scarto) - pnorm(470, media, scarto)
 
 La funzione errore `erf(x)` ammette la seguente espansione in serie
 
-$$\text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-s^2}ds = \frac{2}{\sqrt{\pi}} \sum_{n=0}^\infty(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.$$
-Inoltre, si noti che
+$$\text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-s^2}ds = \frac{2}{\sqrt{\pi}} \sum_{n=0}^\infty(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.$$ Inoltre, si noti che
 
 $$
 \mathbb{P}(X \le x) = \Phi(x) = \frac{1}{2}\left[1 + \text{erf}(x/\sqrt{2}) \right].
-$$
-Dove $X \sim N(0,1)$ è una distribuzione normale standard. 
+$$ Dove $X \sim N(0,1)$ è una distribuzione normale standard.
 
-1. Si costruiscano le funzioni `erf_approx(x,N)` e  `pnorm_approx(x, N)` basate su un troncamento al termine $N$-esimo della serie mostrata qui sopra. In altri termini, si usi l'approssimazione
-$$\text{erf}(x) \approx \frac{2}{\sqrt{\pi}} \sum_{n=0}^N(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.$$
+1.  Si costruiscano le funzioni `erf_approx(x,N)` e `pnorm_approx(x, N)` basate su un troncamento al termine $N$-esimo della serie mostrata qui sopra. In altri termini, si usi l'approssimazione $$\text{erf}(x) \approx \frac{2}{\sqrt{\pi}} \sum_{n=0}^N(-1)^n \frac{x^{2n +1}}{n!(2n+1)}.$$
 
-1. Si valutino le funzioni `erf_approx(x,N)` e  `pnorm_approx(x, N)` nei punti $x = 0$, $x = 1$ e $x = 2$, avendo fissato $N = 10$. Si commentino i risultati.
+2.  Si valutino le funzioni `erf_approx(x,N)` e `pnorm_approx(x, N)` nei punti $x = 0$, $x = 1$ e $x = 2$, avendo fissato $N = 10$. Si commentino i risultati.
 
-1. Si confrontino i valori del punto precedente con il valore ottenuto tramite la funzione `pnorm`. Si faccia quindi un ulteriore confronto nel punto $x = -3$ usando $N = 10$. Si commenti.
+3.  Si confrontino i valori del punto precedente con il valore ottenuto tramite la funzione `pnorm`. Si faccia quindi un ulteriore confronto nel punto $x = -3$ usando $N = 10$. Si commenti.
 
-1. Si approssimi la probabilità $\mathbb{P}(X \le -3)$ tramite simulazione.
+4.  Si approssimi la probabilità $\mathbb{P}(X \le -3)$ tramite simulazione.
 
 ```{r}
 # --------------------------
@@ -93,13 +83,12 @@ $$
 \mathbb{P}(X = k) = \frac{1}{20}, \qquad k=1,\dots,20.
 $$
 
-1. Per superare una determinata prova, un giocatore lancia il dado da $20$. Dopo aver aggiunto $5$ al risultato, il giocatore controlla se il totale è maggiore o uguale a $17$. Si calcoli la probabilità di questo evento analiticamente e tramite simulazione. 
+1.  Per superare una determinata prova, un giocatore lancia il dado da $20$. Dopo aver aggiunto $5$ al risultato, il giocatore controlla se il totale è maggiore o uguale a $17$. Si calcoli la probabilità di questo evento analiticamente e tramite simulazione.
 
-In determinati contesti, al giocatore è concesso un _vantaggio_. Questo significa che può tirare il dado due volte e considerare il risultato più alto. In formule, siano $X_1,X_2$ due variabili aleatorie indipendenti e distribuite come $X$. Si ponga quindi $Z = \max\{X_1,X_2\}$. 
+In determinati contesti, al giocatore è concesso un *vantaggio*. Questo significa che può tirare il dado due volte e considerare il risultato più alto. In formule, siano $X_1,X_2$ due variabili aleatorie indipendenti e distribuite come $X$. Si ponga quindi $Z = \max\{X_1,X_2\}$.
 
-1. Si rappresenti graficamente la distribuzione di probabilità di $Z$.
-1. Si ottenga tramite simulazione la probabilità $\mathbb{P}(Z + 5 \ge 17)$. Si confronti il risultato con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?
-
+1.  Si rappresenti graficamente la distribuzione di probabilità di $Z$.
+2.  Si ottenga tramite simulazione la probabilità $\mathbb{P}(Z + 5 \ge 17)$. Si confronti il risultato con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?
 
 ```{r}
 # --------------------------
@@ -123,26 +112,21 @@ plot(freq_rel)
 mean(z + 5 >= 17)
 ```
 
-
 ## Esercizio D (difficile)
 
 Una variabile aleatoria $X$ è distribuita come una variabile di Cauchy (standard) se la sua densità è pari a
 
 $$
 f(x) = \frac{1}{\pi}\frac{1}{1 + x^2}, \qquad x \in \mathbb{R}.
-$$
-**Suggerimento**: si usino la funzioni `dcauchy`, `pcauchy`, `qcauchy` e `rcauchy`.
+$$ **Suggerimento**: si usino la funzioni `dcauchy`, `pcauchy`, `qcauchy` e `rcauchy`.
 
+1.  Si rappresenti graficamente la funzione $f(x)$ nell'intervallo $(-4,4)$ e si confronti il grafico con la densità di una normale standard.
 
-1. Si rappresenti graficamente la funzione $f(x)$ nell'intervallo $(-4,4)$ e si confronti il grafico con la densità di una normale standard. 
+2.  Si calcoli tramite simulazione la probabilità che $X$ sia maggiore di $3$. Si confronti il risultato ottenuto con il valore teorico.
 
-1. Si calcoli tramite simulazione la probabilità che $X$ sia maggiore di $3$. Si confronti il risultato ottenuto con il valore teorico.
-
-1. Siano $X_1,\dots,X_n$ dei valori iid da una Cauchy standard e si calcoli
-$$
-\frac{1}{n}\sum_{i=1}^nX_i,
-$$
-per vari valori di $n = 10^2, 10^3, 10^4, 10^5$. Si ripeta l'esperimento alcune volte. La media aritmetica dei valori simulati sembra convergere? Si commenti il risultato.
+3.  Siano $X_1,\dots,X_n$ dei valori iid da una Cauchy standard e si calcoli $$
+    \frac{1}{n}\sum_{i=1}^nX_i,
+    $$ per vari valori di $n = 10^2, 10^3, 10^4, 10^5$. Si ripeta l'esperimento alcune volte. La media aritmetica dei valori simulati sembra convergere? Si commenti il risultato.
 
 ```{r}
 curve(dnorm(x), -4, 4, col = "red")
@@ -166,8 +150,6 @@ mean(rcauchy(10^4))
 mean(rcauchy(10^5))
 ```
 
-
-
 ## Esercizio E
 
 L'indice di asimmetria di Bowley di una variabile aleatoria è definito come segue
@@ -176,11 +158,11 @@ $$
 B = \frac{\mathcal{Q}(0.75) - 2\mathcal{Q}(0.5) + \mathcal{Q}(0.25)}{\mathcal{Q}(0.75) - \mathcal{Q}(0.25)}.
 $$
 
-1. Si calcoli l'indice di asimmetria di Bowley di una distribuzione gaussiana di media $5$ e varianza $25$.
+1.  Si calcoli l'indice di asimmetria di Bowley di una distribuzione gaussiana di media $5$ e varianza $25$.
 
-1. Si calcoli l'indice di Bowley per una distribuzione gamma di parametri $\alpha = 2$ e $\beta = 4$ e si commenti il risultato. 
+2.  Si calcoli l'indice di Bowley per una distribuzione gamma di parametri $\alpha = 2$ e $\beta = 4$ e si commenti il risultato.
 
-1. Si calcoli l'indice di Bowley per una distribuzione gamma di parametri $\alpha = 200$ e $\beta = 400$ e lo si confronti col valore ottenuto al punto precedente. Si commenti il risultato. 
+3.  Si calcoli l'indice di Bowley per una distribuzione gamma di parametri $\alpha = 200$ e $\beta = 400$ e lo si confronti col valore ottenuto al punto precedente. Si commenti il risultato.
 
 ```{r}
 (qnorm(0.75, 5, 7) - 2 * qnorm(0.5, 5, 7) + qnorm(0.25, 5, 7)) / (qnorm(0.75, 5, 5) - qnorm(0.25, 5, 5))
@@ -194,22 +176,19 @@ $$
 (qgamma(0.75, 200, 400) - 2 * qgamma(0.5, 200, 400) + qgamma(0.25, 200, 400)) / (qgamma(0.75, 200, 400) - qgamma(0.25, 200, 400))
 ```
 
-
-
 ## Esercizio F
 
 La distribuzione beta-binomiale di parametri $\alpha, \beta > 0$ ed $n \in \mathbb{N}$ di è una variabile aleatoria discreta $X$ è tale che
 
 $$
 \mathbb{P}(X = k) = \binom{n}{k}\frac{\mathcal{B}(k+\alpha,n-k+\beta)}{\mathcal{B}(\alpha,\beta)},\qquad k=0,\dots,n.
-$$
-dove $\mathcal{B}$ è la funzione beta.
+$$ dove $\mathcal{B}$ è la funzione beta.
 
-1. Si definiscano la funzione di probabilità `dbetabinom(k, n, alpha, beta)` e la funzione di ripartizione `pbetabinom(k, n, alpha, beta)` di una distribuzione beta-binomiale.
+1.  Si definiscano la funzione di probabilità `dbetabinom(k, n, alpha, beta)` e la funzione di ripartizione `pbetabinom(k, n, alpha, beta)` di una distribuzione beta-binomiale.
 
-1. Si controlli empiricamente che per $n = 40$ e $\alpha = \beta = 2$ le probabilità descritte nell'equazione precedente sommano a uno. Quindi, si rappresenti graficamente la distribuzione.
+2.  Si controlli empiricamente che per $n = 40$ e $\alpha = \beta = 2$ le probabilità descritte nell'equazione precedente sommano a uno. Quindi, si rappresenti graficamente la distribuzione.
 
-1. Utilizzando i parametri del punto precedente, si calcolino numericamente media e varianza di $X$.
+3.  Utilizzando i parametri del punto precedente, si calcolino numericamente media e varianza di $X$.
 
 ## Esercizio G
 
@@ -221,7 +200,6 @@ $$\mathbb{E}\left(e^{-|x|^3}\right), \quad X \sim \text{N}(0,1).$$
 mean(exp(-abs(rnorm(10^4))^3))
 ```
 
-
 ## Esercizio H
 
 Sia $X$ una variabile casuale e sia $g(\cdot)$ una funzione a valori non negativi. Allora, per ogni $k > 0$
@@ -230,21 +208,21 @@ $$
 \mathbb{P}(g(X) \ge k) \le \frac{\mathbb{E}(g(X))}{k}.
 $$
 
-1. Si verifichi tramite simulazione la disugaglianza di Markov nel caso $g(x) = x^2$ e con $X \sim \text{N}(0,1)$, per $k = 1,2,3$. Si confronti il risultato con i valori teorici.
+1.  Si verifichi tramite simulazione la disugaglianza di Markov nel caso $g(x) = x^2$ e con $X \sim \text{N}(0,1)$, per $k = 1,2,3$. Si confronti il risultato con i valori teorici.
 
-1. Si verifichi tramite simulazione la disugaglianza di Markov nel caso $g(x) = e^{x/100}$ e con $X \sim \text{Ga}(10,1/10)$, per $k = 1,2,3$.
+2.  Si verifichi tramite simulazione la disugaglianza di Markov nel caso $g(x) = e^{x/100}$ e con $X \sim \text{Ga}(10,1/10)$, per $k = 1,2,3$.
 
 ## Esercizio I
 
-In un'aula universitaria sono presenti $50$ persone, tutte nate nello stesso anno (non bisestile). Si supponga che la distribuzione del giorno del compleanno sia una distribuzione uniforme discreta nei valori $1,\dots,365$ e che le date di compleanno delle persone presenti possano essere considerate variabili aleatorie indipendenti. 
+In un'aula universitaria sono presenti $50$ persone, tutte nate nello stesso anno (non bisestile). Si supponga che la distribuzione del giorno del compleanno sia una distribuzione uniforme discreta nei valori $1,\dots,365$ e che le date di compleanno delle persone presenti possano essere considerate variabili aleatorie indipendenti.
 
 Usando la funzione `duplicated` ed i cicli `for` di **R**:
 
-1. Si calcoli la probabilità che due persone siano nate nello stesso giorno tramite simulazione.
+1.  Si calcoli la probabilità che due persone siano nate nello stesso giorno tramite simulazione.
 
-1. Nell'ora successiva sono presenti in aula $25$ persone. Si ricacolino le probabilità del punto precedente.
+2.  Nell'ora successiva sono presenti in aula $25$ persone. Si ricacolino le probabilità del punto precedente.
 
-1. Si scriva quindi del codice **R** che fa uso della funzione `replicate` al posto dei cicli `for` e si ri-ottengano i risultati dei punti precedenti. Ci sono dei miglioramenti in termini di tempo?
+3.  Si scriva quindi del codice **R** che fa uso della funzione `replicate` al posto dei cicli `for` e si ri-ottengano i risultati dei punti precedenti. Ci sono dei miglioramenti in termini di tempo?
 
 ```{r}
 # ---------------------------
@@ -280,23 +258,21 @@ mean(y)
 
 ## Esercizio L
 
-La variabile aleatoria $X$ ha distribuzione normale asimmetrica (_skew normal_) con parametro $\alpha \in \mathbb{R}$ se la sua funzione di densità è pari a
+La variabile aleatoria $X$ ha distribuzione normale asimmetrica (*skew normal*) con parametro $\alpha \in \mathbb{R}$ se la sua funzione di densità è pari a
 
 $$
 f(x) = 2\phi(x)\Phi(\alpha x), \qquad x \in \mathbb{R}.
-$$
-in cui $\phi(x)$ e $\Phi(x)$ sono, rispettivamente, la densità e la funzione di ripartizione di una normale standard. 
+$$ in cui $\phi(x)$ e $\Phi(x)$ sono, rispettivamente, la densità e la funzione di ripartizione di una normale standard.
 
-1. Si scriva la funzione `dsn(x, alpha)` che calcola la densità $f(x)$.
+1.  Si scriva la funzione `dsn(x, alpha)` che calcola la densità $f(x)$.
 
-1. Si tracci il grafico di $f(x)$ nell'intervallo $(-4,4)$ utilizzando i valori $\alpha = -5, 0, 5$. Si proponga un'interpretazione per il parametro $\alpha$.
+2.  Si tracci il grafico di $f(x)$ nell'intervallo $(-4,4)$ utilizzando i valori $\alpha = -5, 0, 5$. Si proponga un'interpretazione per il parametro $\alpha$.
 
-1. Si scriva la funzione `rsn(n, alpha)` che simula $n$ valori pseudo-casuali da una funzione normale asimmetrica di parametro $\alpha$ sfruttando la seguente relazione per $X$
-$$
-X = \sqrt{1 - \delta^2} Z_1 + \delta|Z_2|, \qquad \delta = \frac{\alpha}{\sqrt{1 + \alpha^2}}, \qquad Z_1,Z_2 \overset{\text{iid}}{\sim} \text{N}(0,1).
-$$
-1. Si usi la funzione `rsn` per simulare $10^4$ valori da una normale asimmetrica di parametro $\alpha = 7$ e si confronti l'istogramma dei dati simulati con la funzione di densità.
+3.  Si scriva la funzione `rsn(n, alpha)` che simula $n$ valori pseudo-casuali da una funzione normale asimmetrica di parametro $\alpha$ sfruttando la seguente relazione per $X$ $$
+    X = \sqrt{1 - \delta^2} Z_1 + \delta|Z_2|, \qquad \delta = \frac{\alpha}{\sqrt{1 + \alpha^2}}, \qquad Z_1,Z_2 \overset{\text{iid}}{\sim} \text{N}(0,1).
+    $$
 
+4.  Si usi la funzione `rsn` per simulare $10^4$ valori da una normale asimmetrica di parametro $\alpha = 7$ e si confronti l'istogramma dei dati simulati con la funzione di densità.
 
 ```{r}
 dsn <- function(x, alpha) {
@@ -322,15 +298,13 @@ hist(x, freq = FALSE, breaks = 100)
 curve(dsn(x, 7), add = TRUE)
 ```
 
+## Esercizi tratti dai libro di testo Albert & Rizzo (**AR**)
 
-## Esercizi tratti dai libro di testo Albert \&  Rizzo (**AR**)
+-   Esercizio 13.1, pag 333.
 
- - Esercizio 13.1, pag 333.
- 
-## Esercizi tratti dai libro di testo Robert \& Casella (**RS**)
+## Esercizi tratti dai libro di testo Robert & Casella (**RS**)
 
- - Esercizio 3.3, pag. 111 (**difficile**).
-
+-   Esercizio 3.3, pag. 111 (**difficile**).
 
 <!-- ## Esercizio M -->
 

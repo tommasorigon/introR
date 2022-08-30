@@ -45,7 +45,7 @@ Il materiale didattico di ciascuna lezione è scaricabile utilizzando i [collega
 La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrisponde al libro Robert & Casella.
 
 | Argomenti                                        | Materiale didattico                        | Materiale aggiuntivo                        | Sezioni libro di testo                                  |
-|------------------|-----------------|-----------------|--------------------|
+|------------------|------------------|------------------|--------------------|
 | Introduzione al corso                            | [Unità introduttiva](lezioni/un_intro.pdf) |                                             |                                                         |
 |                                                  | **INTRODUZIONE AD R**                      |                                             |                                                         |
 | A-B-C: calcolo scientifico ed algebra lineare    | [Slides unità A](lezioni/un_A.pdf)         | [Codice R](lezioni/script/un_A.R)           | **AR** §1.1, §1.3, §A1 --- §A3                          |
@@ -92,7 +92,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 
 L'esame si svolge tramite **computer** e consiste tipicamente in $3$ esercizi da svolgere in **R**. Lo studente deve consegnare un file `nome_cognome.R` con i comandi utilizzati. L'esame si svolgerà sulla [Piattaforma Esami Informatizzati](https://esamionline.elearning.unimib.it/login/index.php).
 
-Lo studente all'esame può consultare sia la documentazione ufficiale di **R** che il codice utilizzato a lezione, disponibile a [questo link](https://github.com/tommasorigon/introR/tree/master/lezioni/script).
+Lo studente all'esame può consultare sia la documentazione ufficiale di **R** che il codice utilizzato a lezione, disponibile a [questo link](lezioni/script.zip).
 
 Per visionare la prova, è possibile venire a ricevimento. Per ulteriori informazioni relative alla registrazione del voto, al calendario delle verbalizzazioni e al salto d'appello si visiti la pagina: [Analisi Statistica Multivariata](https://aldosolari.github.io/ASM/).
 

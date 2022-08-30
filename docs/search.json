@@ -35,11 +35,11 @@
     "text": "Ricevimento\nPer fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo tommaso.rigon@unimib.it. Il ricevimento è fissato ogni martedì alle ore 17.30."
   },
   {
-    "objectID": "lezioni/un_A.html",
-    "href": "lezioni/un_A.html",
+    "objectID": "lezioni/un_A.html#unità-a",
+    "href": "lezioni/un_A.html#unità-a",
     "title": "R per l’analisi statistica multivariata",
-    "section": "",
-    "text": "A-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\nEsercizi R associati: esercizi 1"
+    "section": "Unità A",
+    "text": "Unità A\n\n\nA-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\nEsercizi R associati: esercizi 1"
   },
   {
     "objectID": "lezioni/un_A.html#calcolatrice-scientifica",
@@ -350,48 +350,6 @@
     "text": "And More…\n\nTouch optimized (presentations look great on mobile, swipe to navigate slides)\nFooter & Logo (optionally specify custom footer per-slide)\nAuto-Slide (step through slides automatically, without any user input)\nMultiplex (allows your audience to follow the slides of the presentation you are controlling on their own phone, tablet or laptop).\n\n\nLearn more: Quarto Presentations"
   },
   {
-    "objectID": "esami/esiti.html",
-    "href": "esami/esiti.html",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "",
-    "text": "Matricola\nEsito\n\n\n\n\n795145\nINS\n\n\n826036\nINS\n\n\n832344\n27\n\n\n832450\n18\n\n\n837297\n24\n\n\n837363\n20\n\n\n850960\nINS\n\n\n851007\nINS\n\n\n851534\nINS\n\n\n852054\nINS\n\n\n852225\nINS\n\n\n856942\nINS\n\n\n857880\n26\n\n\n861300\nINS\n\n\n861837\n19\n\n\n864426\n18\n\n\n864920\nINS\n\n\n864973\nINS\n\n\n865257\nINS\n\n\n865309\n25\n\n\n865336\n27\n\n\n865374\n21\n\n\n870789\n26\n\n\n871277\nINS\n\n\n871794\n18\n\n\n873133\nINS\n\n\n873335\nINS\n\n\n874624\n18\n\n\n874883\nINS\n\n\n875967\n22\n\n\n876170\n30"
-  },
-  {
-    "objectID": "esami/sim_esame2020.html",
-    "href": "esami/sim_esame2020.html",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "",
-    "text": "Sia \\(X\\) una variabile casuale uniforme discreta avente supporto sugli interi da \\(1\\) a \\(365\\). Si assuma che il supporto di \\(X\\) sia associato ad ognuno dei giorni dell’anno (non bisestile); in particolare, \\(1\\) indica il primo Gennaio, mentre \\(365\\) il 31 Dicembre.\n\n\nA partire da queste informazioni si imposti uno studio di simulazione basato su \\(30000\\) repliche per stimare la probabilità che in un gruppo di \\(39\\) persone tutte siano nate in giorni diversi.\nSi stimi la probabilità dell’evento al punto precedente sotto l’ipotesi che nei primi \\(35\\) giorni dell’anno la probabilità di nascere sia doppia rispetto agli altri giorni dell’anno; si utilizzi lo stesso numero di repliche del punto precedente."
-  },
-  {
-    "objectID": "esami/sim_esame2020.html#problema-2",
-    "href": "esami/sim_esame2020.html#problema-2",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Problema 2",
-    "text": "Problema 2\nÈ noto che per generare numeri pseudo-casuali da una variabile casuale continua \\(Z\\) è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo \\([0,1]\\).\nInfatti, si ha \\(z_\\text{pc} = F^{-1}_Z(u_\\text{pc})\\) in cui \\(z_\\text{pc}\\) è un numero pseudo-casuale da \\(Z\\), \\(u_\\text{pc}\\) è un numero pseudo-casuale da una variabile casuale uniforme in \\([0,1]\\) e \\(F^{−1}_Z(\\cdot)\\) è l’inversa della funzione di ripartizione di \\(Z\\), ovvero la funzione quantile.\nSi supponga che \\(Z\\) sia una variabile casuale continua con funzione di ripartizione \\[\nF(z) = \\frac{e^z}{1 + e^z}.\n\\] Si generino, secondo la definizione \\(F^{-1}_Z(u_\\text{pc})\\), \\(10000\\) numeri pseudo-casuali da \\(Z\\). Quindi, utilizzando i numeri pseudo-casuali generati al punto precedente, si approssimino:\n\nIl valore atteso \\(\\mathbb{E}(Z)\\)\nLa varianza \\(\\text{var}(Z)\\)\nLa probabilità che \\(Z\\) sia compresa tra \\(1\\) e \\(2\\)."
-  },
-  {
-    "objectID": "esami/sim_esame2020.html#problema-3",
-    "href": "esami/sim_esame2020.html#problema-3",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Problema 3",
-    "text": "Problema 3\nNel file auto.txt disponibile al link https://tommasorigon.github.io/introR/data/auto.txt si riportano dati relativi ad alcuni modelli di autobili presenti in commercio negli Stati Uniti tra il 1973 e il 1974. Le variabili presenti nell’insieme di dati fornito sono\n\nmpg: consumo (miglia / galloni)\ncyl: numero di cilindri\ndisp: cilindrata (pollici cubici)\nhp: cavalli\ndrat: rapporto ase posteriore/anteriore\nwt: peso (in libbre)\nqsec: tempo a percorrere 1/4 di miglio con partenza da fermo\nvs: disposizione dei cilindri (0 = a V, 1 = in linea)\nam: cambio (0 = automatico, 1 = manuale)\ngear: numero di marce\ncarb: numero di carburatori\n\n\nUna volta caricati i dati in R:\n\nIndicare la classe dell’oggetto importato.\nIndicare il numero di righe e colonne dell’oggetto importato.\nIndicare la classe della variabile vs: se diversa da factor, convertirla e rinominare opportunamente i livelli come V e Linea.\nCalcolare le frequenze relative di cyl condizionate a gear=3.\nDire se è corretto affermare che “il \\(60\\)-simo percentile della distribuzione dei cavalli delle auto con disposizione dei cilindri a V è maggiore rispetto al numero medio di cavalli delle auto con disposizione dei cilindri in linea”."
-  },
-  {
-    "objectID": "esami/esame_20_11_2020.html",
-    "href": "esami/esame_20_11_2020.html",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "",
-    "text": "Dopo aver caricato in memoria la libreria MASS, si acceda al dataset forbes contenuto in tale libreria.\n\nSi acceda alla documentazione del dataset forbes e si descriva il contenuto del dataset: cosa rappresentano le variabili contenute in tale insieme di dati?\nSi ottengano le medie campionarie e le mediane per le variabili bp e pres. Si ottengano quindi il primo ed il terzo quartile. Sono presenti outlier nelle due distribuzioni?\nSi ottengano gli istogrammi di tali variabili, scegliendo opportunamente il numero di intervalli.\nSi ottenga un grafico che metta in relazione le variabili bp e pres.\nSi calcoli la correlazione tra le variabili bp e pres.\nIn un modello di regressione lineare semplice \\(y = \\alpha + \\beta x\\), dove bp rappresenta la variabile esplicativa (\\(x\\)) e pres rappresenta la variabile risposta (\\(y\\)), le stime ai minimi quadrati sono pari a \\[\n\\hat{\\alpha} = \\bar{y} - \\hat{\\beta}\\bar{x}, \\qquad \\hat{\\beta} = \\frac{\\text{cov}(x,y)}{\\text{var}(x)}.\n\\]\nSi rappresenti la retta di regressione ottenuta congiuntamenti ai dati. Il modello sembra adattarsi bene ai dati?"
-  },
-  {
-    "objectID": "esami/esame_20_11_2020.html#problema-2",
-    "href": "esami/esame_20_11_2020.html#problema-2",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Problema 2",
-    "text": "Problema 2\nUna variabile aleatoria \\(X \\sim \\text{Burr}(\\alpha,\\beta)\\) segue una distribuzione di Burr di parametri \\(\\alpha, \\beta > 0\\). Si tratta di una variabile casuale assolutamente continua e a valori positivi avente la seguente densità:\n\\[\nf(x ; \\alpha, \\beta) = \\alpha \\beta \\frac{x^{\\alpha-1}}{(1 + x^\\alpha)^{\\beta+1}}, \\qquad x > 0.\n\\]\nÈ facile verificare che la funzione di ripartizione coincide con\n\\[\nF(x; \\alpha, \\beta) = 1 - \\frac{1}{(1 + x^\\alpha)^\\beta}, \\qquad x > 0.\n\\]\n\nSi ottenga analiticamente (ovvero utilizzando carta e penna) la funzione quantile \\(F^{-1}(p; \\alpha,\\beta)\\) della distribuzione di Burr, ovvero la funzione inversa di \\(F(x;\\alpha,\\beta) = p\\). Quindi, si scrivano in R le funzioni per il calcolo della densità, della funzione di ripartizione e la funzione quantile. Si chiamino queste funzioni dburr(x, alpha, beta), pburr(x, alpha, beta) e qburr(p, alpha, beta), rispettivamente.\nSi faccia un grafico della funzione di densità \\(f(x ; \\alpha, \\beta)\\) con \\(\\alpha = 2\\) e \\(\\beta = 1\\), in un intervallo opportuno.\nPer generare valori (pseudo) casuali dalla distribuzione di Burr è possibile utilizzare il metodo dell’inversione. Un singolo valore da una distribuzione di Burr si ottiene tramite il comando qburr(runif(1), alpha, beta). Si definisca quindi la funzione rburr(R, alpha, beta) che genera R valori pseudo casuali da una distribuzione di Burr.\nUtilizzando i numeri pseudo-casuali generati tramite la funzione rburr con \\(\\alpha = 2\\) e \\(\\beta = 1\\) si approssimino:\n\nIl valore atteso \\(E(X)\\).\nLa varianza \\(\\text{var}(X)\\).\nLa probabilità che \\(X\\) sia compresa tra \\(2\\) e \\(3\\).\n\nSi faccia un istogramma dei valori simulati al punto precedente e lo si confronti con la densità \\(f(x;\\alpha,\\beta)\\) per \\(\\alpha = 2\\) e \\(\\beta = 1\\).\nSi ottenga la funzione di ripartizione empirica dei valori simulati in precedenza e la si confronti con la funzione di ripartizione teorica \\(F(x;\\alpha,\\beta)\\) per \\(\\alpha = 2\\) e \\(\\beta = 1\\)."
-  },
-  {
     "objectID": "exe/es_1.html",
     "href": "exe/es_1.html",
     "title": "R per l’analisi statistica multivariata",
@@ -469,10 +427,374 @@
     "text": "Esercizi tratti dai libro di testo Robert & Casella (RS)\n\nEsercizio 1.3, pag. 9.\nEsercizio 1.4, pag. 9.\nEsercizio 1.5, pag. 9.\nEsercizio 1.9, pag. 31.\nEsercizio 1.12, pag. 38."
   },
   {
-    "objectID": "lezioni/un_A.html#unità-a",
-    "href": "lezioni/un_A.html#unità-a",
+    "objectID": "exe/es_2.html",
+    "href": "exe/es_2.html",
     "title": "R per l’analisi statistica multivariata",
-    "section": "Unità A",
-    "text": "Unità A\n\n\nA-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\nEsercizi R associati: esercizi 1"
+    "section": "",
+    "text": "La varianza campionaria dei dati \\({\\bf x} = (x_1,\\dots,x_n)\\) è definita come\n\\[\n\\text{var}({\\bf x}) = \\frac{1}{n}\\sum_{i=1}^n(x_i - \\bar{x})^2,\n\\] dove \\(\\bar{x}\\) è la media campionaria. Si noti che \\(\\text{var}({\\bf x})\\) ammette la rappresentazione alternativa\n\\[\\text{var}({\\bf x}) = \\frac{1}{2 n^2} \\sum_{i=1}^n \\sum_{j = 1}^n (x_i - x_j)^2.\\]\n\n\nSi scriva una funzione var2(x) che calcola la varianza di \\({\\bf x}\\) utilizzando la definizione.\nSi scriva una funzione var3(x) che calcola la varianza di \\({\\bf x}\\) utilizzando la formula basata sulle distanze tra coppie di elementi.\nSi supponga che x = c(1, 4, 2, 2, 10). Si verifichi che le due funzioni var2(x) e var3(x) forniscono lo stesso risultato.\nSi supponga ora che x <- 1:3000. Si notano differenze rispetto al punto precedente?\nSi confrontino le funzioni var2 e var3 con la funzione var implementata in R, utilizzando i dati del punto 3. Come mai i risultati differiscono, anche se di poco? Si consulti la documentazione per rispondere."
+  },
+  {
+    "objectID": "exe/es_2.html#esercizio-b",
+    "href": "exe/es_2.html#esercizio-b",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio B",
+    "text": "Esercizio B\nQuesto esercizio ripercorre l’unità I del corso Statistica I, a cui si rimanda per un ripasso sugll’indice di Gini e una descrizione del problema.\nAl link https://tommasorigon.github.io/introR/data/elezioni.RData sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.\n\n\nSi carichino in memoria i dati.\nQuali variabili contiene il dataset elez? Di quale tipologia sono?\nSi ottenga il numero di voti ottenuti da ciascun candidato nei differenti Municipi di Milano.\nSi ottenga il numero di voti ottenuti da ciascun candidato e se ne faccia un grafico. Si ottenga inoltre la percentuale di voti ottenuti da ciascun candidato.\nSi scriva la funzione Gini(x) che calcola l’indice di Gini per una variabile qualitativa. L’indice di Gini è definito come \\[\nG = 1 - \\sum_{j=1}^k f_j^2,\n\\] dove \\(f_1,\\dots,f_k\\) sono le frequenze relative delle \\(k\\) modalità.\nSi scriva una funzione Gini_norm(x)che calcola l’indice di Gini normalizzato, ovvero \\[G_\\text{norm} = \\frac{k}{k-1} G.\\]\nSi valuti la polarizzazione dei voti tra i candidati nelle diverse municipalità utilizzando l’indice di Gini normalizzato. Si organizzino quindi i risultati in una tabella e si dica quale municipalità presenta la polarizzazione maggiore."
+  },
+  {
+    "objectID": "exe/es_2.html#esercizio-c",
+    "href": "exe/es_2.html#esercizio-c",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio C",
+    "text": "Esercizio C\nQuesto esercizio riprende i dati considerati nell’unità J del corso Statistica I, a cui si rimanda per una descrizione più approfondita del dataset.\nI dati sono disponibili al link https://tommasorigon.github.io/introR/data/province.csv.\n\n\nSi carichino i dati in memoria e si salvi il dataset nell’oggetto province.\nQuali variabili contiene il dataset province? Di quale tipologia sono?\nSi rappresenti graficamente la variabile istruzione tramite istogramma. Si calcoli quindi media, mediana e varianza.\nSi rappresenti graficamente la funzione di ripartizione della variabile agricoltura.\nSi rappresenti il diagramma a dispersione delle variabili agricoltura e istruzione. Si può notare una qualche relazione?\nSi ottenga la matrice di varianza e covarianza.\nSi ottenga la matrice di correlazione. Si commenti la relazione esistente tra agricoltura e istruzione."
+  },
+  {
+    "objectID": "exe/es_2.html#esercizio-d",
+    "href": "exe/es_2.html#esercizio-d",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio D",
+    "text": "Esercizio D\nNel dataset calcio disponibile al link https://tommasorigon.github.io/introR/data/calcio.RData, ciascuna unità statistica rappresenta una partita di calcio della Serie A italiana, relativa ai campionati 2008-2015. Il dataset è composto dalle seguenti variabili:\n\nDate indica la data della partita.\nHomeTeam e AwayTeam indicano, rispettivamente, la squadra che gioca in casa e la squadra ospite per ciascuna partita.\nFTR indica se la squadra che giocava in casa ha vinto (H), pareggiato (D), oppure perso (A).\nLe variabili B365H, B365D, B365A sono le quote per la vittoria, pareggio, sconfitta della squadra di casa.\n\nSupponendo di scommettere sulla vittoria della squadra di casa, puntando un euro su di essa si otterrebbero B365H euro in caso di vittoria.\n\n\nSi carichi il dataset in memoria.\nVerificare le tipologie di variabili presenti nel dataset calcio.\nControllare se esistono dei dati mancanti nel dataset. Se presenti, si escludano le righe contenenti dei valori mancanti dall’analisi. Suggerimento: si usi la funzione na.omit.\nCalcolare i principali indici descrittivi per la variabile B365H. Rappresentarla poi tramite istogramma ed il boxplot. Sono presenti valori anomali? Da cosa è possibile intuirlo?\nEffettuare l’analisi del punto precedenti sulla trasformazione logaritmica di B365H. Sono presenti valori anomali?\nValutare la correlazione presente tra B365H e B365A. Ci si poteva aspettare un risultato simile? Cosa implicherebbe una correlazione positiva?\nRappresentare con un grafico opportuno la relazione tra le trasformate logaritmiche delle variabili B365H e B365A. Si commenti il risultato.\nValutare la quota media B365H per ciascuna categoria della variabile FTR. Come si interpreta questo risultato?\nRappresentare tramite boxplot la variabile B365H per ciascuna categoria della variabile FTR. Si commenti il risultato."
+  },
+  {
+    "objectID": "exe/es_2.html#esercizio-e",
+    "href": "exe/es_2.html#esercizio-e",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio E",
+    "text": "Esercizio E\nNel dataset imdb disponibile al link https://tommasorigon.github.io/introR/data/imdb.RData, ciascuna unità statistica è un film estratto dal sito http://www.imdb.com/ (Internet Movie Data Base). Per ciascun film, sono a disposizione le seguenti variabili:\n\nmovie_title è il titolo del film.\nduration è la durata del film espressa in minuti.\nlgrossè la trasformazione logaritmica dell’incasso lordo, espresso in dollari.\nlbudgetè la trasformazione logaritmica del budget, espresso in dollari.\nAction, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Romance, SciFi, Thriller, War, Western, sono variabili qualitative che indicano se il film appartiene o meno al genere. Ciascun film può appartenere a più generi contemporaneamente.\n\n\n\nSi carichi il dataset in memoria. Si controlli la tipologia delle variabili.\nQuante sono le unità statistiche?\nQual è la durata media dei film del dataset? E l’incasso medio?\nCi sono differenze tra la distribuzione della durata (duration) dei film drammatici (Drama) e quelli non drammatici? Si risponda tramite opportuni indici descrittivi ed analisi grafiche.\nQuali sono i 5 film che presentano, all’interno del dataset, i maggiori incassi? Suggerimento: si usi la funzione order.\nRappresentare con grafici appropriati le distribuzioni marginali e la distribuzione congiunta delle variabili lbudget e lgross. Che tipo di relazione sembra esserci tra le due variabili?\nSi calcoli la correlazione tra lbudget e lgross e si commenti il risultato.\nSi calcoli la correlazione tra duration e lgross e si commenti il risultato. Possiamo quindi concludere che, per guodagnare molto, sia sufficiente produrre un film della durata di 12 ore?"
+  },
+  {
+    "objectID": "exe/es_2.html#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar",
+    "href": "exe/es_2.html#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizi tratti dai libro di testo Albert & Rizzo (AR)",
+    "text": "Esercizi tratti dai libro di testo Albert & Rizzo (AR)\n\nEsercizio 1.14, pag. 41.\nEsercizio 2.1, pag. 75.\nEsercizio 2.2, pag. 75.\nEsercizio 2.3, pag. 75.\nEsercizi 2.4 e 2.5, pag. 75-76.\nEsercizio 2.10, pag. 77.\nEsercizio 2.12, pag. 77.\nEsercizio 3.1, pag. 96.\nEsercizio 3.4, pag. 98."
+  },
+  {
+    "objectID": "exe/es_3.html",
+    "href": "exe/es_3.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "È ragionevole supporre che la durata dei voli diretti Milano - New York si distribuisca come una normale di media \\(\\mu=500\\) minuti e varianza \\(\\sigma^2 = 625\\).\n\nCon quale probabilità un volo impiegherà meno di 9 ore (540 min) per arrivare a destinazione?\nCon quale probabilità un volo impiegherà più di 8 ore e mezza (510 min) per arrivare?\nSi valuti la percentuale di aerei che impiega un tempo compreso tra 470 e 520 minuti."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-b",
+    "href": "exe/es_3.html#esercizio-b",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio B",
+    "text": "Esercizio B\nLa funzione errore erf(x) ammette la seguente espansione in serie\n\\[\\text{erf}(x) = \\frac{2}{\\sqrt{\\pi}} \\int_0^x e^{-s^2}ds = \\frac{2}{\\sqrt{\\pi}} \\sum_{n=0}^\\infty(-1)^n \\frac{x^{2n +1}}{n!(2n+1)}.\\] Inoltre, si noti che\n\\[\n\\mathbb{P}(X \\le x) = \\Phi(x) = \\frac{1}{2}\\left[1 + \\text{erf}(x/\\sqrt{2}) \\right].\n\\] Dove \\(X \\sim N(0,1)\\) è una distribuzione normale standard.\n\nSi costruiscano le funzioni erf_approx(x,N) e pnorm_approx(x, N) basate su un troncamento al termine \\(N\\)-esimo della serie mostrata qui sopra. In altri termini, si usi l’approssimazione \\[\\text{erf}(x) \\approx \\frac{2}{\\sqrt{\\pi}} \\sum_{n=0}^N(-1)^n \\frac{x^{2n +1}}{n!(2n+1)}.\\]\nSi valutino le funzioni erf_approx(x,N) e pnorm_approx(x, N) nei punti \\(x = 0\\), \\(x = 1\\) e \\(x = 2\\), avendo fissato \\(N = 10\\). Si commentino i risultati.\nSi confrontino i valori del punto precedente con il valore ottenuto tramite la funzione pnorm. Si faccia quindi un ulteriore confronto nel punto \\(x = -3\\) usando \\(N = 10\\). Si commenti.\nSi approssimi la probabilità \\(\\mathbb{P}(X \\le -3)\\) tramite simulazione."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-c",
+    "href": "exe/es_3.html#esercizio-c",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio C",
+    "text": "Esercizio C\nIn un noto gioco da tavolo, si usano dadi a \\(20\\) facce. Il lancio del dado pertanto corrisponde ad una variabile aleatoria \\(X\\) tale che\n\\[\n\\mathbb{P}(X = k) = \\frac{1}{20}, \\qquad k=1,\\dots,20.\n\\]\n\nPer superare una determinata prova, un giocatore lancia il dado da \\(20\\). Dopo aver aggiunto \\(5\\) al risultato, il giocatore controlla se il totale è maggiore o uguale a \\(17\\). Si calcoli la probabilità di questo evento analiticamente e tramite simulazione.\n\nIn determinati contesti, al giocatore è concesso un vantaggio. Questo significa che può tirare il dado due volte e considerare il risultato più alto. In formule, siano \\(X_1,X_2\\) due variabili aleatorie indipendenti e distribuite come \\(X\\). Si ponga quindi \\(Z = \\max\\{X_1,X_2\\}\\).\n\nSi rappresenti graficamente la distribuzione di probabilità di \\(Z\\).\nSi ottenga tramite simulazione la probabilità \\(\\mathbb{P}(Z + 5 \\ge 17)\\). Si confronti il risultato con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?"
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-d-difficile",
+    "href": "exe/es_3.html#esercizio-d-difficile",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio D (difficile)",
+    "text": "Esercizio D (difficile)\nUna variabile aleatoria \\(X\\) è distribuita come una variabile di Cauchy (standard) se la sua densità è pari a\n\\[\nf(x) = \\frac{1}{\\pi}\\frac{1}{1 + x^2}, \\qquad x \\in \\mathbb{R}.\n\\] Suggerimento: si usino la funzioni dcauchy, pcauchy, qcauchy e rcauchy.\n\nSi rappresenti graficamente la funzione \\(f(x)\\) nell’intervallo \\((-4,4)\\) e si confronti il grafico con la densità di una normale standard.\nSi calcoli tramite simulazione la probabilità che \\(X\\) sia maggiore di \\(3\\). Si confronti il risultato ottenuto con il valore teorico.\nSiano \\(X_1,\\dots,X_n\\) dei valori iid da una Cauchy standard e si calcoli \\[\n\\frac{1}{n}\\sum_{i=1}^nX_i,\n\\] per vari valori di \\(n = 10^2, 10^3, 10^4, 10^5\\). Si ripeta l’esperimento alcune volte. La media aritmetica dei valori simulati sembra convergere? Si commenti il risultato."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-e",
+    "href": "exe/es_3.html#esercizio-e",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio E",
+    "text": "Esercizio E\nL’indice di asimmetria di Bowley di una variabile aleatoria è definito come segue\n\\[\nB = \\frac{\\mathcal{Q}(0.75) - 2\\mathcal{Q}(0.5) + \\mathcal{Q}(0.25)}{\\mathcal{Q}(0.75) - \\mathcal{Q}(0.25)}.\n\\]\n\nSi calcoli l’indice di asimmetria di Bowley di una distribuzione gaussiana di media \\(5\\) e varianza \\(25\\).\nSi calcoli l’indice di Bowley per una distribuzione gamma di parametri \\(\\alpha = 2\\) e \\(\\beta = 4\\) e si commenti il risultato.\nSi calcoli l’indice di Bowley per una distribuzione gamma di parametri \\(\\alpha = 200\\) e \\(\\beta = 400\\) e lo si confronti col valore ottenuto al punto precedente. Si commenti il risultato."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-f",
+    "href": "exe/es_3.html#esercizio-f",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio F",
+    "text": "Esercizio F\nLa distribuzione beta-binomiale di parametri \\(\\alpha, \\beta > 0\\) ed \\(n \\in \\mathbb{N}\\) di è una variabile aleatoria discreta \\(X\\) è tale che\n\\[\n\\mathbb{P}(X = k) = \\binom{n}{k}\\frac{\\mathcal{B}(k+\\alpha,n-k+\\beta)}{\\mathcal{B}(\\alpha,\\beta)},\\qquad k=0,\\dots,n.\n\\] dove \\(\\mathcal{B}\\) è la funzione beta.\n\nSi definiscano la funzione di probabilità dbetabinom(k, n, alpha, beta) e la funzione di ripartizione pbetabinom(k, n, alpha, beta) di una distribuzione beta-binomiale.\nSi controlli empiricamente che per \\(n = 40\\) e \\(\\alpha = \\beta = 2\\) le probabilità descritte nell’equazione precedente sommano a uno. Quindi, si rappresenti graficamente la distribuzione.\nUtilizzando i parametri del punto precedente, si calcolino numericamente media e varianza di \\(X\\)."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-g",
+    "href": "exe/es_3.html#esercizio-g",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio G",
+    "text": "Esercizio G\nCalcolare tramite simulazione il valore di\n\\[\\mathbb{E}\\left(e^{-|x|^3}\\right), \\quad X \\sim \\text{N}(0,1).\\]"
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-h",
+    "href": "exe/es_3.html#esercizio-h",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio H",
+    "text": "Esercizio H\nSia \\(X\\) una variabile casuale e sia \\(g(\\cdot)\\) una funzione a valori non negativi. Allora, per ogni \\(k > 0\\)\n\\[\n\\mathbb{P}(g(X) \\ge k) \\le \\frac{\\mathbb{E}(g(X))}{k}.\n\\]\n\nSi verifichi tramite simulazione la disugaglianza di Markov nel caso \\(g(x) = x^2\\) e con \\(X \\sim \\text{N}(0,1)\\), per \\(k = 1,2,3\\). Si confronti il risultato con i valori teorici.\nSi verifichi tramite simulazione la disugaglianza di Markov nel caso \\(g(x) = e^{x/100}\\) e con \\(X \\sim \\text{Ga}(10,1/10)\\), per \\(k = 1,2,3\\)."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-i",
+    "href": "exe/es_3.html#esercizio-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio I",
+    "text": "Esercizio I\nIn un’aula universitaria sono presenti \\(50\\) persone, tutte nate nello stesso anno (non bisestile). Si supponga che la distribuzione del giorno del compleanno sia una distribuzione uniforme discreta nei valori \\(1,\\dots,365\\) e che le date di compleanno delle persone presenti possano essere considerate variabili aleatorie indipendenti.\nUsando la funzione duplicated ed i cicli for di R:\n\nSi calcoli la probabilità che due persone siano nate nello stesso giorno tramite simulazione.\nNell’ora successiva sono presenti in aula \\(25\\) persone. Si ricacolino le probabilità del punto precedente.\nSi scriva quindi del codice R che fa uso della funzione replicate al posto dei cicli for e si ri-ottengano i risultati dei punti precedenti. Ci sono dei miglioramenti in termini di tempo?"
+  },
+  {
+    "objectID": "exe/es_3.html#esercizio-l",
+    "href": "exe/es_3.html#esercizio-l",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio L",
+    "text": "Esercizio L\nLa variabile aleatoria \\(X\\) ha distribuzione normale asimmetrica (skew normal) con parametro \\(\\alpha \\in \\mathbb{R}\\) se la sua funzione di densità è pari a\n\\[\nf(x) = 2\\phi(x)\\Phi(\\alpha x), \\qquad x \\in \\mathbb{R}.\n\\] in cui \\(\\phi(x)\\) e \\(\\Phi(x)\\) sono, rispettivamente, la densità e la funzione di ripartizione di una normale standard.\n\nSi scriva la funzione dsn(x, alpha) che calcola la densità \\(f(x)\\).\nSi tracci il grafico di \\(f(x)\\) nell’intervallo \\((-4,4)\\) utilizzando i valori \\(\\alpha = -5, 0, 5\\). Si proponga un’interpretazione per il parametro \\(\\alpha\\).\nSi scriva la funzione rsn(n, alpha) che simula \\(n\\) valori pseudo-casuali da una funzione normale asimmetrica di parametro \\(\\alpha\\) sfruttando la seguente relazione per \\(X\\) \\[\nX = \\sqrt{1 - \\delta^2} Z_1 + \\delta|Z_2|, \\qquad \\delta = \\frac{\\alpha}{\\sqrt{1 + \\alpha^2}}, \\qquad Z_1,Z_2 \\overset{\\text{iid}}{\\sim} \\text{N}(0,1).\n\\]\nSi usi la funzione rsn per simulare \\(10^4\\) valori da una normale asimmetrica di parametro \\(\\alpha = 7\\) e si confronti l’istogramma dei dati simulati con la funzione di densità."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar",
+    "href": "exe/es_3.html#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizi tratti dai libro di testo Albert & Rizzo (AR)",
+    "text": "Esercizi tratti dai libro di testo Albert & Rizzo (AR)\n\nEsercizio 13.1, pag 333."
+  },
+  {
+    "objectID": "exe/es_3.html#esercizi-tratti-dai-libro-di-testo-robert-casella-rs",
+    "href": "exe/es_3.html#esercizi-tratti-dai-libro-di-testo-robert-casella-rs",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizi tratti dai libro di testo Robert & Casella (RS)",
+    "text": "Esercizi tratti dai libro di testo Robert & Casella (RS)\n\nEsercizio 3.3, pag. 111 (difficile)."
+  },
+  {
+    "objectID": "exe/es_4.html",
+    "href": "exe/es_4.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Siano \\(X_1,\\dots,X_n\\) delle variabili aleatorie indipendenti normali di media \\(\\mu\\) e varianza \\(\\sigma^2\\).\n\nSupponendo che i veri valori siano \\(\\mu = 5\\) e \\(\\sigma^2 = 12\\):\n\nSi verifichi empiricamente se la mediana costituisce uno stimatore consistente per la media \\(\\mu\\). Si tratta di uno stimatore distorto? Si risponda tramite simulazione.\nSi confrontino gli stimatori media aritmetica e la mediana in termini di errore quadratico medio, con \\(n = 30\\). Quale stimatore è preferibile?\nÈ verosimile pensare che lo stimatore mediana abbia una distribuzione asintoticamente normale? Si risponda tramite un’analisi grafica."
+  },
+  {
+    "objectID": "exe/es_4.html#esercizio-b",
+    "href": "exe/es_4.html#esercizio-b",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio B",
+    "text": "Esercizio B\nMediante un opportuno studio di simulazione, si mostri che la varianza campionaria e la varianza campionaria corretta sono stimatori consistenti per la varianza della popolazione nel seguente caso:\n\nI dati \\(x_1,\\dots,x_n\\) sono realizzazioni indipendenti da \\(X\\), dove \\(X \\sim \\text{N}(0, 10)\\);"
+  },
+  {
+    "objectID": "exe/es_4.html#esercizio-c",
+    "href": "exe/es_4.html#esercizio-c",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio C",
+    "text": "Esercizio C\nL’indice di asimmetria standardizzato per una variabile aleatoria \\(X\\) è definito come\n\\[\n\\gamma = \\mathbb{E}\\left\\{\\left(\\frac{X - \\mu}{\\sigma}\\right)^3\\right\\},\n\\] dove \\(\\mu\\) e \\(\\sigma\\) rappresentano, rispettivamente, media e varianza di \\(X\\). Lo stimatore usuale di \\(\\gamma\\) è\n\\[\n\\hat{\\gamma}_n = \\frac{1}{n}\\sum_{i=1}^n\\left(\\frac{X_i - \\bar{X}}{S}\\right)^3,\n\\] dove \\(\\bar{X} = 1/\\sum_{i=1}^nX_i\\) e \\(S^2 = 1/n\\sum_{i=1}^n(X_i - \\bar{X})^2\\) indicano la media aritmetica e la varianza campionaria (non corretta).\n\nSia \\(X \\sim \\text{N}(3, 10)\\) e si noti che in questo caso \\(\\gamma = 0\\).\n\nLo stimatore \\(\\hat{\\gamma}_n\\) è consistente per \\(\\gamma\\)?\nLo stimatore \\(\\hat{\\gamma}_n\\) è distorto per \\(n = 10\\)? Se si, di quanto?\nA quanto è pari l’errore quadratico medio dello stimatore \\(\\hat{\\gamma}_n\\) se \\(n = 100\\)?\nLa distribuzione di \\(\\hat{\\gamma}_n\\) è approssimativamente normale, per \\(n = 100\\)?\nSi risponda a tutte le domande precedenti assumendo \\(X \\sim \\text{Ga}(10,2)\\) e \\(X \\sim \\text{Logistica}(0,1)\\).\n\nSuggerimenti: Si utilizzi la classe di funzioni *logis. È inoltre lecito utilizzare le pagine di Wikipedia distribuzione Gamma e distribuzione logistica per identificare i corrispettivi indici di asimmetria."
+  },
+  {
+    "objectID": "exe/es_4.html#esercizio-d",
+    "href": "exe/es_4.html#esercizio-d",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio D",
+    "text": "Esercizio D\nSiano \\(x_1,\\dots,x_n\\) delle realizzazione indipendenti ed identicamente distribuite da una variabile aleatoria Weibull di parametri \\(\\alpha, \\lambda\\), la cui densità è pari a\n\\[\nf(x; \\alpha, \\lambda) = \\left(\\frac{\\alpha}{\\lambda}\\right)\\left(\\frac{x}{\\lambda}\\right)^{\\alpha - 1}\\exp\\left\\{- \\left(\\frac{x}{\\lambda}\\right)^\\alpha\\right\\}, \\qquad \\alpha > 0, \\quad \\lambda > 0.\n\\] Si consideriano inoltre i dati seguenti:\n\nx <- c(225, 171, 198, 189, 189, 135, 162, 135, 117, 162)\n\n\n\nSi crei in R la funzione loglik(alpha, lambda, x), ovvero la funzione di log-verosimiglianza, pari a \\[\\ell(\\alpha,\\lambda) = \\sum_{i=1}^n\\log f(x_i; \\alpha,\\lambda).\\] Se ritenuto utile, si noti che in R esiste la funzione dweibull.\nUtilizzando la funzione del punto precedente, si calcoli il valore della verosimiglianza quando \\(\\alpha = 6\\) e \\(\\lambda = 200\\).\nNon è possibile calcolare in forma chiusa la stima di massima verosimiglianza \\((\\hat{\\alpha},\\hat{\\lambda})\\). Si utilizzi quindi la funzione nlminb applicata a loglik per ottenerla. Si consulti la documentazione per capire come gestire il caso con due parametri.\nSi rappresentino i dati tramite istogramma e si rappresenti la curva \\(f(x,\\hat{\\alpha},\\hat{\\lambda})\\). La stima ottenuta sembra ragionevole?"
+  },
+  {
+    "objectID": "exe/es_4.html#esercizio-e",
+    "href": "exe/es_4.html#esercizio-e",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio E",
+    "text": "Esercizio E\nSiano \\(X_1,X_2, \\ldots,X_n\\) variabili aleatorie iid (indipendenti ed identicamente distribuite) di Poisson di parametro \\(\\lambda\\). Si considerino, inoltre, i seguenti stimatori:\n\\[\nT_1 = \\sum_{i=1}^n X_i, \\qquad T_2 = \\sum_{i=1}^n i \\cdot X_i, \\qquad T_3 = \\frac{1}{n} \\sum_{i=1}^n X_i.\n\\] Supponendo che il vero valore sia \\(\\lambda = 3\\):\n\nSi verifichi empiricamente se costituiscono stimatori consistenti per \\(\\lambda\\). Si tratta di stimatori distorti? Si risponda tramite simulazione.\nSi confrontino gli stimatori in termini di errore quadratico medio, con \\(n = 50\\). Quale stimatore è preferibile?\nÈ verosimile pensare che abbiano distribuzione asintoticamente normale? Si risponda tramite un’analisi grafica."
+  },
+  {
+    "objectID": "exe/es_4.html#esercizio-f",
+    "href": "exe/es_4.html#esercizio-f",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio F",
+    "text": "Esercizio F\nSi consideri un campione casuale di \\(n\\) osservazioni da una popolazione normale \\(N(0, \\theta)\\), dove \\(\\theta\\) rappresenta la varianza incognita della variabile aleatoria. Supponendo di avere osservato il seguente campione di \\(10\\) osservazioni:\n\nx <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)\n\n\nSi crei in R la funzione loglik(theta, x), ovvero la funzione di log-verosimiglianza, pari al logaritmo della funzione di verosimiglianza \\[\\mathscr{L}(\\theta) = (2\\pi\\theta)^{-n/2} e^{-\\frac{1}{2 \\theta}\\sum_{i=1}^n x_i^2}.\\]\nUtilizzando la funzione del punto precedente, si calcoli il valore della log-verosimiglianza quando \\(\\theta=3\\) e \\(\\theta=5\\). Quale è il valore più “verosimile”?\nSi utilizzi la funzione nlminb applicata a loglik per ottenere la stima di massima verosimiglianza.\nSi rappresentino i dati tramite istogramma e si rappresenti la densità stimata \\(f(x ; 0, \\hat{\\theta})\\). La stima ottenuta sembra ragionevole?"
+  },
+  {
+    "objectID": "exe/es_4.html#esercizio-e-1",
+    "href": "exe/es_4.html#esercizio-e-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio E",
+    "text": "Esercizio E\nSiano \\(x_1, \\ldots, x_n\\) delle realizzazioni iid da \\(X \\sim \\text{N}(5, 15)\\). Si realizzi uno studio di simulazione che confronti la media campionaria e la media troncata di livello \\(\\alpha = 5\\%\\). Si tratta di stimatori consistenti per la media della popolazione?\nLa media troncata non considera le prime ed ultime \\(k\\) osservazioni, dove \\(k = n \\cdot\\alpha\\) (approssimato all’intero più vicino). Se \\(x_{(1)},\\dots,x_{(n)}\\) è il campione ordinato, la media troncata è quindi definita come\n\\[\n\\hat{\\mu}_\\text{tr} = \\frac{1}{n - 2 k } \\sum_{i=k+1}^{n-k} x_{(i)}.\n\\] In R si può usare il comando mean(x, trim = alpha)."
+  },
+  {
+    "objectID": "exe/es_4.html#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar",
+    "href": "exe/es_4.html#esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizi tratti dai libro di testo Albert & Rizzo (AR)",
+    "text": "Esercizi tratti dai libro di testo Albert & Rizzo (AR)\n\nEsercizio 13.2, pag 334.\nEsercizio 13.3, pag 334."
+  },
+  {
+    "objectID": "esami/esame_19_11_2021.html",
+    "href": "esami/esame_19_11_2021.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Si carichi in memoria il dataset Boston tramite il comando data(Boston) dopo aver caricato in memoria la libreria MASS.\n\n(1pt) Si crei un vettore numerico x contenente i valori della variabile crim del dataset Boston. Si calcolino media e mediana di tale variabile.\n(1pt) Si creino i vettori x_river e x_no_river contenenti i valori della variabile crim, rispettivamente per le osservazioni vicine al fiume (chas = 1) e lontane dal fiume (chas = 0).\n(4pt) Siano \\(x_1,\\dots,x_n\\) delle osservazioni numeriche. La differenza semplice media è un indicatore di variabilità definito come segue \\[\n\\Delta = \\frac{1}{n(n-1)} \\sum_{i=1}^n\\sum_{j=1}^n |x_i - x_j|.\n\\] Si definisca in R la funzione delta(x) che calcola l’indicatore \\(\\Delta\\) per un generico vettore numerico x. Si calcoli quindi tale indicatore per le variabili x_river e x_no_river.\n(4pt) Sia \\(x_{(1)}, \\dots, x_{(n)}\\) il campione ordinato dei dati \\(x_1,\\dots,x_n\\) e sia \\(\\bar{x}\\) la media aritmetica. La differenza semplice media ammette una rappresentazione alternativa, pari a: \\[\n\\Delta = \\frac{4}{n(n-1)}\\left( \\sum_{i=1}^n i x_{(i)}\\right) - 2\\bar{x} \\frac{n+1}{n-1}.\n\\] Si definisca in R la funzione delta2(x) che calcola l’indicatore \\(\\Delta\\) tramite questa formula alternativa. Si calcoli quindi tale indicatore per le variabili x_river e x_no_river e si verifichi che il risultato coincide con quello trovato al punto precedente."
+  },
+  {
+    "objectID": "esami/esame_19_11_2021.html#problema-2",
+    "href": "esami/esame_19_11_2021.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nUno studente del corso di laurea SSE dell’Università Milano-Bicocca sostiene di aver inventato una nuova variabile aleatoria. Pur non conoscendone la densità, definisce la variabile aleatoria \\(X\\) come segue:\n\\[\nX = \\sqrt{ - 2 \\log{U_1}} \\sin{(2\\pi U_2)},\n\\] dove \\(U_1\\) ed \\(U_2\\) sono due variabile aleatorie uniformi in \\((0,1)\\) ed indipendenti tra loro.\n\n(2pt) Si scriva in R la funzione r_log_sin(R) che simula R valori pseudo-casuali distribuiti come la variabile \\(X\\).\n(2pt) Si fornisca un’approssimazione delle quantità \\(E(X)\\) e \\(E(X^2)\\).\n(2pt) Si quantifichi l’errore commesso al punto precedente.\n(2pt) Si approssimino le probabilità \\(P(X \\le x)\\), per \\(x = -1, 0, 1\\).\n(2pt) Si ottenga una stima della densità di \\(X\\). Sulla base di quest’ultima stima e di tutti gli indicatori precedenti, a cosa “assomiglia” la distribuzione di \\(X\\)?"
+  },
+  {
+    "objectID": "esami/esame_19_11_2021.html#problema-3",
+    "href": "esami/esame_19_11_2021.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSiano \\(y = (y_1,\\dots,y_n)\\) delle realizzazioni iid di una variabile aleatoria continua con legge Laplace, la cui densità è\n\\[\nf(y ; \\theta) = \\frac{1}{2}e^{-|y - \\theta|}.\n\\]\nDi conseguenza, la funzione di log-verosimiglianza, a meno di una costante additiva, è pari a\n\\[\n\\ell(\\theta) = \\ell(\\theta; y) = - \\sum_{i=1}^n |y_i - \\theta|.\n\\]\n\n(3pt) Si scriva la funzione loglik(theta, y) che calcola la funzione di log-verosimiglianza. Ci si assicuri che la funzione sia opportunamente ``vettorizzata” rispetto a \\(\\theta\\).\n(3pt) Si considerino le osservazioni 10, 3, 12, 20, 32, 8. Si disegni la funzione di log-verosimiglianza corrispondente nell’intervallo \\((0, 30)\\).\n(3pt) Utilizzando opportuni strumenti di approssimazione numerica si calcoli la stima di massima verosimiglianza \\(\\hat{\\theta}\\).\n(2pt) Si calcoli il valore della log-verosimiglianza nel punto di massimo e la si confronti con il valore \\(\\ell(10 + \\pi/4)\\). Si commentino i risultati."
+  },
+  {
+    "objectID": "esami/esame_22_07_2021.html",
+    "href": "esami/esame_22_07_2021.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Si supponga che \\(X\\) sia una variabile casuale che si distribuisce come un’esponenziale di media \\(1/2\\). Inoltre, sia \\(Y\\) una variabile casuale tale che \\(Y\\) condizionata a \\(X = x\\) si distribuisce come una Poisson di media \\(\\exp(x / 4).\\)\n\n(5pt) Calcolare via simulazione il valore atteso \\(E(Y^2)\\).\n\nGrazie alle proprietà della distribuzione di Poisson, si ottiene che\n\\[\nE(Y^2 \\mid X = x) = e^{x/4} + e^{x / 2}.\n\\]\n\n(5pt) Si sfrutti questo risultato per ottenere una stima alternativa (ma equivalente) del valore atteso \\(E(Y^2)\\)."
+  },
+  {
+    "objectID": "esami/esame_22_07_2021.html#problema-2",
+    "href": "esami/esame_22_07_2021.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nSia \\(X\\) una variabile casuale distribuita in modo uniforme nell’intervallo \\((\\theta / 2, \\theta)\\), con \\(\\theta > 0\\). Sia \\(X_1,\\dots,X_n\\) un campione casuale da \\(X\\) e siano dati i due stimatori\n\\[\nT_1 = \\frac{4}{3}\\bar{X}, \\qquad T_2 = \\frac{2}{3}(X_{(1)} + X_{(n)}),\n\\] dove \\(X_{(1)}\\) e \\(X_{(n)}\\) rappresentano il minimo ed il massimo di \\(X_1,\\dots,X_n\\), rispettivamente. Supponendo \\(\\theta = 1\\) e \\(n = 20\\), si ottenga una stima Montecarlo delle seguenti quantità:\n\n(2pt) La distorsione degli stimatori \\(T_1\\) e \\(T_2\\), ovvero \\(E(T_1 - \\theta)\\) e \\(E(T_2 - \\theta)\\).\n(2pt) L’errore quadratico medio di \\(T_1\\) e \\(T_2\\), ovvero \\(E\\{(T_1 - \\theta)^2\\}\\) e \\(E\\{(T_2 - \\theta)^2\\}\\). Quale dei due stimatori risulta più efficiente?\n\nInoltre, supponendo \\(\\theta = 1\\)\n\n(6pt) Si conduca uno studio di simulazione e si verifichi empiricamente che lo stimatore \\(T_1\\) è consistente al crescere di \\(n\\)."
+  },
+  {
+    "objectID": "esami/esame_22_07_2021.html#problema-3",
+    "href": "esami/esame_22_07_2021.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSi considerino i dati sono disponibili al link https://tommasorigon.github.io/introR/data/province.csv\n\n(1pt) Si carichino i dati in memoria. Quante osservazioni sono presenti? Quante variabili?\n(1pt) Si ottenga la matrice di correlazione.\n(8pt) Si calcoli la correlazione parziale tra le variabili agricoltura e feritilità al netto della variabile istruzione, che si ottiene come segue. Si costruisca un modello di regressione lineare usando “agricoltura” come variabile risposta (\\(y\\)) e “istruzione” (\\(x\\)) come variabile esplicativa. Analogamente, si costruisca un modello di regressione usando “fertilità” come variabile risposta e “istruzione” come variabile esplicativa. Si ricordi che le stime ai minimi quadrati sono pari a \\[\n\\hat{\\alpha} = \\bar{y} - \\hat{\\beta}\\bar{x}, \\qquad \\hat{\\beta} = \\frac{\\text{cov}(x,y)}{\\text{var}(x)}.\n\\] Il coefficiente di correlazione parziale si ottiene quindi calcolando coefficiente di correlazione tra i residui di entrambi i modelli"
+  },
+  {
+    "objectID": "esami/esiti.html",
+    "href": "esami/esiti.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Matricola\nEsito\n\n\n\n\n795145\nINS\n\n\n826036\nINS\n\n\n832344\n27\n\n\n832450\n18\n\n\n837297\n24\n\n\n837363\n20\n\n\n850960\nINS\n\n\n851007\nINS\n\n\n851534\nINS\n\n\n852054\nINS\n\n\n852225\nINS\n\n\n856942\nINS\n\n\n857880\n26\n\n\n861300\nINS\n\n\n861837\n19\n\n\n864426\n18\n\n\n864920\nINS\n\n\n864973\nINS\n\n\n865257\nINS\n\n\n865309\n25\n\n\n865336\n27\n\n\n865374\n21\n\n\n870789\n26\n\n\n871277\nINS\n\n\n871794\n18\n\n\n873133\nINS\n\n\n873335\nINS\n\n\n874624\n18\n\n\n874883\nINS\n\n\n875967\n22\n\n\n876170\n30"
+  },
+  {
+    "objectID": "esami/sim_esame2020.html",
+    "href": "esami/sim_esame2020.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Sia \\(X\\) una variabile casuale uniforme discreta avente supporto sugli interi da \\(1\\) a \\(365\\). Si assuma che il supporto di \\(X\\) sia associato ad ognuno dei giorni dell’anno (non bisestile); in particolare, \\(1\\) indica il primo Gennaio, mentre \\(365\\) il 31 Dicembre.\n\n\nA partire da queste informazioni si imposti uno studio di simulazione basato su \\(30000\\) repliche per stimare la probabilità che in un gruppo di \\(39\\) persone tutte siano nate in giorni diversi.\nSi stimi la probabilità dell’evento al punto precedente sotto l’ipotesi che nei primi \\(35\\) giorni dell’anno la probabilità di nascere sia doppia rispetto agli altri giorni dell’anno; si utilizzi lo stesso numero di repliche del punto precedente."
+  },
+  {
+    "objectID": "esami/sim_esame2020.html#problema-2",
+    "href": "esami/sim_esame2020.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nÈ noto che per generare numeri pseudo-casuali da una variabile casuale continua \\(Z\\) è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo \\([0,1]\\).\nInfatti, si ha \\(z_\\text{pc} = F^{-1}_Z(u_\\text{pc})\\) in cui \\(z_\\text{pc}\\) è un numero pseudo-casuale da \\(Z\\), \\(u_\\text{pc}\\) è un numero pseudo-casuale da una variabile casuale uniforme in \\([0,1]\\) e \\(F^{−1}_Z(\\cdot)\\) è l’inversa della funzione di ripartizione di \\(Z\\), ovvero la funzione quantile.\nSi supponga che \\(Z\\) sia una variabile casuale continua con funzione di ripartizione \\[\nF(z) = \\frac{e^z}{1 + e^z}.\n\\] Si generino, secondo la definizione \\(F^{-1}_Z(u_\\text{pc})\\), \\(10000\\) numeri pseudo-casuali da \\(Z\\). Quindi, utilizzando i numeri pseudo-casuali generati al punto precedente, si approssimino:\n\nIl valore atteso \\(\\mathbb{E}(Z)\\)\nLa varianza \\(\\text{var}(Z)\\)\nLa probabilità che \\(Z\\) sia compresa tra \\(1\\) e \\(2\\)."
+  },
+  {
+    "objectID": "esami/sim_esame2020.html#problema-3",
+    "href": "esami/sim_esame2020.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nNel file auto.txt disponibile al link https://tommasorigon.github.io/introR/data/auto.txt si riportano dati relativi ad alcuni modelli di autobili presenti in commercio negli Stati Uniti tra il 1973 e il 1974. Le variabili presenti nell’insieme di dati fornito sono\n\nmpg: consumo (miglia / galloni)\ncyl: numero di cilindri\ndisp: cilindrata (pollici cubici)\nhp: cavalli\ndrat: rapporto ase posteriore/anteriore\nwt: peso (in libbre)\nqsec: tempo a percorrere 1/4 di miglio con partenza da fermo\nvs: disposizione dei cilindri (0 = a V, 1 = in linea)\nam: cambio (0 = automatico, 1 = manuale)\ngear: numero di marce\ncarb: numero di carburatori\n\n\nUna volta caricati i dati in R:\n\nIndicare la classe dell’oggetto importato.\nIndicare il numero di righe e colonne dell’oggetto importato.\nIndicare la classe della variabile vs: se diversa da factor, convertirla e rinominare opportunamente i livelli come V e Linea.\nCalcolare le frequenze relative di cyl condizionate a gear=3.\nDire se è corretto affermare che “il \\(60\\)-simo percentile della distribuzione dei cavalli delle auto con disposizione dei cilindri a V è maggiore rispetto al numero medio di cavalli delle auto con disposizione dei cilindri in linea”."
+  },
+  {
+    "objectID": "esami/esame_04_02_2022.html",
+    "href": "esami/esame_04_02_2022.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Si carichi in memoria il dataset birthwt della libreria MASS. Il dataset si riferisce a \\(n = 189\\) donne in gravidanza. Si consiglia di consultare la documentazione per la descrizione delle variabili coinvolte.\n\n(1pt) Si aggiunga al dataset birthwt la nuova variabile qualitativa age_class, la quale suddivide i valori della variabile age in 3 classi: low (età comprese tra 14 e 22), medium (età comprese tra 23 e 28) e high (età \\(\\ge 29\\)).\n(1pt) Si ottengano le frequenze assolute della variabile age_class.\n(2pt) La variabile bwt è espressa in grammi. La si converta in chilogrammi, sovrascrivendo quella presente nel dataset birthwt. Se ne faccia quindi un istogramma, considerando un numero di classi appropriato.\n(1pt) Si confrontino i tre boxplot della variabile bwt (espressa in chilogrammi) condizionatamente a ciascuna modalità della variabile age_class.\n(1pt) Si crei un nuovo dataset, chiamato birthwt_no_smoke contenente esclusivamente i valori delle donne non-fumatrici e si esegua la stessa analisi condotta al punto precedente. Suggerimento: si consulti la documentazione del dataset.\n(4pt) Si consideri nuovamente il dataset birthwt. Si costruisca una matrice \\(\\textbf{X}\\) di dimensione \\(n \\times 3\\) le cui colonne sono i vettori \\(x_1, x_2, x_3\\), ciascuno di dimensione \\(n \\times 1\\). Più precisamente, il primo vettore colonna è pari a \\(x_1 = (1,\\dots,1)^T\\), mentre i vettori colonna \\(x_2\\) ed \\(x_3\\) contengono i valori delle variabili age e ftv. Inoltre, il vettore colonna \\(y\\) contiene i valori della variabile bwt. Si ottenga il vettore \\(\\beta\\) di dimensione \\(3 \\times 1\\), definito come segue: \\[\n\\hat{\\beta} = (\\textbf{X}^T\\textbf{X})^{-1} \\textbf{X}^T y,\n\\] la cui utilità ed interpretazione risulterà chiara in corsi successivi."
+  },
+  {
+    "objectID": "esami/esame_04_02_2022.html#problema-2",
+    "href": "esami/esame_04_02_2022.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nSiano \\(p_1(x)\\) e \\(p_2(x)\\) due funzioni di probabilità relative a due variabili aleatorie discrete \\(X_1,X_2\\) aventi lo stesso supporto \\(\\mathcal{S} = \\{x_1,\\dots, x_k\\}\\). La divergenza di Kullback-Leibler di \\(X_1\\) da \\(X_2\\) è definita come segue\n\\[\n\\text{KL}(p_1 \\mid \\mid p_2) = \\sum_{j=1}^k p_1(x_j) \\log\\left\\{\\frac{p_1(x_j) }{p_2(x_j) }\\right\\}.\n\\]\n\n(3pt) Si supponga che \\(X_1, X_2\\) siano due distribuzioni binomiali di parametro \\(n = 20\\) e differenti probabilità di successo \\(\\theta_1 = 0.5\\) e \\(\\theta_2 = 0.2\\). Si calcoli la divergenza di Kullback-Leibler di \\(X_1\\) da \\(X_2\\).\n(3pt) Si noti che: \\[\n\\text{KL}(p_1 \\mid \\mid p_2) = E\\left[\\log\\left\\{\\frac{p_1(X_1) }{p_2(X_1) }\\right\\}\\right].\n\\] Si sfrutti questo risultato per ottenere una stima Monte Carlo della divergenza di KL del punto precedente. Si quantifichi inoltre l’errore commesso.\n(4pt) Siano \\(X_1, X_2\\) due distribuzioni Poisson di media \\(\\lambda_1\\) e \\(\\lambda_2\\). In questo caso la dimensione del supporto è \\(k = \\infty\\) e pertanto la definizione di divergenza di KL di \\(X_1\\) da \\(X_2\\) coinvolge una somma infinita. Si proponga una strategia appropriata per ottenere la divergenza KL e la si calcoli per \\(\\lambda_1 = 1\\) e \\(\\lambda_2 = 4\\)."
+  },
+  {
+    "objectID": "esami/esame_04_02_2022.html#problema-3",
+    "href": "esami/esame_04_02_2022.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSiano \\(y = (y_1,\\dots,y_n)\\) delle realizzazioni iid di una variabile aleatoria discreta con legge bernoulli di parametro \\(\\theta \\in (0,1)\\). La funzione di log-verosimiglianza, a meno di una costante additiva, è pari a\n\\[\n\\ell(\\theta) = \\ell(\\theta; y) = \\sum_{i=1}^ny_i\\log\\theta + \\sum_{i=1}^n(1 - y_i)\\log(1-\\theta).\n\\]\n\n(2pt) Si implementi la funzione loglik(theta, y) che calcola la funzione di log-verosimiglianza.\n(2pt) Si considerino le osservazioni 0, 0, 1, 0, 0, 0, 0, 1. Si disegni la funzione di log-verosimiglianza corrispondente nell’intervallo \\((0, 1)\\).\n(2pt) Utilizzando opportuni strumenti di approssimazione numerica si calcoli la stima di massima verosimiglianza \\(\\hat{\\theta}\\).\n(2pt) L’approssimazione parabolica della funzione di log-verosimiglianza, nel suo punto di massimo, è la seguente \\[\n\\ell(\\theta) \\approx \\ell(\\hat{\\theta}) - \\frac{n}{2 \\hat{\\theta}(1 - \\hat{\\theta})}(\\theta - \\hat{\\theta})^2.\n\\] Si implementi la funzione loglik_approx(theta, y) che calcola tale approssimazione, sapendo che \\(\\hat{\\theta} = \\bar{y}\\). Si confrontino graficamente la log-verosimiglianza e la sua approssimazione in \\((1/10, 1/2)\\), utilizzando i dati forniti in precedenza.\n(2pt) Si considerino le osservazioni 0, 0, 0, 0, 0, 0, 0, 0. Si disegni la funzione di log-verosimiglianza nell’intervallo \\((0, 1)\\) e si calcoli la stima di massima verosimiglianza \\(\\hat{\\theta}\\). Si provi quindi a disegnare l’approssimazione quadratica della verosimiglianza. Si commentino i risultati e/o eventuali errori."
+  },
+  {
+    "objectID": "esami/esame_08_02_2021.html",
+    "href": "esami/esame_08_02_2021.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "La funzione \\(f(x)\\) è definita come segue\n\\[\nf(x) = \\frac{e^x - 1}{1 + e^x}.\n\\]\n\nSi scriva in R la funzione f(x) associata ad \\(f(x)\\).\nSi calcoli il valore di \\(f(x)\\) nel punto \\(x = 4\\).\nSi approssimi il valore di \\(f(4)\\) alla seconda cifra decimale utilizzando il comando R appropriato.\nSi faccia il grafico di \\(f(x)\\) nell’intervallo \\((-2, 4)\\).\nSi calcolino i valori delle seguenti sommatorie: \\[\\sum_{k=5}^{10} \\frac{e^k - 1}{1 + e^k},\\] \\[\\sum_{k=5}^{100} \\frac{e^k - 1}{1 + e^k}.\\]\nUtilizzando la funzione integrate di R, si calcoli numericamente il valore dell’integrale\n\n\\[\n\\int_1^4\\frac{e^x - 1}{1 + e^x} \\mathrm{d}x.\n\\]"
+  },
+  {
+    "objectID": "esami/esame_08_02_2021.html#problema-2",
+    "href": "esami/esame_08_02_2021.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nSi consideri il dataset di R Pima.te presente nella libreria MASS. Se ne consulti la documentazione per ulteriori informazioni.\n\nQuante osservazioni sono contenute nel dataset Pima.te? Quante variabili sono presenti?\nSi calcoli la media aritmetica della pressione sanguigna (variabile bp).\nLa variabile bmi rappresenta il “body mass index”. Si crei la variabile bmi_log, contenente il logaritmo della variabile bmi. Si ottenga un istogramma di bmi_log, scegliendo opportunamente il numero di intervalli.\nSi scriva la funzione R asym(x) che calcola il coefficiente di asimmetria secondo Pearson, definito come \\[\n\\gamma = \\frac{1}{\\text{sqm}(x)^3} \\frac{1}{n}\\sum_{i=1}^n(x_i - \\bar{x})^3,\\] per dei dati \\(x_1,\\dots,x_n\\) aventi media \\(\\bar{x}\\). Per calcolare lo scarto quadratico medio \\(\\text{sqm(x)}\\) si faccia uso della funzione sd.\nSi calcoli il coefficiente di asimmetria secondo Pearson per le variabili bmi e bmi_log. Quale delle due variabili risulta maggiormente asimmetrica?\nÈ ragionevole supporre i dati della variabile bmi provengano una distribuzione gaussiana? E i dati di bmi_log? Si risponda tramite strumenti grafici.\nSi creino le variabili bmi_yes e bmi_no, contenenti rispettivamente i valori della variabile bmi per le donne aventi il diabete (type = Yes) e per le donne non aventi il diabete (type = No).\nSi confrontino le funzioni di ripartizioni empiriche delle variabili bmi_yes e bmi_no. Inoltre, si calcolino media e mediana delle variabili bmi_yes e bmi_no."
+  },
+  {
+    "objectID": "esami/esame_08_02_2021.html#problema-3",
+    "href": "esami/esame_08_02_2021.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSe \\(x_1,\\dots,x_n\\) sono un campione casuale semplice (iid) con numerosità \\(n\\) tratto da una distribuzione \\(\\text{Ga}(\\alpha,\\lambda)\\), allora la funzione di log-verosimiglianza è pari a\n\\[\n\\ell(x;\\alpha, \\lambda) = \\sum_{i=1}^n\\log{f(x_i; \\alpha, \\lambda)}, \\qquad  f(x; \\alpha, \\lambda) = \\frac{\\lambda^\\alpha}{\\Gamma(\\alpha)}x^{\\alpha-1}e^{-\\lambda x}.\n\\] Se \\(\\alpha\\) è noto, allora la stima di massima verosimiglianza per \\(\\lambda\\) è pari a \\[\\hat{\\lambda} = \\frac{n \\alpha}{\\sum_{i=1}^n x_i}.\\] Si supponga di aver osservato le seguenti \\(6\\) osservazioni da una distribuzione gamma di parametri \\(\\alpha = 2\\) e \\(\\lambda > 0\\). Il parametro \\(\\lambda\\) è ignoto e siamo interessati ad una sua stima.\n\n# Vettore delle osservazioni\nx <- c(2.1499496, 5.0539201, 3.1207749, 1.4512639, 3.8040806, 1.6647759)\n\n\nSi ottenga la stima di massima verosimiglianza per \\(\\lambda\\) con i dati a disposizione e supponendo \\(\\alpha = 2\\).\nSi scriva una funzione R loglik(x, alpha, lambda) che calcola la funzione di log-verosimiglianza.\nSi ottenga il valore della log-verosimiglianza \\(\\ell(x; 2, 1)\\). Si verifichi che tale valore è minore di \\(\\ell(x; 2, \\hat{\\lambda})\\) e se ne spieghi il motivo.\nSi “verifichi” tramite simulazione la consistenza dello stimatore di massima verosimiglianza per \\(\\lambda\\), quando \\(\\alpha\\) è noto. Per fare ciò, si ottengano le stime di massima verosimiglianza di \\(4\\) campioni simulati aventi numerosità \\(n = 100, 500, 1000, 10000\\), campionando da una distribuzione gamma di parametri \\((\\alpha, \\lambda) = (2, 1)\\)."
+  },
+  {
+    "objectID": "esami/esame_24_02_2021.html",
+    "href": "esami/esame_24_02_2021.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "I numeri di Stirling del secondo tipo \\(S(n,k)\\) rappresentano il numero di possibili partizioni di un insieme di \\(n\\) elementi formate da \\(k\\) termini. È possibile dimostrare che\n\\[\nS(n, k) = \\frac{1}{k!}\\sum_{j=0}^k(-1)^{k-j}\\binom{k}{j}j^n,\n\\] per qualsiasi valore di \\(k =1,\\dots,n\\). I numeri di Bell \\(B(n)\\) rappresentano invece il numero di possibili partizioni di un insieme di \\(n\\) elementi, independentemente dal numero di termini, ovvero\n\\[\nB(n) = \\sum_{k=1}^n S(n, k).\n\\]\n\n(6pt) Si scrivano in R le funzioni stirling2(n, k) e Bell(n) che calcolano, rispettivamente, i coefficienti \\(S(n,k)\\) e \\(B(n)\\).\n(1pt) Utilizzando le funzioni del punto precedente, si dica in quanti modi è possibile dividere un insieme di \\(10\\) elementi utilizzando \\(5\\) gruppi.\n(1pt) Utilizzando le funzioni dei punti precedenti, si dica in quanti modi è possibile partizionare un insieme di \\(10\\) elementi."
+  },
+  {
+    "objectID": "esami/esame_24_02_2021.html#problema-2",
+    "href": "esami/esame_24_02_2021.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nIl numero armonico generalizzato è definito come\n\\[\nH(n,\\alpha) = 1 + \\frac{1}{2^\\alpha} + \\cdots + \\frac{1}{n^\\alpha} = \\sum_{k=1}^n\\frac{1}{k^\\alpha}, \\qquad \\alpha > 0.\n\\]\nInoltre, una variabile aleatoria discreta \\(X\\) con supporto \\(\\{1,\\dots, n\\}\\) segue una distribuzione di Zipf se\n\\[\nP(X = k) = \\frac{k^{-\\alpha}}{H(n, \\alpha)}, \\qquad k=1,\\dots,n,\n\\] ed è pari a \\(0\\) altrimenti.\n\n(2pt) Si scriva in R la funzione H(n, alpha) che calcola il numero armonico generalizzato. Quanto vale H(10, 1)?\n(2pt) Si scriva in R la funzione di probabilità dzipf(k, n, alpha) di una legge Zipf di parametri \\(n\\) ed \\(\\alpha\\) e la si calcoli nei valori dzipf(5, 10, 2).\n(2pt) Per \\(n = 50\\) e \\(\\alpha = 1\\), si rappresenti graficamente la legge di probabilità di una distribuzione Zipf tramite un diagramma a bastoncini.\n(2pt) Si supponga che \\(X\\) segua una Zipf di parametri \\(n = 100\\) e \\(\\alpha = 2\\). Si calcoli la probabilità \\(P(X \\ge 10)\\).\n(3pt) Si scriva in R la funzione rzipf(R, n, alpha) che simula R valori casuali da una distribuzione Zipf. Suggerimento: si faccia uso della funzione sample.\n(2pt) Sfruttando la funzione rzipf, si ottenga un’approssimazione del valore atteso \\(E(X)\\), quando \\(n = 50\\) e \\(\\alpha = 1\\)."
+  },
+  {
+    "objectID": "esami/esame_24_02_2021.html#problema-3",
+    "href": "esami/esame_24_02_2021.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSi consideri il dataset bacteria della libreria MASS e lo si carichi in memoria. La variabile y indica la presenza (y) o l’assenza (n) del batterio “H influenzae” in alcuni bambini. La variabile trt indica invece il trattamento ricevuto.\n\n(3pt) L’indice di eterogeneità di Gini è definito come \\(G = 1 - \\sum_{j=1}^kf_j^2\\), dove \\(f_1,\\dots,f_k\\) sono le frequenze relative di una variabile qualitativa con modalità \\(c_1,\\dots,c_k\\). Si costruisca in R la funzione Gini(x) che calcola l’indice di Gini di una variabile qualitativa x. Si ottenga quindi Gini(bacteria$trt).\n(1pt) Si costruisca dataset bacteria2 contenente le osservazioni relative alla sesta settimana di sorveglianza (week = 6). Da quante osservazioni è composto?\n(1pt) Utilizzando il dataset bacteria2, si costruisca una tabella di contingenza che mette in relazione le variabili y e trt.\n(2pt) Utilizzando il dataset bacteria2, si ottengano le distribuzioni di frequenza condizionate della variabile y, per ciascun valore della variabile trt. Ci sono delle differenze tra queste distribuzioni?\n(2pt) Utilizzando il dataset bacteria2, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori drug e drug+ della variabile trt in un unico valore, chiamato ad esempio drug_and_drug+. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?"
+  },
+  {
+    "objectID": "esami/esame_30_06_2021.html",
+    "href": "esami/esame_30_06_2021.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "La cosiddetta \\(\\mathcal{D}\\) di Cohen è una statistica descrittiva molto utilizzata in Psicologia. Siano \\(x_1,\\dots,x_{n_x}\\) e \\(y_1,\\dots,y_{n_y}\\) due insieme di dati con numerosità campionarie \\(n_x\\) ed \\(n_y\\), rispettivamente. Siamo interessati a stabilire se questi due insiemi differiscono in media in maniera sostanziale. A tal fine, definiamo la \\(\\mathcal{D}\\) di Cohen come segue:\n\\[\n\\mathcal{D} = \\frac{|\\bar{x} - \\bar{y}|}{s}, \\qquad \\text{dove} \\qquad \\bar{x} = \\frac{1}{n_x}\\sum_{i=1}^{n_x}x_i, \\qquad \\bar{y} = \\frac{1}{n_y}\\sum_{i=1}^{n_y}y_i,\n\\]\nin cui \\(s > 0\\) è una misura della variabilità dei dati. Assumendo che la variabilità sia uguale tra le due popolazioni di dati, è ragionevole porre ad esempio\n\\[\ns^2 = \\frac{1}{n_x + n_y - 2}\\left\\{\\sum_{i=1}^{n_x}(x_i - \\bar{x})^2 + \\sum_{i=1}^{n_y}(y_i - \\bar{y})^2  \\right\\}.\n\\]\nL’ammontare della differenza tra le medie è spesso detta “debole” se \\(\\mathcal{D} \\approx 0.2\\), “media” se \\(\\mathcal{D} \\approx 0.5\\) e “forte” se \\(\\mathcal{D} \\approx 0.8\\). Si considerino inoltre i seguenti insiemi di dati\n\nx <- c(7.19, 8.27, 6.77, 6.65, 8.56, 6.56, 6.09)\ny <- c(6.37, 6.27, 7.95, 6.52, 7.72, 6.92, 6.34, 7.51, 6.07, 8.09, 6.03)\n\n\n(3pt) Si scriva in R la funzione cohenD(x, y) che calcola l’indicatore \\(\\mathcal{D}\\) di Cohen.\n(1pt) Utilizzando i dati forniti, si calcoli la \\(\\mathcal{D}\\) di Cohen associata.\n(1pt) Si generino due insiemi dati \\(x_1,\\dots,x_{n_x}\\) e \\(y_1,\\dots,y_{n_y}\\) campionando dei valori indipendenti da una distribuzione normale con media e varianza \\(N(0, 100)\\) e con \\(n_x = 500\\) e \\(n_y = 2000\\). Si calcoli quindi la \\(\\mathcal{D}\\) di Cohen associata. Il valore trovato suggerisce una differenza tra le medie “debole”?\n(1pt) Si generino due insiemi dati \\(x_1,\\dots,x_{n_x}\\) e \\(y_1,\\dots,y_{n_y}\\) campionandi dei valori indipendenti dalle distribuzioni normali \\(N(0, 100)\\) e \\(N(10, 100)\\), rispettivamente per le variabili \\(x\\) ed \\(y\\), supponendo anche in questo caso che \\(n_x = 500\\) e \\(n_y = 2000\\). Si calcoli quindi la \\(\\mathcal{D}\\) di Cohen. Il valore trovato suggerisce una differenza tra le medie “debole”?\n(4pt) Si effetti uno studio di simulazione nel quale i dati \\(x\\) ed \\(y\\) vengono generati varie volte come fatto nel punto precedente. Per ciascuna coppia di insiemi di dati \\(x\\) ed \\(y\\), si calcoli la \\(\\mathcal{D}\\) di Cohen associata. Si ripeta questa operazione R = 1000 volte, ottenendo quindi un vettore di dimensione 1000 che comprende i vari indici \\(\\mathcal{D}\\) di Cohen. Si disegni un istogramma di tali valori."
+  },
+  {
+    "objectID": "esami/esame_30_06_2021.html#problema-2",
+    "href": "esami/esame_30_06_2021.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nSi ponga \\(X_1 = 1\\). Si consideri una collezione di variabile casuali binarie ed indipendenti \\(X_1,\\dots,X_n\\), tali per per cui\n\\[\n\\text{P}(X_i = 1) = \\frac{\\alpha}{\\alpha + i - 1}, \\qquad i = 2,\\dots,n,\n\\]\ndove \\(\\alpha > 0\\) è un parametro positivo. Inoltre, si definisca\n\\[\nS = \\sum_{i=1}^n X_i.\n\\] Nota. La variabile \\(S\\) non si distribuisce come una binomiale, essendo somma di variabili Bernoulli con probabilità differenti.\n\n(4pt) Si scriva in R la funzione rS(R, n, alpha) che simula un R valori pseudo-casuali distribuiti come la variable \\(S\\).\n(2pt) Utilizzando \\(n = 100\\) e \\(\\alpha = 1\\), si ottenga una stima Monte Carlo del valore atteso \\(\\text{E}(S)\\), utilizzando un numero di repliche R appropriato.\n(2pt) Utilizzando \\(n = 500\\) e \\(\\alpha = \\pi / 4\\), si ottenga una stima Monte Carlo dell’evento \\(\\text{P}(3 \\le S \\le 5)\\), utilizzando un numero di repliche R appropriato.\n(2pt) 1. Utilizzando \\(n = 500\\) e \\(\\alpha = \\sqrt{2}\\), si ottenga una stima Monte Carlo della distribuzione di \\(S\\) e se ne faccia un grafico, utilizzando un numero di repliche R appropriato."
+  },
+  {
+    "objectID": "esami/esame_30_06_2021.html#problema-3",
+    "href": "esami/esame_30_06_2021.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSi consideri il dataset Animals della libreria MASS e lo si carichi in memoria.\n\n(1pt) Si ottengano le variabili lbody e lbrain, corrispondenti al logaritmo naturale delle variabili body e brain del dataset Animals, rispettivamente.\n(1pt) Si ottengano le medie campionarie e le mediane per le variabili lbody e lbrain. Si ottengano quindi il primo ed il terzo quartile. Sono presenti outlier nelle due distribuzioni?\n(2pt) Si ottengano gli istogrammi di tali variabili, scegliendo opportunamente il numero di intervalli.\n(1pt) Si ottenga un grafico che metta in relazione le variabili lbody e lbrain.\n(1pt) Si calcoli la correlazione tra le variabili lbody e lbrain.\n(4pt) In un modello di regressione lineare semplice \\(y = \\alpha + \\beta x\\), dove lbody rappresenta la variabile esplicativa (\\(x\\)) e lbrain rappresenta la variabile risposta (\\(y\\)), si ottengano le stime ai minimi quadrati, le quali sono pari a \\[\n\\hat{\\alpha} = \\bar{y} - \\hat{\\beta}\\bar{x}, \\qquad \\hat{\\beta} = \\frac{\\text{cov}(x,y)}{\\text{var}(x)}.\n\\]"
+  },
+  {
+    "objectID": "esami/esame_20_11_2020.html",
+    "href": "esami/esame_20_11_2020.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Dopo aver caricato in memoria la libreria MASS, si acceda al dataset forbes contenuto in tale libreria.\n\nSi acceda alla documentazione del dataset forbes e si descriva il contenuto del dataset: cosa rappresentano le variabili contenute in tale insieme di dati?\nSi ottengano le medie campionarie e le mediane per le variabili bp e pres. Si ottengano quindi il primo ed il terzo quartile. Sono presenti outlier nelle due distribuzioni?\nSi ottengano gli istogrammi di tali variabili, scegliendo opportunamente il numero di intervalli.\nSi ottenga un grafico che metta in relazione le variabili bp e pres.\nSi calcoli la correlazione tra le variabili bp e pres.\nIn un modello di regressione lineare semplice \\(y = \\alpha + \\beta x\\), dove bp rappresenta la variabile esplicativa (\\(x\\)) e pres rappresenta la variabile risposta (\\(y\\)), le stime ai minimi quadrati sono pari a \\[\n\\hat{\\alpha} = \\bar{y} - \\hat{\\beta}\\bar{x}, \\qquad \\hat{\\beta} = \\frac{\\text{cov}(x,y)}{\\text{var}(x)}.\n\\]\nSi rappresenti la retta di regressione ottenuta congiuntamenti ai dati. Il modello sembra adattarsi bene ai dati?"
+  },
+  {
+    "objectID": "esami/esame_20_11_2020.html#problema-2",
+    "href": "esami/esame_20_11_2020.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nUna variabile aleatoria \\(X \\sim \\text{Burr}(\\alpha,\\beta)\\) segue una distribuzione di Burr di parametri \\(\\alpha, \\beta > 0\\). Si tratta di una variabile casuale assolutamente continua e a valori positivi avente la seguente densità:\n\\[\nf(x ; \\alpha, \\beta) = \\alpha \\beta \\frac{x^{\\alpha-1}}{(1 + x^\\alpha)^{\\beta+1}}, \\qquad x > 0.\n\\]\nÈ facile verificare che la funzione di ripartizione coincide con\n\\[\nF(x; \\alpha, \\beta) = 1 - \\frac{1}{(1 + x^\\alpha)^\\beta}, \\qquad x > 0.\n\\]\n\nSi ottenga analiticamente (ovvero utilizzando carta e penna) la funzione quantile \\(F^{-1}(p; \\alpha,\\beta)\\) della distribuzione di Burr, ovvero la funzione inversa di \\(F(x;\\alpha,\\beta) = p\\). Quindi, si scrivano in R le funzioni per il calcolo della densità, della funzione di ripartizione e la funzione quantile. Si chiamino queste funzioni dburr(x, alpha, beta), pburr(x, alpha, beta) e qburr(p, alpha, beta), rispettivamente.\nSi faccia un grafico della funzione di densità \\(f(x ; \\alpha, \\beta)\\) con \\(\\alpha = 2\\) e \\(\\beta = 1\\), in un intervallo opportuno.\nPer generare valori (pseudo) casuali dalla distribuzione di Burr è possibile utilizzare il metodo dell’inversione. Un singolo valore da una distribuzione di Burr si ottiene tramite il comando qburr(runif(1), alpha, beta). Si definisca quindi la funzione rburr(R, alpha, beta) che genera R valori pseudo casuali da una distribuzione di Burr.\nUtilizzando i numeri pseudo-casuali generati tramite la funzione rburr con \\(\\alpha = 2\\) e \\(\\beta = 1\\) si approssimino:\n\nIl valore atteso \\(E(X)\\).\nLa varianza \\(\\text{var}(X)\\).\nLa probabilità che \\(X\\) sia compresa tra \\(2\\) e \\(3\\).\n\nSi faccia un istogramma dei valori simulati al punto precedente e lo si confronti con la densità \\(f(x;\\alpha,\\beta)\\) per \\(\\alpha = 2\\) e \\(\\beta = 1\\).\nSi ottenga la funzione di ripartizione empirica dei valori simulati in precedenza e la si confronti con la funzione di ripartizione teorica \\(F(x;\\alpha,\\beta)\\) per \\(\\alpha = 2\\) e \\(\\beta = 1\\)."
+  },
+  {
+    "objectID": "esami/esame_22_02_2022.html",
+    "href": "esami/esame_22_02_2022.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Si carichi in memoria il dataset swiss presente in R. Il dataset si riferisce a \\(n = 47\\) province della svizzera Francese.\n\n(1pt) Si aggiunga al dataset una nuova variabile, chiamata logEducation, la quale contiene il logaritmo della variabile Education.\n(1pt) Si produca un grafico opportuno che metta in relazione la variabile logEducation e Agriculture.\n(2pt) Si ottengano le matrici di covarianza e di correlazione relative alle variabili Fertility, Agriculture e logEducation.\n(2pt) Si calcolino degli opportuni indici di posizione e variabilità per la variabile Agriculture.\n(6pt) Si calcoli la correlazione parziale tra le variabili Agriculture e Fertility al netto della variabile logEducation, che si ottiene come segue. Si costruisca un modello di regressione lineare usando Agriculture come variabile risposta (\\(y\\)) e logEducation (\\(x\\)) come variabile esplicativa. Analogamente, si costruisca un modello di regressione usando Fertility come variabile risposta e logEducation come variabile esplicativa. Si ricordi che le stime ai minimi quadrati sono pari a \\[\n\\hat{\\alpha} = \\bar{y} - \\hat{\\beta}\\bar{x}, \\qquad \\hat{\\beta} = \\frac{\\text{cov}(x,y)}{\\text{var}(x)}.\n\\] Il coefficiente di correlazione parziale si ottiene quindi calcolando il coefficiente di correlazione tra i residui di entrambi i modelli."
+  },
+  {
+    "objectID": "esami/esame_22_02_2022.html#problema-2",
+    "href": "esami/esame_22_02_2022.html#problema-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 2",
+    "text": "Problema 2\nUna variabile aleatoria continua \\(X\\) segue una distribuzione di Kumaraswamy di parametri \\(\\alpha, \\beta\\) se la sua densità è pari a:\n\\[\nf(x) = \\alpha \\beta x^{\\alpha - 1}(1 - x^\\alpha)^{\\beta - 1}, \\qquad 0 < x < 1.\n\\]\nÈ inoltre possibile dimostrare che la funzione di ripartizione è pari a\n\\[\nF(x) = 1 - (1 - x^\\alpha)^\\beta, \\qquad 0 < x < 1.\n\\] Infine, la funzione quantile è pari a\n\\[\n\\mathcal{Q}(p) = (1 - (1 - p)^{1/\\beta})^{1/ \\alpha}, \\qquad 0 < p < 1.\n\\]\n\n(4pt) Si implementino le funzioni dkum(x, alpha, beta), pkum(x, alpha, beta) e qkum(x, alpha, beta) le quali fanno riferimento rispettivamente alla densità, alla funzione di ripartizione e alla funzione quantile.\n(2pt). Si faccia un grafico nell’intervallo \\((0, 1)\\) di tutte e tre le funzioni precedenti, per \\(\\alpha = \\beta = 2\\).\n(2pt) Si costruisca una funzione rkum(R, alpha, beta) che campiona R valori pseudo-casuali dalla variabile aleatoria di Kumaraswamy.\n(2pt) Si ottenga una stima Monte Carlo della densità di \\(X\\), quando \\(\\alpha = \\beta = 2\\) e la si confronti con la funzione di densità dkum ottenuta in precedenza.\n(2pt) Si ottenga un’approssimazione Monte Carlo della media \\(E(X)\\), quando \\(\\alpha = \\beta = 2\\). Si quantifichi opportunamente l’errore commesso."
+  },
+  {
+    "objectID": "esami/esame_22_02_2022.html#problema-3",
+    "href": "esami/esame_22_02_2022.html#problema-3",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Problema 3",
+    "text": "Problema 3\nSiano \\(y = (y_1,\\dots,y_n)\\) delle realizzazioni iid di una variabile aleatoria discreta con legge Poisson di parametro \\(\\lambda\\). Si considerino i seguenti stimatori per la probabilità \\(\\psi = P(Y = 0)\\), dove \\(Y \\sim \\text{Pois}(\\lambda)\\)\n\\[\nT_1 = e^{-\\bar{y}}, \\qquad T_2 = \\frac{1}{n}\\sum_{i=1}^n I(y_i = 0),\n\\] in cui \\(\\bar{y}\\) e \\(I(\\cdot)\\) rappresentano la media aritmetica e la funzione indicatrice.\n\n(4pt) Supponendo \\(\\lambda = 2\\), si verifichi empiricamente se i due stimatori sono consistenti.\n(2pt) Supponendo \\(\\lambda = 2\\) e per \\(n = 20\\), si effettui uno studio di simulazione e si calcoli la distorsione degli stimatori \\(T_1\\) and \\(T_2\\).\n(2pt) Supponendo \\(\\lambda = 2\\) e per \\(n = 20\\), si stabilisca quale dei due stimatori è preferibile in termini di errore quadratico medio."
   }
 ]
