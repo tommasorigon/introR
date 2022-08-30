@@ -18,6 +18,11 @@ execute:
   warning: true
 ---
 
+```{r}
+knitr::opts_knit$set(base.url='https://github.com/tommasorigon/introR/blob/master/lezioni/img/')
+```
+
+
 ## Unità A
 
 ::: incremental
@@ -482,45 +487,37 @@ x_row
 
 ## Vettori riga e vettori di **R**
 
-Nella maggior parte dei casi, il \empr{vettore riga} \texttt{x\_row} è intercambiabile col vettore \texttt{x}.
+Nella maggior parte dei casi, il **{vettore riga** `x_row` è intercambiabile col vettore `x`.
 
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
 x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
 x <- c(1, 10, 3, 5) # Simile, ma non identico, a x_row
-\end{minted}
-
-
-\item Ad esempio, le funzioni \texttt{sum(x\_row)} e \texttt{sum(x)} forniscono lo stesso risultato. 
-\item Ci sono tuttavia alcune lievi distinzioni. Ad esempio:
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-dim(x_row)
-# [1] 1 4
-dim(x)
-# NULL
-\end{minted}
-
-\item Il simbolo \texttt{NULL} significa \empb{non definito}, perché non esiste la nozione di dimensione per un generico vettore **R**.
-\ei
-
-\end{frame}
 ```
-```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici I}
 
-\bi
-\item È possibile \empr{selezionare gli elementi} di una matrice in maniera analoga a quanto fatto con i vettori. 
+Ad esempio, le funzioni `sum(x_row)` e `sum(x)` forniscono lo stesso risultato. 
 
+. . .
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+Ci sono tuttavia alcune lievi distinzioni. Ad esempio:
+
+```{r}
+dim(x_row)
+dim(x)
+```
+
+\item Il simbolo `NULL` significa **non definito**, perché non esiste la nozione di dimensione per un generico vettore **R**.
+
+## Operazioni sulle matrici I
+
+È possibile **selezionare gli elementi** di una matrice in maniera analoga a quanto fatto con i vettori. 
+
+```{r}
 A[1, 2] # Estrazione di elemento in posizione (1,2)
 A[, 2] # Estrazione seconda colonna
 A[1, ] # Estrazione prima riga
-\end{minted}
+```
 
-
-\item Alcuni \empb{comandi di base} per manipolare le matrici sono i seguenti
+Alcuni \empb{comandi di base} per manipolare le matrici sono i seguenti
 
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
