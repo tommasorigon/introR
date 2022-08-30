@@ -1,0 +1,149 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esercizi 4'
+author: "Tommaso Rigon & Alice Giampino"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    math: katex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = F, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = F, R.options = list(width = 220))
+```
+
+## Esercizio A
+
+Siano $X_1,\dots,X_n$ delle variabili aleatorie indipendenti normali di media $\mu$ e varianza $\sigma^2$. 
+
+-----------------
+
+Supponendo che i veri valori siano $\mu = 5$ e $\sigma^2 = 12$:
+
+1. Si verifichi empiricamente se la mediana costituisce uno stimatore consistente per la media $\mu$. Si tratta di uno stimatore distorto? Si risponda tramite simulazione.
+
+1. Si confrontino gli stimatori media aritmetica e la mediana in termini di errore quadratico medio, con $n = 30$. Quale stimatore è preferibile?
+
+1. È verosimile pensare che lo stimatore mediana abbia una distribuzione asintoticamente normale? Si risponda tramite un'analisi grafica.
+
+## Esercizio B
+
+Mediante un opportuno studio di simulazione, si mostri che la varianza campionaria e la varianza campionaria corretta sono stimatori consistenti per la varianza della popolazione nel seguente caso:
+
+1. I dati $x_1,\dots,x_n$ sono realizzazioni indipendenti da $X$, dove $X \sim \text{N}(0, 10)$;
+
+
+## Esercizio C
+
+L'indice di asimmetria standardizzato per una variabile aleatoria $X$ è definito come
+
+$$
+\gamma = \mathbb{E}\left\{\left(\frac{X - \mu}{\sigma}\right)^3\right\},
+$$
+dove $\mu$ e $\sigma$ rappresentano, rispettivamente, media e varianza di $X$. Lo stimatore usuale di $\gamma$ è
+
+$$
+\hat{\gamma}_n = \frac{1}{n}\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{S}\right)^3,
+$$
+dove $\bar{X} = 1/\sum_{i=1}^nX_i$ e $S^2 = 1/n\sum_{i=1}^n(X_i - \bar{X})^2$ indicano la media aritmetica e la varianza campionaria (non corretta). 
+
+-------------------
+
+Sia  $X \sim \text{N}(3, 10)$ e si noti che in questo caso $\gamma = 0$.
+
+1. Lo stimatore $\hat{\gamma}_n$ è consistente per $\gamma$?
+
+1. Lo stimatore $\hat{\gamma}_n$ è distorto per $n = 10$? Se si, di quanto?
+
+1. A quanto è pari l'errore quadratico medio dello stimatore $\hat{\gamma}_n$ se $n = 100$? 
+
+1. La distribuzione di $\hat{\gamma}_n$ è approssimativamente normale, per $n = 100$?
+
+1. Si risponda a tutte le domande precedenti assumendo $X \sim \text{Ga}(10,2)$ e $X \sim \text{Logistica}(0,1)$. 
+
+**Suggerimenti**: Si utilizzi la classe di funzioni `*logis`. È inoltre lecito utilizzare le pagine di Wikipedia  [distribuzione Gamma](https://it.wikipedia.org/wiki/Distribuzione_Gamma) e [distribuzione logistica](https://it.wikipedia.org/wiki/Distribuzione_logistica) per identificare i corrispettivi indici di asimmetria.
+
+
+## Esercizio D
+
+Siano $x_1,\dots,x_n$ delle realizzazione indipendenti ed identicamente distribuite da una variabile aleatoria Weibull di parametri $\alpha, \lambda$, la cui densità è pari a
+
+$$
+f(x; \alpha, \lambda) = \left(\frac{\alpha}{\lambda}\right)\left(\frac{x}{\lambda}\right)^{\alpha - 1}\exp\left\{- \left(\frac{x}{\lambda}\right)^\alpha\right\}, \qquad \alpha > 0, \quad \lambda > 0. 
+$$
+Si consideriano inoltre i dati seguenti:
+
+```{r, echo=TRUE, include=TRUE, collapse=TRUE}
+x <- c(225, 171, 198, 189, 189, 135, 162, 135, 117, 162)
+```
+
+----------------------------------------
+
+1. Si crei in **R** la funzione `loglik(alpha, lambda, x)`, ovvero la funzione di log-verosimiglianza, pari a
+$$\ell(\alpha,\lambda) = \sum_{i=1}^n\log f(x_i; \alpha,\lambda).$$
+Se ritenuto utile, si noti che in **R** esiste la funzione `dweibull`. 
+
+1. Utilizzando la funzione del punto precedente, si calcoli il valore della verosimiglianza quando $\alpha = 6$ e $\lambda = 200$.
+
+1. Non è possibile calcolare in forma chiusa la stima di massima verosimiglianza $(\hat{\alpha},\hat{\lambda})$. Si utilizzi quindi la funzione `nlminb` applicata a `loglik` per ottenerla. Si consulti la documentazione per capire come gestire il caso con due parametri. 
+
+1. Si rappresentino i dati tramite istogramma e si rappresenti la curva $f(x,\hat{\alpha},\hat{\lambda})$. La stima ottenuta sembra ragionevole?
+
+## Esercizio E
+
+Siano $X_1,X_2, \ldots,X_n$ variabili aleatorie iid (indipendenti ed identicamente distribuite) di Poisson di parametro $\lambda$. Si considerino, inoltre, i seguenti stimatori:
+
+$$ 
+T_1 = \sum_{i=1}^n X_i, \qquad T_2 = \sum_{i=1}^n i \cdot X_i, \qquad T_3 = \frac{1}{n} \sum_{i=1}^n X_i.
+$$
+Supponendo che il vero valore sia $\lambda = 3$:
+
+1. Si verifichi empiricamente se costituiscono stimatori consistenti per $\lambda$. Si tratta di stimatori distorti? Si risponda tramite simulazione.
+
+1. Si confrontino gli stimatori in termini di errore quadratico medio, con $n = 50$. Quale stimatore è preferibile?
+
+1. È verosimile pensare che abbiano distribuzione asintoticamente normale? Si risponda tramite un'analisi grafica.
+
+
+## Esercizio F
+
+Si consideri un campione casuale di $n$ osservazioni da una popolazione normale $N(0, \theta)$, dove $\theta$
+rappresenta la varianza incognita della variabile aleatoria. Supponendo di avere osservato il seguente campione
+di $10$ osservazioni:
+
+```{r, echo=TRUE, include=TRUE, collapse=TRUE}
+x <- c(2.52, 0.76, 1.55, 0.98, 4.03, 0.09, -2.27, 1.67, -0.54, -0.27)
+```
+
+1. Si crei in **R** la funzione `loglik(theta, x)`, ovvero la funzione di log-verosimiglianza, pari al logaritmo della funzione di verosimiglianza
+$$\mathscr{L}(\theta) = (2\pi\theta)^{-n/2} e^{-\frac{1}{2 \theta}\sum_{i=1}^n x_i^2}.$$
+1. Utilizzando la funzione del punto precedente, si calcoli il valore della log-verosimiglianza quando $\theta=3$ e $\theta=5$. Quale è il valore più "verosimile"?
+
+1. Si utilizzi la funzione `nlminb` applicata a `loglik` per ottenere la stima di massima verosimiglianza.
+
+1. Si rappresentino i dati tramite istogramma e si rappresenti la densità stimata $f(x ; 0, \hat{\theta})$. La stima ottenuta sembra ragionevole?
+
+
+## Esercizio E
+
+Siano $x_1, \ldots, x_n$ delle realizzazioni iid da $X \sim \text{N}(5, 15)$. Si realizzi uno studio di simulazione che confronti la media campionaria e la media troncata di livello $\alpha = 5\%$. Si tratta di stimatori consistenti per la media della popolazione?
+
+La media troncata non considera le prime ed ultime $k$ osservazioni, dove $k = n \cdot\alpha$ (approssimato all'intero più vicino). Se $x_{(1)},\dots,x_{(n)}$ è il campione ordinato, la media troncata è quindi definita come
+
+$$
+\hat{\mu}_\text{tr} = \frac{1}{n - 2 k } \sum_{i=k+1}^{n-k} x_{(i)}.
+$$
+In **R** si può usare il comando `mean(x, trim = alpha)`. 
+
+
+## Esercizi tratti dai libro di testo Albert \&  Rizzo (**AR**)
+
+ - Esercizio 13.2, pag 334.
+ - Esercizio 13.3, pag 334.
+ 
+
+
+
