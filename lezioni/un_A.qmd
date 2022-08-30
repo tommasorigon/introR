@@ -5,7 +5,7 @@ author: "Tommaso Rigon"
 istitution: "Università Milano-Bicocca"
 format:
   revealjs: 
-    theme: default
+    theme: serif
     scrollable: true
     logo: img/logoB.png
     smaller: true
