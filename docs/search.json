@@ -179,7 +179,7 @@
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici I",
-    "text": "Operazioni sulle matrici I\nÈ possibile selezionare gli elementi di una matrice in maniera analoga a quanto fatto con i vettori.\n\nA[1, 2] # Estrazione di elemento in posizione (1,2)\n\n[1] 2\n\nA[, 2] # Estrazione seconda colonna\n\n[1] 2 4\n\nA[1, ] # Estrazione prima riga\n\n[1] 5 2\n\n\nAlcuni per manipolare le matrici sono i seguenti\n```{=tex}\n\\begin{frame}[fragile]{Operazioni sulle matrici II}\n\n\\bi\n\\item Come per i vettori, le operazioni elementari (somma, prodotto, \\texttt{log}, \\texttt{exp}, etc.) vengono eseguite \\empr{elemento per elemento}. \n\n\\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\\footnotesize]{R}\nexp(A)\n#            [,1]      [,2]\n# [1,] 148.413159  7.389056\n# [2,]   2.718282 54.598150\n\\end{minted}\n\n\\item Siano ${\\bf A}$ e ${\\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo\n\n$$\n{\\bf C} = \\begin{pmatrix}{\\bf A} \\\\ {\\bf B} \\end{pmatrix}.\n$$\n\n\n\\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\\footnotesize]{R}\nB <- A # Creo una matrice B identica ad A, per semplicità\nC <- rbind(A, B)\n\\end{minted}\n\n\n\\item In maniera analoga, siano ${\\bf A}$ e ${\\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\\bf C} = \\begin{pmatrix}{\\bf A} & {\\bf B} \\end{pmatrix}$.\n\n\n\\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\\footnotesize]{R}\nC <- cbind(A, B)\n\\end{minted}\n\\ei\n\\end{frame}"
+    "text": "Operazioni sulle matrici I\nÈ possibile selezionare gli elementi di una matrice in maniera analoga a quanto fatto con i vettori.\n\nA[1, 2] # Estrazione di elemento in posizione (1,2)\n\n[1] 2\n\nA[, 2] # Estrazione seconda colonna\n\n[1] 2 4\n\nA[1, ] # Estrazione prima riga\n\n[1] 5 2\n\n\nAlcuni comandi di base per manipolare le matrici sono i seguenti\n\ndim(A) # Restituisce la dimensione della matrice\n\n[1] 2 2\n\na <- c(A) # Converte la matrice in un vettore\na\n\n[1] 5 1 2 4\n\n\n\n\ndiag(A) # Restituisce la diagonale della matrice\n\n[1] 5 4\n\nt(A) # Calcola la matrice trasposta A'\n\n     [,1] [,2]\n[1,]    5    1\n[2,]    2    4\n\nsum(A) # Somma di tutti gli elementi di A\n\n[1] 12"
   },
   {
     "objectID": "exe/es_1.html",
@@ -628,5 +628,33 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Problema 3",
     "text": "Problema 3\nSi consideri il dataset bacteria della libreria MASS e lo si carichi in memoria. La variabile y indica la presenza (y) o l’assenza (n) del batterio “H influenzae” in alcuni bambini. La variabile trt indica invece il trattamento ricevuto.\n\n(3pt) L’indice di eterogeneità di Gini è definito come \\(G = 1 - \\sum_{j=1}^kf_j^2\\), dove \\(f_1,\\dots,f_k\\) sono le frequenze relative di una variabile qualitativa con modalità \\(c_1,\\dots,c_k\\). Si costruisca in R la funzione Gini(x) che calcola l’indice di Gini di una variabile qualitativa x. Si ottenga quindi Gini(bacteria$trt).\n(1pt) Si costruisca dataset bacteria2 contenente le osservazioni relative alla sesta settimana di sorveglianza (week = 6). Da quante osservazioni è composto?\n(1pt) Utilizzando il dataset bacteria2, si costruisca una tabella di contingenza che mette in relazione le variabili y e trt.\n(2pt) Utilizzando il dataset bacteria2, si ottengano le distribuzioni di frequenza condizionate della variabile y, per ciascun valore della variabile trt. Ci sono delle differenze tra queste distribuzioni?\n(2pt) Utilizzando il dataset bacteria2, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori drug e drug+ della variabile trt in un unico valore, chiamato ad esempio drug_and_drug+. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?"
+  },
+  {
+    "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-ii",
+    "href": "lezioni/un_A.html#operazioni-sulle-matrici-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici II",
+    "text": "Operazioni sulle matrici II\nCome per i vettori, le operazioni elementari (somma, prodotto, log, exp, etc.) vengono eseguite elemento per elemento.\n\nexp(A)\n\n           [,1]      [,2]\n[1,] 148.413159  7.389056\n[2,]   2.718282 54.598150\n\n\n\nSiano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di colonne e definiamo\n\\[\n{\\bf C} = \\begin{pmatrix}{\\bf A} \\\\ {\\bf B} \\end{pmatrix}.\n\\]\n\nB <- A # Creo una matrice B identica ad A, per semplicità\nC <- rbind(A, B)\n\n\n\nIn maniera analoga, siano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di righe e definiamo \\({\\bf C} = \\begin{pmatrix}{\\bf A} & {\\bf B} \\end{pmatrix}\\).\n\nC <- cbind(A, B)"
+  },
+  {
+    "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-iii",
+    "href": "lezioni/un_A.html#operazioni-sulle-matrici-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici III",
+    "text": "Operazioni sulle matrici III\nSiano \\({\\bf x}\\) e \\({\\bf y}\\) due vettori colonna in \\(\\mathbb{R}^p\\). Allora, il loro è pari a\n\\[\n{\\bf x}^\\intercal {\\bf y} = \\sum_{i=1}^p x_i y_i.\n\\]\n\nIn R possiamo usare il comando crossprod\n\nx <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)\ny <- matrix(c(3, 2, 2, 7, 9), ncol = 1)\ncrossprod(x, y) # Equivalente a: sum(x * y)\n\n     [,1]\n[1,]  272\n\n\nIl comando crossprod funziona correttamente anche con “vettori” R.\n\n\nIl comando può essere usato anche per calcolare il seguente prodotto tra matrici \\[\n{\\bf A}^\\intercal {\\bf B},\n\\] dove \\({\\bf A}\\) e \\({\\bf B}\\) sono due matrici di dimensioni compatibili."
+  },
+  {
+    "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-iv",
+    "href": "lezioni/un_A.html#operazioni-sulle-matrici-iv",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici IV",
+    "text": "Operazioni sulle matrici IV\nIn algebra lineare il prodotto tra matrici compatibili \\({\\bf A} {\\bf B}\\) è chiamato prodotto righe per colonne. In R si usa il comando seguente\n\nA <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))\nB <- rbind(c(5, 2, 5), c(3, 3, 7), c(-2, -8, 10))\n\nA %*% B # Prodotto righe per colonne AB\n\n     [,1] [,2] [,3]\n[1,]    5  -16   49\n[2,]   43   19  103\n[3,]   12   -6   44\n\n\n\nNota. Il comando A * B indica il prodotto elemento per elemento e non il prodotto righe per colonne.\n\n\nSe le matrici non sono compatibili R produce un errore (provateci per esercizio!)"
+  },
+  {
+    "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-v",
+    "href": "lezioni/un_A.html#operazioni-sulle-matrici-v",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici V",
+    "text": "Operazioni sulle matrici V\nSia \\({\\bf A}\\) una matrice quadrata \\(n \\times n\\) a valori reali. La sua matrice inversa \\({\\bf A}^{-1}\\), quando esiste, è l’unica matrice tale per cui\n\\[\n{\\bf A} {\\bf A}^{-1} = {\\bf A}^{-1} {\\bf A} =  I_n.\n\\]\nPer ottenere \\({\\bf A}^{-1}\\) si usa il comando solve.\n\\end{frame}\n```{=tex}\n\\begin{frame}[fragile]{Operazioni sulle matrici VI}\n\n\\bi\n\\item Nel caso una matrice non sia invertibile, il \\empb{determinante} è pari a $0$. Il comando \\texttt{solve} in quel caso produce un errore.\n\n\\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\\footnotesize]{R}\n# Esempio di matrice NON invertibile\nA <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))\ndet(A) # Deteminante pari a 0, solve(A) produce un errore\n# [1] 0\n\\end{minted}\n\n\n\\item Ci sono numerose funzioni per la \\empr{scomposizione di matrici}, il cui output è a volte una \\empb{lista}.\n\\item Il risultato delle seguenti funzioni è omesso.\n\n\n\\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\\footnotesize]{R}\nA <- matrix(c(4, 1, 1, 8), ncol = 2)\nchol(A) # Scomposizione di Cholesky\nqr(A) # Scomposizione QR\neigen(A) # Scomposizione spettrale\n\\end{minted}\n\\ei\n\\end{frame}"
   }
 ]

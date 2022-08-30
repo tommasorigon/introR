@@ -498,8 +498,6 @@ dim(x_row)
 dim(x)
 ```
 
-\item
-
 Il simbolo `NULL` significa **non definito**, perché non esiste la nozione di dimensione per un generico vettore **R**.
 
 ## Operazioni sulle matrici I
@@ -512,133 +510,110 @@ A[, 2] # Estrazione seconda colonna
 A[1, ] # Estrazione prima riga
 ```
 
-Alcuni \empb{comandi di base} per manipolare le matrici sono i seguenti
+Alcuni **comandi di base** per manipolare le matrici sono i seguenti
 
-```{=tex}
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
 dim(A) # Restituisce la dimensione della matrice
-# [1] 2 2
 a <- c(A) # Converte la matrice in un vettore
 a
-# [1] 5 1 2 4
-\end{minted}
 ```
-```{=tex}
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+
+. . .
+
+```{r}
 diag(A) # Restituisce la diagonale della matrice
-# [1] 5 4
 t(A) # Calcola la matrice trasposta A'
-#      [,1] [,2]
-# [1,]    5    1
-# [2,]    2    4
 sum(A) # Somma di tutti gli elementi di A
-# [1] 12
-\end{minted}
-\ei
 ```
-```{=tex}
-\end{frame}
+
+
+## Operazioni sulle matrici II
+
+Come per i vettori, le operazioni elementari (somma, prodotto, `log`, `exp`, etc.) vengono eseguite **elemento per elemento**. 
+
+```{r}
+exp(A)
 ```
-    ```{=tex}
-    \begin{frame}[fragile]{Operazioni sulle matrici II}
 
-    \bi
-    \item Come per i vettori, le operazioni elementari (somma, prodotto, \texttt{log}, \texttt{exp}, etc.) vengono eseguite \empr{elemento per elemento}. 
+. . .
 
-    \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-    exp(A)
-    #            [,1]      [,2]
-    # [1,] 148.413159  7.389056
-    # [2,]   2.718282 54.598150
-    \end{minted}
+Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
 
-    \item Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
+$$
+{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+$$
 
-    $$
-    {\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
-    $$
+```{r}
+#| output: false
+B <- A # Creo una matrice B identica ad A, per semplicità
+C <- rbind(A, B)
+```
 
+. . .
 
-    \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-    B <- A # Creo una matrice B identica ad A, per semplicità
-    C <- rbind(A, B)
-    \end{minted}
+In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} & {\bf B} \end{pmatrix}$.
 
+```{r}
+#| output: false
+C <- cbind(A, B)
+```
 
-    \item In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} & {\bf B} \end{pmatrix}$.
+## Operazioni sulle matrici III
 
+Siano ${\bf x}$ e ${\bf y}$ due vettori colonna in $\mathbb{R}^p$. Allora, il loro \empb{prodotto incrociato} è pari a
 
-    \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-    C <- cbind(A, B)
-    \end{minted}
-    \ei
-    \end{frame}
-
-```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici III}
-
-\bi
-\item Siano ${\bf x}$ e ${\bf y}$ due vettori colonna in $\mathds{R}^p$. Allora, il loro \empb{prodotto incrociato} è pari a
 $$ 
 {\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
 $$
-\item in **R** possiamo usare il comando \texttt{crossprod}
 
+. . .
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+In **R** possiamo usare il comando `crossprod`
+
+```{r}
 x <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)
 y <- matrix(c(3, 2, 2, 7, 9), ncol = 1)
 crossprod(x, y) # Equivalente a: sum(x * y)
-#      [,1]
-# [1,]  272
-\end{minted}
+```
 
+Il comando `crossprod` funziona correttamente anche con "vettori" **R**.
 
-\item Il comando \texttt{crossprod} funziona correttamente anche con ``vettori'' **R**.
+. . .
 
-\item Il comando \texttt{crossprod} può essere usato anche per calcolare il seguente \empr{prodotto tra matrici} 
+Il comando \texttt{crossprod} può essere usato anche per calcolare il seguente **prodotto tra matrici**
 $$
 {\bf A}^\intercal {\bf B},
 $$ 
 dove ${\bf A}$ e ${\bf B}$ sono due matrici di dimensioni compatibili. 
-\ei 
 
-\end{frame}
-```
-```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici IV}
+## Operazioni sulle matrici IV
 
-\bi
-\item In algebra lineare il \empb{prodotto tra matrici} compatibili ${\bf A} {\bf B}$ è chiamato prodotto righe per colonne. In **R** si usa il comando seguente
+In algebra lineare il **prodotto tra matrici** compatibili ${\bf A} {\bf B}$ è chiamato prodotto righe per colonne. In **R** si usa il comando seguente
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
 A <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))
 B <- rbind(c(5, 2, 5), c(3, 3, 7), c(-2, -8, 10))
 
 A %*% B # Prodotto righe per colonne AB
-#      [,1] [,2] [,3]
-# [1,]    5  -16   49
-# [2,]   43   19  103
-# [3,]   12   -6   44
-\end{minted}
+```
 
+. . .
 
-\item \empr{\underline{Nota}}. Il comando \texttt{A * B} indica il prodotto elemento per elemento e non il prodotto righe per colonne.
+**Nota**. Il comando `A * B` indica il prodotto elemento per elemento e non il prodotto righe per colonne.
+
+. . .
 
 \item Se le matrici non sono compatibili **R** produce un errore (provateci per esercizio!)
-\ei 
 
-\end{frame}
-```
-```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici V}
+## Operazioni sulle matrici V
 
-\bi
-\item Sia ${\bf A}$ una matrice quadrata $n \times n$ a valori reali. La sua \empr{matrice inversa} ${\bf A}^{-1}$, quando esiste, è l'unica matrice tale per cui 
+Sia ${\bf A}$ una matrice quadrata $n \times n$ a valori reali. La sua **matrice inversa** ${\bf A}^{-1}$, quando esiste, è l'unica matrice tale per cui 
+
 $$
 {\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
 $$
-\item Per ottenere ${\bf A}^{-1}$ si usa il comando \texttt{solve}.
+
+Per ottenere ${\bf A}^{-1}$ si usa il comando `solve`.
 
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}

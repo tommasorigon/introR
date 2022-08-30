@@ -958,38 +958,143 @@ length</code></pre>
 <pre><code>[1] 5 2</code></pre>
 </div>
 </div>
-<p>Alcuni per manipolare le matrici sono i seguenti</p>
+<p>Alcuni <strong>comandi di base</strong> per manipolare le matrici sono i seguenti</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a><span class="fu">dim</span>(A) <span class="co"># Restituisce la dimensione della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(A) <span class="co"># Converte la matrice in un vettore</span></span>
+<span id="cb117-2"><a href="#cb117-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 1 2 4</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">diag</span>(A) <span class="co"># Restituisce la diagonale della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a><span class="fu">t</span>(A) <span class="co"># Calcola la matrice trasposta A'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    1
+[2,]    2    4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">sum</span>(A) <span class="co"># Somma di tutti gli elementi di A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-ii" class="slide level2">
+<h2>Operazioni sulle matrici II</h2>
+<p>Come per i vettori, le operazioni elementari (somma, prodotto, <code>log</code>, <code>exp</code>, etc.) vengono eseguite <strong>elemento per elemento</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a><span class="fu">exp</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]      [,2]
+[1,] 148.413159  7.389056
+[2,]   2.718282 54.598150</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Siano <span class="math inline">\({\bf A}\)</span> e <span class="math inline">\({\bf B}\)</span> due matrici aventi lo stesso numero di colonne e definiamo</p>
+<p><span class="math display">\[
+{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>B <span class="ot">&lt;-</span> A <span class="co"># Creo una matrice B identica ad A, per semplicità</span></span>
+<span id="cb127-2"><a href="#cb127-2"></a>C <span class="ot">&lt;-</span> <span class="fu">rbind</span>(A, B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>In maniera analoga, siano <span class="math inline">\({\bf A}\)</span> e <span class="math inline">\({\bf B}\)</span> due matrici aventi lo stesso numero di righe e definiamo <span class="math inline">\({\bf C} = \begin{pmatrix}{\bf A} &amp; {\bf B} \end{pmatrix}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>C <span class="ot">&lt;-</span> <span class="fu">cbind</span>(A, B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-iii" class="slide level2">
+<h2>Operazioni sulle matrici III</h2>
+<p>Siano <span class="math inline">\({\bf x}\)</span> e <span class="math inline">\({\bf y}\)</span> due vettori colonna in <span class="math inline">\(\mathbb{R}^p\)</span>. Allora, il loro è pari a</p>
+<p><span class="math display">\[
+{\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
+\]</span></p>
+<div class="fragment">
+<p>In <strong>R</strong> possiamo usare il comando <code>crossprod</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">22</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb129-2"><a href="#cb129-2"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">9</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb129-3"><a href="#cb129-3"></a><span class="fu">crossprod</span>(x, y) <span class="co"># Equivalente a: sum(x * y)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]  272</code></pre>
+</div>
+</div>
+<p>Il comando <code>crossprod</code> funziona correttamente anche con “vettori” <strong>R</strong>.</p>
+</div>
+<div class="fragment">
+<p>Il comando può essere usato anche per calcolare il seguente <strong>prodotto tra matrici</strong> <span class="math display">\[
+{\bf A}^\intercal {\bf B},
+\]</span> dove <span class="math inline">\({\bf A}\)</span> e <span class="math inline">\({\bf B}\)</span> sono due matrici di dimensioni compatibili.</p>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-iv" class="slide level2">
+<h2>Operazioni sulle matrici IV</h2>
+<p>In algebra lineare il <strong>prodotto tra matrici</strong> compatibili <span class="math inline">\({\bf A} {\bf B}\)</span> è chiamato prodotto righe per colonne. In <strong>R</strong> si usa il comando seguente</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb131-2"><a href="#cb131-2"></a>B <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">7</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">8</span>, <span class="dv">10</span>))</span>
+<span id="cb131-3"><a href="#cb131-3"></a></span>
+<span id="cb131-4"><a href="#cb131-4"></a>A <span class="sc">%*%</span> B <span class="co"># Prodotto righe per colonne AB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    5  -16   49
+[2,]   43   19  103
+[3,]   12   -6   44</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Nota</strong>. Il comando <code>A * B</code> indica il prodotto elemento per elemento e non il prodotto righe per colonne.</p>
+</div>
+<div class="fragment">
+<p>Se le matrici non sono compatibili <strong>R</strong> produce un errore (provateci per esercizio!)</p>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-v" class="slide level2">
+<h2>Operazioni sulle matrici V</h2>
+<p>Sia <span class="math inline">\({\bf A}\)</span> una matrice quadrata <span class="math inline">\(n \times n\)</span> a valori reali. La sua <strong>matrice inversa</strong> <span class="math inline">\({\bf A}^{-1}\)</span>, quando esiste, è l’unica matrice tale per cui</p>
+<p><span class="math display">\[
+{\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
+\]</span></p>
+<p>Per ottenere <span class="math inline">\({\bf A}^{-1}\)</span> si usa il comando <code>solve</code>.</p>
+<p>\end{frame}</p>
 <pre><code>```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici II}
+\begin{frame}[fragile]{Operazioni sulle matrici VI}
 
 \bi
-\item Come per i vettori, le operazioni elementari (somma, prodotto, \texttt{log}, \texttt{exp}, etc.) vengono eseguite \empr{elemento per elemento}. 
+\item Nel caso una matrice non sia invertibile, il \empb{determinante} è pari a $0$. Il comando \texttt{solve} in quel caso produce un errore.
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-exp(A)
-#            [,1]      [,2]
-# [1,] 148.413159  7.389056
-# [2,]   2.718282 54.598150
-\end{minted}
-
-\item Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
-
-$$
-{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
-$$
-
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-B &lt;- A # Creo una matrice B identica ad A, per semplicità
-C &lt;- rbind(A, B)
+# Esempio di matrice NON invertibile
+A &lt;- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))
+det(A) # Deteminante pari a 0, solve(A) produce un errore
+# [1] 0
 \end{minted}
 
 
-\item In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} &amp; {\bf B} \end{pmatrix}$.
+\item Ci sono numerose funzioni per la \empr{scomposizione di matrici}, il cui output è a volte una \empb{lista}.
+\item Il risultato delle seguenti funzioni è omesso.
 
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-C &lt;- cbind(A, B)
+A &lt;- matrix(c(4, 1, 1, 8), ncol = 2)
+chol(A) # Scomposizione di Cholesky
+qr(A) # Scomposizione QR
+eigen(A) # Scomposizione spettrale
 \end{minted}
 \ei
 \end{frame}</code></pre>
