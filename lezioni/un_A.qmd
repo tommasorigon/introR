@@ -510,6 +510,8 @@ A[, 2] # Estrazione seconda colonna
 A[1, ] # Estrazione prima riga
 ```
 
+. . .
+
 Alcuni **comandi di base** per manipolare le matrici sono i seguenti
 
 ```{r}
@@ -603,7 +605,7 @@ A %*% B # Prodotto righe per colonne AB
 
 . . .
 
-\item Se le matrici non sono compatibili **R** produce un errore (provateci per esercizio!)
+Se le matrici non sono compatibili **R** produce un errore (provateci per esercizio!)
 
 ## Operazioni sulle matrici V
 
@@ -615,67 +617,54 @@ $$
 
 Per ottenere ${\bf A}^{-1}$ si usa il comando `solve`.
 
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
 A <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))
 A1 <- solve(A) # Matrice inversa di A
 A1
-#            [,1]        [,2]        [,3]
-# [1,] -0.5833333 -0.08333333  0.95833333
-# [2,]  0.1666667  0.16666667 -0.41666667
-# [3,]  0.4166667 -0.08333333 -0.04166667
-
-round(A %*% A1, digits = 5) # Operazione di controllo
-#      [,1] [,2] [,3]
-# [1,]    1    0    0
-# [2,]    0    1    0
-# [3,]    0    0    1
-\end{minted}
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-det(A) # Calcola il determinante della matrice A
-# [1] -24
-\end{minted}
-\ei
-\end{frame}
 ```
-```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici VI}
 
-\bi
-\item Nel caso una matrice non sia invertibile, il \empb{determinante} è pari a $0$. Il comando \texttt{solve} in quel caso produce un errore.
+. . . 
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
+round(A %*% A1, digits = 5) # Operazione di controllo
+```
+
+. . .
+
+```{r}
+det(A) # Calcola il determinante della matrice A
+```
+
+
+## Operazioni sulle matrici VI
+
+Nel caso una matrice non sia invertibile, il **determinante** è pari a $0$. Il comando `solve` in quel caso produce un errore.
+
+```{r}
 # Esempio di matrice NON invertibile
 A <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))
 det(A) # Deteminante pari a 0, solve(A) produce un errore
-# [1] 0
-\end{minted}
+```
 
+. . .
 
-\item Ci sono numerose funzioni per la \empr{scomposizione di matrici}, il cui output è a volte una \empb{lista}.
-\item Il risultato delle seguenti funzioni è omesso.
+Ci sono numerose funzioni per la **scomposizione di matrici**, il cui output è a volte una **lista**. Il risultato delle seguenti funzioni è omesso.
 
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
+#| output: false
 A <- matrix(c(4, 1, 1, 8), ncol = 2)
 chol(A) # Scomposizione di Cholesky
 qr(A) # Scomposizione QR
 eigen(A) # Scomposizione spettrale
-\end{minted}
-\ei
-\end{frame}
 ```
-```{=tex}
-\begin{frame}[fragile]{Liste}
 
-\bi
-\item  Una \empb{lista} è una collezione di oggetti (numeri, vettori, matrici, etc).
+## Liste
 
-\item Per \empr{salvare} o per \empr{estrarre} un oggetto da una lista si usa il simbolo del dollaro \texttt{\$}.
+Una **lista** è una collezione di oggetti (numeri, vettori, matrici, etc).
 
+Per **salvare** o per **estrarre** un oggetto da una lista si usa il simbolo del dollaro `$`.
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+```{r}
 # Creazione di una lista
 new_list <- list(
   A = matrix(c(4, 1, 1, 8), ncol = 2),
@@ -683,43 +672,21 @@ new_list <- list(
 )
 
 new_list
-# $A
-#      [,1] [,2]
-# [1,]    4    1
-# [2,]    1    8
-#
-# $x
-# [1] 1 2 6 6 9
-\end{minted}
-\ei
-\end{frame}
 ```
-```{=tex}
-\begin{frame}[fragile]{Esempio: la scomposizione spettrale}
 
-\bi
-\item  Gli autovalori ed autovettori di una matrice $\bm{A}$ si ottengono tramite il comando \texttt{eigen}. 
-\item Il risultato è una \empb{lista}, contenente gli autovettori (\texttt{vectors}) e autovalori (\texttt{values}). 
+## Esempio: la scomposizione spettrale
 
+Gli autovalori ed autovettori di una matrice $\textbf{A}$ si ottengono tramite il comando `eigen`.
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+Il risultato è una **lista**, contenente gli autovettori (`vectors`) e autovalori (`values`). 
+
+```{r}
 Spec_A <- eigen(A) # Scomposizione spettrale della matrice A
 Spec_A
-# eigen() decomposition
-# $values
-# [1] 8.236068 3.763932
-#
-# $vectors
-#           [,1]       [,2]
-# [1,] 0.2297529 -0.9732490
-# [2,] 0.9732490  0.2297529
-\end{minted}
+```
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+. . .
+
+```{r}
 Spec_A$values # Estrazione degli autovalori
-# [1] 8.236068 3.763932
-\end{minted}
-
-\ei
-\end{frame}
 ```

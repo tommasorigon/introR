@@ -958,6 +958,7 @@ length</code></pre>
 <pre><code>[1] 5 2</code></pre>
 </div>
 </div>
+<div class="fragment">
 <p>Alcuni <strong>comandi di base</strong> per manipolare le matrici sono i seguenti</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a><span class="fu">dim</span>(A) <span class="co"># Restituisce la dimensione della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -968,6 +969,7 @@ length</code></pre>
 <span id="cb117-2"><a href="#cb117-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 1 2 4</code></pre>
+</div>
 </div>
 </div>
 <div class="fragment">
@@ -1071,37 +1073,111 @@ length</code></pre>
 {\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
 \]</span></p>
 <p>Per ottenere <span class="math inline">\({\bf A}^{-1}\)</span> si usa il comando <code>solve</code>.</p>
-<p>\end{frame}</p>
-<pre><code>```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici VI}
+<div class="cell">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb133-2"><a href="#cb133-2"></a>A1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(A) <span class="co"># Matrice inversa di A</span></span>
+<span id="cb133-3"><a href="#cb133-3"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]        [,2]        [,3]
+[1,] -0.5833333 -0.08333333  0.95833333
+[2,]  0.1666667  0.16666667 -0.41666667
+[3,]  0.4166667 -0.08333333 -0.04166667</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a><span class="fu">round</span>(A <span class="sc">%*%</span> A1, <span class="at">digits =</span> <span class="dv">5</span>) <span class="co"># Operazione di controllo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    1    0
+[3,]    0    0    1</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a><span class="fu">det</span>(A) <span class="co"># Calcola il determinante della matrice A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -24</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-vi" class="slide level2">
+<h2>Operazioni sulle matrici VI</h2>
+<p>Nel caso una matrice non sia invertibile, il <strong>determinante</strong> è pari a <span class="math inline">\(0\)</span>. Il comando <code>solve</code> in quel caso produce un errore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a><span class="co"># Esempio di matrice NON invertibile</span></span>
+<span id="cb139-2"><a href="#cb139-2"></a>A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb139-3"><a href="#cb139-3"></a><span class="fu">det</span>(A) <span class="co"># Deteminante pari a 0, solve(A) produce un errore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Ci sono numerose funzioni per la <strong>scomposizione di matrici</strong>, il cui output è a volte una <strong>lista</strong>. Il risultato delle seguenti funzioni è omesso.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb141-2"><a href="#cb141-2"></a><span class="fu">chol</span>(A) <span class="co"># Scomposizione di Cholesky</span></span>
+<span id="cb141-3"><a href="#cb141-3"></a><span class="fu">qr</span>(A) <span class="co"># Scomposizione QR</span></span>
+<span id="cb141-4"><a href="#cb141-4"></a><span class="fu">eigen</span>(A) <span class="co"># Scomposizione spettrale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="liste" class="slide level2">
+<h2>Liste</h2>
+<p>Una <strong>lista</strong> è una collezione di oggetti (numeri, vettori, matrici, etc).</p>
+<p>Per <strong>salvare</strong> o per <strong>estrarre</strong> un oggetto da una lista si usa il simbolo del dollaro <code>$</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a><span class="co"># Creazione di una lista</span></span>
+<span id="cb142-2"><a href="#cb142-2"></a>new_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb142-3"><a href="#cb142-3"></a>  <span class="at">A =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span>), <span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb142-4"><a href="#cb142-4"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">9</span>)</span>
+<span id="cb142-5"><a href="#cb142-5"></a>)</span>
+<span id="cb142-6"><a href="#cb142-6"></a></span>
+<span id="cb142-7"><a href="#cb142-7"></a>new_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$A
+     [,1] [,2]
+[1,]    4    1
+[2,]    1    8
 
-\bi
-\item Nel caso una matrice non sia invertibile, il \empb{determinante} è pari a $0$. Il comando \texttt{solve} in quel caso produce un errore.
+$x
+[1] 1 2 6 6 9</code></pre>
+</div>
+</div>
+</section>
+<section id="esempio-la-scomposizione-spettrale" class="slide level2">
+<h2>Esempio: la scomposizione spettrale</h2>
+<p>Gli autovalori ed autovettori di una matrice <span class="math inline">\(\textbf{A}\)</span> si ottengono tramite il comando <code>eigen</code>.</p>
+<p>Il risultato è una <strong>lista</strong>, contenente gli autovettori (<code>vectors</code>) e autovalori (<code>values</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1"></a>Spec_A <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A) <span class="co"># Scomposizione spettrale della matrice A</span></span>
+<span id="cb144-2"><a href="#cb144-2"></a>Spec_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eigen() decomposition
+$values
+[1] 8.236068 3.763932
 
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-# Esempio di matrice NON invertibile
-A &lt;- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))
-det(A) # Deteminante pari a 0, solve(A) produce un errore
-# [1] 0
-\end{minted}
+$vectors
+          [,1]       [,2]
+[1,] 0.2297529 -0.9732490
+[2,] 0.9732490  0.2297529</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1"></a>Spec_A<span class="sc">$</span>values <span class="co"># Estrazione degli autovalori</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.236068 3.763932</code></pre>
+</div>
+</div>
 
+<p><img src="img/logoB.png" class="slide-logo"></p>
+<div class="footer footer-default">
 
-\item Ci sono numerose funzioni per la \empr{scomposizione di matrici}, il cui output è a volte una \empb{lista}.
-\item Il risultato delle seguenti funzioni è omesso.
-
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-A &lt;- matrix(c(4, 1, 1, 8), ncol = 2)
-chol(A) # Scomposizione di Cholesky
-qr(A) # Scomposizione QR
-eigen(A) # Scomposizione spettrale
-\end{minted}
-\ei
-\end{frame}</code></pre>
-
-
-<img src="img/logoB.png" class="slide-logo r-stretch"><div class="footer footer-default">
-
+</div>
 </div>
 </section>
     </div>
