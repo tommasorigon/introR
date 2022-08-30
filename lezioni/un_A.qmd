@@ -16,11 +16,7 @@ slide-number: true
 execute:
   echo: true
   warning: true
-project:
-  type: website
-  output-dir: docs
 ---
-
 
 ## Unità A
 
@@ -464,7 +460,6 @@ A
 A <- matrix(c(5, 2, 1, 4), nrow = 2, ncol = 2, byrow = TRUE)
 ```
 
-
 ## Vettori riga e vettori colonna
 
 Una matrice con una sola colonna è un **vettore colonna**:
@@ -483,7 +478,6 @@ x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
 x_row
 ```
 
-
 ## Vettori riga e vettori di **R**
 
 Nella maggior parte dei casi, il **{vettore riga** `x_row` è intercambiabile col vettore `x`.
@@ -493,7 +487,7 @@ x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
 x <- c(1, 10, 3, 5) # Simile, ma non identico, a x_row
 ```
 
-Ad esempio, le funzioni `sum(x_row)` e `sum(x)` forniscono lo stesso risultato. 
+Ad esempio, le funzioni `sum(x_row)` e `sum(x)` forniscono lo stesso risultato.
 
 . . .
 
@@ -504,11 +498,13 @@ dim(x_row)
 dim(x)
 ```
 
-\item Il simbolo `NULL` significa **non definito**, perché non esiste la nozione di dimensione per un generico vettore **R**.
+\item
+
+Il simbolo `NULL` significa **non definito**, perché non esiste la nozione di dimensione per un generico vettore **R**.
 
 ## Operazioni sulle matrici I
 
-È possibile **selezionare gli elementi** di una matrice in maniera analoga a quanto fatto con i vettori. 
+È possibile **selezionare gli elementi** di una matrice in maniera analoga a quanto fatto con i vettori.
 
 ```{r}
 A[1, 2] # Estrazione di elemento in posizione (1,2)
@@ -518,7 +514,7 @@ A[1, ] # Estrazione prima riga
 
 Alcuni \empb{comandi di base} per manipolare le matrici sono i seguenti
 
-
+```{=tex}
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
 dim(A) # Restituisce la dimensione della matrice
 # [1] 2 2
@@ -526,7 +522,8 @@ a <- c(A) # Converte la matrice in un vettore
 a
 # [1] 5 1 2 4
 \end{minted}
-
+```
+```{=tex}
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
 diag(A) # Restituisce la diagonale della matrice
 # [1] 5 4
@@ -538,43 +535,45 @@ sum(A) # Somma di tutti gli elementi di A
 # [1] 12
 \end{minted}
 \ei
-\end{frame}
 ```
 ```{=tex}
-\begin{frame}[fragile]{Operazioni sulle matrici II}
-
-\bi
-\item Come per i vettori, le operazioni elementari (somma, prodotto, \texttt{log}, \texttt{exp}, etc.) vengono eseguite \empr{elemento per elemento}. 
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-exp(A)
-#            [,1]      [,2]
-# [1,] 148.413159  7.389056
-# [2,]   2.718282 54.598150
-\end{minted}
-
-\item Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
-
-$$
-{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
-$$
-
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-B <- A # Creo una matrice B identica ad A, per semplicità
-C <- rbind(A, B)
-\end{minted}
-
-
-\item In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} & {\bf B} \end{pmatrix}$.
-
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-C <- cbind(A, B)
-\end{minted}
-\ei
 \end{frame}
 ```
+    ```{=tex}
+    \begin{frame}[fragile]{Operazioni sulle matrici II}
+
+    \bi
+    \item Come per i vettori, le operazioni elementari (somma, prodotto, \texttt{log}, \texttt{exp}, etc.) vengono eseguite \empr{elemento per elemento}. 
+
+    \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+    exp(A)
+    #            [,1]      [,2]
+    # [1,] 148.413159  7.389056
+    # [2,]   2.718282 54.598150
+    \end{minted}
+
+    \item Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
+
+    $$
+    {\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+    $$
+
+
+    \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+    B <- A # Creo una matrice B identica ad A, per semplicità
+    C <- rbind(A, B)
+    \end{minted}
+
+
+    \item In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} & {\bf B} \end{pmatrix}$.
+
+
+    \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+    C <- cbind(A, B)
+    \end{minted}
+    \ei
+    \end{frame}
+
 ```{=tex}
 \begin{frame}[fragile]{Operazioni sulle matrici III}
 
@@ -1013,7 +1012,7 @@ Learn more: [Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanc
 The next few slides will transition using the `slide` transition
 
 | Transition | Description                                                            |
-|---------------------|---------------------------------------------------|
+|----------------------|--------------------------------------------------|
 | `none`     | No transition (default, switch instantly)                              |
 | `fade`     | Cross fade                                                             |
 | `slide`    | Slide horizontally                                                     |
