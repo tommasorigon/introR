@@ -1,0 +1,1252 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: "Unità A: calcolo scientifico ed algebra lineare"
+author: "Tommaso Rigon"
+istitution: "Università Milano-Bicocca"
+format:
+  revealjs: 
+    theme: default
+    scrollable: true
+    logo: img/logoB.png
+    smaller: true
+    transition: slide
+    touch: true
+editor: visual
+slide-number: true
+
+---
+
+## Unità A
+
+::: incremental
+-   A-B-C: il software **R** come calcolatrice scientifica
+-   Operazioni di routine: pulizia del *workspace*, simboli speciali
+-   Funzioni matematiche, grafico di una funzione, operazioni logiche
+-   Operazioni con vettori e matrici
+-   Esercizi **R** associati: [esercizi 1](https://tommasorigon.github.io/introR/exe/es_1.html)
+:::
+
+## Calcolatrice scientifica
+
+Anzitutto, **R** può essere usato come se fosse una *calcolatrice scientifica*:
+
+```{r}
+#| echo: true
+2 + 2
+4 * (3 + 5) # La somma entro parentesi viene eseguita per prima
+pi / 4 # Pi greco quarti
+```
+
+. . .
+
+Per calcolare la potenza $a^b$ si usa:
+
+```{r}
+#| echo: true
+2^5 # Sintassi alternativa: 2**5
+```
+
+. . .
+
+Le quantità $\sqrt{2}$ e $\sin(\pi/4)$ si ottengono invece con i comandi:
+
+```{r}
+#| echo: true
+sqrt(2)
+sin(pi / 4)
+```
+
+. . .
+
+**Nota**. Tutto ciò che viene scritto dopo un cancelletto (`#`) è considerato un **commento**.
+
+## Assegnazione di un valore
+
+È possibile **salvare un valore** assegnandolo ad un oggetto tramite il simbolo `<-`.
+
+```{r}
+#| echo: true
+# Assegna il valore 5 all'oggetto x
+x <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)
+```
+
+. . .
+
+Il valore contenuto in `x` può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio `y`.
+
+```{r}
+#| echo: true
+y <- x + pi # ovvero pi greco + radice quadrata di 5
+y
+```
+
+. . .
+
+Per **rimuovere un oggetto** dalla memoria, si usa il comando `rm`, ovvero *remove*.
+
+```{r}
+#| echo: true
+rm(x) # x non è più presente nel "workspace"
+```
+
+. . .
+
+**Nota**. **R** è *case sensitive*, pertanto l'oggetto `x` è diverso dall'oggetto `X`.
+
+## Pulizia del *workspace*
+
+È buona norma mantenere pulito il *workspace*, ovvero l'ambiente di lavoro.
+
+Se un oggetto non è più necessario, è possibile eliminarlo tramite il comando `rm`.
+
+. . .
+
+È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:
+
+```{r}
+#| echo: true
+ls() # Nel workspace è presente l'oggetto y
+```
+
+. . .
+
+Pertanto, per **eliminare** tutti gli **oggetti** salvati, si può usare
+
+```{r}
+#| echo: true
+rm(list = ls())
+```
+
+## Alcune funzioni matematiche
+
+Supponiamo che `x` sia un **numero reale**.
+
+Ciò che seguono sono una lista di funzioni disponibili in **R**:
+
+```{r}
+#| echo: true
+#| output: false
+x <- 1/2 # Esempio di numero reale
+
+exp(x) # Esponenziale e logaritmo naturale
+log(x)
+
+abs(x) # Valore assoluto
+sign(x) # Funzione segno
+
+sin(x) # Funzioni trigonometriche (seno, coseno, tangente)
+cos(x)
+tan(x)
+
+asin(x) # Funzioni trigonometriche inverse
+acos(x)
+atan(x)
+```
+
+. . .
+
+**Nota**. Le funzioni di **R** si possono combinare tra loro, ad esempio `log(abs(x))`.
+
+## Ulteriori funzioni matematiche
+
+Supponiamo che `x` e `y` siano due **numeri reali**. Inoltre, siano `n` e `k` due **numeri naturali**.
+
+Si noti l'uso del `;` che può essere usato per separare due comandi nella stessa riga.
+
+```{r}
+#| echo: true
+#| output: false
+x <- 1 / 2; y <- 1 / 3 # Numeri reali 
+n <- 5; k <- 2 # Numeri naturali
+
+factorial(n) # n!
+choose(n, k) # Coefficiente binomiale
+
+round(x, digits = 2) # Arrotonda x usando 2 cifre decimali
+floor(x) # Arrotonda x all'intero più vicino, per difetto
+ceiling(x) # Arrotonda x all'intero più vicino, per eccesso
+```
+
+. . .
+
+La funzione gamma $\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s$ si calcola in **R** come segue:
+
+```{r}
+#| echo: true
+#| output: false
+gamma(x) # Funzione gamma
+```
+
+. . .
+
+La funzione beta $\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds$ si calcola in **R** come segue:
+
+```{r}
+#| echo: true
+#| output: false
+beta(x, y) # Funzione beta
+```
+
+## Grafico di una funzione
+
+In **R** è possibile **disegnare** una qualsiasi funzione tramite il comando `curve`.
+
+Se ad esempio si considera la funzione $$f(x) = \frac{\sin(x)}{x},$$ allora possiamo disegnare $f(x)$ nell'intervallo $(0,15)$ come segue:
+
+```{r}
+#| echo: true
+#| fig-width: 12
+#| fig-height: 5.5
+curve(sin(x) / x, from = 0, to = 15)
+```
+
+## La documentazione ufficiale
+
+La documentazione di **R** è la principale fonte di informazioni.
+
+A cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella **documentazione ufficiale** e non in queste slide.
+
+. . .
+
+Il comando `? funzione` apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:
+
+```{r}
+#| echo: true
+? log # Documentazione della funzione log
+```
+
+. . .
+
+</br>
+
+**Nota riguardante l'esame**. Durante la prova d'esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.
+
+## Simboli speciali
+
+Numeri molto grandi, come $10^{15}$, e molto piccoli, come $10^{-15}$, in **R** vengono rappresentati come segue:
+
+```{r}
+#| echo: true
+10^15
+10^(-15)
+```
+
+. . .
+
+Per questioni di approssimazione numerica, quando un numero è troppo grande **R** riporta `Inf`, ovvero **infinito**. Per esempio:
+
+```{r}
+#| echo: true
+10^1000 # Numero molto grande, anche se finito
+```
+
+. . .
+
+Il simbolo `NaN` significa invece *Not a Number* e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:
+
+```{r}
+#| echo: true
+log(-1) # Questo comando genera inoltre un avviso
+```
+
+## Errori di approssimazione numerica
+
+È ben noto che $\sin(\pi) = 0$. Tuttavia, in **R** si ottiene un numero molto vicino a $0$, ma strettamente positivo. Infatti:
+
+```{r}
+#| echo: true
+sin(pi)
+```
+
+. . .
+
+**R** è uno strumento di calcolo numerico e pertanto sono sempre presenti **errori di approssimazione numerica**.
+
+Fortunatamente, nella maggior parte dei casi pratici la differenza tra $0$ e $10^{-16}$ è del tutto irrilevante.
+
+In altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.
+
+. . .
+
+Ad ogni modo, l'approssimazione numerica potrebbe anche migliorare. Ad esempio:
+
+```{r}
+#| echo: true
+cos(pi)
+```
+
+## Operazioni logiche
+
+In **R** è spesso necessario verificare se una o più condizioni sono verificate o meno.
+
+```{r}
+#| echo: true
+x <- 5
+x < 0 # Il valore di x è minore di 0?
+a <- (x == -3) # Il valore di x è uguale a -3?
+a
+```
+
+. . .
+
+Il valore di `a` è un indicatore **binario** o **booleano**, ovvero può essere vero (`TRUE`) oppure falso (`FALSE`).
+
+. . .
+
+Altre **funzioni logiche** disponibili (assumendo che `y` sia un numero e `b` un booleano) sono:
+
+```{r}
+#| echo: true
+a <- TRUE; b <- FALSE; x <- 5; y <- 7
+x >= y # x è maggiore o uguale a y? (Si usa "<=" per minore uguale)
+x != y # x è diverso da y?
+a & b # a AND b. I valori booleani a e b sono entrambi veri?
+a | b # a OR b. Almeno uno tra a ed b è vero?
+```
+
+## Vettori
+
+Un **vettore** in **R** viene definito tramite la funzione `c()`, come nel seguente esempio:
+
+```{r}
+#| echo: true
+x <- c(4, 2, 2, 8, 10) 
+x
+```
+
+. . .
+
+**Nota**. Con il termine generico "**vettore**" in **R** non si fa riferimento alla nozione dell'algebra lineare ma semplicemente ad una stringa di valori ordinati.
+
+Infatti il seguente oggetto è un **vettore** in **R**, nonostante l'oggetto `x` sia composto sia numeri che da lettere
+
+```{r}
+#| echo: true
+x <- c("A", "B", 2, 8, 10)
+x
+```
+
+## Creazione di vettori
+
+Talvolta è comodo creare dei vettori i cui elementi sono dei **numeri consecutivi**
+
+```{r}
+#| echo: true
+x <- 5:10 # Equivalente a: x <- c(5, 6, 7, 8, 9, 10)
+x
+```
+
+. . .
+
+Per creare una successione di **numeri reali** si usa il comando `seq`:
+
+```{r}
+#| echo: true
+x <- seq(from = 0, to = 1, by = 0.1)
+x
+```
+
+. . .
+
+Per creare un vettore di **valori ripetuti** si usa il comando `rep`:
+
+```{r}
+#| echo: true
+x <- rep(10, 7) # Vettore in cui il numero 10 è ripetuto 7 volte
+x
+```
+
+## Operazioni sui vettori I
+
+La maggior parte delle funzioni matematiche di **R** sono **vettorizzate**. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.
+
+```{r}
+#| echo: true
+exp(1:6) + (1:6) / 2 + 1 # Esempio 1
+```
+
+. . .
+
+```{r}
+#| echo: true
+x <- c(10, 10^2, 10^3, 10^4, 10^5, 10^6) # Esempio 2
+log(x, base = 10)
+```
+
+. . .
+
+```{r}
+#| echo: true
+1:8 > 4 # Esempio 3
+```
+
+. . .
+
+Altre funzioni invece sono utili proprio nel caso in cui l'**argomento** sia un **vettore**:
+
+```{r}
+#| echo: true
+x <- c(2, 3, 1, 3, 10, 5)
+length(x) # Lunghezza del vettore
+sum(x) # Somma degli elementi del vettore
+cumsum(x) # Somme cumulate
+```
+
+## Operazioni sui vettori II
+
+Ulteriori semplici operazioni in cui l'argomento è un vettore sono elencate nel seguito:
+
+```{r}
+#| echo: true
+x <- c(2, 3, 1, 3, 10, 5)
+prod(x) # Prodotto degli elementi del vettore
+cumprod(x) # Prodotti cumulati
+sort(x, decreasing = FALSE) # Vettore ordinato in ordine crescente
+min(x) # Valore minimo
+which.min(x) # Posizione del valore corrispondente al minimo
+```
+
+. . .
+
+Infine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:
+
+```{r}
+#| echo: true
+#| output: false
+max(x) # Valore massimo
+which.max(x) # Posizione del valore corrispondente al massimo
+range(x) # Equivalente a: c(min(x), max(x))
+```
+
+## Operazioni sui vettori III
+
+È possibile **selezionare gli elementi** di un vettore usando le parentesi quadrate, come nei seguenti esempi:
+
+```{r}
+#| echo: true
+# Concatenazione di vettori
+x <- c(rep(pi, 2), sqrt(2), c(10, 7))
+x[3] # Estrae il terzo elemento dal vettore x, ovvero sqrt(2)
+x[c(1, 3, 5)] # Estrae il primo, il terzo ed il quinto elemento
+x[-c(1, 3, 5)] # Elimina il primo, il terzo ed il quinto elemento
+x[x > 3.5] # Estrae gli elementi maggiori di 3.5
+```
+
+. . .
+
+L'ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una **condizione** relativa al vettore stesso.
+
+## Operazione sui vettori: avvertenze
+
+Cosa succede quando vengono sommati due vettori di dimensioni diverse?
+
+La maggior parte dei linguaggi di programmazione restituisce un errore. **R** invece esegue ugualmente l'operazione "allungando" il vettore più corto.
+
+. . .
+
+In questo primo esempio, quantomeno **R** restituisce un *warning*.
+
+```{r}
+#| echo: true
+# Concatenazione di vettori
+x <- 1:5
+y <- 1:6
+x + y # Equivalente a: c(x, x[1]) + y
+```
+
+In questo secondo esempio, invece, **R** non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa
+
+```{r}
+x <- 1:3
+y <- 1:6
+x + y # Equivalente a: c(x, x) + y
+```
+
+## Matrici
+
+Una \empb{matrice} ${\bf A}$ è una collezione di elementi $(a)_{ij}$ per $i=1,\dots,n$ e $j=1,\dots,m$.
+
+\item
+
+Per esempio, la matrice quadrata di dimensione $2 \times 2$
+
+$${\bf A} = \begin{pmatrix}
+5 & 2\\
+1 & 4 \\
+\end{pmatrix},$$ si può definire in **R** tramite il comando \texttt{matrix} come segue:
+
+```{=tex}
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+A <- matrix(c(5, 1, 2, 4), nrow = 2, ncol = 2)
+A
+#     [,1] [,2]
+# [1,]    5    2
+# [2,]    1    4
+\end{minted}
+```
+\item
+
+È inoltre possibile elencare gli elementi \empr{riga per riga}
+
+```{=tex}
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+# Definizione equivalente
+A <- matrix(c(5, 2, 1, 4), nrow = 2, ncol = 2, byrow = TRUE)
+\end{minted}
+\ei
+```
+```{=tex}
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Vettori riga e vettori colonna}
+
+\bi
+\item Una matrice con una sola colonna è un \empb{vettore colonna}:
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+x_col <- matrix(c(1, 10, 3, 5), ncol = 1)
+x_col
+#      [,1]
+# [1,]    1
+# [2,]   10
+# [3,]    3
+# [4,]    5
+\end{minted}
+
+
+\item Una matrice con una sola colonna è un \empr{vettore riga}:
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
+x_row
+#      [,1] [,2] [,3] [,4]
+# [1,]    1   10    3    5
+\end{minted}
+\ei
+
+
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Vettori riga e vettori di **R**}
+
+\bi
+\item Nella maggior parte dei casi, il \empr{vettore riga} \texttt{x\_row} è intercambiabile col vettore \texttt{x}.
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
+x <- c(1, 10, 3, 5) # Simile, ma non identico, a x_row
+\end{minted}
+
+
+\item Ad esempio, le funzioni \texttt{sum(x\_row)} e \texttt{sum(x)} forniscono lo stesso risultato. 
+\item Ci sono tuttavia alcune lievi distinzioni. Ad esempio:
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+dim(x_row)
+# [1] 1 4
+dim(x)
+# NULL
+\end{minted}
+
+\item Il simbolo \texttt{NULL} significa \empb{non definito}, perché non esiste la nozione di dimensione per un generico vettore **R**.
+\ei
+
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici I}
+
+\bi
+\item È possibile \empr{selezionare gli elementi} di una matrice in maniera analoga a quanto fatto con i vettori. 
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+A[1, 2] # Estrazione di elemento in posizione (1,2)
+A[, 2] # Estrazione seconda colonna
+A[1, ] # Estrazione prima riga
+\end{minted}
+
+
+\item Alcuni \empb{comandi di base} per manipolare le matrici sono i seguenti
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+dim(A) # Restituisce la dimensione della matrice
+# [1] 2 2
+a <- c(A) # Converte la matrice in un vettore
+a
+# [1] 5 1 2 4
+\end{minted}
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+diag(A) # Restituisce la diagonale della matrice
+# [1] 5 4
+t(A) # Calcola la matrice trasposta A'
+#      [,1] [,2]
+# [1,]    5    1
+# [2,]    2    4
+sum(A) # Somma di tutti gli elementi di A
+# [1] 12
+\end{minted}
+\ei
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici II}
+
+\bi
+\item Come per i vettori, le operazioni elementari (somma, prodotto, \texttt{log}, \texttt{exp}, etc.) vengono eseguite \empr{elemento per elemento}. 
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+exp(A)
+#            [,1]      [,2]
+# [1,] 148.413159  7.389056
+# [2,]   2.718282 54.598150
+\end{minted}
+
+\item Siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di colonne e definiamo
+
+$$
+{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+$$
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+B <- A # Creo una matrice B identica ad A, per semplicità
+C <- rbind(A, B)
+\end{minted}
+
+
+\item In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} & {\bf B} \end{pmatrix}$.
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+C <- cbind(A, B)
+\end{minted}
+\ei
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici III}
+
+\bi
+\item Siano ${\bf x}$ e ${\bf y}$ due vettori colonna in $\mathds{R}^p$. Allora, il loro \empb{prodotto incrociato} è pari a
+$$ 
+{\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
+$$
+\item in **R** possiamo usare il comando \texttt{crossprod}
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+x <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)
+y <- matrix(c(3, 2, 2, 7, 9), ncol = 1)
+crossprod(x, y) # Equivalente a: sum(x * y)
+#      [,1]
+# [1,]  272
+\end{minted}
+
+
+\item Il comando \texttt{crossprod} funziona correttamente anche con ``vettori'' **R**.
+
+\item Il comando \texttt{crossprod} può essere usato anche per calcolare il seguente \empr{prodotto tra matrici} 
+$$
+{\bf A}^\intercal {\bf B},
+$$ 
+dove ${\bf A}$ e ${\bf B}$ sono due matrici di dimensioni compatibili. 
+\ei 
+
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici IV}
+
+\bi
+\item In algebra lineare il \empb{prodotto tra matrici} compatibili ${\bf A} {\bf B}$ è chiamato prodotto righe per colonne. In **R** si usa il comando seguente
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+A <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))
+B <- rbind(c(5, 2, 5), c(3, 3, 7), c(-2, -8, 10))
+
+A %*% B # Prodotto righe per colonne AB
+#      [,1] [,2] [,3]
+# [1,]    5  -16   49
+# [2,]   43   19  103
+# [3,]   12   -6   44
+\end{minted}
+
+
+\item \empr{\underline{Nota}}. Il comando \texttt{A * B} indica il prodotto elemento per elemento e non il prodotto righe per colonne.
+
+\item Se le matrici non sono compatibili **R** produce un errore (provateci per esercizio!)
+\ei 
+
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici V}
+
+\bi
+\item Sia ${\bf A}$ una matrice quadrata $n \times n$ a valori reali. La sua \empr{matrice inversa} ${\bf A}^{-1}$, quando esiste, è l'unica matrice tale per cui 
+$$
+{\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
+$$
+\item Per ottenere ${\bf A}^{-1}$ si usa il comando \texttt{solve}.
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+A <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))
+A1 <- solve(A) # Matrice inversa di A
+A1
+#            [,1]        [,2]        [,3]
+# [1,] -0.5833333 -0.08333333  0.95833333
+# [2,]  0.1666667  0.16666667 -0.41666667
+# [3,]  0.4166667 -0.08333333 -0.04166667
+
+round(A %*% A1, digits = 5) # Operazione di controllo
+#      [,1] [,2] [,3]
+# [1,]    1    0    0
+# [2,]    0    1    0
+# [3,]    0    0    1
+\end{minted}
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+det(A) # Calcola il determinante della matrice A
+# [1] -24
+\end{minted}
+\ei
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Operazioni sulle matrici VI}
+
+\bi
+\item Nel caso una matrice non sia invertibile, il \empb{determinante} è pari a $0$. Il comando \texttt{solve} in quel caso produce un errore.
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+# Esempio di matrice NON invertibile
+A <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))
+det(A) # Deteminante pari a 0, solve(A) produce un errore
+# [1] 0
+\end{minted}
+
+
+\item Ci sono numerose funzioni per la \empr{scomposizione di matrici}, il cui output è a volte una \empb{lista}.
+\item Il risultato delle seguenti funzioni è omesso.
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+A <- matrix(c(4, 1, 1, 8), ncol = 2)
+chol(A) # Scomposizione di Cholesky
+qr(A) # Scomposizione QR
+eigen(A) # Scomposizione spettrale
+\end{minted}
+\ei
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Liste}
+
+\bi
+\item  Una \empb{lista} è una collezione di oggetti (numeri, vettori, matrici, etc).
+
+\item Per \empr{salvare} o per \empr{estrarre} un oggetto da una lista si usa il simbolo del dollaro \texttt{\$}.
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+# Creazione di una lista
+new_list <- list(
+  A = matrix(c(4, 1, 1, 8), ncol = 2),
+  x = c(1, 2, 6, 6, 9)
+)
+
+new_list
+# $A
+#      [,1] [,2]
+# [1,]    4    1
+# [2,]    1    8
+#
+# $x
+# [1] 1 2 6 6 9
+\end{minted}
+\ei
+\end{frame}
+```
+```{=tex}
+\begin{frame}[fragile]{Esempio: la scomposizione spettrale}
+
+\bi
+\item  Gli autovalori ed autovettori di una matrice $\bm{A}$ si ottengono tramite il comando \texttt{eigen}. 
+\item Il risultato è una \empb{lista}, contenente gli autovettori (\texttt{vectors}) e autovalori (\texttt{values}). 
+
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+Spec_A <- eigen(A) # Scomposizione spettrale della matrice A
+Spec_A
+# eigen() decomposition
+# $values
+# [1] 8.236068 3.763932
+#
+# $vectors
+#           [,1]       [,2]
+# [1,] 0.2297529 -0.9732490
+# [2,] 0.9732490  0.2297529
+\end{minted}
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+Spec_A$values # Estrazione degli autovalori
+# [1] 8.236068 3.763932
+\end{minted}
+
+\ei
+\end{frame}
+```
+## Pretty Code {auto-animate="true"}
+
+-   Over 20 syntax highlighting themes available
+-   Default theme optimized for accessibility
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+  })
+}
+```
+
+::: footer
+Learn more: [Syntax Highlighting](https://quarto.org/docs/output-formats/html-code.html#highlighting)
+:::
+
+## Code Animations {auto-animate="true"}
+
+-   Over 20 syntax highlighting themes available
+-   Default theme optimized for accessibility
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+    barplot(WorldPhones[,input$region]*1000, 
+            main=input$region,
+            ylab="Number of Telephones",
+            xlab="Year")
+  })
+}
+```
+
+## Line Highlighting
+
+-   Highlight specific lines for emphasis
+-   Incrementally highlight additional lines
+
+``` {.python code-line-numbers="4-5|7|10"}
+import numpy as np
+import matplotlib.pyplot as plt
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+::: footer
+Learn more: [Line Highlighting](https://quarto.org/docs/presentations/revealjs/#line-highlighting)
+:::
+
+## Executable Code
+
+```{r}
+#| echo: true
+#| fig-width: 10
+#| fig-height: 4.5
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+::: footer
+Learn more: [Executable Code](https://quarto.org/docs/presentations/revealjs/#executable-code)
+:::
+
+## LaTeX Equations
+
+[MathJax](https://www.mathjax.org/) rendering of equations to HTML
+
+::: columns
+::: {.column width="40%"}
+``` tex
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+:::
+
+::: {.column width="60%"}
+```{=tex}
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+```
+```{=tex}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+:::
+:::
+
+::: footer
+Learn more: [LaTeX Equations](https://quarto.org/docs/authoring/markdown-basics.html#equations)
+:::
+
+## Column Layout {.smaller}
+
+Arrange content into columns of varying widths:
+
+::: columns
+::: {.column width="35%"}
+#### Motor Trend Car Road Tests
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="62%"}
+```{r}
+knitr::kable(head(mtcars)[,c("mpg",	"cyl", "disp", "hp", "wt")])
+```
+:::
+:::
+
+::: footer
+Learn more: [Multiple Columns](https://quarto.org/docs/presentations/revealjs/#multiple-columns)
+:::
+
+## Incremental Lists
+
+Lists can optionally be displayed incrementally:
+
+::: incremental
+-   First item
+-   Second item
+-   Third item
+:::
+
+. . .
+
+<br/> Insert pauses to make other types of content display incrementally.
+
+::: footer
+Learn more: [Incremental Lists](https://quarto.org/docs/presentations/revealjs/#incremental-lists)
+:::
+
+## Fragments
+
+Incremental text display and animation with fragments:
+
+<br/>
+
+::: {.fragment .fade-in}
+Fade in
+:::
+
+::: {.fragment .fade-up}
+Slide up while fading in
+:::
+
+::: {.fragment .fade-left}
+Slide left while fading in
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+Fade in then semi out
+:::
+
+. . .
+
+::: {.fragment .strike}
+Strike
+:::
+
+::: {.fragment .highlight-red}
+Highlight red
+:::
+
+::: footer
+Learn more: [Fragments](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments)
+:::
+
+## Slide Backgrounds {background="#43464B"}
+
+Set the `background` attribute on a slide to change the background color (all CSS color formats are supported).
+
+Different background transitions are available via the `background-transition` option.
+
+::: footer
+Learn more: [Slide Backgrounds](https://quarto.org/docs/presentations/revealjs/#color-backgrounds)
+:::
+
+## Media Backgrounds {background="#43464B" background-image="images/milky-way.jpeg"}
+
+You can also use the following as a slide background:
+
+-   An image: `background-image`
+
+-   A video: `background-video`
+
+-   An iframe: `background-iframe`
+
+::: footer
+Learn more: [Media Backgrounds](https://quarto.org/docs/presentations/revealjs/#image-backgrounds)
+:::
+
+## Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Automatically animate matching elements across slides with Auto-Animate.
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+:::
+:::
+
+::: footer
+Learn more: [Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+## Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Automatically animate matching elements across slides with Auto-Animate.
+
+::: r-stack
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+:::
+:::
+
+::: footer
+Learn more: [Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+## Slide Transitions {.smaller}
+
+The next few slides will transition using the `slide` transition
+
+| Transition | Description                                                            |
+|--------------------|----------------------------------------------------|
+| `none`     | No transition (default, switch instantly)                              |
+| `fade`     | Cross fade                                                             |
+| `slide`    | Slide horizontally                                                     |
+| `convex`   | Slide at a convex angle                                                |
+| `concave`  | Slide at a concave angle                                               |
+| `zoom`     | Scale the incoming slide so it grows in from the center of the screen. |
+
+::: footer
+Learn more: [Slide Transitions](https://quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions)
+:::
+
+## Tabsets {.smaller .scrollable transition="slide"}
+
+::: panel-tabset
+### Plot
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+### Data
+
+```{r}
+knitr::kable(mtcars)
+```
+:::
+
+::: footer
+Learn more: [Tabsets](https://quarto.org/docs/presentations/revealjs/#tabsets)
+:::
+
+## Interactive Slides {.smaller transition="slide"}
+
+Include Jupyter widgets and htmlwidgets in your presentations
+
+```{r}
+#| echo: false
+#| fig-height: 5
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```
+
+::: footer
+Learn more: [Jupyter widgets](https://quarto.org/docs/interactive/widgets/jupyter.html), [htmlwidgets](https://quarto.org/docs/interactive/widgets/htmlwidgets.html)
+:::
+
+## Preview Links
+
+Navigate to hyperlinks without disrupting the flow of your presentation.
+
+Use the `preview-links` option to open links in an iframe on top of your slides. Try clicking the link below for a demonstration:
+
+::: {style="text-align: center; margin-top: 1em"}
+[Matplotlib: Visualization with Python](https://matplotlib.org/){preview-link="true" style="text-align: center"}
+:::
+
+::: footer
+Learn more: [Preview Links](https://quarto.org/docs/presentations/revealjs/presenting.html#preview-links)
+:::
+
+## Themes
+
+10 Built-in Themes (or [create your own](https://quarto.org/docs/presentations/revealjs/themes.html#creating-themes))
+
+::: {layout-ncol="2"}
+![](images/moon.png)
+
+![](images/sky.png)
+:::
+
+::: footer
+Learn more: [Themes](https://quarto.org/docs/presentations/revealjs/themes.html)
+:::
+
+## Easy Navigation
+
+::: {style="margin-bottom: 0.9em;"}
+Quickly jump to other parts of your presentation
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-menu.png){width="41"}
+
+Toggle the slide menu with the menu button (bottom left of slide) to go to other slides and access presentation tools.
+:::
+
+You can also press `m` to toggle the menu open and closed.
+
+::: footer
+Learn more: [Navigation](https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu)
+:::
+
+## Chalkboard {chalkboard-buttons="true"}
+
+::: {style="margin-bottom: 0.9em;"}
+Free form drawing and slide annotations
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-chalkboard.png){width="41"}
+
+Use the chalkboard button at the bottom left of the slide to toggle the chalkboard.
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-notes-canvas.png){width="41"}
+
+Use the notes canvas button at the bottom left of the slide to toggle drawing on top of the current slide.
+:::
+
+You can also press `b` to toggle the chalkboard or `c` to toggle the notes canvas.
+
+::: footer
+Learn more: [Chalkboard](https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard)
+:::
+
+## Point of View
+
+Press `o` to toggle overview mode:
+
+![](images/overview-mode.png){.border}
+
+Hold down the `Alt` key (or `Ctrl` in Linux) and click on any element to zoom towards it---try it now on this slide.
+
+::: footer
+Learn more: [Overview Mode](https://quarto.org/docs/presentations/revealjs/presenting.html#overview-mode), [Slide Zoom](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-zoom)
+:::
+
+## Speaker View
+
+Press `s` (or use the presentation menu) to open speaker view
+
+![](images/speaker-view.png){fig-align="center" style="border: 3px solid #dee2e6;" width="780"}
+
+::: footer
+Learn more: [Speaker View](https://quarto.org/docs/presentations/revealjs/presenting.html#speaker-view)
+:::
+
+## Authoring Tools {.smaller}
+
+Live side-by-side preview for any notebook or text editor including Jupyter and VS Code
+
+::: columns
+::: {.column width="50%"}
+![](images/jupyter-edit.png){.border .border-thick}
+:::
+
+::: {.column width="50%"}
+![](images/jupyter-preview.png){.border .border-thick}
+:::
+:::
+
+::: footer
+Learn more: [Jupyter](https://quarto.org/docs/tools/jupyter-lab.html), [VS Code](https://quarto.org/docs/tools/vscode.html), [Text Editors](https://quarto.org/docs/tools/text-editors.html)
+:::
+
+## Authoring Tools {.smaller}
+
+RStudio includes an integrated presentation preview pane
+
+![](images/rstudio.png){.border width="900"}
+
+::: footer
+Learn more: [RStudio](https://quarto.org/docs/tools/rstudio.html)
+:::
+
+## And More...
+
+-   [Touch](https://quarto.org/docs/presentations/revealjs/advanced.html#touch-navigation) optimized (presentations look great on mobile, swipe to navigate slides)
+-   [Footer & Logo](https://quarto.org/docs/presentations/revealjs/#footer-logo) (optionally specify custom footer per-slide)
+-   [Auto-Slide](https://quarto.org/docs/presentations/revealjs/presenting.html#auto-slide) (step through slides automatically, without any user input)
+-   [Multiplex](https://quarto.org/docs/presentations/revealjs/presenting.html#multiplex) (allows your audience to follow the slides of the presentation you are controlling on their own phone, tablet or laptop).
+
+::: footer
+Learn more: [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/)
+:::
