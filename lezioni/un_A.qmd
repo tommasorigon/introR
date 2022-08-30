@@ -16,9 +16,13 @@ slide-number: true
 execute:
   echo: true
   warning: true
+project:
+  type: website
+  output-dir: docs
 ---
 
 ```{r}
+# Crucial command to make the images appear online
 knitr::opts_knit$set(base.url='https://github.com/tommasorigon/introR/blob/master/lezioni/')
 ```
 
