@@ -207,7 +207,7 @@
     "href": "lezioni/un_A.html#executable-code",
     "title": "R per l’analisi statistica multivariata",
     "section": "Executable Code",
-    "text": "Executable Code\n\n#| fig-width: 10\n#| fig-height: 4.5\nlibrary(ggplot2)\nggplot(mtcars, aes(hp, mpg, color = am)) +\n  geom_point() +  geom_smooth(formula = y ~ x, method = \"loess\")\n\n\n\n\n\nLearn more: Executable Code"
+    "text": "Executable Code\n\n#| fig-width: 10\n#| fig-height: 4.5\nlibrary(ggplot2)\nggplot(mtcars, aes(hp, mpg, color = am)) +\n  geom_point() +  geom_smooth(formula = y ~ x, method = \"loess\")\n\n\n\nLearn more: Executable Code"
   },
   {
     "objectID": "lezioni/un_A.html#latex-equations",
@@ -221,7 +221,7 @@
     "href": "lezioni/un_A.html#column-layout",
     "title": "R per l’analisi statistica multivariata",
     "section": "Column Layout",
-    "text": "Column Layout\nArrange content into columns of varying widths:\n\n\n\nMotor Trend Car Road Tests\nThe data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.\n\n\n\n\n\nknitr::kable(head(mtcars)[,c(\"mpg\", \"cyl\", \"disp\", \"hp\", \"wt\")])\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\nwt\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n2.620\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n2.875\n\n\nDatsun 710\n22.8\n4\n108\n93\n2.320\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.215\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.440\n\n\nValiant\n18.1\n6\n225\n105\n3.460\n\n\n\n\n\n\n\n\nLearn more: Multiple Columns"
+    "text": "Column Layout\nArrange content into columns of varying widths:\n\n\nMotor Trend Car Road Tests\nThe data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.\n\n\n\n\nknitr::kable(head(mtcars)[,c(\"mpg\", \"cyl\", \"disp\", \"hp\", \"wt\")])\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\nwt\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n2.620\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n2.875\n\n\nDatsun 710\n22.8\n4\n108\n93\n2.320\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.215\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.440\n\n\nValiant\n18.1\n6\n225\n105\n3.460\n\n\n\n\n\n\n\n\nLearn more: Multiple Columns"
   },
   {
     "objectID": "lezioni/un_A.html#incremental-lists",
@@ -326,7 +326,7 @@
     "href": "lezioni/un_A.html#speaker-view",
     "title": "R per l’analisi statistica multivariata",
     "section": "Speaker View",
-    "text": "Speaker View\nPress s (or use the presentation menu) to open speaker view\n\n\n\n\n\n\nLearn more: Speaker View"
+    "text": "Speaker View\nPress s (or use the presentation menu) to open speaker view\n\n\nLearn more: Speaker View"
   },
   {
     "objectID": "lezioni/un_A.html#authoring-tools",
@@ -467,5 +467,12 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizi tratti dai libro di testo Robert & Casella (RS)",
     "text": "Esercizi tratti dai libro di testo Robert & Casella (RS)\n\nEsercizio 1.3, pag. 9.\nEsercizio 1.4, pag. 9.\nEsercizio 1.5, pag. 9.\nEsercizio 1.9, pag. 31.\nEsercizio 1.12, pag. 38."
+  },
+  {
+    "objectID": "lezioni/un_A.html#unità-a",
+    "href": "lezioni/un_A.html#unità-a",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Unità A",
+    "text": "Unità A\n\n\nA-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\nEsercizi R associati: esercizi 1"
   }
 ]

@@ -7,7 +7,7 @@ format:
   revealjs: 
     theme: default
     scrollable: true
-    logo: /img/logoB.png
+    logo: img/logoB.png
     smaller: true
     transition: slide
     touch: true
@@ -1012,7 +1012,7 @@ Learn more: [Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanc
 The next few slides will transition using the `slide` transition
 
 | Transition | Description                                                            |
-|----------------------|--------------------------------------------------|
+|----------------------|-------------------------------------------------|
 | `none`     | No transition (default, switch instantly)                              |
 | `fade`     | Cross fade                                                             |
 | `slide`    | Slide horizontally                                                     |
