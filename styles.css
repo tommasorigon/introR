@@ -10,7 +10,7 @@ $font-family-sans-serif: "Palatino Linotype", "Book Antiqua", Palatino,
 // headings
 $presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino,
   FreeSerif, serif !default;
-$presentation-heading-font-weight: 350;
+$presentation-heading-font-weight: 600;
 
 /*-- scss:rules --*/
 
