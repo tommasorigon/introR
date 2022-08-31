@@ -538,7 +538,7 @@
 </div>
 </div>
 <div class="fragment">
-<p>Il comando può essere usato per mostrare le ultime <span class="math inline">\(6\)</span> osservazioni:</p>
+<p>Il comando <code>tail</code> può essere usato per mostrare le ultime <span class="math inline">\(6\)</span> osservazioni:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tail</span>(calcio) <span class="co"># Comando equivalente: calcio[1895:1900, ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -656,39 +656,182 @@
 </section>
 <section id="variabili-qualitative-ii" class="slide level2">
 <h2>Variabili qualitative II</h2>
-<p>In primo luogo, verifichiamo che la conversione sia avvenuta correttamente ed esploriamone il contenuto della variabile :</p>
-Nelle variabili di tipo sono pertanto elencate le varie , chiamati in <strong>R</strong>.
-<p>Per accedere alle modalità si usa il comando , che elenca le modalità della variabile considerata in ordine alfabetico:</p>
-<p>\end{frame}</p>
+<p>In primo luogo, verifichiamo che la conversione sia avvenuta correttamente ed esploriamone il contenuto della variabile <code>HomeTeam</code>:</p>
+<div class="fragment">
+<p>Nelle variabili di tipo <code>factor</code> sono pertanto elencate le varie <code>modalità</code>, chiamati <code>levels</code> in <strong>R</strong>.</p>
+</div>
+<div class="fragment">
+<p>Per accedere alle modalità si usa il comando <code>levels</code>, che elenca le modalità della variabile considerata in ordine alfabetico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">levels</span>(calcio<span class="sc">$</span>HomeTeam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Atalanta"   "Bari"       "Bologna"    "Brescia"    "Cagliari"  
+ [6] "Catania"    "Cesena"     "Chievo"     "Empoli"     "Fiorentina"
+[11] "Genoa"      "Inter"      "Juventus"   "Lazio"      "Lecce"     
+[16] "Livorno"    "Milan"      "Napoli"     "Palermo"    "Parma"     
+[21] "Reggina"    "Roma"       "Sampdoria"  "Sassuolo"   "Siena"     
+[26] "Torino"     "Udinese"    "Verona"    </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="variabili-qualitative-iii" class="slide level2">
+<h2>Variabili qualitative III</h2>
+<p>Il comando <code>levels</code> permette di <strong>rinominare le modalità</strong>, ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>calcio<span class="sc">$</span>FTR[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] A H D H A H D D D H
+Levels: A D H</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">levels</span>(calcio<span class="sc">$</span>FTR) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Away"</span>, <span class="st">"Draw"</span>, <span class="st">"Home"</span>) <span class="co"># Rinomino le modalità</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>calcio<span class="sc">$</span>FTR[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Away Home Draw Home Away Home Draw Draw Draw Home
+Levels: Away Draw Home</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Il comando <code>levels</code> consente inoltre di accorpare le modalità di una variabile qualitativa:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>calcio<span class="sc">$</span>Draw <span class="ot">&lt;-</span> calcio<span class="sc">$</span>FTR <span class="co"># Creo una copia della variabile FTR chiamata Draw</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">levels</span>(calcio<span class="sc">$</span>Draw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Not_Draw"</span>, <span class="st">"Draw"</span>, <span class="st">"Not_Draw"</span>) <span class="co"># Accorpamento delle modalità</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a>calcio<span class="sc">$</span>Draw[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Not_Draw Not_Draw Draw     Not_Draw Not_Draw Not_Draw Draw     Draw    
+ [9] Draw     Not_Draw
+Levels: Not_Draw Draw</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="le-variabili-di-tipo-date" class="slide level2">
+<h2>Le variabili di tipo <code>date</code></h2>
+<p>La variabile <code>Date</code> del dataset <code>calcio</code> rappresenta una data e pertanto va codificata come tale.</p>
+<div class="fragment">
+<p>In <strong>R</strong> la conversione viene eseguita dal comando <code>as.Date</code>, seguita dal <strong>formato</strong> in cui è espressa la data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>calcio<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(calcio<span class="sc">$</span>Date, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">class</span>(calcio<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>calcio<span class="sc">$</span>Date[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2014-08-30" "2014-08-30" "2014-08-31" "2014-08-31" "2014-08-31"
+ [6] "2014-08-31" "2014-08-31" "2014-08-31" "2014-08-31" "2014-08-31"</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Una volta convertito in formata <code>Date</code>, è possibile svolgere alcune operazioni aggiuntive. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">min</span>(calcio<span class="sc">$</span>Date) <span class="co"># Prima partita giocata</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2008-08-30"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">max</span>(calcio<span class="sc">$</span>Date) <span class="co"># Ultima partita giocata</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2015-05-31"</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="manipolazione-di-un-dataset" class="slide level2">
+<h2>Manipolazione di un dataset</h2>
+<p>Per <strong>selezionare le righe</strong> di un dataset si procede come nel caso delle matrici:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>calcio[<span class="fu">c</span>(<span class="dv">1806</span>, <span class="dv">501</span>, <span class="dv">109</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+1806 2011-03-13    Genoa  Palermo Home  1.91  3.25   4.2 Not_Draw
+501  2013-11-23    Milan    Genoa Draw  1.44  4.20   7.5     Draw
+109  2014-11-09  Palermo  Udinese Draw  2.15  3.30   3.4     Draw</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>È ovviamente possibile (e tipicamente molto più utile) selezionare le osservazioni che soddisfino una determinata <strong>condizione</strong>.</p>
+</div>
+<div class="fragment">
+<p>Supponiamo ad esempio di voler identificare le partite terminate con un pareggio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>calcio_draw <span class="ot">&lt;-</span> calcio[calcio<span class="sc">$</span>FTR <span class="sc">==</span> <span class="st">"Draw"</span>, ]</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">head</span>(calcio_draw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Date   HomeTeam  AwayTeam  FTR B365H B365D B365A Draw
+3  2014-08-31   Atalanta    Verona Draw  2.05  3.40   3.6 Draw
+7  2014-08-31    Palermo Sampdoria Draw  2.20  3.25   3.3 Draw
+8  2014-08-31   Sassuolo  Cagliari Draw  2.30  3.40   3.0 Draw
+9  2014-08-31     Torino     Inter Draw  3.10  3.30   2.3 Draw
+14 2014-09-14 Fiorentina     Genoa Draw  1.57  3.80   6.0 Draw
+21 2014-09-20     Cesena    Empoli Draw  2.80  3.00   2.7 Draw</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="i-valori-mancanti" class="slide level2">
+<h2>I valori mancanti</h2>
+<p>Supponiamo di voler identificare le partite in cui la squadra di casa ha una bassa probabilità di vittoria secondo <em>Bet365</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>calcio_home <span class="ot">&lt;-</span> calcio[calcio<span class="sc">$</span>B365H <span class="sc">&gt;</span> <span class="dv">9</span>, ]</span>
+<span id="cb45-2"><a href="#cb45-2"></a>calcio_home</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw
+224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw
+NA         &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA     &lt;NA&gt;
+1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw
+NA.1       &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA     &lt;NA&gt;
+NA.2       &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA     &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Errore</strong></p>
+</div>
+<div class="callout-content">
+<p>Qualcosa è andato storto: ci sono dei simboli (<code>NA</code>) che non avevamo incontrato finora.</p>
+</div>
+</div>
+</div>
+<p>La ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni <strong>dati mancanti</strong>, codificati come <code>NA</code> (<em>Not Available</em>).</p>
+</section>
+<section id="i-valori-mancanti-1" class="slide level2">
+<h2>I valori mancanti</h2>
+<p>In particolare, ci sono <span class="math inline">\(3\)</span> osservazioni (la <span class="math inline">\(1501\)</span>, <span class="math inline">\(1846\)</span> e la <span class="math inline">\(1848\)</span>) i cui valori relativi a Bet365 non sono disponibili.</p>
+La funzione produce una matrice della stessa dimensione di , contenente se il valore è mancante e altrimenti.
+La funzione produce un vettore i cui valori alla somma degli elementi di ciascuna riga della .
+<p>Di conseguenza, indica quanti valori mancanti sono presenti in ciascuna riga. \end{frame}</p>
 <pre><code>```{=tex}
-\begin{frame}[fragile]{Variabili qualitative III}
+\begin{frame}[fragile]{Gestire i dati mancanti}
 \bi
-\item Il comando \texttt{levels} permette di \empb{rinominare le modalità}, ad esempio:
+\item La gestione statistica dei dati mancanti non è tra gli obiettivi di questo corso. 
+\item La soluzione più facile, ma potenzialmente molto pericolosa, consistente semplicemente nel \empr{rimuovere} le righe incomplete tramite il comando \texttt{na.omit}: 
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-calcio$FTR[1:10]
-#  [1] A H D H A H D D D H
-# Levels: A D H
-
-levels(calcio$FTR) &lt;- c("Away", "Draw", "Home") # Rinomino le modalità
-
-calcio$FTR[1:10]
-#  [1] Away Home Draw Home Away Home Draw Draw Draw Home
-# Levels: Away Draw Home
+calcio_no_na &lt;- na.omit(calcio)
+dim(calcio_no_na)
+# [1] 1897    8
 \end{minted}
 
+\item Per risolvere il problema originario, ovvero identificare le partite in cui la squadra di casa ha bassa probabilità di vittoria, si può usare \texttt{subset}: 
 
-\item Il comando \texttt{levels} consente inoltre di accorpare le modalità di una variabile qualitativa:
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-calcio$Draw &lt;- calcio$FTR # Creo una copia della variabile FTR chiamata Draw
-levels(calcio$Draw) &lt;- c("Not_Draw", "Draw", "Not_Draw") # Accorpamento delle modalità
-
-calcio$Draw[1:10]
-# [1] Not_Draw Not_Draw Draw     Not_Draw Not_Draw Not_Draw
-# [7] Draw     Draw     Draw     Not_Draw
-# Levels: Not_Draw Draw
+calcio_home &lt;- subset(calcio, subset = B365H &gt; 9) 
+calcio_home
+#            Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+# 162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw
+# 224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw
+# 1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw
 \end{minted}
+
+\item Il comando \texttt{subset} implicitamente rimuove i valori mancanti. 
 \ei
 \end{frame}</code></pre>
 
