@@ -350,6 +350,55 @@
     "text": "I pacchetti R\nCome menzionato nella lezione introduttiva, R è organizzato in pacchetti.\nSe vogliamo utilizzare le funzioni di un pacchetto, questo può essere richiamato usando la funzione library, ovvero:\n\nlibrary(MASS) # Carica in memoria il pacchetto MASS\nlibrary(knitr) # Carica in memoria il pacchetto knitr\n\n\nSe un pacchetto non è presente nel computer è necessario installarlo.\nSi può usare il comando seguente oppure usare la finestra “Packages” presente in RStudio.\n\ninstall.packages(\"knitr\") # Installa il pacchetto knitr"
   },
   {
+    "objectID": "lezioni/un_C.html#unità-c",
+    "href": "lezioni/un_C.html#unità-c",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Unità C",
+    "text": "Unità C\n\nL’oggetto data.frame\nImportazione di un dataset in memoria\nEsplorazione e manipolazione di un dataset\nTipologia di variabili\nI valori mancanti\n\n\n\n\n\n\n\nNota\n\n\nEsercizi R associati disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_C.html#gli-oggetti-di-tipo-data.frame",
+    "href": "lezioni/un_C.html#gli-oggetti-di-tipo-data.frame",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Gli oggetti di tipo data.frame",
+    "text": "Gli oggetti di tipo data.frame\nUn oggetto R chiamato data.frame corrisponde alla matrice dei dati.\nCiascuna riga rappresenta quindi un’unità statistica, mentre ciascuna colonna rappresenta invece una variabile.\n\nUn data.frame assomiglia ad una matrice (matrix), ma è pensato per l’analisi dei dati.\nAd esempio, un data.frame può contenere anche valori non numerici, come per esempio le variabili qualitative o valori mancanti.\nCome vedremo, il data.frame viene generalmente caricato all’interno di R utilizzando ad esempio la funzione read.table."
+  },
+  {
+    "objectID": "lezioni/un_C.html#importazione-di-un-dataset",
+    "href": "lezioni/un_C.html#importazione-di-un-dataset",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Importazione di un dataset",
+    "text": "Importazione di un dataset\nIl modo più frequente di caricare un dataset in memoria è importarlo da un file esterno.\nSe i dati hanno dimensioni piccole / medie (dimensione file \\(<\\) 3-4 Gb), sono spesso salvati in formato .csv oppure .txt.\nIn contesti reali e più complessi, è possibile importare i dati a partire direttamente da database relazionali come SQL.\n\nÈ sconsigliabile importare i dati in R a partire da un file Excel. Più in generale, ci sono svariate ragioni per evitare Excel se l’obiettivo è condurre una rigorosa analisi dei dati.\n\n\n\n\n\n\n\n\nNota\n\n\nPer poter procedere con i prossimi comandi, è necessario scaricare il file calcio.csv e salvarlo nel proprio computer. Link al file."
+  },
+  {
+    "objectID": "lezioni/un_C.html#i-dati-grezzi-editor-di-testo",
+    "href": "lezioni/un_C.html#i-dati-grezzi-editor-di-testo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "I dati grezzi (editor di testo)",
+    "text": "I dati grezzi (editor di testo)"
+  },
+  {
+    "objectID": "lezioni/un_C.html#la-cartella-di-lavoro",
+    "href": "lezioni/un_C.html#la-cartella-di-lavoro",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La cartella di lavoro",
+    "text": "La cartella di lavoro\nLa sessione di R attiva è aperta in una specifica cartella di lavoro, identificata dal comando getwd.\nAd esempio, la cartella in cui il codice è stato eseguito è la seguente\n\ngetwd() # Identifica la cartella di lavoro (get working directory)\n\n[1] \"/Users/tommaso/Library/Mobile Documents/com~apple~CloudDocs/University/Bicocca/Didattica/Laboratorio Statistica/introR/lezioni\"\n\n\n\nPer aprire il file calcio.csv, bisogna fornire ad R il percorso del file, che dipende da dove questo è stato salvato (sul Desktop, cartella downloads, etc).\n\n# LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv NEL PROPRIO PC\npath <- \"../dataset/calcio.csv\" # Questo è il percorso del file, relativo a getwd()\n\n\n\nIl percorso del file può anche essere un link, come in questo caso:\n\npath <- \"https://tommasorigon.github.io/introR/dataset/calcio.csv\""
+  },
+  {
+    "objectID": "lezioni/un_C.html#importazione-del-dataset",
+    "href": "lezioni/un_C.html#importazione-del-dataset",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Importazione del dataset",
+    "text": "Importazione del dataset\nÈ anche possibile cambiare la cartella di lavoro tramite il comando setwd.\nIn Rstudio, si può usare l’opzione More -> Set as working directory nella finestra Files, selezionando la cartella di interesse.\nUna volta identificato il corretto path del file, per importare il dataset in memoria si usa ad esempio il comando read.table. Pertanto:\n\n#calcio <- read.table(path, header = TRUE, sep = \",\")\n\n\n\n\n\n\n\n\nNota\n\n\nL’opzione significa che la prima riga contiene i nomi delle variabili.\n\n\n\n\n\n\n\n\n\nNota\n\n\nL’opzione indica che i vari valori di ciascuna variabile sono separati da una virgola.\n\n\n\n\n\nInfine, si noti che nel caso in cui il file sia contenuto nella cartella di lavoro, è quindi sufficiente usare:\n\ncalcio <- read.table(\"calcio.csv\", header = TRUE, sep = \",\")"
+  },
+  {
+    "objectID": "lezioni/un_C.html#esplorazione-di-un",
+    "href": "lezioni/un_C.html#esplorazione-di-un",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esplorazione di un ",
+    "text": "Esplorazione di un \nIn primo luogo, siamo interessati a capire quante e quante sono contenute nel dataset :\nPer verificare di non aver commesso errori grossolani nell’importazione del , possiamo visualizzare le prime \\(6\\) osservazioni con il comando :\nIl comando può essere usato per mostrare le ultime \\(6\\) osservazioni:\n\\end{frame}\n```{=tex}\n\\begin{frame}[fragile]{Il dataset \\texttt{calcio}}\n\\bi\n\\item Il dataset calcio contiene quindi un totale di $7$ variabili. Ciascuna osservazione è una \\empb{partita di calcio} avvenuta nel campionato di \\empr{serie A} dal 2008 al 2015. \n\\item La variabile \\texttt{Date} indica la data della partita.\n\\item Le variabili \\texttt{HomeTeam}, \\texttt{AwayTeam} indicano la squadra che ha giocato in casa ed in trasferta, rispettivamente. \n\\item La variabile \\texttt{FTR} (``Full Time Result'') indica se la partita è stata vinta dalla squadra di casa (\\texttt{H}), dalla squadra in trasferta (\\texttt{A}), o si è conclusa con un pareggio (\\texttt{D}). \n\\item Le variabili \\texttt{B365H}, \\texttt{B365D} e \\texttt{B365A}, indicano le quote della compagnia di scommesse \\empb{Bet365 Group Ltd} relative ai 3 eventi, prima dell'inizio della partita.\n\\item Per \\empb{accedere} e \\empr{modificare}  i nomi delle variabili, si utilizza il comando \\texttt{colnames}. \n\n\n\\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\\footnotesize]{R}\ncolnames(calcio) # Per accedere ai nomi delle variabili\n# [1] \"Date\"     \"HomeTeam\" \"AwayTeam\" \"FTR\"      \"B365H\"    \"B365D\"    \"B365A\"   \n\\end{minted}\n\\ei\n\\end{frame}"
+  },
+  {
     "objectID": "exe/es_1.html",
     "href": "exe/es_1.html",
     "title": "R per l’analisi statistica multivariata",
