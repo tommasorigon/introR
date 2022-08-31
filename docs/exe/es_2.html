@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -212,59 +149,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A <a href="../dataset/elezioni.RData">questo link</a> sono disponibili i dati delle elezioni municipali del 2016 presso il comune di Milano.</p>
 <hr>
 <ol type="1">
-<li>Si carichino in memoria i dati.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../dataset/elezioni.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Quali variabili contiene il dataset <code>elez</code>? Di quale tipologia sono?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(elez)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   537619 obs. of  2 variables:
- $ Lista    : Factor w/ 9 levels "Rizzo, B. V.",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ Municipio: Factor w/ 9 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-</div>
-</div>
-<ol type="1">
+<li><p>Si carichino in memoria i dati.</p></li>
+<li><p>Quali variabili contiene il dataset <code>elez</code>? Di quale tipologia sono?</p></li>
 <li><p>Si ottenga il numero di voti ottenuti da ciascun candidato nei differenti Municipi di Milano.</p></li>
 <li><p>Si ottenga il numero di voti ottenuti da ciascun candidato e se ne faccia un grafico. Si ottenga inoltre la percentuale di voti ottenuti da ciascun candidato.</p></li>
 <li><p>Si scriva la funzione <code>Gini(x)</code> che calcola l’indice di Gini per una variabile qualitativa. L’indice di Gini è definito come <span class="math display">\[
 G = 1 - \sum_{j=1}^k f_j^2,
 \]</span> dove <span class="math inline">\(f_1,\dots,f_k\)</span> sono le frequenze relative delle <span class="math inline">\(k\)</span> modalità.</p></li>
+<li><p>Si scriva una funzione <code>Gini_norm(x)</code>che calcola l’indice di Gini normalizzato, ovvero <span class="math display">\[G_\text{norm} = \frac{k}{k-1} G.\]</span></p></li>
+<li><p>Si valuti la polarizzazione dei voti tra i candidati nelle diverse municipalità utilizzando l’indice di Gini normalizzato. Si organizzino quindi i risultati in una tabella e si dica quale municipalità presenta la polarizzazione maggiore.</p></li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Gini <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  freq <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(x))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  freq_rel <span class="ot">&lt;-</span> freq <span class="sc">/</span> <span class="fu">sum</span>(freq)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(freq_rel<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Si scriva una funzione <code>Gini_norm(x)</code>che calcola l’indice di Gini normalizzato, ovvero <span class="math display">\[G_\text{norm} = \frac{k}{k-1} G.\]</span></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Gini_norm <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  freq <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(x))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  freq_rel <span class="ot">&lt;-</span> freq <span class="sc">/</span> <span class="fu">sum</span>(freq)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(freq)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">/</span> (k <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(freq_rel<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Si valuti la polarizzazione dei voti tra i candidati nelle diverse municipalità utilizzando l’indice di Gini normalizzato. Si organizzino quindi i risultati in una tabella e si dica quale municipalità presenta la polarizzazione maggiore.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(elez<span class="sc">$</span>Lista, elez<span class="sc">$</span>Municipio, Gini_norm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        1         2         3         4         5         6         7         8 
-0.6865002 0.7315898 0.7237984 0.7260422 0.7303878 0.7287159 0.7295412 0.7352783 
-        9 
-0.7436358 </code></pre>
-</div>
-</div>
 </section>
 <section id="esercizio-c" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-c">Esercizio C</h2>
@@ -272,12 +166,7 @@ G = 1 - \sum_{j=1}^k f_j^2,
 <p>I dati sono disponibili <a href="../dataset/province.csv">a questo link</a>.</p>
 <hr>
 <ol type="1">
-<li>Si carichino i dati in memoria e si salvi il dataset nell’oggetto <code>province</code>.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>province <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/province.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
+<li><p>Si carichino i dati in memoria e si salvi il dataset nell’oggetto <code>province</code>.</p></li>
 <li><p>Quali variabili contiene il dataset <code>province</code>? Di quale tipologia sono?</p></li>
 <li><p>Si rappresenti graficamente la variabile <code>istruzione</code> tramite istogramma. Si calcoli quindi media, mediana e varianza.</p></li>
 <li><p>Si rappresenti graficamente la funzione di ripartizione della variabile <code>agricoltura</code>.</p></li>
@@ -298,121 +187,16 @@ G = 1 - \sum_{j=1}^k f_j^2,
 <p>Supponendo di scommettere sulla vittoria della squadra di casa, puntando un euro su di essa si otterrebbero <code>B365H</code> euro in caso di vittoria.</p>
 <hr>
 <ol type="1">
-<li>Si carichi il dataset in memoria.</li>
+<li><p>Si carichi il dataset in memoria.</p></li>
+<li><p>Verificare le tipologie di variabili presenti nel dataset <code>calcio</code>.</p></li>
+<li><p>Controllare se esistono dei dati mancanti nel dataset. Se presenti, si escludano le righe contenenti dei valori mancanti dall’analisi. <strong>Suggerimento</strong>: si usi la funzione <code>na.omit</code>.</p></li>
+<li><p>Calcolare i principali indici descrittivi per la variabile <code>B365H</code>. Rappresentarla poi tramite istogramma ed il boxplot. Sono presenti valori anomali? Da cosa è possibile intuirlo?</p></li>
+<li><p>Effettuare l’analisi del punto precedenti sulla trasformazione logaritmica di <code>B365H</code>. Sono presenti valori anomali?</p></li>
+<li><p>Valutare la correlazione presente tra <code>B365H</code> e <code>B365A</code>. Ci si poteva aspettare un risultato simile? Cosa implicherebbe una correlazione positiva?</p></li>
+<li><p>Rappresentare con un grafico opportuno la relazione tra le trasformate logaritmiche delle variabili <code>B365H</code> e <code>B365A</code>. Si commenti il risultato.</p></li>
+<li><p>Valutare la quota media <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Come si interpreta questo risultato?</p></li>
+<li><p>Rappresentare tramite boxplot la variabile <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Si commenti il risultato.</p></li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../dataset/calcio.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Verificare le tipologie di variabili presenti nel dataset <code>calcio</code>.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   1900 obs. of  7 variables:
- $ Date    : Date, format: "2014-08-30" "2014-08-30" ...
- $ HomeTeam: Factor w/ 28 levels "Atalanta","Bari",..: 8 22 1 7 11 17 19 24 26 27 ...
- $ AwayTeam: Factor w/ 28 levels "Atalanta","Bari",..: 13 10 28 20 18 14 23 5 12 9 ...
- $ FTR     : Factor w/ 3 levels "A","D","H": 1 3 2 3 1 3 2 2 2 3 ...
- $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...
- $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...
- $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ...</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Controllare se esistono dei dati mancanti nel dataset. Se presenti, si escludano le righe contenenti dei valori mancanti dall’analisi. <strong>Suggerimento</strong>: si usi la funzione <code>na.omit</code>.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Date                  HomeTeam          AwayTeam    FTR    
- Min.   :2008-08-30   Cagliari  :  95   Cagliari  :  95   A:506  
- 1st Qu.:2009-10-28   Chievo    :  95   Chievo    :  95   D:504  
- Median :2011-01-16   Fiorentina:  95   Fiorentina:  95   H:890  
- Mean   :2011-10-31   Genoa     :  95   Genoa     :  95          
- 3rd Qu.:2014-03-23   Inter     :  95   Inter     :  95          
- Max.   :2015-05-31   Juventus  :  95   Juventus  :  95          
-                      (Other)   :1330   (Other)   :1330          
-     B365H            B365D           B365A       
- Min.   : 1.090   Min.   :1.400   Min.   : 1.100  
- 1st Qu.: 1.670   1st Qu.:3.200   1st Qu.: 2.630  
- Median : 2.100   Median :3.300   Median : 3.600  
- Mean   : 2.484   Mean   :3.557   Mean   : 4.564  
- 3rd Qu.: 2.800   3rd Qu.:3.600   3rd Qu.: 5.500  
- Max.   :21.000   Max.   :9.000   Max.   :26.000  
- NA's   :3        NA's   :3       NA's   :3       </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Calcolare i principali indici descrittivi per la variabile <code>B365H</code>. Rappresentarla poi tramite istogramma ed il boxplot. Sono presenti valori anomali? Da cosa è possibile intuirlo?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(calcio<span class="sc">$</span>B365H)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  1.090   1.670   2.100   2.484   2.800  21.000 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> (<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(calcio<span class="sc">$</span>B365H, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(calcio<span class="sc">$</span>B365H)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="es_2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<ol type="1">
-<li>Effettuare l’analisi del punto precedenti sulla trasformazione logaritmica di <code>B365H</code>. Sono presenti valori anomali?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.08618 0.51282 0.74194 0.81273 1.02962 3.04452 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> (<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H), <span class="at">breaks =</span> <span class="dv">20</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="es_2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<ol type="1">
-<li>Valutare la correlazione presente tra <code>B365H</code> e <code>B365A</code>. Ci si poteva aspettare un risultato simile? Cosa implicherebbe una correlazione positiva?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(calcio<span class="sc">$</span>B365H, calcio<span class="sc">$</span>B365A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.5848867</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Rappresentare con un grafico opportuno la relazione tra le trasformate logaritmiche delle variabili <code>B365H</code> e <code>B365A</code>. Si commenti il risultato.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(calcio<span class="sc">$</span>B365H), <span class="fu">log</span>(calcio<span class="sc">$</span>B365A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="es_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<ol type="1">
-<li>Valutare la quota media <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Come si interpreta questo risultato?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(calcio<span class="sc">$</span>B365H, calcio<span class="sc">$</span>FTR, mean) <span class="co"># Comando rapido</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       A        D        H 
-3.189565 2.512247 2.065518 </code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Rappresentare tramite boxplot la variabile <code>B365H</code> per ciascuna categoria della variabile <code>FTR</code>. Si commenti il risultato.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calcio<span class="sc">$</span>B365H <span class="sc">~</span> calcio<span class="sc">$</span>FTR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="es_2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
 </section>
 <section id="esercizio-e" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-e">Esercizio E</h2>
@@ -426,83 +210,15 @@ G = 1 - \sum_{j=1}^k f_j^2,
 </ul>
 <hr>
 <ol type="1">
-<li>Si carichi il dataset in memoria. Si controlli la tipologia delle variabili.</li>
+<li><p>Si carichi il dataset in memoria. Si controlli la tipologia delle variabili.</p></li>
+<li><p>Quante sono le unità statistiche?</p></li>
+<li><p>Qual è la durata media dei film del dataset? E l’incasso medio?</p></li>
+<li><p>Ci sono differenze tra la distribuzione della durata (<code>duration</code>) dei film drammatici (<code>Drama</code>) e quelli non drammatici? Si risponda tramite opportuni indici descrittivi ed analisi grafiche.</p></li>
+<li><p>Quali sono i 5 film che presentano, all’interno del dataset, i maggiori incassi? <strong>Suggerimento</strong>: si usi la funzione <code>order</code>.</p></li>
+<li><p>Rappresentare con grafici appropriati le distribuzioni marginali e la distribuzione congiunta delle variabili <code>lbudget</code> e <code>lgross</code>. Che tipo di relazione sembra esserci tra le due variabili?</p></li>
+<li><p>Si calcoli la correlazione tra <code>lbudget</code> e <code>lgross</code> e si commenti il risultato.</p></li>
+<li><p>Si calcoli la correlazione tra <code>duration</code> e <code>lgross</code> e si commenti il risultato. Possiamo quindi concludere che, per guodagnare molto, sia sufficiente produrre un film della durata di 12 ore?</p></li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../dataset/imdb.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Quante sono le unità statistiche?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(imdb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3227</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Qual è la durata media dei film del dataset? E l’incasso medio?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(imdb<span class="sc">$</span>duration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 111.2699</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">exp</span>(imdb<span class="sc">$</span>lgross))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 58503794</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Ci sono differenze tra la distribuzione della durata (<code>duration</code>) dei film drammatici (<code>Drama</code>) e quelli non drammatici? Si risponda tramite opportuni indici descrittivi ed analisi grafiche.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(imdb<span class="sc">$</span>duration <span class="sc">~</span> imdb<span class="sc">$</span>Drama)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="es_2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<ol type="1">
-<li>Quali sono i 5 film che presentano, all’interno del dataset, i maggiori incassi? <strong>Suggerimento</strong>: si usi la funzione <code>order</code>.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>imdb<span class="sc">$</span>movie_title[<span class="fu">order</span>(imdb<span class="sc">$</span>lgross, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)][<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Avatar&nbsp;"          "Titanic&nbsp;"         "Jurassic World&nbsp;"  "The Avengers&nbsp;"   
-[5] "The Dark Knight&nbsp;"</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Rappresentare con grafici appropriati le distribuzioni marginali e la distribuzione congiunta delle variabili <code>lbudget</code> e <code>lgross</code>. Che tipo di relazione sembra esserci tra le due variabili?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(imdb<span class="sc">$</span>lbudget)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(imdb<span class="sc">$</span>lgross)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(imdb<span class="sc">$</span>lbudget, imdb<span class="sc">$</span>lgross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="es_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Si calcoli la correlazione tra <code>lbudget</code> e <code>lgross</code> e si commenti il risultato.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(imdb<span class="sc">$</span>lbudget, imdb<span class="sc">$</span>lgross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5673974</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Si calcoli la correlazione tra <code>duration</code> e <code>lgross</code> e si commenti il risultato. Possiamo quindi concludere che, per guodagnare molto, sia sufficiente produrre un film della durata di 12 ore?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(imdb<span class="sc">$</span>duration, imdb<span class="sc">$</span>lgross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1783172</code></pre>
-</div>
-</div>
 </section>
 <section id="esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar" class="level2">
 <h2 class="anchored" data-anchor-id="esercizi-tratti-dai-libro-di-testo-albert-rizzo-ar">Esercizi tratti dai libro di testo Albert &amp; Rizzo (<strong>AR</strong>)</h2>

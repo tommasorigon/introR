@@ -15,6 +15,7 @@ format:
     css: styles.css
     toc: true
     toc-title: Contenuto della pagina
+    highlight-style: ayu
 
 editor: visual
 

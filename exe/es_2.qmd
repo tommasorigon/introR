@@ -35,15 +35,7 @@ A [questo link](../dataset/elezioni.RData) sono disponibili i dati delle elezion
 
 1.  Si carichino in memoria i dati.
 
-```{r}
-load("../dataset/elezioni.RData")
-```
-
 1.  Quali variabili contiene il dataset `elez`? Di quale tipologia sono?
-
-```{r}
-str(elez)
-```
 
 1.  Si ottenga il numero di voti ottenuti da ciascun candidato nei differenti Municipi di Milano.
 
@@ -53,30 +45,10 @@ str(elez)
     G = 1 - \sum_{j=1}^k f_j^2,
     $$ dove $f_1,\dots,f_k$ sono le frequenze relative delle $k$ modalità.
 
-```{r}
-Gini <- function(x) {
-  freq <- as.numeric(table(x))
-  freq_rel <- freq / sum(freq)
-  1 - sum(freq_rel^2)
-}
-```
 
 1.  Si scriva una funzione `Gini_norm(x)`che calcola l'indice di Gini normalizzato, ovvero $$G_\text{norm} = \frac{k}{k-1} G.$$
 
-```{r}
-Gini_norm <- function(x) {
-  freq <- as.numeric(table(x))
-  freq_rel <- freq / sum(freq)
-  k <- length(freq)
-  k / (k - 1) * (1 - sum(freq_rel^2))
-}
-```
-
 1.  Si valuti la polarizzazione dei voti tra i candidati nelle diverse municipalità utilizzando l'indice di Gini normalizzato. Si organizzino quindi i risultati in una tabella e si dica quale municipalità presenta la polarizzazione maggiore.
-
-```{r}
-tapply(elez$Lista, elez$Municipio, Gini_norm)
-```
 
 ## Esercizio C
 
@@ -87,10 +59,6 @@ I dati sono disponibili [a questo link](../dataset/province.csv).
 ------------------------------------------------------------------------
 
 1.  Si carichino i dati in memoria e si salvi il dataset nell'oggetto `province`.
-
-```{r}
-province <- read.table("../dataset/province.csv", header = TRUE)
-```
 
 1.  Quali variabili contiene il dataset `province`? Di quale tipologia sono?
 
@@ -122,65 +90,21 @@ Supponendo di scommettere sulla vittoria della squadra di casa, puntando un euro
 
 1.  Si carichi il dataset in memoria.
 
-```{r}
-load("../dataset/calcio.RData")
-```
-
 1.  Verificare le tipologie di variabili presenti nel dataset `calcio`.
-
-```{r}
-str(calcio)
-```
 
 1.  Controllare se esistono dei dati mancanti nel dataset. Se presenti, si escludano le righe contenenti dei valori mancanti dall'analisi. **Suggerimento**: si usi la funzione `na.omit`.
 
-```{r}
-summary(calcio)
-calcio <- na.omit(calcio)
-```
-
 1.  Calcolare i principali indici descrittivi per la variabile `B365H`. Rappresentarla poi tramite istogramma ed il boxplot. Sono presenti valori anomali? Da cosa è possibile intuirlo?
-
-```{r}
-summary(calcio$B365H)
-
-par(mfrow = (c(1, 2)))
-hist(calcio$B365H, breaks = 20)
-boxplot(calcio$B365H)
-```
 
 1.  Effettuare l'analisi del punto precedenti sulla trasformazione logaritmica di `B365H`. Sono presenti valori anomali?
 
-```{r}
-summary(log(calcio$B365H))
-par(mfrow = (c(1, 2)))
-hist(log(calcio$B365H), breaks = 20)
-boxplot(log(calcio$B365H))
-```
-
 1.  Valutare la correlazione presente tra `B365H` e `B365A`. Ci si poteva aspettare un risultato simile? Cosa implicherebbe una correlazione positiva?
-
-```{r}
-cor(calcio$B365H, calcio$B365A)
-```
 
 1.  Rappresentare con un grafico opportuno la relazione tra le trasformate logaritmiche delle variabili `B365H` e `B365A`. Si commenti il risultato.
 
-```{r}
-plot(log(calcio$B365H), log(calcio$B365A))
-```
-
 1.  Valutare la quota media `B365H` per ciascuna categoria della variabile `FTR`. Come si interpreta questo risultato?
 
-```{r}
-tapply(calcio$B365H, calcio$FTR, mean) # Comando rapido
-```
-
 1.  Rappresentare tramite boxplot la variabile `B365H` per ciascuna categoria della variabile `FTR`. Si commenti il risultato.
-
-```{r}
-plot(calcio$B365H ~ calcio$FTR)
-```
 
 ## Esercizio E
 
@@ -200,56 +124,19 @@ Nel dataset `imdb` disponibile [a questo link](../dataset/imdb.RData), ciascuna 
 
 1.  Si carichi il dataset in memoria. Si controlli la tipologia delle variabili.
 
-```{r}
-load("../dataset/imdb.RData")
-```
-
 1.  Quante sono le unità statistiche?
-
-```{r}
-nrow(imdb)
-```
 
 1.  Qual è la durata media dei film del dataset? E l'incasso medio?
 
-```{r}
-mean(imdb$duration)
-mean(exp(imdb$lgross))
-```
-
 1.  Ci sono differenze tra la distribuzione della durata (`duration`) dei film drammatici (`Drama`) e quelli non drammatici? Si risponda tramite opportuni indici descrittivi ed analisi grafiche.
-
-```{r}
-plot(imdb$duration ~ imdb$Drama)
-```
 
 1.  Quali sono i 5 film che presentano, all'interno del dataset, i maggiori incassi? **Suggerimento**: si usi la funzione `order`.
 
-```{r}
-imdb$movie_title[order(imdb$lgross, decreasing = TRUE)][1:5]
-```
-
 1.  Rappresentare con grafici appropriati le distribuzioni marginali e la distribuzione congiunta delle variabili `lbudget` e `lgross`. Che tipo di relazione sembra esserci tra le due variabili?
-
-```{r}
-par(mfrow = c(1, 3))
-hist(imdb$lbudget)
-hist(imdb$lgross)
-plot(imdb$lbudget, imdb$lgross)
-par(mfrow = c(1, 1))
-```
 
 1.  Si calcoli la correlazione tra `lbudget` e `lgross` e si commenti il risultato.
 
-```{r}
-cor(imdb$lbudget, imdb$lgross)
-```
-
 1.  Si calcoli la correlazione tra `duration` e `lgross` e si commenti il risultato. Possiamo quindi concludere che, per guodagnare molto, sia sufficiente produrre un film della durata di 12 ore?
-
-```{r}
-cor(imdb$duration, imdb$lgross)
-```
 
 ## Esercizi tratti dai libro di testo Albert & Rizzo (**AR**)
 
