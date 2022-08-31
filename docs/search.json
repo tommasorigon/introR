@@ -210,6 +210,132 @@
     "text": "Operazioni sulle matrici V\nSia \\({\\bf A}\\) una matrice quadrata \\(n \\times n\\) a valori reali. La sua matrice inversa \\({\\bf A}^{-1}\\), quando esiste, è l’unica matrice tale per cui\n\\[\n{\\bf A} {\\bf A}^{-1} = {\\bf A}^{-1} {\\bf A} =  I_n.\n\\]\nPer ottenere \\({\\bf A}^{-1}\\) si usa il comando solve.\n\nA <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))\nA1 <- solve(A) # Matrice inversa di A\nA1\n\n           [,1]        [,2]        [,3]\n[1,] -0.5833333 -0.08333333  0.95833333\n[2,]  0.1666667  0.16666667 -0.41666667\n[3,]  0.4166667 -0.08333333 -0.04166667\n\n\n\n\nround(A %*% A1, digits = 5) # Operazione di controllo\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1\n\n\n\n\n\ndet(A) # Calcola il determinante della matrice A\n\n[1] -24"
   },
   {
+    "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-vi",
+    "href": "lezioni/un_A.html#operazioni-sulle-matrici-vi",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici VI",
+    "text": "Operazioni sulle matrici VI\nNel caso una matrice non sia invertibile, il determinante è pari a \\(0\\). Il comando solve in quel caso produce un errore.\n\n# Esempio di matrice NON invertibile\nA <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))\ndet(A) # Deteminante pari a 0, solve(A) produce un errore\n\n[1] 0\n\n\n\nCi sono numerose funzioni per la scomposizione di matrici, il cui output è a volte una lista. Il risultato delle seguenti funzioni è omesso.\n\nA <- matrix(c(4, 1, 1, 8), ncol = 2)\nchol(A) # Scomposizione di Cholesky\nqr(A) # Scomposizione QR\neigen(A) # Scomposizione spettrale"
+  },
+  {
+    "objectID": "lezioni/un_A.html#liste",
+    "href": "lezioni/un_A.html#liste",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Liste",
+    "text": "Liste\nUna lista è una collezione di oggetti (numeri, vettori, matrici, etc).\nPer salvare o per estrarre un oggetto da una lista si usa il simbolo del dollaro $.\n\n# Creazione di una lista\nnew_list <- list(\n  A = matrix(c(4, 1, 1, 8), ncol = 2),\n  x = c(1, 2, 6, 6, 9)\n)\n\nnew_list\n\n$A\n     [,1] [,2]\n[1,]    4    1\n[2,]    1    8\n\n$x\n[1] 1 2 6 6 9"
+  },
+  {
+    "objectID": "lezioni/un_A.html#esempio-la-scomposizione-spettrale",
+    "href": "lezioni/un_A.html#esempio-la-scomposizione-spettrale",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esempio: la scomposizione spettrale",
+    "text": "Esempio: la scomposizione spettrale\nGli autovalori ed autovettori di una matrice \\(\\textbf{A}\\) si ottengono tramite il comando eigen.\nIl risultato è una lista, contenente gli autovettori (vectors) e autovalori (values).\n\nSpec_A <- eigen(A) # Scomposizione spettrale della matrice A\nSpec_A\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529\n\n\n\n\nSpec_A$values # Estrazione degli autovalori\n\n[1] 8.236068 3.763932"
+  },
+  {
+    "objectID": "lezioni/un_B.html#unità-b",
+    "href": "lezioni/un_B.html#unità-b",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Unità B",
+    "text": "Unità B\n\n\nDefinizione di una nuova funzione\nIstruzioni di controllo: if, else\nCicli for, cicli while\nCenni alle funzioni *apply\nI pacchetti R\nEsercizi R associati disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_B.html#funzioni-i",
+    "href": "lezioni/un_B.html#funzioni-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Funzioni I",
+    "text": "Funzioni I\nOltre ad essere un software statistico, R è un linguaggio di programmazione.\nLa maggior parte degli oggetti R è una funzione. Infatti:\n\nclass(sum) # Identifica la tipologia di oggetto\n\n[1] \"function\"\n\n\n\n\nclass(log) # Secondo esempio\n\n[1] \"function\"\n\n\n\n\nÈ possibile quindi definire nuove funzioni, in aggiunta a quelle già esistenti.\nUna volta create, le funzioni possono essere usate proprio come tutte le altre."
+  },
+  {
+    "objectID": "lezioni/un_B.html#funzioni-ii",
+    "href": "lezioni/un_B.html#funzioni-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Funzioni II",
+    "text": "Funzioni II\nPer creare una nuova funzione, si utilizza comando function.\nLa nuova funzione cube calcola il cubo del numero ricevuto come input:\n\ncube <- function(x) {\n  out <- x^3\n  out\n}\n\n\nL’ultimo oggetto (in questo caso chiamato out) viene restituito come risultato:\n\ncube(4) # Calcola il cubo del valore 4\n\n[1] 64\n\n\n\n\nPossiamo alternativamente utilizzare anche il comando return per restituire il risultato:\n\ncube <- function(x) {\n  out <- x^3\n  return(out) # Esplicita che il valore da dover restituire è out\n}\ncube(8) # Calcola il cubo del valore 8\n\n[1] 512"
+  },
+  {
+    "objectID": "lezioni/un_B.html#funzioni-iii",
+    "href": "lezioni/un_B.html#funzioni-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Funzioni III",
+    "text": "Funzioni III\nÈ possibile definire nuove funzioni con molteplici argomenti, scegliendo anche i loro eventuali valori predefiniti\n\npower <- function(x, p = 2) {\n  out <- x^p\n  out\n}\n\n\nIl valore predefinito per l’argomento p è il quadrato (p = 2), infatti:\n\npower(x = 4) # Calcola il quadrato del valore 4\n\n[1] 16\n\n\n\n\n\npower(4) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti\n\n[1] 16\n\n\n\n\nTuttavia, possiamo selezionare una potenza diversa nel modo seguente:\n\npower(x = 4, p = 3) # Calcola il cubo del valore 4\n\n[1] 64\n\npower(4, 3) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti\n\n[1] 64"
+  },
+  {
+    "objectID": "lezioni/un_B.html#istruzioni-di-controllo-i",
+    "href": "lezioni/un_B.html#istruzioni-di-controllo-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Istruzioni di controllo I",
+    "text": "Istruzioni di controllo I\nL’istruzione di controllo if consente di svolgere una determinata operazione solamente se una certa condizione è verificata (TRUE oppure FALSE).\nL’istruzione di controllo (facoltativa) else consente di svolgere un’operazione alternativa se la precedente condizione non è verificata.\n\nAd esempio, il seguente codice mostra a schermo (funzione print) una frase diversa a seconda che la condizione sia vera o falsa:\n\ncondizione <- pi^2 < 10 # Valore booleano (in questo caso la condizione è TRUE)\n\nif(condizione) {\n  print(\"La condizione è vera\")\n  # Alcuni comandi da eseguire\n  # ...\n} else {\n  print(\"La condizione è falsa\")\n  # Altri comandi da eseguire\n  # ...\n}\n\n[1] \"La condizione è vera\""
+  },
+  {
+    "objectID": "lezioni/un_B.html#istruzioni-di-controllo-ii",
+    "href": "lezioni/un_B.html#istruzioni-di-controllo-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Istruzioni di controllo II",
+    "text": "Istruzioni di controllo II\nLa seguente funzione square_root è un esempio più concreto relativo ad if ed else.\nSe il numero fornito come input è negativo, viene restituito un NaN:\n\nsquare_root <- function(x) {\n  if (x < 0) {\n    # Messaggio di avvertimento; in realtà sarebbe più appropriato usare il comando \"warning\"\n    print(\"Il valore di x deve essere positivo\") \n    out <- NaN # Restituisco Not A Number\n  } else {\n    out <- sqrt(x)\n  }\n  out\n}\n\nsquare_root(-2) # La condizione x < 0 è verificata\n\n[1] \"Il valore di x deve essere positivo\"\n\n\n[1] NaN\n\nsquare_root(36) # La condizione x < 0 NON è verificata\n\n[1] 6"
+  },
+  {
+    "objectID": "lezioni/un_B.html#cicli-while-e-for-i",
+    "href": "lezioni/un_B.html#cicli-while-e-for-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Cicli while e for I",
+    "text": "Cicli while e for I\nI cicli for ed i cicli while ripetono l’operazione contenuta tra le parentesi graffe { } fintanto che una determinata condizione non si è verificata.\n\nCominciamo con un semplice esempio relativo alla funzione while:\n\ni <- 5 # Partiamo con i = 5\n\nwhile (i <= 25) { # Ripete l'operazione fintanto che i non è minore o uguale di 25\n  print(i) # Mostra a schermo il valore di i\n  i <- i + 5 # Incrementa il valore di i\n\n  # In contesti reali, qui ovviamente ci sono altre operazioni da eseguire\n  # ...\n}\n\n[1] 5\n[1] 10\n[1] 15\n[1] 20\n[1] 25"
+  },
+  {
+    "objectID": "lezioni/un_B.html#cicli-while-e-for-ii",
+    "href": "lezioni/un_B.html#cicli-while-e-for-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Cicli while e for II",
+    "text": "Cicli while e for II\nAttenzione a non creare dei loop senza fine!\n\nIl codice seguente richiede l’interruzione forzata della sessione di R oppure, nella peggiore delle ipotesi, il riavvio del computer:\n\n# NON ESEGUIRE IL SEGUENTE CODICE!\n#\n# La condizione i <= 25 è sempre vera perché i non viene aggiornato\ni <- 5\nwhile (i <= 25) {\n  print(i)\n\n  # Altre operazioni da eseguire\n  # ...\n}"
+  },
+  {
+    "objectID": "lezioni/un_B.html#cicli-while-e-for-ii-1",
+    "href": "lezioni/un_B.html#cicli-while-e-for-ii-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Cicli while e for II",
+    "text": "Cicli while e for II\nIn alternativa ai cicli while, si può usare la sintassi più esplicita dei cicli for.\nIl ciclo esegue il contenuto delle parantesi graffe considerando di volta in volta i valori contenuti ad esempio in un vettore:\n\nvalues <- seq(from = 5, to = 25, by = 5)\nvalues\n\n[1]  5 10 15 20 25\n\nfor (i in values) {\n  print(i + 2) # Mostra a schermo il valore di i + 2\n\n  # Altre operazioni da eseguire\n  # ...\n}\n\n[1] 7\n[1] 12\n[1] 17\n[1] 22\n[1] 27"
+  },
+  {
+    "objectID": "lezioni/un_B.html#esercizio-riassuntivo-i",
+    "href": "lezioni/un_B.html#esercizio-riassuntivo-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo I",
+    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\nTraccia dello svolgimento. Si crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j]."
+  },
+  {
+    "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
+    "href": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione esercizio riassuntivo I",
+    "text": "Soluzione esercizio riassuntivo I\n\ndistances <- function(x) {\n  n <- length(x) # Ottengo la lunghezza del vettore x\n  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota\n\n  for (i in 1:n) {\n    for (j in 1:n) {\n      D[i, j] <- (x[i] - x[j])^2\n    }\n  }\n  D # Valore da restituire\n}\n\nx <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto\ndistances(x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    9   16  361\n[2,]    9    0    1  484\n[3,]   16    1    0  529\n[4,]  361  484  529    0\n\n\nNota. Esistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente."
+  },
+  {
+    "objectID": "lezioni/un_B.html#esercizio-riassuntivo-ii",
+    "href": "lezioni/un_B.html#esercizio-riassuntivo-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo II",
+    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\nSuggerimento. Si usi la funzione print e la funzione resto % di R.\nBonus. Per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if."
+  },
+  {
+    "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-ii",
+    "href": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione esercizio riassuntivo II",
+    "text": "Soluzione esercizio riassuntivo II\nLa soluzione riportata fa uso del costrutto else if.\n\nfor (i in 1:100) {\n  condA <- (i %% 3) == 0 # Il numero è un multiplo di 3?\n  condB <- (i %% 5) == 0 # Il numero è un multiplo di 5?\n  \n  if (condA & condB) {\n    print(\"fizzbuzz\")\n  } else if (condA) {\n    print(\"fizz\")\n  } else if (condB) {\n    print(\"buzz\")\n  } else {\n    print(i)\n  }\n}\n\n[1] 1\n[1] 2\n[1] \"fizz\"\n[1] 4\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 7\n[1] 8\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 11\n[1] \"fizz\"\n[1] 13\n[1] 14\n[1] \"fizzbuzz\"\n[1] 16\n[1] 17\n[1] \"fizz\"\n[1] 19\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 22\n[1] 23\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 26\n[1] \"fizz\"\n[1] 28\n[1] 29\n[1] \"fizzbuzz\"\n[1] 31\n[1] 32\n[1] \"fizz\"\n[1] 34\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 37\n[1] 38\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 41\n[1] \"fizz\"\n[1] 43\n[1] 44\n[1] \"fizzbuzz\"\n[1] 46\n[1] 47\n[1] \"fizz\"\n[1] 49\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 52\n[1] 53\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 56\n[1] \"fizz\"\n[1] 58\n[1] 59\n[1] \"fizzbuzz\"\n[1] 61\n[1] 62\n[1] \"fizz\"\n[1] 64\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 67\n[1] 68\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 71\n[1] \"fizz\"\n[1] 73\n[1] 74\n[1] \"fizzbuzz\"\n[1] 76\n[1] 77\n[1] \"fizz\"\n[1] 79\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 82\n[1] 83\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 86\n[1] \"fizz\"\n[1] 88\n[1] 89\n[1] \"fizzbuzz\"\n[1] 91\n[1] 92\n[1] \"fizz\"\n[1] 94\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 97\n[1] 98\n[1] \"fizz\"\n[1] \"buzz\""
+  },
+  {
+    "objectID": "lezioni/un_B.html#la-famiglia-di-funzioni-apply",
+    "href": "lezioni/un_B.html#la-famiglia-di-funzioni-apply",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La famiglia di funzioni *apply",
+    "text": "La famiglia di funzioni *apply\nQuando possibile, sarebbe meglio evitare l’utilizzo dei cicli for, perché questi tendono ad essere lenti in R (a differenza di altri linguaggi, come C++).\nUn’alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni *apply, ovvero: apply, tapply, sapply, mapply, lapply.\nLa più semplice, ovvero apply, esegue una determinata funzione per ciascuna riga / colonna di una matrice.\nEsercizio. Si consulti la documentazione delle funzioni *apply per avere una prima idea del loro funzionamento."
+  },
+  {
+    "objectID": "lezioni/un_B.html#i-pacchetti-r",
+    "href": "lezioni/un_B.html#i-pacchetti-r",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "I pacchetti R",
+    "text": "I pacchetti R\nCome menzionato nella lezione introduttiva, R è organizzato in pacchetti.\nSe vogliamo utilizzare le funzioni di un pacchetto, questo può essere richiamato usando la funzione library, ovvero:\n\nlibrary(MASS) # Carica in memoria il pacchetto MASS\nlibrary(knitr) # Carica in memoria il pacchetto knitr\n\n\nSe un pacchetto non è presente nel computer è necessario installarlo.\nSi può usare il comando seguente oppure usare la finestra “Packages” presente in RStudio.\n\ninstall.packages(\"knitr\") # Installa il pacchetto knitr"
+  },
+  {
     "objectID": "exe/es_1.html",
     "href": "exe/es_1.html",
     "title": "R per l’analisi statistica multivariata",
@@ -656,47 +782,5 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Problema 3",
     "text": "Problema 3\nSi consideri il dataset bacteria della libreria MASS e lo si carichi in memoria. La variabile y indica la presenza (y) o l’assenza (n) del batterio “H influenzae” in alcuni bambini. La variabile trt indica invece il trattamento ricevuto.\n\n(3pt) L’indice di eterogeneità di Gini è definito come \\(G = 1 - \\sum_{j=1}^kf_j^2\\), dove \\(f_1,\\dots,f_k\\) sono le frequenze relative di una variabile qualitativa con modalità \\(c_1,\\dots,c_k\\). Si costruisca in R la funzione Gini(x) che calcola l’indice di Gini di una variabile qualitativa x. Si ottenga quindi Gini(bacteria$trt).\n(1pt) Si costruisca dataset bacteria2 contenente le osservazioni relative alla sesta settimana di sorveglianza (week = 6). Da quante osservazioni è composto?\n(1pt) Utilizzando il dataset bacteria2, si costruisca una tabella di contingenza che mette in relazione le variabili y e trt.\n(2pt) Utilizzando il dataset bacteria2, si ottengano le distribuzioni di frequenza condizionate della variabile y, per ciascun valore della variabile trt. Ci sono delle differenze tra queste distribuzioni?\n(2pt) Utilizzando il dataset bacteria2, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori drug e drug+ della variabile trt in un unico valore, chiamato ad esempio drug_and_drug+. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?"
-  },
-  {
-    "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-vi",
-    "href": "lezioni/un_A.html#operazioni-sulle-matrici-vi",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Operazioni sulle matrici VI",
-    "text": "Operazioni sulle matrici VI\nNel caso una matrice non sia invertibile, il determinante è pari a \\(0\\). Il comando solve in quel caso produce un errore.\n\n# Esempio di matrice NON invertibile\nA <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))\ndet(A) # Deteminante pari a 0, solve(A) produce un errore\n\n[1] 0\n\n\n\nCi sono numerose funzioni per la scomposizione di matrici, il cui output è a volte una lista. Il risultato delle seguenti funzioni è omesso.\n\nA <- matrix(c(4, 1, 1, 8), ncol = 2)\nchol(A) # Scomposizione di Cholesky\nqr(A) # Scomposizione QR\neigen(A) # Scomposizione spettrale"
-  },
-  {
-    "objectID": "lezioni/un_A.html#liste",
-    "href": "lezioni/un_A.html#liste",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Liste",
-    "text": "Liste\nUna lista è una collezione di oggetti (numeri, vettori, matrici, etc).\nPer salvare o per estrarre un oggetto da una lista si usa il simbolo del dollaro $.\n\n# Creazione di una lista\nnew_list <- list(\n  A = matrix(c(4, 1, 1, 8), ncol = 2),\n  x = c(1, 2, 6, 6, 9)\n)\n\nnew_list\n\n$A\n     [,1] [,2]\n[1,]    4    1\n[2,]    1    8\n\n$x\n[1] 1 2 6 6 9"
-  },
-  {
-    "objectID": "lezioni/un_A.html#esempio-la-scomposizione-spettrale",
-    "href": "lezioni/un_A.html#esempio-la-scomposizione-spettrale",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Esempio: la scomposizione spettrale",
-    "text": "Esempio: la scomposizione spettrale\nGli autovalori ed autovettori di una matrice \\(\\textbf{A}\\) si ottengono tramite il comando eigen.\nIl risultato è una lista, contenente gli autovettori (vectors) e autovalori (values).\n\nSpec_A <- eigen(A) # Scomposizione spettrale della matrice A\nSpec_A\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529\n\n\n\n\nSpec_A$values # Estrazione degli autovalori\n\n[1] 8.236068 3.763932"
-  },
-  {
-    "objectID": "lezioni/un_B.html#unità-b",
-    "href": "lezioni/un_B.html#unità-b",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Unità B",
-    "text": "Unità B\n\n\nDefinizione di una nuova funzione\nIstruzioni di controllo: if, else\nCicli for, cicli while\nCenni alle funzioni *apply\nI pacchetti R\nEsercizi R associati disponibili a questo link"
-  },
-  {
-    "objectID": "lezioni/un_B.html#funzioni-i",
-    "href": "lezioni/un_B.html#funzioni-i",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Funzioni I",
-    "text": "Funzioni I\nOltre ad essere un software statistico, R è un linguaggio di programmazione.\nLa maggior parte degli oggetti R è una funzione. Infatti:\n\nclass(sum) # Identifica la tipologia di oggetto\n\n[1] \"function\"\n\n\n\n\nclass(log) # Secondo esempio\n\n[1] \"function\"\n\n\n\n\nÈ possibile quindi definire , in aggiunta a quelle già esistenti.\nUna volta create, le funzioni possono essere usate proprio come tutte le altre."
-  },
-  {
-    "objectID": "lezioni/un_B.html#funzioni-ii",
-    "href": "lezioni/un_B.html#funzioni-ii",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "Funzioni II",
-    "text": "Funzioni II\nPer creare una nuova funzione, si utilizza comando function.\nLa cube calcola il cubo del numero ricevuto come input:\n\ncube <- function(x) {\n  out <- x^3\n  out\n}\n\n\nL’ultimo oggetto (in questo caso chiamato out) viene restituito come risultato:\n\ncube(4) # Calcola il cubo del valore 4\n\n[1] 64\n\n\n\n\nPossiamo alternativamente utilizzare anche il comando return per restituire il risultato:\n\ncube <- function(x) {\n  out <- x^3\n  return(out) # Esplicita che il valore da dover restituire è out\n}\ncube(8) # Calcola il cubo del valore 8\n\n[1] 512\n\n\n\\end{document}"
   }
 ]
