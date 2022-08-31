@@ -1,1 +1,19 @@
 /* css styles */
+
+// fonts
+$presentation-font-size-root: 37px; 
+$font-family-sans-serif: "Palatino Linotype", "Book Antiqua", Palatino,
+  FreeSerif, serif !default;
+
+// colors
+
+// headings
+$presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino,
+  FreeSerif, serif !default;
+$presentation-heading-font-weight: 350;
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.2em;
+}
