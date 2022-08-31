@@ -486,7 +486,7 @@
 <p>In Rstudio, si può usare l’opzione <em>More -&gt; Set as working directory</em> nella finestra <em>Files</em>, selezionando la cartella di interesse.</p>
 <p>Una volta identificato il corretto <em>path</em> del file, per <strong>importare il dataset</strong> in memoria si usa ad esempio il comando <code>read.table</code>. Pertanto:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#calcio &lt;- read.table(path, header = TRUE, sep = ",")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="callout callout-note callout-captioned callout-style-default">
@@ -498,20 +498,10 @@
 <p><strong>Nota</strong></p>
 </div>
 <div class="callout-content">
-<p>L’opzione significa che la prima riga contiene i nomi delle variabili.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Nota</strong></p>
-</div>
-<div class="callout-content">
-<p>L’opzione indica che i vari valori di ciascuna variabile sono separati da una virgola.</p>
+<ul>
+<li>L’opzione <code>header = TRUE</code> significa che la prima riga contiene i nomi delle variabili.</li>
+<li>L’opzione <code>sep = ","</code> indica che i vari valori di ciascuna variabile sono separati da una virgola.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -523,26 +513,181 @@
 </div>
 </div>
 </section>
-<section id="esplorazione-di-un" class="slide level2">
-<h2>Esplorazione di un </h2>
-<p>In primo luogo, siamo interessati a capire quante e quante sono contenute nel dataset :</p>
-<p>Per verificare di non aver commesso errori grossolani nell’importazione del , possiamo visualizzare le prime <span class="math inline">\(6\)</span> osservazioni con il comando :</p>
+<section id="esplorazione-di-un-data.frame" class="slide level2">
+<h2>Esplorazione di un <code>data.frame</code></h2>
+<p>In primo luogo, siamo interessati a capire quante <strong>variabili</strong> e quante <strong>osservazioni</strong> sono contenute nel dataset <code>data.frame</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">dim</span>(calcio) <span class="co"># Equivalente a c(nrow(calcio), ncol(calcio))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1900    7</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Per verificare di non aver commesso errori grossolani nell’importazione del <code>data.frame</code>, possiamo visualizzare le prime <span class="math inline">\(6\)</span> osservazioni con il comando <code>head</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">head</span>(calcio) <span class="co"># Comando equivalente: calcio[1:6, ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Date HomeTeam   AwayTeam FTR B365H B365D B365A
+1 2014-08-30   Chievo   Juventus   A  7.00   4.0  1.50
+2 2014-08-30     Roma Fiorentina   H  1.67   3.8  5.00
+3 2014-08-31 Atalanta     Verona   D  2.05   3.4  3.60
+4 2014-08-31   Cesena      Parma   H  3.10   3.2  2.35
+5 2014-08-31    Genoa     Napoli   A  3.90   3.4  1.95
+6 2014-08-31    Milan      Lazio   H  2.00   3.4  3.75</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
 <p>Il comando può essere usato per mostrare le ultime <span class="math inline">\(6\)</span> osservazioni:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tail</span>(calcio) <span class="co"># Comando equivalente: calcio[1895:1900, ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam  AwayTeam FTR B365H B365D B365A
+1895 2011-05-22    Inter   Catania   H  1.53  3.75  7.00
+1896 2011-05-22 Juventus    Napoli   D  1.90  3.60  3.80
+1897 2011-05-22    Lecce     Lazio   A  6.00  3.60  1.60
+1898 2011-05-22  Palermo    Chievo   A  1.75  3.50  4.75
+1899 2011-05-22     Roma Sampdoria   H  1.29  5.00 11.00
+1900 2011-05-22  Udinese     Milan   D  3.50  1.53  6.50</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="il-dataset-calcio" class="slide level2">
+<h2>Il dataset <code>calcio</code></h2>
+<p>Il dataset calcio contiene quindi un totale di <span class="math inline">\(7\)</span> variabili. Ciascuna osservazione è una <strong>partita di calcio</strong> avvenuta nel campionato di <strong>serie A</strong> dal 2008 al 2015.</p>
+<div class="fragment">
+<ul>
+<li>La variabile <code>Date</code> indica la data della partita.</li>
+<li>Le variabili <code>HomeTeam</code>, <code>AwayTeam</code> indicano la squadra che ha giocato in casa ed in trasferta, rispettivamente.</li>
+<li>La variabile <code>FTR</code> (“<em>Full Time Result</em>”) indica se la partita è stata vinta dalla squadra di casa (<code>H</code>), dalla squadra in trasferta (<code>A</code>), o si è conclusa con un pareggio (<code>D</code>).</li>
+<li>Le variabili <code>B365H</code>, <code>B365D</code> e <code>B365A</code>, indicano le quote della compagnia di scommesse <em>Bet365 Group Ltd</em> relative ai 3 eventi, prima dell’inizio della partita.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Per <strong>accedere</strong> e <strong>modificare</strong> i nomi delle variabili, si utilizza il comando <code>colnames</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">colnames</span>(calcio) <span class="co"># Per accedere ai nomi delle variabili</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"     "HomeTeam" "AwayTeam" "FTR"      "B365H"    "B365D"    "B365A"   </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="tipologia-di-variabili" class="slide level2">
+<h2>Tipologia di variabili</h2>
+<p>In un dataset sono presenti diverse <strong>tipologie di variabili</strong>.</p>
+<div class="fragment">
+<p>Le variabili quantitative discrete e continue in <strong>R</strong> sono codificate come oggetti di tipo <code>integer</code> e <code>numeric</code>, rispettivamente.</p>
+</div>
+<div class="fragment">
+<p>Le variabili qualitative in <strong>R</strong> sono codificate come oggetti di tipo <code>character</code> oppure di tipo <code>factor</code>; la differenza tra queste tipologie verrà chiarita nelle prossime slides.</p>
+<p>Infine, le date in <strong>R</strong> si codificano con la tipologia <code>Date</code>.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>R</strong> non sempre riconosce correttamente la tipologia di variabili, come evidenziato dal comando <code>str</code>, che fornisce un sommario del <code>data.frame</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">str</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1900 obs. of  7 variables:
+ $ Date    : chr  "2014-08-30" "2014-08-30" "2014-08-31" "2014-08-31" ...
+ $ HomeTeam: chr  "Chievo" "Roma" "Atalanta" "Cesena" ...
+ $ AwayTeam: chr  "Juventus" "Fiorentina" "Verona" "Parma" ...
+ $ FTR     : chr  "A" "H" "D" "H" ...
+ $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...
+ $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...
+ $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variabili-quantitative" class="slide level2">
+<h2>Variabili quantitative</h2>
+<p>Per <strong>estrarre una variabile</strong> da un <code>data.frame</code> si procede come nel caso delle liste, ovvero tramite il simbolo <code>$</code>. Le variabili possono essere salvate con un nome a piacere.</p>
+<div class="fragment">
+<p>Una variabile numerica è un vettore <strong>R</strong> a tutti gli effetti, pertanto possiamo applicare le funzioni che abbiamo già incontrato finora</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">is.numeric</span>(calcio<span class="sc">$</span>B365H) <span class="co"># Verifico che si tratta di una variabile di tipo numeric</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">class</span>(calcio<span class="sc">$</span>B365H)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>calcio<span class="sc">$</span>B365H[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="co"># Primi 10 elementi di un vettore R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 7.00 1.67 2.05 3.10 3.90 2.00 2.20 2.30 3.10 1.80</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Le <strong>analisi descrittive</strong> di una variabile numerica verranno affrontate nelle unità successive, per ora ci limitiamo alla manipolazione del <code>data.frame</code>.</p>
+</div>
+</section>
+<section id="variabili-qualitative-i" class="slide level2">
+<h2>Variabili qualitative I</h2>
+<p>Le variabili di tipo <code>character</code> sono appropriate per le stringhe di testo, ovvero se ciascun campo corrisponde ad un breve testo, come ad esempio un <em>Tweet</em>.</p>
+<p>Le variabili qualitative con valori ripetuti vanno invece codificate come <code>factor</code>.</p>
+<p>Dobbiamo quindi <strong>convertire</strong> le <span class="math inline">\(3\)</span> variabili <code>HomeTeam</code>, <code>AwayTeam</code> e <code>FTR</code> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>calcio<span class="sc">$</span>HomeTeam <span class="ot">&lt;-</span> <span class="fu">factor</span>(calcio<span class="sc">$</span>HomeTeam)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>calcio<span class="sc">$</span>AwayTeam <span class="ot">&lt;-</span> <span class="fu">factor</span>(calcio<span class="sc">$</span>AwayTeam)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>calcio<span class="sc">$</span>FTR <span class="ot">&lt;-</span> <span class="fu">factor</span>(calcio<span class="sc">$</span>FTR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>In alternativa, possiamo fare questa operazione in fase di lettura di dati, tramite l’opzione <code>stringsAsFactors</code>. Quindi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="variabili-qualitative-ii" class="slide level2">
+<h2>Variabili qualitative II</h2>
+<p>In primo luogo, verifichiamo che la conversione sia avvenuta correttamente ed esploriamone il contenuto della variabile :</p>
+Nelle variabili di tipo sono pertanto elencate le varie , chiamati in <strong>R</strong>.
+<p>Per accedere alle modalità si usa il comando , che elenca le modalità della variabile considerata in ordine alfabetico:</p>
 <p>\end{frame}</p>
 <pre><code>```{=tex}
-\begin{frame}[fragile]{Il dataset \texttt{calcio}}
+\begin{frame}[fragile]{Variabili qualitative III}
 \bi
-\item Il dataset calcio contiene quindi un totale di $7$ variabili. Ciascuna osservazione è una \empb{partita di calcio} avvenuta nel campionato di \empr{serie A} dal 2008 al 2015. 
-\item La variabile \texttt{Date} indica la data della partita.
-\item Le variabili \texttt{HomeTeam}, \texttt{AwayTeam} indicano la squadra che ha giocato in casa ed in trasferta, rispettivamente. 
-\item La variabile \texttt{FTR} (``Full Time Result'') indica se la partita è stata vinta dalla squadra di casa (\texttt{H}), dalla squadra in trasferta (\texttt{A}), o si è conclusa con un pareggio (\texttt{D}). 
-\item Le variabili \texttt{B365H}, \texttt{B365D} e \texttt{B365A}, indicano le quote della compagnia di scommesse \empb{Bet365 Group Ltd} relative ai 3 eventi, prima dell'inizio della partita.
-\item Per \empb{accedere} e \empr{modificare}  i nomi delle variabili, si utilizza il comando \texttt{colnames}. 
-
+\item Il comando \texttt{levels} permette di \empb{rinominare le modalità}, ad esempio:
 
 \begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-colnames(calcio) # Per accedere ai nomi delle variabili
-# [1] "Date"     "HomeTeam" "AwayTeam" "FTR"      "B365H"    "B365D"    "B365A"   
+calcio$FTR[1:10]
+#  [1] A H D H A H D D D H
+# Levels: A D H
+
+levels(calcio$FTR) &lt;- c("Away", "Draw", "Home") # Rinomino le modalità
+
+calcio$FTR[1:10]
+#  [1] Away Home Draw Home Away Home Draw Draw Draw Home
+# Levels: Away Draw Home
+\end{minted}
+
+
+\item Il comando \texttt{levels} consente inoltre di accorpare le modalità di una variabile qualitativa:
+
+\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
+calcio$Draw &lt;- calcio$FTR # Creo una copia della variabile FTR chiamata Draw
+levels(calcio$Draw) &lt;- c("Not_Draw", "Draw", "Not_Draw") # Accorpamento delle modalità
+
+calcio$Draw[1:10]
+# [1] Not_Draw Not_Draw Draw     Not_Draw Not_Draw Not_Draw
+# [7] Draw     Draw     Draw     Not_Draw
+# Levels: Not_Draw Draw
 \end{minted}
 \ei
 \end{frame}</code></pre>
