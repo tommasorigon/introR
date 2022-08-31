@@ -90,7 +90,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 
 ## Modalità d'esame
 
-L'esame si svolge tramite **computer** e consiste tipicamente in $3$ esercizi da svolgere in **R**. Lo studente deve consegnare un file `nome_cognome.R` con i comandi utilizzati. L'esame si svolgerà sulla [Piattaforma Esami Informatizzati](https://esamionline.elearning.unimib.it/login/index.php).
+L'esame si svolge tramite **computer** e consiste tipicamente in $3$ esercizi da svolgere in **R**. L'esame si svolgerà sulla [Piattaforma Esami Informatizzati](https://esamionline.elearning.unimib.it/login/index.php).
 
 Lo studente all'esame può consultare sia la documentazione ufficiale di **R** che il codice utilizzato a lezione, disponibile a [questo link](lezioni/script.zip).
 
