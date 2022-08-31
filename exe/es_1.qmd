@@ -3,10 +3,6 @@ title: "R per l'analisi statistica multivariata"
 subtitle: 'Esercizi 1'
 ---
 
-```{r startup, include = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = F, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = F, R.options = list(width = 100), collapse = T, dpi = 200, fig.align = "center")
-```
-
 ## Esercizio A
 
 Si scriva in **R** la funzione `f(x)` associata a
@@ -27,9 +23,6 @@ $$
     I = \int_a^b f(x)\mathrm{d}x,
     $$ dove $a < b$ sono due valori reali. Si calcoli il valore dell'integrale $\int_1^3 f(x)\mathrm{d}x$, dove $f(x)$ è la funzione usata nei punti precedenti.
 
-```{r}
-
-```
 
 ## Esercizio B
 
