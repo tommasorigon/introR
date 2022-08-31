@@ -26,13 +26,11 @@ execute:
 -   Funzioni matematiche, grafico di una funzione, operazioni logiche
 -   Operazioni con vettori e matrici
 
-
-:::{.callout-note}
+::: callout-note
 ## Nota
+
 Esercizi **R** associati sono diponibili a [questo link](https://tommasorigon.github.io/introR/exe/es_1.html)
 :::
-
-
 
 ## Calcolatrice scientifica
 
@@ -63,8 +61,9 @@ sin(pi / 4)
 
 . . .
 
-:::{.callout-note}
+::: callout-note
 ## Nota
+
 Tutto ciò che viene scritto dopo un cancelletto (`#`) è considerato un **commento**.
 :::
 
@@ -96,8 +95,9 @@ rm(x) # x non è più presente nel "workspace"
 
 . . .
 
-:::{.callout-note}
+::: callout-note
 ## Nota
+
 **R** è *case sensitive*, pertanto l'oggetto `x` è diverso dall'oggetto `X`.
 :::
 
@@ -165,8 +165,9 @@ atan(x)
 
 . . .
 
-:::{.callout-note}
+::: callout-note
 ## Nota
+
 Le funzioni di **R** si possono combinare tra loro, ad esempio `log(abs(x))`.
 :::
 
@@ -242,8 +243,9 @@ Il comando `? funzione` apre una finestra in cui vengono descritta nel dettaglio
 
 . . .
 
-:::{.callout-tip}
+::: callout-tip
 ## Nota riguardante l'esame
+
 Durante la prova d'esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.
 :::
 
@@ -334,8 +336,9 @@ x
 
 . . .
 
-:::{.callout-note}
+::: callout-note
 ## Nota
+
 Con il termine generico "**vettore**" in **R** non si fa riferimento alla nozione dell'algebra lineare ma semplicemente ad una stringa di valori ordinati.
 :::
 
@@ -450,7 +453,7 @@ L'ultimo comando suggerisce che gli elementi di un vettore possono essere selezi
 
 Cosa succede quando vengono sommati due vettori di dimensioni diverse?
 
-:::{.callout-warning}
+::: callout-warning
 La maggior parte dei linguaggi di programmazione restituisce un errore. **R** invece esegue ugualmente l'operazione "allungando" il vettore più corto.
 :::
 
@@ -570,10 +573,9 @@ t(A) # Calcola la matrice trasposta A'
 sum(A) # Somma di tutti gli elementi di A
 ```
 
-
 ## Operazioni sulle matrici II
 
-Come per i vettori, le operazioni elementari (somma, prodotto, `log`, `exp`, etc.) vengono eseguite **elemento per elemento**. 
+Come per i vettori, le operazioni elementari (somma, prodotto, `log`, `exp`, etc.) vengono eseguite **elemento per elemento**.
 
 ```{r}
 exp(A)
@@ -624,11 +626,9 @@ Il comando `crossprod` funziona correttamente anche con "vettori" **R**.
 
 . . .
 
-Il comando \texttt{crossprod} può essere usato anche per calcolare il seguente **prodotto tra matrici**
-$$
+Il comando \texttt{crossprod} può essere usato anche per calcolare il seguente **prodotto tra matrici** $$
 {\bf A}^\intercal {\bf B},
-$$ 
-dove ${\bf A}$ e ${\bf B}$ sono due matrici di dimensioni compatibili. 
+$$ dove ${\bf A}$ e ${\bf B}$ sono due matrici di dimensioni compatibili.
 
 ## Operazioni sulle matrici IV
 
@@ -651,7 +651,7 @@ Se le matrici non sono compatibili **R** produce un errore (provateci per eserci
 
 ## Operazioni sulle matrici V
 
-Sia ${\bf A}$ una matrice quadrata $n \times n$ a valori reali. La sua **matrice inversa** ${\bf A}^{-1}$, quando esiste, è l'unica matrice tale per cui 
+Sia ${\bf A}$ una matrice quadrata $n \times n$ a valori reali. La sua **matrice inversa** ${\bf A}^{-1}$, quando esiste, è l'unica matrice tale per cui
 
 $$
 {\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
@@ -665,7 +665,7 @@ A1 <- solve(A) # Matrice inversa di A
 A1
 ```
 
-. . . 
+. . .
 
 ```{r}
 round(A %*% A1, digits = 5) # Operazione di controllo
@@ -676,7 +676,6 @@ round(A %*% A1, digits = 5) # Operazione di controllo
 ```{r}
 det(A) # Calcola il determinante della matrice A
 ```
-
 
 ## Operazioni sulle matrici VI
 
@@ -719,7 +718,7 @@ new_list
 
 Gli autovalori ed autovettori di una matrice $\textbf{A}$ si ottengono tramite il comando `eigen`.
 
-Il risultato è una **lista**, contenente gli autovettori (`vectors`) e autovalori (`values`). 
+Il risultato è una **lista**, contenente gli autovettori (`vectors`) e autovalori (`values`).
 
 ```{r}
 Spec_A <- eigen(A) # Scomposizione spettrale della matrice A
