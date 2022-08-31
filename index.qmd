@@ -50,7 +50,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 |                                                  | **INTRODUZIONE AD R**                      |                                             |                                                         |
 | A-B-C: calcolo scientifico ed algebra lineare    | [Slides unità A](lezioni/un_A.html)         | [Codice R](lezioni/script/un_A.R)           | **AR** §1.1, §1.3, §A1 --- §A3                          |
 | Elementi di programmazione                       | [Slides unità B](lezioni/un_B.html)         | [Codice R](lezioni/script/un_B.R)           | **AR** §1.2, §1.6 --- §1.8                              |
-| I dataframes                                     | [Slides unità C](lezioni/un_C.pdf)         | [Codice R](lezioni/script/un_C.R)           | **AR** §1.4 --- §1.5                                    |
+| I dataframes                                     | [Slides unità C](lezioni/un_C.html)         | [Codice R](lezioni/script/un_C.R)           | **AR** §1.4 --- §1.5                                    |
 | *Esercizi*                                       | [Esercizi 1](exe/es_1.html)                | [soluzione.R](exe/es_1.R)                   |                                                         |
 |                                                  | **STATISTICA DESCRITTIVA**                 |                                             |                                                         |
 | Analisi descrittiva dei dati `dde`               | [Slides unità D](lezioni/un_D.pdf)         | [Codice R](lezioni/script/un_D.R)           | **AR** §2.1 --- §2.3, §2.7                              |

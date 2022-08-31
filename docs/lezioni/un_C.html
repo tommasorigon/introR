@@ -803,37 +803,170 @@ NA.2       &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA
 </section>
 <section id="i-valori-mancanti-1" class="slide level2">
 <h2>I valori mancanti</h2>
-<p>In particolare, ci sono <span class="math inline">\(3\)</span> osservazioni (la <span class="math inline">\(1501\)</span>, <span class="math inline">\(1846\)</span> e la <span class="math inline">\(1848\)</span>) i cui valori relativi a Bet365 non sono disponibili.</p>
-La funzione produce una matrice della stessa dimensione di , contenente se il valore è mancante e altrimenti.
-La funzione produce un vettore i cui valori alla somma degli elementi di ciascuna riga della .
-<p>Di conseguenza, indica quanti valori mancanti sono presenti in ciascuna riga. \end{frame}</p>
-<pre><code>```{=tex}
-\begin{frame}[fragile]{Gestire i dati mancanti}
-\bi
-\item La gestione statistica dei dati mancanti non è tra gli obiettivi di questo corso. 
-\item La soluzione più facile, ma potenzialmente molto pericolosa, consistente semplicemente nel \empr{rimuovere} le righe incomplete tramite il comando \texttt{na.omit}: 
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-calcio_no_na &lt;- na.omit(calcio)
-dim(calcio_no_na)
-# [1] 1897    8
-\end{minted}
-
-\item Per risolvere il problema originario, ovvero identificare le partite in cui la squadra di casa ha bassa probabilità di vittoria, si può usare \texttt{subset}: 
-
-
-\begin{minted}[frame=lines,baselinestretch=1.1,fontsize=\footnotesize]{R}
-calcio_home &lt;- subset(calcio, subset = B365H &gt; 9) 
-calcio_home
-#            Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
-# 162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw
-# 224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw
-# 1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw
-\end{minted}
-
-\item Il comando \texttt{subset} implicitamente rimuove i valori mancanti. 
-\ei
-\end{frame}</code></pre>
+<p>In particolare, ci sono <span class="math inline">\(3\)</span> osservazioni (la <span class="math inline">\(1501\)</span>, <span class="math inline">\(1846\)</span> e la <span class="math inline">\(1848\)</span>) i cui valori relativi a <em>Bet365</em> non sono disponibili.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>calcio[<span class="fu">rowSums</span>(<span class="fu">is.na</span>(calcio)) <span class="sc">&gt;</span> <span class="dv">0</span>, ] <span class="co"># Identifica le righe con valori mancanti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+1501 2010-05-09  Bologna  Catania Draw    NA    NA    NA     Draw
+1846 2011-04-17   Chievo  Bologna Home    NA    NA    NA Not_Draw
+1848 2011-04-17    Genoa  Brescia Home    NA    NA    NA Not_Draw</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>La funzione <code>is.na</code> produce una matrice <strong>logica</strong> della stessa dimensione di <strong>calcio</strong>, contenente <code>TRUE</code> se il valore è mancante e <code>FALSE</code> altrimenti.</p>
+</div>
+<div class="fragment">
+<p>La funzione <code>rowSums(matrice)</code> produce un vettore i cui valori alla somma degli elementi di ciascuna riga della <code>matrice</code>.</p>
+<p>Di conseguenza, <code>rowSums(is.na(calcio))</code> indica quanti valori mancanti sono presenti in ciascuna riga.</p>
+</div>
+</section>
+<section id="gestire-i-dati-mancanti" class="slide level2">
+<h2>Gestire i dati mancanti</h2>
+<p>La gestione statistica dei dati mancanti non è tra gli obiettivi di questo corso.</p>
+<p>La soluzione più facile, sebbene potenzialmente molto pericolosa, consistente semplicemente nel <strong>rimuovere</strong> le righe incomplete tramite il comando <code>na.omit</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>calcio_no_na <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(calcio)</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="fu">dim</span>(calcio_no_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1897    8</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Per risolvere il problema originario, ovvero identificare le partite in cui la squadra di casa ha bassa probabilità di vittoria, si può usare <code>subset</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>calcio_home <span class="ot">&lt;-</span> <span class="fu">subset</span>(calcio, <span class="at">subset =</span> B365H <span class="sc">&gt;</span> <span class="dv">9</span>) </span>
+<span id="cb51-2"><a href="#cb51-2"></a>calcio_home</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw
+224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw
+1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="selezione-delle-variabili" class="slide level2">
+<h2>Selezione delle variabili</h2>
+<p>Il comando <code>subset</code> può essere usato sia per <strong>selezionare le righe</strong> (osservazioni) che per <strong>selezionare le colonne</strong> (variabili).</p>
+<div class="fragment">
+<p>Nel secondo caso, si può procedere tramite l’opzione <code>select</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>calcio_B365 <span class="ot">&lt;-</span> <span class="fu">subset</span>(calcio, <span class="at">select =</span> <span class="fu">c</span>(B365H, B365D, B365A))</span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="fu">head</span>(calcio_B365)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  B365H B365D B365A
+1  7.00   4.0  1.50
+2  1.67   3.8  5.00
+3  2.05   3.4  3.60
+4  3.10   3.2  2.35
+5  3.90   3.4  1.95
+6  2.00   3.4  3.75</code></pre>
+</div>
+</div>
+<p>Ovviamente è possibile anche selezionare sia le righe che le colonne.</p>
+</div>
+</section>
+<section id="il-comando-attach" class="slide level2">
+<h2>Il comando <code>attach</code></h2>
+<p>In <strong>R</strong> esiste un comando chiamato <code>attach</code>. Sebbene usato da molti, questo comando è <strong>diabolico</strong> e sarebbe meglio evitare di utilizzarlo.</p>
+<div class="fragment">
+<p>Il comando <code>attach(dataframe)</code> consente di utilizzare le variabili di un <code>data.frame</code> come se queste fossero presenti nel workspace.</p>
+<p>Questa pratica tuttavia rende il codice molto meno leggibile e spesso conduce ad errori di varia natura.</p>
+</div>
+<div class="fragment">
+<p>Nonostante le varie proteste a favore della rimozione di <code>attach</code> da parte di alcuni, questo comando continua a (r)esistere e viene tuttora usato da molti.</p>
+<p>In questo corso non verranno forniti esempi di utilizzo di <code>attach</code> per evitare di indurre lo studente in tentazione.</p>
+</div>
+</section>
+<section id="sommario" class="slide level2">
+<h2>Sommario</h2>
+<p>A seguito di tutte queste operazioni, il dataset risulta molto modificato rispetto alla sua versione iniziale.</p>
+<p>Ri-eseguendo il comando <code>str</code> otteniamo infatti che</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">str</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1900 obs. of  8 variables:
+ $ Date    : Date, format: "2014-08-30" "2014-08-30" ...
+ $ HomeTeam: Factor w/ 28 levels "Atalanta","Bari",..: 8 22 1 7 11 17 19 24 26 27 ...
+ $ AwayTeam: Factor w/ 28 levels "Atalanta","Bari",..: 13 10 28 20 18 14 23 5 12 9 ...
+ $ FTR     : Factor w/ 3 levels "Away","Draw",..: 1 3 2 3 1 3 2 2 2 3 ...
+ $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...
+ $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...
+ $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ...
+ $ Draw    : Factor w/ 2 levels "Not_Draw","Draw": 1 1 2 1 1 1 2 2 2 1 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="il-banco-vince-sempre" class="slide level2">
+<h2>Il banco vince sempre</h2>
+<p>Nelle scommesse calcistiche le <strong>quote</strong> rappresentano l’inverso della probabilità di un evento, per cui <span class="math display">\[
+    (\text{Probabilità dell'evento}) = \frac{1}{(\text{Quota dell'evento})}
+    \]</span></p>
+<div class="fragment">
+<p>La quota rappresenta inoltre l’ammontare in € che il vincitore riceve a fronte del pagamento dell’importo unitario di <span class="math inline">\(1\)</span>€.</p>
+</div>
+<div class="fragment">
+<p>Ad esempio, scommettendo <span class="math inline">\(10\)</span>€ sulla vittoria della Juventus nella partita contro il Chievo del 30 Agosto 2014, si sarebbero ottenuti <span class="math inline">\(15\)</span>€, dato che la quota era di <span class="math inline">\(1.50\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Se la scommessa fosse equa, le probabilità di vittoria, pareggio e sconfitta dovrebbero sommare ad <span class="math inline">\(1\)</span>.</p>
+<p>Tuttavia, questo non accade: le probabilità ottenute sommano ad un valore <span class="math inline">\(&gt;1\)</span>. Tale discrepanza si chiama <strong>allibramento</strong> o <strong>aggio</strong> e garantisce al banco un guadagno.</p>
+</div>
+</section>
+<section id="esercizio-riassuntivo" class="slide level2">
+<h2>Esercizio riassuntivo</h2>
+<ul>
+<li><p>Si ottenga la variabile <code>aggio</code>, ottenuta come la differenza tra la somma delle “probabilità” dei <span class="math inline">\(3\)</span> eventi (vittoria, pareggio, sconfitta) ed <span class="math inline">\(1\)</span>, ovvero il caso equo.</p></li>
+<li><p>Si dica qual è l’aggio associato alla partita Udinese-Parma del 1 Settembre 2013.</p></li>
+<li><p>Si dica in quali partite è stato applicato il più basso ed il più alto aggio e si identifichino tali valori.</p></li>
+<li><p>In quale partita è stato applicato l’aggio più alto nel campionato di Serie A del 2009/2010?</p></li>
+</ul>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Suggerimento</strong></p>
+</div>
+<div class="callout-content">
+<p>Si usino i comandi <code>which.min</code> e <code>which.max</code>. Si consulti la documentazione per capirne il funzionamento.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="soluzione" class="slide level2">
+<h2>Soluzione</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Calcolo dell'aggio</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>calcio<span class="sc">$</span>aggio <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365H <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365D <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365A <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="co"># Aggio associato a Udinese-Parma del 1 Settembre 2013</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="fu">subset</span>(calcio, Date <span class="sc">==</span> <span class="st">"2013-09-01"</span> <span class="sc">&amp;</span> HomeTeam <span class="sc">==</span> <span class="st">"Udinese"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio
+400 2013-09-01  Udinese    Parma Home   2.1  3.25   3.6 Not_Draw 0.06166056</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># Minimo e massimo aggio</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>calcio[<span class="fu">which.min</span>(calcio<span class="sc">$</span>aggio), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio
+301 2015-04-18 Juventus    Lazio Home  1.95   3.4  4.33 Not_Draw 0.03788504</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>calcio[<span class="fu">which.max</span>(calcio<span class="sc">$</span>aggio), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio
+1839 2011-04-10  Palermo   Cesena Draw   2.1   2.1     6 Draw 0.1190476</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Il campionato di Serie A inizia a fine Agosto e finisce a fine Maggio</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>calcio2009_2010 <span class="ot">&lt;-</span> <span class="fu">subset</span>(calcio, Date <span class="sc">&lt;=</span> <span class="st">"2009-08-15"</span> <span class="sc">&amp;</span> Date <span class="sc">&lt;=</span> <span class="st">"2010-06-15"</span>)</span>
+<span id="cb63-3"><a href="#cb63-3"></a>calcio2009_2010[<span class="fu">which.max</span>(calcio2009_2010<span class="sc">$</span>aggio), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio
+1125 2009-05-24   Chievo  Bologna Draw   3.2  1.57     6 Draw 0.1161093</code></pre>
+</div>
+</div>
 
 
 <img src="img/logoB.png" class="slide-logo r-stretch"><div class="footer footer-default">
