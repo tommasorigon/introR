@@ -39,21 +39,21 @@
     "href": "lezioni/un_A.html#unità-a",
     "title": "R per l’analisi statistica multivariata",
     "section": "Unità A",
-    "text": "Unità A\n\n\nA-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\nEsercizi R associati: esercizi 1"
+    "text": "Unità A\n\nA-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\n\n\n\n\n\n\n\nNota\n\n\nEsercizi R associati sono diponibili a questo link"
   },
   {
     "objectID": "lezioni/un_A.html#calcolatrice-scientifica",
     "href": "lezioni/un_A.html#calcolatrice-scientifica",
     "title": "R per l’analisi statistica multivariata",
     "section": "Calcolatrice scientifica",
-    "text": "Calcolatrice scientifica\nAnzitutto, R può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n[1] 4\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n[1] 32\n\npi / 4 # Pi greco quarti\n\n[1] 0.7853982\n\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2^5 # Sintassi alternativa: 2**5\n\n[1] 32\n\n\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nsqrt(2)\n\n[1] 1.414214\n\nsin(pi / 4)\n\n[1] 0.7071068\n\n\n\n\nNota. Tutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
+    "text": "Calcolatrice scientifica\nAnzitutto, R può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n[1] 4\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n[1] 32\n\npi / 4 # Pi greco quarti\n\n[1] 0.7853982\n\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2^5 # Sintassi alternativa: 2**5\n\n[1] 32\n\n\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nsqrt(2)\n\n[1] 1.414214\n\nsin(pi / 4)\n\n[1] 0.7071068\n\n\n\n\n\n\n\n\n\n\nNota\n\n\nTutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
   },
   {
     "objectID": "lezioni/un_A.html#assegnazione-di-un-valore",
     "href": "lezioni/un_A.html#assegnazione-di-un-valore",
     "title": "R per l’analisi statistica multivariata",
     "section": "Assegnazione di un valore",
-    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo <-.\n\n# Assegna il valore 5 all'oggetto x\nx <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)\n\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny <- x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n[1] 5.377661\n\n\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando rm, ovvero remove.\n\nrm(x) # x non è più presente nel \"workspace\"\n\n\n\nNota. R è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
+    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo <-.\n\n# Assegna il valore 5 all'oggetto x\nx <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)\n\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny <- x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n[1] 5.377661\n\n\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando rm, ovvero remove.\n\nrm(x) # x non è più presente nel \"workspace\"\n\n\n\n\n\n\n\n\n\nNota\n\n\nR è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
   },
   {
     "objectID": "lezioni/un_A.html#pulizia-del-workspace",
@@ -88,7 +88,7 @@
     "href": "lezioni/un_A.html#la-documentazione-ufficiale",
     "title": "R per l’analisi statistica multivariata",
     "section": "La documentazione ufficiale",
-    "text": "La documentazione ufficiale\nLa documentazione di R è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\n\nIl comando ? funzione apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n? log # Documentazione della funzione log\n\n\n\n\nNota riguardante l’esame. Durante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione."
+    "text": "La documentazione ufficiale\nLa documentazione di R è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\n\nIl comando ? funzione apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n? log # Documentazione della funzione log\n\n\n\n\n\n\n\n\n\nNota riguardante l’esame\n\n\nDurante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione."
   },
   {
     "objectID": "lezioni/un_A.html#simboli-speciali",
@@ -116,7 +116,7 @@
     "href": "lezioni/un_A.html#vettori",
     "title": "R per l’analisi statistica multivariata",
     "section": "Vettori",
-    "text": "Vettori\nUn vettore in R viene definito tramite la funzione c(), come nel seguente esempio:\n\nx <- c(4, 2, 2, 8, 10) \nx\n\n[1]  4  2  2  8 10\n\n\n\nNota. Con il termine generico “vettore” in R non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\nInfatti il seguente oggetto è un vettore in R, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx <- c(\"A\", \"B\", 2, 8, 10)\nx\n\n[1] \"A\"  \"B\"  \"2\"  \"8\"  \"10\""
+    "text": "Vettori\nUn vettore in R viene definito tramite la funzione c(), come nel seguente esempio:\n\nx <- c(4, 2, 2, 8, 10) \nx\n\n[1]  4  2  2  8 10\n\n\n\n\n\n\n\n\n\nNota\n\n\nCon il termine generico “vettore” in R non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\n\n\n\nIl seguente oggetto è un vettore in R, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx <- c(\"A\", \"B\", 2, 8, 10)\nx\n\n[1] \"A\"  \"B\"  \"2\"  \"8\"  \"10\""
   },
   {
     "objectID": "lezioni/un_A.html#creazione-di-vettori",
@@ -151,7 +151,7 @@
     "href": "lezioni/un_A.html#operazione-sui-vettori-avvertenze",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazione sui vettori: avvertenze",
-    "text": "Operazione sui vettori: avvertenze\nCosa succede quando vengono sommati due vettori di dimensioni diverse?\nLa maggior parte dei linguaggi di programmazione restituisce un errore. R invece esegue ugualmente l’operazione “allungando” il vettore più corto.\n\nIn questo primo esempio, quantomeno R restituisce un warning.\n\n# Concatenazione di vettori\nx <- 1:5\ny <- 1:6\nx + y # Equivalente a: c(x, x[1]) + y\n\nWarning in x + y: longer object length is not a multiple of shorter object\nlength\n\n\n[1]  2  4  6  8 10  7\n\n\n\n\nIn questo secondo esempio, invece, R non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa\n\nx <- 1:3\ny <- 1:6\nx + y # Equivalente a: c(x, x) + y\n\n[1] 2 4 6 5 7 9"
+    "text": "Operazione sui vettori: avvertenze\nCosa succede quando vengono sommati due vettori di dimensioni diverse?\n\n\n\n\n\n\nWarning\n\n\nLa maggior parte dei linguaggi di programmazione restituisce un errore. R invece esegue ugualmente l’operazione “allungando” il vettore più corto.\n\n\n\n\nIn questo primo esempio, quantomeno R restituisce un warning.\n\n# Concatenazione di vettori\nx <- 1:5\ny <- 1:6\nx + y # Equivalente a: c(x, x[1]) + y\n\nWarning in x + y: longer object length is not a multiple of shorter object\nlength\n\n\n[1]  2  4  6  8 10  7\n\n\n\n\nIn questo secondo esempio, invece, R non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa\n\nx <- 1:3\ny <- 1:6\nx + y # Equivalente a: c(x, x) + y\n\n[1] 2 4 6 5 7 9"
   },
   {
     "objectID": "lezioni/un_A.html#matrici",
@@ -782,5 +782,33 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Problema 3",
     "text": "Problema 3\nSi consideri il dataset bacteria della libreria MASS e lo si carichi in memoria. La variabile y indica la presenza (y) o l’assenza (n) del batterio “H influenzae” in alcuni bambini. La variabile trt indica invece il trattamento ricevuto.\n\n(3pt) L’indice di eterogeneità di Gini è definito come \\(G = 1 - \\sum_{j=1}^kf_j^2\\), dove \\(f_1,\\dots,f_k\\) sono le frequenze relative di una variabile qualitativa con modalità \\(c_1,\\dots,c_k\\). Si costruisca in R la funzione Gini(x) che calcola l’indice di Gini di una variabile qualitativa x. Si ottenga quindi Gini(bacteria$trt).\n(1pt) Si costruisca dataset bacteria2 contenente le osservazioni relative alla sesta settimana di sorveglianza (week = 6). Da quante osservazioni è composto?\n(1pt) Utilizzando il dataset bacteria2, si costruisca una tabella di contingenza che mette in relazione le variabili y e trt.\n(2pt) Utilizzando il dataset bacteria2, si ottengano le distribuzioni di frequenza condizionate della variabile y, per ciascun valore della variabile trt. Ci sono delle differenze tra queste distribuzioni?\n(2pt) Utilizzando il dataset bacteria2, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori drug e drug+ della variabile trt in un unico valore, chiamato ad esempio drug_and_drug+. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?"
+  },
+  {
+    "objectID": "lezioni/un_A.html#alcune-funzioni-matematiche-i",
+    "href": "lezioni/un_A.html#alcune-funzioni-matematiche-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Alcune funzioni matematiche I",
+    "text": "Alcune funzioni matematiche I\nSupponiamo che x sia un numero reale.\nCiò che seguono sono una lista di funzioni disponibili in R:\n\nx <- 1/2 # Esempio di numero reale\n\n\n\nexp(x) # Esponenziale e logaritmo naturale\n\n[1] 1.648721\n\nlog(x)\n\n[1] -0.6931472\n\n\n\n\n\nabs(x) # Valore assoluto\n\n[1] 0.5\n\nsign(x) # Funzione segno\n\n[1] 1"
+  },
+  {
+    "objectID": "lezioni/un_A.html#alcune-funzioni-matematiche-ii",
+    "href": "lezioni/un_A.html#alcune-funzioni-matematiche-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Alcune funzioni matematiche II",
+    "text": "Alcune funzioni matematiche II\n\nsin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n[1] 0.4794255\n\ncos(x)\n\n[1] 0.8775826\n\ntan(x)\n\n[1] 0.5463025\n\n\n\n\nasin(x) # Funzioni trigonometriche inverse\n\n[1] 0.5235988\n\nacos(x)\n\n[1] 1.047198\n\natan(x)\n\n[1] 0.4636476\n\n\n\n\n\n\n\n\n\n\nNota\n\n\nLe funzioni di R si possono combinare tra loro, ad esempio log(abs(x))."
+  },
+  {
+    "objectID": "lezioni/un_A.html#ulteriori-funzioni-matematiche-i",
+    "href": "lezioni/un_A.html#ulteriori-funzioni-matematiche-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ulteriori funzioni matematiche I",
+    "text": "Ulteriori funzioni matematiche I\nSupponiamo che x e y siano due numeri reali. Inoltre, siano n e k due numeri naturali.\n\nSi noti l’uso del ; che può essere usato per separare due comandi nella stessa riga.\n\nx <- 1 / 2; y <- 1 / 3 # Numeri reali \nn <- 5; k <- 2 # Numeri naturali\n\n\n\n\nfactorial(n) # n!\n\n[1] 120\n\nchoose(n, k) # Coefficiente binomiale\n\n[1] 10\n\n\n\n\n\nround(x, digits = 2) # Arrotonda x usando 2 cifre decimali\n\n[1] 0.5\n\nfloor(x) # Arrotonda x all'intero più vicino, per difetto\n\n[1] 0\n\nceiling(x) # Arrotonda x all'intero più vicino, per eccesso\n\n[1] 1"
+  },
+  {
+    "objectID": "lezioni/un_A.html#ulteriori-funzioni-matematiche-ii",
+    "href": "lezioni/un_A.html#ulteriori-funzioni-matematiche-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ulteriori funzioni matematiche II",
+    "text": "Ulteriori funzioni matematiche II\nLa funzione gamma \\(\\Gamma(x) = \\int_0^\\infty s^{x-1} e^{-s} d s\\) si calcola in R come segue:\n\ngamma(x) # Funzione gamma\n\n[1] 1.772454\n\n\n\nLa funzione beta \\(\\mathcal{B}(x,y) = \\int_0^1 s^{x-1}(1-s)^{y-1}ds\\) si calcola in R come segue:\n\nbeta(x, y) # Funzione beta\n\n[1] 4.206546"
   }
 ]

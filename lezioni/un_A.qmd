@@ -20,13 +20,18 @@ execute:
 
 ## Unità A
 
-::: incremental
 -   A-B-C: il software **R** come calcolatrice scientifica
 -   Operazioni di routine: pulizia del *workspace*, simboli speciali
 -   Funzioni matematiche, grafico di una funzione, operazioni logiche
 -   Operazioni con vettori e matrici
--   Esercizi **R** associati: [esercizi 1](https://tommasorigon.github.io/introR/exe/es_1.html)
+
+
+:::{.callout-note}
+## Nota
+Esercizi **R** associati sono diponibili a [questo link](https://tommasorigon.github.io/introR/exe/es_1.html)
 :::
+
+
 
 ## Calcolatrice scientifica
 
@@ -57,7 +62,10 @@ sin(pi / 4)
 
 . . .
 
-**Nota**. Tutto ciò che viene scritto dopo un cancelletto (`#`) è considerato un **commento**.
+:::{.callout-note}
+## Nota
+Tutto ciò che viene scritto dopo un cancelletto (`#`) è considerato un **commento**.
+:::
 
 ## Assegnazione di un valore
 
@@ -87,7 +95,10 @@ rm(x) # x non è più presente nel "workspace"
 
 . . .
 
-**Nota**. **R** è *case sensitive*, pertanto l'oggetto `x` è diverso dall'oggetto `X`.
+:::{.callout-note}
+## Nota
+**R** è *case sensitive*, pertanto l'oggetto `x` è diverso dall'oggetto `X`.
+:::
 
 ## Pulizia del *workspace*
 
@@ -111,7 +122,7 @@ Pertanto, per **eliminare** tutti gli **oggetti** salvati, si può usare
 rm(list = ls())
 ```
 
-## Alcune funzioni matematiche
+## Alcune funzioni matematiche I
 
 Supponiamo che `x` sia un **numero reale**.
 
@@ -135,7 +146,7 @@ abs(x) # Valore assoluto
 sign(x) # Funzione segno
 ```
 
-. . .
+## Alcune funzioni matematiche II
 
 ```{r}
 sin(x) # Funzioni trigonometriche (seno, coseno, tangente)
@@ -153,9 +164,12 @@ atan(x)
 
 . . .
 
-**Nota**. Le funzioni di **R** si possono combinare tra loro, ad esempio `log(abs(x))`.
+:::{.callout-note}
+## Nota
+Le funzioni di **R** si possono combinare tra loro, ad esempio `log(abs(x))`.
+:::
 
-## Ulteriori funzioni matematiche
+## Ulteriori funzioni matematiche I
 
 Supponiamo che `x` e `y` siano due **numeri reali**. Inoltre, siano `n` e `k` due **numeri naturali**.
 
@@ -183,7 +197,7 @@ floor(x) # Arrotonda x all'intero più vicino, per difetto
 ceiling(x) # Arrotonda x all'intero più vicino, per eccesso
 ```
 
-. . .
+## Ulteriori funzioni matematiche II
 
 La funzione gamma $\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s$ si calcola in **R** come segue:
 
@@ -227,9 +241,10 @@ Il comando `? funzione` apre una finestra in cui vengono descritta nel dettaglio
 
 . . .
 
-</br>
-
-**Nota riguardante l'esame**. Durante la prova d'esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.
+:::{.callout-tip}
+## Nota riguardante l'esame
+Durante la prova d'esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.
+:::
 
 ## Simboli speciali
 
@@ -318,9 +333,12 @@ x
 
 . . .
 
-**Nota**. Con il termine generico "**vettore**" in **R** non si fa riferimento alla nozione dell'algebra lineare ma semplicemente ad una stringa di valori ordinati.
+:::{.callout-note}
+## Nota
+Con il termine generico "**vettore**" in **R** non si fa riferimento alla nozione dell'algebra lineare ma semplicemente ad una stringa di valori ordinati.
+:::
 
-Infatti il seguente oggetto è un **vettore** in **R**, nonostante l'oggetto `x` sia composto sia numeri che da lettere
+Il seguente oggetto è un **vettore** in **R**, nonostante l'oggetto `x` sia composto sia numeri che da lettere
 
 ```{r}
 
@@ -431,7 +449,9 @@ L'ultimo comando suggerisce che gli elementi di un vettore possono essere selezi
 
 Cosa succede quando vengono sommati due vettori di dimensioni diverse?
 
+:::{.callout-warning}
 La maggior parte dei linguaggi di programmazione restituisce un errore. **R** invece esegue ugualmente l'operazione "allungando" il vettore più corto.
+:::
 
 . . .
 

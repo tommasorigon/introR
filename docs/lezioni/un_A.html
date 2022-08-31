@@ -396,14 +396,24 @@
 
 <section id="unità-a" class="slide level2">
 <h2>Unità A</h2>
-<div>
 <ul>
-<li class="fragment">A-B-C: il software <strong>R</strong> come calcolatrice scientifica</li>
-<li class="fragment">Operazioni di routine: pulizia del <em>workspace</em>, simboli speciali</li>
-<li class="fragment">Funzioni matematiche, grafico di una funzione, operazioni logiche</li>
-<li class="fragment">Operazioni con vettori e matrici</li>
-<li class="fragment">Esercizi <strong>R</strong> associati: <a href="https://tommasorigon.github.io/introR/exe/es_1.html">esercizi 1</a></li>
+<li>A-B-C: il software <strong>R</strong> come calcolatrice scientifica</li>
+<li>Operazioni di routine: pulizia del <em>workspace</em>, simboli speciali</li>
+<li>Funzioni matematiche, grafico di una funzione, operazioni logiche</li>
+<li>Operazioni con vettori e matrici</li>
 </ul>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Esercizi <strong>R</strong> associati sono diponibili a <a href="https://tommasorigon.github.io/introR/exe/es_1.html">questo link</a></p>
+</div>
+</div>
 </div>
 </section>
 <section id="calcolatrice-scientifica" class="slide level2">
@@ -446,7 +456,19 @@
 </div>
 </div>
 <div class="fragment">
-<p><strong>Nota</strong>. Tutto ciò che viene scritto dopo un cancelletto (<code>#</code>) è considerato un <strong>commento</strong>.</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Tutto ciò che viene scritto dopo un cancelletto (<code>#</code>) è considerato un <strong>commento</strong>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="assegnazione-di-un-valore" class="slide level2">
@@ -473,7 +495,19 @@
 </div>
 </div>
 <div class="fragment">
-<p><strong>Nota</strong>. <strong>R</strong> è <em>case sensitive</em>, pertanto l’oggetto <code>x</code> è diverso dall’oggetto <code>X</code>.</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>R</strong> è <em>case sensitive</em>, pertanto l’oggetto <code>x</code> è diverso dall’oggetto <code>X</code>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="pulizia-del-workspace" class="slide level2">
@@ -496,8 +530,8 @@
 </div>
 </div>
 </section>
-<section id="alcune-funzioni-matematiche" class="slide level2">
-<h2>Alcune funzioni matematiche</h2>
+<section id="alcune-funzioni-matematiche-i" class="slide level2">
+<h2>Alcune funzioni matematiche I</h2>
 <p>Supponiamo che <code>x</code> sia un <strong>numero reale</strong>.</p>
 <p>Ciò che seguono sono una lista di funzioni disponibili in <strong>R</strong>:</p>
 <div class="cell">
@@ -527,7 +561,9 @@
 </div>
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="alcune-funzioni-matematiche-ii" class="slide level2">
+<h2>Alcune funzioni matematiche II</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">sin</span>(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -540,7 +576,6 @@
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">tan</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5463025</code></pre>
-</div>
 </div>
 </div>
 <div class="fragment">
@@ -560,11 +595,23 @@
 </div>
 </div>
 <div class="fragment">
-<p><strong>Nota</strong>. Le funzioni di <strong>R</strong> si possono combinare tra loro, ad esempio <code>log(abs(x))</code>.</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Le funzioni di <strong>R</strong> si possono combinare tra loro, ad esempio <code>log(abs(x))</code>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="ulteriori-funzioni-matematiche" class="slide level2">
-<h2>Ulteriori funzioni matematiche</h2>
+<section id="ulteriori-funzioni-matematiche-i" class="slide level2">
+<h2>Ulteriori funzioni matematiche I</h2>
 <p>Supponiamo che <code>x</code> e <code>y</code> siano due <strong>numeri reali</strong>. Inoltre, siano <code>n</code> e <code>k</code> due <strong>numeri naturali</strong>.</p>
 <div class="fragment">
 <p>Si noti l’uso del <code>;</code> che può essere usato per separare due comandi nella stessa riga.</p>
@@ -601,13 +648,14 @@
 </div>
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="ulteriori-funzioni-matematiche-ii" class="slide level2">
+<h2>Ulteriori funzioni matematiche II</h2>
 <p>La funzione gamma <span class="math inline">\(\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s\)</span> si calcola in <strong>R</strong> come segue:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">gamma</span>(x) <span class="co"># Funzione gamma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.772454</code></pre>
-</div>
 </div>
 </div>
 <div class="fragment">
@@ -640,8 +688,19 @@
 </div>
 </div>
 <div class="fragment">
-<p><br></p>
-<p><strong>Nota riguardante l’esame</strong>. Durante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.</p>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota riguardante l’esame</strong></p>
+</div>
+<div class="callout-content">
+<p>Durante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="simboli-speciali" class="slide level2">
@@ -755,8 +814,20 @@
 </div>
 </div>
 <div class="fragment">
-<p><strong>Nota</strong>. Con il termine generico “<strong>vettore</strong>” in <strong>R</strong> non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.</p>
-<p>Infatti il seguente oggetto è un <strong>vettore</strong> in <strong>R</strong>, nonostante l’oggetto <code>x</code> sia composto sia numeri che da lettere</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Con il termine generico “<strong>vettore</strong>” in <strong>R</strong> non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.</p>
+</div>
+</div>
+</div>
+<p>Il seguente oggetto è un <strong>vettore</strong> in <strong>R</strong>, nonostante l’oggetto <code>x</code> sia composto sia numeri che da lettere</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
 <span id="cb85-2"><a href="#cb85-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -916,7 +987,19 @@
 <section id="operazione-sui-vettori-avvertenze" class="slide level2">
 <h2>Operazione sui vettori: avvertenze</h2>
 <p>Cosa succede quando vengono sommati due vettori di dimensioni diverse?</p>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
 <p>La maggior parte dei linguaggi di programmazione restituisce un errore. <strong>R</strong> invece esegue ugualmente l’operazione “allungando” il vettore più corto.</p>
+</div>
+</div>
+</div>
 <div class="fragment">
 <p>In questo primo esempio, quantomeno <strong>R</strong> restituisce un <em>warning</em>.</p>
 <div class="cell">
