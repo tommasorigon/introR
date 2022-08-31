@@ -118,19 +118,34 @@ Supponiamo che `x` sia un **numero reale**.
 Ciò che seguono sono una lista di funzioni disponibili in **R**:
 
 ```{r}
-#| output: false
 x <- 1/2 # Esempio di numero reale
+```
 
+. . .
+
+```{r}
 exp(x) # Esponenziale e logaritmo naturale
 log(x)
+```
 
+. . .
+
+```{r}
 abs(x) # Valore assoluto
 sign(x) # Funzione segno
+```
 
+. . .
+
+```{r}
 sin(x) # Funzioni trigonometriche (seno, coseno, tangente)
 cos(x)
 tan(x)
+```
 
+. . .
+
+```{r}
 asin(x) # Funzioni trigonometriche inverse
 acos(x)
 atan(x)
@@ -144,16 +159,25 @@ atan(x)
 
 Supponiamo che `x` e `y` siano due **numeri reali**. Inoltre, siano `n` e `k` due **numeri naturali**.
 
+. . .
+
 Si noti l'uso del `;` che può essere usato per separare due comandi nella stessa riga.
 
 ```{r}
-#| output: false
 x <- 1 / 2; y <- 1 / 3 # Numeri reali 
 n <- 5; k <- 2 # Numeri naturali
+```
 
+. . .
+
+```{r}
 factorial(n) # n!
 choose(n, k) # Coefficiente binomiale
+```
 
+. . .
+
+```{r}
 round(x, digits = 2) # Arrotonda x usando 2 cifre decimali
 floor(x) # Arrotonda x all'intero più vicino, per difetto
 ceiling(x) # Arrotonda x all'intero più vicino, per eccesso
@@ -164,7 +188,6 @@ ceiling(x) # Arrotonda x all'intero più vicino, per eccesso
 La funzione gamma $\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s$ si calcola in **R** come segue:
 
 ```{r}
-#| output: false
 gamma(x) # Funzione gamma
 ```
 
@@ -173,7 +196,6 @@ gamma(x) # Funzione gamma
 La funzione beta $\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds$ si calcola in **R** come segue:
 
 ```{r}
-#| output: false
 beta(x, y) # Funzione beta
 ```
 
@@ -383,7 +405,6 @@ which.min(x) # Posizione del valore corrispondente al minimo
 Infine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:
 
 ```{r}
-#| output: false
 max(x) # Valore massimo
 which.max(x) # Posizione del valore corrispondente al massimo
 range(x) # Equivalente a: c(min(x), max(x))
@@ -546,9 +567,9 @@ $$
 $$
 
 ```{r}
-#| output: false
 B <- A # Creo una matrice B identica ad A, per semplicità
 C <- rbind(A, B)
+C
 ```
 
 . . .
@@ -556,8 +577,8 @@ C <- rbind(A, B)
 In maniera analoga, siano ${\bf A}$ e ${\bf B}$ due matrici aventi lo stesso numero di righe e definiamo ${\bf C} = \begin{pmatrix}{\bf A} & {\bf B} \end{pmatrix}$.
 
 ```{r}
-#| output: false
 C <- cbind(A, B)
+C
 ```
 
 ## Operazioni sulle matrici III
@@ -648,10 +669,9 @@ det(A) # Deteminante pari a 0, solve(A) produce un errore
 
 . . .
 
-Ci sono numerose funzioni per la **scomposizione di matrici**, il cui output è a volte una **lista**. Il risultato delle seguenti funzioni è omesso.
+Ci sono numerose funzioni per la **scomposizione di matrici**, il cui output è a volte una **lista**.
 
 ```{r}
-#| output: false
 A <- matrix(c(4, 1, 1, 8), ncol = 2)
 chol(A) # Scomposizione di Cholesky
 qr(A) # Scomposizione QR
