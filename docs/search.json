@@ -235,7 +235,7 @@
     "href": "lezioni/un_B.html#unità-b",
     "title": "R per l’analisi statistica multivariata",
     "section": "Unità B",
-    "text": "Unità B\n\n\nDefinizione di una nuova funzione\nIstruzioni di controllo: if, else\nCicli for, cicli while\nCenni alle funzioni *apply\nI pacchetti R\nEsercizi R associati disponibili a questo link"
+    "text": "Unità B\n\nDefinizione di una nuova funzione\nIstruzioni di controllo: if, else\nCicli for, cicli while\nCenni alle funzioni *apply\nI pacchetti R\n\n\n\n\n\n\n\nNota\n\n\nEsercizi R associati disponibili a questo link"
   },
   {
     "objectID": "lezioni/un_B.html#funzioni-i",
@@ -284,7 +284,7 @@
     "href": "lezioni/un_B.html#cicli-while-e-for-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Cicli while e for II",
-    "text": "Cicli while e for II\nAttenzione a non creare dei loop senza fine!\n\nIl codice seguente richiede l’interruzione forzata della sessione di R oppure, nella peggiore delle ipotesi, il riavvio del computer:\n\n# NON ESEGUIRE IL SEGUENTE CODICE!\n#\n# La condizione i <= 25 è sempre vera perché i non viene aggiornato\ni <- 5\nwhile (i <= 25) {\n  print(i)\n\n  # Altre operazioni da eseguire\n  # ...\n}"
+    "text": "Cicli while e for II\n\n\n\n\n\n\nWarning\n\n\nAttenzione a non creare dei loop senza fine!\n\n\n\n\nIl codice seguente richiede l’interruzione forzata della sessione di R oppure, nella peggiore delle ipotesi, il riavvio del computer:\n\n# NON ESEGUIRE IL SEGUENTE CODICE!\n#\n# La condizione i <= 25 è sempre vera perché i non viene aggiornato\ni <- 5\nwhile (i <= 25) {\n  print(i)\n\n  # Altre operazioni da eseguire\n  # ...\n}"
   },
   {
     "objectID": "lezioni/un_B.html#cicli-while-e-for-ii-1",
@@ -298,21 +298,21 @@
     "href": "lezioni/un_B.html#esercizio-riassuntivo-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo I",
-    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\nTraccia dello svolgimento. Si crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j]."
+    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\n\n\n\n\n\n\nTraccia dello svolgimento\n\n\nSi crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j]."
   },
   {
     "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
     "href": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Soluzione esercizio riassuntivo I",
-    "text": "Soluzione esercizio riassuntivo I\n\ndistances <- function(x) {\n  n <- length(x) # Ottengo la lunghezza del vettore x\n  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota\n\n  for (i in 1:n) {\n    for (j in 1:n) {\n      D[i, j] <- (x[i] - x[j])^2\n    }\n  }\n  D # Valore da restituire\n}\n\nx <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto\ndistances(x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    9   16  361\n[2,]    9    0    1  484\n[3,]   16    1    0  529\n[4,]  361  484  529    0\n\n\nNota. Esistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente."
+    "text": "Soluzione esercizio riassuntivo I\n\ndistances <- function(x) {\n  n <- length(x) # Ottengo la lunghezza del vettore x\n  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota\n\n  for (i in 1:n) {\n    for (j in 1:n) {\n      D[i, j] <- (x[i] - x[j])^2\n    }\n  }\n  D # Valore da restituire\n}\n\nx <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto\ndistances(x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    9   16  361\n[2,]    9    0    1  484\n[3,]   16    1    0  529\n[4,]  361  484  529    0\n\n\n\n\n\n\n\n\nNota\n\n\nEsistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente."
   },
   {
     "objectID": "lezioni/un_B.html#esercizio-riassuntivo-ii",
     "href": "lezioni/un_B.html#esercizio-riassuntivo-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo II",
-    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\nSuggerimento. Si usi la funzione print e la funzione resto % di R.\nBonus. Per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if."
+    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\n\n\n\n\n\n\nSuggerimento\n\n\nSi usi la funzione print e la funzione resto % di R. Inoltre, per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if."
   },
   {
     "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-ii",
@@ -326,7 +326,7 @@
     "href": "lezioni/un_B.html#la-famiglia-di-funzioni-apply",
     "title": "R per l’analisi statistica multivariata",
     "section": "La famiglia di funzioni *apply",
-    "text": "La famiglia di funzioni *apply\nQuando possibile, sarebbe meglio evitare l’utilizzo dei cicli for, perché questi tendono ad essere lenti in R (a differenza di altri linguaggi, come C++).\nUn’alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni *apply, ovvero: apply, tapply, sapply, mapply, lapply.\nLa più semplice, ovvero apply, esegue una determinata funzione per ciascuna riga / colonna di una matrice.\nEsercizio. Si consulti la documentazione delle funzioni *apply per avere una prima idea del loro funzionamento."
+    "text": "La famiglia di funzioni *apply\nQuando possibile, sarebbe meglio evitare l’utilizzo dei cicli for, perché questi tendono ad essere lenti in R (a differenza di altri linguaggi, come C++).\nUn’alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni *apply, ovvero: apply, tapply, sapply, mapply, lapply.\nLa più semplice, ovvero apply, esegue una determinata funzione per ciascuna riga / colonna di una matrice.\n\n\n\n\n\n\nEsercizio\n\n\nSi consulti la documentazione delle funzioni *apply per avere una prima idea del loro funzionamento."
   },
   {
     "objectID": "lezioni/un_B.html#i-pacchetti-r",

@@ -396,15 +396,25 @@
 
 <section id="unità-b" class="slide level2">
 <h2>Unità B</h2>
-<div>
 <ul>
-<li class="fragment">Definizione di una nuova funzione</li>
-<li class="fragment">Istruzioni di controllo: <code>if</code>, <code>else</code></li>
-<li class="fragment">Cicli <code>for</code>, cicli <code>while</code></li>
-<li class="fragment">Cenni alle funzioni <code>*apply</code></li>
-<li class="fragment">I pacchetti <strong>R</strong></li>
-<li class="fragment">Esercizi <strong>R</strong> associati disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_1.html">questo link</a></li>
+<li>Definizione di una nuova funzione</li>
+<li>Istruzioni di controllo: <code>if</code>, <code>else</code></li>
+<li>Cicli <code>for</code>, cicli <code>while</code></li>
+<li>Cenni alle funzioni <code>*apply</code></li>
+<li>I pacchetti <strong>R</strong></li>
 </ul>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Esercizi <strong>R</strong> associati disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_1.html">questo link</a></p>
+</div>
+</div>
 </div>
 </section>
 <section id="funzioni-i" class="slide level2">
@@ -583,7 +593,19 @@
 </section>
 <section id="cicli-while-e-for-ii" class="slide level2">
 <h2>Cicli <code>while</code> e <code>for</code> II</h2>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
 <p>Attenzione a non creare dei <strong>loop senza fine</strong>!</p>
+</div>
+</div>
+</div>
 <div class="fragment">
 <p>Il codice seguente richiede l’interruzione forzata della sessione di <strong>R</strong> oppure, nella peggiore delle ipotesi, il riavvio del computer:</p>
 <div class="cell">
@@ -632,8 +654,20 @@ d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
 \]</span> dove <span class="math inline">\({\bf x} = (x_1,\dots,x_n)^\intercal\)</span> è un generico vettore in <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
 <p>In altri termini, si definisca una funzione <code>distances(x)</code> che a partire da un generico vettore <code>x</code> restituisca una matrice <code>D</code>.</p>
 <div class="fragment">
-<p><strong>Traccia dello svolgimento</strong>. Si crei innanzitutto una matrice <code>D</code> i cui elementi sono tutti pari a <code>0</code>, usando il comando <code>matrix</code>.</p>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Traccia dello svolgimento</strong></p>
+</div>
+<div class="callout-content">
+<p>Si crei innanzitutto una matrice <code>D</code> i cui elementi sono tutti pari a <code>0</code>, usando il comando <code>matrix</code>.</p>
 <p>Quindi, si usino due cicli <code>for</code> “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori <code>D[i, j]</code>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="soluzione-esercizio-riassuntivo-i" class="slide level2">
@@ -661,7 +695,19 @@ d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
 [4,]  361  484  529    0</code></pre>
 </div>
 </div>
-<p><strong>Nota</strong>. Esistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente.</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Esistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="esercizio-riassuntivo-ii" class="slide level2">
 <h2>Esercizio riassuntivo II</h2>
@@ -674,8 +720,19 @@ d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
 il numero stesso altrimenti.</li>
 </ul>
 <div class="fragment">
-<p><strong>Suggerimento</strong>. Si usi la funzione <code>print</code> e la funzione resto <code>%</code> di <strong>R</strong>.</p>
-<p><strong>Bonus</strong>. Per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata <code>else if</code>.</p>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Suggerimento</strong></p>
+</div>
+<div class="callout-content">
+<p>Si usi la funzione <code>print</code> e la funzione resto <code>%</code> di <strong>R</strong>. Inoltre, per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata <code>else if</code>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="soluzione-esercizio-riassuntivo-ii" class="slide level2">
@@ -805,7 +862,19 @@ il numero stesso altrimenti.</li>
 <p>Quando possibile, sarebbe meglio <code>evitare</code> l’utilizzo dei cicli <code>for</code>, perché questi tendono ad essere lenti in <strong>R</strong> (a differenza di altri linguaggi, come C++).</p>
 <p>Un’alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni <code>*apply</code>, ovvero: <code>apply</code>, <code>tapply</code>, <code>sapply</code>, <code>mapply</code>, <code>lapply</code>.</p>
 <p>La più semplice, ovvero <code>apply</code>, esegue una determinata funzione per ciascuna riga / colonna di una matrice.</p>
-<p><strong>Esercizio</strong>. Si consulti la documentazione delle funzioni <code>*apply</code> per avere una prima idea del loro funzionamento.</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Esercizio</strong></p>
+</div>
+<div class="callout-content">
+<p>Si consulti la documentazione delle funzioni <code>*apply</code> per avere una prima idea del loro funzionamento.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="i-pacchetti-r" class="slide level2">
 <h2>I pacchetti <strong>R</strong></h2>
