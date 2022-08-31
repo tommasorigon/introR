@@ -11,6 +11,7 @@ format:
     smaller: true
     transition: slide
     touch: true
+    highlight-style: ayu
 editor: visual
 slide-number: true
 execute:
