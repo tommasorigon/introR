@@ -10,9 +10,10 @@ L'insegnamento di [Analisi Statistica Multivariata](https://aldosolari.github.io
 
 1.  R per l'Analisi Statistica Multivariata (R), 3 CFU, I Ciclo, Prof. Rigon.
 
-2.  [Analisi Esplorativa (AE)](https://aldosolari.github.io/AE/), 6 CFU, II Ciclo, Prof. Solari.
+2.  Modelli Statistici (MS), 6 CFU, III Ciclo, Prof. Ascari.
 
-3.  Modelli Statistici (MS), 6 CFU, III Ciclo, Prof. Nipoti.
+3.  Analisi Esplorativa (AE), 6 CFU, IV Ciclo, Prof. Monti.
+
 
 **Nota**: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d'appello sono spiegate nella pagina principale: [Analisi Statistica Multivariata](https://aldosolari.github.io/ASM/).
 
