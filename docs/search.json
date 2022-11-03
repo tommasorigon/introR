@@ -35,25 +35,25 @@
     "text": "Ricevimento\nPer fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo tommaso.rigon@unimib.it. Il ricevimento è fissato ogni martedì alle ore 17.30."
   },
   {
-    "objectID": "lezioni/un_A.html#unità-a",
-    "href": "lezioni/un_A.html#unità-a",
+    "objectID": "lezioni/un_A.html",
+    "href": "lezioni/un_A.html",
     "title": "R per l’analisi statistica multivariata",
-    "section": "Unità A",
-    "text": "Unità A\n\nA-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\n\n\n\n\n\n\n\nNota\n\n\nEsercizi R associati sono diponibili a questo link"
+    "section": "",
+    "text": "A-B-C: il software R come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\n\n\n\n\n\n\n\nNota\n\n\n\nEsercizi R associati sono diponibili a questo link"
   },
   {
     "objectID": "lezioni/un_A.html#calcolatrice-scientifica",
     "href": "lezioni/un_A.html#calcolatrice-scientifica",
     "title": "R per l’analisi statistica multivariata",
     "section": "Calcolatrice scientifica",
-    "text": "Calcolatrice scientifica\nAnzitutto, R può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n[1] 4\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n[1] 32\n\npi / 4 # Pi greco quarti\n\n[1] 0.7853982\n\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2^5 # Sintassi alternativa: 2**5\n\n[1] 32\n\n\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nsqrt(2)\n\n[1] 1.414214\n\nsin(pi / 4)\n\n[1] 0.7071068\n\n\n\n\n\n\n\n\n\n\nNota\n\n\nTutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
+    "text": "Calcolatrice scientifica\nAnzitutto, R può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n[1] 4\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n[1] 32\n\npi / 4 # Pi greco quarti\n\n[1] 0.7853982\n\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2^5 # Sintassi alternativa: 2**5\n\n[1] 32\n\n\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nsqrt(2)\n\n[1] 1.414214\n\nsin(pi / 4)\n\n[1] 0.7071068\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nTutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
   },
   {
     "objectID": "lezioni/un_A.html#assegnazione-di-un-valore",
     "href": "lezioni/un_A.html#assegnazione-di-un-valore",
     "title": "R per l’analisi statistica multivariata",
     "section": "Assegnazione di un valore",
-    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo <-.\n\n# Assegna il valore 5 all'oggetto x\nx <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)\n\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny <- x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n[1] 5.377661\n\n\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando rm, ovvero remove.\n\nrm(x) # x non è più presente nel \"workspace\"\n\n\n\n\n\n\n\n\n\nNota\n\n\nR è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
+    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo <-.\n\n# Assegna il valore 5 all'oggetto x\nx <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)\n\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny <- x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n[1] 5.377661\n\n\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando rm, ovvero remove.\n\nrm(x) # x non è più presente nel \"workspace\"\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nR è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
   },
   {
     "objectID": "lezioni/un_A.html#pulizia-del-workspace",
@@ -74,7 +74,7 @@
     "href": "lezioni/un_A.html#alcune-funzioni-matematiche-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Alcune funzioni matematiche II",
-    "text": "Alcune funzioni matematiche II\n\nsin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n[1] 0.4794255\n\ncos(x)\n\n[1] 0.8775826\n\ntan(x)\n\n[1] 0.5463025\n\n\n\n\nasin(x) # Funzioni trigonometriche inverse\n\n[1] 0.5235988\n\nacos(x)\n\n[1] 1.047198\n\natan(x)\n\n[1] 0.4636476\n\n\n\n\n\n\n\n\n\n\nNota\n\n\nLe funzioni di R si possono combinare tra loro, ad esempio log(abs(x))."
+    "text": "Alcune funzioni matematiche II\n\nsin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n[1] 0.4794255\n\ncos(x)\n\n[1] 0.8775826\n\ntan(x)\n\n[1] 0.5463025\n\n\n\n\nasin(x) # Funzioni trigonometriche inverse\n\n[1] 0.5235988\n\nacos(x)\n\n[1] 1.047198\n\natan(x)\n\n[1] 0.4636476\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nLe funzioni di R si possono combinare tra loro, ad esempio log(abs(x))."
   },
   {
     "objectID": "lezioni/un_A.html#ulteriori-funzioni-matematiche-i",
@@ -102,14 +102,14 @@
     "href": "lezioni/un_A.html#la-documentazione-ufficiale",
     "title": "R per l’analisi statistica multivariata",
     "section": "La documentazione ufficiale",
-    "text": "La documentazione ufficiale\nLa documentazione di R è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\n\nIl comando ? funzione apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n? log # Documentazione della funzione log\n\n\n\n\n\n\n\n\n\nNota riguardante l’esame\n\n\nDurante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione."
+    "text": "La documentazione ufficiale\nLa documentazione di R è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\n\nIl comando ? funzione apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n? log # Documentazione della funzione log\n\n\n\n\n\n\n\n\n\nNota riguardante l’esame\n\n\n\nDurante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione."
   },
   {
     "objectID": "lezioni/un_A.html#simboli-speciali",
     "href": "lezioni/un_A.html#simboli-speciali",
     "title": "R per l’analisi statistica multivariata",
     "section": "Simboli speciali",
-    "text": "Simboli speciali\nNumeri molto grandi, come \\(10^{15}\\), e molto piccoli, come \\(10^{-15}\\), in R vengono rappresentati come segue:\n\n10^15\n\n[1] 1e+15\n\n10^(-15)\n\n[1] 1e-15\n\n\n\nPer questioni di approssimazione numerica, quando un numero è troppo grande R riporta Inf, ovvero infinito. Per esempio:\n\n10^1000 # Numero molto grande, anche se finito\n\n[1] Inf\n\n\n\n\nIl simbolo NaN significa invece Not a Number e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:\n\nlog(-1) # Questo comando genera inoltre un avviso\n\nWarning in log(-1): NaNs produced\n\n\n[1] NaN"
+    "text": "Simboli speciali\nNumeri molto grandi, come \\(10^{15}\\), e molto piccoli, come \\(10^{-15}\\), in R vengono rappresentati come segue:\n\n10^15\n\n[1] 1e+15\n\n10^(-15)\n\n[1] 1e-15\n\n\n\nPer questioni di approssimazione numerica, quando un numero è troppo grande R riporta Inf, ovvero infinito. Per esempio:\n\n10^1000 # Numero molto grande, anche se finito\n\n[1] Inf\n\n\n\n\nIl simbolo NaN significa invece Not a Number e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:\n\nlog(-1) # Questo comando genera inoltre un avviso\n\nWarning in log(-1): Si è prodotto un NaN\n\n\n[1] NaN"
   },
   {
     "objectID": "lezioni/un_A.html#errori-di-approssimazione-numerica",
@@ -130,7 +130,7 @@
     "href": "lezioni/un_A.html#vettori",
     "title": "R per l’analisi statistica multivariata",
     "section": "Vettori",
-    "text": "Vettori\nUn vettore in R viene definito tramite la funzione c(), come nel seguente esempio:\n\nx <- c(4, 2, 2, 8, 10) \nx\n\n[1]  4  2  2  8 10\n\n\n\n\n\n\n\n\n\nNota\n\n\nCon il termine generico “vettore” in R non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\n\n\n\nIl seguente oggetto è un vettore in R, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx <- c(\"A\", \"B\", 2, 8, 10)\nx\n\n[1] \"A\"  \"B\"  \"2\"  \"8\"  \"10\""
+    "text": "Vettori\nUn vettore in R viene definito tramite la funzione c(), come nel seguente esempio:\n\nx <- c(4, 2, 2, 8, 10) \nx\n\n[1]  4  2  2  8 10\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nCon il termine generico “vettore” in R non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\n\n\nIl seguente oggetto è un vettore in R, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx <- c(\"A\", \"B\", 2, 8, 10)\nx\n\n[1] \"A\"  \"B\"  \"2\"  \"8\"  \"10\""
   },
   {
     "objectID": "lezioni/un_A.html#creazione-di-vettori",
@@ -165,7 +165,7 @@
     "href": "lezioni/un_A.html#operazione-sui-vettori-avvertenze",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazione sui vettori: avvertenze",
-    "text": "Operazione sui vettori: avvertenze\nCosa succede quando vengono sommati due vettori di dimensioni diverse?\n\n\n\n\n\n\nWarning\n\n\nLa maggior parte dei linguaggi di programmazione restituisce un errore. R invece esegue ugualmente l’operazione “allungando” il vettore più corto.\n\n\n\n\nIn questo primo esempio, quantomeno R restituisce un warning.\n\n# Concatenazione di vettori\nx <- 1:5\ny <- 1:6\nx + y # Equivalente a: c(x, x[1]) + y\n\nWarning in x + y: longer object length is not a multiple of shorter object\nlength\n\n\n[1]  2  4  6  8 10  7\n\n\n\n\nIn questo secondo esempio, invece, R non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa\n\nx <- 1:3\ny <- 1:6\nx + y # Equivalente a: c(x, x) + y\n\n[1] 2 4 6 5 7 9"
+    "text": "Operazione sui vettori: avvertenze\nCosa succede quando vengono sommati due vettori di dimensioni diverse?\n\n\n\n\n\n\nWarning\n\n\n\nLa maggior parte dei linguaggi di programmazione restituisce un errore. R invece esegue ugualmente l’operazione “allungando” il vettore più corto.\n\n\n\nIn questo primo esempio, quantomeno R restituisce un warning.\n\n# Concatenazione di vettori\nx <- 1:5\ny <- 1:6\nx + y # Equivalente a: c(x, x[1]) + y\n\nWarning in x + y: la lunghezza più lunga dell'oggetto non è un multiplo della\nlunghezza più corta dell'oggetto\n\n\n[1]  2  4  6  8 10  7\n\n\n\n\nIn questo secondo esempio, invece, R non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa\n\nx <- 1:3\ny <- 1:6\nx + y # Equivalente a: c(x, x) + y\n\n[1] 2 4 6 5 7 9"
   },
   {
     "objectID": "lezioni/un_A.html#matrici",
@@ -245,11 +245,11 @@
     "text": "Esempio: la scomposizione spettrale\nGli autovalori ed autovettori di una matrice \\(\\textbf{A}\\) si ottengono tramite il comando eigen.\nIl risultato è una lista, contenente gli autovettori (vectors) e autovalori (values).\n\nSpec_A <- eigen(A) # Scomposizione spettrale della matrice A\nSpec_A\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529\n\n\n\n\nSpec_A$values # Estrazione degli autovalori\n\n[1] 8.236068 3.763932"
   },
   {
-    "objectID": "lezioni/un_B.html#unità-b",
-    "href": "lezioni/un_B.html#unità-b",
+    "objectID": "lezioni/un_B.html",
+    "href": "lezioni/un_B.html",
     "title": "R per l’analisi statistica multivariata",
-    "section": "Unità B",
-    "text": "Unità B\n\nDefinizione di una nuova funzione\nIstruzioni di controllo: if, else\nCicli for, cicli while\nCenni alle funzioni *apply\nI pacchetti R\n\n\n\n\n\n\n\nNota\n\n\nEsercizi R associati disponibili a questo link"
+    "section": "",
+    "text": "Definizione di una nuova funzione\nIstruzioni di controllo: if, else\nCicli for, cicli while\nCenni alle funzioni *apply\nI pacchetti R\n\n\n\n\n\n\n\nNota\n\n\n\nEsercizi R associati disponibili a questo link"
   },
   {
     "objectID": "lezioni/un_B.html#funzioni-i",
@@ -298,7 +298,7 @@
     "href": "lezioni/un_B.html#cicli-while-e-for-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Cicli while e for II",
-    "text": "Cicli while e for II\n\n\n\n\n\n\nWarning\n\n\nAttenzione a non creare dei loop senza fine!\n\n\n\n\nIl codice seguente richiede l’interruzione forzata della sessione di R oppure, nella peggiore delle ipotesi, il riavvio del computer:\n\n# NON ESEGUIRE IL SEGUENTE CODICE!\n#\n# La condizione i <= 25 è sempre vera perché i non viene aggiornato\ni <- 5\nwhile (i <= 25) {\n  print(i)\n\n  # Altre operazioni da eseguire\n  # ...\n}"
+    "text": "Cicli while e for II\n\n\n\n\n\n\nWarning\n\n\n\nAttenzione a non creare dei loop senza fine!\n\n\n\nIl codice seguente richiede l’interruzione forzata della sessione di R oppure, nella peggiore delle ipotesi, il riavvio del computer:\n\n# NON ESEGUIRE IL SEGUENTE CODICE!\n#\n# La condizione i <= 25 è sempre vera perché i non viene aggiornato\ni <- 5\nwhile (i <= 25) {\n  print(i)\n\n  # Altre operazioni da eseguire\n  # ...\n}"
   },
   {
     "objectID": "lezioni/un_B.html#cicli-while-e-for-ii-1",
@@ -312,21 +312,21 @@
     "href": "lezioni/un_B.html#esercizio-riassuntivo-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo I",
-    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\n\n\n\n\n\n\nTraccia dello svolgimento\n\n\nSi crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j]."
+    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\n\n\n\n\n\n\nTraccia dello svolgimento\n\n\n\nSi crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j]."
   },
   {
     "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
     "href": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Soluzione esercizio riassuntivo I",
-    "text": "Soluzione esercizio riassuntivo I\n\ndistances <- function(x) {\n  n <- length(x) # Ottengo la lunghezza del vettore x\n  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota\n\n  for (i in 1:n) {\n    for (j in 1:n) {\n      D[i, j] <- (x[i] - x[j])^2\n    }\n  }\n  D # Valore da restituire\n}\n\nx <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto\ndistances(x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    9   16  361\n[2,]    9    0    1  484\n[3,]   16    1    0  529\n[4,]  361  484  529    0\n\n\n\n\n\n\n\n\nNota\n\n\nEsistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente."
+    "text": "Soluzione esercizio riassuntivo I\n\ndistances <- function(x) {\n  n <- length(x) # Ottengo la lunghezza del vettore x\n  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota\n\n  for (i in 1:n) {\n    for (j in 1:n) {\n      D[i, j] <- (x[i] - x[j])^2\n    }\n  }\n  D # Valore da restituire\n}\n\nx <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto\ndistances(x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    9   16  361\n[2,]    9    0    1  484\n[3,]   16    1    0  529\n[4,]  361  484  529    0\n\n\n\n\n\n\n\n\nNota\n\n\n\nEsistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente."
   },
   {
     "objectID": "lezioni/un_B.html#esercizio-riassuntivo-ii",
     "href": "lezioni/un_B.html#esercizio-riassuntivo-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo II",
-    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\n\n\n\n\n\n\nSuggerimento\n\n\nSi usi la funzione print e la funzione resto % di R. Inoltre, per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if."
+    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\n\n\n\n\n\n\nSuggerimento\n\n\n\nSi usi la funzione print e la funzione resto % di R. Inoltre, per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if."
   },
   {
     "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-ii",
@@ -340,7 +340,7 @@
     "href": "lezioni/un_B.html#la-famiglia-di-funzioni-apply",
     "title": "R per l’analisi statistica multivariata",
     "section": "La famiglia di funzioni *apply",
-    "text": "La famiglia di funzioni *apply\nQuando possibile, sarebbe meglio evitare l’utilizzo dei cicli for, perché questi tendono ad essere lenti in R (a differenza di altri linguaggi, come C++).\nUn’alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni *apply, ovvero: apply, tapply, sapply, mapply, lapply.\nLa più semplice, ovvero apply, esegue una determinata funzione per ciascuna riga / colonna di una matrice.\n\n\n\n\n\n\nEsercizio\n\n\nSi consulti la documentazione delle funzioni *apply per avere una prima idea del loro funzionamento."
+    "text": "La famiglia di funzioni *apply\nQuando possibile, sarebbe meglio evitare l’utilizzo dei cicli for, perché questi tendono ad essere lenti in R (a differenza di altri linguaggi, come C++).\nUn’alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni *apply, ovvero: apply, tapply, sapply, mapply, lapply.\nLa più semplice, ovvero apply, esegue una determinata funzione per ciascuna riga / colonna di una matrice.\n\n\n\n\n\n\nEsercizio\n\n\n\nSi consulti la documentazione delle funzioni *apply per avere una prima idea del loro funzionamento."
   },
   {
     "objectID": "lezioni/un_B.html#i-pacchetti-r",
@@ -350,11 +350,11 @@
     "text": "I pacchetti R\nCome menzionato nella lezione introduttiva, R è organizzato in pacchetti.\nSe vogliamo utilizzare le funzioni di un pacchetto, questo può essere richiamato usando la funzione library, ovvero:\n\nlibrary(MASS) # Carica in memoria il pacchetto MASS\nlibrary(knitr) # Carica in memoria il pacchetto knitr\n\n\nSe un pacchetto non è presente nel computer è necessario installarlo.\nSi può usare il comando seguente oppure usare la finestra “Packages” presente in RStudio.\n\ninstall.packages(\"knitr\") # Installa il pacchetto knitr"
   },
   {
-    "objectID": "lezioni/un_C.html#unità-c",
-    "href": "lezioni/un_C.html#unità-c",
+    "objectID": "lezioni/un_C.html",
+    "href": "lezioni/un_C.html",
     "title": "R per l’analisi statistica multivariata",
-    "section": "Unità C",
-    "text": "Unità C\n\nL’oggetto data.frame\nImportazione di un dataset in memoria\nEsplorazione e manipolazione di un dataset\nTipologia di variabili\nI valori mancanti\n\n\n\n\n\n\n\nNota\n\n\nEsercizi R associati disponibili a questo link"
+    "section": "",
+    "text": "L’oggetto data.frame\nImportazione di un dataset in memoria\nEsplorazione e manipolazione di un dataset\nTipologia di variabili\nI valori mancanti\n\n\n\n\n\n\n\nNota\n\n\n\nEsercizi R associati disponibili a questo link"
   },
   {
     "objectID": "lezioni/un_C.html#gli-oggetti-di-tipo-data.frame",
@@ -368,7 +368,7 @@
     "href": "lezioni/un_C.html#importazione-di-un-dataset",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione di un dataset",
-    "text": "Importazione di un dataset\nIl modo più frequente di caricare un dataset in memoria è importarlo da un file esterno.\nSe i dati hanno dimensioni piccole / medie (dimensione file \\(<\\) 3-4 Gb), sono spesso salvati in formato .csv oppure .txt.\nIn contesti reali e più complessi, è possibile importare i dati a partire direttamente da database relazionali come SQL.\n\nÈ sconsigliabile importare i dati in R a partire da un file Excel. Più in generale, ci sono svariate ragioni per evitare Excel se l’obiettivo è condurre una rigorosa analisi dei dati.\n\n\n\n\n\n\n\n\nNota\n\n\nPer poter procedere con i prossimi comandi, è necessario scaricare il file calcio.csv e salvarlo nel proprio computer. Link al file."
+    "text": "Importazione di un dataset\nIl modo più frequente di caricare un dataset in memoria è importarlo da un file esterno.\nSe i dati hanno dimensioni piccole / medie (dimensione file \\(<\\) 3-4 Gb), sono spesso salvati in formato .csv oppure .txt.\nIn contesti reali e più complessi, è possibile importare i dati a partire direttamente da database relazionali come SQL.\n\nÈ sconsigliabile importare i dati in R a partire da un file Excel. Più in generale, ci sono svariate ragioni per evitare Excel se l’obiettivo è condurre una rigorosa analisi dei dati.\n\n\n\n\n\n\n\n\nNota\n\n\n\nPer poter procedere con i prossimi comandi, è necessario scaricare il file calcio.csv e salvarlo nel proprio computer. Link al file."
   },
   {
     "objectID": "lezioni/un_C.html#i-dati-grezzi-editor-di-testo",
@@ -389,7 +389,7 @@
     "href": "lezioni/un_C.html#importazione-del-dataset",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione del dataset",
-    "text": "Importazione del dataset\nÈ anche possibile cambiare la cartella di lavoro tramite il comando setwd.\nIn Rstudio, si può usare l’opzione More -> Set as working directory nella finestra Files, selezionando la cartella di interesse.\nUna volta identificato il corretto path del file, per importare il dataset in memoria si usa ad esempio il comando read.table. Pertanto:\n\ncalcio <- read.table(path, header = TRUE, sep = \",\")\n\n\n\n\n\n\n\n\nNota\n\n\n\nL’opzione header = TRUE significa che la prima riga contiene i nomi delle variabili.\nL’opzione sep = \",\" indica che i vari valori di ciascuna variabile sono separati da una virgola.\n\n\n\n\n\n\nInfine, si noti che nel caso in cui il file sia contenuto nella cartella di lavoro, è quindi sufficiente usare:\n\ncalcio <- read.table(\"calcio.csv\", header = TRUE, sep = \",\")"
+    "text": "Importazione del dataset\nÈ anche possibile cambiare la cartella di lavoro tramite il comando setwd.\nIn Rstudio, si può usare l’opzione More -> Set as working directory nella finestra Files, selezionando la cartella di interesse.\nUna volta identificato il corretto path del file, per importare il dataset in memoria si usa ad esempio il comando read.table. Pertanto:\n\ncalcio <- read.table(path, header = TRUE, sep = \",\")\n\n\n\n\n\n\n\n\nNota\n\n\n\n\nL’opzione header = TRUE significa che la prima riga contiene i nomi delle variabili.\nL’opzione sep = \",\" indica che i vari valori di ciascuna variabile sono separati da una virgola.\n\n\n\n\n\nInfine, si noti che nel caso in cui il file sia contenuto nella cartella di lavoro, è quindi sufficiente usare:\n\ncalcio <- read.table(\"calcio.csv\", header = TRUE, sep = \",\")"
   },
   {
     "objectID": "lezioni/un_C.html#esplorazione-di-un-data.frame",
@@ -410,7 +410,7 @@
     "href": "lezioni/un_C.html#tipologia-di-variabili",
     "title": "R per l’analisi statistica multivariata",
     "section": "Tipologia di variabili",
-    "text": "Tipologia di variabili\nIn un dataset sono presenti diverse tipologie di variabili.\n\nLe variabili quantitative discrete e continue in R sono codificate come oggetti di tipo integer e numeric, rispettivamente.\n\n\nLe variabili qualitative in R sono codificate come oggetti di tipo character oppure di tipo factor; la differenza tra queste tipologie verrà chiarita nelle prossime slides.\nInfine, le date in R si codificano con la tipologia Date.\n\n\n\n\n\n\n\n\nNota\n\n\nR non sempre riconosce correttamente la tipologia di variabili, come evidenziato dal comando str, che fornisce un sommario del data.frame.\n\nstr(calcio)\n\n'data.frame':   1900 obs. of  7 variables:\n $ Date    : chr  \"2014-08-30\" \"2014-08-30\" \"2014-08-31\" \"2014-08-31\" ...\n $ HomeTeam: chr  \"Chievo\" \"Roma\" \"Atalanta\" \"Cesena\" ...\n $ AwayTeam: chr  \"Juventus\" \"Fiorentina\" \"Verona\" \"Parma\" ...\n $ FTR     : chr  \"A\" \"H\" \"D\" \"H\" ...\n $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...\n $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...\n $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ..."
+    "text": "Tipologia di variabili\nIn un dataset sono presenti diverse tipologie di variabili.\n\nLe variabili quantitative discrete e continue in R sono codificate come oggetti di tipo integer e numeric, rispettivamente.\n\n\nLe variabili qualitative in R sono codificate come oggetti di tipo character oppure di tipo factor; la differenza tra queste tipologie verrà chiarita nelle prossime slides.\nInfine, le date in R si codificano con la tipologia Date.\n\n\n\n\n\n\n\n\nNota\n\n\n\nR non sempre riconosce correttamente la tipologia di variabili, come evidenziato dal comando str, che fornisce un sommario del data.frame.\n\nstr(calcio)\n\n'data.frame':   1900 obs. of  7 variables:\n $ Date    : chr  \"2014-08-30\" \"2014-08-30\" \"2014-08-31\" \"2014-08-31\" ...\n $ HomeTeam: chr  \"Chievo\" \"Roma\" \"Atalanta\" \"Cesena\" ...\n $ AwayTeam: chr  \"Juventus\" \"Fiorentina\" \"Verona\" \"Parma\" ...\n $ FTR     : chr  \"A\" \"H\" \"D\" \"H\" ...\n $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...\n $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...\n $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ..."
   },
   {
     "objectID": "lezioni/un_C.html#variabili-quantitative",
@@ -459,7 +459,7 @@
     "href": "lezioni/un_C.html#i-valori-mancanti",
     "title": "R per l’analisi statistica multivariata",
     "section": "I valori mancanti",
-    "text": "I valori mancanti\nSupponiamo di voler identificare le partite in cui la squadra di casa ha una bassa probabilità di vittoria secondo Bet365:\n\ncalcio_home <- calcio[calcio$B365H > 9, ]\ncalcio_home\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw\n224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw\nNA         <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw\nNA.1       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\nNA.2       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n\n\n\n\n\n\n\n\nErrore\n\n\nQualcosa è andato storto: ci sono dei simboli (NA) che non avevamo incontrato finora.\n\n\n\nLa ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni dati mancanti, codificati come NA (Not Available)."
+    "text": "I valori mancanti\nSupponiamo di voler identificare le partite in cui la squadra di casa ha una bassa probabilità di vittoria secondo Bet365:\n\ncalcio_home <- calcio[calcio$B365H > 9, ]\ncalcio_home\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw\n224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw\nNA         <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw\nNA.1       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\nNA.2       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n\n\n\n\n\n\n\n\nErrore\n\n\n\nQualcosa è andato storto: ci sono dei simboli (NA) che non avevamo incontrato finora.\n\n\nLa ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni dati mancanti, codificati come NA (Not Available)."
   },
   {
     "objectID": "lezioni/un_C.html#i-valori-mancanti-1",
@@ -508,7 +508,7 @@
     "href": "lezioni/un_C.html#esercizio-riassuntivo",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo",
-    "text": "Esercizio riassuntivo\n\nSi ottenga la variabile aggio, ottenuta come la differenza tra la somma delle “probabilità” dei \\(3\\) eventi (vittoria, pareggio, sconfitta) ed \\(1\\), ovvero il caso equo.\nSi dica qual è l’aggio associato alla partita Udinese-Parma del 1 Settembre 2013.\nSi dica in quali partite è stato applicato il più basso ed il più alto aggio e si identifichino tali valori.\nIn quale partita è stato applicato l’aggio più alto nel campionato di Serie A del 2009/2010?\n\n\n\n\n\n\n\nSuggerimento\n\n\nSi usino i comandi which.min e which.max. Si consulti la documentazione per capirne il funzionamento."
+    "text": "Esercizio riassuntivo\n\nSi ottenga la variabile aggio, ottenuta come la differenza tra la somma delle “probabilità” dei \\(3\\) eventi (vittoria, pareggio, sconfitta) ed \\(1\\), ovvero il caso equo.\nSi dica qual è l’aggio associato alla partita Udinese-Parma del 1 Settembre 2013.\nSi dica in quali partite è stato applicato il più basso ed il più alto aggio e si identifichino tali valori.\nIn quale partita è stato applicato l’aggio più alto nel campionato di Serie A del 2009/2010?\n\n\n\n\n\n\n\nSuggerimento\n\n\n\nSi usino i comandi which.min e which.max. Si consulti la documentazione per capirne il funzionamento."
   },
   {
     "objectID": "lezioni/un_C.html#soluzione",
@@ -516,13 +516,6 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Soluzione",
     "text": "Soluzione\n\n# Calcolo dell'aggio\ncalcio$aggio <- 1 / calcio$B365H + 1 / calcio$B365D + 1 / calcio$B365A - 1\n\n# Aggio associato a Udinese-Parma del 1 Settembre 2013\nsubset(calcio, Date == \"2013-09-01\" & HomeTeam == \"Udinese\")\n\n          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio\n400 2013-09-01  Udinese    Parma Home   2.1  3.25   3.6 Not_Draw 0.06166056\n\n# Minimo e massimo aggio\ncalcio[which.min(calcio$aggio), ]\n\n          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio\n301 2015-04-18 Juventus    Lazio Home  1.95   3.4  4.33 Not_Draw 0.03788504\n\ncalcio[which.max(calcio$aggio), ]\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio\n1839 2011-04-10  Palermo   Cesena Draw   2.1   2.1     6 Draw 0.1190476\n\n# Il campionato di Serie A inizia a fine Agosto e finisce a fine Maggio\ncalcio2009_2010 <- subset(calcio, Date <= \"2009-08-15\" & Date <= \"2010-06-15\")\ncalcio2009_2010[which.max(calcio2009_2010$aggio), ]\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio\n1125 2009-05-24   Chievo  Bologna Draw   3.2  1.57     6 Draw 0.1161093"
-  },
-  {
-    "objectID": "exe/sol_es_1.html",
-    "href": "exe/sol_es_1.html",
-    "title": "R per l’analisi statistica multivariata",
-    "section": "",
-    "text": "Esercizio B\n\nB.1\n\nn <- 10\nsum((-1)^(0:n) * choose(n, 0:n))\n\n[1] 0\n\nn <- 100\nsum((-1)^(0:n) * choose(n, 0:n)) # ERRORE NUMERICO!\n\n[1] -9.861059e+14\n\nn <- 1000\nsum((-1)^(0:n) * choose(n, 0:n)) # ERRORE NUMERICO!\n\n[1] -1.739809e+286\n\n\n\n\n\nB.2\nn <- 10 sum((1:n) * choose(n, 1:n)) n * 2^(n - 1)\nn <- 100 sum((1:n) * choose(n, 1:n)) n * 2^(n - 1)\nn <- 1000 sum((1:n) * choose(n, 1:n)) n * 2^(n - 1)\n\n\nB.3\nn <- 10 sum((-1)^(1:n) * (1:n) * choose(n, 1:n))\nn <- 100 sum((-1)^(1:n) * (1:n) * choose(n, 1:n)) # ERRORE NUMERICO!\nn <- 1000 sum((-1)^(1:n) * (1:n) * choose(n, 1:n)) # ERRORE NUMERICO!\n\n\nEsercizio C\nLa soluzione di un’equazione di secondo grado è ovviamente disponibile in forma chiusa.\n\nroots <- function(a, b, c) {\n  Delta <- b^2 - 4 * a * c\n  if (Delta < 0) stop(\"Il delta deve essere non negativo\")\n  (-b + c(-1, 1) * sqrt(Delta)) / (2 * a)\n}\n\n\n\nC.1\nroots(1, 5, 2)\n\n\nC.2\nroots(1, 2, 1)\n\n\nC.3\nroots(1, 1, 1) # Non esistono soluzioni reali\n\n\nEsercizio D ——————————-\nA <- rbind( c(26, 22, 17, 22, 23), c(22, 18, 14, 23, 27), c(17, 14, 14, 20, 24), c(22, 23, 20, 26, 23), c(23, 27, 24, 23, 12) )\n\n\nD.1\ndet(solve(A)) # 0.0006493506 1 / det(A) # Stesso valore\n\n\nD.2\ndet(A %*% A) # 2371600 det(A)^2 # Stesso valore\n\n\nD.3\nsum(diag(A)) # 96\n\n\nD.4\ndet(A) # 1540 prod(eigen(A)$values) # Stesso valore\n\n\nEsercizio E ———————–\n\n\nE.1\ndist_euclid <- function(x, y) { sqrt(crossprod(x - y)) }\n\n\nE.2\nx <- c(1, 4, 2, 2, 10) y <- c(8, 1, 8, 3, 6) dist_euclid(x, y) # 10.53565\n\n\nEsercizio F ————————\n\n\nF.1\nfrobenius_norm <- function(A) { sqrt(sum(A^2)) }\nA <- cbind(1:5, 6:10, 11:15) frobenius_norm(A) # 35.21363\n\n\nEsercizio G ——————————\ndata(mtcars)\n\n\nG.1\ndim(mtcars) # 32 righe, 11 colonne\n\n\nG.2\nmtcars[1:20] # Bisogna aggiungere una virgola mtcars[1:20, ] # Comando corretto\n\n\nG.3\n\n\nmtcars[mtcars\\(cyl = 4, ] # COMANDO ERRATO mtcars[mtcars\\)cyl == 4, ] # COMANDO CORRETTO\n\n\nmtcars[-1:4, ] # COMANDO ERRATO\nmtcars[-(1:4), ] # COMANDO CORRETTO (elimina le prima 4 righe)\n\n\nmtcars[mtcars\\(cyl <= 5] # COMANDO ERRATO mtcars[mtcars\\)cyl <= 5, ] # COMANDO CORRETTO\n\n\nmtcars[mtcars\\(cyl == 4 | 6, ] # COMANDO ERRATO mtcars[mtcars\\)cyl == 4 | mtcars$cyl == 6, ] # COMANDO CORRETTO\n\n\nEsercizio H ——————————-\ndiag2 <- function(A) { n <- nrow(A) diagonal <- numeric(n) for (i in 1:n) { diagonal[i] <- A[i, i] } diagonal }\nA <- rbind( c(26, 22, 17, 22, 23), c(22, 18, 14, 23, 27), c(17, 14, 14, 20, 24), c(22, 23, 20, 26, 23), c(23, 27, 24, 23, 12) )\ndiag(A) diag2(A)\n\n\nEsercizio I ———————————-\n\n\nLa consegna chiedeva di indovinare il risultato senza eseguire il codice.\n\n\nSe eseguito, si ottiene 202."
   },
   {
     "objectID": "exe/es_1.html",

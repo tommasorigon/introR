@@ -31,7 +31,6 @@ $$ Dove $X \sim N(0,1)$ è una distribuzione normale standard.
 
 4.  Si approssimi la probabilità $\mathbb{P}(X \le -3)$ tramite simulazione.
 
-
 ## Esercizio C
 
 In un noto gioco da tavolo, si usano dadi a $20$ facce. Il lancio del dado pertanto corrisponde ad una variabile aleatoria $X$ tale che
@@ -46,7 +45,6 @@ In determinati contesti, al giocatore è concesso un *vantaggio*. Questo signifi
 
 1.  Si rappresenti graficamente la distribuzione di probabilità di $Z$.
 2.  Si ottenga tramite simulazione la probabilità $\mathbb{P}(Z + 5 \ge 17)$. Si confronti il risultato con la probabilità ottenuta al punto precedente. Al giocatore è effettivamente concesso un vantaggio?
-
 
 ## Esercizio D (difficile)
 
@@ -64,7 +62,6 @@ $$ **Suggerimento**: si usino la funzioni `dcauchy`, `pcauchy`, `qcauchy` e `rca
     \frac{1}{n}\sum_{i=1}^nX_i,
     $$ per vari valori di $n = 10^2, 10^3, 10^4, 10^5$. Si ripeta l'esperimento alcune volte. La media aritmetica dei valori simulati sembra convergere? Si commenti il risultato.
 
-
 ## Esercizio E
 
 L'indice di asimmetria di Bowley di una variabile aleatoria è definito come segue
@@ -78,7 +75,6 @@ $$
 2.  Si calcoli l'indice di Bowley per una distribuzione gamma di parametri $\alpha = 2$ e $\beta = 4$ e si commenti il risultato.
 
 3.  Si calcoli l'indice di Bowley per una distribuzione gamma di parametri $\alpha = 200$ e $\beta = 400$ e lo si confronti col valore ottenuto al punto precedente. Si commenti il risultato.
-
 
 ## Esercizio F
 

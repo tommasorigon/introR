@@ -3,20 +3,12 @@ title: "R per l'analisi statistica multivariata"
 subtitle: "Unità A: calcolo scientifico ed algebra lineare"
 author: "Tommaso Rigon"
 institute: "Università Milano-Bicocca"
-format:
-  revealjs: 
-    theme: [white, ../styles.css]
-    scrollable: true
-    logo: img/logoB.png
-    smaller: true
-    transition: slide
-    touch: true
-    highlight-style: ayu
 editor: visual
-slide-number: true
 execute:
   echo: true
   warning: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Unità A
