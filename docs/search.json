@@ -217,6 +217,125 @@
     "text": "I boxplot I\nUna rappresentazione grafica alternativa agli istogrammi sono i boxplot.\nLe statistiche descrittive su cui si basano i boxplot si possono ottenere tramite il comando boxplot.stats, ovvero:\n\nboxplot.stats(dde_preterm)\n\n$stats\n[1]  3.17 19.94 29.46 45.30 83.25\n\n$n\n[1] 361\n\n$conf\n[1] 27.35112 31.56888\n\n$out\n [1]  94.60  99.42 144.86 105.83  90.73 128.47  91.23 102.50 178.06  88.72\n[11] 117.54 108.90 106.70 105.48 109.55 103.88 103.77\n\n\n\nboxplot(dde_preterm, dde_non_preterm) # Produce il grafico"
   },
   {
+    "objectID": "lezioni/un_E.html",
+    "href": "lezioni/un_E.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Varianza e scarto quadratico medio\nAltre misure di variabilità (campo di variazione, scarto interquartile, MAD)\n\n\n\n\n\n\n\nNota\n\n\n\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_E.html#descrizione-del-problema",
+    "href": "lezioni/un_E.html#descrizione-del-problema",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Descrizione del problema",
+    "text": "Descrizione del problema\nSiamo interessati a confrontare l’efficacia di due diverse metodologie, chiamate A e B, per la misurazione dell’emoglobina nel sangue.\nSi è creato in laboratorio del sangue artificiale contenente 15 grammi di emoglobina ogni \\(100 \\text{cm}^3\\).\nDal composito sono stati estratti in totale \\(n = 360\\) campioni.\nDi questi, in \\(n_A = 180\\) campioni l’emoglobina è stata misurata utilizzando la metodologia A mentre per i restanti \\(n_B = 180\\) campioni è stata usata la metodologia B.\nAlcuni dati sono riportati nella prossima slide. Le differenze tra le diverse misurazioni sono da attribuire in larga parte agli errori di misura delle due diverse metodologie."
+  },
+  {
+    "objectID": "lezioni/un_E.html#i-dati-grezzi-editor-di-testo",
+    "href": "lezioni/un_E.html#i-dati-grezzi-editor-di-testo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "I dati grezzi (editor di testo)",
+    "text": "I dati grezzi (editor di testo)"
+  },
+  {
+    "objectID": "lezioni/un_E.html#importazione-dei-dati-emoglobina",
+    "href": "lezioni/un_E.html#importazione-dei-dati-emoglobina",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Importazione dei dati emoglobina",
+    "text": "Importazione dei dati emoglobina\nCome fatto in precedenza, anzitutto è necessario scaricare il file emoglobina.csv e salvarlo nel proprio computer. Link al file\n\nemoglobina <- read.table(\"../dataset/emoglobina.csv\", header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/emoglobina.csv\"\nemoglobina <- read.table(path, header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\n\nstr(emoglobina)\n\n'data.frame':   360 obs. of  2 variables:\n $ emoglobina : num  15 15.1 15.2 14.8 15 ...\n $ Metodologia: Factor w/ 2 levels \"A\",\"B\": 1 1 1 1 1 1 1 1 1 1 ...\n\n\nL’opzione stringsAsFactors = TRUE, implica che la variabile Metodologia viene codificata come factor e non come character."
+  },
+  {
+    "objectID": "lezioni/un_E.html#operazioni-preliminari",
+    "href": "lezioni/un_E.html#operazioni-preliminari",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni preliminari",
+    "text": "Operazioni preliminari\nIn questo formato i dati sono difficili da analizzare, quantomeno senza usare le funzioni avanzate *apply così come gli strumenti del cosiddetto tidyverse.\nPertanto, creiamo le due variabili emo_A ed emo_B, contenenti i valori di emoglobina per le due metodologie.\n\nemo_A <- emoglobina$emoglobina[emoglobina$Metodologia == \"A\"] # Emoglobina gruppo A\nemo_B <- emoglobina$emoglobina[emoglobina$Metodologia == \"B\"] # Emoglobina gruppo B\n\nsummary(emo_A)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  14.44   14.87   15.00   15.00   15.14   15.64 \n\nsummary(emo_B)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  13.83   14.83   15.02   15.02   15.22   15.80 \n\n\nDa queste prime analisi descrittive si evince che entrambe le metodologie sono, quantomeno in media, ben calibrate. Quale delle due è preferibile?"
+  },
+  {
+    "objectID": "lezioni/un_E.html#boxplot",
+    "href": "lezioni/un_E.html#boxplot",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Boxplot",
+    "text": "Boxplot\n\nboxplot(emoglobina$emoglobina ~ emoglobina$Metodologia,\n        ylab = \"Emoglobina\",\n        xlab = \"Metodologia\"\n)"
+  },
+  {
+    "objectID": "lezioni/un_E.html#la-varianza-i",
+    "href": "lezioni/un_E.html#la-varianza-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La varianza I",
+    "text": "La varianza I\nRicordiamo che la varianza dei dati \\(x_1,\\dots,x_n\\) è pari a\n\\[\n\\sigma^2  = \\frac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2 = \\left(\\frac{1}{n}\\sum_{i=1}^n x_i^2\\right) - \\bar{x}^2.\n\\]\nPossiamo quindi calcolare le varianze dei due gruppi “manualmente”:\n\nmean((emo_A - mean(emo_A))^2) # Varianza del gruppo A\n\n[1] 0.0456162\n\nmean((emo_B - mean(emo_B))^2) # Varianza del gruppo B\n\n[1] 0.09901038\n\nmean(emo_A^2) - mean(emo_A)^2 # Varianza del gruppo A, formula alternativa\n\n[1] 0.0456162\n\nmean(emo_B^2) - mean(emo_B)^2 # Varianza del gruppo B, formula alternativa\n\n[1] 0.09901038\n\n\nLa metodologia B è quindi caratterizzata da una variabilità maggiore."
+  },
+  {
+    "objectID": "lezioni/un_E.html#la-varianza-ii",
+    "href": "lezioni/un_E.html#la-varianza-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La varianza II",
+    "text": "La varianza II\nPer praticità, creiamo una nuova funzione chiamata my_var che calcola la varianza di un generico vettore x. Pertanto avremo:\n\nmy_var <- function(x) {\n  mean(x^2) - mean(x)^2\n}\n\nmy_var(emo_A)\n\n[1] 0.0456162\n\nmy_var(emo_B)\n\n[1] 0.09901038\n\n\nIn R è presente la funzione var, tuttavia questa calcola una quantità leggermente diversa, ovvero \\[\n\\texttt{var(x)} = \\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2,\n\\] ovvero lo stimatore corretto della varianza quando i dati provengono da una legge gaussiana.\nIl motivo non è chiaro? Verrà presto affrontato a Statistica 2!"
+  },
+  {
+    "objectID": "lezioni/un_E.html#la-varianza-iii",
+    "href": "lezioni/un_E.html#la-varianza-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La varianza III",
+    "text": "La varianza III\nLa differenza my_var e var è, in pratica, sostanzialmente trascurabile in questo caso, infatti:\n\nvar(emo_A)\n\n[1] 0.04587104\n\nvar(emo_B)\n\n[1] 0.09956351\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi ottenga lo stesso output di my_var utilizzando la funzione var."
+  },
+  {
+    "objectID": "lezioni/un_E.html#scarto-quadratico-medio",
+    "href": "lezioni/un_E.html#scarto-quadratico-medio",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Scarto quadratico medio",
+    "text": "Scarto quadratico medio\nLo scarto quadratico medio è la radice quadrata della varianza, ovvero \\[\n\\text{sqm}(x) = \\sigma = \\sqrt{\\sigma^2}.\n\\]\nCreiamo quindi un’opportuna funzione R chiamata my_sd per il suo calcolo.\nAnche in questo caso, si faccia attenzione che il comando sd di R invece calcola il valore di \\[\n\\texttt{sd(x)} = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2}.\n\\]\n\nmy_sd <- function(x) {\n  sqrt(my_var(x))\n}\n\nmy_sd(emo_A)\n\n[1] 0.2135795\n\nmy_sd(emo_B)\n\n[1] 0.3146591\n\nsd(emo_A)\n\n[1] 0.2141753\n\nsd(emo_B)\n\n[1] 0.3155369"
+  },
+  {
+    "objectID": "lezioni/un_E.html#scarto-quadratico-medio-1",
+    "href": "lezioni/un_E.html#scarto-quadratico-medio-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Scarto quadratico medio",
+    "text": "Scarto quadratico medio\nIl campo di variazione è la differenza tra minimo e massimo della distribuzione, ovvero \\[\n(\\text{``Campo di variazione''}) = x_{(n)} - x_{(1)},\n\\] dove \\(x_{(1)}\\) e \\(x_{(n)}\\) rappresentano rispettivamente il minimo ed il massimo dei dati.\nSebbene non esista una funzione specifica per il suo calcolo, possiamo usare i seguenti comandi\n\nmax(emo_A) - min(emo_A)\n\n[1] 1.20242\n\nmax(emo_B) - min(emo_B)\n\n[1] 1.97508\n\ndiff(range(emo_A))\n\n[1] 1.20242\n\ndiff(range(emo_B))\n\n[1] 1.97508\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi definisca un’opportuna funzione R che calcola il campo di variazione."
+  },
+  {
+    "objectID": "lezioni/un_E.html#scarto-interquartile",
+    "href": "lezioni/un_E.html#scarto-interquartile",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Scarto interquartile",
+    "text": "Scarto interquartile\nLo scarto interquartile è la differenza tra il terzo ed il primo quartile, ovvero \\[\n(\\text{``Scarto interquartile''}) = \\mathcal{Q}_{0.75} - \\mathcal{Q}_{0.25}.\n\\]\nÈ molto più resistente della varianza in presenza di poche osservazioni estreme.\nLa sua implementazione in R è la seguente:\n\ninterquartile_range <- function(x){\n  diff(quantile(x, probs = c(0.25, 0.75)))\n}\n \ninterquartile_range(emo_A)\n\n      75% \n0.2699275 \n\ninterquartile_range(emo_B)\n\n      75% \n0.3929925"
+  },
+  {
+    "objectID": "lezioni/un_E.html#mean-absolute-deviation",
+    "href": "lezioni/un_E.html#mean-absolute-deviation",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Mean absolute deviation",
+    "text": "Mean absolute deviation\nL’indice di variabilità MAD (Median Absolute Deviation) è definito come segue \\[\n\\text{MAD} = \\text{Mediana}(|x_1 - \\text{Me}_x|, \\dots, |x_n - \\text{Me}_x|), \\qquad \\text{Me}_x = \\text{Mediana}(x_1,\\dots,x_n).\n\\]\nPer il suo calcolo, creiamo una funzione appropriata:\n\nMAD <- function(x) {\n  median(abs(x - median(x)))\n}\n\nIl MAD della variabili emo_A ed emo_B è quindi pari a\n\nMAD(emo_A)\n\n[1] 0.135795\n\nMAD(emo_B)\n\n[1] 0.198025"
+  },
+  {
+    "objectID": "lezioni/un_E.html#la-funzione-tapply-i",
+    "href": "lezioni/un_E.html#la-funzione-tapply-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La funzione tapply I",
+    "text": "La funzione tapply I\nEsiste un metodo più elegante e veloce per ottenere questi risultati, basato sulla funzione tapply.\nLa funzione tapply(x, group, fun) applica una certa funzione fun ad un insieme di dati x, per ciascun gruppo group.\nPer esempio, la media aritmetica di emo_A ed emo_B si ottiene come segue:\n\ntapply(emoglobina$emoglobina, emoglobina$Metodologia, mean)\n\n       A        B \n15.00289 15.02171 \n\nwith(emoglobina, tapply(emoglobina, Metodologia, mean)) # In maniera ancora più compatta\n\n       A        B \n15.00289 15.02171"
+  },
+  {
+    "objectID": "lezioni/un_E.html#la-funzione-tapply-ii",
+    "href": "lezioni/un_E.html#la-funzione-tapply-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La funzione tapply II",
+    "text": "La funzione tapply II\nPertanto, possiamo ottenere i vari indici di variabilità come segue:\n\ntab <- rbind(with(emoglobina, tapply(emoglobina, Metodologia, my_var)),\n             with(emoglobina, tapply(emoglobina, Metodologia, my_sd)),\n             with(emoglobina, tapply(emoglobina, Metodologia, interquartile_range)),\n             with(emoglobina, tapply(emoglobina, Metodologia, MAD)))\nrownames(tab) <- c(\"Varianza\", \"Deviazione Standard\", \"Scarto interquartile\", \"MAD\")\ntab\n\n                             A          B\nVarianza             0.0456162 0.09901038\nDeviazione Standard  0.2135795 0.31465915\nScarto interquartile 0.2699275 0.39299250\nMAD                  0.1357950 0.19802500\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi provi ad usare la funzione aggregate per ottenere lo stesso risultato."
+  },
+  {
+    "objectID": "lezioni/un_E.html#esercizio-riassuntivo",
+    "href": "lezioni/un_E.html#esercizio-riassuntivo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo",
+    "text": "Esercizio riassuntivo\nLa misura di asimmetria di uso più comune è il cosiddetto indice di asimmetria standardizzato di Pearson, definito come \\[\n    \\gamma = \\frac{1}{\\text{sqm}(x)^3} \\frac{1}{n} \\sum_{i=1}^n (x_i - \\bar{x})^3 = \\frac{1}{n} \\sum_{i=1}^n \\left(\\frac{x_i - \\bar{x}}{\\sigma}\\right)^3.\n\\]\n\n\n\n\n\n\nEsercizio\n\n\n\nSi crei una funzione opportuna per il suo calcolo."
+  },
+  {
+    "objectID": "lezioni/un_E.html#soluzione-dellesercizio-riassuntivo",
+    "href": "lezioni/un_E.html#soluzione-dellesercizio-riassuntivo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione dell’esercizio riassuntivo",
+    "text": "Soluzione dell’esercizio riassuntivo\n\n# Prima possibile implementazione\nasym <- function(x){\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  mean((x - mean(x))^3) / sqm^3\n}\n\n# Implementazione (leggermente) alternativa\nasym <- function(x){\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  z <- (x - mean(x)) / sqm\n  mean(z^3)\n}\n\nasym(emo_A)\n\n[1] 0.09535216"
+  },
+  {
     "objectID": "lezioni/un_A.html",
     "href": "lezioni/un_A.html",
     "title": "R per l’analisi statistica multivariata",
