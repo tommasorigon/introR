@@ -35,6 +35,83 @@
     "text": "Ricevimento\nPer fissare un appuntamento, si prega di contattare il docente in anticipo via posta elettronica all’indirizzo tommaso.rigon@unimib.it. Il ricevimento è fissato ogni martedì alle ore 17.30."
   },
   {
+    "objectID": "lezioni/un_F.html",
+    "href": "lezioni/un_F.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Svolgimento di un tema d’esame di Statistica I\nModello di regressione lineare semplice\n\n\n\n\n\n\n\nNota\n\n\n\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_F.html#descrizione-del-problema",
+    "href": "lezioni/un_F.html#descrizione-del-problema",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Descrizione del problema",
+    "text": "Descrizione del problema\nPer \\(n = 17\\) luoghi nelle Alpi viene misurata la pressione atmosferica (inHg, ovvero “inches of mercury”) e la temperatura di ebollizione dell’acqua (in gradi Fahrenheit).\nI dati provengono da un esperimento condotto dal fisico scozzese Forbes nel 1857.\nForbes era interessato a stimare l’altitudine tramite la pressione. Tuttavia, il barometro all’epoca era uno strumento pesante e costoso.\nIn montagna infatti l’acqua bolle ad una temperatura diversa, per cui è possibile cercare di stimare la pressione a partire dalla temperatura di ebollizione.\n\n\n\n\n\n\nNota\n\n\n\nI dati seguenti sono gli stessi dell’esame di Statistica I del 11 Novembre 2020, che trovate sul sito web."
+  },
+  {
+    "objectID": "lezioni/un_F.html#i-dati-grezzi-editor-di-testo",
+    "href": "lezioni/un_F.html#i-dati-grezzi-editor-di-testo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "I dati grezzi (editor di testo)",
+    "text": "I dati grezzi (editor di testo)"
+  },
+  {
+    "objectID": "lezioni/un_F.html#importazione-dei-dati-forbes",
+    "href": "lezioni/un_F.html#importazione-dei-dati-forbes",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Importazione dei dati forbes",
+    "text": "Importazione dei dati forbes\nCome fatto in precedenza, anzitutto è necessario scaricare il file forbes.csv e salvarlo nel proprio computer. Link al file\n\nforbes <- read.table(\"../dataset/forbes.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/forbes.csv\"\nforbes <- read.table(path, header = TRUE, sep = \",\")\n\n\nstr(forbes)\n\n'data.frame':   17 obs. of  2 variables:\n $ bp  : num  194 194 198 198 199 ...\n $ pres: num  20.8 20.8 22.4 22.7 23.1 ..."
+  },
+  {
+    "objectID": "lezioni/un_F.html#operazioni-preliminari",
+    "href": "lezioni/un_F.html#operazioni-preliminari",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni preliminari",
+    "text": "Operazioni preliminari\nPer motivi interpretativi, convertiamo la temperatura da gradi Farenheit a gradi Celsius, ricordando che\n\\[\n(\\text{``Fahrenheit''}) = 32 + \\frac{9}{5}(\\text{``Celsius''}).\n\\]\n\ncolnames(forbes) <- c(\"TempF\", \"Pressione\") # Cambio i nomi alle variabili\n\nforbes$TempC <- round((forbes$TempF - 32) * 5 / 9, 2) # Da Fahrenheit a Celsius\nsummary(forbes)\n\n     TempF         Pressione         TempC       \n Min.   :194.3   Min.   :20.79   Min.   : 90.17  \n 1st Qu.:199.4   1st Qu.:23.15   1st Qu.: 93.00  \n Median :201.3   Median :24.01   Median : 94.06  \n Mean   :203.0   Mean   :25.06   Mean   : 94.97  \n 3rd Qu.:208.6   3rd Qu.:27.76   3rd Qu.: 98.11  \n Max.   :212.2   Max.   :30.06   Max.   :100.11  \n\n\nCome mai approssimiamo i valori utilizzando round? Per motivi estetici: in questo modo si ottengono risultati identici alla prova d’esame di Statistica I."
+  },
+  {
+    "objectID": "lezioni/un_F.html#istogramma",
+    "href": "lezioni/un_F.html#istogramma",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Istogramma",
+    "text": "Istogramma\n\n\n\n\n\n\nDomanda 1\n\n\n\nSi disegni un istogramma della variabile temperatura, scegliendo un numero appropriato di classi equispaziate e giustificandone la scelta.\n\n\n\nSoluzione\nPossiamo decidere di specificare in autonomia gli intervalli delle classi oppure di lasciare ad R questa scelta.\n\npar(mfrow = c(1, 2)) # Divido la finestra grafica in 2 parti\n\n# Opzione 1, per un totale di 6 classi equispaziate\nhist(forbes$TempC) # Equivalente a: hist(forbes$TempC, breaks = \"sturges\") \n\n# Opzione 2, definisco manualmente 5 classi equispaziate\nbreaks <- c(90, 92.5, 95, 97.5, 100, 102.5)\nhist(forbes$TempC, breaks = breaks)\n\n\n\n\nLa soluzione di sinistra fa uso di \\(6\\) classi. Viceversa, quella di sinistra fa uso di \\(5\\) classi, come nella soluzione dell’esame.\n\n\n\n\n\n\nEsercizio\n\n\n\nSi aggiungano a questi grafici gli “abbellimenti” grafici ritenuti necessari (nomi delle variabili, titolo, etc)."
+  },
+  {
+    "objectID": "lezioni/un_F.html#indici-di-posizione",
+    "href": "lezioni/un_F.html#indici-di-posizione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Indici di posizione",
+    "text": "Indici di posizione\n\n\n\n\n\n\nDomanda 2\n\n\n\nSi ottengano la media aritmetica di entrambe le variabili tempC e pressione. Quanto vale la temperatura di ebollizione media espressa in gradi Fahrenheit? Si risponda senza calcolare tutti i valori della variabile tempF.\n\n\n\nSoluzione\nAbbiamo già calcolato la medie tramite il comando summary, per completezza:\n\n# Prima parte della domanda\nmean(forbes$TempC)\n\n[1] 94.97353\n\nmean(forbes$Pressione)\n\n[1] 25.05882\n\n\n\n# Seconda parte della domanda \n32 + 9 / 5 * mean(forbes$TempC) # Utilizzo proprietà della media\n\n[1] 202.9524\n\nmean(forbes$TempF) # Non richiesto, calcola la media a partire dai dai dati trasformati\n\n[1] 202.9529\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nCome mai le medie calcolate nella seconda parte differiscono leggermente? A cosa può essere dovuto?"
+  },
+  {
+    "objectID": "lezioni/un_F.html#indici-di-variabilità",
+    "href": "lezioni/un_F.html#indici-di-variabilità",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Indici di variabilità",
+    "text": "Indici di variabilità\n\n\n\n\n\n\nDomanda 3\n\n\n\nSi ottenga la varianza delle variabili tempC e pressione.\n\n\n\nSoluzione\nDato che tornerà utile in seguito, definiamo la funzione my_var che calcola la varianza.\n\n# Si, la funzione è definita in un'unica riga e non c'è nulla di male in questo\nmy_var <- function(x) mean(x^2) - mean(x)^2 \n\n# Calcolo delle due varianze\nmy_var(forbes$TempC)\n\n[1] 9.630811\n\nmy_var(forbes$Pressione)\n\n[1] 8.584575\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi ottengano i momenti secondi delle variabili tempC e pressione."
+  },
+  {
+    "objectID": "lezioni/un_F.html#covarianza-e-correlazione",
+    "href": "lezioni/un_F.html#covarianza-e-correlazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Covarianza e correlazione",
+    "text": "Covarianza e correlazione\n\n\n\n\n\n\nDomanda 4\n\n\n\nSi disegni un opportuno grafico che aiuti a comprendere la relazione tra le due variabili. Si calcoli quindi la correlazione.\n\n\n\nSoluzione\nPer la prima parte della domanda, abbiamo bisogno del nuovo comando plot, che può essere usato (tra le altre cose!) per costruire un diagramma a dispersione.\nForniamo due versioni dello stesso grafico; la seconda contiene dei miglioramenti estetici.\n\npar(mfrow = c(1, 1)) # Vogliamo mostrare un grafico alla volta\nplot(forbes$TempC, forbes$Pressione)\n\n\n\nplot(forbes$TempC, forbes$Pressione, pch = 16, xlab = \"Temperatura\", ylab = \"Pressione\")\n\n\n\n\nÈ quindi evidente che i dati siano circa (anche se non perfettamente) allineati\nPer la seconda parte di domanda (correlazione), dobbiamo anzitutto ottenere la covarianza tra due variabili.\nLa covarianza tra due insiemi di dati \\(x_1,\\dots,x_n\\) e \\(y_1,\\dots,y_n\\) è definita come\n\\[\n\\text{cov}(x,y) = \\frac{1}{n}\\sum_{i=1}^n(x_i - \\bar{x})(y_i - \\bar{y}) = \\frac{1}{n}\\sum_{i=1}^nx_i y_i - \\bar{x}\\bar{y}.\n\\]\nDefiniamo quindi la funzione my_cov, che calcola appunto la covarianza:\n\nmy_cov <- function(x, y) mean(x * y) - mean(x) * mean(y)\nmy_cov(forbes$TempC, forbes$Pressione) # = my_cov(forbes$Pressione, forbes$TempC)\n\n[1] 9.067404\n\n\nIn R esiste anche il comando cov che, come nel caso della varianza, divide la sommatoria per \\((n - 1)\\) e non \\(n\\) per motivi legati all’inferenza statistica:\n\ncov(forbes$Pressione, forbes$TempC) # = 17 / 16 * my_cov(forbes$TempC, forbes$Pressione)\n\n[1] 9.634117\n\n\nL’indice di è definito come: \\[\n\\rho = \\frac{\\text{cov}(x,y)}{\\sqrt{\\text{var}(x) \\text{var}(y)}}.\n\\]\nPertanto, possiamo calcolare la correlazione nei modo seguente:\n\nmy_cov(forbes$TempC, forbes$Pressione) / sqrt(my_var(forbes$TempC) * my_var(forbes$Pressione))\n\n[1] 0.9972227\n\ncov(forbes$TempC, forbes$Pressione) / sqrt(var(forbes$TempC) * var(forbes$Pressione))\n\n[1] 0.9972227\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nCome mai i risultati dei due comandi coincidono? Si verifichi questo fatto svolgendo analiticamente (carta e penna) i conti.\n\n\nIn R esiste anche il comando cor, che permette di ottenere la correlazione\n\ncorrelation <- cor(forbes$TempC, forbes$Pressione)\ncorrelation\n\n[1] 0.9972227"
+  },
+  {
+    "objectID": "lezioni/un_F.html#modello-di-regressione-lineare",
+    "href": "lezioni/un_F.html#modello-di-regressione-lineare",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello di regressione lineare",
+    "text": "Modello di regressione lineare\n\n\n\n\n\n\nDomanda 5\n\n\n\nSi ottenga la retta ai minimi quadrati per la relazione tra tempC e pressione e la si disegni nel grafico ottenuto in precedenza.\n\n\n\nSoluzione\nAnzitutto ricordiamo che in un modello lineare del tipo \\(y_i = \\alpha + \\beta x_i + \\epsilon_i\\), le stime ai minimi quadrati sono pari a \\[\n\\hat{\\alpha} = \\bar{y} - \\hat{\\beta}\\:\\bar{x}, \\qquad \\hat{\\beta}  = \\frac{\\text{cov}(x,y)}{\\text{var}(x)}.\n\\]\nPertanto, possiamo calcolare la correlazione nei modo seguente:\n\n# Coefficiente angolare\nbeta_hat <- my_cov(forbes$TempC, forbes$Pressione) / my_var(forbes$TempC)\n# Intercetta\nalpha_hat <- mean(forbes$Pressione) - mean(forbes$TempC) * beta_hat\n\nc(alpha_hat, beta_hat)\n\n[1] -64.3587103   0.9414995\n\n\n\nplot(forbes$TempC, forbes$Pressione, pch = 16, xlab = \"Temperatura\", ylab = \"Pressione\")\nabline(a = alpha_hat, b = beta_hat)\n\n\n\n\n\n\n\n\n\n\nDomanda 6\n\n\n\nIn base al modello stimato, se la temperatura di ebollizione dell’acqua è pari 97 gradi Celsius, a quanto è pari la pressione?\n\n\n\n\nSoluzione\nUtilizzando le stime ottenute, possiamo calcolare rapidamente i valori previsti:\n\nx <- seq(from = 90, to = 100, length = 20)\nalpha_hat + beta_hat * x\n\n [1] 20.37625 20.87177 21.36730 21.86283 22.35835 22.85388 23.34940 23.84493\n [9] 24.34046 24.83598 25.33151 25.82703 26.32256 26.81809 27.31361 27.80914\n[17] 28.30467 28.80019 29.29572 29.79124\n\n\nIn particolare, quando tempC = 97 si ha che:\n\nalpha_hat + beta_hat * 97\n\n[1] 26.96674\n\n\n\n\n\n\n\n\nDomanda 7\n\n\n\nSi ottenga un indice di bontà di adattamento ai dati della curva ottenuta.\n\n\n\n\nSoluzione\nIl coefficiente \\(R^2\\) per un modello di regressione lineare semplice è definito come: \\[\nR^2 = 1 - \\frac{\\text{var}(r)}{\\text{var}(y)} = \\rho^2,\n\\] dove \\(r_1,\\dots,r_n\\) sono i residui.\nAnzitutto quindi calcoliamo i residui:\n\nresiduals <- forbes$Pressione - (alpha_hat + beta_hat * forbes$TempC)\n\nIl coefficiente \\(R^2\\) può quindi essere ottenuto in due modi diversi:\n\ncorrelation^2\n\n[1] 0.994453\n\n1 - my_var(residuals) / my_var(forbes$Pressione)\n\n[1] 0.994453"
+  },
+  {
+    "objectID": "lezioni/un_F.html#esercizio-riassuntivo",
+    "href": "lezioni/un_F.html#esercizio-riassuntivo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo",
+    "text": "Esercizio riassuntivo\nSi consideri l’esame di Statistica I del 28 Gennaio 2021, disponibile a questo link\nSi risolva l’esercizio 2 dell’esame usando il software R.\n\n\n\n\n\n\nDomanda 7\n\n\n\nPer poter importare piccole quantità di dati in R, è possibile usare il comando scan."
+  },
+  {
     "objectID": "lezioni/un_D.html",
     "href": "lezioni/un_D.html",
     "title": "R per l’analisi statistica multivariata",

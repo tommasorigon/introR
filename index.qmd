@@ -55,7 +55,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 |                                                  | **STATISTICA DESCRITTIVA**                 |                                             |                                                         |
 | Analisi descrittiva dei dati `dde`               | [Unità D](lezioni/un_D.html)         | [Codice R](lezioni/script/un_D.R)           | **AR** §2.1 --- §2.3, §2.7                              |
 | Analisi descrittiva dei dati `emoglobina`        | [Unità E](lezioni/un_E.html)         | [Codice R](lezioni/script/un_E.R)           | **AR** §2.1 --- §2.3, §2.7                              |
-| **Esercitazione**                                | [Unità F](lezioni/un_F.pdf)         | [Codice R](lezioni/script/un_F.R)           | **AR** 7.1, §7.2                                        |
+| **Esercitazione**                                | [Unità F](lezioni/un_F.html)         | [Codice R](lezioni/script/un_F.R)           | **AR** 7.1, §7.2                                        |
 | Analisi descrittiva dei dati `titanic`           | [Slides unità G](lezioni/un_G.pdf)         | [Codice R](lezioni/script/un_G.R)           | **AR** §3.1 --- §3.5                                    |
 | *Esercizi*                                       | [Esercizi 2](exe/es_2.html)                | [soluzione.R](exe/es_2.R)                   |                                                         |
 |                                                  | **CALCOLO DELLE PROBABILITÀ**              |                                             |                                                         |
