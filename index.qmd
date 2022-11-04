@@ -6,7 +6,7 @@ author:
   affiliation: DEMS
 ---
 
-L'insegnamento di [Analisi Statistica Multivariata](https://aldosolari.github.io/ASM/) (15 CFU) è articolato nelle seguenti parti:
+L'insegnamento di **Analisi Statistica Multivariata** (15 CFU) è articolato nelle seguenti parti:
 
 1.  R per l'Analisi Statistica Multivariata (R), 3 CFU, I Ciclo, Prof. Rigon.
 
@@ -14,7 +14,7 @@ L'insegnamento di [Analisi Statistica Multivariata](https://aldosolari.github.io
 
 3.  Analisi Esplorativa (AE), 6 CFU, IV Ciclo, Prof. Monti.
 
-**Nota**: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d'appello sono spiegate nella pagina principale: [Analisi Statistica Multivariata](https://aldosolari.github.io/ASM/).
+**Nota**: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d'appello sono spiegate nella pagina Elearning di Analisi Statistica Multivariata.
 
 ## Materiale didattico
 

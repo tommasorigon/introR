@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "R per l’analisi statistica multivariata",
     "section": "",
-    "text": "L’insegnamento di Analisi Statistica Multivariata (15 CFU) è articolato nelle seguenti parti:\nNota: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d’appello sono spiegate nella pagina principale: Analisi Statistica Multivariata."
+    "text": "L’insegnamento di Analisi Statistica Multivariata (15 CFU) è articolato nelle seguenti parti:\nNota: i dettagli legati alle propedeuticità, alla registrazione del voto, al calendario degli esami e al salto d’appello sono spiegate nella pagina Elearning di Analisi Statistica Multivariata."
   },
   {
     "objectID": "index.html#materiale-didattico",
@@ -137,7 +137,7 @@
     "href": "lezioni/un_D.html#importazione-dei-dati-dde",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione dei dati dde",
-    "text": "Importazione dei dati dde\nPer poter procedere con i prossimi comandi, è necessario scaricare il file dde.csv e salvarlo nel proprio computer. Link al file\n\ndde <- read.table(\"../dataset/dde.csv\", header = TRUE, sep = \",\") \n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\ndde <- read.table(\"https://tommasorigon.github.io/introR/dataset/dde.csv\", \n                  header = TRUE, sep = \",\") # Scarica il file da internet\n\n\nstr(dde)\n\n'data.frame':   2312 obs. of  2 variables:\n $ DDE: num  24.6 15.6 54.8 15 33.5 ...\n $ GAD: int  292 289 252 285 281 283 277 284 293 277 ...\n\n\nSi noti la presenza di una nuova tipologia di variabile, ovvero integer, ovvero numeri interi."
+    "text": "Importazione dei dati dde\nPer poter procedere con i prossimi comandi, è necessario scaricare il file dde.csv e salvarlo nel proprio computer. Link al file\n\ndde <- read.table(\"../dataset/dde.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\ndde <- read.table(\"https://tommasorigon.github.io/introR/dataset/dde.csv\",\n  header = TRUE, sep = \",\"\n) # Scarica il file da internet\n\n\nstr(dde)\n\n'data.frame':   2312 obs. of  2 variables:\n $ DDE: num  24.6 15.6 54.8 15 33.5 ...\n $ GAD: int  292 289 252 285 281 283 277 284 293 277 ...\n\n\nSi noti la presenza di una nuova tipologia di variabile, ovvero integer, ovvero numeri interi."
   },
   {
     "objectID": "lezioni/un_D.html#operazioni-preliminari",
@@ -151,7 +151,7 @@
     "href": "lezioni/un_D.html#suddivisione-in-intervalli",
     "title": "R per l’analisi statistica multivariata",
     "section": "Suddivisione in intervalli",
-    "text": "Suddivisione in intervalli\nPer sintetizzare i dati tramite frequenze, possiamo suddividere l’intervallo che contiene tutti i valori osservati (ovvero \\((0,180]\\)) in un certo numero di sotto-intervalli.\nIn primo luogo, definiamo i \\(10\\) sotto-intervalli di lunghezza \\(18\\), chiusi a destra tramite il comando cut:\n\nbreaks <- 18 * (0:10) # Definizione degli intervalli. Usiamo 10 intervalli di lunghezza 18.\n\ndde_preterm_class <- cut(dde_preterm, breaks = breaks)\ndde_non_preterm_class <- cut(dde_non_preterm, breaks = breaks) \n\nhead(dde_preterm_class)\n\n[1] (54,72] (18,36] (18,36] (0,18]  (0,18]  (18,36]\n10 Levels: (0,18] (18,36] (36,54] (54,72] (72,90] (90,108] ... (162,180]\n\n\nIn questo modo, abbiamo trasformato una variabile numeric in una variabile factor."
+    "text": "Suddivisione in intervalli\nPer sintetizzare i dati tramite frequenze, possiamo suddividere l’intervallo che contiene tutti i valori osservati (ovvero \\((0,180]\\)) in un certo numero di sotto-intervalli.\nIn primo luogo, definiamo i \\(10\\) sotto-intervalli di lunghezza \\(18\\), chiusi a destra tramite il comando cut:\n\nbreaks <- 18 * (0:10) # Definizione degli intervalli. Usiamo 10 intervalli di lunghezza 18.\n\ndde_preterm_class <- cut(dde_preterm, breaks = breaks)\ndde_non_preterm_class <- cut(dde_non_preterm, breaks = breaks)\n\nhead(dde_preterm_class)\n\n[1] (54,72] (18,36] (18,36] (0,18]  (0,18]  (18,36]\n10 Levels: (0,18] (18,36] (36,54] (54,72] (72,90] (90,108] ... (162,180]\n\n\nIn questo modo, abbiamo trasformato una variabile numeric in una variabile factor."
   },
   {
     "objectID": "lezioni/un_D.html#frequenze-assolute",
@@ -172,7 +172,7 @@
     "href": "lezioni/un_D.html#organizzazione-dei-risultati",
     "title": "R per l’analisi statistica multivariata",
     "section": "Organizzazione dei risultati",
-    "text": "Organizzazione dei risultati\nRaccogliamo quindi i risultati appena ottenuti all’interno di una matrice, per poterli visualizzare meglio.\n\ntab_summary <- cbind(freq_abs_preterm, freq_abs_non_preterm, \n                     freq_rel_preterm, freq_rel_non_preterm)\n\ncolnames(tab_summary) <- c(\n  \"n_j prematura\",\n  \"n_j non prematura\",\n  \"f_j prematura\",\n  \"f_j non prematura\"\n)\n\nround(tab_summary, 3) # Visualizzazione dei risultati\n\n          n_j prematura n_j non prematura f_j prematura f_j non prematura\n(0,18]               68               573         0.188             0.294\n(18,36]             164               906         0.454             0.464\n(36,54]              65               308         0.180             0.158\n(54,72]              34                91         0.094             0.047\n(72,90]              14                40         0.039             0.021\n(90,108]             10                19         0.028             0.010\n(108,126]             3                 6         0.008             0.003\n(126,144]             1                 5         0.003             0.003\n(144,162]             1                 2         0.003             0.001\n(162,180]             1                 1         0.003             0.001"
+    "text": "Organizzazione dei risultati\nRaccogliamo quindi i risultati appena ottenuti all’interno di una matrice, per poterli visualizzare meglio.\n\ntab_summary <- cbind(\n  freq_abs_preterm, freq_abs_non_preterm,\n  freq_rel_preterm, freq_rel_non_preterm\n)\n\ncolnames(tab_summary) <- c(\n  \"n_j prematura\",\n  \"n_j non prematura\",\n  \"f_j prematura\",\n  \"f_j non prematura\"\n)\n\nround(tab_summary, 3) # Visualizzazione dei risultati\n\n          n_j prematura n_j non prematura f_j prematura f_j non prematura\n(0,18]               68               573         0.188             0.294\n(18,36]             164               906         0.454             0.464\n(36,54]              65               308         0.180             0.158\n(54,72]              34                91         0.094             0.047\n(72,90]              14                40         0.039             0.021\n(90,108]             10                19         0.028             0.010\n(108,126]             3                 6         0.008             0.003\n(126,144]             1                 5         0.003             0.003\n(144,162]             1                 2         0.003             0.001\n(162,180]             1                 1         0.003             0.001"
   },
   {
     "objectID": "lezioni/un_D.html#gli-istogrammi-i",
@@ -186,14 +186,14 @@
     "href": "lezioni/un_D.html#gli-istogrammi-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Gli istogrammi II",
-    "text": "Gli istogrammi II\nConcentriamoci inizialmente solo sul gruppo di nascite non premature, per capire il funzionamento della sintassi di R.\n\npar(mfrow = c(1, 2)) # Divide il grafico in due parti\n\n# Primo grafico, frequenze assolute\nhist(dde_non_preterm,\n     freq = TRUE,\n     breaks = 10, # Utilizzo 10 sotto-intervalli\n     # Da qui in poi stiamo solo aggiungendo dettagli estetici\n     main = \"Istogramma di DDE (nascite non premature)\",\n     xlab = \"DDE\",\n     ylab = \"Frequenze assolute\")\n\n# Secondo grafico, densità\nhist(dde_non_preterm,\n     freq = FALSE, # NON vengono usate le frequenze \n     breaks = 10, # Utilizzo 10 sotto-intervalli\n     # Da qui in poi stiamo solo aggiungendo dettagli estetici\n     main = \"Istogramma di DDE (nascite non premature)\",\n     xlab = \"DDE\",\n     ylab = \"Densità\")\n\n\n\n\nIstogramma basato sulle frequenze assolute (sinistra) e sulla densità (destra), solamente per il gruppo di nascite non premature."
+    "text": "Gli istogrammi II\nConcentriamoci inizialmente solo sul gruppo di nascite non premature, per capire il funzionamento della sintassi di R.\n\npar(mfrow = c(1, 2)) # Divide il grafico in due parti\n\n# Primo grafico, frequenze assolute\nhist(dde_non_preterm,\n  freq = TRUE,\n  breaks = 10, # Utilizzo 10 sotto-intervalli\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"Istogramma di DDE (nascite non premature)\",\n  xlab = \"DDE\",\n  ylab = \"Frequenze assolute\"\n)\n\n# Secondo grafico, densità\nhist(dde_non_preterm,\n  freq = FALSE, # NON vengono usate le frequenze\n  breaks = 10, # Utilizzo 10 sotto-intervalli\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"Istogramma di DDE (nascite non premature)\",\n  xlab = \"DDE\",\n  ylab = \"Densità\"\n)\n\n\n\n\nIstogramma basato sulle frequenze assolute (sinistra) e sulla densità (destra), solamente per il gruppo di nascite non premature."
   },
   {
     "objectID": "lezioni/un_D.html#gli-istogrammi-iii",
     "href": "lezioni/un_D.html#gli-istogrammi-iii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Gli istogrammi III",
-    "text": "Gli istogrammi III\n\n\n\n\n\n\nNota\n\n\n\nNel caso di intervalli non equispaziati, è obbligatorio utilizzare l’opzione freq = FALSE, altrimenti il grafico prodotto risulta privo di senso.\n\n\n\n# Definizione di intervalli NON equispaziati\nbreaks <- c(5 * 0:10, 70, 90, 110, 130, 150, 170, 190) \n\n# GRAFICO CORRETTO\nhist(dde_non_preterm,\n     freq = FALSE,\n     breaks = breaks,\n     # Da qui in poi stiamo solo aggiungendo dettagli estetici\n     main = \"GRAFICO CORRETTO\", xlab = \"DDE\", ylab = \"Densità\"\n)\n\n\n\n# GRAFICO ERRATO\nhist(dde_non_preterm,\n     freq = TRUE, # NON vengono usate le frequenze \n     breaks = breaks,\n     # Da qui in poi stiamo solo aggiungendo dettagli estetici\n     main = \"GRAFICO ERRATO\", xlab = \"DDE\", ylab = \"Frequenze assolute\"\n)\n\nWarning in plot.histogram(r, freq = freq1, col = col, border = border, angle =\nangle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'\n\n\n\n\n\nIl grafico di sinistra è corretto e fa uso della nozione di densità spiegata in precedenza. Il grafico di destra è errato.\nFortunatamente R ci avvisa tramite un warning che questa procedura è scorretta."
+    "text": "Gli istogrammi III\n\n\n\n\n\n\nNota\n\n\n\nNel caso di intervalli non equispaziati, è obbligatorio utilizzare l’opzione freq = FALSE, altrimenti il grafico prodotto risulta privo di senso.\n\n\n\n# Definizione di intervalli NON equispaziati\nbreaks <- c(5 * 0:10, 70, 90, 110, 130, 150, 170, 190)\n\n# GRAFICO CORRETTO\nhist(dde_non_preterm,\n  freq = FALSE,\n  breaks = breaks,\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"GRAFICO CORRETTO\", xlab = \"DDE\", ylab = \"Densità\"\n)\n\n\n\n# GRAFICO ERRATO\nhist(dde_non_preterm,\n  freq = TRUE, # NON vengono usate le frequenze\n  breaks = breaks,\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"GRAFICO ERRATO\", xlab = \"DDE\", ylab = \"Frequenze assolute\"\n)\n\nWarning in plot.histogram(r, freq = freq1, col = col, border = border, angle =\nangle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'\n\n\n\n\n\nIl grafico di sinistra è corretto e fa uso della nozione di densità spiegata in precedenza. Il grafico di destra è errato.\nFortunatamente R ci avvisa tramite un warning che questa procedura è scorretta."
   },
   {
     "objectID": "lezioni/un_D.html#il-numero-di-intervalli",
@@ -214,7 +214,7 @@
     "href": "lezioni/un_D.html#confronto-tra-le-due-distribuzioni",
     "title": "R per l’analisi statistica multivariata",
     "section": "Confronto tra le due distribuzioni",
-    "text": "Confronto tra le due distribuzioni\nQuesto grafico conclusivo consente finalmente di confrontare le due distribuzioni.\n\nhist(dde_non_preterm, # Gruppo nascite non-premature\n     freq = FALSE, \n     main = \"Istogramma di DDE (nascite non premature)\"\n)\n\n\n\nhist(dde_preterm, # Gruppo nascite premature\n     freq = FALSE,\n     main = \"Istogramma di DDE (nascite premature)\"\n)\n\n\n\n\nEventualmente, è possibile selezionare una regola diversa ponendo breaks = \"FD\".\nLa distribuzione di “nascite premature” risulta più spostata a destra."
+    "text": "Confronto tra le due distribuzioni\nQuesto grafico conclusivo consente finalmente di confrontare le due distribuzioni.\n\nhist(dde_non_preterm, # Gruppo nascite non-premature\n  freq = FALSE,\n  main = \"Istogramma di DDE (nascite non premature)\"\n)\n\n\n\nhist(dde_preterm, # Gruppo nascite premature\n  freq = FALSE,\n  main = \"Istogramma di DDE (nascite premature)\"\n)\n\n\n\n\nEventualmente, è possibile selezionare una regola diversa ponendo breaks = \"FD\".\nLa distribuzione di “nascite premature” risulta più spostata a destra."
   },
   {
     "objectID": "lezioni/un_D.html#la-funzione-di-ripartizione-empirica-i",
@@ -228,14 +228,14 @@
     "href": "lezioni/un_D.html#la-funzione-di-ripartizione-empirica-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "La funzione di ripartizione empirica II",
-    "text": "La funzione di ripartizione empirica II\nIl comando ecdf restituisce come oggetto una vera e propria funzione. Infatti:\n\nF_non_preterm <- ecdf(dde_non_preterm)\nF_non_preterm(c(20, 40, 60)) # Calcola la funzione di ripartizione empirica in 20, 40 e 60\n\n[1] 0.3618657 0.8077909 0.9390056\n\nsum(dde_non_preterm <= 40) / length(dde_non_preterm) # Comando \"manuale\" alternativo\n\n[1] 0.8077909\n\n\nPer farne un grafico, è inoltre sufficiente usare il comando plot:\n\npar(mfrow=c(1,1))\nplot(ecdf(dde_non_preterm))"
+    "text": "La funzione di ripartizione empirica II\nIl comando ecdf restituisce come oggetto una vera e propria funzione. Infatti:\n\nF_non_preterm <- ecdf(dde_non_preterm)\nF_non_preterm(c(20, 40, 60)) # Calcola la funzione di ripartizione empirica in 20, 40 e 60\n\n[1] 0.3618657 0.8077909 0.9390056\n\nsum(dde_non_preterm <= 40) / length(dde_non_preterm) # Comando \"manuale\" alternativo\n\n[1] 0.8077909\n\n\nPer farne un grafico, è inoltre sufficiente usare il comando plot:\n\npar(mfrow = c(1, 1))\nplot(ecdf(dde_non_preterm))"
   },
   {
     "objectID": "lezioni/un_D.html#la-funzione-di-ripartizione-empirica-ii-1",
     "href": "lezioni/un_D.html#la-funzione-di-ripartizione-empirica-ii-1",
     "title": "R per l’analisi statistica multivariata",
     "section": "La funzione di ripartizione empirica II",
-    "text": "La funzione di ripartizione empirica II\nPer poter confrontare le funzioni di ripartizione dei due gruppi, la sintassi è leggermente più elaborata:\n\nplot(ecdf(dde_preterm), do.points = FALSE, col = \"blue\",\n     main = \"Blu: parto prematuro. Rosso: parto non prematuro\",\n     xlab = \"DDE\",\n     ylab = \"F(DDE)\"\n)\n\nplot(ecdf(dde_non_preterm), col = \"red\", add = TRUE) # Aggiungo un secondo gruppo\n\n\n\n\nL’opzione do.points = FALSE omette i ``pallini’’ nel grafico ed è stato aggiunta per ragioni esclusivamente estetiche."
+    "text": "La funzione di ripartizione empirica II\nPer poter confrontare le funzioni di ripartizione dei due gruppi, la sintassi è leggermente più elaborata:\n\nplot(ecdf(dde_preterm),\n  do.points = FALSE, col = \"blue\",\n  main = \"Blu: parto prematuro. Rosso: parto non prematuro\",\n  xlab = \"DDE\",\n  ylab = \"F(DDE)\"\n)\n\nplot(ecdf(dde_non_preterm), col = \"red\", add = TRUE) # Aggiungo un secondo gruppo\n\n\n\n\nL’opzione do.points = FALSE omette i ``pallini’’ nel grafico ed è stato aggiunta per ragioni esclusivamente estetiche."
   },
   {
     "objectID": "lezioni/un_D.html#indici-di-posizione-la-media",
@@ -256,7 +256,7 @@
     "href": "lezioni/un_D.html#indici-di-posizione-la-mediana-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Indici di posizione: la mediana II",
-    "text": "Indici di posizione: la mediana II\nLa mediana di una variabile numerica si può anche ottenere “manualmente”.\n\nx <- c(10, 20, 25, 3.5, 28, 62)\nn <- length(x) # Numerosità campionaria\nn # Si noti che n = 6 è pari\n\n[1] 6\n\nx_sort <- sort(x) # Vettore ordinato dei valori di x\nx_sort\n\n[1]  3.5 10.0 20.0 25.0 28.0 62.0\n\npos_med_1 <- n / 2 # Elemento in posizione n/2\npos_med_2 <- n / 2 + 1 # Elemento in posizione n/2+1\n     \n(x_sort[pos_med_1] + x_sort[pos_med_2]) / 2 # Mediana di x\n\n[1] 22.5\n\nmedian(x) # Ovviamente, il risultato deve coincidere con:\n\n[1] 22.5\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi ottenga la mediana “manualmente” nel caso in cui il vettore x ha un numero dispari di elementi."
+    "text": "Indici di posizione: la mediana II\nLa mediana di una variabile numerica si può anche ottenere “manualmente”.\n\nx <- c(10, 20, 25, 3.5, 28, 62)\nn <- length(x) # Numerosità campionaria\nn # Si noti che n = 6 è pari\n\n[1] 6\n\nx_sort <- sort(x) # Vettore ordinato dei valori di x\nx_sort\n\n[1]  3.5 10.0 20.0 25.0 28.0 62.0\n\npos_med_1 <- n / 2 # Elemento in posizione n/2\npos_med_2 <- n / 2 + 1 # Elemento in posizione n/2+1\n\n(x_sort[pos_med_1] + x_sort[pos_med_2]) / 2 # Mediana di x\n\n[1] 22.5\n\nmedian(x) # Ovviamente, il risultato deve coincidere con:\n\n[1] 22.5\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi ottenga la mediana “manualmente” nel caso in cui il vettore x ha un numero dispari di elementi."
   },
   {
     "objectID": "lezioni/un_D.html#indici-di-posizione-i-quantili-i",
@@ -333,7 +333,7 @@
     "href": "lezioni/un_E.html#boxplot",
     "title": "R per l’analisi statistica multivariata",
     "section": "Boxplot",
-    "text": "Boxplot\n\nboxplot(emoglobina$emoglobina ~ emoglobina$Metodologia,\n        ylab = \"Emoglobina\",\n        xlab = \"Metodologia\"\n)"
+    "text": "Boxplot\n\nboxplot(emoglobina$emoglobina ~ emoglobina$Metodologia,\n  ylab = \"Emoglobina\",\n  xlab = \"Metodologia\"\n)"
   },
   {
     "objectID": "lezioni/un_E.html#la-varianza-i",
@@ -375,7 +375,7 @@
     "href": "lezioni/un_E.html#scarto-interquartile",
     "title": "R per l’analisi statistica multivariata",
     "section": "Scarto interquartile",
-    "text": "Scarto interquartile\nLo scarto interquartile è la differenza tra il terzo ed il primo quartile, ovvero \\[\n(\\text{``Scarto interquartile''}) = \\mathcal{Q}_{0.75} - \\mathcal{Q}_{0.25}.\n\\]\nÈ molto più resistente della varianza in presenza di poche osservazioni estreme.\nLa sua implementazione in R è la seguente:\n\ninterquartile_range <- function(x){\n  diff(quantile(x, probs = c(0.25, 0.75)))\n}\n \ninterquartile_range(emo_A)\n\n      75% \n0.2699275 \n\ninterquartile_range(emo_B)\n\n      75% \n0.3929925"
+    "text": "Scarto interquartile\nLo scarto interquartile è la differenza tra il terzo ed il primo quartile, ovvero \\[\n(\\text{``Scarto interquartile''}) = \\mathcal{Q}_{0.75} - \\mathcal{Q}_{0.25}.\n\\]\nÈ molto più resistente della varianza in presenza di poche osservazioni estreme.\nLa sua implementazione in R è la seguente:\n\ninterquartile_range <- function(x) {\n  diff(quantile(x, probs = c(0.25, 0.75)))\n}\n\ninterquartile_range(emo_A)\n\n      75% \n0.2699275 \n\ninterquartile_range(emo_B)\n\n      75% \n0.3929925"
   },
   {
     "objectID": "lezioni/un_E.html#mean-absolute-deviation",
@@ -396,7 +396,7 @@
     "href": "lezioni/un_E.html#la-funzione-tapply-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "La funzione tapply II",
-    "text": "La funzione tapply II\nPertanto, possiamo ottenere i vari indici di variabilità come segue:\n\ntab <- rbind(with(emoglobina, tapply(emoglobina, Metodologia, my_var)),\n             with(emoglobina, tapply(emoglobina, Metodologia, my_sd)),\n             with(emoglobina, tapply(emoglobina, Metodologia, interquartile_range)),\n             with(emoglobina, tapply(emoglobina, Metodologia, MAD)))\nrownames(tab) <- c(\"Varianza\", \"Deviazione Standard\", \"Scarto interquartile\", \"MAD\")\ntab\n\n                             A          B\nVarianza             0.0456162 0.09901038\nDeviazione Standard  0.2135795 0.31465915\nScarto interquartile 0.2699275 0.39299250\nMAD                  0.1357950 0.19802500\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi provi ad usare la funzione aggregate per ottenere lo stesso risultato."
+    "text": "La funzione tapply II\nPertanto, possiamo ottenere i vari indici di variabilità come segue:\n\ntab <- rbind(\n  with(emoglobina, tapply(emoglobina, Metodologia, my_var)),\n  with(emoglobina, tapply(emoglobina, Metodologia, my_sd)),\n  with(emoglobina, tapply(emoglobina, Metodologia, interquartile_range)),\n  with(emoglobina, tapply(emoglobina, Metodologia, MAD))\n)\nrownames(tab) <- c(\"Varianza\", \"Deviazione Standard\", \"Scarto interquartile\", \"MAD\")\ntab\n\n                             A          B\nVarianza             0.0456162 0.09901038\nDeviazione Standard  0.2135795 0.31465915\nScarto interquartile 0.2699275 0.39299250\nMAD                  0.1357950 0.19802500\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi provi ad usare la funzione aggregate per ottenere lo stesso risultato."
   },
   {
     "objectID": "lezioni/un_E.html#esercizio-riassuntivo",
@@ -410,7 +410,7 @@
     "href": "lezioni/un_E.html#soluzione-dellesercizio-riassuntivo",
     "title": "R per l’analisi statistica multivariata",
     "section": "Soluzione dell’esercizio riassuntivo",
-    "text": "Soluzione dell’esercizio riassuntivo\n\n# Prima possibile implementazione\nasym <- function(x){\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  mean((x - mean(x))^3) / sqm^3\n}\n\n# Implementazione (leggermente) alternativa\nasym <- function(x){\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  z <- (x - mean(x)) / sqm\n  mean(z^3)\n}\n\nasym(emo_A)\n\n[1] 0.09535216"
+    "text": "Soluzione dell’esercizio riassuntivo\n\n# Prima possibile implementazione\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  mean((x - mean(x))^3) / sqm^3\n}\n\n# Implementazione (leggermente) alternativa\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  z <- (x - mean(x)) / sqm\n  mean(z^3)\n}\n\nasym(emo_A)\n\n[1] 0.09535216"
   },
   {
     "objectID": "lezioni/un_A.html",
@@ -655,14 +655,14 @@
     "href": "lezioni/un_B.html#istruzioni-di-controllo-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Istruzioni di controllo I",
-    "text": "Istruzioni di controllo I\nL’istruzione di controllo if consente di svolgere una determinata operazione solamente se una certa condizione è verificata (TRUE oppure FALSE).\nL’istruzione di controllo (facoltativa) else consente di svolgere un’operazione alternativa se la precedente condizione non è verificata.\n\nAd esempio, il seguente codice mostra a schermo (funzione print) una frase diversa a seconda che la condizione sia vera o falsa:\n\ncondizione <- pi^2 < 10 # Valore booleano (in questo caso la condizione è TRUE)\n\nif(condizione) {\n  print(\"La condizione è vera\")\n  # Alcuni comandi da eseguire\n  # ...\n} else {\n  print(\"La condizione è falsa\")\n  # Altri comandi da eseguire\n  # ...\n}\n\n[1] \"La condizione è vera\""
+    "text": "Istruzioni di controllo I\nL’istruzione di controllo if consente di svolgere una determinata operazione solamente se una certa condizione è verificata (TRUE oppure FALSE).\nL’istruzione di controllo (facoltativa) else consente di svolgere un’operazione alternativa se la precedente condizione non è verificata.\n\nAd esempio, il seguente codice mostra a schermo (funzione print) una frase diversa a seconda che la condizione sia vera o falsa:\n\ncondizione <- pi^2 < 10 # Valore booleano (in questo caso la condizione è TRUE)\n\nif (condizione) {\n  print(\"La condizione è vera\")\n  # Alcuni comandi da eseguire\n  # ...\n} else {\n  print(\"La condizione è falsa\")\n  # Altri comandi da eseguire\n  # ...\n}\n\n[1] \"La condizione è vera\""
   },
   {
     "objectID": "lezioni/un_B.html#istruzioni-di-controllo-ii",
     "href": "lezioni/un_B.html#istruzioni-di-controllo-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Istruzioni di controllo II",
-    "text": "Istruzioni di controllo II\nLa seguente funzione square_root è un esempio più concreto relativo ad if ed else.\nSe il numero fornito come input è negativo, viene restituito un NaN:\n\nsquare_root <- function(x) {\n  if (x < 0) {\n    # Messaggio di avvertimento; in realtà sarebbe più appropriato usare il comando \"warning\"\n    print(\"Il valore di x deve essere positivo\") \n    out <- NaN # Restituisco Not A Number\n  } else {\n    out <- sqrt(x)\n  }\n  out\n}\n\nsquare_root(-2) # La condizione x < 0 è verificata\n\n[1] \"Il valore di x deve essere positivo\"\n\n\n[1] NaN\n\nsquare_root(36) # La condizione x < 0 NON è verificata\n\n[1] 6"
+    "text": "Istruzioni di controllo II\nLa seguente funzione square_root è un esempio più concreto relativo ad if ed else.\nSe il numero fornito come input è negativo, viene restituito un NaN:\n\nsquare_root <- function(x) {\n  if (x < 0) {\n    # Messaggio di avvertimento; in realtà sarebbe più appropriato usare il comando \"warning\"\n    print(\"Il valore di x deve essere positivo\")\n    out <- NaN # Restituisco Not A Number\n  } else {\n    out <- sqrt(x)\n  }\n  out\n}\n\nsquare_root(-2) # La condizione x < 0 è verificata\n\n[1] \"Il valore di x deve essere positivo\"\n\n\n[1] NaN\n\nsquare_root(36) # La condizione x < 0 NON è verificata\n\n[1] 6"
   },
   {
     "objectID": "lezioni/un_B.html#cicli-while-e-for-i",
@@ -711,7 +711,7 @@
     "href": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Soluzione esercizio riassuntivo II",
-    "text": "Soluzione esercizio riassuntivo II\nLa soluzione riportata fa uso del costrutto else if.\n\nfor (i in 1:100) {\n  condA <- (i %% 3) == 0 # Il numero è un multiplo di 3?\n  condB <- (i %% 5) == 0 # Il numero è un multiplo di 5?\n  \n  if (condA & condB) {\n    print(\"fizzbuzz\")\n  } else if (condA) {\n    print(\"fizz\")\n  } else if (condB) {\n    print(\"buzz\")\n  } else {\n    print(i)\n  }\n}"
+    "text": "Soluzione esercizio riassuntivo II\nLa soluzione riportata fa uso del costrutto else if.\n\nfor (i in 1:100) {\n  condA <- (i %% 3) == 0 # Il numero è un multiplo di 3?\n  condB <- (i %% 5) == 0 # Il numero è un multiplo di 5?\n\n  if (condA & condB) {\n    print(\"fizzbuzz\")\n  } else if (condA) {\n    print(\"fizz\")\n  } else if (condB) {\n    print(\"buzz\")\n  } else {\n    print(i)\n  }\n}"
   },
   {
     "objectID": "lezioni/un_B.html#la-famiglia-di-funzioni-apply",
@@ -851,7 +851,7 @@
     "href": "lezioni/un_C.html#gestire-i-dati-mancanti",
     "title": "R per l’analisi statistica multivariata",
     "section": "Gestire i dati mancanti",
-    "text": "Gestire i dati mancanti\nLa gestione statistica dei dati mancanti non è tra gli obiettivi di questo corso.\nLa soluzione più facile, sebbene potenzialmente molto pericolosa, consistente semplicemente nel rimuovere le righe incomplete tramite il comando na.omit:\n\ncalcio_no_na <- na.omit(calcio)\ndim(calcio_no_na)\n\n[1] 1897    8\n\n\n\nPer risolvere il problema originario, ovvero identificare le partite in cui la squadra di casa ha bassa probabilità di vittoria, si può usare subset:\n\ncalcio_home <- subset(calcio, subset = B365H > 9) \ncalcio_home\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw\n224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw\n1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw"
+    "text": "Gestire i dati mancanti\nLa gestione statistica dei dati mancanti non è tra gli obiettivi di questo corso.\nLa soluzione più facile, sebbene potenzialmente molto pericolosa, consistente semplicemente nel rimuovere le righe incomplete tramite il comando na.omit:\n\ncalcio_no_na <- na.omit(calcio)\ndim(calcio_no_na)\n\n[1] 1897    8\n\n\n\nPer risolvere il problema originario, ovvero identificare le partite in cui la squadra di casa ha bassa probabilità di vittoria, si può usare subset:\n\ncalcio_home <- subset(calcio, subset = B365H > 9)\ncalcio_home\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw\n224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw\n1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw"
   },
   {
     "objectID": "lezioni/un_C.html#selezione-delle-variabili",
