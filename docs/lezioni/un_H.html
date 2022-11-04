@@ -200,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#esercizio-riassuntivo-i" id="toc-esercizio-riassuntivo-i" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i">Esercizio riassuntivo I</a></li>
   <li><a href="#soluzione-esercizio-riassuntivo-i" id="toc-soluzione-esercizio-riassuntivo-i" class="nav-link" data-scroll-target="#soluzione-esercizio-riassuntivo-i">Soluzione esercizio riassuntivo I</a></li>
   <li><a href="#esercizio-riassuntivo-ii" id="toc-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-ii">Esercizio riassuntivo II</a></li>
-  <li><a href="#soluzione-esercizio-riassuntivo-ii" id="toc-soluzione-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II}</a></li>
+  <li><a href="#soluzione-esercizio-riassuntivo-ii" id="toc-soluzione-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II</a></li>
   </ul>
 </nav>
     </div>
@@ -606,7 +606,7 @@ F(\mathcal{Q}(0.75)) = F(F^{-1}(0.75))= 0.75.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Nota
+Attenzione
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -637,7 +637,7 @@ X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(R, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.1246200 -0.8149175  0.5799526 -1.0730833  2.1476568</code></pre>
+<pre><code>[1] -2.2947543  0.5856016  1.1036560  1.2625408 -0.1506115</code></pre>
 </div>
 </div>
 </section>
@@ -659,8 +659,8 @@ X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5
 </section>
 <section id="numeri-pseudo-casuali-in-01-1" class="level2">
 <h2 class="anchored" data-anchor-id="numeri-pseudo-casuali-in-01-1">Numeri pseudo-casuali in <span class="math inline">\((0,1)\)</span></h2>
-<p><img src="img/winchman.png" class="img-fluid"></p>
 <p>Presentiamo un metodo molto semplice per generare numeri pseudo-casuali (Wichmann &amp; Hill, 1982), che tuttavia è stato molto popolare negli anni ’80 e ’90.</p>
+<p><img src="img/winchman.png" class="img-fluid"></p>
 </section>
 <section id="algoritmo-wichmann-hill-1982" class="level2">
 <h2 class="anchored" data-anchor-id="algoritmo-wichmann-hill-1982">Algoritmo Wichmann &amp; Hill (1982)</h2>
@@ -830,7 +830,7 @@ Nota
 </section>
 <section id="campionamento-senza-reinserimento" class="level2">
 <h2 class="anchored" data-anchor-id="campionamento-senza-reinserimento">Campionamento senza reinserimento</h2>
-<p>Per effettuare una ipotetica estrazione del Lotto, si devono estrarre da un’urna 5 numeri, tra l’1 e il 90, **senza reinserimento}.</p>
+<p>Per effettuare una ipotetica estrazione del Lotto, si devono estrarre da un’urna 5 numeri, tra l’1 e il 90, <strong>senza reinserimento</strong>.</p>
 <p>In <strong>R</strong> quindi:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">90</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -994,7 +994,7 @@ f(x) = \alpha \beta x^{\beta - 1} \exp\left\{- \alpha x^\beta \right\}, \qquad x
 <p>Si sviluppi una strategia per campionare dei valori pseudo-casuali da una Weibull basata sul <strong>metodo dell’inversione</strong> e si implementi in <strong>R</strong> la funzione <code>rweibull</code>.</p>
 </section>
 <section id="soluzione-esercizio-riassuntivo-ii" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II}</h2>
+<h2 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II</h2>
 <p>Implementiamo in primo luogo la funzione <code>dweibull(x, alpha, beta)</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>dweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(x, alpha, beta) {</span>
