@@ -193,7 +193,7 @@
     "href": "lezioni/un_D.html#gli-istogrammi-iii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Gli istogrammi III",
-    "text": "Gli istogrammi III\n\n\n\n\n\n\nNota\n\n\n\nNel caso di intervalli non equispaziati, è obbligatorio utilizzare l’opzione freq = FALSE, altrimenti il grafico prodotto risulta privo di senso.\n\n\n\n# Definizione di intervalli NON equispaziati\nbreaks <- c(5 * 0:10, 70, 90, 110, 130, 150, 170, 190)\n\n# GRAFICO CORRETTO\nhist(dde_non_preterm,\n  freq = FALSE,\n  breaks = breaks,\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"GRAFICO CORRETTO\", xlab = \"DDE\", ylab = \"Densità\"\n)\n\n\n\n# GRAFICO ERRATO\nhist(dde_non_preterm,\n  freq = TRUE, # NON vengono usate le frequenze\n  breaks = breaks,\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"GRAFICO ERRATO\", xlab = \"DDE\", ylab = \"Frequenze assolute\"\n)\n\nWarning in plot.histogram(r, freq = freq1, col = col, border = border, angle =\nangle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'\n\n\n\n\n\nIl grafico di sinistra è corretto e fa uso della nozione di densità spiegata in precedenza. Il grafico di destra è errato.\nFortunatamente R ci avvisa tramite un warning che questa procedura è scorretta."
+    "text": "Gli istogrammi III\n\n\n\n\n\n\nAttenzione\n\n\n\nNel caso di intervalli non equispaziati, è obbligatorio utilizzare l’opzione freq = FALSE, altrimenti il grafico prodotto risulta privo di senso.\n\n\n\n# Definizione di intervalli NON equispaziati\nbreaks <- c(5 * 0:10, 70, 90, 110, 130, 150, 170, 190)\n\n# GRAFICO CORRETTO\nhist(dde_non_preterm,\n  freq = FALSE,\n  breaks = breaks,\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"GRAFICO CORRETTO\", xlab = \"DDE\", ylab = \"Densità\"\n)\n\n\n\n# GRAFICO ERRATO\nhist(dde_non_preterm,\n  freq = TRUE, # NON vengono usate le frequenze\n  breaks = breaks,\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"GRAFICO ERRATO\", xlab = \"DDE\", ylab = \"Frequenze assolute\"\n)\n\nWarning in plot.histogram(r, freq = freq1, col = col, border = border, angle =\nangle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'\n\n\n\n\n\nIl grafico di sinistra è corretto e fa uso della nozione di densità spiegata in precedenza. Il grafico di destra è errato.\nFortunatamente R ci avvisa tramite un warning che questa procedura è scorretta."
   },
   {
     "objectID": "lezioni/un_D.html#il-numero-di-intervalli",
@@ -1404,7 +1404,7 @@
     "href": "lezioni/un_G.html#frequenze-congiunte-marginali",
     "title": "R per l’analisi statistica multivariata",
     "section": "Frequenze congiunte & marginali",
-    "text": "Frequenze congiunte & marginali\nLe tabelle descritte nelle slides precedenti si ottengono in R come segue:\n\naddmargins(tab) # Aggiunge le distribuzioni marginali (assolute)\n\n     \n         I   II  III  Sum\n  No   122  167  528  817\n  Si   203  118  178  499\n  Sum  325  285  706 1316\n\n\n\ntab_rel <- prop.table(tab) # Comando alternativo: table(tab) / sum(tab)\ntab_rel\n\n    \n              I         II        III\n  No 0.09270517 0.12689970 0.40121581\n  Si 0.15425532 0.08966565 0.13525836\n\n\n\naddmargins(tab_rel) # Aggiunge le distribuzioni marginali relative\n\n     \n               I         II        III        Sum\n  No  0.09270517 0.12689970 0.40121581 0.62082067\n  Si  0.15425532 0.08966565 0.13525836 0.37917933\n  Sum 0.24696049 0.21656535 0.53647416 1.00000000"
+    "text": "Frequenze congiunte & marginali\nLe tabelle descritte nei paragrafi precedenti si ottengono in R come segue:\n\naddmargins(tab) # Aggiunge le distribuzioni marginali (assolute)\n\n     \n         I   II  III  Sum\n  No   122  167  528  817\n  Si   203  118  178  499\n  Sum  325  285  706 1316\n\n\n\ntab_rel <- prop.table(tab) # Comando alternativo: table(tab) / sum(tab)\ntab_rel\n\n    \n              I         II        III\n  No 0.09270517 0.12689970 0.40121581\n  Si 0.15425532 0.08966565 0.13525836\n\n\n\naddmargins(tab_rel) # Aggiunge le distribuzioni marginali relative\n\n     \n               I         II        III        Sum\n  No  0.09270517 0.12689970 0.40121581 0.62082067\n  Si  0.15425532 0.08966565 0.13525836 0.37917933\n  Sum 0.24696049 0.21656535 0.53647416 1.00000000"
   },
   {
     "objectID": "lezioni/un_G.html#distribuzioni-condizionate-i",
@@ -1439,6 +1439,258 @@
     "href": "lezioni/un_G.html#soluzione-alternativa-più-concisa",
     "title": "R per l’analisi statistica multivariata",
     "section": "Soluzione (alternativa, più concisa)",
-    "text": "Soluzione (alternativa, più concisa)\nLa soluzione seguente fa uso delle funzioni apply e outer.\n\nchi_squared <- function(x, y) {\n  nn <- table(x, y)\n  n <- sum(nn)\n  ff <- nn / n\n  f_x <- apply(ff, 1, sum)\n  f_y <- apply(ff, 2, sum)\n  f_e <- outer(f_x, f_y) # Prodotto \"esterno\" tra vettori\n  n * (sum(ff^2 / f_e) - 1)\n}\nchi_squared(titanic$Salvato, titanic$Classe)\n\n[1] 133.052\n\n\nInfine, si noti che la funzione produce lo stesso risultato.\n\nchisq.test(table(titanic$Salvato, titanic$Classe))\n\n\n    Pearson's Chi-squared test\n\ndata:  table(titanic$Salvato, titanic$Classe)\nX-squared = 133.05, df = 2, p-value < 2.2e-16"
+    "text": "Soluzione (alternativa, più concisa)\nLa soluzione seguente fa uso delle funzioni apply e outer.\n\nchi_squared <- function(x, y) {\n  nn <- table(x, y)\n  n <- sum(nn)\n  ff <- nn / n\n  f_x <- apply(ff, 1, sum)\n  f_y <- apply(ff, 2, sum)\n  f_e <- outer(f_x, f_y) # Prodotto \"esterno\" tra vettori\n  n * (sum(ff^2 / f_e) - 1)\n}\nchi_squared(titanic$Salvato, titanic$Classe)\n\n[1] 133.052\n\n\nInfine, si noti che la funzione chisq.test produce lo stesso risultato.\n\nchisq.test(table(titanic$Salvato, titanic$Classe))\n\n\n    Pearson's Chi-squared test\n\ndata:  table(titanic$Salvato, titanic$Classe)\nX-squared = 133.05, df = 2, p-value < 2.2e-16"
+  },
+  {
+    "objectID": "lezioni/un_H.html",
+    "href": "lezioni/un_H.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Variabili aleatorie discrete\nVariabili aleatorie continue\nSimulazione di valori (pseudo) casuali\n\n\n\n\n\n\n\nNota\n\n\n\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_H.html#variabili-aleatorie-ripasso",
+    "href": "lezioni/un_H.html#variabili-aleatorie-ripasso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Variabili aleatorie (ripasso)",
+    "text": "Variabili aleatorie (ripasso)\nLa definizione formale di una variabile aleatoria coinvolge concetti di teoria della misura (\\(\\sigma\\)-algebre, misure di probabilità, etc), che lasceremo sullo sfondo.\nAi fini di questo corso, ci è sufficiente ricordare che una variabile aleatoria \\(X\\) a valori reali è univocamente identificata dalla sua funzione di ripartizione, ovvero \\[\nF(x) := \\mathbb{P}(X \\le x).\n\\]\nSe la funzione \\(F(x)\\) è costante a tratti, diremo che \\(X\\) è una variabile aleatoria discreta.\nSe la funzione \\(F(x)\\) è continua, diremo che \\(X\\) è una variabile aleatoria continua.\n\n\n\n\n\n\nSuggerimento\n\n\n\nNel caso non vi ricordaste la definizione di una variabile aleatoria è bene ricontrollare libri e appunti del corso Calcolo delle Probabilità!"
+  },
+  {
+    "objectID": "lezioni/un_H.html#variabili-aleatorie-discrete-i-ripasso",
+    "href": "lezioni/un_H.html#variabili-aleatorie-discrete-i-ripasso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Variabili aleatorie discrete I (ripasso)",
+    "text": "Variabili aleatorie discrete I (ripasso)\nCome anticipato, una variabile aleatoria si dice discreta se \\(F(x)\\) è costante a tratti.\nPiù precisamente, diremo che \\(X\\) è una variabile aleatoria discreta se esiste un insieme di cardinalità numerabile \\(\\mathcal{S} \\subseteq \\mathbb{R}\\), chiamato supporto, tale per cui \\[\n\\mathbb{P}(X \\in \\mathcal{S}) = \\sum_{x \\in \\mathcal{S}} \\mathbb{P}(X = x) = 1.\n\\]\nIn pratica, spesso avremo che il supporto \\(\\mathcal{S} \\subseteq \\{0, 1, 2, \\dots\\}\\) è un sotto-insieme dei numeri naturali. Inoltre, il supporto \\(\\mathcal{S}\\) può essere finito.\nIntuitivamente, diremo che la variabile aleatoria \\(X\\) può assumere solamente i valori del supporto \\(\\mathcal{S}\\)."
+  },
+  {
+    "objectID": "lezioni/un_H.html#variabili-aleatorie-discrete-ii-ripasso",
+    "href": "lezioni/un_H.html#variabili-aleatorie-discrete-ii-ripasso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Variabili aleatorie discrete II (ripasso)",
+    "text": "Variabili aleatorie discrete II (ripasso)\nLa funzione di probabilità di una variabile aleatoria discreta è pari a \\[\np(x) = \\mathbb{P}(X = x).\n\\]\nLa funzione \\(p(x)\\) identifica una variabile aleatoria discreta.\nPertanto, ovviamente, vale che \\(p(x) \\ge 0\\) e che \\(\\sum_{x \\in \\mathcal{S}} p(x) = 1\\).\nIl valore atteso di una variabile aleatoria è inoltre definito, se esiste, come \\[\n\\mathbb{E}(X) = \\sum_{x \\in \\mathcal{S}} x \\: p(x).\n\\]\nPiù in generale, il valore atteso di una trasformazione \\(g(X)\\), se esiste, è pari a \\[\n\\mathbb{E}\\{g(X)\\} = \\sum_{x \\in \\mathcal{S}} g(x) \\: p(x).\n\\]"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-binomiale-funzione-di-probabilità",
+    "href": "lezioni/un_H.html#distribuzione-binomiale-funzione-di-probabilità",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione binomiale (funzione di probabilità)",
+    "text": "Distribuzione binomiale (funzione di probabilità)\nSia \\(X \\sim \\text{Bin}(n, \\pi)\\) una variabile aleatoria binomiale, per cui la funzione di probabilità è \\[\n\\mathbb{P}(X = k) = {n \\choose k } \\pi^k (1-\\pi)^{n-k}, \\qquad k=0,1,\\dots,n.\n\\]\nSupponendo che \\(n = 10\\) e \\(\\pi = 0.6\\), allora \\(\\mathbb{P}(X=4)\\) si calcola come segue:\n\nn <- 10 # Numero di tentativi\np <- 0.6 # Probabilità di successo\nk <- 4 # Numero di successi\n\nchoose(n, k) * p^k * (1 - p)^(n - k)\n\n[1] 0.1114767\n\n\nTuttavia, in R esiste una funzione apposita per il calcolo della funzione di probabilità:\n\ndbinom(k, size = n, prob = p)\n\n[1] 0.1114767"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-binomiale-funzione-di-ripartizione",
+    "href": "lezioni/un_H.html#distribuzione-binomiale-funzione-di-ripartizione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione binomiale (funzione di ripartizione)",
+    "text": "Distribuzione binomiale (funzione di ripartizione)\nIn maniera simile, possiamo anche calcolare la probabilità seguente, ovvero\n\\[\nF(x) =   \\mathbb{P}(X \\le x) = \\sum_{k=0}^x\\mathbb{P}(X = k), \\qquad X \\sim \\text{Bin}(n, \\pi).\n\\]\nSupponendo che \\(n = 10\\) e \\(\\pi = 0.6\\), allora il valore \\(F(5)\\) si calcola come segue:\n\nsum(dbinom(0:5, size = n, prob = p))\n\n[1] 0.3668967\n\npbinom(5, size = n, prob = p) # Funzione specifica di R\n\n[1] 0.3668967\n\n\nSupponiamo di essere invece interessati all’evento complementare, ovvero: \\[\n\\mathbb{P}(X > 5) = 1 - \\mathbb{P}(X \\le 5).\n\\]\n\n1 - pbinom(5, size = n, prob = p)\n\n[1] 0.6331033\n\npbinom(5, size = n, prob = p, lower.tail = FALSE)\n\n[1] 0.6331033"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-binomiale-valore-atteso",
+    "href": "lezioni/un_H.html#distribuzione-binomiale-valore-atteso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione binomiale (valore atteso)",
+    "text": "Distribuzione binomiale (valore atteso)\nIl valore atteso di una variabile aleatoria binomiale è pari a\n\\[\n\\mathbb{E}(X) = \\sum_{k=0}^n k \\: \\mathbb{P}(X = k) =  np, \\qquad X \\sim \\text{Bin}(n,p).\n\\]\nSupponendo come in precedenza che \\(n = 10\\) e \\(\\pi = 0.6\\), si ha che:\n\nn * p # Valore atteso ottenuto tramite calcoli analitici\n\n[1] 6\n\nsum(0:n * dbinom(0:n, size = n, prob = 0.6)) # Calcolo numerico\n\n[1] 6\n\n\nTramite il calcolo diretto, possiamo inoltre valutare ad esempio \\(\\mathbb{E}(\\sqrt{X})\\), infatti:\n\nsum(sqrt(0:n) * dbinom(0:n, size = n, prob = 0.6))\n\n[1] 2.427083\n\n\n\n\n\n\n\n\nNota\n\n\n\nIl calcolo del valore atteso è “semplice” quando il supporto della distribuzione discreta è finito."
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-binomiale-quantili",
+    "href": "lezioni/un_H.html#distribuzione-binomiale-quantili",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione binomiale (quantili)",
+    "text": "Distribuzione binomiale (quantili)\nIl quantile-\\(p\\) una distribuzione discreta è il più piccolo valore \\(k\\) tale \\(\\mathbb{P}(X \\le k) \\ge p\\). Quindi: \\[\n\\mathcal{Q}(p) = \\inf\\{x \\in \\mathbb{R} : F(x) \\ge p \\}.\n\\]\nSupponendo che \\(X \\sim \\text{Bin}(10, 0.6)\\), ad esempio il primo quartile è\n\\[\n\\mathcal{Q}(0.25) = \\inf\\{x \\in \\mathbb{R} : F(x) \\ge 0.25 \\} = 5.\n\\]\nIn R possiamo ottenere questi risultati come segue:\n\nqbinom(0.25, size = 10, prob = 0.6) # Primo quartile\n\n[1] 5\n\n\nInfatti, vale che:\n\npbinom(4, size = 10, prob = 0.6) # Il valore è minore di 0.25\n\n[1] 0.1662386\n\npbinom(5, size = 10, prob = 0.6) # Il valore è maggiore di 0.25\n\n[1] 0.3668967"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-binomiale-rappresentazione-grafica",
+    "href": "lezioni/un_H.html#distribuzione-binomiale-rappresentazione-grafica",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione binomiale (rappresentazione grafica)",
+    "text": "Distribuzione binomiale (rappresentazione grafica)\n\nkk <- 0:n\nprob <- dbinom(0:n, size = n, prob = p)\nplot(kk, prob, type = \"h\", main = \"Bin(10,0.6)\", xlab = \"k\", ylab = \"P(X=k)\")"
+  },
+  {
+    "objectID": "lezioni/un_H.html#variabili-aleatorie-continue-i-ripasso",
+    "href": "lezioni/un_H.html#variabili-aleatorie-continue-i-ripasso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Variabili aleatorie continue I (ripasso)",
+    "text": "Variabili aleatorie continue I (ripasso)\nUna variabile aleatoria si dice continua se \\(F(x)\\) è continua.\nLa funzione di densità di una variabile aleatoria continua è una funzione \\(f(x) \\ge 0\\) tale per cui \\[\n\\mathbb{P}(a < X < b) = \\int_a^b f(x) \\mathrm{d} x, \\qquad f(x) = \\frac{\\partial}{\\partial x} F(x).\n\\]\nPertanto, per definizione: \\[\n\\mathbb{P}(X \\le b) = F(b) = \\int_{-\\infty}^b f(x) \\mathrm{d} x.\n\\]\nInoltre, il valore atteso di una trasformazione \\(g(X)\\), se esiste, è pari a \\[\n\\mathbb{E}\\{g(X)\\} = \\int_{\\mathbb{R}} g(x) \\: f(x) \\mathrm{d} x.\n\\]"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-normale-funzione-di-densità",
+    "href": "lezioni/un_H.html#distribuzione-normale-funzione-di-densità",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione normale (funzione di densità)",
+    "text": "Distribuzione normale (funzione di densità)\nSia \\(X \\sim \\text{N}(\\mu, \\sigma^2)\\) una variabile gaussiana di media \\(\\mu\\) e varianza \\(\\sigma^2\\), ovvero avente densità \\[\nf(x) = \\frac{1}{\\sqrt{2 \\pi \\sigma^2}}\\exp\\left\\{-\\frac{1}{2\\sigma^2}(x - \\mu)^2\\right\\}.\n\\]\nSe \\(X \\sim \\text{N}(3, 10)\\) allora possiamo calcolare il valore \\(f(1)\\) utilizzando i comandi di R:\n\nx <- 1 # Punto in cui calcolare f(x)\nmu <- 3 # Media\nsigma2 <- 10 # Varianza\n\n1 / sqrt(2 * pi * sigma2) * exp(-1 / (2 * sigma2) * (x - mu)^2)\n\n[1] 0.1032883\n\ndnorm(x, mean = 3, sd = sqrt(sigma2))\n\n[1] 0.1032883\n\n\n\n\n\n\n\n\nNota\n\n\n\nIl comando dnorm ha come argomento lo scarto quadratico medio \\(\\sigma\\), non la varianza \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-normale-funzione-di-ripartizione",
+    "href": "lezioni/un_H.html#distribuzione-normale-funzione-di-ripartizione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione normale (funzione di ripartizione)",
+    "text": "Distribuzione normale (funzione di ripartizione)\nSia \\(X \\sim \\text{N}(0,1)\\) una normale standard. Siamo interessati a calcolare la probabilità dell’evento seguente: \\[\n\\mathbb{P}(|X| \\le 1) = \\mathbb{P}(-1 \\le X \\le 1) = \\mathbb{P}(X \\le 1) - \\mathbb{P}(X < -1).\n\\]\nPossiamo calcolare questa probabilità (in modo inefficiente) tramite il comando integrate, pertanto:\n\nintegrate(dnorm, lower = -1, upper = 1)\n\n0.6826895 with absolute error < 7.6e-15\n\n\nTrattandosi di una variabile continua, otteniamo che \\(\\mathbb{P}(X < -1) = \\mathbb{P}(X \\le -1)\\).\nQuindi, possiamo calcolare questa probabilità in R utilizzando i comandi appositi:\n\npnorm(1) - pnorm(-1)\n\n[1] 0.6826895"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-normale-funzione-quantile",
+    "href": "lezioni/un_H.html#distribuzione-normale-funzione-quantile",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione normale (funzione quantile)",
+    "text": "Distribuzione normale (funzione quantile)\nLa continuità della funzione di ripartizione \\(F(x)\\) implica che la funzione quantile è pari a \\(\\mathcal{Q}(\\cdot) = F^{-1}(\\cdot)\\).\nPer esempio, si consideri il terzo quartile di una distribuzione normale standard, ovvero\n\nqnorm(0.75)\n\n[1] 0.6744898\n\n\nDi conseguenza, la funzione quantile e di ripartizione sono tale per cui \\[\nF(\\mathcal{Q}(0.75)) = F(F^{-1}(0.75))= 0.75.\n\\]\nInfatti:\n\npnorm(qnorm(0.75))\n\n[1] 0.75"
+  },
+  {
+    "objectID": "lezioni/un_H.html#distribuzione-normale-rappresentazione-grafica",
+    "href": "lezioni/un_H.html#distribuzione-normale-rappresentazione-grafica",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione normale (rappresentazione grafica)",
+    "text": "Distribuzione normale (rappresentazione grafica)\n\ncurve(dnorm(x, mean = 0, sd = 1), from = -3, to = 3, ylab = \"f(x)\", main = \"N(0,1)\")"
+  },
+  {
+    "objectID": "lezioni/un_H.html#tabella-riassuntiva-i",
+    "href": "lezioni/un_H.html#tabella-riassuntiva-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Tabella riassuntiva I",
+    "text": "Tabella riassuntiva I\nR dispone di un’estesa collezione di funzioni dedicate alle principali distribuzioni di probabilità. Sia \\(X\\) una variabile casuale.\n\nddist (dove la d iniziale sta per density). Calcola la densità \\(f(x)\\) di una variabile continua \\(X\\) oppure la funzione di probabilità \\(p(x) = \\mathbb{P}(X = x)\\) nel caso \\(X\\) sia discreta.\npdist (dove la p iniziale sta per probability), che permette di calcolare il valore della funzione di ripartizione in un punto specificato, ovvero calcola \\(F(x) = \\mathbb{P}(X \\le x)\\).\nqdist (dove la q iniziale sta per quantile), che rappresenta la funzione quantile, ovvero: \\[\n\\mathcal{Q}(p) = \\inf\\{x \\in \\mathbb{R} : F(x) \\ge p\\}, \\qquad p \\in (0,1).\n\\]\nrdist (dove la r iniziale sta per random), che permette di generare numeri pseudo-casuali, che verranno illustrati nel seguito."
+  },
+  {
+    "objectID": "lezioni/un_H.html#tabella-riassuntiva-ii",
+    "href": "lezioni/un_H.html#tabella-riassuntiva-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Tabella riassuntiva II",
+    "text": "Tabella riassuntiva II\n\n\n\nDistribuzione\nComando\nParametri\nDefault\n\n\n\n\nBinomiale\nbinom\nsize, prob\n-\n\n\nGeometrica\ngeom\nprob\n-\n\n\nPoisson\npois\nlambda\n-\n\n\nUniforme\nunif\nmin, max\n0, 1\n\n\nGamma\ngamma\nshape, rate\n-, 1\n\n\nEsponenziale\nexp\nrate\n1\n\n\nChi-quadrato\nchisq\ndf\n-\n\n\nNormale\nnorm\nmean, sd\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nAttenzione alla parametrizzazioni e/o ai significati degli argomenti. Si consulti la documentazione per sapere come sono definiti.\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi rappresentino graficamente tutte le precedenti distribuzioni, per diverse scelte dei parametri."
+  },
+  {
+    "objectID": "lezioni/un_H.html#numeri-pseudo-casuali-i",
+    "href": "lezioni/un_H.html#numeri-pseudo-casuali-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Numeri pseudo-casuali I",
+    "text": "Numeri pseudo-casuali I\nLa quarta classe di funzioni nella nostra lista è quella del tipo rdist, che permette quindi di ottenere dei valore casuali da una distribuzione.\nPer esempio, per campionare \\(5\\) valori indipendenti e identicamente distribuiti (iid) da una normale standard, ovvero \\[\nX_i \\overset{\\text{iid}}{\\sim} \\text{N}(0,1), \\qquad i=1,\\dots,5\n\\] possiamo usare in R il comando seguente:\n\nR <- 5\nrnorm(R, mean = 0, sd = 1)\n\n[1] -1.1246200 -0.8149175  0.5799526 -1.0730833  2.1476568"
+  },
+  {
+    "objectID": "lezioni/un_H.html#numeri-pseudo-casuali-ii",
+    "href": "lezioni/un_H.html#numeri-pseudo-casuali-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Numeri pseudo-casuali II",
+    "text": "Numeri pseudo-casuali II\nI valori generati dal comando rdist imitano i risultati di un processo casuale, ma sono in realtà deterministici. Tali valori sono quindi chiamati pseudo-casuali.\nEsistono in realtà dei metodi per generare numeri davvero casuali, basate ad esempio su rilevazioni atmosferiche.\nAl sito https://www.random.org/gaussian-distributions/ è possibile ottenere un numero limitato di valori casuali da una distribuzione gaussiana.\nLo svantaggio di quest’ultima classe di metodi è che sono relativamente costosi da ottenere \\(\\implies\\) ne vale la pena?\nA meno che non sussistano specifici problemi di sicurezza, i numeri pseudo-casuali costituiscono lo standard usato dalla quasi totalità degli utenti."
+  },
+  {
+    "objectID": "lezioni/un_H.html#numeri-pseudo-casuali-in-01",
+    "href": "lezioni/un_H.html#numeri-pseudo-casuali-in-01",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Numeri pseudo-casuali in \\((0,1)\\)",
+    "text": "Numeri pseudo-casuali in \\((0,1)\\)\nSupponiamo di saper simulare dei valori \\(U_1,\\dots,U_n\\) da una distribuzione uniforme in \\((0,1)\\), ovvero quanto si ottiene ad esempio tramite il comando runif.\nPossiamo “facilmente” ottenere i valori casuali di una qualsiasi distribuzione considerando un’opportuna trasformazione dei valori \\(U_1,\\dots,U_n\\).\nLa parte difficile è quindi simulare valori pseudo-casuali \\(U_1,\\dots,U_n\\) in maniera tale che questi assomiglino il più possibile a realizzazioni iid da una distribuzione uniforme.\nTrattandosi di numeri pseudo-casuali, siamo quindi alla ricerca di un vero e proprio algoritmo che a partire da delle condizioni iniziali, produca \\(U_1,\\dots,U_n\\).\nLa condizione iniziale viene tipicamente chiamata seme (seed)."
+  },
+  {
+    "objectID": "lezioni/un_H.html#numeri-pseudo-casuali-in-01-1",
+    "href": "lezioni/un_H.html#numeri-pseudo-casuali-in-01-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Numeri pseudo-casuali in \\((0,1)\\)",
+    "text": "Numeri pseudo-casuali in \\((0,1)\\)\n\nPresentiamo un metodo molto semplice per generare numeri pseudo-casuali (Wichmann & Hill, 1982), che tuttavia è stato molto popolare negli anni ’80 e ’90."
+  },
+  {
+    "objectID": "lezioni/un_H.html#algoritmo-wichmann-hill-1982",
+    "href": "lezioni/un_H.html#algoritmo-wichmann-hill-1982",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Algoritmo Wichmann & Hill (1982)",
+    "text": "Algoritmo Wichmann & Hill (1982)\nVogliamo ottenere delle realizzazioni \\(u_1,\\dots, u_n\\) da una distribuzione uniforme \\((0,1)\\).\n\nInizializzazione. Si parte da tre numeri interi qualsiasi \\(x_0, y_0, z_0\\), che costituiscono la condizione iniziale, il cosiddetto seed.\nAggiornamento iterativo del seme. A ciascuna iterazione, si aggiornano i \\(3\\) numeri \\(x_i, y_i, z_i\\) a partire da quelli ottenuti alla iterazione precedente: \\[\n  \\begin{aligned}\n  x_i = (171 \\times x_{i-1})(\\text{mod}\\:30269) \\\\\n  y_i = (172 \\times y_{i-1})(\\text{mod}\\:30307) \\\\\n  z_i = (170 \\times z_{i-1})(\\text{mod}\\:30323) \\\\\n  \\end{aligned}\n\\] per ogni \\(i=1,\\dots,n\\). La funzione \\(\\text{mod}\\) (equivalente a %% in R) calcola il resto, per cui ad esempio \\(205 (\\text{mod}\\:10) = 5\\).\nOutput. Si ottiene una sequenza di realizzazioni come segue: \\[\nu_i = \\left(\\frac{x_i}{30269} + \\frac{y_i}{30307} + \\frac{z_i}{30323} \\right)(\\text{mod}\\: 1), \\qquad i=1,\\dots,n.\n\\]"
+  },
+  {
+    "objectID": "lezioni/un_H.html#algoritmo-wichmann-hill-1982-1",
+    "href": "lezioni/un_H.html#algoritmo-wichmann-hill-1982-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Algoritmo Wichmann & Hill (1982)",
+    "text": "Algoritmo Wichmann & Hill (1982)\nL’algoritmo pertanto aggiorna iterativamente la condizione iniziale (seed). I valori finali \\(x_n, y_n, z_n\\) possono essere usati come seed per estrazioni successive.\nNon c’è nulla di “casuale” in questa sequenza di numeri. Per definizione, se i tre numeri di partenza \\(x_0, y_0, z_0\\) sono gli stessi, l’output sarà sempre uguale.\nQuesto algoritmo ha periodo circa pari a \\(m = 6.95 \\times 10^{12}\\). Pertanto \\[\nu_{i + m} = u_i.\n\\]\nPertanto, se eseguissimo questo metodo per un tempo sufficientemente lungo, la sequenza di numeri ottenuti è destinata a ripetersi!\nUna sequenza che si ripete è un problema? In teoria si, in pratica \\(m\\) negli algoritmi moderni (\\(m \\approx 2^{19937}\\)) è talmente grande che questo fattore è trascurabile.\n\n\n\n\n\n\nNota\n\n\n\nLa sequenza ottenuta andrebbe testata per verificare che in effetti “sembri” casuale ed uniforme in \\((0,1)\\)."
+  },
+  {
+    "objectID": "lezioni/un_H.html#algoritmo-wichmann-hill-1982-2",
+    "href": "lezioni/un_H.html#algoritmo-wichmann-hill-1982-2",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Algoritmo Wichmann & Hill (1982)",
+    "text": "Algoritmo Wichmann & Hill (1982)\n\nrunif.wh <- function(n) {\n  a <- c(171, 172, 170)\n  b <- c(30269, 30307, 30323)\n  s <- .current.seed # Il seed corrent è presente nel \"global environment\"\n  u <- rep(0, n) # Inizializzazione dell'output\n  for (i in 1:n) {\n    s <- (a * s) %% b\n    u[i] <- sum(s / b) %% 1\n  }\n  .current.seed <<- s # Salva il seed finale nel \"global environment\"\n  u\n}\n\n.current.seed <- c(123, 456, 789)\nrunif.wh(5)\n\n[1] 0.7061613 0.9181272 0.1477225 0.6591895 0.3623401\n\n.current.seed\n\n[1] 24178  7775  9310"
+  },
+  {
+    "objectID": "lezioni/un_H.html#simulazione-di-variabili-discrete",
+    "href": "lezioni/un_H.html#simulazione-di-variabili-discrete",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Simulazione di variabili discrete",
+    "text": "Simulazione di variabili discrete\nSupponiamo di voler estrarre dei valori iid \\(X_1,\\dots,X_n\\) da una legge discreta.\nPer semplicità, assumiamo che il supporto \\(\\mathcal{S} = \\{x_1, \\dots, x_K\\}\\) sia finito e che \\((\\pi_1,\\dots,\\pi_K)\\) siano le probabilità associate, per cui \\[\n\\mathbb{P}(X_i = x_k) = \\pi_k, \\qquad k=1,\\dots,K.\n\\]\nA partire dalle variabili uniformi \\(U_1,\\dots,U_n\\) in \\((0,1)\\) è semplice ottenere \\(X_1,\\dots,X_n\\).\nDividiamo l’intervallo \\((0,1)\\) in \\(K\\) sotto-intervalli, ciascuno di lunghezza \\(\\pi_k\\). Il valore \\(X_i\\) corrisponde al valore associato all’intervallo a cui \\(U_i\\) appartiene.\nInfatti, sia \\(a_0 = 0\\) e \\((a_{k-1}, a_k)\\) il \\(k\\)-esimo intervallo tale che \\(a_k - a_{k-1} = \\pi_k\\). Allora \\[\n\\mathbb{P}(a_{k-1} < U_i < a_k) = \\pi_k \\implies \\mathbb{P}(X_i = x_k) = \\pi_k,\n\\] per \\(k=1,\\dots,K\\)."
+  },
+  {
+    "objectID": "lezioni/un_H.html#esempio-distribuzione-binomiale",
+    "href": "lezioni/un_H.html#esempio-distribuzione-binomiale",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esempio: distribuzione binomiale",
+    "text": "Esempio: distribuzione binomiale\nPossiamo sfruttare la nostra funzione runif.wh per ottenere valori pseudo-casuali da una distribuzione binomiale.\n\nrbinom.wh <- function(n, size, prob) {\n  u <- runif.wh(n)\n  probs <- dbinom(0:size, size = size, prob = prob)\n  breaks <- cumsum(c(0, probs))\n  as.numeric(cut(u, breaks)) - 1 # Converte la variabile \"factor\" in numeri interi\n}\n\n.current.seed <- c(100, 200, 300)\nrbinom.wh(20, size = 5, prob = 0.5)\n\n [1] 2 3 2 2 1 2 4 2 1 4 3 3 0 3 2 4 4 2 4 4\n\n\n\n\n\n\n\n\nNota\n\n\n\nQuesto codice è riportato a soli fini didattici. In realtà, esistono modi più intelligenti (e molto più veloci!) per ottenere questo risultato."
+  },
+  {
+    "objectID": "lezioni/un_H.html#esempio-il-lancio-di-un-dado-a-sei-facce",
+    "href": "lezioni/un_H.html#esempio-il-lancio-di-un-dado-a-sei-facce",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esempio: il lancio di un dado a sei facce",
+    "text": "Esempio: il lancio di un dado a sei facce\nUn dado a sei facce rappresenta una variabile casuale discreta \\(X\\) con funzione di probabilità chiamata Uniforme Discreta, ovvero\n\\[\n\\mathbb{P}(X = k) = \\frac{1}{6}, \\qquad k=1,\\dots,6.\n\\]\nPer simulare lancio di un dado a sei facce, costruiamo anzitutto un vettore contenente una sequenza di numeri da 1 a 6 corrispondenti ai possibili esiti del lancio.\n\ndice <- 1:6\n\nPossiamo usare il comando sample per effettuare il lancio:\n\nset.seed(123) # Comando di R per identificare il \"seed\"\nsample(x = dice, size = 1) # size = 1 implica che viene lanciato un solo dado\n\n[1] 3\n\n\n\n\n\n\n\n\nNota\n\n\n\nIl comando set.seed(numero) è il comando che consente di fissare il seme in R."
+  },
+  {
+    "objectID": "lezioni/un_H.html#il-comando-sample",
+    "href": "lezioni/un_H.html#il-comando-sample",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il comando sample",
+    "text": "Il comando sample\nPiù in generale, la funzione sample(x, size, replace, prob) estrae casualmente un numero size di elementi da un’urna contenente gli oggetti x\n\ncon reinserimento, se replace = TRUE;\nsenza reinserimento, se replace = FALSE.\n\nSe l’argomento prob non viene specificato, la funzione sample assegna ad ogni elemento di x uguale probabilità.\nSe volessimo campionare con probabilità non uniformi, dovremmo indicare un vettore di probabilità di lunghezza pari agli elementi di x (provate per esercizio!)"
+  },
+  {
+    "objectID": "lezioni/un_H.html#campionamento-con-reinserimento",
+    "href": "lezioni/un_H.html#campionamento-con-reinserimento",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Campionamento con reinserimento",
+    "text": "Campionamento con reinserimento\nIl campionamento con reinserimento equivale a fare \\(n\\) estrazioni indipendenti dalla stessa variabile aleatoria \\(X\\). Pertanto, per lanciare lo stesso dado \\(10\\) volte:\n\nset.seed(140)\nn <- 10\n# replace = TRUE implica che il dado è lanciato 10 volte\nsim <- sample(dice, size = n, replace = TRUE)\nsim\n\n [1] 3 1 1 1 3 6 4 5 1 6"
+  },
+  {
+    "objectID": "lezioni/un_H.html#campionamento-senza-reinserimento",
+    "href": "lezioni/un_H.html#campionamento-senza-reinserimento",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Campionamento senza reinserimento",
+    "text": "Campionamento senza reinserimento\nPer effettuare una ipotetica estrazione del Lotto, si devono estrarre da un’urna 5 numeri, tra l’1 e il 90, **senza reinserimento}.\nIn R quindi:\n\nsample(1:90, size = 5, replace = FALSE)\n\n[1] 64 53 87 83 61\n\n\nSe specifichiamo solamente il seguente comando:\n\nsample(dice)\n\n[1] 5 3 1 2 6 4\n\n\notteniamo una permutazione casuale degli elementi di x.\nInfatti, i valore predefiniti sono replace = FALSE e size = length(x), ovvero un campionamento senza reinserimento di tutti gli elementi dell’urna."
+  },
+  {
+    "objectID": "lezioni/un_H.html#il-metodo-dellinversione",
+    "href": "lezioni/un_H.html#il-metodo-dellinversione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il metodo dell’inversione",
+    "text": "Il metodo dell’inversione\nSia \\(X\\) una variabile aleatoria con funzione di ripartizione \\(F(x)\\) e funzione quantile \\[\n\\mathcal{Q}(p) = \\inf\\{x \\in \\mathbb{R} : F(x) \\ge p \\}.\n\\] Inoltre, sia \\(U \\sim U(0,1)\\). Allora, vale che \\[\nX \\overset{d}{=} \\mathcal{Q}(U).\n\\]\n\nDimostrazione (schema)\n\\[\n\\mathbb{P}(Q(U) \\le x) =  \\mathbb{P}(U \\le F(x)) = F(x).\n\\]\n\n\nRisultato chiave\nSe la funzione quantile \\(\\mathcal{Q}(p)\\) è facile da calcolare, per simulare una variabile aleatoria è quindi sufficiente simulare \\(U \\sim U(0,1)\\) e poi calcolare \\(\\mathcal{Q}(U)\\)."
+  },
+  {
+    "objectID": "lezioni/un_H.html#il-metodo-dellinversione-distribuzione-gaussiana",
+    "href": "lezioni/un_H.html#il-metodo-dellinversione-distribuzione-gaussiana",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il metodo dell’inversione: distribuzione gaussiana",
+    "text": "Il metodo dell’inversione: distribuzione gaussiana\nSupponiamo di voler generare dei valori \\(X_1,\\dots, X_n\\) da una distribuzione gaussiana.\nPossiamo usare il metodo dell’inversione, usando la funzione qnorm.\n\nrnorm.wh <- function(n, mean, sd) {\n  u <- runif.wh(n)\n  qnorm(u, mean = mean, sd = sd)\n}\n\n.current.seed <- c(100, 200, 300)\nrnorm.wh(n = 10, mean = 0, sd = 1) # 10 valori da una normale standard\n\n [1] -0.30055385  0.68773053 -0.60218766 -0.09437046 -1.79635403 -0.56676389\n [7]  1.37283913 -0.41755131 -1.26972731  1.73470371\n\n\n\n\n\n\n\n\nNota\n\n\n\nLa funzione qnorm è lenta e non facile da calcolare. Esistono modi ben più efficienti per campionare da una gaussiana."
+  },
+  {
+    "objectID": "lezioni/un_H.html#il-metodo-dellinversione-distribuzione-binomiale",
+    "href": "lezioni/un_H.html#il-metodo-dellinversione-distribuzione-binomiale",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il metodo dell’inversione: distribuzione binomiale",
+    "text": "Il metodo dell’inversione: distribuzione binomiale\nSupponiamo di voler generare dei valori \\(X_1,\\dots, X_n\\) da una distribuzione binomiale.\nPossiamo usare anche in questo caso il metodo dell’inversione, usando la funzione qnorm.\n\nrbinom.wh2 <- function(n, size, prob) {\n  u <- runif.wh(n)\n  qbinom(u, size = size, prob = prob)\n}\n\n.current.seed <- c(100, 200, 300)\nrbinom.wh(n = 10, size = 5, prob = 0.5)\n\n [1] 2 3 2 2 1 2 4 2 1 4\n\n.current.seed <- c(100, 200, 300)\nrbinom.wh2(n = 10, size = 5, prob = 0.5)\n\n [1] 2 3 2 2 1 2 4 2 1 4\n\n\n\n\n\n\n\n\nEsercizio - proprietà\n\n\n\nSi dimostri che il metodo “diretto” per variabili discrete che abbiamo introdotto in precedenza coincide con il metodo dell’inversione."
+  },
+  {
+    "objectID": "lezioni/un_H.html#esercizio-riassuntivo-i",
+    "href": "lezioni/un_H.html#esercizio-riassuntivo-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo I",
+    "text": "Esercizio riassuntivo I\nLa distribuzione continua chiamata half-normal ha la seguente densità: \\[\nf(y) = \\frac{\\sqrt{2}}{\\sqrt{\\pi}} \\exp\\left\\{ - \\frac{y^2}{2}\\right\\}, \\qquad y > 0.\n\\]\nInoltre, è noto che se \\(X \\sim N(0,1)\\) allora \\(Y = |X|\\) segue una distribuzione half-normal.\n\n\n\n\n\n\nEsercizio\n\n\n\nSi scriva in R la funzione dhalf(y) che calcola la densità \\(f(y)\\).\nSi sviluppi una strategia per campionare dei valori pseudo-casuali da una half normal e la si implementi in R.\n\n\n\n\n\n\n\n\nNota\n\n\n\nIn generale, si deduca come campionare una variabile aleatoria \\(Y\\) tale che \\(Y = g(X)\\), dove \\(X\\) è una variabile aleatoria che è facile da campionare."
+  },
+  {
+    "objectID": "lezioni/un_H.html#soluzione-esercizio-riassuntivo-i",
+    "href": "lezioni/un_H.html#soluzione-esercizio-riassuntivo-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione esercizio riassuntivo I",
+    "text": "Soluzione esercizio riassuntivo I\nImplementiamo in primo luogo la funzione dhalf, come richiesto:\n\ndhalf <- function(y) {\n  sqrt(2 / pi) * exp(-y^2 / 2)\n}\n\n# Non richiesto, controllo che integri a 1\nintegrate(function(x) dhalf(x), 0, Inf)\n\n1 with absolute error < 9.4e-05\n\n\nPer generare valori casuali da una half-normal è sufficiente generare valori pseudo-casuali da una normale standard e quindi considerarne il valore assoluto.\nIn generale, se vale \\(Y = g(X)\\) allora è sufficiente campionare i valori di \\(X\\) e poi trasformarli."
+  },
+  {
+    "objectID": "lezioni/un_H.html#esercizio-riassuntivo-ii",
+    "href": "lezioni/un_H.html#esercizio-riassuntivo-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo II",
+    "text": "Esercizio riassuntivo II\nLa distribuzione continua Weibull ha la seguente densità: \\[\nf(x) = \\alpha \\beta x^{\\beta - 1} \\exp\\left\\{- \\alpha x^\\beta \\right\\}, \\qquad x > 0.\n\\]\nSi scriva in R la funzione dweibull che calcola la densità \\(f(x)\\).\nDopo averla ottenuta analiticamente, si implementi in R la funzione pweibull per la funzione di ripartizione \\(F(x)\\).\nDopo averla ottenuta analiticamente, si implementi in R la funzione qweibull per la funzione quantile \\(\\mathcal{Q}(p)\\).\nSi sviluppi una strategia per campionare dei valori pseudo-casuali da una Weibull basata sul metodo dell’inversione e si implementi in R la funzione rweibull."
+  },
+  {
+    "objectID": "lezioni/un_H.html#soluzione-esercizio-riassuntivo-ii",
+    "href": "lezioni/un_H.html#soluzione-esercizio-riassuntivo-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione esercizio riassuntivo II}",
+    "text": "Soluzione esercizio riassuntivo II}\nImplementiamo in primo luogo la funzione dweibull(x, alpha, beta):\n\ndweibull <- function(x, alpha, beta) {\n  alpha * beta * x^(beta - 1) * exp(-alpha * x^beta)\n}\n\nRicordiamo che la funzione di ripartizione è pari a \\[\nF(x) = \\int_0^xf(s) \\mathrm{d}s = \\alpha \\beta  \\int_0^x s^{\\beta - 1} \\exp\\left\\{- \\alpha s^\\beta \\right\\}\\mathrm{d}s =1 - e^{-\\alpha x^\\beta}, \\qquad x > 0.\n\\]\nQuindi, invertendo \\(F(x)\\), si ottiene che la funzione quantile è pari a \\[\n\\mathcal{Q}(p) = F^{-1}(p) = \\left(-\\frac{\\log{(1-p)}}{\\alpha}\\right)^{1/\\beta},\n\\] per \\(p \\in (0,1)\\).\n\npweibull <- function(x, alpha, beta) {\n  1 - exp(-alpha * x^beta)\n}\n\nqweibull <- function(p, alpha, beta) {\n  (-log(1 - p) / alpha)^(1 / beta)\n}\n\nrweibull <- function(R, alpha, beta) {\n  qweibull(runif(R), alpha, beta)\n}\n\nrweibull(10, 2, 2)\n\n [1] 1.1276566 0.8814093 0.4688023 0.7052449 0.6102069 0.8906791 0.4756895\n [8] 0.5512620 1.1274530 1.4573989"
   }
 ]

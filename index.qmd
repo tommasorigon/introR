@@ -59,7 +59,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 | Analisi descrittiva dei dati `titanic`           | [Slides unità G](lezioni/un_G.html)         | [Codice R](lezioni/script/un_G.R)           | **AR** §3.1 --- §3.5                                    |
 | *Esercizi*                                       | [Esercizi 2](exe/es_2.html)                | [soluzione.R](exe/es_2.R)                   |                                                         |
 |                                                  | **CALCOLO DELLE PROBABILITÀ**              |                                             |                                                         |
-| Variabili aleatorie                              | [Slides unità H](lezioni/un_H.pdf)         | [Codice R](lezioni/script/un_H.R)           | **RC** §2.1, §2.2                                       |
+| Variabili aleatorie                              | [Slides unità H](lezioni/un_H.html)         | [Codice R](lezioni/script/un_H.R)           | **RC** §2.1, §2.2                                       |
 | Metodi Monte Carlo                               | [Slides unità I](lezioni/un_I.pdf)         | [Codice R](lezioni/script/un_I.R)           | **AR** §11.1 --- §11.5, §13.1, §13.2; **RC** §3.1, §3.2 |
 | *Esercizi*                                       | [Esercizi 3](exe/es_3.html)                | [soluzione.R](exe/es_3.R)                   |                                                         |
 |                                                  | **INFERENZA STATISTICA**                   |                                             |                                                         |

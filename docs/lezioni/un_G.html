@@ -503,7 +503,7 @@ III             706       0.5364742</code></pre>
 </section>
 <section id="frequenze-congiunte-marginali" class="level2">
 <h2 class="anchored" data-anchor-id="frequenze-congiunte-marginali">Frequenze congiunte &amp; marginali</h2>
-<p>Le tabelle descritte nelle slides precedenti si ottengono in <strong>R</strong> come segue:</p>
+<p>Le tabelle descritte nei paragrafi precedenti si ottengono in <strong>R</strong> come segue:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(tab) <span class="co"># Aggiunge le distribuzioni marginali (assolute)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -722,7 +722,7 @@ Esercizio
 <pre><code>[1] 133.052</code></pre>
 </div>
 </div>
-<p>Infine, si noti che la funzione produce lo stesso risultato.</p>
+<p>Infine, si noti che la funzione <code>chisq.test</code> produce lo stesso risultato.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
