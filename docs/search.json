@@ -1342,5 +1342,103 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Problema 3",
     "text": "Problema 3\nSi consideri il dataset bacteria della libreria MASS e lo si carichi in memoria. La variabile y indica la presenza (y) o l’assenza (n) del batterio “H influenzae” in alcuni bambini. La variabile trt indica invece il trattamento ricevuto.\n\n(3pt) L’indice di eterogeneità di Gini è definito come \\(G = 1 - \\sum_{j=1}^kf_j^2\\), dove \\(f_1,\\dots,f_k\\) sono le frequenze relative di una variabile qualitativa con modalità \\(c_1,\\dots,c_k\\). Si costruisca in R la funzione Gini(x) che calcola l’indice di Gini di una variabile qualitativa x. Si ottenga quindi Gini(bacteria$trt).\n(1pt) Si costruisca dataset bacteria2 contenente le osservazioni relative alla sesta settimana di sorveglianza (week = 6). Da quante osservazioni è composto?\n(1pt) Utilizzando il dataset bacteria2, si costruisca una tabella di contingenza che mette in relazione le variabili y e trt.\n(2pt) Utilizzando il dataset bacteria2, si ottengano le distribuzioni di frequenza condizionate della variabile y, per ciascun valore della variabile trt. Ci sono delle differenze tra queste distribuzioni?\n(2pt) Utilizzando il dataset bacteria2, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori drug e drug+ della variabile trt in un unico valore, chiamato ad esempio drug_and_drug+. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?"
+  },
+  {
+    "objectID": "lezioni/un_G.html",
+    "href": "lezioni/un_G.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Dati qualitativi\nTabelle di contingenza\nDistribuzioni condizionate\nIndipendenza e indice di connessione \\(\\chi^2\\)\n\n\n\n\n\n\n\nNota\n\n\n\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_G.html#descrizione-del-problema",
+    "href": "lezioni/un_G.html#descrizione-del-problema",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Descrizione del problema",
+    "text": "Descrizione del problema\nDopo il disastro del Titanic, una commissione d’inchiesta del British Board of Trade ha compilato una lista di tutti i 1316 passeggeri includendo le seguenti informazioni:\n\nl’esito (salvato, non salvato)\nla classe (I, II, III) in cui viaggiavano\nil sesso, l’età, etc.\n\nIn questa unità ci limitiamo a considerare le informazioni sull’esito e la classe.\n\n\n\n\n\n\nNota\n\n\n\nOvviamente, si tratta degli stessi dati considerati nell’unità O del corso Statistica I."
+  },
+  {
+    "objectID": "lezioni/un_G.html#i-dati-grezzi-editor-di-testo",
+    "href": "lezioni/un_G.html#i-dati-grezzi-editor-di-testo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "I dati grezzi (editor di testo)",
+    "text": "I dati grezzi (editor di testo)"
+  },
+  {
+    "objectID": "lezioni/un_G.html#importazione-dei-dati-titanic",
+    "href": "lezioni/un_G.html#importazione-dei-dati-titanic",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Importazione dei dati titanic",
+    "text": "Importazione dei dati titanic\nCome fatto in precedenza, anzitutto è necessario scaricare il file titanic.csv e salvarlo nel proprio computer. Link al file\n\ntitanic <- read.table(\"../dataset/titanic.csv\", header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/titanic.csv\"\ntitanic <- read.table(path, header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\n\nstr(titanic)\n\n'data.frame':   1316 obs. of  2 variables:\n $ Salvato: Factor w/ 2 levels \"No\",\"Si\": 2 2 2 2 2 2 2 2 2 2 ...\n $ Classe : Factor w/ 3 levels \"I\",\"II\",\"III\": 1 1 1 1 1 1 1 1 1 1 ..."
+  },
+  {
+    "objectID": "lezioni/un_G.html#le-frequenze-assolute-e-relative-marginali",
+    "href": "lezioni/un_G.html#le-frequenze-assolute-e-relative-marginali",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Le frequenze assolute e relative (marginali)",
+    "text": "Le frequenze assolute e relative (marginali)\nPossiamo ottenere le frequenze assolute (marginali) delle due variabili usando il comando summary:\n\nsummary(titanic)\n\n Salvato  Classe   \n No:817   I  :325  \n Si:499   II :285  \n          III:706  \n\n\nOvviamente, possiamo ottenere le frequenze assolute e relative anche usando il comando table. Ad esempio per la variabile classe, possiamo utilizzare:\n\nfreq_abs_classe <- table(titanic$Classe)\nfreq_rel_classe <- freq_abs_classe / sum(freq_abs_classe)\ntab_summary <- cbind(freq_abs_classe, freq_rel_classe)\ntab_summary\n\n    freq_abs_classe freq_rel_classe\nI               325       0.2469605\nII              285       0.2165653\nIII             706       0.5364742"
+  },
+  {
+    "objectID": "lezioni/un_G.html#frequenze-congiunte",
+    "href": "lezioni/un_G.html#frequenze-congiunte",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Frequenze congiunte",
+    "text": "Frequenze congiunte\nUna sintesi che possiamo operare consiste nel costruire una tabella, detta tabella di contingenza oppure tabella a doppia entrata.\nIn R si usa anche in questo caso il comando table, con due argomenti:\n\ntab <- table(titanic$Salvato, titanic$Classe)\ntab\n\n    \n       I  II III\n  No 122 167 528\n  Si 203 118 178\n\n\nIn questa tabella sono riportate le frequenze congiunte, ad esempio, il valore \\(203\\) rappresenta il numero di passeggeri che viaggiavano in I classe e che sono sopravvissuti."
+  },
+  {
+    "objectID": "lezioni/un_G.html#tabella-di-contingenza",
+    "href": "lezioni/un_G.html#tabella-di-contingenza",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Tabella di contingenza",
+    "text": "Tabella di contingenza\nSiano \\(x\\) ed \\(y\\) due variabili aventi modalità \\(c_1,\\dots,c_h\\) e \\(d_1,\\dots,d_k\\), rispettivamente.\nUna tabella di contingenza (a due variabili) per le coppie di dati \\((x_1,y_1),\\dots,(x_n,y_n)\\) si presenta nella seguente forma:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariabile \\(y\\)\n\n\n\n\n\n\n\nVariabile \\(x\\)\n\\(d_1\\)\n\\(\\dots\\)\n\\(d_j\\)\n\\(\\dots\\)\n\\(d_k\\)\nTotale\n\n\n\\(c_1\\)\n\\(n_{11}\\)\n\\(\\dots\\)\n\\(n_{1j}\\)\n\\(\\dots\\)\n\\(n_{1k}\\)\n\\(n_{1+}\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\n\\(c_i\\)\n\\(n_{i1}\\)\n\\(\\dots\\)\n\\(n_{ij}\\)\n\\(\\dots\\)\n\\(n_{ik}\\)\n\\(n_{i+}\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\n\\(c_h\\)\n\\(n_{h1}\\)\n\\(\\dots\\)\n\\(n_{hj}\\)\n\\(\\dots\\)\n\\(n_{hk}\\)\n\\(n_{h+}\\)\n\n\nTotale\n\\(n_{+1}\\)\n\\(\\dots\\)\n\\(n_{+j}\\)\n\\(\\dots\\)\n\\(n_{+k}\\)\n\\(n\\)\n\n\n\nLa frequenza \\(n_{ij}\\) è il numero di unità statistica che presentano contemporaneamente le modalità \\(c_i\\) e \\(d_j\\)."
+  },
+  {
+    "objectID": "lezioni/un_G.html#tabella-di-contingenza-frequenze-relative",
+    "href": "lezioni/un_G.html#tabella-di-contingenza-frequenze-relative",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Tabella di contingenza, frequenze relative",
+    "text": "Tabella di contingenza, frequenze relative\nDividendo per \\(n\\) ciascun termine della precedente tabella, si ottiene inoltre:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariabile \\(y\\)\n\n\n\n\n\n\n\nVariabile \\(x\\)\n\\(d_1\\)\n\\(\\dots\\)\n\\(d_j\\)\n\\(\\dots\\)\n\\(d_k\\)\nTotale\n\n\n\\(c_1\\)\n\\(f_{11}\\)\n\\(\\dots\\)\n\\(f_{1j}\\)\n\\(\\dots\\)\n\\(f_{1k}\\)\n\\(f_{1+}\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\n\\(c_i\\)\n\\(f_{i1}\\)\n\\(\\dots\\)\n\\(f_{ij}\\)\n\\(\\dots\\)\n\\(f_{ik}\\)\n\\(f_{i+}\\)\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\n\\(c_h\\)\n\\(f_{h1}\\)\n\\(\\dots\\)\n\\(f_{hj}\\)\n\\(\\dots\\)\n\\(f_{hk}\\)\n\\(f_{h+}\\)\n\n\nTotale\n\\(f_{+1}\\)\n\\(\\dots\\)\n\\(f_{+j}\\)\n\\(\\dots\\)\n\\(f_{+k}\\)\n\\(1\\)\n\n\n\nLa frequenza relativa \\(f_{ij} = n_{ij} / n\\) è quindi la frazione di osservazioni che presentano contemporaneamente le modalità \\(c_i\\) e \\(d_j\\)."
+  },
+  {
+    "objectID": "lezioni/un_G.html#frequenze-congiunte-marginali",
+    "href": "lezioni/un_G.html#frequenze-congiunte-marginali",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Frequenze congiunte & marginali",
+    "text": "Frequenze congiunte & marginali\nLe tabelle descritte nelle slides precedenti si ottengono in R come segue:\n\naddmargins(tab) # Aggiunge le distribuzioni marginali (assolute)\n\n     \n         I   II  III  Sum\n  No   122  167  528  817\n  Si   203  118  178  499\n  Sum  325  285  706 1316\n\n\n\ntab_rel <- prop.table(tab) # Comando alternativo: table(tab) / sum(tab)\ntab_rel\n\n    \n              I         II        III\n  No 0.09270517 0.12689970 0.40121581\n  Si 0.15425532 0.08966565 0.13525836\n\n\n\naddmargins(tab_rel) # Aggiunge le distribuzioni marginali relative\n\n     \n               I         II        III        Sum\n  No  0.09270517 0.12689970 0.40121581 0.62082067\n  Si  0.15425532 0.08966565 0.13525836 0.37917933\n  Sum 0.24696049 0.21656535 0.53647416 1.00000000"
+  },
+  {
+    "objectID": "lezioni/un_G.html#distribuzioni-condizionate-i",
+    "href": "lezioni/un_G.html#distribuzioni-condizionate-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzioni condizionate I",
+    "text": "Distribuzioni condizionate I\n\nDistribuzione condizionata \\((x \\mid y = d_j)\\)\nLa \\(j\\)-esima colonna mostra la distribuzione di \\(x\\) condizionata ad \\(y = d_j\\) oppure, equivalentemente, la distribuzione di \\(x\\) dato \\(y = d_j\\).\n\n\n\n\n\n\n\n\n\n\n\n\nDistribuzione \\(x \\mid y = d_j\\)\n\\(c_1\\)\n\\(\\dots\\)\n\\(c_i\\)\n\\(\\dots\\)\n\\(c_h\\)\nTotale\n\n\n\n\nFrequenze assolute\n\\(n_{1j}\\)\n\\(\\dots\\)\n\\(n_{ij}\\)\n\\(\\dots\\)\n\\(n_{hj}\\)\n\\(n_{+j}\\)\n\n\nFrequenze relative\n\\(n_{1j} / n_{+j}\\)\n\\(\\dots\\)\n\\(n_{ij} / n_{+j}\\)\n\\(\\dots\\)\n\\(n_{hj} / n_{+j}\\)\n\\(1\\)\n\n\n\n\n\nDistribuzione condizionata \\((y \\mid x = c_i)\\)\nLa \\(i\\)-esima riga mostra la distribuzione di \\(y\\) condizionata ad \\(x = c_i\\) oppure, equivalentemente, la distribuzione di \\(y\\) dato \\(x = c_i\\).\n\n\n\n\n\n\n\n\n\n\n\n\nDistribuzione \\(y \\mid x = c_i\\)\n\\(d_1\\)\n\\(\\dots\\)\n\\(d_j\\)\n\\(\\dots\\)\n\\(d_k\\)\nTotale\n\n\n\n\nFrequenze assolute\n\\(n_{i1}\\)\n\\(\\dots\\)\n\\(n_{ij}\\)\n\\(\\dots\\)\n\\(n_{ik}\\)\n\\(n_{i+}\\)\n\n\nFrequenze relative\n\\(n_{i1} / n_{i+}\\)\n\\(\\dots\\)\n\\(n_{ij} / n_{i+}\\)\n\\(\\dots\\)\n\\(n_{ik} / n_{i+}\\)\n\\(1\\)"
+  },
+  {
+    "objectID": "lezioni/un_G.html#distribuzioni-condizionate-ii",
+    "href": "lezioni/un_G.html#distribuzioni-condizionate-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzioni condizionate II",
+    "text": "Distribuzioni condizionate II\nIl comando prop.table consente anche di calcolare le frequenze condizionate relative.\nLa distribuzione di ciascuna classe, condizionata all’esito è:\n\nprop.table(tab, 1)\n\n    \n             I        II       III\n  No 0.1493268 0.2044064 0.6462668\n  Si 0.4068136 0.2364729 0.3567134\n\n\nLa distribuzione di ciascun esito, condizionata alla classe è:\n\nprop.table(tab, 2)\n\n    \n             I        II       III\n  No 0.3753846 0.5859649 0.7478754\n  Si 0.6246154 0.4140351 0.2521246"
+  },
+  {
+    "objectID": "lezioni/un_G.html#esercizio-di-riepilogo",
+    "href": "lezioni/un_G.html#esercizio-di-riepilogo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio di riepilogo",
+    "text": "Esercizio di riepilogo\nLe contingenze sono pari alla differenza tra frequenze osservate e frequenze attese, sotto l’ipotesi di indipendenza: \\[\n(\\text{contingenza}_{ij}) = n_{ij} - \\hat{n}_{ij}, \\qquad i=1,\\dots,h,\\quad j=1,\\dots,k.\n\\]\nSi consulti l’unità O di Statistica I per la definizione di frequenze attese.\n\nIndice \\(\\chi^2\\) di Pearson\nL’indice di connessione \\(\\chi^2\\) è definito come \\[\n\\chi^2 = \\sum_{i=1}^h\\sum_{j=1}^k \\frac{(n_{ij} - \\hat{n}_{ij})^2}{\\hat{n}_{ij}} = n\\left(\\sum_{i=1}^h\\sum_{j=1}^k\\frac{f_{ij}^2}{f_{i+}f_{+j}} - 1\\right).\n\\]\n\n\n\n\n\n\nEsercizio\n\n\n\nSi scriva una funzione R chiamata chi_squared(x, y) che calcola l’indice \\(\\chi^2\\) di Pearson."
+  },
+  {
+    "objectID": "lezioni/un_G.html#soluzione",
+    "href": "lezioni/un_G.html#soluzione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione",
+    "text": "Soluzione\n\nchi_squared <- function(x, y) {\n  nn <- table(x, y)\n  n <- sum(nn)\n  ff <- nn / n # Frequenze relative congiunte\n  f_x <- table(x) / n # Frequenze relative marginali di x\n  f_y <- table(y) / n # Frequenze relative marginali di y\n  S <- 0\n  for (i in 1:length(f_x)) {\n    for (j in 1:length(f_y)) {\n      S <- S + ff[i, j]^2 / (f_x[i] * f_y[j])\n    }\n  }\n  n * (S - 1)\n}\nchi_squared(titanic$Salvato, titanic$Classe)\n\n     No \n133.052"
+  },
+  {
+    "objectID": "lezioni/un_G.html#soluzione-alternativa-più-concisa",
+    "href": "lezioni/un_G.html#soluzione-alternativa-più-concisa",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Soluzione (alternativa, più concisa)",
+    "text": "Soluzione (alternativa, più concisa)\nLa soluzione seguente fa uso delle funzioni apply e outer.\n\nchi_squared <- function(x, y) {\n  nn <- table(x, y)\n  n <- sum(nn)\n  ff <- nn / n\n  f_x <- apply(ff, 1, sum)\n  f_y <- apply(ff, 2, sum)\n  f_e <- outer(f_x, f_y) # Prodotto \"esterno\" tra vettori\n  n * (sum(ff^2 / f_e) - 1)\n}\nchi_squared(titanic$Salvato, titanic$Classe)\n\n[1] 133.052\n\n\nInfine, si noti che la funzione produce lo stesso risultato.\n\nchisq.test(table(titanic$Salvato, titanic$Classe))\n\n\n    Pearson's Chi-squared test\n\ndata:  table(titanic$Salvato, titanic$Classe)\nX-squared = 133.05, df = 2, p-value < 2.2e-16"
   }
 ]
