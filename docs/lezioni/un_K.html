@@ -164,8 +164,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#argomenti-affrontati" id="toc-argomenti-affrontati" class="nav-link active" data-scroll-target="#argomenti-affrontati">Argomenti affrontati</a></li>
   <li><a href="#un-breve-sommario" id="toc-un-breve-sommario" class="nav-link" data-scroll-target="#un-breve-sommario">Un breve sommario</a></li>
-  <li><a href="#inferenza-statistica-parametrica-ripasso-notazione" id="toc-inferenza-statistica-parametrica-ripasso-notazione" class="nav-link" data-scroll-target="#inferenza-statistica-parametrica-ripasso-notazione">Inferenza statistica parametrica (ripasso &amp; notazione)</a></li>
-  <li><a href="#verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione" id="toc-verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione" class="nav-link" data-scroll-target="#verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione">Verosimiglianza e log-verosimiglianza (ripasso e notazione)</a></li>
+  <li><a href="#ripasso-notazione" id="toc-ripasso-notazione" class="nav-link" data-scroll-target="#ripasso-notazione">Ripasso &amp; notazione</a></li>
+  <li><a href="#ripasso-e-notazione" id="toc-ripasso-e-notazione" class="nav-link" data-scroll-target="#ripasso-e-notazione">Ripasso e notazione</a></li>
   <li><a href="#la-stima-di-massima-verosimiglianza" id="toc-la-stima-di-massima-verosimiglianza" class="nav-link" data-scroll-target="#la-stima-di-massima-verosimiglianza">La stima di massima verosimiglianza</a></li>
   <li><a href="#parametro-scalare-modello-esponenziale" id="toc-parametro-scalare-modello-esponenziale" class="nav-link" data-scroll-target="#parametro-scalare-modello-esponenziale">Parametro scalare: modello esponenziale</a></li>
   <li><a href="#parametro-scalare-modello-esponenziale-1" id="toc-parametro-scalare-modello-esponenziale-1" class="nav-link" data-scroll-target="#parametro-scalare-modello-esponenziale-1">Parametro scalare: modello esponenziale</a></li>
@@ -243,8 +243,8 @@ Nota
 <p>Per ovvie ragioni, non avremo tempo / modo di ripercorrere l’intero programma di Statistica II.</p>
 <p>Pertanto è di fondamentale importanza che gli argomenti di <strong>inferenza statistica</strong> siano ben chiari.</p>
 </section>
-<section id="inferenza-statistica-parametrica-ripasso-notazione" class="level2">
-<h2 class="anchored" data-anchor-id="inferenza-statistica-parametrica-ripasso-notazione">Inferenza statistica parametrica (ripasso &amp; notazione)</h2>
+<section id="ripasso-notazione" class="level2">
+<h2 class="anchored" data-anchor-id="ripasso-notazione">Ripasso &amp; notazione</h2>
 <p>Nel caso assolutamente continuo, un <strong>modello statistico</strong> è una collezione di funzioni di densità <span class="math display">\[
 \mathcal{F} = \{f(\cdot ; \theta) : \theta \in \Theta\},
 \]</span> indicizzata da un vettori di parametri <span class="math inline">\(\theta \in \Theta\)</span>, dove <span class="math inline">\(\Theta \subseteq \mathbb{R}^p\)</span> è lo <strong>spazio parametrico</strong>.</p>
@@ -254,8 +254,8 @@ Nota
 \mathcal{L}(\theta) = \mathcal{L}(\theta; y) = C \: f(y; \theta),
 \]</span> dove <span class="math inline">\(C = C(y)\)</span> è una costante positiva che non dipende da <span class="math inline">\(\theta\)</span>.</p>
 </section>
-<section id="verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione" class="level2">
-<h2 class="anchored" data-anchor-id="verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione">Verosimiglianza e log-verosimiglianza (ripasso e notazione)</h2>
+<section id="ripasso-e-notazione" class="level2">
+<h2 class="anchored" data-anchor-id="ripasso-e-notazione">Ripasso e notazione</h2>
 <p>Assumiamo che campione <span class="math inline">\(y = (y_1,\dots,y_n)\)</span> sia composto da realizzazioni <strong>indipendenti</strong> ed <strong>identicamente distribute</strong> da una variabile casuale legge <span class="math inline">\(f(y; \theta)\)</span>. Quindi, si ottiene <span class="math display">\[
     \mathcal{L}(\theta) = \mathcal{L}(\theta; y) = C \: \prod_{i=1}^n f(y_i; \theta).
     \]</span></p>
@@ -400,10 +400,10 @@ Esercizio
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: microseconds
- expr    min      lq     mean median      uq     max neval
-   L1  1.388  1.5860  2.17391  2.232  2.3635   4.926   100
-   L2 40.491 41.1550 43.38222 41.515 42.4285 125.769   100
-   L3 36.598 37.5755 39.53563 38.072 39.4340  88.826   100</code></pre>
+ expr    min      lq     mean  median     uq     max neval
+   L1  1.084  1.2690  2.05020  1.6885  1.879  23.795   100
+   L2 30.432 31.2375 34.10786 31.8680 32.646 124.829   100
+   L3 27.913 28.6120 33.78249 29.2290 32.370  92.659   100</code></pre>
 </div>
 </div>
 </section>

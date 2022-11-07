@@ -326,7 +326,7 @@
     "href": "lezioni/un_E.html#operazioni-preliminari",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni preliminari",
-    "text": "Operazioni preliminari\nIn questo formato i dati sono difficili da analizzare, quantomeno senza usare le funzioni avanzate *apply così come gli strumenti del cosiddetto tidyverse.\nPertanto, creiamo le due variabili emo_A ed emo_B, contenenti i valori di emoglobina per le due metodologie.\n\nemo_A <- emoglobina$emoglobina[emoglobina$Metodologia == \"A\"] # Emoglobina gruppo A\nemo_B <- emoglobina$emoglobina[emoglobina$Metodologia == \"B\"] # Emoglobina gruppo B\n\nsummary(emo_A)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  14.44   14.87   15.00   15.00   15.14   15.64 \n\nsummary(emo_B)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  13.83   14.83   15.02   15.02   15.22   15.80 \n\n\nDa queste prime analisi descrittive si evince che entrambe le metodologie sono, quantomeno in media, ben calibrate. Quale delle due è preferibile?"
+    "text": "Operazioni preliminari\nIn questo formato i dati sono difficili da analizzare, quantomeno senza usare le funzioni avanzate *apply così come gli strumenti del cosiddetto tidyverse.\nPertanto, creiamo le due variabili emo_A ed emo_B, contenenti i valori di emoglobina per le due metodologie.\n\nemo_A <- emoglobina$emoglobina[emoglobina$Metodologia == \"A\"] # Emoglobina gruppo A\nemo_B <- emoglobina$emoglobina[emoglobina$Metodologia == \"B\"] # Emoglobina gruppo B\n\nsummary(emo_A)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  14.44   14.87   15.00   15.00   15.14   15.64 \n\nsummary(emo_B)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  13.83   14.83   15.02   15.02   15.22   15.80 \n\n\n\nboxplot(emoglobina$emoglobina ~ emoglobina$Metodologia,\n  ylab = \"Emoglobina\",\n  xlab = \"Metodologia\"\n)\n\n\n\n\nDa queste prime analisi descrittive si evince che entrambe le metodologie sono, quantomeno in media, ben calibrate. Quale delle due è preferibile?"
   },
   {
     "objectID": "lezioni/un_E.html#boxplot",
@@ -403,7 +403,7 @@
     "href": "lezioni/un_E.html#esercizio-riassuntivo",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo",
-    "text": "Esercizio riassuntivo\nLa misura di asimmetria di uso più comune è il cosiddetto indice di asimmetria standardizzato di Pearson, definito come \\[\n    \\gamma = \\frac{1}{\\text{sqm}(x)^3} \\frac{1}{n} \\sum_{i=1}^n (x_i - \\bar{x})^3 = \\frac{1}{n} \\sum_{i=1}^n \\left(\\frac{x_i - \\bar{x}}{\\sigma}\\right)^3.\n\\]\n\n\n\n\n\n\nEsercizio\n\n\n\nSi crei una funzione opportuna per il suo calcolo."
+    "text": "Esercizio riassuntivo\nLa misura di asimmetria di uso più comune è il cosiddetto indice di asimmetria standardizzato di Pearson, definito come \\[\n    \\gamma = \\frac{1}{\\text{sqm}(x)^3} \\frac{1}{n} \\sum_{i=1}^n (x_i - \\bar{x})^3 = \\frac{1}{n} \\sum_{i=1}^n \\left(\\frac{x_i - \\bar{x}}{\\sigma}\\right)^3.\n\\]\n\nSi crei una funzione opportuna per il suo calcolo.\n\n\nSoluzione dell’esercizio riassuntivo\n\n# Prima possibile implementazione\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  mean((x - mean(x))^3) / sqm^3\n}\n\n# Implementazione (leggermente) alternativa\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  z <- (x - mean(x)) / sqm\n  mean(z^3)\n}\n\nasym(emo_A)\n\n[1] 0.09535216"
   },
   {
     "objectID": "lezioni/un_E.html#soluzione-dellesercizio-riassuntivo",
@@ -1922,7 +1922,7 @@
     "href": "lezioni/un_K.html#qualche-cenno-alle-performance",
     "title": "R per l’analisi statistica multivariata",
     "section": "Qualche cenno alle performance",
-    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean median      uq     max neval\n   L1  1.388  1.5860  2.17391  2.232  2.3635   4.926   100\n   L2 40.491 41.1550 43.38222 41.515 42.4285 125.769   100\n   L3 36.598 37.5755 39.53563 38.072 39.4340  88.826   100"
+    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean  median     uq     max neval\n   L1  1.084  1.2690  2.05020  1.6885  1.879  23.795   100\n   L2 30.432 31.2375 34.10786 31.8680 32.646 124.829   100\n   L3 27.913 28.6120 33.78249 29.2290 32.370  92.659   100"
   },
   {
     "objectID": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza-1",
@@ -2021,5 +2021,33 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Procedure numeriche",
     "text": "Procedure numeriche\nIn questi casi “difficili”, la stima di massima verosimiglianza può essere ottenuta tramite procedure numeriche.\nIn altri termini, utilizzeremo un algoritmo iterativo che produce una sequenza di valori \\(\\lambda_1, \\lambda_2, \\dots\\), tali che, quantomeno idealmente, \\[\n\\ell(\\lambda_{k+1}) \\ge \\ell(\\lambda_k).\n\\]\nIl nuovo valore \\(\\lambda_{k+1}\\) è tipicamente ottenuto a partire dal valore precedente \\(\\lambda_k\\).\nPertanto, questa tipologia di algoritmi hanno bisogno di un valore iniziale \\(\\lambda_1\\) definito dall’utente.\nDopo un certo numero di iterazioni, quando non si osservano più variazioni significative in termini di \\(\\lambda\\) e/o \\(\\ell(\\lambda)\\), l’algoritmo si ferma e si dice che è arrivato a convergenza."
+  },
+  {
+    "objectID": "lezioni/un_E.html#campo-di-variazione",
+    "href": "lezioni/un_E.html#campo-di-variazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Campo di variazione",
+    "text": "Campo di variazione\nIl campo di variazione è la differenza tra minimo e massimo della distribuzione, ovvero \\[\n(\\text{``Campo di variazione''}) = x_{(n)} - x_{(1)},\n\\] dove \\(x_{(1)}\\) e \\(x_{(n)}\\) rappresentano rispettivamente il minimo ed il massimo dei dati.\nSebbene non esista una funzione specifica per il suo calcolo, possiamo usare i seguenti comandi\n\nmax(emo_A) - min(emo_A)\n\n[1] 1.20242\n\nmax(emo_B) - min(emo_B)\n\n[1] 1.97508\n\ndiff(range(emo_A))\n\n[1] 1.20242\n\ndiff(range(emo_B))\n\n[1] 1.97508\n\n\n\n\n\n\n\n\nEsercizio\n\n\n\nSi definisca un’opportuna funzione R che calcola il campo di variazione."
+  },
+  {
+    "objectID": "lezioni/un_E.html#mean-absolute-deviation-mads",
+    "href": "lezioni/un_E.html#mean-absolute-deviation-mads",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Mean absolute deviation (MAD)s",
+    "text": "Mean absolute deviation (MAD)s\nL’indice di variabilità MAD (Median Absolute Deviation) è definito come segue \\[\n\\text{MAD} = \\text{Mediana}(|x_1 - \\text{Me}_x|, \\dots, |x_n - \\text{Me}_x|), \\qquad \\text{Me}_x = \\text{Mediana}(x_1,\\dots,x_n).\n\\]\nPer il suo calcolo, creiamo una funzione appropriata:\n\nMAD <- function(x) {\n  median(abs(x - median(x)))\n}\n\nIl MAD della variabili emo_A ed emo_B è quindi pari a\n\nMAD(emo_A)\n\n[1] 0.135795\n\nMAD(emo_B)\n\n[1] 0.198025"
+  },
+  {
+    "objectID": "lezioni/un_K.html#ripasso-notazione",
+    "href": "lezioni/un_K.html#ripasso-notazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso & notazione",
+    "text": "Ripasso & notazione\nNel caso assolutamente continuo, un modello statistico è una collezione di funzioni di densità \\[\n\\mathcal{F} = \\{f(\\cdot ; \\theta) : \\theta \\in \\Theta\\},\n\\] indicizzata da un vettori di parametri \\(\\theta \\in \\Theta\\), dove \\(\\Theta \\subseteq \\mathbb{R}^p\\) è lo spazio parametrico.\nNel caso discreto, la definizione di modello statistico è la medesima, ma considerando delle funzioni di probabilità \\(p(x ; \\theta)\\) al posto delle densità.\nAssumiamo inoltre che che \\(y = (y_1,\\dots,y_n)\\) sia un campione (spesso iid) con legge congiunta \\(f(y; \\theta)\\), per un qualche ignoto valore del parametro \\(\\theta\\).\nRelativamente ad un modello statistico \\(\\mathcal{F}\\) di cui è stato osservato un campione \\(y\\), si chiama verosimiglianza la funzione da \\(\\Theta\\) in \\(\\mathbb{R} \\cup \\{0\\}\\) \\[\n\\mathcal{L}(\\theta) = \\mathcal{L}(\\theta; y) = C \\: f(y; \\theta),\n\\] dove \\(C = C(y)\\) è una costante positiva che non dipende da \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_K.html#ripasso-e-notazione",
+    "href": "lezioni/un_K.html#ripasso-e-notazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso e notazione",
+    "text": "Ripasso e notazione\nAssumiamo che campione \\(y = (y_1,\\dots,y_n)\\) sia composto da realizzazioni indipendenti ed identicamente distribute da una variabile casuale legge \\(f(y; \\theta)\\). Quindi, si ottiene \\[\n    \\mathcal{L}(\\theta) = \\mathcal{L}(\\theta; y) = C \\: \\prod_{i=1}^n f(y_i; \\theta).\n    \\]\nDato che \\(\\mathcal{L}(\\theta)\\) è non-negativa, spesso si lavora con la funzione di log-verosimiglianza \\[\n    \\ell(\\theta) = \\ell(\\theta; y) = \\log\\mathcal{L}(\\theta) = c + \\sum_{i=1}^n\\log f(y_i; \\theta),\n    \\] dove \\(c \\in \\mathbb{R}\\) è una costante additiva che non dipende da \\(\\theta\\)."
   }
 ]
