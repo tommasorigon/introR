@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.163">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R per l’analisi statistica multivariata</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenuto della pagina</h2>
+   
+  <ul>
+  <li><a href="#argomenti-affrontati" id="toc-argomenti-affrontati" class="nav-link active" data-scroll-target="#argomenti-affrontati">Argomenti affrontati</a></li>
+  <li><a href="#i-metodi-monte-carlo" id="toc-i-metodi-monte-carlo" class="nav-link" data-scroll-target="#i-metodi-monte-carlo">I metodi Monte Carlo</a></li>
+  <li><a href="#alcuni-cenni-storici" id="toc-alcuni-cenni-storici" class="nav-link" data-scroll-target="#alcuni-cenni-storici">Alcuni cenni storici</a>
+  <ul class="collapse">
+  <li><a href="#approfondimento" id="toc-approfondimento" class="nav-link" data-scroll-target="#approfondimento">Approfondimento</a></li>
+  </ul></li>
+  <li><a href="#the-monte-carlo-method" id="toc-the-monte-carlo-method" class="nav-link" data-scroll-target="#the-monte-carlo-method">“The Monte Carlo Method”</a></li>
+  <li><a href="#possibili-applicazioni" id="toc-possibili-applicazioni" class="nav-link" data-scroll-target="#possibili-applicazioni">Possibili applicazioni</a></li>
+  <li><a href="#approssimazione-di-una-probabilità" id="toc-approssimazione-di-una-probabilità" class="nav-link" data-scroll-target="#approssimazione-di-una-probabilità">Approssimazione di una probabilità</a></li>
+  <li><a href="#approssimazione-di-una-probabilità-1" id="toc-approssimazione-di-una-probabilità-1" class="nav-link" data-scroll-target="#approssimazione-di-una-probabilità-1">Approssimazione di una probabilità</a></li>
+  <li><a href="#errare-è-lunica-certezza" id="toc-errare-è-lunica-certezza" class="nav-link" data-scroll-target="#errare-è-lunica-certezza">Errare è l’unica certezza</a></li>
+  <li><a href="#la-varianza-dello-stimatore-i" id="toc-la-varianza-dello-stimatore-i" class="nav-link" data-scroll-target="#la-varianza-dello-stimatore-i">La varianza dello stimatore I</a></li>
+  <li><a href="#esercizio-riassuntivo-i" id="toc-esercizio-riassuntivo-i" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i">Esercizio riassuntivo I</a></li>
+  <li><a href="#integrazione-monte-carlo-i" id="toc-integrazione-monte-carlo-i" class="nav-link" data-scroll-target="#integrazione-monte-carlo-i">Integrazione Monte Carlo I</a></li>
+  <li><a href="#integrazione-monte-carlo-ii" id="toc-integrazione-monte-carlo-ii" class="nav-link" data-scroll-target="#integrazione-monte-carlo-ii">Integrazione Monte Carlo II</a></li>
+  <li><a href="#come-mai-funziona-procediamo-come-prima" id="toc-come-mai-funziona-procediamo-come-prima" class="nav-link" data-scroll-target="#come-mai-funziona-procediamo-come-prima">Come mai funziona? Procediamo come prima…</a></li>
+  <li><a href="#la-varianza-dello-stimatore-i-1" id="toc-la-varianza-dello-stimatore-i-1" class="nav-link" data-scroll-target="#la-varianza-dello-stimatore-i-1">La varianza dello stimatore I</a></li>
+  <li><a href="#la-varianza-dello-stimatore-ii" id="toc-la-varianza-dello-stimatore-ii" class="nav-link" data-scroll-target="#la-varianza-dello-stimatore-ii">La varianza dello stimatore II</a></li>
+  <li><a href="#esercizio-riassuntivo-i-1" id="toc-esercizio-riassuntivo-i-1" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i-1">Esercizio riassuntivo I</a></li>
+  <li><a href="#esercizio-riassuntivo-ii" id="toc-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-ii">Esercizio riassuntivo II</a></li>
+  <li><a href="#esercizi-aggiuntivi-non-risolti" id="toc-esercizi-aggiuntivi-non-risolti" class="nav-link" data-scroll-target="#esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</a></li>
+  <li><a href="#istogrammi-e-densità" id="toc-istogrammi-e-densità" class="nav-link" data-scroll-target="#istogrammi-e-densità">Istogrammi e densità</a></li>
+  <li><a href="#istogrammi-e-densità-1" id="toc-istogrammi-e-densità-1" class="nav-link" data-scroll-target="#istogrammi-e-densità-1">Istogrammi e densità</a></li>
+  <li><a href="#approssimazione-di-una-distribuzione-discreta" id="toc-approssimazione-di-una-distribuzione-discreta" class="nav-link" data-scroll-target="#approssimazione-di-una-distribuzione-discreta">Approssimazione di una distribuzione discreta</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Unità I: metodi Monte Carlo</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tommaso Rigon </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="argomenti-affrontati" class="level2">
+<h2 class="anchored" data-anchor-id="argomenti-affrontati">Argomenti affrontati</h2>
+<ul>
+<li>Metodi Monte Carlo</li>
+<li>Approssimazione di un evento tramite Monte Carlo</li>
+<li>Integrazione Monte Carlo</li>
+<li>Istogrammi &amp; densità</li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gli esercizi <strong>R</strong> associati sono disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_3.html">questo link</a></p>
+</div>
+</div>
+</section>
+<section id="i-metodi-monte-carlo" class="level2">
+<h2 class="anchored" data-anchor-id="i-metodi-monte-carlo">I metodi Monte Carlo</h2>
+<p>Nell’<a href="un_H.html">unità H</a> abbiamo dedicato moltissime energie per cercare di capire come <strong>simulare</strong> dei valori (pseudo) casuali da variabili aleatorie continue e discrete.</p>
+<p>Ciò che tuttavia non abbiamo spiegato è l’<strong>utilità</strong> di queste tecniche.</p>
+<p>Il motivo è semplice: le <strong>possibili applicazioni</strong> sono talmente numerose che è necessario introdurle separatamente in questa lezione… e probabilmente scalfiremo solamente la superficie.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Metodo Monte Carlo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Definiamo metodo Monte Carlo una qualsiasi procedura che coinvolga l’utilizzo di <strong>numeri (pseudo) casuali</strong>.</p>
+</div>
+</div>
+</section>
+<section id="alcuni-cenni-storici" class="level2">
+<h2 class="anchored" data-anchor-id="alcuni-cenni-storici">Alcuni cenni storici</h2>
+<p>I metodi Monte Carlo hanno una lunga storia; alcuni di essi sono stati usati perfino <strong>prima dell’invenzione dei computer</strong>.</p>
+<p>I primi utilizzi moderni, ovvero basati su numeri pseudo-casuali, sono stati condotti (tra gli altri) da Enrico Fermi, Nicholas Metropolis, Richard Feynman e John von Neumann tra gli anni ’30 e ’40.</p>
+<p>Il neonato metodo Monte Carlo aveva quindi delle importanti applicazioni in <strong>fisica</strong>. In particolare, importanti passi avanti furono fatti all’interno del <strong>progetto Manhattan</strong>.</p>
+<p>L’<strong>algoritmo di Metropolis</strong>, sviluppato in quegli anni, è tutt’oggi ampiamente usato. Purtroppo è prematuro presentarlo in questo corso: lo vederete più avanti!</p>
+<section id="approfondimento" class="level3">
+<h3 class="anchored" data-anchor-id="approfondimento">Approfondimento</h3>
+<ul>
+<li>Hitchcock (2003). A history of the Metropolis-Hastings algorithm. <em>The American Statistician</em> <strong>57</strong>(4), 254–257.</li>
+</ul>
+</section>
+</section>
+<section id="the-monte-carlo-method" class="level2">
+<h2 class="anchored" data-anchor-id="the-monte-carlo-method">“The Monte Carlo Method”</h2>
+<p><img src="img/paper.png" class="img-fluid"></p>
+</section>
+<section id="possibili-applicazioni" class="level2">
+<h2 class="anchored" data-anchor-id="possibili-applicazioni">Possibili applicazioni</h2>
+<p>I metodi Monte Carlo hanno applicazioni in tutte le discipline scientifiche, incluse la fisica, biologia, medicina, genetica, informatica, matematica.</p>
+<p>Per ovvie ragioni, noi approfondiremo le applicazioni legate alla <strong>probabilità</strong> e alla <strong>statistica</strong>. Alcuni esempi sono riportati nel seguito.</p>
+<p>Il metodo <strong>bootstrap</strong> tramite Monte Carlo è valso il “Nobel per la Statistica” a Brad Efron nel 2019. Link: <a href="https://en.wikipedia.org/wiki/International_Prize_in_Statistics" class="uri">https://en.wikipedia.org/wiki/International_Prize_in_Statistics</a>.</p>
+<p>La <strong>statistica bayesiana</strong> moderna fa uso intensivo dei metodi Monte Carlo.</p>
+<p>Concetti chiave di <strong>data mining &amp; machine learning</strong>, come la suddivisione in insieme di stima &amp; verifica o la convalida incrociata, sono per definizione basati sulla simulazione di numeri casuali.</p>
+<p>Infine, grazie alla simulazione è possibile verificare la validità dei risultati “asintotici” che vengono presentati nei corsi di <strong>inferenza statistica</strong>.</p>
+</section>
+<section id="approssimazione-di-una-probabilità" class="level2">
+<h2 class="anchored" data-anchor-id="approssimazione-di-una-probabilità">Approssimazione di una probabilità</h2>
+<p>Si supponga di voler calcolare una determinata probabilità <span class="math inline">\(\pi\)</span> di un certo <strong>esperimento casuale</strong>. Definiamo una variabile aleatoria di bernoulli <span class="math inline">\(Z\)</span> tale che <span class="math display">\[
+\pi = \mathbb{P}(Z = 1),
+\]</span></p>
+<p>ovvero un <strong>indicatore binario</strong> che denota se l’evento si è verificato o meno.</p>
+<p>In molti casi è <strong>difficile</strong> se non praticamente impossibile calcolare <span class="math inline">\(\pi\)</span> analiticamente.</p>
+<section id="esempio-1" class="level4">
+<h4 class="anchored" data-anchor-id="esempio-1">Esempio 1</h4>
+<p>Si supponga che <span class="math inline">\(X \sim \text{N}(0,1)\)</span> e si ponga <span class="math inline">\(Y = \cos(X)\)</span>. Il calcolo di <span class="math display">\[
+\pi = \mathbb{P}(Y &gt; 0) = \mathbb{P}\{\cos(X) &gt; 0\},
+\]</span> non è affatto semplice usando solo “carta e penna”: provateci, se volete.</p>
+</section>
+<section id="esempio-2" class="level4">
+<h4 class="anchored" data-anchor-id="esempio-2">Esempio 2</h4>
+<p>La probabilità di vittoria della tombola <span class="math inline">\(\pi\)</span> si potrebbe calcolare “carta e penna”, ma questa operazione sarebbe lunga e faticosa.</p>
+</section>
+</section>
+<section id="approssimazione-di-una-probabilità-1" class="level2">
+<h2 class="anchored" data-anchor-id="approssimazione-di-una-probabilità-1">Approssimazione di una probabilità</h2>
+<p>Il metodo Monte Carlo prevede di <strong>simulare</strong> tante volte l’esperimento casuale in questione e contare la frazione di volte che l’evento si è verificato (ovvero <span class="math inline">\(Z = 1\)</span>).</p>
+<p>In altri termini, consideriamo delle variabili aleatorie binarie iid <span class="math inline">\(Z_1,\dots,Z_R\)</span> aventi probabilità <span class="math inline">\(\pi\)</span>. La probabilità <span class="math inline">\(\pi\)</span> viene stimata tramite la frazione di successi.</p>
+<p>Il metodo Monte Carlo è di estrema utilità perché permette di <strong>approssimare</strong> una determinata <strong>probabilità</strong> senza fare alcun conto analitico.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il punto cruciale è che spesso è possibile simulare un esperimento casuale senza conoscere <span class="math inline">\(\pi\)</span>, che infatti è la probabilità che siamo interessati ad approssimare.</p>
+</div>
+</div>
+<section id="esempio" class="level4">
+<h4 class="anchored" data-anchor-id="esempio">Esempio</h4>
+<p>Si supponga nuovamente che <span class="math inline">\(X \sim \text{N}(0,1)\)</span> e si ponga <span class="math inline">\(Y = \cos(X)\)</span>. Siamo interessati a calcolare la probabilità: <span class="math display">\[
+    \pi =\mathbb{P}(Y &gt; 0) = \mathbb{P}\{\cos(X) &gt; 0\}.
+\]</span></p>
+<p>Definiamo quindi la <strong>variabile binaria</strong> <span class="math display">\[
+Z = \mathbb{1}(Y &gt; 0) = \mathbb{1}\{\cos(X) &gt; 0\},
+\]</span> ovvero una variabile aleatoria bernoulliana che vale <span class="math inline">\(1\)</span> se <span class="math inline">\(\cos(X) &gt; 0\)</span> e vale <span class="math inline">\(0\)</span> altrimenti.</p>
+<p>É facile verificare (fatelo per esercizio!) che <span class="math display">\[
+\pi = \mathbb{P}(Z = 1) = \mathbb{P}(Y &gt; 0).
+\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Risultato chiave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Simulare delle copie iid dalla legge di <span class="math inline">\(Z\)</span> è molto semplice, nonostante la probabilità <span class="math inline">\(\pi\)</span> sia ignota.</p>
+</div>
+</div>
+</section>
+<section id="esempio-continua" class="level4">
+<h4 class="anchored" data-anchor-id="esempio-continua">Esempio (continua)</h4>
+<p>Per <strong>approssimare</strong> la probabilità <span class="math inline">\(\pi = \mathbb{P}(Z = 1) = \mathbb{P}\{\cos(X) &gt; 0\}\)</span> dobbiamo quindi generare tante copie iid da questa legge, ovvero <span class="math inline">\(Z_1,\dots,Z_R\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">5000</span> <span class="co"># Numero di repliche</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(R, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># Ottengo R copie da una distribuzione gaussiana</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">cos</span>(X) <span class="co"># Ottengo R copie dalla distribuzione di Y</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> Y <span class="sc">&gt;</span> <span class="dv">0</span> <span class="co"># Vettore logico che verifica se Y &gt; 0 o meno</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Z[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>Il numero <span class="math inline">\(R\)</span> rappresenta il numero di <strong>repliche</strong> e determina, come vedremo, la precisione della nostra stima Monte Carlo.</p>
+<p>A questo punto, l’approssimazione si ottiene considerando la proporzione di successi</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(Z)) <span class="co"># Considero la frequenza relativa</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Z
+ FALSE   TRUE 
+0.1158 0.8842 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z) <span class="co"># Oppure, più semplicemente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8842</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="errare-è-lunica-certezza" class="level2">
+<h2 class="anchored" data-anchor-id="errare-è-lunica-certezza">Errare è l’unica certezza</h2>
+<p>Come tutte le approssimazioni, anche il metodo Monte Carlo comporta un <strong>errore</strong>.</p>
+<p>La peculiarità delle <strong>approssimazioni Monte Carlo</strong> è che sono, per definizione, casuali.</p>
+<p>Questo significa che ogni volta che eseguiamo la procedura otteniamo un valore <strong>leggermente diverso</strong>. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>) <span class="co"># Imposto un seed diverso da prima</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">cos</span>(<span class="fu">rnorm</span>(R, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="co"># Calcolo gli indicatori (codice in forma compatta)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8878</code></pre>
+</div>
+</div>
+<p>Per cui sia la <strong>stima</strong> ottenuta che l’<strong>errore</strong> commesso sono <strong>aleatori</strong>!</p>
+<p>Fortunatamente, questo è un contesto che dovreste conoscere molto bene. La nostra procedura Monte Carlo è infatti, a tutti gli effetti, uno <strong>stimatore</strong> di <span class="math inline">\(\pi\)</span>. ## Come mai funziona?</p>
+<p>Siano <span class="math inline">\(Z_1,\dots,Z_R\)</span> delle variabili aleatorie binarie indipendenti ed identicamente distribuite, aventi la stessa distribuzione della variabile <span class="math inline">\(Z \sim \text{Ber}(\pi)\)</span>. Lo <strong>stimatore</strong> <span class="math display">\[
+\hat{\pi} = \frac{1}{R}\sum_{r=1}^R Z_r = ("\text{Proporzione di successi}"),
+\]</span> coincide con l’<strong>approssimazione Monte Carlo</strong>.</p>
+<p>Lo stimatore <span class="math inline">\(\hat{\pi}\)</span> ha delle ottime proprietà inferenziali, che si studiano in un qualsiasi corso di <strong>inferenza statistica</strong>; torneremo a parlare di stimatori nell’<a href="un_M.html">unità M</a>.</p>
+<p>In primo luogo, lo stimatore $ $ è <strong>non distorto</strong>, infatti: <span class="math display">\[
+\mathbb{E}(\hat{\pi}) = \frac{1}{R}\sum_{r=1}^R \mathbb{E}(Z_r) =  \frac{1}{R}\sum_{r=1}^R \mathbb{P}(Z = 1) =  \mathbb{P}(Z = 1) = \pi.
+\]</span></p>
+<p>Inoltre, lo stimatore <span class="math inline">\(\hat{\pi}\)</span> è <strong>consistente</strong>, infatti per la legge (forte) dei grandi numeri si ottiene che: <span class="math display">\[
+\hat{\pi}  = \frac{1}{R}\sum_{r=1}^R Z_r \overset{\text{q.c.}}{\longrightarrow} \mathbb{P}(Z = 1) = \pi, \qquad R \rightarrow \infty.
+\]</span></p>
+</section>
+<section id="la-varianza-dello-stimatore-i" class="level2">
+<h2 class="anchored" data-anchor-id="la-varianza-dello-stimatore-i">La varianza dello stimatore I</h2>
+<p>Possiamo infine calcolare la <strong>varianza</strong> di <span class="math inline">\(\hat{\pi}\)</span>, che risulta pari alla seguente quantità <span class="math display">\[
+\begin{aligned}
+        \text{var}(\hat{\pi}) = \frac{1}{R^2}\sum_{r=1}^R\text{var}(Z_r) = \frac{1}{R^2}\sum_{r=1}^R \pi(1-\pi) = \frac{\pi ( 1- \pi)}{R}.
+        \end{aligned}
+\]</span></p>
+<p>Da questa equazione è evidente il ruolo chiave del numero di repliche <span class="math inline">\(R\)</span>.</p>
+<p>Il numero di <strong>repliche</strong> <span class="math inline">\(R\)</span> si può interpretare come se fosse una sorta di <strong>numerosità campionaria</strong>, che idealmente noi possiamo aumentare a piacere.</p>
+<p>Un numero di repliche elevato aumenta quindi la <strong>precisione</strong> ma ha un costo in termini di risorse computazionali (= il computer impiega più tempo).</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La varianza <span class="math inline">\(\text{var}(\hat{\pi})\)</span> dipende dal valore di <span class="math inline">\(\pi\)</span>, che è ignoto. Per cui una stima della varianza si ottiene rimpiazzando <span class="math inline">\(\pi\)</span> con la sua stima <span class="math inline">\(\hat{\pi}\)</span>.</p>
+</div>
+</div>
+<p>Vogliamo valutare l’impatto della scelta di <span class="math inline">\(R\)</span> ed implementiamo quindi la funzione <code>MonteCarlo</code>, che calcola sia l’approssimazione che la sua <strong>deviazione standard</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>MonteCarlo <span class="ot">&lt;-</span> <span class="cf">function</span>(R) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> <span class="fu">cos</span>(<span class="fu">rnorm</span>(R, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  estimate <span class="ot">&lt;-</span> <span class="fu">mean</span>(Z)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  std.error <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(estimate <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> estimate) <span class="sc">/</span> R)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(estimate, std.error)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"estimate"</span>, <span class="st">"std.error"</span>) <span class="co"># Aggiungo solo per ragioni estetiche</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Proviamo con alcuni valori diversi di <span class="math inline">\(R\)</span>. Si nota un progressivo miglioramento:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">100</span>) <span class="co"># R = 100 conduce a uno std.error elevato</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> estimate std.error 
+0.8600000 0.0346987 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">5000</span>) <span class="co"># R = 5000 conduce a uno std.error ragionevole</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   estimate   std.error 
+0.891000000 0.004407244 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># R = 10^6 conduce a uno std.error basso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   estimate   std.error 
+0.883934000 0.000320304 </code></pre>
+</div>
+</div>
+</section>
+<section id="esercizio-riassuntivo-i" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-i">Esercizio riassuntivo I</h2>
+<p>Sia <span class="math inline">\(X\)</span> una normale standard. Si approssimi tramite Monte Carlo la probabilità seguente <span class="math display">\[
+\pi = \mathbb{P}(1 &lt; X &lt; 2).
+\]</span> - Si ottenga quindi una stima Monte Carlo dell’errore commesso. - Si ripeta la procedura per diversi valori del numero di repliche <span class="math inline">\(R\)</span>. - Si confrontino i risultati con il <strong>vero valore</strong> di <span class="math inline">\(\mathbb{P}(1 &lt; X &lt; 2)\)</span>. Le approssimazioni Monte Carlo migliorano al crescere di <span class="math inline">\(R\)</span>? - (Difficile) Si ottenga un intervallo di confidenza per lo stimatore <span class="math inline">\(\hat{\pi}\)</span> di livello approssimato <span class="math inline">\(1 - \alpha = 0.95\)</span>.</p>
+<section id="schema-della-soluzione" class="level4">
+<h4 class="anchored" data-anchor-id="schema-della-soluzione">Schema della soluzione</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>MonteCarlo <span class="ot">&lt;-</span> <span class="cf">function</span>(R) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(R)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> (X <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">&amp;</span> (X <span class="sc">&lt;</span> <span class="dv">2</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  estimate <span class="ot">&lt;-</span> <span class="fu">mean</span>(Z)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  std.error <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(estimate <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> estimate) <span class="sc">/</span> R)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(estimate, std.error)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"estimate"</span>, <span class="st">"std.error"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Vero valore</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1359051</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">100</span>) <span class="co"># R = 100 conduce a std.error elevato</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> estimate std.error 
+     0.10      0.03 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">5000</span>) <span class="co"># R = 5000 conduce a std.error ragionevole</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   estimate   std.error 
+0.129800000 0.004752935 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># R = 10^6 conduce a std.error basso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    estimate    std.error 
+0.1355270000 0.0003422856 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="integrazione-monte-carlo-i" class="level2">
+<h2 class="anchored" data-anchor-id="integrazione-monte-carlo-i">Integrazione Monte Carlo I</h2>
+<p>L’idea di approssimare una probabilità tramite simulazione può essere <strong>generalizzata</strong>.</p>
+<p>In particolare, supponiamo di voler calcolare un generico <strong>integrale</strong> del tipo <span class="math display">\[
+\mathcal{I} = \int_{\mathcal{X}} g(x) f(x) \mathrm{d}x = \mathbb{E}\{g(X)\},
+\]</span> dove <span class="math inline">\(f(x)\)</span> è la densità una variabile aleatoria <span class="math inline">\(X\)</span> avente supporto <span class="math inline">\(\mathcal{X}\)</span>.</p>
+<p>La <strong>probabilità di un evento</strong> è un <strong>caso particolare</strong> di questo contesto. Infatti se <span class="math inline">\(g(x) = \mathbb{1}(x \in B)\)</span> si ottiene <span class="math display">\[
+\mathcal{I} = \int_{\mathcal{X}} g(x) f(x) \mathrm{d}x = \int_B f(x) \mathrm{d}x = \mathbb{P}(X \in B).
+\]</span></p>
+<p>Esattamente come per la probabilità di un evento, vogliamo usare la simulazione per ottenere un’<strong>approssimazione</strong> di <span class="math inline">\(\mathcal{I}\)</span>.</p>
+</section>
+<section id="integrazione-monte-carlo-ii" class="level2">
+<h2 class="anchored" data-anchor-id="integrazione-monte-carlo-ii">Integrazione Monte Carlo II</h2>
+<p>Sia <span class="math inline">\(X \sim f(x)\)</span>. Per approssimare l’integrale <span class="math display">\[
+\mathcal{I} = \int_{\mathcal{X}} g(x) f(x) \mathrm{d}x = \mathbb{E}\{g(X)\}
+\]</span> si <strong>simulano</strong> dei valori <span class="math inline">\(X_1,\dots,X_R\)</span> da <span class="math inline">\(f(x)\)</span>. Si calcolano quindi i valori <span class="math inline">\(g(X_1),\dots, g(X_R)\)</span> ed infine si considera la loro <strong>media campionaria</strong>.</p>
+<p>La stima Monte Carlo <span class="math inline">\(\hat{\mathcal{I}}\)</span> è tale che <span class="math display">\[
+\hat{\mathcal{I}} = \frac{1}{R}\sum_{r=1}^R g(X_r) \approx \mathbb{E}\{g(X)\} = \mathcal{I}.
+\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il metodo descritto può essere in realtà usato per approssimare un qualsiasi valore atteso <span class="math inline">\(\mathbb{E}\{g(X)\}\)</span>, anche quando la variabile aleatoria <span class="math inline">\(X\)</span> è <strong>discreta</strong>.</p>
+</div>
+</div>
+<section id="esempio-3" class="level4">
+<h4 class="anchored" data-anchor-id="esempio-3">Esempio</h4>
+<p>Supponiamo di voler calcolare il valore del seguente integrale <span class="math display">\[
+\mathcal{I} = \int_0^1[\cos(50x) + \sin(20x)]^2\mathrm{d}x.
+\]</span></p>
+<p>Si noti che questo integrale coincide con il valore atteso di una trasformazione di una variabile aleatoria uniforme <span class="math inline">\(U\)</span>, ovvero <span class="math display">\[
+\mathcal{I} = \mathbb{E}[\{\cos(50 U) + \sin(20 U)\}^2], \qquad U \sim \text{Unif}(0,1).
+\]</span></p>
+<p>In <strong>R</strong> pertanto possiamo calcolare <span class="math inline">\(\hat{\mathcal{I}}\)</span> come segue</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>I_hat <span class="ot">&lt;-</span> <span class="fu">mean</span>((<span class="fu">cos</span>(<span class="dv">50</span> <span class="sc">*</span> U) <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">20</span> <span class="sc">*</span> U))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>I_hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9656129</code></pre>
+</div>
+</div>
+<p>Questa funzione in realtà può essere integrata analiticamente: vale che <span class="math inline">\(\mathcal{I} \approx 0.965201\)</span>. Pertanto, l’approssimazione Monte Carlo sembra essere accurata.</p>
+<p>Il grafico della funzione integranda nell’intervallo <span class="math inline">\((0,1)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>((<span class="fu">cos</span>(<span class="dv">50</span> <span class="sc">*</span> x) <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">20</span> <span class="sc">*</span> x))<span class="sc">^</span><span class="dv">2</span>, <span class="at">n =</span> <span class="dv">400</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_I_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="come-mai-funziona-procediamo-come-prima" class="level2">
+<h2 class="anchored" data-anchor-id="come-mai-funziona-procediamo-come-prima">Come mai funziona? Procediamo come prima…</h2>
+<p>Siano <span class="math inline">\(X_1,\dots,X_R\)</span> delle copie iid aventi densità <span class="math inline">\(f(x)\)</span>. Consideriamo quindi lo <strong>stimatore</strong> seguente <span class="math display">\[
+\hat{\mathcal{I}} = \frac{1}{R}\sum_{r=1}^R g(X_r),
+\]</span> ovvero l’<strong>approssimazione Monte Carlo</strong> di <span class="math inline">\(\mathcal{I}\)</span> che abbiamo descritto.</p>
+<p>Anche in questo caso, otteniamo che <span class="math inline">\(\hat{\mathcal{I}}\)</span> è uno stimatore di <span class="math inline">\(\mathcal{I}\)</span> con ottime proprietà inferenziali.</p>
+<p>Come in precedenza, lo stimatore $ $ risulta essere <strong>non distorto</strong>, infatti: <span class="math display">\[
+\mathbb{E}(\hat{\mathcal{I}}) = \frac{1}{R}\sum_{r=1}^R \mathbb{E}\{g(X_r)\} =  \frac{1}{R}\sum_{r=1}^R \mathbb{E}\{g(X)\} =  \mathbb{E}\{g(X)\} = \mathcal{I}.
+\]</span></p>
+<p>Inoltre, lo stimatore <span class="math inline">\(\hat{\mathcal{I}}\)</span> è <strong>consistente</strong>. Infatti per la legge (forte) dei grandi numeri <span class="math display">\[
+\hat{\mathcal{I}}  = \frac{1}{R}\sum_{r=1}^R \mathbb{E}\{g(X_r)\} \overset{\text{q.c.}}{\longrightarrow} \mathbb{E}\{g(X)\} = \mathcal{I}, \qquad R \rightarrow \infty.
+\]</span></p>
+</section>
+<section id="la-varianza-dello-stimatore-i-1" class="level2">
+<h2 class="anchored" data-anchor-id="la-varianza-dello-stimatore-i-1">La varianza dello stimatore I</h2>
+<p>Anche in questo caso possiamo calcolare la <strong>varianza</strong> dello stimatore <span class="math inline">\(\hat{\mathcal{I}}\)</span>: <span class="math display">\[
+\text{var}(\hat{\mathcal{I}}) = \frac{1}{R^2}\sum_{r=1}^R\text{var}\{g(X_r)\} = \frac{1}{R}\text{var}\{g(X)\},
+\]</span> con <span class="math inline">\(X \sim f(x)\)</span>.</p>
+<p>La varianza <span class="math inline">\(\text{var}\{g(X)\}\)</span> è tipicamente ignota, ma può essere stimata utilizzando gli stessi valori usati per stimare <span class="math inline">\(\mathcal{I}\)</span>, ad esempio tramite la <strong>varianza campionaria</strong>: <span class="math display">\[
+    \widehat{\text{var}\{g(X)\}} = \frac{1}{R}\sum_{r=1}^R g(X_r)^2 - \left(\frac{1}{R}\sum_{r=1}^R g(X_r)\right)^2.
+\]</span></p>
+<p>Come in precedenza, un numero di repliche <span class="math inline">\(R\)</span> elevato aumenta quindi la <strong>precisione</strong> ma ha un <strong>costo computazionale</strong>.</p>
+</section>
+<section id="la-varianza-dello-stimatore-ii" class="level2">
+<h2 class="anchored" data-anchor-id="la-varianza-dello-stimatore-ii">La varianza dello stimatore II</h2>
+<p>L’implementazione in <strong>R</strong> si ottiene come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>MonteCarlo <span class="ot">&lt;-</span> <span class="cf">function</span>(R) {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  U <span class="ot">&lt;-</span> <span class="fu">runif</span>(R)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  hU <span class="ot">&lt;-</span> (<span class="fu">cos</span>(<span class="dv">50</span> <span class="sc">*</span> U) <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">20</span> <span class="sc">*</span> U))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  estimate <span class="ot">&lt;-</span> <span class="fu">mean</span>(hU)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  std.error <span class="ot">&lt;-</span> <span class="fu">sd</span>(hU) <span class="sc">/</span> <span class="fu">sqrt</span>(R)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(estimate, std.error)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"estimate"</span>, <span class="st">"std.error"</span>) <span class="co"># Aggiungo solo per ragioni estetiche</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Proviamo con alcuni valori diversi di <span class="math inline">\(R\)</span>. Si nota un progressivo miglioramento:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">100</span>) <span class="co"># R = 100 conduce a uno std.error elevato</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  estimate  std.error 
+0.92588110 0.09697723 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">5000</span>) <span class="co"># R = 5000 conduce a uno std.error ragionevole</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  estimate  std.error 
+0.97175199 0.01476928 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MonteCarlo</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># R = 10^6 conduce a uno std.error basso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   estimate   std.error 
+0.965958861 0.001045334 </code></pre>
+</div>
+</div>
+</section>
+<section id="esercizio-riassuntivo-i-1" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-i-1">Esercizio riassuntivo I</h2>
+<p>Si calcoli tramite Monte Carlo il valore del seguente integrale e se ne quantifichi l’incertezza <span class="math display">\[
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\sin^2(x)e^{-x^2/2}\mathrm{d}x.
+\]</span></p>
+<p>Si confronti il risultato con la funzione <code>integrate</code>.</p>
+<section id="schema-della-soluzione-1" class="level4">
+<h4 class="anchored" data-anchor-id="schema-della-soluzione-1">Schema della soluzione</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>hX <span class="ot">&lt;-</span> <span class="fu">sin</span>(X)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hX) <span class="co"># Estimate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4320933</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(hX) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>) <span class="co"># Std.error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001097771</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integrazione numerica</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">sin</span>(x)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">dnorm</span>(x), <span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.4323324 with absolute error &lt; 9.8e-06</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="esercizio-riassuntivo-ii" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-ii">Esercizio riassuntivo II</h2>
+<p>Si supponga di voler approssimare tramite Monte Carlo il seguente valore atteso <span class="math display">\[
+\mathbb{E}(X^2), \qquad X \sim \text{Ga}(3, 3).
+\]</span></p>
+<p>Si dica, motivando la risposta, quale codice produce il risultato corretto.</p>
+<ul>
+<li>Codice 1</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.000489</code></pre>
+</div>
+</div>
+<ul>
+<li>Codice 2</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X <span class="sc">*</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.334584</code></pre>
+</div>
+</div>
+</section>
+<section id="esercizi-aggiuntivi-non-risolti" class="level2">
+<h2 class="anchored" data-anchor-id="esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</h2>
+<section id="esercizio-1" class="level4">
+<h4 class="anchored" data-anchor-id="esercizio-1">Esercizio 1</h4>
+<p>Si ottenga un’approssimazione Monte Carlo del seguente integrale <span class="math display">\[
+\int_0^\infty x^4 e^{-x}\mathrm{d}x
+\]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
+</section>
+<section id="esercizio-2" class="level4">
+<h4 class="anchored" data-anchor-id="esercizio-2">Esercizio 2</h4>
+<p>Si ottenga un’approssimazione Monte Carlo del seguente integrale <span class="math display">\[
+\int_0^1 x^{1/2}(1 - x)^{1/2}\mathrm{d}x
+\]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
+</section>
+</section>
+<section id="istogrammi-e-densità" class="level2">
+<h2 class="anchored" data-anchor-id="istogrammi-e-densità">Istogrammi e densità</h2>
+<p>Supponiamo di simulare delle variabili aleatorie continue <span class="math inline">\(X_1,\dots, X_R\)</span>, aventi una certa <strong>densità</strong> <span class="math inline">\(f(x)\)</span>.</p>
+<p>Se disegniamo l’<strong>istogramma</strong> di tali numeri, intuitivamente ci aspetteremo un’alta densità nell’istogramma in corrispondenza dei valori molto probabili.</p>
+<p>In realtà, il legame tra istogrammi e densità è molto più stretto. Consideriamo <span class="math inline">\(\lambda = 1 / R\)</span> (si veda <a href="un_D.html">unità D</a> per la definizione), ovvero il valore che rende la somma delle aree dei rettangoli pari a <span class="math inline">\(1\)</span>.</p>
+<p>In tale contesto, l’istogramma costituisce un’approssimazione della densità.</p>
+<p>In termini più precisi, diremo che l’<strong>istogramma</strong> è uno <strong>stimatore</strong> nonparametrico della <strong>densità</strong> <span class="math inline">\(f(x)\)</span>.</p>
+</section>
+<section id="istogrammi-e-densità-1" class="level2">
+<h2 class="anchored" data-anchor-id="istogrammi-e-densità-1">Istogrammi e densità</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">100</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>) <span class="co"># add = TRUE Aggiunge la curva al grafico precedente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_I_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>L’idea è approssimare la funzione <span class="math inline">\(f(x)\)</span> con dei <strong>rettangoli</strong>. Quanti più rettangoli consideriamo, tanto più accurata sarà l’approssimazione.</p>
+<p>Ricordiamo che se <span class="math inline">\(X \sim f(x)\)</span> allora vale che <span class="math display">\[
+\mathbb{P}(a &lt; X &lt; b) = \int_a^bf(x)\mathrm{d}x.
+\]</span></p>
+<p>Quindi idealmente l’altezza del rettangolo di base <span class="math inline">\((a, b)\)</span> dev’essere tale che <span class="math display">\[
+(\text{``Altezza rettangolo''}) = \frac{\mathbb{P}(a &lt; X &lt; b)}{b - a},
+\]</span> in maniera tale che l’<strong>area del rettangolo</strong> risulti pari a <span class="math inline">\(\mathbb{P}(a &lt; X &lt; b)\)</span>.</p>
+<p>Le probabilità <span class="math inline">\(\mathbb{P}(a &lt; X &lt; b)\)</span> sono ulteriormente <strong>approssimate</strong> tramite Monte Carlo e sono poste pari alla proporzioni di valori <span class="math inline">\(X_1,\dots,X_R\)</span> contenuti nell’intervallo <span class="math inline">\((a,b)\)</span>.</p>
+</section>
+<section id="approssimazione-di-una-distribuzione-discreta" class="level2">
+<h2 class="anchored" data-anchor-id="approssimazione-di-una-distribuzione-discreta">Approssimazione di una distribuzione discreta</h2>
+<p>Un principio simile a visto per istogrammi / densità vale anche nel <strong>caso discreto</strong>.</p>
+<p>Sia <span class="math inline">\(X\)</span> una variabile aleatoria discreta. In questo contesto, possiamo direttamente approssimare la <strong>funzione di probabilità</strong> <span class="math display">\[
+p(x) = \mathbb{P}(X = x),
+\]</span> utilizzando un metodo Monte Carlo.</p>
+<p>Supponendo di poter simulare <span class="math inline">\(X_1,\dots,X_R\)</span>. Allora, una stima per <span class="math inline">\(p(x)\)</span> è semplicemente pari alla proporzione di valori pari <span class="math inline">\(x\)</span> che abbiamo ottenuto.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># Simulazione di R variabili Poisson con media 10</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>freq_rel <span class="ot">&lt;-</span> <span class="fu">table</span>(X) <span class="sc">/</span> <span class="fu">sum</span>(X) <span class="co"># Calcolo delle frequenze relative</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Grafici</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(freq_rel, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">main =</span> <span class="st">"Distribuzione empirica"</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">28</span>, <span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">10</span>),</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>,</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">main =</span> <span class="st">"Distribuzione teorica"</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_I_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

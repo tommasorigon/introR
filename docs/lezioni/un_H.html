@@ -191,16 +191,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#il-comando-sample" id="toc-il-comando-sample" class="nav-link" data-scroll-target="#il-comando-sample">Il comando <code>sample</code></a></li>
   <li><a href="#campionamento-con-reinserimento" id="toc-campionamento-con-reinserimento" class="nav-link" data-scroll-target="#campionamento-con-reinserimento">Campionamento con reinserimento</a></li>
   <li><a href="#campionamento-senza-reinserimento" id="toc-campionamento-senza-reinserimento" class="nav-link" data-scroll-target="#campionamento-senza-reinserimento">Campionamento senza reinserimento</a></li>
-  <li><a href="#il-metodo-dellinversione" id="toc-il-metodo-dellinversione" class="nav-link" data-scroll-target="#il-metodo-dellinversione">Il metodo dell’inversione</a>
-  <ul class="collapse">
-  <li><a href="#risultato-chiave" id="toc-risultato-chiave" class="nav-link" data-scroll-target="#risultato-chiave">Risultato chiave</a></li>
-  </ul></li>
+  <li><a href="#il-metodo-dellinversione" id="toc-il-metodo-dellinversione" class="nav-link" data-scroll-target="#il-metodo-dellinversione">Il metodo dell’inversione</a></li>
   <li><a href="#il-metodo-dellinversione-distribuzione-gaussiana" id="toc-il-metodo-dellinversione-distribuzione-gaussiana" class="nav-link" data-scroll-target="#il-metodo-dellinversione-distribuzione-gaussiana">Il metodo dell’inversione: distribuzione gaussiana</a></li>
   <li><a href="#il-metodo-dellinversione-distribuzione-binomiale" id="toc-il-metodo-dellinversione-distribuzione-binomiale" class="nav-link" data-scroll-target="#il-metodo-dellinversione-distribuzione-binomiale">Il metodo dell’inversione: distribuzione binomiale</a></li>
   <li><a href="#esercizio-riassuntivo-i" id="toc-esercizio-riassuntivo-i" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i">Esercizio riassuntivo I</a></li>
-  <li><a href="#soluzione-esercizio-riassuntivo-i" id="toc-soluzione-esercizio-riassuntivo-i" class="nav-link" data-scroll-target="#soluzione-esercizio-riassuntivo-i">Soluzione esercizio riassuntivo I</a></li>
   <li><a href="#esercizio-riassuntivo-ii" id="toc-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-ii">Esercizio riassuntivo II</a></li>
-  <li><a href="#soluzione-esercizio-riassuntivo-ii" id="toc-soluzione-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II</a></li>
   </ul>
 </nav>
     </div>
@@ -606,7 +601,7 @@ F(\mathcal{Q}(0.75)) = F(F^{-1}(0.75))= 0.75.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Attenzione
+Danger
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -637,7 +632,7 @@ X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(R, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.2947543  0.5856016  1.1036560  1.2625408 -0.1506115</code></pre>
+<pre><code>[1] -1.08255361  0.03147159  0.63943560  1.76963639 -0.61448717</code></pre>
 </div>
 </div>
 </section>
@@ -852,7 +847,9 @@ Nota
 <h2 class="anchored" data-anchor-id="il-metodo-dellinversione">Il metodo dell’inversione</h2>
 <p>Sia <span class="math inline">\(X\)</span> una variabile aleatoria con funzione di ripartizione <span class="math inline">\(F(x)\)</span> e funzione quantile <span class="math display">\[
 \mathcal{Q}(p) = \inf\{x \in \mathbb{R} : F(x) \ge p \}.
-\]</span> Inoltre, sia <span class="math inline">\(U \sim U(0,1)\)</span>. Allora, vale che <span class="math display">\[
+\]</span></p>
+<p>Inoltre, sia <span class="math inline">\(U \sim U(0,1)\)</span>. Allora, vale che</p>
+<p><span class="math display">\[
 X \overset{d}{=} \mathcal{Q}(U).
 \]</span></p>
 <section id="dimostrazione-schema" class="level4">
@@ -861,8 +858,8 @@ X \overset{d}{=} \mathcal{Q}(U).
 \mathbb{P}(Q(U) \le x) =  \mathbb{P}(U \le F(x)) = F(x).
 \]</span></p>
 </section>
-<section id="risultato-chiave" class="level3">
-<h3 class="anchored" data-anchor-id="risultato-chiave">Risultato chiave</h3>
+<section id="risultato-chiave" class="level4 .callout-note">
+<h4 class="anchored" data-anchor-id="risultato-chiave">Risultato chiave</h4>
 <p>Se la funzione quantile <span class="math inline">\(\mathcal{Q}(p)\)</span> è facile da calcolare, per simulare una variabile aleatoria è quindi sufficiente simulare <span class="math inline">\(U \sim U(0,1)\)</span> e poi calcolare <span class="math inline">\(\mathcal{Q}(U)\)</span>.</p>
 </section>
 </section>
@@ -938,20 +935,10 @@ Esercizio - proprietà
 f(y) = \frac{\sqrt{2}}{\sqrt{\pi}} \exp\left\{ - \frac{y^2}{2}\right\}, \qquad y &gt; 0.
 \]</span></p>
 <p>Inoltre, è noto che se <span class="math inline">\(X \sim N(0,1)\)</span> allora <span class="math inline">\(Y = |X|\)</span> segue una distribuzione half-normal.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Esercizio
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Si scriva in <strong>R</strong> la funzione <code>dhalf(y)</code> che calcola la densità <span class="math inline">\(f(y)\)</span>.</p>
-<p>Si sviluppi una strategia per campionare dei valori pseudo-casuali da una half normal e la si implementi in <strong>R</strong>.</p>
-</div>
-</div>
+<ul>
+<li><p>Si scriva in <strong>R</strong> la funzione <code>dhalf(y)</code> che calcola la densità <span class="math inline">\(f(y)\)</span>.</p></li>
+<li><p>Si sviluppi una strategia per campionare dei valori pseudo-casuali da una half normal e la si implementi in <strong>R</strong>.</p></li>
+</ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -965,9 +952,8 @@ Nota
 <p>In generale, si deduca come campionare una variabile aleatoria <span class="math inline">\(Y\)</span> tale che <span class="math inline">\(Y = g(X)\)</span>, dove <span class="math inline">\(X\)</span> è una variabile aleatoria che è facile da campionare.</p>
 </div>
 </div>
-</section>
-<section id="soluzione-esercizio-riassuntivo-i" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-i">Soluzione esercizio riassuntivo I</h2>
+<section id="soluzione-esercizio-riassuntivo-i" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-i">Soluzione esercizio riassuntivo I</h4>
 <p>Implementiamo in primo luogo la funzione <code>dhalf</code>, come richiesto:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>dhalf <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
@@ -983,18 +969,20 @@ Nota
 <p>Per generare valori casuali da una <strong>half-normal</strong> è sufficiente generare valori pseudo-casuali da una normale standard e quindi considerarne il valore assoluto.</p>
 <p>In generale, se vale <span class="math inline">\(Y = g(X)\)</span> allora è sufficiente campionare i valori di <span class="math inline">\(X\)</span> e poi trasformarli.</p>
 </section>
+</section>
 <section id="esercizio-riassuntivo-ii" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-riassuntivo-ii">Esercizio riassuntivo II</h2>
 <p>La distribuzione continua <strong>Weibull</strong> ha la seguente densità: <span class="math display">\[
 f(x) = \alpha \beta x^{\beta - 1} \exp\left\{- \alpha x^\beta \right\}, \qquad x &gt; 0.
 \]</span></p>
-<p>Si scriva in <strong>R</strong> la funzione <code>dweibull</code> che calcola la densità <span class="math inline">\(f(x)\)</span>.</p>
-<p>Dopo averla ottenuta analiticamente, si implementi in <strong>R</strong> la funzione <code>pweibull</code> per la funzione di ripartizione <span class="math inline">\(F(x)\)</span>.</p>
-<p>Dopo averla ottenuta analiticamente, si implementi in <strong>R</strong> la funzione <code>qweibull</code> per la funzione quantile <span class="math inline">\(\mathcal{Q}(p)\)</span>.</p>
-<p>Si sviluppi una strategia per campionare dei valori pseudo-casuali da una Weibull basata sul <strong>metodo dell’inversione</strong> e si implementi in <strong>R</strong> la funzione <code>rweibull</code>.</p>
-</section>
-<section id="soluzione-esercizio-riassuntivo-ii" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II</h2>
+<ul>
+<li><p>Si scriva in <strong>R</strong> la funzione <code>dweibull</code> che calcola la densità <span class="math inline">\(f(x)\)</span>.</p></li>
+<li><p>Dopo averla ottenuta analiticamente, si implementi in <strong>R</strong> la funzione <code>pweibull</code> per la funzione di ripartizione <span class="math inline">\(F(x)\)</span>.</p></li>
+<li><p>Dopo averla ottenuta analiticamente, si implementi in <strong>R</strong> la funzione <code>qweibull</code> per la funzione quantile <span class="math inline">\(\mathcal{Q}(p)\)</span>.</p></li>
+<li><p>Si sviluppi una strategia per campionare dei valori pseudo-casuali da una Weibull basata sul <strong>metodo dell’inversione</strong> e si implementi in <strong>R</strong> la funzione <code>rweibull</code>.</p></li>
+</ul>
+<section id="soluzione-esercizio-riassuntivo-ii" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II</h4>
 <p>Implementiamo in primo luogo la funzione <code>dweibull(x, alpha, beta)</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>dweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(x, alpha, beta) {</span>
@@ -1028,6 +1016,7 @@ F(x) = \int_0^xf(s) \mathrm{d}s = \alpha \beta  \int_0^x s^{\beta - 1} \exp\left
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

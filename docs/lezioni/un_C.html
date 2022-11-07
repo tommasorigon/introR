@@ -178,14 +178,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#le-variabili-di-tipo-date" id="toc-le-variabili-di-tipo-date" class="nav-link" data-scroll-target="#le-variabili-di-tipo-date">Le variabili di tipo <code>date</code></a></li>
   <li><a href="#manipolazione-di-un-dataset" id="toc-manipolazione-di-un-dataset" class="nav-link" data-scroll-target="#manipolazione-di-un-dataset">Manipolazione di un dataset</a></li>
   <li><a href="#i-valori-mancanti" id="toc-i-valori-mancanti" class="nav-link" data-scroll-target="#i-valori-mancanti">I valori mancanti</a></li>
-  <li><a href="#i-valori-mancanti-1" id="toc-i-valori-mancanti-1" class="nav-link" data-scroll-target="#i-valori-mancanti-1">I valori mancanti</a></li>
   <li><a href="#gestire-i-dati-mancanti" id="toc-gestire-i-dati-mancanti" class="nav-link" data-scroll-target="#gestire-i-dati-mancanti">Gestire i dati mancanti</a></li>
   <li><a href="#selezione-delle-variabili" id="toc-selezione-delle-variabili" class="nav-link" data-scroll-target="#selezione-delle-variabili">Selezione delle variabili</a></li>
   <li><a href="#il-comando-attach" id="toc-il-comando-attach" class="nav-link" data-scroll-target="#il-comando-attach">Il comando <code>attach</code></a></li>
   <li><a href="#sommario" id="toc-sommario" class="nav-link" data-scroll-target="#sommario">Sommario</a></li>
   <li><a href="#il-banco-vince-sempre" id="toc-il-banco-vince-sempre" class="nav-link" data-scroll-target="#il-banco-vince-sempre">Il banco vince sempre</a></li>
   <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
-  <li><a href="#soluzione" id="toc-soluzione" class="nav-link" data-scroll-target="#soluzione">Soluzione</a></li>
   </ul>
 </nav>
     </div>
@@ -612,7 +610,7 @@ NA.2       &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Errore
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -620,9 +618,6 @@ Errore
 </div>
 </div>
 <p>La ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni <strong>dati mancanti</strong>, codificati come <code>NA</code> (<em>Not Available</em>).</p>
-</section>
-<section id="i-valori-mancanti-1" class="level2">
-<h2 class="anchored" data-anchor-id="i-valori-mancanti-1">I valori mancanti</h2>
 <p>In particolare, ci sono <span class="math inline">\(3\)</span> osservazioni (la <span class="math inline">\(1501\)</span>, <span class="math inline">\(1846\)</span> e la <span class="math inline">\(1848\)</span>) i cui valori relativi a <em>Bet365</em> non sono disponibili.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>calcio[<span class="fu">rowSums</span>(<span class="fu">is.na</span>(calcio)) <span class="sc">&gt;</span> <span class="dv">0</span>, ] <span class="co"># Identifica le righe con valori mancanti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -755,9 +750,8 @@ Suggerimento
 <p>Si usino i comandi <code>which.min</code> e <code>which.max</code>. Si consulti la documentazione per capirne il funzionamento.</p>
 </div>
 </div>
-</section>
-<section id="soluzione" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione">Soluzione</h2>
+<section id="soluzione" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcolo dell'aggio</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>calcio<span class="sc">$</span>aggio <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365H <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365D <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365A <span class="sc">-</span> <span class="dv">1</span></span>
@@ -789,6 +783,7 @@ Suggerimento
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

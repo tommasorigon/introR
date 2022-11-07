@@ -173,9 +173,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#frequenze-congiunte-marginali" id="toc-frequenze-congiunte-marginali" class="nav-link" data-scroll-target="#frequenze-congiunte-marginali">Frequenze congiunte &amp; marginali</a></li>
   <li><a href="#distribuzioni-condizionate-i" id="toc-distribuzioni-condizionate-i" class="nav-link" data-scroll-target="#distribuzioni-condizionate-i">Distribuzioni condizionate I</a></li>
   <li><a href="#distribuzioni-condizionate-ii" id="toc-distribuzioni-condizionate-ii" class="nav-link" data-scroll-target="#distribuzioni-condizionate-ii">Distribuzioni condizionate II</a></li>
-  <li><a href="#esercizio-di-riepilogo" id="toc-esercizio-di-riepilogo" class="nav-link" data-scroll-target="#esercizio-di-riepilogo">Esercizio di riepilogo</a></li>
-  <li><a href="#soluzione" id="toc-soluzione" class="nav-link" data-scroll-target="#soluzione">Soluzione</a></li>
-  <li><a href="#soluzione-alternativa-più-concisa" id="toc-soluzione-alternativa-più-concisa" class="nav-link" data-scroll-target="#soluzione-alternativa-più-concisa">Soluzione (alternativa, più concisa)</a></li>
+  <li><a href="#contingenze-ed-indice-chi2-di-pearson" id="toc-contingenze-ed-indice-chi2-di-pearson" class="nav-link" data-scroll-target="#contingenze-ed-indice-chi2-di-pearson">Contingenze ed indice <span class="math inline">\(\chi^2\)</span> di Pearson</a></li>
+  <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
   </ul>
 </nav>
     </div>
@@ -588,13 +587,13 @@ III             706       0.5364742</code></pre>
 <p>La <span class="math inline">\(i\)</span>-esima riga mostra la distribuzione di <span class="math inline">\(y\)</span> <strong>condizionata</strong> ad <span class="math inline">\(x = c_i\)</span> oppure, equivalentemente, la distribuzione di <span class="math inline">\(y\)</span> dato <span class="math inline">\(x = c_i\)</span>.</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -654,34 +653,21 @@ III             706       0.5364742</code></pre>
 </div>
 </div>
 </section>
-<section id="esercizio-di-riepilogo" class="level2">
-<h2 class="anchored" data-anchor-id="esercizio-di-riepilogo">Esercizio di riepilogo</h2>
+<section id="contingenze-ed-indice-chi2-di-pearson" class="level2">
+<h2 class="anchored" data-anchor-id="contingenze-ed-indice-chi2-di-pearson">Contingenze ed indice <span class="math inline">\(\chi^2\)</span> di Pearson</h2>
 <p>Le <strong>contingenze</strong> sono pari alla differenza tra frequenze osservate e frequenze attese, sotto l’ipotesi di indipendenza: <span class="math display">\[
 (\text{contingenza}_{ij}) = n_{ij} - \hat{n}_{ij}, \qquad i=1,\dots,h,\quad j=1,\dots,k.
 \]</span></p>
 <p>Si consulti l’<strong>unità O</strong> di Statistica I per la definizione di <strong>frequenze attese</strong>.</p>
-<section id="indice-chi2-di-pearson" class="level4">
-<h4 class="anchored" data-anchor-id="indice-chi2-di-pearson">Indice <span class="math inline">\(\chi^2\)</span> di Pearson</h4>
 <p>L’indice di connessione <span class="math inline">\(\chi^2\)</span> è definito come <span class="math display">\[
 \chi^2 = \sum_{i=1}^h\sum_{j=1}^k \frac{(n_{ij} - \hat{n}_{ij})^2}{\hat{n}_{ij}} = n\left(\sum_{i=1}^h\sum_{j=1}^k\frac{f_{ij}^2}{f_{i+}f_{+j}} - 1\right).
 \]</span></p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Esercizio
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="esercizio-riassuntivo" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
 <p>Si scriva una funzione <strong>R</strong> chiamata <code>chi_squared(x, y)</code> che calcola l’indice <span class="math inline">\(\chi^2\)</span> di Pearson.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="soluzione" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione">Soluzione</h2>
+<section id="soluzione" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
@@ -704,8 +690,8 @@ Esercizio
 </div>
 </div>
 </section>
-<section id="soluzione-alternativa-più-concisa" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione-alternativa-più-concisa">Soluzione (alternativa, più concisa)</h2>
+<section id="soluzione-alternativa-più-concisa" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-alternativa-più-concisa">Soluzione (alternativa, più concisa)</h4>
 <p>La soluzione seguente fa uso delle funzioni <code>apply</code> e <code>outer</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
@@ -735,6 +721,7 @@ X-squared = 133.05, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

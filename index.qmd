@@ -8,7 +8,7 @@ author:
 
 L'insegnamento di **Analisi Statistica Multivariata** (15 CFU) è articolato nelle seguenti parti:
 
-1.  R per l'Analisi Statistica Multivariata (R), 3 CFU, I Ciclo, Prof. Rigon.
+1.  R per l'Analisi Statistica Multivariata (R), 3 CFU, II Ciclo, Prof. Rigon.
 
 2.  Modelli Statistici (MS), 6 CFU, III Ciclo, Prof. Ascari.
 
@@ -67,8 +67,8 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 | Proprietà degli stimatori                        | [Unità M](lezioni/un_M.pdf)         | [Codice R](lezioni/script/un_M.R)           | **AR** §13.3                                            |
 | *Esercizi*                                       | [Esercizi 4](exe/es_4.html)                | [soluzione.R](exe/es_4.R)                   |                                                         |
 |                                                  | **LEZIONI AGGIUNTIVE**                     |                                             |                                                         |
-| Casinò, roulette e metodi Monte Carlo            | [Slides unità J](lezioni/un_J.pdf)         | [Codice R](lezioni/script/un_J.R)           | **AR** §11.2                                            |
-| Minimi quadrati non lineari                      | [Slides unità L](lezioni/un_L.pdf)         | [Codice R](lezioni/script/un_L.R)           |                                                         |
+| Casinò, roulette e metodi Monte Carlo            | [Unità J](lezioni/un_J.pdf)         | [Codice R](lezioni/script/un_J.R)           | **AR** §11.2                                            |
+| Minimi quadrati non lineari                      | [Unità L](lezioni/un_L.pdf)         | [Codice R](lezioni/script/un_L.R)           |                                                         |
 |                                                  | **ESAMI PASSATI**                          |                                             |                                                         |
 | Esame 22 Febbraio 2022                           | [Esame](esami/esame_22_02_2022.html)       | [soluzione.R](esami/soluzione_22_02_2022.R) |                                                         |
 | Esame 4 Febbraio 2022                            | [Esame](esami/esame_04_02_2022.html)       | [soluzione.R](esami/soluzione_04_02_2022.R) |                                                         |

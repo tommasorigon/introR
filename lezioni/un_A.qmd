@@ -19,7 +19,7 @@ editor_options:
 -   Operazioni con vettori e matrici
 
 ::: callout-note
-## Nota
+#### Nota
 
 Esercizi **R** associati sono diponibili a [questo link](https://tommasorigon.github.io/introR/exe/es_1.html)
 :::

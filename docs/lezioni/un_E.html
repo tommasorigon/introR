@@ -167,18 +167,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#i-dati-grezzi-editor-di-testo" id="toc-i-dati-grezzi-editor-di-testo" class="nav-link" data-scroll-target="#i-dati-grezzi-editor-di-testo">I dati grezzi (editor di testo)</a></li>
   <li><a href="#importazione-dei-dati-emoglobina" id="toc-importazione-dei-dati-emoglobina" class="nav-link" data-scroll-target="#importazione-dei-dati-emoglobina">Importazione dei dati <code>emoglobina</code></a></li>
   <li><a href="#operazioni-preliminari" id="toc-operazioni-preliminari" class="nav-link" data-scroll-target="#operazioni-preliminari">Operazioni preliminari</a></li>
-  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
   <li><a href="#la-varianza-i" id="toc-la-varianza-i" class="nav-link" data-scroll-target="#la-varianza-i">La varianza I</a></li>
   <li><a href="#la-varianza-ii" id="toc-la-varianza-ii" class="nav-link" data-scroll-target="#la-varianza-ii">La varianza II</a></li>
   <li><a href="#la-varianza-iii" id="toc-la-varianza-iii" class="nav-link" data-scroll-target="#la-varianza-iii">La varianza III</a></li>
   <li><a href="#scarto-quadratico-medio" id="toc-scarto-quadratico-medio" class="nav-link" data-scroll-target="#scarto-quadratico-medio">Scarto quadratico medio</a></li>
-  <li><a href="#scarto-quadratico-medio-1" id="toc-scarto-quadratico-medio-1" class="nav-link" data-scroll-target="#scarto-quadratico-medio-1">Scarto quadratico medio</a></li>
+  <li><a href="#campo-di-variazione" id="toc-campo-di-variazione" class="nav-link" data-scroll-target="#campo-di-variazione">Campo di variazione</a></li>
   <li><a href="#scarto-interquartile" id="toc-scarto-interquartile" class="nav-link" data-scroll-target="#scarto-interquartile">Scarto interquartile</a></li>
-  <li><a href="#mean-absolute-deviation" id="toc-mean-absolute-deviation" class="nav-link" data-scroll-target="#mean-absolute-deviation">Mean absolute deviation</a></li>
+  <li><a href="#mean-absolute-deviation-mads" id="toc-mean-absolute-deviation-mads" class="nav-link" data-scroll-target="#mean-absolute-deviation-mads">Mean absolute deviation (MAD)s</a></li>
   <li><a href="#la-funzione-tapply-i" id="toc-la-funzione-tapply-i" class="nav-link" data-scroll-target="#la-funzione-tapply-i">La funzione <code>tapply</code> I</a></li>
   <li><a href="#la-funzione-tapply-ii" id="toc-la-funzione-tapply-ii" class="nav-link" data-scroll-target="#la-funzione-tapply-ii">La funzione <code>tapply</code> II</a></li>
   <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
-  <li><a href="#soluzione-dellesercizio-riassuntivo" id="toc-soluzione-dellesercizio-riassuntivo" class="nav-link" data-scroll-target="#soluzione-dellesercizio-riassuntivo">Soluzione dell’esercizio riassuntivo</a></li>
   </ul>
 </nav>
     </div>
@@ -280,10 +278,6 @@ Nota
   13.83   14.83   15.02   15.02   15.22   15.80 </code></pre>
 </div>
 </div>
-<p>Da queste prime analisi descrittive si evince che entrambe le metodologie sono, quantomeno in media, <strong>ben calibrate</strong>. Quale delle due è preferibile?</p>
-</section>
-<section id="boxplot" class="level2">
-<h2 class="anchored" data-anchor-id="boxplot">Boxplot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(emoglobina<span class="sc">$</span>emoglobina <span class="sc">~</span> emoglobina<span class="sc">$</span>Metodologia,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Emoglobina"</span>,</span>
@@ -293,6 +287,7 @@ Nota
 <p><img src="un_E_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Da queste prime analisi descrittive si evince che entrambe le metodologie sono, quantomeno in media, <strong>ben calibrate</strong>. Quale delle due è preferibile?</p>
 </section>
 <section id="la-varianza-i" class="level2">
 <h2 class="anchored" data-anchor-id="la-varianza-i">La varianza I</h2>
@@ -402,8 +397,8 @@ Esercizio
 </div>
 </div>
 </section>
-<section id="scarto-quadratico-medio-1" class="level2">
-<h2 class="anchored" data-anchor-id="scarto-quadratico-medio-1">Scarto quadratico medio</h2>
+<section id="campo-di-variazione" class="level2">
+<h2 class="anchored" data-anchor-id="campo-di-variazione">Campo di variazione</h2>
 <p>Il <strong>campo di variazione</strong> è la differenza tra minimo e massimo della distribuzione, ovvero <span class="math display">\[
 (\text{``Campo di variazione''}) = x_{(n)} - x_{(1)},
 \]</span> dove <span class="math inline">\(x_{(1)}\)</span> e <span class="math inline">\(x_{(n)}\)</span> rappresentano rispettivamente il minimo ed il massimo dei dati.</p>
@@ -464,8 +459,8 @@ Esercizio
 </div>
 </div>
 </section>
-<section id="mean-absolute-deviation" class="level2">
-<h2 class="anchored" data-anchor-id="mean-absolute-deviation">Mean absolute deviation</h2>
+<section id="mean-absolute-deviation-mads" class="level2">
+<h2 class="anchored" data-anchor-id="mean-absolute-deviation-mads">Mean absolute deviation (MAD)s</h2>
 <p>L’indice di variabilità <strong>MAD</strong> (<em>Median Absolute Deviation</em>) è definito come segue <span class="math display">\[
 \text{MAD} = \text{Mediana}(|x_1 - \text{Me}_x|, \dots, |x_n - \text{Me}_x|), \qquad \text{Me}_x = \text{Mediana}(x_1,\dots,x_n).
 \]</span></p>
@@ -544,22 +539,11 @@ Esercizio
 <p>La misura di asimmetria di uso più comune è il cosiddetto <strong>indice di asimmetria</strong> standardizzato di <strong>Pearson</strong>, definito come <span class="math display">\[
     \gamma = \frac{1}{\text{sqm}(x)^3} \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^3 = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i - \bar{x}}{\sigma}\right)^3.
 \]</span></p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Esercizio
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Si crei una funzione opportuna per il suo calcolo.</p>
-</div>
-</div>
-</section>
-<section id="soluzione-dellesercizio-riassuntivo" class="level2">
-<h2 class="anchored" data-anchor-id="soluzione-dellesercizio-riassuntivo">Soluzione dell’esercizio riassuntivo</h2>
+<ul>
+<li>Si crei una funzione opportuna per il suo calcolo.</li>
+</ul>
+<section id="soluzione-dellesercizio-riassuntivo" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-dellesercizio-riassuntivo">Soluzione dell’esercizio riassuntivo</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prima possibile implementazione</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>asym <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -581,6 +565,7 @@ Esercizio
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

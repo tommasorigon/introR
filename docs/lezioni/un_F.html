@@ -167,28 +167,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#i-dati-grezzi-editor-di-testo" id="toc-i-dati-grezzi-editor-di-testo" class="nav-link" data-scroll-target="#i-dati-grezzi-editor-di-testo">I dati grezzi (editor di testo)</a></li>
   <li><a href="#importazione-dei-dati-forbes" id="toc-importazione-dei-dati-forbes" class="nav-link" data-scroll-target="#importazione-dei-dati-forbes">Importazione dei dati <code>forbes</code></a></li>
   <li><a href="#operazioni-preliminari" id="toc-operazioni-preliminari" class="nav-link" data-scroll-target="#operazioni-preliminari">Operazioni preliminari</a></li>
-  <li><a href="#istogramma" id="toc-istogramma" class="nav-link" data-scroll-target="#istogramma">Istogramma</a>
-  <ul class="collapse">
-  <li><a href="#soluzione" id="toc-soluzione" class="nav-link" data-scroll-target="#soluzione">Soluzione</a></li>
-  </ul></li>
+  <li><a href="#istogramma" id="toc-istogramma" class="nav-link" data-scroll-target="#istogramma">Istogramma</a></li>
   <li><a href="#indici-di-posizione" id="toc-indici-di-posizione" class="nav-link" data-scroll-target="#indici-di-posizione">Indici di posizione</a>
   <ul class="collapse">
   <li><a href="#soluzione-1" id="toc-soluzione-1" class="nav-link" data-scroll-target="#soluzione-1">Soluzione</a></li>
   </ul></li>
-  <li><a href="#indici-di-variabilità" id="toc-indici-di-variabilità" class="nav-link" data-scroll-target="#indici-di-variabilità">Indici di variabilità</a>
-  <ul class="collapse">
-  <li><a href="#soluzione-2" id="toc-soluzione-2" class="nav-link" data-scroll-target="#soluzione-2">Soluzione</a></li>
-  </ul></li>
-  <li><a href="#covarianza-e-correlazione" id="toc-covarianza-e-correlazione" class="nav-link" data-scroll-target="#covarianza-e-correlazione">Covarianza e correlazione</a>
-  <ul class="collapse">
-  <li><a href="#soluzione-3" id="toc-soluzione-3" class="nav-link" data-scroll-target="#soluzione-3">Soluzione</a></li>
-  </ul></li>
-  <li><a href="#modello-di-regressione-lineare" id="toc-modello-di-regressione-lineare" class="nav-link" data-scroll-target="#modello-di-regressione-lineare">Modello di regressione lineare</a>
-  <ul class="collapse">
-  <li><a href="#soluzione-4" id="toc-soluzione-4" class="nav-link" data-scroll-target="#soluzione-4">Soluzione</a></li>
-  <li><a href="#soluzione-5" id="toc-soluzione-5" class="nav-link" data-scroll-target="#soluzione-5">Soluzione</a></li>
-  <li><a href="#soluzione-6" id="toc-soluzione-6" class="nav-link" data-scroll-target="#soluzione-6">Soluzione</a></li>
-  </ul></li>
+  <li><a href="#indici-di-variabilità" id="toc-indici-di-variabilità" class="nav-link" data-scroll-target="#indici-di-variabilità">Indici di variabilità</a></li>
+  <li><a href="#covarianza-e-correlazione" id="toc-covarianza-e-correlazione" class="nav-link" data-scroll-target="#covarianza-e-correlazione">Covarianza e correlazione</a></li>
+  <li><a href="#modello-di-regressione-lineare" id="toc-modello-di-regressione-lineare" class="nav-link" data-scroll-target="#modello-di-regressione-lineare">Modello di regressione lineare</a></li>
   <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
   </ul>
 </nav>
@@ -319,10 +305,11 @@ Domanda 1
 </div>
 <div class="callout-body-container callout-body">
 <p>Si disegni un istogramma della variabile temperatura, scegliendo un numero appropriato di classi equispaziate e giustificandone la scelta.</p>
+<p>Si aggiungano a questi grafici gli “abbellimenti” grafici ritenuti necessari (nomi delle variabili, titolo, etc).</p>
 </div>
 </div>
-<section id="soluzione" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione">Soluzione</h3>
+<section id="soluzione" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
 <p>Possiamo decidere di specificare in autonomia gli intervalli delle classi oppure di lasciare ad <strong>R</strong> questa scelta.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Divido la finestra grafica in 2 parti</span></span>
@@ -338,19 +325,6 @@ Domanda 1
 </div>
 </div>
 <p>La soluzione di sinistra fa uso di <span class="math inline">\(6\)</span> classi. Viceversa, quella di sinistra fa uso di <span class="math inline">\(5\)</span> classi, come nella <strong>soluzione</strong> dell’esame.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Esercizio
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Si aggiungano a questi grafici gli “abbellimenti” grafici ritenuti necessari (nomi delle variabili, titolo, etc).</p>
-</div>
-</div>
 </section>
 </section>
 <section id="indici-di-posizione" class="level2">
@@ -423,8 +397,8 @@ Domanda 3
 <p>Si ottenga la varianza delle variabili <code>tempC</code> e <code>pressione</code>.</p>
 </div>
 </div>
-<section id="soluzione-2" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione-2">Soluzione</h3>
+<section id="soluzione-2" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-2">Soluzione</h4>
 <p>Dato che tornerà utile in seguito, definiamo la funzione <code>my_var</code> che calcola la <strong>varianza</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Si, la funzione è definita in un'unica riga e non c'è nulla di male in questo</span></span>
@@ -470,8 +444,8 @@ Domanda 4
 <p>Si disegni un opportuno grafico che aiuti a comprendere la relazione tra le due variabili. Si calcoli quindi la correlazione.</p>
 </div>
 </div>
-<section id="soluzione-3" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione-3">Soluzione</h3>
+<section id="soluzione-3" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-3">Soluzione</h4>
 <p>Per la prima parte della domanda, abbiamo bisogno del nuovo comando <code>plot</code>, che può essere usato (tra le altre cose!) per costruire un <strong>diagramma a dispersione</strong>.</p>
 <p>Forniamo due versioni dello stesso grafico; la seconda contiene dei miglioramenti estetici.</p>
 <div class="cell">
@@ -558,8 +532,8 @@ Domanda 5
 <p>Si ottenga la retta ai minimi quadrati per la relazione tra <code>tempC</code> e <code>pressione</code> e la si disegni nel grafico ottenuto in precedenza.</p>
 </div>
 </div>
-<section id="soluzione-4" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione-4">Soluzione</h3>
+<section id="soluzione-4" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-4">Soluzione</h4>
 <p>Anzitutto ricordiamo che in un <strong>modello lineare</strong> del tipo <span class="math inline">\(y_i = \alpha + \beta x_i + \epsilon_i\)</span>, le stime ai <strong>minimi quadrati</strong> sono pari a <span class="math display">\[
 \hat{\alpha} = \bar{y} - \hat{\beta}\:\bar{x}, \qquad \hat{\beta}  = \frac{\text{cov}(x,y)}{\text{var}(x)}.
 \]</span></p>
@@ -596,8 +570,8 @@ Domanda 6
 </div>
 </div>
 </section>
-<section id="soluzione-5" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione-5">Soluzione</h3>
+<section id="soluzione-5" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-5">Soluzione</h4>
 <p>Utilizzando le stime ottenute, possiamo calcolare rapidamente i valori previsti:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">90</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length =</span> <span class="dv">20</span>)</span>
@@ -629,8 +603,8 @@ Domanda 7
 </div>
 </div>
 </section>
-<section id="soluzione-6" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione-6">Soluzione</h3>
+<section id="soluzione-6" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-6">Soluzione</h4>
 <p>Il coefficiente <span class="math inline">\(R^2\)</span> per un modello di regressione lineare semplice è definito come: <span class="math display">\[
 R^2 = 1 - \frac{\text{var}(r)}{\text{var}(y)} = \rho^2,
 \]</span> dove <span class="math inline">\(r_1,\dots,r_n\)</span> sono i <strong>residui</strong>.</p>
@@ -655,13 +629,13 @@ R^2 = 1 - \frac{\text{var}(r)}{\text{var}(y)} = \rho^2,
 <h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
 <p>Si consideri l’esame di Statistica I del 28 Gennaio 2021, disponibile a <a href="https://tommasorigon.github.io/StatI/esami/28_01_2021.html">questo link</a></p>
 <p>Si risolva l’esercizio 2 dell’esame usando il software <strong>R</strong>.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Domanda 7
+Suggerimento
 </div>
 </div>
 <div class="callout-body-container callout-body">
