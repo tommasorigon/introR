@@ -393,7 +393,7 @@ Risultato chiave
 \hat{\pi} = \frac{1}{R}\sum_{r=1}^R Z_r = ("\text{Proporzione di successi}"),
 \]</span> coincide con l’<strong>approssimazione Monte Carlo</strong>.</p>
 <p>Lo stimatore <span class="math inline">\(\hat{\pi}\)</span> ha delle ottime proprietà inferenziali, che si studiano in un qualsiasi corso di <strong>inferenza statistica</strong>; torneremo a parlare di stimatori nell’<a href="un_M.html">unità M</a>.</p>
-<p>In primo luogo, lo stimatore $ $ è <strong>non distorto</strong>, infatti: <span class="math display">\[
+<p>In primo luogo, lo stimatore <span class="math inline">\(\hat{\pi}\)</span> è <strong>non distorto</strong>, infatti: <span class="math display">\[
 \mathbb{E}(\hat{\pi}) = \frac{1}{R}\sum_{r=1}^R \mathbb{E}(Z_r) =  \frac{1}{R}\sum_{r=1}^R \mathbb{P}(Z = 1) =  \mathbb{P}(Z = 1) = \pi.
 \]</span></p>
 <p>Inoltre, lo stimatore <span class="math inline">\(\hat{\pi}\)</span> è <strong>consistente</strong>, infatti per la legge (forte) dei grandi numeri si ottiene che: <span class="math display">\[
@@ -457,7 +457,12 @@ Nota
 <h2 class="anchored" data-anchor-id="esercizio-riassuntivo-i">Esercizio riassuntivo I</h2>
 <p>Sia <span class="math inline">\(X\)</span> una normale standard. Si approssimi tramite Monte Carlo la probabilità seguente <span class="math display">\[
 \pi = \mathbb{P}(1 &lt; X &lt; 2).
-\]</span> - Si ottenga quindi una stima Monte Carlo dell’errore commesso. - Si ripeta la procedura per diversi valori del numero di repliche <span class="math inline">\(R\)</span>. - Si confrontino i risultati con il <strong>vero valore</strong> di <span class="math inline">\(\mathbb{P}(1 &lt; X &lt; 2)\)</span>. Le approssimazioni Monte Carlo migliorano al crescere di <span class="math inline">\(R\)</span>? - (Difficile) Si ottenga un intervallo di confidenza per lo stimatore <span class="math inline">\(\hat{\pi}\)</span> di livello approssimato <span class="math inline">\(1 - \alpha = 0.95\)</span>.</p>
+\]</span></p>
+<ul>
+<li><p>Si ottenga quindi una stima Monte Carlo dell’errore commesso. - Si ripeta la procedura per diversi valori del numero di repliche <span class="math inline">\(R\)</span>.</p></li>
+<li><p>Si confrontino i risultati con il <strong>vero valore</strong> di <span class="math inline">\(\mathbb{P}(1 &lt; X &lt; 2)\)</span>. Le approssimazioni Monte Carlo migliorano al crescere di <span class="math inline">\(R\)</span>?</p></li>
+<li><p>(Difficile) Si ottenga un intervallo di confidenza per lo stimatore <span class="math inline">\(\hat{\pi}\)</span> di livello approssimato <span class="math inline">\(1 - \alpha = 0.95\)</span>.</p></li>
+</ul>
 <section id="schema-della-soluzione" class="level4">
 <h4 class="anchored" data-anchor-id="schema-della-soluzione">Schema della soluzione</h4>
 <div class="cell">
@@ -642,18 +647,17 @@ Nota
 \mathbb{E}(X^2), \qquad X \sim \text{Ga}(3, 3).
 \]</span></p>
 <p>Si dica, motivando la risposta, quale codice produce il risultato corretto.</p>
-<ul>
-<li>Codice 1</li>
-</ul>
+<section id="codice-1" class="level4">
+<h4 class="anchored" data-anchor-id="codice-1">Codice 1</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.000489</code></pre>
 </div>
 </div>
-<ul>
-<li>Codice 2</li>
-</ul>
+</section>
+<section id="codice-2" class="level4">
+<h4 class="anchored" data-anchor-id="codice-2">Codice 2</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X <span class="sc">*</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -661,6 +665,7 @@ Nota
 <pre><code>[1] 1.334584</code></pre>
 </div>
 </div>
+</section>
 </section>
 <section id="esercizi-aggiuntivi-non-risolti" class="level2">
 <h2 class="anchored" data-anchor-id="esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</h2>
@@ -684,9 +689,6 @@ Nota
 <p>In realtà, il legame tra istogrammi e densità è molto più stretto. Consideriamo <span class="math inline">\(\lambda = 1 / R\)</span> (si veda <a href="un_D.html">unità D</a> per la definizione), ovvero il valore che rende la somma delle aree dei rettangoli pari a <span class="math inline">\(1\)</span>.</p>
 <p>In tale contesto, l’istogramma costituisce un’approssimazione della densità.</p>
 <p>In termini più precisi, diremo che l’<strong>istogramma</strong> è uno <strong>stimatore</strong> nonparametrico della <strong>densità</strong> <span class="math inline">\(f(x)\)</span>.</p>
-</section>
-<section id="istogrammi-e-densità-1" class="level2">
-<h2 class="anchored" data-anchor-id="istogrammi-e-densità-1">Istogrammi e densità</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">100</span>)</span>
@@ -695,6 +697,9 @@ Nota
 <p><img src="un_I_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="istogrammi-e-densità-1" class="level2">
+<h2 class="anchored" data-anchor-id="istogrammi-e-densità-1">Istogrammi e densità</h2>
 <p>L’idea è approssimare la funzione <span class="math inline">\(f(x)\)</span> con dei <strong>rettangoli</strong>. Quanti più rettangoli consideriamo, tanto più accurata sarà l’approssimazione.</p>
 <p>Ricordiamo che se <span class="math inline">\(X \sim f(x)\)</span> allora vale che <span class="math display">\[
 \mathbb{P}(a &lt; X &lt; b) = \int_a^bf(x)\mathrm{d}x.
