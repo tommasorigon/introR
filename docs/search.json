@@ -690,7 +690,7 @@
     "href": "lezioni/un_B.html#esercizio-riassuntivo-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo I",
-    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\n\n\n\n\n\n\nTraccia dello svolgimento\n\n\n\nSi crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j]."
+    "text": "Esercizio riassuntivo I\nSi calcolino gli elementi di una matrice quadrata \\({\\bf D}\\) di dimensione \\(n \\times n\\), i cui elementi sono pari \\[\nd_{ij} = (x_i - x_j)^2, \\qquad  i,j \\in \\{1,\\dots,n\\},\n\\] dove \\({\\bf x} = (x_1,\\dots,x_n)^\\intercal\\) è un generico vettore in \\(\\mathbb{R}^n\\).\nIn altri termini, si definisca una funzione distances(x) che a partire da un generico vettore x restituisca una matrice D.\n\n\n\n\n\n\n\nTraccia dello svolgimento\n\n\n\nSi crei innanzitutto una matrice D i cui elementi sono tutti pari a 0, usando il comando matrix.\nQuindi, si usino due cicli for “annidati”, ovvero uno all’interno dell’altro, per calcolare ciascuno dei valori D[i, j].\n\n\n\nSoluzione esercizio riassuntivo I\n\ndistances <- function(x) {\n  n <- length(x) # Ottengo la lunghezza del vettore x\n  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota\n\n  for (i in 1:n) {\n    for (j in 1:n) {\n      D[i, j] <- (x[i] - x[j])^2\n    }\n  }\n  D # Valore da restituire\n}\n\nx <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto\ndistances(x)\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    9   16  361\n[2,]    9    0    1  484\n[3,]   16    1    0  529\n[4,]  361  484  529    0\n\n\n\n\n\n\n\n\nNota\n\n\n\nEsistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente."
   },
   {
     "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-i",
@@ -704,7 +704,7 @@
     "href": "lezioni/un_B.html#esercizio-riassuntivo-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo II",
-    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\n\n\n\n\n\n\nSuggerimento\n\n\n\nSi usi la funzione print e la funzione resto % di R. Inoltre, per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if."
+    "text": "Esercizio riassuntivo II\nFizzbuzz è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.\nIl compito è il seguente: per tutti i numeri da \\(1\\) a \\(100\\) si stampi a schermo:\n\nla parola fizz se il numero è un multiplo di \\(3\\),\nla parola buzz se è multiplo di \\(5\\),\nla parola fizzbuzz se il numero è un multiplo sia di \\(3\\) che di \\(5\\),\nil numero stesso altrimenti.\n\n\n\n\n\n\n\n\nSuggerimento\n\n\n\nSi usi la funzione print e la funzione resto % di R. Inoltre, per rendere il codice più snello è possibile usare l’istruzione di controllo chiamata else if.\n\n\n\nSoluzione esercizio riassuntivo II\nLa soluzione riportata fa uso del costrutto else if.\n\nfor (i in 1:100) {\n  condA <- (i %% 3) == 0 # Il numero è un multiplo di 3?\n  condB <- (i %% 5) == 0 # Il numero è un multiplo di 5?\n\n  if (condA & condB) {\n    print(\"fizzbuzz\")\n  } else if (condA) {\n    print(\"fizz\")\n  } else if (condB) {\n    print(\"buzz\")\n  } else {\n    print(i)\n  }\n}"
   },
   {
     "objectID": "lezioni/un_B.html#soluzione-esercizio-riassuntivo-ii",
@@ -837,7 +837,7 @@
     "href": "lezioni/un_C.html#i-valori-mancanti",
     "title": "R per l’analisi statistica multivariata",
     "section": "I valori mancanti",
-    "text": "I valori mancanti\nSupponiamo di voler identificare le partite in cui la squadra di casa ha una bassa probabilità di vittoria secondo Bet365:\n\ncalcio_home <- calcio[calcio$B365H > 9, ]\ncalcio_home\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw\n224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw\nNA         <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw\nNA.1       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\nNA.2       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n\n\n\n\n\n\n\n\nErrore\n\n\n\nQualcosa è andato storto: ci sono dei simboli (NA) che non avevamo incontrato finora.\n\n\nLa ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni dati mancanti, codificati come NA (Not Available)."
+    "text": "I valori mancanti\nSupponiamo di voler identificare le partite in cui la squadra di casa ha una bassa probabilità di vittoria secondo Bet365:\n\ncalcio_home <- calcio[calcio$B365H > 9, ]\ncalcio_home\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw\n224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw\nNA         <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw\nNA.1       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\nNA.2       <NA>     <NA>     <NA> <NA>    NA    NA    NA     <NA>\n\n\n\n\n\n\n\n\nImportant\n\n\n\nQualcosa è andato storto: ci sono dei simboli (NA) che non avevamo incontrato finora.\n\n\nLa ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni dati mancanti, codificati come NA (Not Available).\nIn particolare, ci sono \\(3\\) osservazioni (la \\(1501\\), \\(1846\\) e la \\(1848\\)) i cui valori relativi a Bet365 non sono disponibili.\n\ncalcio[rowSums(is.na(calcio)) > 0, ] # Identifica le righe con valori mancanti\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw\n1501 2010-05-09  Bologna  Catania Draw    NA    NA    NA     Draw\n1846 2011-04-17   Chievo  Bologna Home    NA    NA    NA Not_Draw\n1848 2011-04-17    Genoa  Brescia Home    NA    NA    NA Not_Draw\n\n\n\nLa funzione is.na produce una matrice logica della stessa dimensione di calcio, contenente TRUE se il valore è mancante e FALSE altrimenti.\n\n\nLa funzione rowSums(matrice) produce un vettore i cui valori alla somma degli elementi di ciascuna riga della matrice.\nDi conseguenza, rowSums(is.na(calcio)) indica quanti valori mancanti sono presenti in ciascuna riga."
   },
   {
     "objectID": "lezioni/un_C.html#i-valori-mancanti-1",
@@ -886,7 +886,7 @@
     "href": "lezioni/un_C.html#esercizio-riassuntivo",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo",
-    "text": "Esercizio riassuntivo\n\nSi ottenga la variabile aggio, ottenuta come la differenza tra la somma delle “probabilità” dei \\(3\\) eventi (vittoria, pareggio, sconfitta) ed \\(1\\), ovvero il caso equo.\nSi dica qual è l’aggio associato alla partita Udinese-Parma del 1 Settembre 2013.\nSi dica in quali partite è stato applicato il più basso ed il più alto aggio e si identifichino tali valori.\nIn quale partita è stato applicato l’aggio più alto nel campionato di Serie A del 2009/2010?\n\n\n\n\n\n\n\nSuggerimento\n\n\n\nSi usino i comandi which.min e which.max. Si consulti la documentazione per capirne il funzionamento."
+    "text": "Esercizio riassuntivo\n\nSi ottenga la variabile aggio, ottenuta come la differenza tra la somma delle “probabilità” dei \\(3\\) eventi (vittoria, pareggio, sconfitta) ed \\(1\\), ovvero il caso equo.\nSi dica qual è l’aggio associato alla partita Udinese-Parma del 1 Settembre 2013.\nSi dica in quali partite è stato applicato il più basso ed il più alto aggio e si identifichino tali valori.\nIn quale partita è stato applicato l’aggio più alto nel campionato di Serie A del 2009/2010?\n\n\n\n\n\n\n\nSuggerimento\n\n\n\nSi usino i comandi which.min e which.max. Si consulti la documentazione per capirne il funzionamento.\n\n\n\nSoluzione\n\n# Calcolo dell'aggio\ncalcio$aggio <- 1 / calcio$B365H + 1 / calcio$B365D + 1 / calcio$B365A - 1\n\n# Aggio associato a Udinese-Parma del 1 Settembre 2013\nsubset(calcio, Date == \"2013-09-01\" & HomeTeam == \"Udinese\")\n\n          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio\n400 2013-09-01  Udinese    Parma Home   2.1  3.25   3.6 Not_Draw 0.06166056\n\n# Minimo e massimo aggio\ncalcio[which.min(calcio$aggio), ]\n\n          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio\n301 2015-04-18 Juventus    Lazio Home  1.95   3.4  4.33 Not_Draw 0.03788504\n\ncalcio[which.max(calcio$aggio), ]\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio\n1839 2011-04-10  Palermo   Cesena Draw   2.1   2.1     6 Draw 0.1190476\n\n# Il campionato di Serie A inizia a fine Agosto e finisce a fine Maggio\ncalcio2009_2010 <- subset(calcio, Date <= \"2009-08-15\" & Date <= \"2010-06-15\")\ncalcio2009_2010[which.max(calcio2009_2010$aggio), ]\n\n           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio\n1125 2009-05-24   Chievo  Bologna Draw   3.2  1.57     6 Draw 0.1161093"
   },
   {
     "objectID": "lezioni/un_C.html#soluzione",
@@ -1839,5 +1839,187 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Approssimazione di una distribuzione discreta",
     "text": "Approssimazione di una distribuzione discreta\nUn principio simile a visto per istogrammi / densità vale anche nel caso discreto.\nSia \\(X\\) una variabile aleatoria discreta. In questo contesto, possiamo direttamente approssimare la funzione di probabilità \\[\np(x) = \\mathbb{P}(X = x),\n\\] utilizzando un metodo Monte Carlo.\nSupponendo di poter simulare \\(X_1,\\dots,X_R\\). Allora, una stima per \\(p(x)\\) è semplicemente pari alla proporzione di valori pari \\(x\\) che abbiamo ottenuto.\n\nX <- rpois(10^5, 10) # Simulazione di R variabili Poisson con media 10\nfreq_rel <- table(X) / sum(X) # Calcolo delle frequenze relative\n\npar(mfrow = c(1, 2)) # Grafici\nplot(freq_rel, ylab = \"P(X = k)\", xlab = \"k\", main = \"Distribuzione empirica\")\nplot(0:28, dpois(0:28, 10),\n  type = \"h\", ylab = \"P(X = k)\",\n  xlab = \"k\", main = \"Distribuzione teorica\"\n)"
+  },
+  {
+    "objectID": "lezioni/un_G.html#contingenze-ed-indice-chi2-di-pearson",
+    "href": "lezioni/un_G.html#contingenze-ed-indice-chi2-di-pearson",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Contingenze ed indice \\(\\chi^2\\) di Pearson",
+    "text": "Contingenze ed indice \\(\\chi^2\\) di Pearson\nLe contingenze sono pari alla differenza tra frequenze osservate e frequenze attese, sotto l’ipotesi di indipendenza: \\[\n(\\text{contingenza}_{ij}) = n_{ij} - \\hat{n}_{ij}, \\qquad i=1,\\dots,h,\\quad j=1,\\dots,k.\n\\]\nSi consulti l’unità O di Statistica I per la definizione di frequenze attese.\nL’indice di connessione \\(\\chi^2\\) è definito come \\[\n\\chi^2 = \\sum_{i=1}^h\\sum_{j=1}^k \\frac{(n_{ij} - \\hat{n}_{ij})^2}{\\hat{n}_{ij}} = n\\left(\\sum_{i=1}^h\\sum_{j=1}^k\\frac{f_{ij}^2}{f_{i+}f_{+j}} - 1\\right).\n\\]"
+  },
+  {
+    "objectID": "lezioni/un_G.html#esercizio-riassuntivo",
+    "href": "lezioni/un_G.html#esercizio-riassuntivo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo",
+    "text": "Esercizio riassuntivo\nSi scriva una funzione R chiamata chi_squared(x, y) che calcola l’indice \\(\\chi^2\\) di Pearson.\n\nSoluzione\n\nchi_squared <- function(x, y) {\n  nn <- table(x, y)\n  n <- sum(nn)\n  ff <- nn / n # Frequenze relative congiunte\n  f_x <- table(x) / n # Frequenze relative marginali di x\n  f_y <- table(y) / n # Frequenze relative marginali di y\n  S <- 0\n  for (i in 1:length(f_x)) {\n    for (j in 1:length(f_y)) {\n      S <- S + ff[i, j]^2 / (f_x[i] * f_y[j])\n    }\n  }\n  n * (S - 1)\n}\nchi_squared(titanic$Salvato, titanic$Classe)\n\n     No \n133.052 \n\n\n\n\nSoluzione (alternativa, più concisa)\nLa soluzione seguente fa uso delle funzioni apply e outer.\n\nchi_squared <- function(x, y) {\n  nn <- table(x, y)\n  n <- sum(nn)\n  ff <- nn / n\n  f_x <- apply(ff, 1, sum)\n  f_y <- apply(ff, 2, sum)\n  f_e <- outer(f_x, f_y) # Prodotto \"esterno\" tra vettori\n  n * (sum(ff^2 / f_e) - 1)\n}\nchi_squared(titanic$Salvato, titanic$Classe)\n\n[1] 133.052\n\n\nInfine, si noti che la funzione chisq.test produce lo stesso risultato.\n\nchisq.test(table(titanic$Salvato, titanic$Classe))\n\n\n    Pearson's Chi-squared test\n\ndata:  table(titanic$Salvato, titanic$Classe)\nX-squared = 133.05, df = 2, p-value < 2.2e-16"
+  },
+  {
+    "objectID": "lezioni/un_K.html",
+    "href": "lezioni/un_K.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Aspetti numerici legati all’inferenza tramite verosimiglianza\nStima numerica di massima verosimiglianza\nIl caso multiparametrico (grafici contour)\n\n\n\n\n\n\n\nNota\n\n\n\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_K.html#un-breve-sommario",
+    "href": "lezioni/un_K.html#un-breve-sommario",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Un breve sommario",
+    "text": "Un breve sommario\nIn questa unità procederemo tramite esempi, volti a mostrare alcuni aspetti numerici e grafici legati alla verosimiglianza in modelli parametrici.\nIn primo luogo, considereremo un esempio di modello con parametro scalare.\nQuindi, considereremo un esempio modello con parametro vettoriale.\nPer ovvie ragioni, non avremo tempo / modo di ripercorrere l’intero programma di Statistica II.\nPertanto è di fondamentale importanza che gli argomenti di inferenza statistica siano ben chiari."
+  },
+  {
+    "objectID": "lezioni/un_K.html#inferenza-statistica-parametrica-ripasso-notazione",
+    "href": "lezioni/un_K.html#inferenza-statistica-parametrica-ripasso-notazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Inferenza statistica parametrica (ripasso & notazione)",
+    "text": "Inferenza statistica parametrica (ripasso & notazione)\nNel caso assolutamente continuo, un modello statistico è una collezione di funzioni di densità \\[\n\\mathcal{F} = \\{f(\\cdot ; \\theta) : \\theta \\in \\Theta\\},\n\\] indicizzata da un vettori di parametri \\(\\theta \\in \\Theta\\), dove \\(\\Theta \\subseteq \\mathbb{R}^p\\) è lo spazio parametrico.\nNel caso discreto, la definizione di modello statistico è la medesima, ma considerando delle funzioni di probabilità \\(p(x ; \\theta)\\) al posto delle densità.\nAssumiamo inoltre che che \\(y = (y_1,\\dots,y_n)\\) sia un campione (spesso iid) con legge congiunta \\(f(y; \\theta)\\), per un qualche ignoto valore del parametro \\(\\theta\\).\nRelativamente ad un modello statistico \\(\\mathcal{F}\\) di cui è stato osservato un campione \\(y\\), si chiama verosimiglianza la funzione da \\(\\Theta\\) in \\(\\mathbb{R} \\cup \\{0\\}\\) \\[\n\\mathcal{L}(\\theta) = \\mathcal{L}(\\theta; y) = C \\: f(y; \\theta),\n\\] dove \\(C = C(y)\\) è una costante positiva che non dipende da \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_K.html#verosimiglianza-e-log-verosimiglianza-riassunto-e-notazione",
+    "href": "lezioni/un_K.html#verosimiglianza-e-log-verosimiglianza-riassunto-e-notazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Verosimiglianza e log-verosimiglianza (riassunto e notazione)",
+    "text": "Verosimiglianza e log-verosimiglianza (riassunto e notazione)\nAssumiamo che campione \\(y = (y_1,\\dots,y_n)\\) sia composto da realizzazioni indipendenti ed identicamente distribute da una variabile casuale legge \\(f(y; \\theta)\\). Quindi, si ottiene \\[\n    \\mathcal{L}(\\theta) = \\mathcal{L}(\\theta; y) = C \\: \\prod_{i=1}^n f(y_i; \\theta).\n    \\]\nDato che \\(\\mathcal{L}(\\theta)\\) è non-negativa, spesso si lavora con la funzione di log-verosimiglianza \\[\n    \\ell(\\theta) = \\ell(\\theta; y) = \\log\\mathcal{L}(\\theta) = c + \\sum_{i=1}^n\\log f(y_i; \\theta),\n    \\] dove \\(c \\in \\mathbb{R}\\) è una costante additiva che non dipende da \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza",
+    "href": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La stima di massima verosimiglianza",
+    "text": "La stima di massima verosimiglianza\nLa stima di massima verosimiglianza (SMV) è il valore \\(\\hat{\\theta}\\) che rende massima la funzione di verosimiglianza \\(\\mathcal{L}(\\theta)\\) sullo spazio \\(\\Theta\\), cioè tale per cui \\[\n\\mathcal{L}(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\mathcal{L}(\\theta).\n\\]\nLa SMV rende massimo anche la funzione di log-verosimiglianza, per cui \\[\n\\ell(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\ell(\\theta).\n\\]\nDi conseguenza, sotto opportune condizioni di regolarità, la SMV si ottiene come soluzione dell’equazione \\(\\ell'(\\theta) = 0\\).\nNon è detto che la SMV esista.\nLa SMV \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una funzione del campione, anche se a volte tale funzione non è rappresentabile esplicitamente."
+  },
+  {
+    "objectID": "lezioni/un_K.html#parametro-scalare-modello-esponenziale",
+    "href": "lezioni/un_K.html#parametro-scalare-modello-esponenziale",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Parametro scalare: modello esponenziale",
+    "text": "Parametro scalare: modello esponenziale\nSia \\(y = (y_1,\\dots,y_n)\\) un campione iid da una variabile casuale esponenziale con tasso di guasto \\(\\lambda\\), ovvero \\(Y \\sim \\text{Exp}(\\lambda)\\).\nSi ricordi che la densità di un modello esponenziale è \\[\nf(y; \\lambda) = \\lambda e^{-\\lambda y}, \\qquad y, \\lambda > 0.\n\\]\nDi conseguenza, la funzione di log-verosimiglianza associata al campione \\(y\\) è \\[\n\\ell(\\lambda) = \\ell(\\lambda; y) = n \\log \\lambda - \\lambda\\sum_{i=1}^ny_i.\n\\]\n\n\n\n\n\n\nEsercizio\n\n\n\nNel caso la derivazione di \\(\\ell(\\lambda)\\) non fosse immediatamente chiara, si svolgano per esercizio tutti i passaggi."
+  },
+  {
+    "objectID": "lezioni/un_K.html#parametro-scalare-modello-esponenziale-1",
+    "href": "lezioni/un_K.html#parametro-scalare-modello-esponenziale-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Parametro scalare: modello esponenziale",
+    "text": "Parametro scalare: modello esponenziale\nLa funzione che calcola la verosimiglianza in può essere implementata in vari modi.\n\nloglik <- function(lambda, y) {\n  length(y) * log(lambda) - lambda * sum(y)\n}\n\nloglik2 <- function(lambda, y) {\n  sum(dexp(y, rate = lambda, log = TRUE))\n}\n\nloglik3 <- function(lambda, y) {\n  sum(log(lambda) - lambda * y)\n}\n\nConsideriamo il dataset aircondit7 della libreria boot, contenente i tempi di rottura relativi al sistema di condizionamento di alcuni aeroplani.\n\nlibrary(boot)\ndata(\"aircondit7\")\ny <- aircondit7$hours\n\n\ncurve(loglik(x, y), 1e-4, 0.06) # log-verosimiglianza nell'intervallo (0.001, 0.06)"
+  },
+  {
+    "objectID": "lezioni/un_K.html#le-funzione-vettorizzabili-i",
+    "href": "lezioni/un_K.html#le-funzione-vettorizzabili-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Le funzione vettorizzabili I",
+    "text": "Le funzione vettorizzabili I\nLe tre funzioni implementate sono apparentemente equivalenti:\n\nloglik(0.01, y)\n\n[1] -125.9141\n\nloglik2(0.01, y)\n\n[1] -125.9141\n\nloglik3(0.01, y)\n\n[1] -125.9141\n\n\nTuttavia, solamente la prima è correttamente vettorizzata:\n\n# Risultato corretto\nloglik(c(0.01, 0.02, 0.03), y)\n\n[1] -125.9141 -124.6686 -130.3274\n\n# I seguenti comandi producono invece dei risultati errati\nloglik2(c(0.01, 0.02, 0.03), y)\n\n[1] -127.97\n\nloglik3(c(0.01, 0.02, 0.03), y)\n\n[1] -127.97"
+  },
+  {
+    "objectID": "lezioni/un_K.html#le-funzioni-vettorizzabili-ii",
+    "href": "lezioni/un_K.html#le-funzioni-vettorizzabili-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Le funzioni vettorizzabili II",
+    "text": "Le funzioni vettorizzabili II\nIl linguaggio R ama lavorare in modo vettoriale (e tipicamente odia i cicli for…)\nSolamente loglik è una funzione vettorizzata rispetto al parametro lambda.\nIn altri termini, la funzione loglik può essere valutata in un vettore di punti ed il risultato sarà il vettore di valori di log-verosimiglianza associati.\nFortunatamente, le funzioni possono essere “convertite” come segue:\n\nloglik2 <- Vectorize(loglik2, vectorize.args = \"lambda\")\nloglik3 <- Vectorize(loglik3, vectorize.args = \"lambda\")\n\nloglik(c(0.01, 0.02, 0.03), y)\n\n[1] -125.9141 -124.6686 -130.3274\n\nloglik2(c(0.01, 0.02, 0.03), y)\n\n[1] -125.9141 -124.6686 -130.3274\n\nloglik3(c(0.01, 0.02, 0.03), y)\n\n[1] -125.9141 -124.6686 -130.3274"
+  },
+  {
+    "objectID": "lezioni/un_K.html#qualche-cenno-alle-performance",
+    "href": "lezioni/un_K.html#qualche-cenno-alle-performance",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Qualche cenno alle performance",
+    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean median      uq     max neval\n   L1  1.388  1.5860  2.17391  2.232  2.3635   4.926   100\n   L2 40.491 41.1550 43.38222 41.515 42.4285 125.769   100\n   L3 36.598 37.5755 39.53563 38.072 39.4340  88.826   100"
+  },
+  {
+    "objectID": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza-1",
+    "href": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La stima di massima verosimiglianza",
+    "text": "La stima di massima verosimiglianza\nLa funzione punteggio e l’informazione osservata del modello esponenziale sono pari a \\[\n\\ell'(\\lambda) = \\frac{n}{\\lambda} - \\sum_{i=1}^ny_i, \\qquad j(\\lambda) = - \\ell''(\\lambda) = \\frac{n}{\\lambda^2}.\n\\]\nEntrambe queste funzioni sono utili per motivi inferenziali. Ad esempio la stima di massima verosimiglianza si ottiene (nei casi regolari) ponendo \\(\\ell'(\\lambda) = 0\\).\nIn questo caso quindi avremo \\[\n\\hat{\\lambda} = \\frac{n}{\\sum_{i=1}^ny_i} = \\frac{1}{\\bar{y}}.\n\\]\nL’informazione osservata (in questo caso coincidente con l’informazione attesa) è invece estremamente utile per costruire ad esempio intervalli di confidenza\nLa stima di massima verosimiglianza (numerica)\nCome vederemo in seguito, risolvere l’equazione \\(\\ell'(\\lambda) = 0\\) può essere problematico (ovviamente non nel caso esponenziale…)."
+  },
+  {
+    "objectID": "lezioni/un_K.html#il-metodo-di-newton-raphson-i",
+    "href": "lezioni/un_K.html#il-metodo-di-newton-raphson-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il metodo di Newton-Raphson I",
+    "text": "Il metodo di Newton-Raphson I\nNel metodo di Newton-Raphson, consideriamo lo sviluppo di Taylor della funzione di log-verosimiglianza \\(\\ell(\\lambda)\\) nel generico punto \\(\\lambda_k\\), troncato al termine quadratico \\[\n\\ell(\\lambda) \\approx \\ell(\\lambda_k) + \\ell'(\\lambda_k)(\\lambda - \\lambda_k) +  \\frac{\\ell''(\\lambda_k)}{2}(\\lambda - \\lambda_k)^2.\n\\]\nMassimizziamo tale sviluppo, equivalente a trovare il vertice di una parabola, e quindi otteniamo l’equazione di verosimiglianza approssimata \\[\n\\ell'(\\lambda) - j(\\lambda_k)(\\lambda - \\lambda_k) = 0,\n\\] che risolta rispetto a \\(\\lambda\\) porta allo schema iterativo \\[\n\\lambda_{k + 1} = \\lambda_k + j(\\lambda_k)^{-1}\\ell'(\\lambda_k), \\qquad k=1,2,\\dots.\n\\]\n\n\n\n\n\n\nNota\n\n\n\nIl metodo considera di fatto una serie di approssimazioni paraboliche della log-verosimiglianza, per le quali si va ogni volta a valutare il punto di massimo."
+  },
+  {
+    "objectID": "lezioni/un_K.html#il-metodo-di-newton-raphson-ii",
+    "href": "lezioni/un_K.html#il-metodo-di-newton-raphson-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il metodo di Newton-Raphson II",
+    "text": "Il metodo di Newton-Raphson II\nIl metodo Newton-Raphson appena descritto si può implementare in come segue:\n\nlambda <- numeric(10); lambda[1] <- 0.005 # Punto iniziale (cosa succede cambiandolo?)\nn <- length(y); sum_y <- sum(y)\n# Algorithmo Newton-Raphson\nfor(k in 1:5){\n  score <- n / lambda[k] - sum_y # Funzione score\n  obs_info <- n / lambda[k]^2 # Informazione osservata\n  lambda[k + 1] <- lambda[k] + score / obs_info # Passo iterativo\n  print(c(lambda[k + 1], loglik(lambda[k + 1], y)), digits = 3) # Mostro i risultati\n}\n\n[1]    0.0084 -127.6403\n[1]    0.0123 -124.4969\n[1]    0.0149 -123.8855\n[1]    0.0156 -123.8601\n[1]    0.0156 -123.8600\n\n\nIl risultato esatto, in questo caso, è facile da calcolare e lo riportiamo per un confronto:\n\nlambda_hat <- 1 / mean(y)\nc(lambda_hat, loglik(lambda_hat, y))\n\n[1]    0.01559454 -123.86002328"
+  },
+  {
+    "objectID": "lezioni/un_K.html#metodi-di-massimizzazione",
+    "href": "lezioni/un_K.html#metodi-di-massimizzazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Metodi di massimizzazione",
+    "text": "Metodi di massimizzazione\nIn pratica, in R esistono diverse funzioni per la massimizzazione, basate su varie elaborazioni del metodo di Newton-Raphson (che noi non vedremo).\nTutte queste funzioni richiedono un valore iniziale ma non necessitano dei valori delle derivate, che vengono approssimate internamente.\nLe funzioni richiedono inoltre un qualche criterio di arresto.\nAlcuni metodi permettono l’utilizzo di vincoli sui parametri.\n\n\n\n\n\n\nNota\n\n\n\nPer ragioni storiche, le funzioni di R identificano sempre il minimo della funzione cercata. Tuttavia: \\[\n\\arg \\max_{\\lambda \\in \\mathbb{R}} \\:\\ell(\\lambda) = \\arg \\min_{\\lambda \\in \\mathbb{R}} \\:- \\ell(\\lambda).\n\\] In altri termini, è sufficiente cambiare di segno la funzione obiettivo."
+  },
+  {
+    "objectID": "lezioni/un_K.html#la-funzione-nlminb",
+    "href": "lezioni/un_K.html#la-funzione-nlminb",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La funzione nlminb",
+    "text": "La funzione nlminb\nLa funzione nlminb effettua minimizzazioni numeriche, anche vettoriali.\nÈ una routine generalmente considerata più stabile, robusta ed affidabile della funzione concorrente optim, che vedremo in seguito.\nInoltre, consente di incorporare dei vincoli sui parametri, qualora questi fossero presenti.\nNel modello esponenziale, per esempio, si ha il vincolo \\(\\lambda > 0\\).\n\n# start = 1 significa che il valore iniziale è pari a 1\n# lower = 1e-5 implica che lambda > 0\nfit_exp <- nlminb(start = 1, objective = function(lambda) - loglik(lambda, y), lower = 1e-5)\nfit_exp\n\n$par\n[1] 0.01559454\n\n$objective\n[1] 123.86\n\n$convergence\n[1] 0\n\n$iterations\n[1] 16\n\n$evaluations\nfunction gradient \n      24       19 \n\n$message\n[1] \"relative convergence (4)\"\n\n\n\nlambda_hat <- fit_exp$par # Stima di massima verosimiglianza\ncurve(loglik(x, y), 0.001, 0.05)\nabline(v = lambda_hat, lty = \"dotted\")\n\n\n\n\n\noptim(par = 1, fn = function(lambda) - loglik(lambda, y), lower = 1e-5, method = \"L-BFGS-B\", hessian = TRUE)\n\n$par\n[1] 0.01561446\n\n$value\n[1] 123.86\n\n$counts\nfunction gradient \n      29       29 \n\n$convergence\n[1] 0\n\n$message\n[1] \"CONVERGENCE: REL_REDUCTION_OF_F <= FACTR*EPSMCH\"\n\n$hessian\n         [,1]\n[1,] 99253.17\n\n\n\n# Informazione osservata\nobs_info <- length(y) / lambda_hat^2\nobs_info\n\n[1] 98688.38"
+  },
+  {
+    "objectID": "lezioni/un_K.html#adeguatezza-del-modello",
+    "href": "lezioni/un_K.html#adeguatezza-del-modello",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Adeguatezza del modello",
+    "text": "Adeguatezza del modello\n\nplot(ecdf(y))\ncurve(pexp(x, lambda_hat), col = \"red\", add = TRUE)"
+  },
+  {
+    "objectID": "lezioni/un_K.html#parametro-vettoriale-il-modello-weibull-i",
+    "href": "lezioni/un_K.html#parametro-vettoriale-il-modello-weibull-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Parametro vettoriale: il modello Weibull I",
+    "text": "Parametro vettoriale: il modello Weibull I\nSia \\(y = (y_1,\\dots,y_n)\\) un campione iid da una variabile casuale Weibull di parametri \\((\\gamma, \\beta)\\), ovvero \\(Y \\sim \\text{Weib}(\\gamma, \\beta)\\).\nSi ricordi che la densità di un modello Weibull è \\[\nf(y; \\gamma, \\beta) = \\frac{\\gamma}{\\beta} \\left(\\frac{y}{\\beta}\\right)^{\\gamma - 1} e^{-(y / \\beta)^\\gamma}, \\qquad y, \\gamma, \\beta > 0.\n\\]\nDi conseguenza, la funzione di log-verosimiglianza associata al campione \\(y\\) è \\[\n\\ell(\\gamma, \\beta) = \\ell(\\gamma, \\beta; y) = n \\log \\gamma - n \\gamma \\log \\beta + \\gamma \\sum_{i=1}^n\\log y_i - \\sum_{i=1}^n \\left(\\frac{y_i}{\\beta}\\right)^\\gamma.\n\\]\n\n\n\n\n\n\nEsercizio\n\n\n\nSi ottenga la precedente log-verosimiglianza (carta e penna)"
+  },
+  {
+    "objectID": "lezioni/un_K.html#parametro-vettoriale-il-modello-weibull-ii",
+    "href": "lezioni/un_K.html#parametro-vettoriale-il-modello-weibull-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Parametro vettoriale: il modello Weibull II",
+    "text": "Parametro vettoriale: il modello Weibull II\nLa funzione che calcola la verosimiglianza in R può essere implementata in vari modi. Ne presentiamo qui uno dei tanti basato sulla funzione dweibull\n\nloglik <- function(par, y) {\n  sum(dweibull(y, shape = par[1], scale = par[2], log = TRUE))\n}\n\nSiamo interessati a capire se il modello Weibull, che generalizza quello esponenziale, rappresenta una scelta modellistica migliore.\nConsideriamo anche in questo caso il dataset aircondit7 della libreria boot:\n\nlibrary(boot)\ndata(\"aircondit7\")\ny <- aircondit7$hours"
+  },
+  {
+    "objectID": "lezioni/un_K.html#grafico-della-verosimiglianza-i-facoltativo",
+    "href": "lezioni/un_K.html#grafico-della-verosimiglianza-i-facoltativo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Grafico della verosimiglianza I (facoltativo)",
+    "text": "Grafico della verosimiglianza I (facoltativo)\nIn generale non è possibile disegnare dei grafici della verosimiglianza con parametri vettoriali.\nL’unica eccezione è il caso \\(p = 2\\), in cui possiamo usare i cosiddetti grafici contour, basati sulle curve di livello.\nPer fare questo tipo di grafico, bisogna procedere per step.\n\nStep 1. Anzitutto bisogna definire un per ciascuna componente del parametro.\nStep 2. Bisogna quindi calcolare la log-verosimiglianza in ciascuna coppia di punti della griglia definita dal prodotto cartesiano dei due intervalli."
+  },
+  {
+    "objectID": "lezioni/un_K.html#grafico-della-verosimiglianza-ii-facoltativo",
+    "href": "lezioni/un_K.html#grafico-della-verosimiglianza-ii-facoltativo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Grafico della verosimiglianza II (facoltativo)",
+    "text": "Grafico della verosimiglianza II (facoltativo)\nGli estremi degli intervalli vanno scelti manualmente. In pratica, bisogna procedere per tentativi se si vuole disegnare la verosimiglianza in una regione “sensata”.\n\n# Definizione degli intervalli di punti\ngamma <- seq(0.1, 2.25, length = 200)\nbeta <- seq(0.5, 400, length = 200)\n\n# Ottenimento della griglia tramite prodotto cartesiano \nparvalues <- expand.grid(gamma, beta)\n\n# Calcolo valori di verosimiglianza\nllikvalues <- apply(parvalues, 1, loglik, y = y)\n\n# Ri-organizzazione dei valori della log-verosimiglianza in forma matriciale\nllikvalues <- matrix(llikvalues, nrow = length(gamma), ncol = length(beta), byrow = F)\n\nQuindi, il grafico contour oppure sua variante filled.contour si possono ottenere abbastanza facilmente.\n\ncontour(gamma, beta, llikvalues,\n  xlab = expression(gamma), ylab = expression(beta), # Produce le lettere greche nel grafico\n  levels = seq(from = -140, to = -120, by = 2),\n  main = \"Log-verosimiglianza (Modello Weibull)\")\n\n\n\n\n\nfilled.contour(gamma, beta, llikvalues,\n  xlab = expression(gamma), ylab = expression(beta),\n  levels = seq(from = -140, to = -120, by = 1),\n  col = terrain.colors(20), main = \"Log-verosimiglianza (Modello Weibull)\")"
+  },
+  {
+    "objectID": "lezioni/un_K.html#stima-di-massima-verosimiglianza",
+    "href": "lezioni/un_K.html#stima-di-massima-verosimiglianza",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Stima di massima verosimiglianza",
+    "text": "Stima di massima verosimiglianza\nNel caso Weibull la funzione punteggio è un vettore di dimensione due, che conduce alle \\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial \\gamma}\\ell(\\gamma, \\beta) & = \\frac{n}{\\gamma} - n \\log\\beta + \\sum_{i=1}^n\\log{y_i} - \\sum_{i=1}^n\\left(\\frac{y_i}{\\beta}\\right)^\\gamma \\log\\left(\\frac{y_i}{\\beta}\\right) = 0, \\\\\n\\frac{\\partial}{\\partial \\beta}\\ell(\\gamma, \\beta) &= - \\frac{n \\gamma}{\\beta} +\\frac{\\gamma}{\\beta^{\\gamma+1}} \\sum_{i=1}^ny_i^\\gamma = 0.\n\\end{aligned}\n\\]\nRisolvendo la seconda equazione otteniamo la stima vincolata \\(\\hat{\\beta}_\\gamma = \\left(\\frac{1}{n}\\sum_{i=1}^n y_i^\\gamma \\right)^{1/\\gamma}\\), per ogni \\(\\gamma\\) fissato.\n\n\n\n\n\n\nProblema chiave\n\n\n\nSostituendo \\(\\hat{\\beta}_\\gamma\\) nella prima equazione otteniamo quindi: \\[\n\\frac{n}{\\gamma} + \\sum_{i=1}^n\\log y_i - n \\frac{\\sum_{i=1}^n y_i^\\gamma \\log y_i}{\\sum_{i=1}^n y_i^\\gamma} = 0.\n\\] Quest’ultima equazione purtroppo non ammette una soluzione analitica."
+  },
+  {
+    "objectID": "lezioni/un_K.html#stima-di-massima-verosimiglianza-1",
+    "href": "lezioni/un_K.html#stima-di-massima-verosimiglianza-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Stima di massima verosimiglianza",
+    "text": "Stima di massima verosimiglianza\nPer trovare la stima di massima verosimiglianza dobbiamo quindi procedere per via numerica.\nSebbene esistano in R dei comandi che calcolano gli zeri di una funzione (uniroot), per identificare il massimo è numericamente più stabile far uso di funzioni dedicate.\nOltretutto, questo ci evita di dover fare dei conti analitici, come la derivata prima.\nAnche in questo caso bivariato, si è specificato il limite inferiore del dominio della funzione, ovvero \\(\\gamma, \\beta > 0\\).\n\nfit_weibull <- nlminb(start = c(1, 1), function(par) -loglik(par, y), lower = c(1e-7, 1e-7))\nfit_weibull\n\n$par\n[1]  1.024919 64.792419\n\n$objective\n[1] 123.8483\n\n$convergence\n[1] 0\n\n$iterations\n[1] 21\n\n$evaluations\nfunction gradient \n      22       49 \n\n$message\n[1] \"relative convergence (4)\"\n\n\n\nplot(ecdf(y))\ncurve(pexp(x, fit_exp$par), col = \"red\", add = TRUE)\ncurve(pweibull(x, fit_weibull$par[1], fit_weibull$par[2]), col = \"blue\", add = TRUE)"
+  },
+  {
+    "objectID": "lezioni/un_K.html#verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione",
+    "href": "lezioni/un_K.html#verosimiglianza-e-log-verosimiglianza-ripasso-e-notazione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Verosimiglianza e log-verosimiglianza (ripasso e notazione)",
+    "text": "Verosimiglianza e log-verosimiglianza (ripasso e notazione)\nAssumiamo che campione \\(y = (y_1,\\dots,y_n)\\) sia composto da realizzazioni indipendenti ed identicamente distribute da una variabile casuale legge \\(f(y; \\theta)\\). Quindi, si ottiene \\[\n    \\mathcal{L}(\\theta) = \\mathcal{L}(\\theta; y) = C \\: \\prod_{i=1}^n f(y_i; \\theta).\n    \\]\nDato che \\(\\mathcal{L}(\\theta)\\) è non-negativa, spesso si lavora con la funzione di log-verosimiglianza \\[\n    \\ell(\\theta) = \\ell(\\theta; y) = \\log\\mathcal{L}(\\theta) = c + \\sum_{i=1}^n\\log f(y_i; \\theta),\n    \\] dove \\(c \\in \\mathbb{R}\\) è una costante additiva che non dipende da \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_K.html#procedure-numeriche",
+    "href": "lezioni/un_K.html#procedure-numeriche",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Procedure numeriche",
+    "text": "Procedure numeriche\nIn questi casi “difficili”, la stima di massima verosimiglianza può essere ottenuta tramite procedure numeriche.\nIn altri termini, utilizzeremo un algoritmo iterativo che produce una sequenza di valori \\(\\lambda_1, \\lambda_2, \\dots\\), tali che, quantomeno idealmente, \\[\n\\ell(\\lambda_{k+1}) \\ge \\ell(\\lambda_k).\n\\]\nIl nuovo valore \\(\\lambda_{k+1}\\) è tipicamente ottenuto a partire dal valore precedente \\(\\lambda_k\\).\nPertanto, questa tipologia di algoritmi hanno bisogno di un valore iniziale \\(\\lambda_1\\) definito dall’utente.\nDopo un certo numero di iterazioni, quando non si osservano più variazioni significative in termini di \\(\\lambda\\) e/o \\(\\ell(\\lambda)\\), l’algoritmo si ferma e si dice che è arrivato a convergenza."
   }
 ]
