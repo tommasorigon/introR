@@ -1887,7 +1887,7 @@
     "href": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza",
     "title": "R per l’analisi statistica multivariata",
     "section": "La stima di massima verosimiglianza",
-    "text": "La stima di massima verosimiglianza\nLa stima di massima verosimiglianza (SMV) è il valore \\(\\hat{\\theta}\\) che rende massima la funzione di verosimiglianza \\(\\mathcal{L}(\\theta)\\) sullo spazio \\(\\Theta\\), cioè tale per cui \\[\n\\mathcal{L}(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\mathcal{L}(\\theta).\n\\]\nLa SMV rende massimo anche la funzione di log-verosimiglianza, per cui \\[\n\\ell(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\ell(\\theta).\n\\]\nDi conseguenza, sotto opportune condizioni di regolarità, la SMV si ottiene come soluzione dell’equazione \\(\\ell'(\\theta) = 0\\).\nNon è detto che la SMV esista.\nLa SMV \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una funzione del campione, anche se a volte tale funzione non è rappresentabile esplicitamente."
+    "text": "La stima di massima verosimiglianza\nLa funzione punteggio e l’informazione osservata del modello esponenziale sono pari a \\[\n\\ell'(\\lambda) = \\frac{n}{\\lambda} - \\sum_{i=1}^ny_i, \\qquad j(\\lambda) = - \\ell''(\\lambda) = \\frac{n}{\\lambda^2}.\n\\]\nEntrambe queste funzioni sono utili per motivi inferenziali. Ad esempio la stima di massima verosimiglianza si ottiene (nei casi regolari) ponendo \\(\\ell'(\\lambda) = 0\\).\nIn questo caso quindi avremo \\[\n\\hat{\\lambda} = \\frac{n}{\\sum_{i=1}^ny_i} = \\frac{1}{\\bar{y}}.\n\\]\nL’informazione osservata (in questo caso coincidente con l’informazione attesa) è invece estremamente utile per costruire ad esempio intervalli di confidenza\nLa stima di massima verosimiglianza (numerica)\nCome vederemo in seguito, risolvere l’equazione \\(\\ell'(\\lambda) = 0\\) può essere problematico (ovviamente non nel caso esponenziale…)."
   },
   {
     "objectID": "lezioni/un_K.html#parametro-scalare-modello-esponenziale",
@@ -1922,7 +1922,7 @@
     "href": "lezioni/un_K.html#qualche-cenno-alle-performance",
     "title": "R per l’analisi statistica multivariata",
     "section": "Qualche cenno alle performance",
-    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean  median     uq     max neval\n   L1  1.084  1.2690  2.05020  1.6885  1.879  23.795   100\n   L2 30.432 31.2375 34.10786 31.8680 32.646 124.829   100\n   L3 27.913 28.6120 33.78249 29.2290 32.370  92.659   100"
+    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean  median      uq     max neval\n   L1  1.274  1.5915  2.02646  2.1215  2.2340   4.803   100\n   L2 36.575 38.2500 40.04887 39.2655 40.9705  60.092   100\n   L3 33.555 34.8325 36.80999 35.6140 36.6570 110.285   100"
   },
   {
     "objectID": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza-1",
@@ -2049,5 +2049,12 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Ripasso e notazione",
     "text": "Ripasso e notazione\nAssumiamo che campione \\(y = (y_1,\\dots,y_n)\\) sia composto da realizzazioni indipendenti ed identicamente distribute da una variabile casuale legge \\(f(y; \\theta)\\). Quindi, si ottiene \\[\n    \\mathcal{L}(\\theta) = \\mathcal{L}(\\theta; y) = C \\: \\prod_{i=1}^n f(y_i; \\theta).\n    \\]\nDato che \\(\\mathcal{L}(\\theta)\\) è non-negativa, spesso si lavora con la funzione di log-verosimiglianza \\[\n    \\ell(\\theta) = \\ell(\\theta; y) = \\log\\mathcal{L}(\\theta) = c + \\sum_{i=1}^n\\log f(y_i; \\theta),\n    \\] dove \\(c \\in \\mathbb{R}\\) è una costante additiva che non dipende da \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_K.html#ripasso-notazione-1",
+    "href": "lezioni/un_K.html#ripasso-notazione-1",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso & notazione",
+    "text": "Ripasso & notazione\nLa stima di massima verosimiglianza (SMV) è il valore \\(\\hat{\\theta}\\) che rende massima la funzione di verosimiglianza \\(\\mathcal{L}(\\theta)\\) sullo spazio \\(\\Theta\\), cioè tale per cui \\[\n\\mathcal{L}(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\mathcal{L}(\\theta).\n\\]\nLa SMV rende massimo anche la funzione di log-verosimiglianza, per cui \\[\n\\ell(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\ell(\\theta).\n\\]\nDi conseguenza, sotto opportune condizioni di regolarità, la SMV si ottiene come soluzione dell’equazione \\(\\ell'(\\theta) = 0\\).\nNon è detto che la SMV esista.\nLa SMV \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una funzione del campione, anche se a volte tale funzione non è rappresentabile esplicitamente."
   }
 ]

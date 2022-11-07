@@ -166,13 +166,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#un-breve-sommario" id="toc-un-breve-sommario" class="nav-link" data-scroll-target="#un-breve-sommario">Un breve sommario</a></li>
   <li><a href="#ripasso-notazione" id="toc-ripasso-notazione" class="nav-link" data-scroll-target="#ripasso-notazione">Ripasso &amp; notazione</a></li>
   <li><a href="#ripasso-e-notazione" id="toc-ripasso-e-notazione" class="nav-link" data-scroll-target="#ripasso-e-notazione">Ripasso e notazione</a></li>
-  <li><a href="#la-stima-di-massima-verosimiglianza" id="toc-la-stima-di-massima-verosimiglianza" class="nav-link" data-scroll-target="#la-stima-di-massima-verosimiglianza">La stima di massima verosimiglianza</a></li>
+  <li><a href="#ripasso-notazione-1" id="toc-ripasso-notazione-1" class="nav-link" data-scroll-target="#ripasso-notazione-1">Ripasso &amp; notazione</a></li>
   <li><a href="#parametro-scalare-modello-esponenziale" id="toc-parametro-scalare-modello-esponenziale" class="nav-link" data-scroll-target="#parametro-scalare-modello-esponenziale">Parametro scalare: modello esponenziale</a></li>
   <li><a href="#parametro-scalare-modello-esponenziale-1" id="toc-parametro-scalare-modello-esponenziale-1" class="nav-link" data-scroll-target="#parametro-scalare-modello-esponenziale-1">Parametro scalare: modello esponenziale</a></li>
   <li><a href="#le-funzione-vettorizzabili-i" id="toc-le-funzione-vettorizzabili-i" class="nav-link" data-scroll-target="#le-funzione-vettorizzabili-i">Le funzione <em>vettorizzabili</em> I</a></li>
   <li><a href="#le-funzioni-vettorizzabili-ii" id="toc-le-funzioni-vettorizzabili-ii" class="nav-link" data-scroll-target="#le-funzioni-vettorizzabili-ii">Le funzioni <em>vettorizzabili</em> II</a></li>
   <li><a href="#qualche-cenno-alle-performance" id="toc-qualche-cenno-alle-performance" class="nav-link" data-scroll-target="#qualche-cenno-alle-performance">Qualche cenno alle performance</a></li>
-  <li><a href="#la-stima-di-massima-verosimiglianza-1" id="toc-la-stima-di-massima-verosimiglianza-1" class="nav-link" data-scroll-target="#la-stima-di-massima-verosimiglianza-1">La stima di massima verosimiglianza</a></li>
+  <li><a href="#la-stima-di-massima-verosimiglianza" id="toc-la-stima-di-massima-verosimiglianza" class="nav-link" data-scroll-target="#la-stima-di-massima-verosimiglianza">La stima di massima verosimiglianza</a></li>
   <li><a href="#procedure-numeriche" id="toc-procedure-numeriche" class="nav-link" data-scroll-target="#procedure-numeriche">Procedure numeriche</a></li>
   <li><a href="#il-metodo-di-newton-raphson-i" id="toc-il-metodo-di-newton-raphson-i" class="nav-link" data-scroll-target="#il-metodo-di-newton-raphson-i">Il metodo di Newton-Raphson I</a></li>
   <li><a href="#il-metodo-di-newton-raphson-ii" id="toc-il-metodo-di-newton-raphson-ii" class="nav-link" data-scroll-target="#il-metodo-di-newton-raphson-ii">Il metodo di Newton-Raphson II</a></li>
@@ -263,8 +263,8 @@ Nota
     \ell(\theta) = \ell(\theta; y) = \log\mathcal{L}(\theta) = c + \sum_{i=1}^n\log f(y_i; \theta),
     \]</span> dove <span class="math inline">\(c \in \mathbb{R}\)</span> è una costante additiva che non dipende da <span class="math inline">\(\theta\)</span>.</p>
 </section>
-<section id="la-stima-di-massima-verosimiglianza" class="level2">
-<h2 class="anchored" data-anchor-id="la-stima-di-massima-verosimiglianza">La stima di massima verosimiglianza</h2>
+<section id="ripasso-notazione-1" class="level2">
+<h2 class="anchored" data-anchor-id="ripasso-notazione-1">Ripasso &amp; notazione</h2>
 <p>La <strong>stima di massima verosimiglianza</strong> (SMV) è il valore <span class="math inline">\(\hat{\theta}\)</span> che rende massima la funzione di verosimiglianza <span class="math inline">\(\mathcal{L}(\theta)\)</span> sullo spazio <span class="math inline">\(\Theta\)</span>, cioè tale per cui <span class="math display">\[
 \mathcal{L}(\hat{\theta}) = \sup_{\theta \in \Theta}\mathcal{L}(\theta).
 \]</span></p>
@@ -400,15 +400,15 @@ Esercizio
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: microseconds
- expr    min      lq     mean  median     uq     max neval
-   L1  1.084  1.2690  2.05020  1.6885  1.879  23.795   100
-   L2 30.432 31.2375 34.10786 31.8680 32.646 124.829   100
-   L3 27.913 28.6120 33.78249 29.2290 32.370  92.659   100</code></pre>
+ expr    min      lq     mean  median      uq     max neval
+   L1  1.274  1.5915  2.02646  2.1215  2.2340   4.803   100
+   L2 36.575 38.2500 40.04887 39.2655 40.9705  60.092   100
+   L3 33.555 34.8325 36.80999 35.6140 36.6570 110.285   100</code></pre>
 </div>
 </div>
 </section>
-<section id="la-stima-di-massima-verosimiglianza-1" class="level2">
-<h2 class="anchored" data-anchor-id="la-stima-di-massima-verosimiglianza-1">La stima di massima verosimiglianza</h2>
+<section id="la-stima-di-massima-verosimiglianza" class="level2">
+<h2 class="anchored" data-anchor-id="la-stima-di-massima-verosimiglianza">La stima di massima verosimiglianza</h2>
 <p>La <strong>funzione punteggio</strong> e l’<strong>informazione osservata</strong> del modello esponenziale sono pari a <span class="math display">\[
 \ell'(\lambda) = \frac{n}{\lambda} - \sum_{i=1}^ny_i, \qquad j(\lambda) = - \ell''(\lambda) = \frac{n}{\lambda^2}.
 \]</span></p>
