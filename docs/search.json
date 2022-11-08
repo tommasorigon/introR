@@ -1922,7 +1922,7 @@
     "href": "lezioni/un_K.html#qualche-cenno-alle-performance",
     "title": "R per l’analisi statistica multivariata",
     "section": "Qualche cenno alle performance",
-    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean  median      uq     max neval\n   L1  1.274  1.5915  2.02646  2.1215  2.2340   4.803   100\n   L2 36.575 38.2500 40.04887 39.2655 40.9705  60.092   100\n   L3 33.555 34.8325 36.80999 35.6140 36.6570 110.285   100"
+    "text": "Qualche cenno alle performance\nNonostante producano lo stesso risultato, le tre funzioni non hanno la stessa efficienza in termini di tempo.\nUna funzione nativamente vettorizzata è tipicamente più rapida di una conversione.\nPossiamo misurare le performance usando, ad esempio, il pacchetto microbenchmark.\n\nlibrary(microbenchmark) # Se assente, va installata\nmicrobenchmark(\n  L1 = loglik(c(0.01, 0.02, 0.03), y),\n  L2 = loglik2(c(0.01, 0.02, 0.03), y),\n  L3 = loglik3(c(0.01, 0.02, 0.03), y)\n)\n\nUnit: microseconds\n expr    min      lq     mean  median      uq     max neval\n   L1  1.470  2.2820  3.03238  2.5275  3.2815   8.354   100\n   L2 41.497 42.4965 60.08649 43.9370 77.5380 237.846   100\n   L3 38.322 39.4220 54.63223 42.7470 72.9960 123.918   100"
   },
   {
     "objectID": "lezioni/un_K.html#la-stima-di-massima-verosimiglianza-1",
@@ -2063,5 +2063,152 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo III",
     "text": "Esercizio riassuntivo III\nNel seguente video YouTube del canale Veritasium, viene introdotto un enigma che coinvolge un numero \\(n = 100\\) di prigionieri.\nUtilizzando la cosiddetta “loop strategy” che viene descritta nel video, si approssimi tramite Monte Carlo la probabilità di successo dei prigionieri, per \\(n = 100\\).\nI risultati della simulazione sono coerenti con quanto descritto nel video?\n\n\nSchema della soluzione\nI numeri nelle scatole (boxes), sconosciuti ai prigionieri, vengono generati casualmente.\n\nset.seed(400)\nn <- 100 # Numero di prigionieri\nboxes <- sample(1:n) # Effettua una permutazione dei numeri 1:n\n\nPer cui in questo caso (con questo seed), nella scatola 51 è contenuto il numero 97:\n\nboxes[51]\n\n[1] 97\n\n\nIn questa caso, le scatole contengono i numeri seguenti\n\nboxes\n\n  [1]  23  87  92  86  28  14  13  95  71  41  45  36  42  21  96  82  53  89\n [19]  65  69  35  20  54  57  47  27  10  62  18  60   4   1   9  93  44  79\n [37]  49  22  98  85  26   8  83  91  33  50  90  77   7   3  97  29  12  52\n [55]  94  61  64  39   2  51  99  88  30  48  70  76  66  15  80   5  25  58\n [73]   6  37  56 100  43  17  74  19  11  55  68  84  72  40  81  63  38  46\n [91]  59  75  78  34  24  73  32  31  67  16\n\n\nControlliamo ora se, tramite la “loop strategy”, i prigionieri riescono ad individuare il loro numero all’interno delle scatole (boxes). Partiamo dal primo prigioniero, che verificherà se il suo numero è presente nella prima scatola. In altri termini:\n\nfound <- boxes[1] == 1 # TRUE se il PRIMO prigioniero ha trovato il suo numero\n\nSe no, il prigionieri controlla anche in tutte le scatole seguenti, ovvero\n\n# Loop strategy, per il PRIMO prigioniero\nfound <- FALSE\nbox_checked <- 1 # Il PRIMO prigioniero parte dalla prima scatola\nfor (i in 1:(n / 2)) { # I prigionieri possono fare n / 2 tentativi\n  if (boxes[box_checked] == 1) {\n    found <- TRUE\n  }\n  box_checked <- boxes[box_checked] # Il numero successivo è pari al numero nella scatola corrente\n}\nfound\n\n[1] TRUE\n\n\nIl primo prigioniero ha trovato il suo numero. Ora verifichiamo se tutti i prigionieri riescono a fare lo stesso:\n\nfound <- rep(FALSE, n) # Vettore di TRUE/FALSE che identifica se i prigionieri hanno trovato il proprio numero.\n\nfor (j in 1:n) {\n  box_checked <- j # Il j-esimo prigioniero, parte dalla j-esima scatola\n  for (i in 1:(n / 2)) {\n    if (boxes[box_checked] == j) {\n      found[j] <- TRUE\n    }\n    box_checked <- boxes[box_checked]\n  }\n}\n\nAlcuni prigionieri riescono a trovare la loro scatola. In questo caso, tuttavia, non tutti individuano il proprio numero. Infatti:\n\nfound\n\n  [1]  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE\n [25] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE\n [37] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE\n [61] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE\n [85]  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97]  TRUE  TRUE FALSE FALSE\n\nall(found) # TRUE solamente se tutti i valori del vettore sono TRUE\n\n[1] FALSE\n\n\nMettiamo quindi tutti i pezzi assieme, per poter svolgere la simulazione Monte Carlo:\n\nloop_strategy <- function(n) {\n  boxes <- sample(1:n)\n  found <- rep(FALSE, n)\n\n  for (j in 1:n) {\n    box_checked <- j\n    for (i in 1:(n / 2)) {\n      if (boxes[box_checked] == j) {\n        found[j] <- TRUE\n      }\n      box_checked <- boxes[box_checked]\n    }\n  }\n  all(found)\n}\n\n\n# Effettuo la simulazione, per R = 10000\nR <- 10000\nset.seed(200)\nZ <- replicate(R, loop_strategy(n = 100))\n\nLa probabilità di successo viene quindi approssimata tramite Monte Carlo come fatto in precedenza:\n\nestimate <- mean(Z) # Stima della probabilità di successo\nestimate\n\n[1] 0.314\n\n\nQuesta stima coincide, a meno dell’errore Monte Carlo, con quanto discusso nel video."
+  },
+  {
+    "objectID": "lezioni/un_M.html",
+    "href": "lezioni/un_M.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Distribuzione di uno stimatore\nDistorsione, varianza ed errore quadratico medio\n\n\n\n\n\n\n\nNota\n\n\n\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_M.html#ripasso-e-notazione-i",
+    "href": "lezioni/un_M.html#ripasso-e-notazione-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso e notazione I",
+    "text": "Ripasso e notazione I\nIn questa unità discuteremo di stimatori e delle loro proprietà.\nRicordiamo che, nel caso assolutamente continuo, un modello statistico è una collezione di funzioni di densità \\[\n\\mathcal{F} = \\{f(\\cdot; \\theta) : \\theta \\in \\Theta\\},\n\\] indicizzata da un vettori di parametri \\(\\theta \\in \\Theta\\), dove \\(\\Theta \\subseteq \\mathbb{R}^p\\) è lo spazio parametrico.\nAssumiamo inoltre che i dati \\(y_1,\\dots,y_n\\) siano realizzazioni iid di variabili aleatorie \\(Y_1,\\dots,Y_n\\) con legge \\(f(y; \\theta)\\), per un qualche ignoto valore del parametro \\(\\theta\\).\nIl nostro scopo è stimare l’ignoto valore di \\(\\theta\\) nel miglior modo possibile usando i dati osservati \\(y = (y_1,\\dots,y_n)\\)."
+  },
+  {
+    "objectID": "lezioni/un_M.html#ripasso-e-notazione-ii",
+    "href": "lezioni/un_M.html#ripasso-e-notazione-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso e notazione II",
+    "text": "Ripasso e notazione II\nUno stimatore \\(\\hat{\\theta}(Y)\\) è una qualsiasi funzione delle variabili aleatorie \\(Y = (Y_1,\\dots, Y_n)\\) che ``si avvicina’’ al vero valore di \\(\\theta\\). Lo stimatore è una variabile aleatoria.\nUna stima \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una qualsiasi funzione dei dati \\(y = (y_1,\\dots,y_n)\\) che ``si avvicina’’ al vero valore di~\\(\\theta\\). La stima è la realizzazione di \\(\\hat{\\theta}(Y)\\), perciò è un numero.\nAbbiamo bisogno di criterio per stabilire se uno stimatore ``funziona’’ o meno. Il sostegno logico e filosofico proviene dal seguente principio (frequentista)."
+  },
+  {
+    "objectID": "lezioni/un_M.html#il-principio-del-campionamento-ripetuto-i-ripasso",
+    "href": "lezioni/un_M.html#il-principio-del-campionamento-ripetuto-i-ripasso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il principio del campionamento ripetuto I (ripasso)",
+    "text": "Il principio del campionamento ripetuto I (ripasso)\nImmaginiamo che sia possibile, almeno ipoteticamente, ripetere l’esperimento varie volte, ottenendo ogni volta un nuovo campione \\(y\\) e quindi una nuova stima \\(\\hat{\\theta}\\).\nDi conseguenza, lo stimatore \\(\\hat{\\theta}(Y)\\) è una variabile aleatoria, per la quale possiamo parlare di distribuzione, valore atteso e così via."
+  },
+  {
+    "objectID": "lezioni/un_M.html#il-principio-del-campionamento-ripetuto-ii-ripasso",
+    "href": "lezioni/un_M.html#il-principio-del-campionamento-ripetuto-ii-ripasso",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il principio del campionamento ripetuto II (ripasso)",
+    "text": "Il principio del campionamento ripetuto II (ripasso)\nSe accettiamo il principio del campionamento ripetuto, valuteremo le bontà della singola stima \\(\\hat{\\theta}\\) sulla base delle proprietà dello stimatore \\(\\hat{\\theta}(Y)\\).\nIn altri termini, ci chiediamo come si comporterebbero le varie stime \\(\\hat{\\theta}\\) se potessimo osservare tanti campioni, non solo quello che abbiamo a disposizione.\nCi aspettiamo che mediamente la distribuzione di \\(\\hat{\\theta}(Y)\\) sia concentrata attorno al vero ed ignoto valore \\(\\theta\\). Ovviamente, questo non è assicurato campione per campione.\nUna proprietà tipicamente richiesta è che all’aumentare della dimensione del campione \\(n\\), la distribuzione di \\(\\hat{\\theta}(Y)\\) sia concentrata attorno a \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_M.html#ripasso-e-notazione-iii",
+    "href": "lezioni/un_M.html#ripasso-e-notazione-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso e notazione III",
+    "text": "Ripasso e notazione III\nUna prima semplice aspettativa rispetto allo stimatore è che mediamente esso sia corretto o non distorto, ovvero \\[\n    \\mathbb{E}\\{\\hat{\\theta}(Y)\\} = \\theta, \\qquad \\theta \\in \\Theta.\n    \\]\nLa **distorsione è infatti definita come la differenza semplice \\[\n    \\text{bias}\\{\\hat{\\theta}(Y)\\}:= \\mathbb{E}\\{\\hat{\\theta}(Y)\\} - \\theta, \\qquad \\theta \\in \\Theta.\n    \\]\nSe uno stimatore è non distorto allora ovviamente \\(\\text{bias}\\{\\hat{\\theta}(Y)\\} = 0\\).\nUn requisito un po’ meno stringente è che lo stimatore sia asintoticamente non distorto, come è tipicamente la stima di massima verosimiglianza, ovvero \\[\n\\lim_{n \\rightarrow \\infty} \\mathbb{E}\\{\\hat{\\theta}(Y)\\} = \\theta, \\qquad \\theta \\in \\Theta,\n\\] dove \\(n\\) è la dimensione campionaria."
+  },
+  {
+    "objectID": "lezioni/un_M.html#ripasso-e-notazione-iv",
+    "href": "lezioni/un_M.html#ripasso-e-notazione-iv",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso e notazione IV",
+    "text": "Ripasso e notazione IV\nLa non-distorsione (asintotica) è una proprietà auspicabile, ma spesso meno importante dello errore o scarto quadratico medio.\nLo scarto quadratico medio (mean squared error) misura la distanza media tra stimatore e vero valore del parametro, ovvero \\[\n    \\text{MSE}\\{\\hat{\\theta}(Y)\\} = \\mathbb{E}\\left\\{\\left[\\hat{\\theta}(Y) - \\theta\\right]^2\\right\\}, \\qquad \\theta \\in \\Theta.\n\\]\n\n\n\n\n\n\nEsercizio - proprietà\n\n\n\nDimostrare che vale la seguente scomposizione: \\[\n\\text{MSE}\\{\\theta(Y)\\} = \\text{var}\\left\\{\\hat{\\theta}(Y)\\right\\} + \\text{bias}\\left\\{\\hat{\\theta}(Y)\\right\\}^2, \\qquad \\theta \\in \\Theta.\n\\] Dedurre che se una stimatore è non-distorto, allora il suo scarto quadratico medio coincide con la varianza dello stimatore."
+  },
+  {
+    "objectID": "lezioni/un_M.html#ripasso-e-notazione-v",
+    "href": "lezioni/un_M.html#ripasso-e-notazione-v",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ripasso e notazione V",
+    "text": "Ripasso e notazione V\nUno stimatore si dice consistente in media quadratica se \\[\n\\lim_{n \\rightarrow \\infty} \\text{MSE}\\{\\hat{\\theta}(Y)\\} = 0, \\qquad \\theta \\in \\Theta.\n\\] oppure equivalentemente se \\[\n\\lim_{n \\rightarrow \\infty} \\mathbb{E}\\{\\hat{\\theta}(Y)\\} = \\theta, \\quad             \\lim_{n \\rightarrow \\infty} \\text{var}\\{\\hat{\\theta}(Y)\\} = 0, \\qquad \\theta \\in \\Theta.\n\\]\nLa consistenza in media quadratica implica la convergenza in probabilità, per cui scriveremo che \\[\n    \\hat{\\theta}(Y) \\overset{p}{\\longrightarrow} \\theta, \\qquad n \\rightarrow \\infty, \\qquad \\theta \\in \\Theta.\n\\] #### Esercizio\nLo studente è invitato a rivedersi la definizione di convergenza in probabilità, le sue proprietà e la sua relazione con la consistenza in media quadratica (in \\(L^2\\)).\n\n\n\n\n\n\nNota linguistica\n\n\n\nIl termine “consistente” deriva da un’errata traduzione del termine inglese consistent. Purtroppo, l’uso del termine è ormai troppo consolidato per porvi rimedio e non resta che subirlo. Lo stesso può dirsi del termine “stima puntuale”."
+  },
+  {
+    "objectID": "lezioni/un_M.html#inferenza-statistica-e-metodi-monte-carlo",
+    "href": "lezioni/un_M.html#inferenza-statistica-e-metodi-monte-carlo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Inferenza statistica e metodi Monte Carlo",
+    "text": "Inferenza statistica e metodi Monte Carlo\nStabiliti i criteri per valutare la bontà di uno stimatore, rimane da capire come utilizzarli in pratica.\nNei corsi di Statistica II vengono presentati modelli e stimatori per i quali è possibile calcolare l’MSE analiticamente. Questo capita di rado nelle applicazioni reali.\nFortunatamente il metodo Monte Carlo che abbiamo visto nell’unità I può venire in aiuto in assenza di risultati analitici.\nAd esempio, lo scarto quadratico medio è per definizione un valore atteso, che possiamo quindi approssimare tramite integrazione Monte Carlo."
+  },
+  {
+    "objectID": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-i",
+    "href": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello gaussiano con varianza nota I",
+    "text": "Modello gaussiano con varianza nota I\nSia \\(y = (y_1,\\dots,y_n)\\) un campione iid da una variabile casuale normale con media ignota \\(\\mu\\) e varianza nota e pari \\(\\sigma^2 = 16\\), ovvero \\(Y \\sim \\text{N}(\\mu, 16)\\).\nIl parametro \\(\\mu\\) è ignoto e siamo interessati a stimarlo.\nUno stima naturale per \\(\\mu\\), che oltretutto coincide con la SMV, è la media aritmetica \\[\n\\hat{\\mu} = \\frac{1}{n}\\sum_{i=1}^n y_i.\n\\]\nLa distribuzione (esatta!) dello stimatore \\(\\hat{\\mu}(Y)\\) è nota ed è pari \\[\n\\hat{\\mu}(Y) \\sim \\text{N}\\left(\\mu, \\frac{16}{n}\\right).\n\\]\n\nEsercizio\nSi dimostri che \\(\\text{MSE}\\{\\hat{\\mu}(Y)\\} = 16 / n\\). Se ne deduca che lo stimatore è consistente."
+  },
+  {
+    "objectID": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-ii",
+    "href": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello gaussiano con varianza nota II",
+    "text": "Modello gaussiano con varianza nota II\nUn secondo possibile stimatore per \\(\\mu\\) è la mediana campionaria .\nLa distribuzione dello stimatore \\(\\text{Me}(Y)\\) è ignota. Di conseguenza, anche le relative proprietà sono ignote.\nLa mediana è uno stimatore distorto? Il suo scarto è maggiore o minore di quello della media aritmetica?\nIn assenza di risultati analitici, possiamo provare a fornire una risposta parziale tramite Monte Carlo.\nIn altri termini, indagheremo quale stimatore funziona meglio per degli specifici valori di \\(\\mu\\), ad esempio \\(\\mu = 10\\) oppure \\(\\mu = 15\\)."
+  },
+  {
+    "objectID": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-iii",
+    "href": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello gaussiano con varianza nota III",
+    "text": "Modello gaussiano con varianza nota III\nSupponiamo di voler investigare il caso \\(\\mu = 10\\). Supponiamo inoltre che \\(n = 20\\).\nCominciamo simulando un singolo campione \\(y_1,\\dots,y_n\\) da una distribuzione \\(\\text{N}(\\mu, 16)\\).\n\nset.seed(100)\nn <- 20 # Numerosità campionaria\nmu <- 10 # Media teorica (solitamente ignota)\n\n# Campione y_1,...,y_n\ny <- rnorm(n, mean = mu, sd = sqrt(16))\n\n# Vero valore è mu = 10\nmean(y) \n\n[1] 10.43147\n\nmedian(y) \n\n[1] 10.37232\n\n\nIn questo caso specifico, la mediana si avvicina di più al vero valore della media (\\(\\mu = 10\\)). Tuttavia, questo vale per questo specifico campione."
+  },
+  {
+    "objectID": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-iv",
+    "href": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-iv",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello gaussiano con varianza nota IV",
+    "text": "Modello gaussiano con varianza nota IV\nCoerentemente con quanto discusso nei paragrafi precedenti, un modo preciso per valutare la bontà dello stimatore si basa sul campionamento ripetuto.\nIn altri termini, vogliamo confrontare gli scarti quadratici medi dei due stimatori \\[\n\\text{MSE}\\{\\hat{\\mu}(Y)\\}, \\qquad \\text{MSE}\\{\\text{Me}(Y)\\}.\n\\]\nNel caso della media aritmetica con \\(\\sigma^2 = 16\\) ed \\(n = 20\\) i conti analitici implicano che \\(\\text{MSE}\\{\\hat{\\mu}(Y)\\} = 16 / 20 = 0.8\\). Ma nel caso della mediana?\nUtilizzando il metodo Monte Carlo, ottengo una stima dello scarto quadratico medio dello stimatore mediana, ovvero \\[\n\\widehat{\\text{MSE}\\{\\text{Me}(Y)\\}}.\n\\]\n\nEsercizio\nLo studente rilegga questa frase fino a convincersi della sua correttezza."
+  },
+  {
+    "objectID": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-v",
+    "href": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-v",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello gaussiano con varianza nota V",
+    "text": "Modello gaussiano con varianza nota V\nL’approssimazione \\(\\widehat{\\text{MSE}\\{\\text{Me}(Y)\\}}\\) si basa sul metodo di integrazione Monte Carlo.\nSi supponga che \\(\\text{Me}_1, \\dots, \\text{Me}_R\\) siano \\(R\\) estrazioni casuali della mediana calcolata su un campione iid gaussiano (\\(\\mu = 10\\), \\(\\sigma^2 = 16\\)) di dimensione \\(n = 20\\).\nPossiamo ottenere \\(\\text{Me}_1, \\dots, \\text{Me}_R\\) simulando \\(R\\) campioni \\(Y\\) e calcolandone la mediana:\n\nset.seed(156)\nR <- 10^5\n# Ottengo R estrazioni della mediana campionaria Me_1,...Me_R\nmedian_hat <- replicate(R, median(rnorm(n = n, mean = mu, sd = sqrt(16))))\n\nL’approssimazione Monte Carlo è quindi pari a \\[\n\\widehat{\\text{MSE}\\{\\text{Me}(Y)\\}} = \\frac{1}{R}\\sum_{r=1}^R(\\text{Me}_r - \\mu)^2 \\approx \\mathbb{E}\\{ (\\text{Me}(Y) - \\mu)^2\\} = \\text{MSE}\\{\\text{Me}(Y)\\}.\n\\]\n\nmean((median_hat - mu)^2) # Stima dello scarto quadratico medio (MSE) della mediana\n\n[1] 1.172079"
+  },
+  {
+    "objectID": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-vi",
+    "href": "lezioni/un_M.html#modello-gaussiano-con-varianza-nota-vi",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Modello gaussiano con varianza nota VI",
+    "text": "Modello gaussiano con varianza nota VI\nLa mediana sembra essere meno efficiente della media aritmetica, quantomeno se \\(\\mu = 10, \\sigma^2 =16\\) ed \\(n = 20\\).\nNel seguito sono riportati alcuni risultati aggiuntivi, incluse le stime Monte Carlo relative alla media aritmetica.\n\nset.seed(156)\nR <- 10^5\n\nmu_hat <- replicate(R, mean(rnorm(n = n, mean = mu, sd = sqrt(16))))\nmedian_hat <- replicate(R, median(rnorm(n = n, mean = mu, sd = sqrt(16))))\n\nmean(mu_hat) - mu # Distorsione dello stimatore; valore teorico: 0\n\n[1] -0.004089293\n\nmean((mu_hat - mu)^2) # Scarto quadratico medio dello stimatore; valore teorico: 0.8\n\n[1] 0.8008738\n\nmean(median_hat) - mu # Distorsione dello stimatore; valore teorico: ??\n\n[1] -0.001820327\n\nmean((median_hat - mu)^2) # Scarto quadratico medio dello stimatore; valore teorico: ??\n\n[1] 1.172248"
+  },
+  {
+    "objectID": "lezioni/un_M.html#distribuzione-degli-stimatori",
+    "href": "lezioni/un_M.html#distribuzione-degli-stimatori",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Distribuzione degli stimatori",
+    "text": "Distribuzione degli stimatori\n\npar(mfrow = c(1, 2))\nhist(mu_hat, breaks = 100, freq = F)\nhist(median_hat, breaks = 100, freq = F)"
+  },
+  {
+    "objectID": "lezioni/un_M.html#commenti-conclusivi",
+    "href": "lezioni/un_M.html#commenti-conclusivi",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Commenti conclusivi",
+    "text": "Commenti conclusivi\nLe approssimazioni coinvolte in questa ultima discussione sono di due differenti tipologie.\nDa un lato abbiamo la variabilità di \\(\\hat{\\theta}\\), che è legata ai dati \\(y_1,\\dots,y_n\\) e alla loro numerosità campionaria \\(n\\).\nDall’altro abbiamo la variabilità Monte Carlo di \\(\\widehat{\\text{MSE}\\{\\theta(Y)\\}}\\), che è invece legata alle repliche Monte Carlo e al numero di simulazioni \\(R\\).\nQuesti due concetti sono ben distinti e non vanno confusi tra loro.\nInoltre, mentre aumentare il numero di simulazioni \\(R\\) è sempre possibile (basta aspettare più tempo), non sempre disponiamo di dati aggiuntivi."
+  },
+  {
+    "objectID": "lezioni/un_M.html#esercizio-riassuntivo",
+    "href": "lezioni/un_M.html#esercizio-riassuntivo",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo",
+    "text": "Esercizio riassuntivo\nSi supponga che \\(Y_1,\\dots,Y_n\\) sono variabili aleatorie iid distribuite come un normale di media nota \\(\\mathbb{E}(Y_1) = 0\\), con \\(n = 20\\).\nLa varianza \\(\\sigma^2\\) è ignota e siamo interessati a stimarla.\nSi calcolino tramite simulazione la distorsione e l’errore quadratico dei seguenti stimatori della varianza, quando \\(\\sigma^2 = 16\\):\n\\[\n\\begin{aligned}\n    &S^2_1 = \\frac{1}{n}\\sum_{i=1}^n(Y_i - \\bar{Y})^2, &&\\quad S^2_2 = \\frac{1}{n -1}\\sum_{i=1}^n(Y_i - \\bar{Y})^2, \\\\\n    &S^2_3 = \\frac{1}{n}\\sum_{i=1}^nY_i^2, && \\quad S_4 = \\frac{1}{n+1}\\sum_{i=1}^n(Y_i - \\bar{Y})^2.\n\\end{aligned}\n\\]\n\nSchema della soluzione\n\nset.seed(520)\nR <- 10^5; n <- 20\nmu <- 0; sigma2 <- 16\n\n# Definisco le funzioni che calcolano gli stimatori\nvar1 <- function(x) mean(x^2) - mean(x)^2\nvar2 <- function(x) var(x) # Coincide con la definizione di R\nvar3 <- function(x) mean(x^2)\nvar4 <- function(x) (length(x) - 1) / (length(x) + 1) * var(x)\n\n# Esecuzione della simulazione\nS2_1 <- replicate(R, var1(rnorm(n = n, mean = mu, sd = sqrt(sigma2))))\nS2_2 <- replicate(R, var2(rnorm(n = n, mean = mu, sd = sqrt(sigma2))))\nS2_3 <- replicate(R, var3(rnorm(n = n, mean = mu, sd = sqrt(sigma2))))\nS2_4 <- replicate(R, var4(rnorm(n = n, mean = mu, sd = sqrt(sigma2))))\n\n# Distorsioni (approssimate)\nround(mean(S2_1 - sigma2), 2)\n\n[1] -0.85\n\nround(mean(S2_2 - sigma2), 2)\n\n[1] 0\n\nround(mean(S2_3 - sigma2), 2)\n\n[1] -0.03\n\nround(mean(S2_4 - sigma2), 2)\n\n[1] -1.56\n\n# Errore quadratico medio (approssimato)\nmean((S2_1 - sigma2)^2)\n\n[1] 24.96644\n\nmean((S2_2 - sigma2)^2)\n\n[1] 27.09368\n\nmean((S2_3 - sigma2)^2)\n\n[1] 25.40207\n\nmean((S2_4 - sigma2)^2)\n\n[1] 24.36703"
+  },
+  {
+    "objectID": "lezioni/un_M.html#consistenza-i",
+    "href": "lezioni/un_M.html#consistenza-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Consistenza I",
+    "text": "Consistenza I\nSia \\(y_1,\\dots,y_n\\) un campione iid da una distribuzione uniforme in \\((0,\\theta)\\), dove \\(\\theta > 0\\) è un parametro ignoto. La stima di massima verosimiglianza in questo caso è pari a \\[\n\\hat{\\theta}_n = \\max\\{X_1,\\dots,X_n\\}.\n\\]\nVogliamo verificare tramite simulazione se lo stimatore è consistente, ovvero se \\[\n\\hat{\\theta}(Y) \\overset{p}{\\longrightarrow} \\theta.\n\\]\nIn pratica, ciò che possiamo fare è simulare alcuni valori di \\(\\hat{\\theta}\\) per valori di \\(n\\) crescenti e controllare se questi si avvicinano sempre più a \\(\\theta\\)."
+  },
+  {
+    "objectID": "lezioni/un_M.html#consistenza-ii",
+    "href": "lezioni/un_M.html#consistenza-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Consistenza II",
+    "text": "Consistenza II\nSupponiamo che il vero valore del parametro sia \\(\\theta = 40\\).\n\ntheta0 <- 40\n\n# Numerosità campionarie\nnn <- c(10, 100, 300, 500, 1000)\n\n# Stime di massima verosimiglianza\nset.seed(123)\ntheta_hat <- c(\n  max(runif(nn[1], min = 0, max = theta0)),\n  max(runif(nn[2], min = 0, max = theta0)),\n  max(runif(nn[3], min = 0, max = theta0)),\n  max(runif(nn[4], min = 0, max = theta0)),\n  max(runif(nn[5], min = 0, max = theta0))\n)\ntheta_hat\n\n[1] 37.61869 39.77079 39.97618 39.86469 39.98096\n\n\nAll’aumentare di \\(n\\), lo stimatore tende a diventare sempre più preciso. Per valori di \\(n\\) ancora maggiori di \\(1000\\), la precisione aumenta ulteriormente."
+  },
+  {
+    "objectID": "lezioni/un_M.html#consistenza-iii",
+    "href": "lezioni/un_M.html#consistenza-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Consistenza III",
+    "text": "Consistenza III\n\npar(mfrow=c(1,1))\nplot(nn, theta_hat,\n  type = \"b\",\n  xlab = \"Numerosità campionaria\",\n  ylab = \"Massima verosimiglianza\"\n)"
   }
 ]

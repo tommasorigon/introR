@@ -64,7 +64,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 | *Esercizi*                                       | [Esercizi 3](exe/es_3.html)                | [soluzione.R](exe/es_3.R)                   |                                                         |
 |                                                  | **INFERENZA STATISTICA**                   |                                             |                                                         |
 | Metodi numerici per l'analisi di verosimiglianza | [Unità K](lezioni/un_K.html)         | [Codice R](lezioni/script/un_K.R)           | **RC** §5.1, §5.2                                       |
-| Proprietà degli stimatori                        | [Unità M](lezioni/un_M.pdf)         | [Codice R](lezioni/script/un_M.R)           | **AR** §13.3                                            |
+| Proprietà degli stimatori                        | [Unità M](lezioni/un_M.html)         | [Codice R](lezioni/script/un_M.R)           | **AR** §13.3                                            |
 | *Esercizi*                                       | [Esercizi 4](exe/es_4.html)                | [soluzione.R](exe/es_4.R)                   |                                                         |
 |                                                  | **LEZIONI AGGIUNTIVE**                     |                                             |                                                         |
 | Casinò, roulette e metodi Monte Carlo            | [Unità J](lezioni/un_J.pdf)         | [Codice R](lezioni/script/un_J.R)           | **AR** §11.2                                            |
