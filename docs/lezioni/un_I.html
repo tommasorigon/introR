@@ -728,18 +728,17 @@ p(x) = \mathbb{P}(X = x),
 </section>
 <section id="esercizio-riassuntivo-iii" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-riassuntivo-iii">Esercizio riassuntivo III</h2>
-<p>Nel video seguente del canale <strong>Veritasium</strong>, viene descritto un <strong>enigma</strong> che coinvolge un numero <span class="math inline">\(n = 100\)</span> di prigionieri.</p>
+<p>Nel seguente video YouTube del canale <strong>Veritasium</strong>, viene introdotto un <strong>enigma</strong> che coinvolge un numero <span class="math inline">\(n = 100\)</span> di prigionieri.</p>
 <p>Utilizzando la cosiddetta “<em>loop strategy</em>” che viene descritta nel video, si approssimi tramite Monte Carlo la probabilità di successo dei prigionieri, per <span class="math inline">\(n = 100\)</span>.</p>
-<p>I risultati sono coerenti con quanto descritto nel video?</p>
+<p>I risultati della simulazione sono coerenti con quanto descritto nel video?</p>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/iSNsgj1OCLA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <section id="schema-della-soluzione-2" class="level4">
 <h4 class="anchored" data-anchor-id="schema-della-soluzione-2">Schema della soluzione</h4>
 <p>I numeri nelle scatole, sconosciuti ai prigionieri, vengono generati casualmente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># Numero di prigionieri</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">400</span>)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>boxes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n) <span class="co"># Effettua una permutazione dei numeri 1:n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">400</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># Numero di prigionieri</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>boxes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n) <span class="co"># Effettua una permutazione dei numeri 1:n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Per cui in questo caso (con questo <code>seed</code>), nella scatola <code>51</code> è contenuto il numero <code>97</code>:</p>
 <div class="cell">
@@ -840,13 +839,9 @@ p(x) = \mathbb{P}(X = x),
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>estimate <span class="ot">&lt;-</span> <span class="fu">mean</span>(Z) <span class="co"># Stima della probabilità di successo</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>std.error <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(estimate <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> estimate) <span class="sc">/</span> R)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">c</span>(estimate, std.error)</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"estimate"</span>, <span class="st">"std.error"</span>) <span class="co"># Aggiungo solo per ragioni estetiche</span></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>estimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   estimate   std.error 
-0.314000000 0.004641164 </code></pre>
+<pre><code>[1] 0.314</code></pre>
 </div>
 </div>
 </section>
