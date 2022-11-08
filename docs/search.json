@@ -74,7 +74,7 @@
     "href": "lezioni/un_F.html#istogramma",
     "title": "R per l’analisi statistica multivariata",
     "section": "Istogramma",
-    "text": "Istogramma\n\n\n\n\n\n\nDomanda 1\n\n\n\nSi disegni un istogramma della variabile temperatura, scegliendo un numero appropriato di classi equispaziate e giustificandone la scelta.\n\n\n\nSoluzione\nPossiamo decidere di specificare in autonomia gli intervalli delle classi oppure di lasciare ad R questa scelta.\n\npar(mfrow = c(1, 2)) # Divido la finestra grafica in 2 parti\n\n# Opzione 1, per un totale di 6 classi equispaziate\nhist(forbes$TempC) # Equivalente a: hist(forbes$TempC, breaks = \"sturges\") \n\n# Opzione 2, definisco manualmente 5 classi equispaziate\nbreaks <- c(90, 92.5, 95, 97.5, 100, 102.5)\nhist(forbes$TempC, breaks = breaks)\n\n\n\n\nLa soluzione di sinistra fa uso di \\(6\\) classi. Viceversa, quella di sinistra fa uso di \\(5\\) classi, come nella soluzione dell’esame.\n\n\n\n\n\n\nEsercizio\n\n\n\nSi aggiungano a questi grafici gli “abbellimenti” grafici ritenuti necessari (nomi delle variabili, titolo, etc)."
+    "text": "Istogramma\n\n\n\n\n\n\nDomanda 1\n\n\n\nSi disegni un istogramma della variabile temperatura, scegliendo un numero appropriato di classi equispaziate e giustificandone la scelta.\nSi aggiungano a questi grafici gli “abbellimenti” grafici ritenuti necessari (nomi delle variabili, titolo, etc).\n\n\n\nSoluzione\nPossiamo decidere di specificare in autonomia gli intervalli delle classi oppure di lasciare ad R questa scelta.\n\npar(mfrow = c(1, 2)) # Divido la finestra grafica in 2 parti\n\n# Opzione 1, per un totale di 6 classi equispaziate\nhist(forbes$TempC) # Equivalente a: hist(forbes$TempC, breaks = \"sturges\") \n\n# Opzione 2, definisco manualmente 5 classi equispaziate\nbreaks <- c(90, 92.5, 95, 97.5, 100, 102.5)\nhist(forbes$TempC, breaks = breaks)\n\n\n\n\nLa soluzione di sinistra fa uso di \\(6\\) classi. Viceversa, quella di sinistra fa uso di \\(5\\) classi, come nella soluzione dell’esame."
   },
   {
     "objectID": "lezioni/un_F.html#indici-di-posizione",
@@ -109,7 +109,7 @@
     "href": "lezioni/un_F.html#esercizio-riassuntivo",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo",
-    "text": "Esercizio riassuntivo\nSi consideri l’esame di Statistica I del 28 Gennaio 2021, disponibile a questo link\nSi risolva l’esercizio 2 dell’esame usando il software R.\n\n\n\n\n\n\nDomanda 7\n\n\n\nPer poter importare piccole quantità di dati in R, è possibile usare il comando scan."
+    "text": "Esercizio riassuntivo\nSi consideri l’esame di Statistica I del 28 Gennaio 2021, disponibile a questo link\nSi risolva l’esercizio 2 dell’esame usando il software R.\n\n\n\n\n\n\nSuggerimento\n\n\n\nPer poter importare piccole quantità di dati in R, è possibile usare il comando scan."
   },
   {
     "objectID": "lezioni/un_D.html",
@@ -2083,7 +2083,7 @@
     "href": "lezioni/un_M.html#ripasso-e-notazione-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Ripasso e notazione II",
-    "text": "Ripasso e notazione II\nUno stimatore \\(\\hat{\\theta}(Y)\\) è una qualsiasi funzione delle variabili aleatorie \\(Y = (Y_1,\\dots, Y_n)\\) che ``si avvicina’’ al vero valore di \\(\\theta\\). Lo stimatore è una variabile aleatoria.\nUna stima \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una qualsiasi funzione dei dati \\(y = (y_1,\\dots,y_n)\\) che ``si avvicina’’ al vero valore di~\\(\\theta\\). La stima è la realizzazione di \\(\\hat{\\theta}(Y)\\), perciò è un numero.\nAbbiamo bisogno di criterio per stabilire se uno stimatore ``funziona’’ o meno. Il sostegno logico e filosofico proviene dal seguente principio (frequentista)."
+    "text": "Ripasso e notazione II\nUno stimatore \\(\\hat{\\theta}(Y)\\) è una qualsiasi funzione delle variabili aleatorie \\(Y = (Y_1,\\dots, Y_n)\\) che “si avvicina” al vero valore di \\(\\theta\\). Lo stimatore è una variabile aleatoria.\nUna stima \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una qualsiasi funzione dei dati \\(y = (y_1,\\dots,y_n)\\) che ``si avvicina’’ al vero valore di~\\(\\theta\\). La stima è la realizzazione di \\(\\hat{\\theta}(Y)\\), perciò è un numero.\nAbbiamo bisogno di criterio per stabilire se uno stimatore “funziona” o meno. Il sostegno logico e filosofico proviene dal seguente principio (frequentista)."
   },
   {
     "objectID": "lezioni/un_M.html#il-principio-del-campionamento-ripetuto-i-ripasso",
@@ -2118,7 +2118,7 @@
     "href": "lezioni/un_M.html#ripasso-e-notazione-v",
     "title": "R per l’analisi statistica multivariata",
     "section": "Ripasso e notazione V",
-    "text": "Ripasso e notazione V\nUno stimatore si dice consistente in media quadratica se \\[\n\\lim_{n \\rightarrow \\infty} \\text{MSE}\\{\\hat{\\theta}(Y)\\} = 0, \\qquad \\theta \\in \\Theta.\n\\] oppure equivalentemente se \\[\n\\lim_{n \\rightarrow \\infty} \\mathbb{E}\\{\\hat{\\theta}(Y)\\} = \\theta, \\quad             \\lim_{n \\rightarrow \\infty} \\text{var}\\{\\hat{\\theta}(Y)\\} = 0, \\qquad \\theta \\in \\Theta.\n\\]\nLa consistenza in media quadratica implica la convergenza in probabilità, per cui scriveremo che \\[\n    \\hat{\\theta}(Y) \\overset{p}{\\longrightarrow} \\theta, \\qquad n \\rightarrow \\infty, \\qquad \\theta \\in \\Theta.\n\\] #### Esercizio\nLo studente è invitato a rivedersi la definizione di convergenza in probabilità, le sue proprietà e la sua relazione con la consistenza in media quadratica (in \\(L^2\\)).\n\n\n\n\n\n\nNota linguistica\n\n\n\nIl termine “consistente” deriva da un’errata traduzione del termine inglese consistent. Purtroppo, l’uso del termine è ormai troppo consolidato per porvi rimedio e non resta che subirlo. Lo stesso può dirsi del termine “stima puntuale”."
+    "text": "Ripasso e notazione V\nUno stimatore si dice consistente in media quadratica se \\[\n\\lim_{n \\rightarrow \\infty} \\text{MSE}\\{\\hat{\\theta}(Y)\\} = 0, \\qquad \\theta \\in \\Theta.\n\\] oppure equivalentemente se \\[\n\\lim_{n \\rightarrow \\infty} \\mathbb{E}\\{\\hat{\\theta}(Y)\\} = \\theta, \\quad             \\lim_{n \\rightarrow \\infty} \\text{var}\\{\\hat{\\theta}(Y)\\} = 0, \\qquad \\theta \\in \\Theta.\n\\]\nLa consistenza in media quadratica implica la convergenza in probabilità, per cui scriveremo che \\[\n    \\hat{\\theta}(Y) \\overset{p}{\\longrightarrow} \\theta, \\qquad n \\rightarrow \\infty, \\qquad \\theta \\in \\Theta.\n\\]\n\nEsercizio\nLo studente è invitato a rivedersi la definizione di convergenza in probabilità, le sue proprietà e la sua relazione con la consistenza in media quadratica (in \\(L^2\\)).\n\n\n\n\n\n\nNota linguistica\n\n\n\nIl termine “consistente” deriva da un’errata traduzione del termine inglese consistent. Purtroppo, l’uso del termine è ormai troppo consolidato per porvi rimedio e non resta che subirlo. Lo stesso può dirsi del termine “stima puntuale”."
   },
   {
     "objectID": "lezioni/un_M.html#inferenza-statistica-e-metodi-monte-carlo",
