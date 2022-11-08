@@ -2056,5 +2056,12 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Ripasso & notazione",
     "text": "Ripasso & notazione\nLa stima di massima verosimiglianza (SMV) è il valore \\(\\hat{\\theta}\\) che rende massima la funzione di verosimiglianza \\(\\mathcal{L}(\\theta)\\) sullo spazio \\(\\Theta\\), cioè tale per cui \\[\n\\mathcal{L}(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\mathcal{L}(\\theta).\n\\]\nLa SMV rende massimo anche la funzione di log-verosimiglianza, per cui \\[\n\\ell(\\hat{\\theta}) = \\sup_{\\theta \\in \\Theta}\\ell(\\theta).\n\\]\nDi conseguenza, sotto opportune condizioni di regolarità, la SMV si ottiene come soluzione dell’equazione \\(\\ell'(\\theta) = 0\\).\nNon è detto che la SMV esista.\nLa SMV \\(\\hat{\\theta} = \\hat{\\theta}(y)\\) è una funzione del campione, anche se a volte tale funzione non è rappresentabile esplicitamente."
+  },
+  {
+    "objectID": "lezioni/un_I.html#esercizio-riassuntivo-iii",
+    "href": "lezioni/un_I.html#esercizio-riassuntivo-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Esercizio riassuntivo III",
+    "text": "Esercizio riassuntivo III\nNel video seguente del canale Veritasium, viene descritto un enigma che coinvolge un numero \\(n = 100\\) di prigionieri.\nUtilizzando la cosiddetta “loop strategy” che viene descritta nel video, si approssimi tramite Monte Carlo la probabilità di successo dei prigionieri, per \\(n = 100\\) e quindi per \\(n = 3000\\).\nI risultati sono coerenti con quanto descritto nel video?"
   }
 ]

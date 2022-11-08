@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.163">
+<meta name="generator" content="quarto-1.2.267">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -145,7 +145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">Home</a>
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -183,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#esercizio-riassuntivo-i-1" id="toc-esercizio-riassuntivo-i-1" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i-1">Esercizio riassuntivo I</a></li>
   <li><a href="#esercizio-riassuntivo-ii" id="toc-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-ii">Esercizio riassuntivo II</a></li>
   <li><a href="#esercizi-aggiuntivi-non-risolti" id="toc-esercizi-aggiuntivi-non-risolti" class="nav-link" data-scroll-target="#esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</a></li>
+  <li><a href="#esercizio-riassuntivo-iii" id="toc-esercizio-riassuntivo-iii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-iii">Esercizio riassuntivo III</a></li>
   <li><a href="#istogrammi-e-densità" id="toc-istogrammi-e-densità" class="nav-link" data-scroll-target="#istogrammi-e-densità">Istogrammi e densità</a></li>
   <li><a href="#istogrammi-e-densità-1" id="toc-istogrammi-e-densità-1" class="nav-link" data-scroll-target="#istogrammi-e-densità-1">Istogrammi e densità</a></li>
   <li><a href="#approssimazione-di-una-distribuzione-discreta" id="toc-approssimazione-di-una-distribuzione-discreta" class="nav-link" data-scroll-target="#approssimazione-di-una-distribuzione-discreta">Approssimazione di una distribuzione discreta</a></li>
@@ -199,16 +201,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Tommaso Rigon 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Università Milano-Bicocca
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Tommaso Rigon </p>
-          </div>
-  </div>
-    
+      
+  
     
   </div>
   
@@ -682,6 +692,13 @@ Nota
 \]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
 </section>
 </section>
+<section id="esercizio-riassuntivo-iii" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-iii">Esercizio riassuntivo III</h2>
+<p>Nel video seguente del canale <strong>Veritasium</strong>, viene descritto un <strong>enigma</strong> che coinvolge un numero <span class="math inline">\(n = 100\)</span> di prigionieri.</p>
+<p>Utilizzando la cosiddetta “<em>loop strategy</em>” che viene descritta nel video, si approssimi tramite Monte Carlo la probabilità di successo dei prigionieri, per <span class="math inline">\(n = 100\)</span> e quindi per <span class="math inline">\(n = 3000\)</span>.</p>
+<p>I risultati sono coerenti con quanto descritto nel video?</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/iSNsgj1OCLA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
 <section id="istogrammi-e-densità" class="level2">
 <h2 class="anchored" data-anchor-id="istogrammi-e-densità">Istogrammi e densità</h2>
 <p>Supponiamo di simulare delle variabili aleatorie continue <span class="math inline">\(X_1,\dots, X_R\)</span>, aventi una certa <strong>densità</strong> <span class="math inline">\(f(x)\)</span>.</p>
@@ -776,7 +793,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -812,24 +846,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
