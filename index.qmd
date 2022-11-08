@@ -94,11 +94,11 @@ L'esame si svolge tramite **computer** e consiste tipicamente in $3$ esercizi da
 
 Lo studente all'esame può consultare sia la documentazione ufficiale di **R** che il codice utilizzato a lezione, disponibile a [questo link](lezioni/script.zip).
 
-Per visionare la prova, è possibile venire a ricevimento. Per ulteriori informazioni relative alla registrazione del voto, al calendario delle verbalizzazioni e al salto d'appello si visiti la pagina: [Analisi Statistica Multivariata](https://aldosolari.github.io/ASM/).
+Per visionare la prova, è possibile venire a ricevimento. Per ulteriori informazioni relative alla registrazione del voto, al calendario delle verbalizzazioni e al salto d'appello si visiti la pagina elearning di Analisi Statistica Multivariata.
 
 ## Propedeuticità
 
-Si veda la pagina [Analisi Statistica Multivariata](https://aldosolari.github.io/ASM/).
+Si veda la pagina elearning di Analisi Statistica Multivariata.
 
 ## Ricevimento
 
