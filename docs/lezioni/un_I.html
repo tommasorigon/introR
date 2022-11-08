@@ -181,13 +181,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#come-mai-funziona-procediamo-come-prima" id="toc-come-mai-funziona-procediamo-come-prima" class="nav-link" data-scroll-target="#come-mai-funziona-procediamo-come-prima">Come mai funziona? Procediamo come prima…</a></li>
   <li><a href="#la-varianza-dello-stimatore-i-1" id="toc-la-varianza-dello-stimatore-i-1" class="nav-link" data-scroll-target="#la-varianza-dello-stimatore-i-1">La varianza dello stimatore I</a></li>
   <li><a href="#la-varianza-dello-stimatore-ii" id="toc-la-varianza-dello-stimatore-ii" class="nav-link" data-scroll-target="#la-varianza-dello-stimatore-ii">La varianza dello stimatore II</a></li>
-  <li><a href="#esercizio-riassuntivo-i-1" id="toc-esercizio-riassuntivo-i-1" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i-1">Esercizio riassuntivo I</a></li>
-  <li><a href="#esercizio-riassuntivo-ii" id="toc-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-ii">Esercizio riassuntivo II</a></li>
-  <li><a href="#esercizi-aggiuntivi-non-risolti" id="toc-esercizi-aggiuntivi-non-risolti" class="nav-link" data-scroll-target="#esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</a></li>
-  <li><a href="#esercizio-riassuntivo-iii" id="toc-esercizio-riassuntivo-iii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-iii">Esercizio riassuntivo III</a></li>
   <li><a href="#istogrammi-e-densità" id="toc-istogrammi-e-densità" class="nav-link" data-scroll-target="#istogrammi-e-densità">Istogrammi e densità</a></li>
   <li><a href="#istogrammi-e-densità-1" id="toc-istogrammi-e-densità-1" class="nav-link" data-scroll-target="#istogrammi-e-densità-1">Istogrammi e densità</a></li>
   <li><a href="#approssimazione-di-una-distribuzione-discreta" id="toc-approssimazione-di-una-distribuzione-discreta" class="nav-link" data-scroll-target="#approssimazione-di-una-distribuzione-discreta">Approssimazione di una distribuzione discreta</a></li>
+  <li><a href="#esercizio-riassuntivo-i-1" id="toc-esercizio-riassuntivo-i-1" class="nav-link" data-scroll-target="#esercizio-riassuntivo-i-1">Esercizio riassuntivo I</a></li>
+  <li><a href="#esercizio-riassuntivo-ii" id="toc-esercizio-riassuntivo-ii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-ii">Esercizio riassuntivo II</a></li>
+  <li><a href="#esercizio-riassuntivo-iii" id="toc-esercizio-riassuntivo-iii" class="nav-link" data-scroll-target="#esercizio-riassuntivo-iii">Esercizio riassuntivo III</a></li>
+  <li><a href="#esercizi-aggiuntivi-non-risolti" id="toc-esercizi-aggiuntivi-non-risolti" class="nav-link" data-scroll-target="#esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</a></li>
   </ul>
 </nav>
     </div>
@@ -624,81 +624,6 @@ Nota
 </div>
 </div>
 </section>
-<section id="esercizio-riassuntivo-i-1" class="level2">
-<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-i-1">Esercizio riassuntivo I</h2>
-<p>Si calcoli tramite Monte Carlo il valore del seguente integrale e se ne quantifichi l’incertezza <span class="math display">\[
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\sin^2(x)e^{-x^2/2}\mathrm{d}x.
-\]</span></p>
-<p>Si confronti il risultato con la funzione <code>integrate</code>.</p>
-<section id="schema-della-soluzione-1" class="level4">
-<h4 class="anchored" data-anchor-id="schema-della-soluzione-1">Schema della soluzione</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>hX <span class="ot">&lt;-</span> <span class="fu">sin</span>(X)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hX) <span class="co"># Estimate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4320933</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(hX) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>) <span class="co"># Std.error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.001097771</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integrazione numerica</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">sin</span>(x)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">dnorm</span>(x), <span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.4323324 with absolute error &lt; 9.8e-06</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="esercizio-riassuntivo-ii" class="level2">
-<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-ii">Esercizio riassuntivo II</h2>
-<p>Si supponga di voler approssimare tramite Monte Carlo il seguente valore atteso <span class="math display">\[
-\mathbb{E}(X^2), \qquad X \sim \text{Ga}(3, 3).
-\]</span></p>
-<p>Si dica, motivando la risposta, quale codice produce il risultato corretto.</p>
-<section id="codice-1" class="level4">
-<h4 class="anchored" data-anchor-id="codice-1">Codice 1</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.000489</code></pre>
-</div>
-</div>
-</section>
-<section id="codice-2" class="level4">
-<h4 class="anchored" data-anchor-id="codice-2">Codice 2</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X <span class="sc">*</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.334584</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="esercizi-aggiuntivi-non-risolti" class="level2">
-<h2 class="anchored" data-anchor-id="esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</h2>
-<section id="esercizio-1" class="level4">
-<h4 class="anchored" data-anchor-id="esercizio-1">Esercizio 1</h4>
-<p>Si ottenga un’approssimazione Monte Carlo del seguente integrale <span class="math display">\[
-\int_0^\infty x^4 e^{-x}\mathrm{d}x
-\]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
-</section>
-<section id="esercizio-2" class="level4">
-<h4 class="anchored" data-anchor-id="esercizio-2">Esercizio 2</h4>
-<p>Si ottenga un’approssimazione Monte Carlo del seguente integrale <span class="math display">\[
-\int_0^1 x^{1/2}(1 - x)^{1/2}\mathrm{d}x
-\]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
-</section>
-</section>
-<section id="esercizio-riassuntivo-iii" class="level2">
-<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-iii">Esercizio riassuntivo III</h2>
-<p>Nel video seguente del canale <strong>Veritasium</strong>, viene descritto un <strong>enigma</strong> che coinvolge un numero <span class="math inline">\(n = 100\)</span> di prigionieri.</p>
-<p>Utilizzando la cosiddetta “<em>loop strategy</em>” che viene descritta nel video, si approssimi tramite Monte Carlo la probabilità di successo dei prigionieri, per <span class="math inline">\(n = 100\)</span> e quindi per <span class="math inline">\(n = 3000\)</span>.</p>
-<p>I risultati sono coerenti con quanto descritto nel video?</p>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/iSNsgj1OCLA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
 <section id="istogrammi-e-densità" class="level2">
 <h2 class="anchored" data-anchor-id="istogrammi-e-densità">Istogrammi e densità</h2>
 <p>Supponiamo di simulare delle variabili aleatorie continue <span class="math inline">\(X_1,\dots, X_R\)</span>, aventi una certa <strong>densità</strong> <span class="math inline">\(f(x)\)</span>.</p>
@@ -707,11 +632,11 @@ Nota
 <p>In tale contesto, l’istogramma costituisce un’approssimazione della densità.</p>
 <p>In termini più precisi, diremo che l’<strong>istogramma</strong> è uno <strong>stimatore</strong> nonparametrico della <strong>densità</strong> <span class="math inline">\(f(x)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">100</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>) <span class="co"># add = TRUE Aggiunge la curva al grafico precedente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">100</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>) <span class="co"># add = TRUE Aggiunge la curva al grafico precedente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="un_I_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="un_I_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -734,21 +659,214 @@ p(x) = \mathbb{P}(X = x),
 \]</span> utilizzando un metodo Monte Carlo.</p>
 <p>Supponendo di poter simulare <span class="math inline">\(X_1,\dots,X_R\)</span>. Allora, una stima per <span class="math inline">\(p(x)\)</span> è semplicemente pari alla proporzione di valori pari <span class="math inline">\(x\)</span> che abbiamo ottenuto.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># Simulazione di R variabili Poisson con media 10</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>freq_rel <span class="ot">&lt;-</span> <span class="fu">table</span>(X) <span class="sc">/</span> <span class="fu">sum</span>(X) <span class="co"># Calcolo delle frequenze relative</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Grafici</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(freq_rel, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">main =</span> <span class="st">"Distribuzione empirica"</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">28</span>, <span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">10</span>),</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>,</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">main =</span> <span class="st">"Distribuzione teorica"</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># Simulazione di R variabili Poisson con media 10</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>freq_rel <span class="ot">&lt;-</span> <span class="fu">table</span>(X) <span class="sc">/</span> <span class="fu">sum</span>(X) <span class="co"># Calcolo delle frequenze relative</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Grafici</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(freq_rel, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">main =</span> <span class="st">"Distribuzione empirica"</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">28</span>, <span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">10</span>),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">main =</span> <span class="st">"Distribuzione teorica"</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="un_I_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="un_I_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="esercizio-riassuntivo-i-1" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-i-1">Esercizio riassuntivo I</h2>
+<p>Si calcoli tramite Monte Carlo il valore del seguente integrale e se ne quantifichi l’incertezza <span class="math display">\[
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty\sin^2(x)e^{-x^2/2}\mathrm{d}x.
+\]</span></p>
+<p>Si confronti il risultato con la funzione <code>integrate</code>.</p>
+<section id="schema-della-soluzione-1" class="level4">
+<h4 class="anchored" data-anchor-id="schema-della-soluzione-1">Schema della soluzione</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>hX <span class="ot">&lt;-</span> <span class="fu">sin</span>(X)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hX) <span class="co"># Estimate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.43398</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(hX) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>) <span class="co"># Std.error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001097362</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integrazione numerica</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">sin</span>(x)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">dnorm</span>(x), <span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.4323324 with absolute error &lt; 9.8e-06</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="esercizio-riassuntivo-ii" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-ii">Esercizio riassuntivo II</h2>
+<p>Si supponga di voler approssimare tramite Monte Carlo il seguente valore atteso <span class="math display">\[
+\mathbb{E}(X^2), \qquad X \sim \text{Ga}(3, 3).
+\]</span></p>
+<p>Si dica, motivando la risposta, quale codice produce il risultato corretto.</p>
+<section id="codice-1" class="level4">
+<h4 class="anchored" data-anchor-id="codice-1">Codice 1</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9990672</code></pre>
+</div>
+</div>
+</section>
+<section id="codice-2" class="level4">
+<h4 class="anchored" data-anchor-id="codice-2">Codice 2</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X <span class="sc">*</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.335139</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="esercizio-riassuntivo-iii" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo-iii">Esercizio riassuntivo III</h2>
+<p>Nel video seguente del canale <strong>Veritasium</strong>, viene descritto un <strong>enigma</strong> che coinvolge un numero <span class="math inline">\(n = 100\)</span> di prigionieri.</p>
+<p>Utilizzando la cosiddetta “<em>loop strategy</em>” che viene descritta nel video, si approssimi tramite Monte Carlo la probabilità di successo dei prigionieri, per <span class="math inline">\(n = 100\)</span>.</p>
+<p>I risultati sono coerenti con quanto descritto nel video?</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/iSNsgj1OCLA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="schema-della-soluzione-2" class="level4">
+<h4 class="anchored" data-anchor-id="schema-della-soluzione-2">Schema della soluzione</h4>
+<p>I numeri nelle scatole, sconosciuti ai prigionieri, vengono generati casualmente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># Numero di prigionieri</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">400</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>boxes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n) <span class="co"># Effettua una permutazione dei numeri 1:n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Per cui in questo caso (con questo <code>seed</code>), nella scatola <code>51</code> è contenuto il numero <code>97</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>boxes[<span class="dv">51</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 97</code></pre>
+</div>
+</div>
+<p>In questa caso, le scatole contengono i numeri seguenti</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>boxes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  23  87  92  86  28  14  13  95  71  41  45  36  42  21  96  82  53  89
+ [19]  65  69  35  20  54  57  47  27  10  62  18  60   4   1   9  93  44  79
+ [37]  49  22  98  85  26   8  83  91  33  50  90  77   7   3  97  29  12  52
+ [55]  94  61  64  39   2  51  99  88  30  48  70  76  66  15  80   5  25  58
+ [73]   6  37  56 100  43  17  74  19  11  55  68  84  72  40  81  63  38  46
+ [91]  59  75  78  34  24  73  32  31  67  16</code></pre>
+</div>
+</div>
+<p>Controlliamo se tramite la “<em>loop strategy</em>” i prigionieri riescono a trovare il loro numero all’interno delle scatole.</p>
+<p>Partiamo dal primo prigioniero, che verificherà se il suo numero è presente nella prima scatola. In altri termini:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> boxes[<span class="dv">1</span>] <span class="sc">==</span> <span class="dv">1</span> <span class="co"># TRUE se il PRIMO prigioniero ha trovato il suo numero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se no, il prigionieri controlla anche in tutte le scatole seguenti, ovvero</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop strategy, per il PRIMO prigioniero</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>box_checked <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Il PRIMO prigioniero parte dalla prima scatola</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(n <span class="sc">/</span> <span class="dv">2</span>)) {</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (boxes[box_checked] <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    found <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  box_checked <span class="ot">&lt;-</span> boxes[box_checked]</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>found</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Il primo prigioniero, ha trovato il suo numero. Ora verifichiamo se <strong>tutti i prigionieri</strong> riescono a fare lo stesso:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">FALSE</span>, n) <span class="co"># Vettore di TRUE/FALSE che identifica se i prigionieri hanno trovato il proprio numero.</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  box_checked <span class="ot">&lt;-</span> j <span class="co"># Il j-esimo prigioniero, parte dalla j-esima scatola</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n <span class="sc">/</span> <span class="dv">2</span>)) {</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (boxes[box_checked] <span class="sc">==</span> j) {</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>      found[j] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    box_checked <span class="ot">&lt;-</span> boxes[box_checked]</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Alcuni prigionieri riescono a trovare la loro scatola. In questo caso, tuttavia, non tutti individuano il proprio numero. Infatti:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>found</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+ [13] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE
+ [25] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+ [37] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [49] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE
+ [61] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE
+ [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE
+ [85]  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [97]  TRUE  TRUE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(found) <span class="co"># TRUE solamente se tutti i valori del vettore sono TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Mettiamo quindi tutti i pezzi assieme, per poter svolgere la simulazione Monte Carlo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>loop_strategy <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  boxes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  found <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">FALSE</span>, n)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>    box_checked <span class="ot">&lt;-</span> j</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n <span class="sc">/</span> <span class="dv">2</span>)) {</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (boxes[box_checked] <span class="sc">==</span> j) {</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>        found[j] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>      box_checked <span class="ot">&lt;-</span> boxes[box_checked]</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(found)</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Effettuo la simulazione, per R = 10000</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">200</span>)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">loop_strategy</span>(<span class="at">n =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>estimate <span class="ot">&lt;-</span> <span class="fu">mean</span>(Z) <span class="co"># Stima della probabilità di successo</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>std.error <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(estimate <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> estimate) <span class="sc">/</span> R)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">c</span>(estimate, std.error)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"estimate"</span>, <span class="st">"std.error"</span>) <span class="co"># Aggiungo solo per ragioni estetiche</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   estimate   std.error 
+0.314000000 0.004641164 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="esercizi-aggiuntivi-non-risolti" class="level2">
+<h2 class="anchored" data-anchor-id="esercizi-aggiuntivi-non-risolti">Esercizi aggiuntivi (non risolti)</h2>
+<section id="esercizio-1" class="level4">
+<h4 class="anchored" data-anchor-id="esercizio-1">Esercizio 1</h4>
+<p>Si ottenga un’approssimazione Monte Carlo del seguente integrale <span class="math display">\[
+\int_0^\infty x^4 e^{-x}\mathrm{d}x
+\]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
+</section>
+<section id="esercizio-2" class="level4">
+<h4 class="anchored" data-anchor-id="esercizio-2">Esercizio 2</h4>
+<p>Si ottenga un’approssimazione Monte Carlo del seguente integrale <span class="math display">\[
+\int_0^1 x^{1/2}(1 - x)^{1/2}\mathrm{d}x
+\]</span> e si quantifichi l’errore commesso. Si confronti il risultato con la funzione <code>integrate</code>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
