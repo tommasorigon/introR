@@ -186,7 +186,7 @@
     "href": "lezioni/un_D.html#gli-istogrammi-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Gli istogrammi II",
-    "text": "Gli istogrammi II\nConcentriamoci inizialmente solo sul gruppo di nascite non premature, per capire il funzionamento della sintassi di R.\n\npar(mfrow = c(1, 2)) # Divide il grafico in due parti\n\n# Primo grafico, frequenze assolute\nhist(dde_non_preterm,\n  freq = TRUE,\n  breaks = 10, # Utilizzo 10 sotto-intervalli\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"Istogramma di DDE (nascite non premature)\",\n  xlab = \"DDE\",\n  ylab = \"Frequenze assolute\"\n)\n\n# Secondo grafico, densità\nhist(dde_non_preterm,\n  freq = FALSE, # NON vengono usate le frequenze\n  breaks = 10, # Utilizzo 10 sotto-intervalli\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"Istogramma di DDE (nascite non premature)\",\n  xlab = \"DDE\",\n  ylab = \"Densità\"\n)\n\n\n\n\nIstogramma basato sulle frequenze assolute (sinistra) e sulla densità (destra), solamente per il gruppo di nascite non premature."
+    "text": "Gli istogrammi II\nConcentriamoci inizialmente solo sul gruppo di nascite non premature, per capire il funzionamento della sintassi di R.\n\npar(mfrow = c(1, 2)) # Divide il grafico in due parti\n\n# Primo grafico, frequenze assolute\nhist(dde_non_preterm,\n  freq = TRUE,\n  breaks = 10, # Utilizzo 10 sotto-intervalli\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"Nascite non premature\",\n  xlab = \"DDE\",\n  ylab = \"Frequenze assolute\"\n)\n\n# Secondo grafico, densità\nhist(dde_non_preterm,\n  freq = FALSE, # NON vengono usate le frequenze\n  breaks = 10, # Utilizzo 10 sotto-intervalli\n  # Da qui in poi stiamo solo aggiungendo dettagli estetici\n  main = \"Nascite non premature\",\n  xlab = \"DDE\",\n  ylab = \"Densità\"\n)\n\n\n\n\nIstogramma basato sulle frequenze assolute (sinistra) e sulla densità (destra), solamente per il gruppo di nascite non premature."
   },
   {
     "objectID": "lezioni/un_D.html#gli-istogrammi-iii",
@@ -214,7 +214,7 @@
     "href": "lezioni/un_D.html#confronto-tra-le-due-distribuzioni",
     "title": "R per l’analisi statistica multivariata",
     "section": "Confronto tra le due distribuzioni",
-    "text": "Confronto tra le due distribuzioni\nQuesto grafico conclusivo consente finalmente di confrontare le due distribuzioni.\n\nhist(dde_non_preterm, # Gruppo nascite non-premature\n  freq = FALSE,\n  main = \"Istogramma di DDE (nascite non premature)\"\n)\n\n\n\nhist(dde_preterm, # Gruppo nascite premature\n  freq = FALSE,\n  main = \"Istogramma di DDE (nascite premature)\"\n)\n\n\n\n\nEventualmente, è possibile selezionare una regola diversa ponendo breaks = \"FD\".\nLa distribuzione di “nascite premature” risulta più spostata a destra."
+    "text": "Confronto tra le due distribuzioni\nQuesto grafico conclusivo consente finalmente di confrontare le due distribuzioni.\n\nhist(dde_non_preterm, # Gruppo nascite non-premature\n  freq = FALSE,\n  main = \"Nascite non premature\"\n)\n\n\n\nhist(dde_preterm, # Gruppo nascite premature\n  freq = FALSE,\n  main = \"Nascite premature\"\n)\n\n\n\n\nEventualmente, è possibile selezionare una regola diversa ponendo breaks = \"FD\".\nLa distribuzione di “nascite premature” risulta più spostata a destra."
   },
   {
     "objectID": "lezioni/un_D.html#la-funzione-di-ripartizione-empirica-i",
