@@ -1747,7 +1747,7 @@
     "href": "lezioni/un_I.html#errare-è-lunica-certezza",
     "title": "R per l’analisi statistica multivariata",
     "section": "Errare è l’unica certezza",
-    "text": "Errare è l’unica certezza\nCome tutte le approssimazioni, anche il metodo Monte Carlo comporta un errore.\nLa peculiarità delle approssimazioni Monte Carlo è che sono, per definizione, casuali.\nQuesto significa che ogni volta che eseguiamo la procedura otteniamo un valore leggermente diverso. Ad esempio:\n\nset.seed(100) # Imposto un seed diverso da prima\nZ <- cos(rnorm(R, 0, 1)) > 0 # Calcolo gli indicatori (codice in forma compatta)\nmean(Z)\n\n[1] 0.8878\n\n\nPer cui sia la stima ottenuta che l’errore commesso sono aleatori!\nFortunatamente, questo è un contesto che dovreste conoscere molto bene. La nostra procedura Monte Carlo è infatti, a tutti gli effetti, uno stimatore di \\(\\pi\\). ## Come mai funziona?\nSiano \\(Z_1,\\dots,Z_R\\) delle variabili aleatorie binarie indipendenti ed identicamente distribuite, aventi la stessa distribuzione della variabile \\(Z \\sim \\text{Ber}(\\pi)\\). Lo stimatore \\[\n\\hat{\\pi} = \\frac{1}{R}\\sum_{r=1}^R Z_r = (\"\\text{Proporzione di successi}\"),\n\\] coincide con l’approssimazione Monte Carlo.\nLo stimatore \\(\\hat{\\pi}\\) ha delle ottime proprietà inferenziali, che si studiano in un qualsiasi corso di inferenza statistica; torneremo a parlare di stimatori nell’unità M.\nIn primo luogo, lo stimatore \\(\\hat{\\pi}\\) è non distorto, infatti: \\[\n\\mathbb{E}(\\hat{\\pi}) = \\frac{1}{R}\\sum_{r=1}^R \\mathbb{E}(Z_r) =  \\frac{1}{R}\\sum_{r=1}^R \\mathbb{P}(Z = 1) =  \\mathbb{P}(Z = 1) = \\pi.\n\\]\nInoltre, lo stimatore \\(\\hat{\\pi}\\) è consistente, infatti per la legge (forte) dei grandi numeri si ottiene che: \\[\n\\hat{\\pi}  = \\frac{1}{R}\\sum_{r=1}^R Z_r \\overset{\\text{q.c.}}{\\longrightarrow} \\mathbb{P}(Z = 1) = \\pi, \\qquad R \\rightarrow \\infty.\n\\]"
+    "text": "Errare è l’unica certezza\nCome tutte le approssimazioni, anche il metodo Monte Carlo comporta un errore.\nLa peculiarità delle approssimazioni Monte Carlo è che sono, per definizione, casuali.\nQuesto significa che ogni volta che eseguiamo la procedura otteniamo un valore leggermente diverso. Ad esempio:\n\nset.seed(100) # Imposto un seed diverso da prima\nZ <- cos(rnorm(R, 0, 1)) > 0 # Calcolo gli indicatori (codice in forma compatta)\nmean(Z)\n\n[1] 0.8878\n\n\nPer cui sia la stima ottenuta che l’errore commesso sono aleatori!\nFortunatamente, questo è un contesto che dovreste conoscere molto bene. La nostra procedura Monte Carlo è infatti, a tutti gli effetti, uno stimatore di \\(\\pi\\)."
   },
   {
     "objectID": "lezioni/un_I.html#la-varianza-dello-stimatore-i",
@@ -2210,5 +2210,12 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Consistenza III",
     "text": "Consistenza III\n\npar(mfrow=c(1,1))\nplot(nn, theta_hat,\n  type = \"b\",\n  xlab = \"Numerosità campionaria\",\n  ylab = \"Massima verosimiglianza\"\n)"
+  },
+  {
+    "objectID": "lezioni/un_I.html#come-mai-funziona",
+    "href": "lezioni/un_I.html#come-mai-funziona",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Come mai funziona?",
+    "text": "Come mai funziona?\nSiano \\(Z_1,\\dots,Z_R\\) delle variabili aleatorie binarie indipendenti ed identicamente distribuite, aventi la stessa distribuzione della variabile \\(Z \\sim \\text{Ber}(\\pi)\\). Lo stimatore \\[\n\\hat{\\pi} = \\frac{1}{R}\\sum_{r=1}^R Z_r = (\\text{``Proporzione di successi''}),\n\\] coincide con l’approssimazione Monte Carlo.\nLo stimatore \\(\\hat{\\pi}\\) ha delle ottime proprietà inferenziali, che si studiano in un qualsiasi corso di inferenza statistica; torneremo a parlare di stimatori nell’unità M.\nIn primo luogo, lo stimatore \\(\\hat{\\pi}\\) è non distorto, infatti: \\[\n\\mathbb{E}(\\hat{\\pi}) = \\frac{1}{R}\\sum_{r=1}^R \\mathbb{E}(Z_r) =  \\frac{1}{R}\\sum_{r=1}^R \\mathbb{P}(Z = 1) =  \\mathbb{P}(Z = 1) = \\pi.\n\\]\nInoltre, lo stimatore \\(\\hat{\\pi}\\) è consistente, infatti per la legge (forte) dei grandi numeri si ottiene che: \\[\n\\hat{\\pi}  = \\frac{1}{R}\\sum_{r=1}^R Z_r \\overset{\\text{q.c.}}{\\longrightarrow} \\mathbb{P}(Z = 1) = \\pi, \\qquad R \\rightarrow \\infty.\n\\]"
   }
 ]
