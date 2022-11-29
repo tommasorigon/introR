@@ -1,21 +1,28 @@
+## --------------------------------------------------------------------------------
 set.seed(100)
 n <- 20 # Numerosità campionaria
 mu <- 10 # Media teorica (solitamente ignota)
 
 # Campione y_1,...,y_n
-x <- rnorm(n, mean = mu, sd = sqrt(16))
+y <- rnorm(n, mean = mu, sd = sqrt(16))
 
 # Vero valore è mu = 10
-mean(x)
-median(x)
+mean(y) 
+median(y) 
 
+
+## --------------------------------------------------------------------------------
 set.seed(156)
 R <- 10^5
 # Ottengo R estrazioni della mediana campionaria Me_1,...Me_R
 median_hat <- replicate(R, median(rnorm(n = n, mean = mu, sd = sqrt(16))))
 
+
+## --------------------------------------------------------------------------------
 mean((median_hat - mu)^2) # Stima dello scarto quadratico medio (MSE) della mediana
 
+
+## --------------------------------------------------------------------------------
 set.seed(156)
 R <- 10^5
 
@@ -28,15 +35,17 @@ mean((mu_hat - mu)^2) # Scarto quadratico medio dello stimatore; valore teorico:
 mean(median_hat) - mu # Distorsione dello stimatore; valore teorico: ??
 mean((median_hat - mu)^2) # Scarto quadratico medio dello stimatore; valore teorico: ??
 
+
+## --------------------------------------------------------------------------------
 par(mfrow = c(1, 2))
 hist(mu_hat, breaks = 100, freq = F)
 hist(median_hat, breaks = 100, freq = F)
 
+
+## --------------------------------------------------------------------------------
 set.seed(520)
-R <- 10^5
-n <- 20
-mu <- 0
-sigma2 <- 16
+R <- 10^5; n <- 20
+mu <- 0; sigma2 <- 16
 
 # Definisco le funzioni che calcolano gli stimatori
 var1 <- function(x) mean(x^2) - mean(x)^2
@@ -62,6 +71,8 @@ mean((S2_2 - sigma2)^2)
 mean((S2_3 - sigma2)^2)
 mean((S2_4 - sigma2)^2)
 
+
+## --------------------------------------------------------------------------------
 theta0 <- 40
 
 # Numerosità campionarie
@@ -78,8 +89,12 @@ theta_hat <- c(
 )
 theta_hat
 
+
+## --------------------------------------------------------------------------------
+par(mfrow=c(1,1))
 plot(nn, theta_hat,
   type = "b",
   xlab = "Numerosità campionaria",
   ylab = "Massima verosimiglianza"
 )
+

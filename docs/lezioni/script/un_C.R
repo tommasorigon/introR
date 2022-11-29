@@ -1,78 +1,126 @@
+## --------------------------------------------------------------------------------
 getwd() # Identifica la cartella di lavoro (get working directory)
-# [1] "/Users/tommaso/Google Drive/University/Bicocca/Didattica/Laboratorio Statistica/introR"
 
+
+## --------------------------------------------------------------------------------
 # LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv NEL PROPRIO PC
-path <- "calcio.csv" # Questo è il percorso del file, relativo a getwd()
+path <- "../dataset/calcio.csv" # Questo è il percorso del file, relativo a getwd()
 
-path <- "https://tommasorigon.github.io/introR/data/calcio.csv"
 
+## --------------------------------------------------------------------------------
+path <- "https://tommasorigon.github.io/introR/dataset/calcio.csv"
+
+
+## --------------------------------------------------------------------------------
 calcio <- read.table(path, header = TRUE, sep = ",")
 
-calcio <- read.table("calcio.csv", header = TRUE, sep = ",")
 
+## --------------------------------------------------------------------------------
+## calcio <- read.table("calcio.csv", header = TRUE, sep = ",")
+
+
+## --------------------------------------------------------------------------------
 dim(calcio) # Equivalente a c(nrow(calcio), ncol(calcio))
 
+
+## --------------------------------------------------------------------------------
 head(calcio) # Comando equivalente: calcio[1:6, ]
 
+
+## --------------------------------------------------------------------------------
 tail(calcio) # Comando equivalente: calcio[1895:1900, ]
 
+
+## --------------------------------------------------------------------------------
 colnames(calcio) # Per accedere ai nomi delle variabili
 
+
+## --------------------------------------------------------------------------------
 str(calcio)
 
+
+## --------------------------------------------------------------------------------
 is.numeric(calcio$B365H) # Verifico che si tratta di una variabile di tipo numeric
-
 class(calcio$B365H)
-
 calcio$B365H[1:10] # Primi 10 elementi di un vettore R
 
+
+## --------------------------------------------------------------------------------
 calcio$HomeTeam <- factor(calcio$HomeTeam)
 calcio$AwayTeam <- factor(calcio$AwayTeam)
 calcio$FTR <- factor(calcio$FTR)
 
+
+## --------------------------------------------------------------------------------
 calcio <- read.table(path, header = TRUE, sep = ",", stringsAsFactors = TRUE)
 
-class(calcio$HomeTeam)
-calcio$HomeTeam[1:10]
 
+## --------------------------------------------------------------------------------
 levels(calcio$HomeTeam)
 
+
+## --------------------------------------------------------------------------------
 calcio$FTR[1:10]
 levels(calcio$FTR) <- c("Away", "Draw", "Home") # Rinomino le modalità
 calcio$FTR[1:10]
 
+
+## --------------------------------------------------------------------------------
 calcio$Draw <- calcio$FTR # Creo una copia della variabile FTR chiamata Draw
 levels(calcio$Draw) <- c("Not_Draw", "Draw", "Not_Draw") # Accorpamento delle modalità
+
 calcio$Draw[1:10]
 
+
+## --------------------------------------------------------------------------------
 calcio$Date <- as.Date(calcio$Date, format = "%Y-%m-%d")
 class(calcio$Date)
 calcio$Date[1:10]
 
+
+## --------------------------------------------------------------------------------
 min(calcio$Date) # Prima partita giocata
 max(calcio$Date) # Ultima partita giocata
 
+
+## --------------------------------------------------------------------------------
 calcio[c(1806, 501, 109), ]
 
+
+## --------------------------------------------------------------------------------
 calcio_draw <- calcio[calcio$FTR == "Draw", ]
 head(calcio_draw)
 
+
+## --------------------------------------------------------------------------------
 calcio_home <- calcio[calcio$B365H > 9, ]
 calcio_home
 
+
+## --------------------------------------------------------------------------------
 calcio[rowSums(is.na(calcio)) > 0, ] # Identifica le righe con valori mancanti
 
+
+## --------------------------------------------------------------------------------
 calcio_no_na <- na.omit(calcio)
 dim(calcio_no_na)
 
+
+## --------------------------------------------------------------------------------
 calcio_home <- subset(calcio, subset = B365H > 9)
 calcio_home
 
+
+## --------------------------------------------------------------------------------
 calcio_B365 <- subset(calcio, select = c(B365H, B365D, B365A))
 head(calcio_B365)
 
+
+## --------------------------------------------------------------------------------
 str(calcio)
 
+
+## --------------------------------------------------------------------------------
 # Calcolo dell'aggio
 calcio$aggio <- 1 / calcio$B365H + 1 / calcio$B365D + 1 / calcio$B365A - 1
 
@@ -86,3 +134,4 @@ calcio[which.max(calcio$aggio), ]
 # Il campionato di Serie A inizia a fine Agosto e finisce a fine Maggio
 calcio2009_2010 <- subset(calcio, Date <= "2009-08-15" & Date <= "2010-06-15")
 calcio2009_2010[which.max(calcio2009_2010$aggio), ]
+
