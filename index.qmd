@@ -46,7 +46,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 
 | Argomenti                                        | Materiale didattico                        | Materiale aggiuntivo                        | Sezioni libro di testo                                  |
 |--------------------------------------------------|--------------------------------------------|---------------------------------------------|---------------------------------------------------------|
-| Introduzione al corso                            | [Unità introduttiva](lezioni/un_intro.pdf) |                                             |                                                         |
+| Introduzione al corso                            | [Unità introduttiva](lezioni/un_intro.html) |                                             |                                                         |
 |                                                  | **INTRODUZIONE AD R**                      |                                             |                                                         |
 | A-B-C: calcolo scientifico ed algebra lineare    | [Unità A](lezioni/un_A.html)               | [Codice R](lezioni/script/un_A.R)           | **AR** §1.1, §1.3, §A1 --- §A3                          |
 | Elementi di programmazione                       | [Unità B](lezioni/un_B.html)               | [Codice R](lezioni/script/un_B.R)           | **AR** §1.2, §1.6 --- §1.8                              |
