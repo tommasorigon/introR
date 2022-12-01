@@ -921,7 +921,7 @@
     "href": "lezioni/un_intro.html",
     "title": "R per l’analisi statistica multivariata",
     "section": "",
-    "text": "L’insegnamento di Analisi Statistica Multivariata (ASM, 15 CFU) è articolato in 3 moduli.\n\nModulo 1. R per l’Analisi Statistica Multivariata (ASM-R, 3 CFU, II ciclo). Docente: prof. Tommaso Rigon.\nModulo 2. Modelli Statistici (ASM-MS, 6 CFU, III ciclo). Docente: prof. Roberto Ascari.\nModulo 3. Analisi Esplorativa (ASM-AE, 6 CFU, IV ciclo). Docente: prof. Gianna Monti.\n\nIl coordinatore del corso è la prof. Gianna Monti (gianna.monti@unimib.it)."
+    "text": "L’analisi statistica multivariata riguarda l’analisi congiunta di più variabili misurate sul medesimo insieme di unità statistiche.\nNei corsi precedenti (ad es. Statistica I), ci si è concentrati su una o due variabili alla volta. In contesti reali le variabili coinvolte sono quasi sempre ben più di 2.\nIl modulo AE è la naturale prosecuzione di un corso di statistica descrittiva, applicato al caso in cui le variabili sono più di 2.\nIl modulo MS estende e analizza nel dettaglio il modello lineare, nel caso in cui le variabili esplicative sono molte.\nLe tecniche per l’analisi di dati multivariati possono avere una natura descrittiva / esplorativa (AE) oppure inferenziale (MS)."
   },
   {
     "objectID": "lezioni/un_intro.html#organizzazione-del-corso",
