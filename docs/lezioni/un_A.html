@@ -269,7 +269,6 @@ Nota
 <pre><code>[1] 0.7853982</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Per calcolare la potenza <span class="math inline">\(a^b\)</span> si usa:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span> <span class="co"># Sintassi alternativa: 2**5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -277,8 +276,6 @@ Nota
 <pre><code>[1] 32</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>Le quantità <span class="math inline">\(\sqrt{2}\)</span> e <span class="math inline">\(\sin(\pi/4)\)</span> si ottengono invece con i comandi:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -290,8 +287,6 @@ Nota
 <pre><code>[1] 0.7071068</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -305,7 +300,6 @@ Nota
 <p>Tutto ciò che viene scritto dopo un cancelletto (<code>#</code>) è considerato un <strong>commento</strong>.</p>
 </div>
 </div>
-</div>
 </section>
 <section id="assegnazione-di-un-valore" class="level2">
 <h2 class="anchored" data-anchor-id="assegnazione-di-un-valore">Assegnazione di un valore</h2>
@@ -314,7 +308,6 @@ Nota
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assegna il valore 5 all'oggetto x</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>) <span class="co"># Sintassi alternativa (sconsigliata): x = sqrt(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="incremental">
 <p>Il valore contenuto in <code>x</code> può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio <code>y</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> pi <span class="co"># ovvero pi greco + radice quadrata di 5</span></span>
@@ -323,14 +316,10 @@ Nota
 <pre><code>[1] 5.377661</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>Per <strong>rimuovere un oggetto</strong> dalla memoria, si usa il comando <code>rm</code>, ovvero <em>remove</em>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x) <span class="co"># x non è più presente nel "workspace"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="incremental">
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -344,13 +333,11 @@ Nota
 <p><strong>R</strong> è <em>case sensitive</em>, pertanto l’oggetto <code>x</code> è diverso dall’oggetto <code>X</code>.</p>
 </div>
 </div>
-</div>
 </section>
 <section id="pulizia-del-workspace" class="level2">
 <h2 class="anchored" data-anchor-id="pulizia-del-workspace">Pulizia del <em>workspace</em></h2>
 <p>È buona norma mantenere pulito il <em>workspace</em>, ovvero l’ambiente di lavoro.</p>
 <p>Se un oggetto non è più necessario, è possibile eliminarlo tramite il comando <code>rm</code>.</p>
-<div class="incremental">
 <p>È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>() <span class="co"># Nel workspace è presente l'oggetto y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -358,12 +345,9 @@ Nota
 <pre><code>[1] "y"</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>Pertanto, per <strong>eliminare</strong> tutti gli <strong>oggetti</strong> salvati, si può usare</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </section>
 <section id="alcune-funzioni-matematiche-i" class="level2">
@@ -373,7 +357,6 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="co"># Esempio di numero reale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(x) <span class="co"># Esponenziale e logaritmo naturale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -384,8 +367,6 @@ Nota
 <pre><code>[1] -0.6931472</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x) <span class="co"># Valore assoluto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -394,7 +375,6 @@ Nota
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sign</span>(x) <span class="co"># Funzione segno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -414,7 +394,6 @@ Nota
 <pre><code>[1] 0.5463025</code></pre>
 </div>
 </div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">asin</span>(x) <span class="co"># Funzioni trigonometriche inverse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -429,8 +408,6 @@ Nota
 <pre><code>[1] 0.4636476</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -444,19 +421,15 @@ Nota
 <p>Le funzioni di <strong>R</strong> si possono combinare tra loro, ad esempio <code>log(abs(x))</code>.</p>
 </div>
 </div>
-</div>
 </section>
 <section id="ulteriori-funzioni-matematiche-i" class="level2">
 <h2 class="anchored" data-anchor-id="ulteriori-funzioni-matematiche-i">Ulteriori funzioni matematiche I</h2>
 <p>Supponiamo che <code>x</code> e <code>y</code> siano due <strong>numeri reali</strong>. Inoltre, siano <code>n</code> e <code>k</code> due <strong>numeri naturali</strong>.</p>
-<div class="incremental">
 <p>Si noti l’uso del <code>;</code> che può essere usato per separare due comandi nella stessa riga.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span> <span class="co"># Numeri reali </span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>; k <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Numeri naturali</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(n) <span class="co"># n!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -467,8 +440,6 @@ Nota
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arrotonda x usando 2 cifre decimali</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -483,7 +454,6 @@ Nota
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="ulteriori-funzioni-matematiche-ii" class="level2">
 <h2 class="anchored" data-anchor-id="ulteriori-funzioni-matematiche-ii">Ulteriori funzioni matematiche II</h2>
@@ -494,13 +464,11 @@ Nota
 <pre><code>[1] 1.772454</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>La funzione beta <span class="math inline">\(\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds\)</span> si calcola in <strong>R</strong> come segue:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">beta</span>(x, y) <span class="co"># Funzione beta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.206546</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -519,13 +487,10 @@ Nota
 <h2 class="anchored" data-anchor-id="la-documentazione-ufficiale">La documentazione ufficiale</h2>
 <p>La documentazione di <strong>R</strong> è la principale fonte di informazioni.</p>
 <p>A cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella <strong>documentazione ufficiale</strong> e non in queste slide.</p>
-<div class="incremental">
 <p>Il comando <code>? funzione</code> apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>? log <span class="co"># Documentazione della funzione log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="incremental">
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -537,7 +502,6 @@ Nota riguardante l’esame
 </div>
 <div class="callout-body-container callout-body">
 <p>Durante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.</p>
-</div>
 </div>
 </div>
 </section>
@@ -554,7 +518,6 @@ Nota riguardante l’esame
 <pre><code>[1] 1e-15</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Per questioni di approssimazione numerica, quando un numero è troppo grande <strong>R</strong> riporta <code>Inf</code>, ovvero <strong>infinito</strong>. Per esempio:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">1000</span> <span class="co"># Numero molto grande, anche se finito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -562,8 +525,6 @@ Nota riguardante l’esame
 <pre><code>[1] Inf</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>Il simbolo <code>NaN</code> significa invece <em>Not a Number</em> e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="co"># Questo comando genera inoltre un avviso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -572,7 +533,6 @@ Nota riguardante l’esame
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NaN</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -585,18 +545,14 @@ Nota riguardante l’esame
 <pre><code>[1] 1.224647e-16</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p><strong>R</strong> è uno strumento di calcolo numerico e pertanto sono sempre presenti <strong>errori di approssimazione numerica</strong>.</p>
 <p>Fortunatamente, nella maggior parte dei casi pratici la differenza tra <span class="math inline">\(0\)</span> e <span class="math inline">\(10^{-16}\)</span> è del tutto irrilevante.</p>
 <p>In altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.</p>
-</div>
-<div class="incremental">
 <p>Ad ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -615,10 +571,7 @@ Nota riguardante l’esame
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Il valore di <code>a</code> è un indicatore <strong>binario</strong> o <strong>booleano</strong>, ovvero può essere vero (<code>TRUE</code>) oppure falso (<code>FALSE</code>).</p>
-</div>
-<div class="incremental">
 <p>Altre <strong>funzioni logiche</strong> disponibili (assumendo che <code>y</code> sia un numero e <code>b</code> un booleano) sono:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span>; b <span class="ot">&lt;-</span> <span class="cn">FALSE</span>; x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
@@ -639,7 +592,6 @@ Nota riguardante l’esame
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="vettori" class="level2">
 <h2 class="anchored" data-anchor-id="vettori">Vettori</h2>
@@ -651,7 +603,6 @@ Nota riguardante l’esame
 <pre><code>[1]  4  2  2  8 10</code></pre>
 </div>
 </div>
-<div class="incremental">
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -673,7 +624,6 @@ Nota
 <pre><code>[1] "A"  "B"  "2"  "8"  "10"</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="creazione-di-vettori" class="level2">
 <h2 class="anchored" data-anchor-id="creazione-di-vettori">Creazione di vettori</h2>
@@ -685,7 +635,6 @@ Nota
 <pre><code>[1]  5  6  7  8  9 10</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Per creare una successione di <strong>numeri reali</strong> si usa il comando <code>seq</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
@@ -694,15 +643,12 @@ Nota
 <pre><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>Per creare un vettore di <strong>valori ripetuti</strong> si usa il comando <code>rep</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">7</span>) <span class="co"># Vettore in cui il numero 10 è ripetuto 7 volte</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 10 10 10 10 10 10</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -715,7 +661,6 @@ Nota
 <pre><code>[1]   4.218282   9.389056  22.585537  57.598150 151.913159 407.428793</code></pre>
 </div>
 </div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># Esempio 2</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -723,16 +668,12 @@ Nota
 <pre><code>[1] 1 2 3 4 5 6</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="co"># Esempio 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>Altre funzioni invece sono utili proprio nel caso in cui l’<strong>argomento</strong> sia un <strong>vettore</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
@@ -747,7 +688,6 @@ Nota
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="co"># Somme cumulate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  2  5  6  9 19 24</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -777,7 +717,6 @@ Nota
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Infine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x) <span class="co"># Valore massimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -791,7 +730,6 @@ Nota
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x) <span class="co"># Equivalente a: c(min(x), max(x))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 10</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -818,9 +756,7 @@ Nota
 <pre><code>[1] 10  7</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>L’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una <strong>condizione</strong> relativa al vettore stesso.</p>
-</div>
 </section>
 <section id="operazione-sui-vettori-avvertenze" class="level2">
 <h2 class="anchored" data-anchor-id="operazione-sui-vettori-avvertenze">Operazione sui vettori: avvertenze</h2>
@@ -838,7 +774,6 @@ Warning
 <p>La maggior parte dei linguaggi di programmazione restituisce un errore. <strong>R</strong> invece esegue ugualmente l’operazione “allungando” il vettore più corto.</p>
 </div>
 </div>
-<div class="incremental">
 <p>In questo primo esempio, quantomeno <strong>R</strong> restituisce un <em>warning</em>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenazione di vettori</span></span>
@@ -853,8 +788,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <pre><code>[1]  2  4  6  8 10  7</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>In questo secondo esempio, invece, <strong>R</strong> non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
@@ -864,12 +797,10 @@ lunghezza più corta dell'oggetto</code></pre>
 <pre><code>[1] 2 4 6 5 7 9</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="matrici" class="level2">
 <h2 class="anchored" data-anchor-id="matrici">Matrici</h2>
 <p>Una <strong>matrice</strong> <span class="math inline">\({\bf A}\)</span> è una collezione di elementi <span class="math inline">\((a)_{ij}\)</span> per <span class="math inline">\(i=1,\dots,n\)</span> e <span class="math inline">\(j=1,\dots,m\)</span>.</p>
-<div class="incremental">
 <p>Per esempio, la matrice quadrata di dimensione <span class="math inline">\(2 \times 2\)</span></p>
 <p><span class="math display">\[{\bf A} = \begin{pmatrix}
 5 &amp; 2\\
@@ -884,13 +815,10 @@ lunghezza più corta dell'oggetto</code></pre>
 [2,]    1    4</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>È inoltre possibile elencare gli elementi <strong>riga per riga</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione equivalente</span></span>
 <span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </section>
 <section id="vettori-riga-e-vettori-colonna" class="level2">
@@ -907,7 +835,6 @@ lunghezza più corta dell'oggetto</code></pre>
 [4,]    5</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Una matrice con una sola colonna è un <strong>vettore riga</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
@@ -915,7 +842,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    1   10    3    5</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -927,7 +853,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># Simile, ma non identico, a x_row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ad esempio, le funzioni <code>sum(x_row)</code> e <code>sum(x)</code> forniscono lo stesso risultato.</p>
-<div class="incremental">
 <p>Ci sono tuttavia alcune lievi distinzioni. Ad esempio:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x_row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -940,7 +865,6 @@ lunghezza più corta dell'oggetto</code></pre>
 </div>
 </div>
 <p>Il simbolo <code>NULL</code> significa <strong>non definito</strong>, perché non esiste la nozione di dimensione per un generico vettore <strong>R</strong>.</p>
-</div>
 </section>
 <section id="operazioni-sulle-matrici-i" class="level2">
 <h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-i">Operazioni sulle matrici I</h2>
@@ -959,7 +883,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <pre><code>[1] 5 2</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Alcuni <strong>comandi di base</strong> per manipolare le matrici sono i seguenti</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(A) <span class="co"># Restituisce la dimensione della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -972,8 +895,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <pre><code>[1] 5 1 2 4</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(A) <span class="co"># Restituisce la diagonale della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -990,7 +911,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <pre><code>[1] 12</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="operazioni-sulle-matrici-ii" class="level2">
 <h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-ii">Operazioni sulle matrici II</h2>
@@ -1003,7 +923,6 @@ lunghezza più corta dell'oggetto</code></pre>
 [2,]   2.718282 54.598150</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Siano <span class="math inline">\({\bf A}\)</span> e <span class="math inline">\({\bf B}\)</span> due matrici aventi lo stesso numero di colonne e definiamo</p>
 <p><span class="math display">\[
 {\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
@@ -1020,8 +939,6 @@ lunghezza più corta dell'oggetto</code></pre>
 [4,]    1    4</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <p>In maniera analoga, siano <span class="math inline">\({\bf A}\)</span> e <span class="math inline">\({\bf B}\)</span> due matrici aventi lo stesso numero di righe e definiamo <span class="math inline">\({\bf C} = \begin{pmatrix}{\bf A} &amp; {\bf B} \end{pmatrix}\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">cbind</span>(A, B)</span>
@@ -1032,7 +949,6 @@ lunghezza più corta dell'oggetto</code></pre>
 [2,]    1    4    1    4</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="operazioni-sulle-matrici-iii" class="level2">
 <h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-iii">Operazioni sulle matrici III</h2>
@@ -1040,7 +956,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <p><span class="math display">\[
 {\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
 \]</span></p>
-<div class="incremental">
 <p>In <strong>R</strong> possiamo usare il comando <code>crossprod</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">22</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
@@ -1052,12 +967,9 @@ lunghezza più corta dell'oggetto</code></pre>
 </div>
 </div>
 <p>Il comando <code>crossprod</code> funziona correttamente anche con “vettori” <strong>R</strong>.</p>
-</div>
-<div class="incremental">
 <p>Il comando può essere usato anche per calcolare il seguente <strong>prodotto tra matrici</strong> <span class="math display">\[
 {\bf A}^\intercal {\bf B},
 \]</span> dove <span class="math inline">\({\bf A}\)</span> e <span class="math inline">\({\bf B}\)</span> sono due matrici di dimensioni compatibili.</p>
-</div>
 </section>
 <section id="operazioni-sulle-matrici-iv" class="level2">
 <h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-iv">Operazioni sulle matrici IV</h2>
@@ -1074,12 +986,8 @@ lunghezza più corta dell'oggetto</code></pre>
 [3,]   12   -6   44</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p><strong>Nota</strong>. Il comando <code>A * B</code> indica il prodotto elemento per elemento e non il prodotto righe per colonne.</p>
-</div>
-<div class="incremental">
 <p>Se le matrici non sono compatibili <strong>R</strong> produce un errore (provateci per esercizio!)</p>
-</div>
 </section>
 <section id="operazioni-sulle-matrici-v" class="level2">
 <h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-v">Operazioni sulle matrici V</h2>
@@ -1099,7 +1007,6 @@ lunghezza più corta dell'oggetto</code></pre>
 [3,]  0.4166667 -0.08333333 -0.04166667</code></pre>
 </div>
 </div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb174"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(A <span class="sc">%*%</span> A1, <span class="at">digits =</span> <span class="dv">5</span>) <span class="co"># Operazione di controllo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1109,13 +1016,10 @@ lunghezza più corta dell'oggetto</code></pre>
 [3,]    0    0    1</code></pre>
 </div>
 </div>
-</div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb176"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A) <span class="co"># Calcola il determinante della matrice A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -24</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -1130,7 +1034,6 @@ lunghezza più corta dell'oggetto</code></pre>
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
-<div class="incremental">
 <p>Ci sono numerose funzioni per la <strong>scomposizione di matrici</strong>, il cui output è a volte una <strong>lista</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb180"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
@@ -1169,7 +1072,6 @@ $vectors
           [,1]       [,2]
 [1,] 0.2297529 -0.9732490
 [2,] 0.9732490  0.2297529</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -1214,7 +1116,6 @@ $vectors
 [2,] 0.9732490  0.2297529</code></pre>
 </div>
 </div>
-<div class="incremental">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a>Spec_A<span class="sc">$</span>values <span class="co"># Estrazione degli autovalori</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1223,7 +1124,6 @@ $vectors
 </div>
 
 
-</div>
 </section>
 
 </main> <!-- /main -->

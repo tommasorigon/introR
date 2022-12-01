@@ -473,49 +473,49 @@
     "href": "lezioni/un_A.html#calcolatrice-scientifica",
     "title": "R per l’analisi statistica multivariata",
     "section": "Calcolatrice scientifica",
-    "text": "Calcolatrice scientifica\nAnzitutto, R può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n[1] 4\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n[1] 32\n\npi / 4 # Pi greco quarti\n\n[1] 0.7853982\n\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2^5 # Sintassi alternativa: 2**5\n\n[1] 32\n\n\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nsqrt(2)\n\n[1] 1.414214\n\nsin(pi / 4)\n\n[1] 0.7071068\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nTutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
+    "text": "Calcolatrice scientifica\nAnzitutto, R può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n[1] 4\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n[1] 32\n\npi / 4 # Pi greco quarti\n\n[1] 0.7853982\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2^5 # Sintassi alternativa: 2**5\n\n[1] 32\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nsqrt(2)\n\n[1] 1.414214\n\nsin(pi / 4)\n\n[1] 0.7071068\n\n\n\n\n\n\n\n\nNota\n\n\n\nTutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
   },
   {
     "objectID": "lezioni/un_A.html#assegnazione-di-un-valore",
     "href": "lezioni/un_A.html#assegnazione-di-un-valore",
     "title": "R per l’analisi statistica multivariata",
     "section": "Assegnazione di un valore",
-    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo <-.\n\n# Assegna il valore 5 all'oggetto x\nx <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)\n\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny <- x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n[1] 5.377661\n\n\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando rm, ovvero remove.\n\nrm(x) # x non è più presente nel \"workspace\"\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nR è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
+    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo <-.\n\n# Assegna il valore 5 all'oggetto x\nx <- sqrt(5) # Sintassi alternativa (sconsigliata): x = sqrt(5)\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny <- x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n[1] 5.377661\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando rm, ovvero remove.\n\nrm(x) # x non è più presente nel \"workspace\"\n\n\n\n\n\n\n\nNota\n\n\n\nR è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
   },
   {
     "objectID": "lezioni/un_A.html#pulizia-del-workspace",
     "href": "lezioni/un_A.html#pulizia-del-workspace",
     "title": "R per l’analisi statistica multivariata",
     "section": "Pulizia del workspace",
-    "text": "Pulizia del workspace\nÈ buona norma mantenere pulito il workspace, ovvero l’ambiente di lavoro.\nSe un oggetto non è più necessario, è possibile eliminarlo tramite il comando rm.\n\nÈ possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:\n\nls() # Nel workspace è presente l'oggetto y\n\n[1] \"y\"\n\n\n\n\nPertanto, per eliminare tutti gli oggetti salvati, si può usare\n\nrm(list = ls())"
+    "text": "Pulizia del workspace\nÈ buona norma mantenere pulito il workspace, ovvero l’ambiente di lavoro.\nSe un oggetto non è più necessario, è possibile eliminarlo tramite il comando rm.\nÈ possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:\n\nls() # Nel workspace è presente l'oggetto y\n\n[1] \"y\"\n\n\nPertanto, per eliminare tutti gli oggetti salvati, si può usare\n\nrm(list = ls())"
   },
   {
     "objectID": "lezioni/un_A.html#alcune-funzioni-matematiche-i",
     "href": "lezioni/un_A.html#alcune-funzioni-matematiche-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Alcune funzioni matematiche I",
-    "text": "Alcune funzioni matematiche I\nSupponiamo che x sia un numero reale.\nCiò che seguono sono una lista di funzioni disponibili in R:\n\nx <- 1/2 # Esempio di numero reale\n\n\n\nexp(x) # Esponenziale e logaritmo naturale\n\n[1] 1.648721\n\nlog(x)\n\n[1] -0.6931472\n\n\n\n\n\nabs(x) # Valore assoluto\n\n[1] 0.5\n\nsign(x) # Funzione segno\n\n[1] 1"
+    "text": "Alcune funzioni matematiche I\nSupponiamo che x sia un numero reale.\nCiò che seguono sono una lista di funzioni disponibili in R:\n\nx <- 1/2 # Esempio di numero reale\n\n\nexp(x) # Esponenziale e logaritmo naturale\n\n[1] 1.648721\n\nlog(x)\n\n[1] -0.6931472\n\n\n\nabs(x) # Valore assoluto\n\n[1] 0.5\n\nsign(x) # Funzione segno\n\n[1] 1"
   },
   {
     "objectID": "lezioni/un_A.html#alcune-funzioni-matematiche-ii",
     "href": "lezioni/un_A.html#alcune-funzioni-matematiche-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Alcune funzioni matematiche II",
-    "text": "Alcune funzioni matematiche II\n\nsin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n[1] 0.4794255\n\ncos(x)\n\n[1] 0.8775826\n\ntan(x)\n\n[1] 0.5463025\n\n\n\n\nasin(x) # Funzioni trigonometriche inverse\n\n[1] 0.5235988\n\nacos(x)\n\n[1] 1.047198\n\natan(x)\n\n[1] 0.4636476\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nLe funzioni di R si possono combinare tra loro, ad esempio log(abs(x))."
+    "text": "Alcune funzioni matematiche II\n\nsin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n[1] 0.4794255\n\ncos(x)\n\n[1] 0.8775826\n\ntan(x)\n\n[1] 0.5463025\n\n\n\nasin(x) # Funzioni trigonometriche inverse\n\n[1] 0.5235988\n\nacos(x)\n\n[1] 1.047198\n\natan(x)\n\n[1] 0.4636476\n\n\n\n\n\n\n\n\nNota\n\n\n\nLe funzioni di R si possono combinare tra loro, ad esempio log(abs(x))."
   },
   {
     "objectID": "lezioni/un_A.html#ulteriori-funzioni-matematiche-i",
     "href": "lezioni/un_A.html#ulteriori-funzioni-matematiche-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Ulteriori funzioni matematiche I",
-    "text": "Ulteriori funzioni matematiche I\nSupponiamo che x e y siano due numeri reali. Inoltre, siano n e k due numeri naturali.\n\nSi noti l’uso del ; che può essere usato per separare due comandi nella stessa riga.\n\nx <- 1 / 2; y <- 1 / 3 # Numeri reali \nn <- 5; k <- 2 # Numeri naturali\n\n\n\n\nfactorial(n) # n!\n\n[1] 120\n\nchoose(n, k) # Coefficiente binomiale\n\n[1] 10\n\n\n\n\n\nround(x, digits = 2) # Arrotonda x usando 2 cifre decimali\n\n[1] 0.5\n\nfloor(x) # Arrotonda x all'intero più vicino, per difetto\n\n[1] 0\n\nceiling(x) # Arrotonda x all'intero più vicino, per eccesso\n\n[1] 1"
+    "text": "Ulteriori funzioni matematiche I\nSupponiamo che x e y siano due numeri reali. Inoltre, siano n e k due numeri naturali.\nSi noti l’uso del ; che può essere usato per separare due comandi nella stessa riga.\n\nx <- 1 / 2; y <- 1 / 3 # Numeri reali \nn <- 5; k <- 2 # Numeri naturali\n\n\nfactorial(n) # n!\n\n[1] 120\n\nchoose(n, k) # Coefficiente binomiale\n\n[1] 10\n\n\n\nround(x, digits = 2) # Arrotonda x usando 2 cifre decimali\n\n[1] 0.5\n\nfloor(x) # Arrotonda x all'intero più vicino, per difetto\n\n[1] 0\n\nceiling(x) # Arrotonda x all'intero più vicino, per eccesso\n\n[1] 1"
   },
   {
     "objectID": "lezioni/un_A.html#ulteriori-funzioni-matematiche-ii",
     "href": "lezioni/un_A.html#ulteriori-funzioni-matematiche-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Ulteriori funzioni matematiche II",
-    "text": "Ulteriori funzioni matematiche II\nLa funzione gamma \\(\\Gamma(x) = \\int_0^\\infty s^{x-1} e^{-s} d s\\) si calcola in R come segue:\n\ngamma(x) # Funzione gamma\n\n[1] 1.772454\n\n\n\nLa funzione beta \\(\\mathcal{B}(x,y) = \\int_0^1 s^{x-1}(1-s)^{y-1}ds\\) si calcola in R come segue:\n\nbeta(x, y) # Funzione beta\n\n[1] 4.206546"
+    "text": "Ulteriori funzioni matematiche II\nLa funzione gamma \\(\\Gamma(x) = \\int_0^\\infty s^{x-1} e^{-s} d s\\) si calcola in R come segue:\n\ngamma(x) # Funzione gamma\n\n[1] 1.772454\n\n\nLa funzione beta \\(\\mathcal{B}(x,y) = \\int_0^1 s^{x-1}(1-s)^{y-1}ds\\) si calcola in R come segue:\n\nbeta(x, y) # Funzione beta\n\n[1] 4.206546"
   },
   {
     "objectID": "lezioni/un_A.html#grafico-di-una-funzione",
@@ -529,133 +529,133 @@
     "href": "lezioni/un_A.html#la-documentazione-ufficiale",
     "title": "R per l’analisi statistica multivariata",
     "section": "La documentazione ufficiale",
-    "text": "La documentazione ufficiale\nLa documentazione di R è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\n\nIl comando ? funzione apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n? log # Documentazione della funzione log\n\n\n\n\n\n\n\n\n\nNota riguardante l’esame\n\n\n\nDurante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione."
+    "text": "La documentazione ufficiale\nLa documentazione di R è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\nIl comando ? funzione apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n? log # Documentazione della funzione log\n\n\n\n\n\n\n\nNota riguardante l’esame\n\n\n\nDurante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione."
   },
   {
     "objectID": "lezioni/un_A.html#simboli-speciali",
     "href": "lezioni/un_A.html#simboli-speciali",
     "title": "R per l’analisi statistica multivariata",
     "section": "Simboli speciali",
-    "text": "Simboli speciali\nNumeri molto grandi, come \\(10^{15}\\), e molto piccoli, come \\(10^{-15}\\), in R vengono rappresentati come segue:\n\n10^15\n\n[1] 1e+15\n\n10^(-15)\n\n[1] 1e-15\n\n\n\nPer questioni di approssimazione numerica, quando un numero è troppo grande R riporta Inf, ovvero infinito. Per esempio:\n\n10^1000 # Numero molto grande, anche se finito\n\n[1] Inf\n\n\n\n\nIl simbolo NaN significa invece Not a Number e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:\n\nlog(-1) # Questo comando genera inoltre un avviso\n\nWarning in log(-1): Si è prodotto un NaN\n\n\n[1] NaN"
+    "text": "Simboli speciali\nNumeri molto grandi, come \\(10^{15}\\), e molto piccoli, come \\(10^{-15}\\), in R vengono rappresentati come segue:\n\n10^15\n\n[1] 1e+15\n\n10^(-15)\n\n[1] 1e-15\n\n\nPer questioni di approssimazione numerica, quando un numero è troppo grande R riporta Inf, ovvero infinito. Per esempio:\n\n10^1000 # Numero molto grande, anche se finito\n\n[1] Inf\n\n\nIl simbolo NaN significa invece Not a Number e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:\n\nlog(-1) # Questo comando genera inoltre un avviso\n\nWarning in log(-1): Si è prodotto un NaN\n\n\n[1] NaN"
   },
   {
     "objectID": "lezioni/un_A.html#errori-di-approssimazione-numerica",
     "href": "lezioni/un_A.html#errori-di-approssimazione-numerica",
     "title": "R per l’analisi statistica multivariata",
     "section": "Errori di approssimazione numerica",
-    "text": "Errori di approssimazione numerica\nÈ ben noto che \\(\\sin(\\pi) = 0\\). Tuttavia, in R si ottiene un numero molto vicino a \\(0\\), ma strettamente positivo. Infatti:\n\nsin(pi)\n\n[1] 1.224647e-16\n\n\n\nR è uno strumento di calcolo numerico e pertanto sono sempre presenti errori di approssimazione numerica.\nFortunatamente, nella maggior parte dei casi pratici la differenza tra \\(0\\) e \\(10^{-16}\\) è del tutto irrilevante.\nIn altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.\n\n\nAd ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:\n\ncos(pi)\n\n[1] -1"
+    "text": "Errori di approssimazione numerica\nÈ ben noto che \\(\\sin(\\pi) = 0\\). Tuttavia, in R si ottiene un numero molto vicino a \\(0\\), ma strettamente positivo. Infatti:\n\nsin(pi)\n\n[1] 1.224647e-16\n\n\nR è uno strumento di calcolo numerico e pertanto sono sempre presenti errori di approssimazione numerica.\nFortunatamente, nella maggior parte dei casi pratici la differenza tra \\(0\\) e \\(10^{-16}\\) è del tutto irrilevante.\nIn altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.\nAd ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:\n\ncos(pi)\n\n[1] -1"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-logiche",
     "href": "lezioni/un_A.html#operazioni-logiche",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni logiche",
-    "text": "Operazioni logiche\nIn R è spesso necessario verificare se una o più condizioni sono verificate o meno.\n\nx <- 5\nx < 0 # Il valore di x è minore di 0?\n\n[1] FALSE\n\na <- (x == -3) # Il valore di x è uguale a -3?\na\n\n[1] FALSE\n\n\n\nIl valore di a è un indicatore binario o booleano, ovvero può essere vero (TRUE) oppure falso (FALSE).\n\n\nAltre funzioni logiche disponibili (assumendo che y sia un numero e b un booleano) sono:\n\na <- TRUE; b <- FALSE; x <- 5; y <- 7\nx >= y # x è maggiore o uguale a y? (Si usa \"<=\" per minore uguale)\n\n[1] FALSE\n\nx != y # x è diverso da y?\n\n[1] TRUE\n\na & b # a AND b. I valori booleani a e b sono entrambi veri?\n\n[1] FALSE\n\na | b # a OR b. Almeno uno tra a ed b è vero?\n\n[1] TRUE"
+    "text": "Operazioni logiche\nIn R è spesso necessario verificare se una o più condizioni sono verificate o meno.\n\nx <- 5\nx < 0 # Il valore di x è minore di 0?\n\n[1] FALSE\n\na <- (x == -3) # Il valore di x è uguale a -3?\na\n\n[1] FALSE\n\n\nIl valore di a è un indicatore binario o booleano, ovvero può essere vero (TRUE) oppure falso (FALSE).\nAltre funzioni logiche disponibili (assumendo che y sia un numero e b un booleano) sono:\n\na <- TRUE; b <- FALSE; x <- 5; y <- 7\nx >= y # x è maggiore o uguale a y? (Si usa \"<=\" per minore uguale)\n\n[1] FALSE\n\nx != y # x è diverso da y?\n\n[1] TRUE\n\na & b # a AND b. I valori booleani a e b sono entrambi veri?\n\n[1] FALSE\n\na | b # a OR b. Almeno uno tra a ed b è vero?\n\n[1] TRUE"
   },
   {
     "objectID": "lezioni/un_A.html#vettori",
     "href": "lezioni/un_A.html#vettori",
     "title": "R per l’analisi statistica multivariata",
     "section": "Vettori",
-    "text": "Vettori\nUn vettore in R viene definito tramite la funzione c(), come nel seguente esempio:\n\nx <- c(4, 2, 2, 8, 10) \nx\n\n[1]  4  2  2  8 10\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nCon il termine generico “vettore” in R non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\n\n\nIl seguente oggetto è un vettore in R, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx <- c(\"A\", \"B\", 2, 8, 10)\nx\n\n[1] \"A\"  \"B\"  \"2\"  \"8\"  \"10\""
+    "text": "Vettori\nUn vettore in R viene definito tramite la funzione c(), come nel seguente esempio:\n\nx <- c(4, 2, 2, 8, 10) \nx\n\n[1]  4  2  2  8 10\n\n\n\n\n\n\n\n\nNota\n\n\n\nCon il termine generico “vettore” in R non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\n\n\nIl seguente oggetto è un vettore in R, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx <- c(\"A\", \"B\", 2, 8, 10)\nx\n\n[1] \"A\"  \"B\"  \"2\"  \"8\"  \"10\""
   },
   {
     "objectID": "lezioni/un_A.html#creazione-di-vettori",
     "href": "lezioni/un_A.html#creazione-di-vettori",
     "title": "R per l’analisi statistica multivariata",
     "section": "Creazione di vettori",
-    "text": "Creazione di vettori\nTalvolta è comodo creare dei vettori i cui elementi sono dei numeri consecutivi\n\nx <- 5:10 # Equivalente a: x <- c(5, 6, 7, 8, 9, 10)\nx\n\n[1]  5  6  7  8  9 10\n\n\n\nPer creare una successione di numeri reali si usa il comando seq:\n\nx <- seq(from = 0, to = 1, by = 0.1)\nx\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\n\n\n\nPer creare un vettore di valori ripetuti si usa il comando rep:\n\nx <- rep(10, 7) # Vettore in cui il numero 10 è ripetuto 7 volte\nx\n\n[1] 10 10 10 10 10 10 10"
+    "text": "Creazione di vettori\nTalvolta è comodo creare dei vettori i cui elementi sono dei numeri consecutivi\n\nx <- 5:10 # Equivalente a: x <- c(5, 6, 7, 8, 9, 10)\nx\n\n[1]  5  6  7  8  9 10\n\n\nPer creare una successione di numeri reali si usa il comando seq:\n\nx <- seq(from = 0, to = 1, by = 0.1)\nx\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\n\nPer creare un vettore di valori ripetuti si usa il comando rep:\n\nx <- rep(10, 7) # Vettore in cui il numero 10 è ripetuto 7 volte\nx\n\n[1] 10 10 10 10 10 10 10"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sui-vettori-i",
     "href": "lezioni/un_A.html#operazioni-sui-vettori-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sui vettori I",
-    "text": "Operazioni sui vettori I\nLa maggior parte delle funzioni matematiche di R sono vettorizzate. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.\n\nexp(1:6) + (1:6) / 2 + 1 # Esempio 1\n\n[1]   4.218282   9.389056  22.585537  57.598150 151.913159 407.428793\n\n\n\n\nx <- c(10, 10^2, 10^3, 10^4, 10^5, 10^6) # Esempio 2\nlog(x, base = 10)\n\n[1] 1 2 3 4 5 6\n\n\n\n\n\n1:8 > 4 # Esempio 3\n\n[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE\n\n\n\n\nAltre funzioni invece sono utili proprio nel caso in cui l’argomento sia un vettore:\n\nx <- c(2, 3, 1, 3, 10, 5)\nlength(x) # Lunghezza del vettore\n\n[1] 6\n\nsum(x) # Somma degli elementi del vettore\n\n[1] 24\n\ncumsum(x) # Somme cumulate\n\n[1]  2  5  6  9 19 24"
+    "text": "Operazioni sui vettori I\nLa maggior parte delle funzioni matematiche di R sono vettorizzate. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.\n\nexp(1:6) + (1:6) / 2 + 1 # Esempio 1\n\n[1]   4.218282   9.389056  22.585537  57.598150 151.913159 407.428793\n\n\n\nx <- c(10, 10^2, 10^3, 10^4, 10^5, 10^6) # Esempio 2\nlog(x, base = 10)\n\n[1] 1 2 3 4 5 6\n\n\n\n1:8 > 4 # Esempio 3\n\n[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE\n\n\nAltre funzioni invece sono utili proprio nel caso in cui l’argomento sia un vettore:\n\nx <- c(2, 3, 1, 3, 10, 5)\nlength(x) # Lunghezza del vettore\n\n[1] 6\n\nsum(x) # Somma degli elementi del vettore\n\n[1] 24\n\ncumsum(x) # Somme cumulate\n\n[1]  2  5  6  9 19 24"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sui-vettori-ii",
     "href": "lezioni/un_A.html#operazioni-sui-vettori-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sui vettori II",
-    "text": "Operazioni sui vettori II\nUlteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:\n\nx <- c(2, 3, 1, 3, 10, 5)\nprod(x) # Prodotto degli elementi del vettore\n\n[1] 900\n\ncumprod(x) # Prodotti cumulati\n\n[1]   2   6   6  18 180 900\n\nsort(x, decreasing = FALSE) # Vettore ordinato in ordine crescente\n\n[1]  1  2  3  3  5 10\n\nmin(x) # Valore minimo\n\n[1] 1\n\nwhich.min(x) # Posizione del valore corrispondente al minimo\n\n[1] 3\n\n\n\nInfine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:\n\nmax(x) # Valore massimo\n\n[1] 10\n\nwhich.max(x) # Posizione del valore corrispondente al massimo\n\n[1] 5\n\nrange(x) # Equivalente a: c(min(x), max(x))\n\n[1]  1 10"
+    "text": "Operazioni sui vettori II\nUlteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:\n\nx <- c(2, 3, 1, 3, 10, 5)\nprod(x) # Prodotto degli elementi del vettore\n\n[1] 900\n\ncumprod(x) # Prodotti cumulati\n\n[1]   2   6   6  18 180 900\n\nsort(x, decreasing = FALSE) # Vettore ordinato in ordine crescente\n\n[1]  1  2  3  3  5 10\n\nmin(x) # Valore minimo\n\n[1] 1\n\nwhich.min(x) # Posizione del valore corrispondente al minimo\n\n[1] 3\n\n\nInfine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:\n\nmax(x) # Valore massimo\n\n[1] 10\n\nwhich.max(x) # Posizione del valore corrispondente al massimo\n\n[1] 5\n\nrange(x) # Equivalente a: c(min(x), max(x))\n\n[1]  1 10"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sui-vettori-iii",
     "href": "lezioni/un_A.html#operazioni-sui-vettori-iii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sui vettori III",
-    "text": "Operazioni sui vettori III\nÈ possibile selezionare gli elementi di un vettore usando le parentesi quadrate, come nei seguenti esempi:\n\n# Concatenazione di vettori\nx <- c(rep(pi, 2), sqrt(2), c(10, 7))\nx[3] # Estrae il terzo elemento dal vettore x, ovvero sqrt(2)\n\n[1] 1.414214\n\nx[c(1, 3, 5)] # Estrae il primo, il terzo ed il quinto elemento\n\n[1] 3.141593 1.414214 7.000000\n\nx[-c(1, 3, 5)] # Elimina il primo, il terzo ed il quinto elemento\n\n[1]  3.141593 10.000000\n\nx[x > 3.5] # Estrae gli elementi maggiori di 3.5\n\n[1] 10  7\n\n\n\nL’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una condizione relativa al vettore stesso."
+    "text": "Operazioni sui vettori III\nÈ possibile selezionare gli elementi di un vettore usando le parentesi quadrate, come nei seguenti esempi:\n\n# Concatenazione di vettori\nx <- c(rep(pi, 2), sqrt(2), c(10, 7))\nx[3] # Estrae il terzo elemento dal vettore x, ovvero sqrt(2)\n\n[1] 1.414214\n\nx[c(1, 3, 5)] # Estrae il primo, il terzo ed il quinto elemento\n\n[1] 3.141593 1.414214 7.000000\n\nx[-c(1, 3, 5)] # Elimina il primo, il terzo ed il quinto elemento\n\n[1]  3.141593 10.000000\n\nx[x > 3.5] # Estrae gli elementi maggiori di 3.5\n\n[1] 10  7\n\n\nL’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una condizione relativa al vettore stesso."
   },
   {
     "objectID": "lezioni/un_A.html#operazione-sui-vettori-avvertenze",
     "href": "lezioni/un_A.html#operazione-sui-vettori-avvertenze",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazione sui vettori: avvertenze",
-    "text": "Operazione sui vettori: avvertenze\nCosa succede quando vengono sommati due vettori di dimensioni diverse?\n\n\n\n\n\n\nWarning\n\n\n\nLa maggior parte dei linguaggi di programmazione restituisce un errore. R invece esegue ugualmente l’operazione “allungando” il vettore più corto.\n\n\n\nIn questo primo esempio, quantomeno R restituisce un warning.\n\n# Concatenazione di vettori\nx <- 1:5\ny <- 1:6\nx + y # Equivalente a: c(x, x[1]) + y\n\nWarning in x + y: la lunghezza più lunga dell'oggetto non è un multiplo della\nlunghezza più corta dell'oggetto\n\n\n[1]  2  4  6  8 10  7\n\n\n\n\nIn questo secondo esempio, invece, R non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa\n\nx <- 1:3\ny <- 1:6\nx + y # Equivalente a: c(x, x) + y\n\n[1] 2 4 6 5 7 9"
+    "text": "Operazione sui vettori: avvertenze\nCosa succede quando vengono sommati due vettori di dimensioni diverse?\n\n\n\n\n\n\nWarning\n\n\n\nLa maggior parte dei linguaggi di programmazione restituisce un errore. R invece esegue ugualmente l’operazione “allungando” il vettore più corto.\n\n\nIn questo primo esempio, quantomeno R restituisce un warning.\n\n# Concatenazione di vettori\nx <- 1:5\ny <- 1:6\nx + y # Equivalente a: c(x, x[1]) + y\n\nWarning in x + y: la lunghezza più lunga dell'oggetto non è un multiplo della\nlunghezza più corta dell'oggetto\n\n\n[1]  2  4  6  8 10  7\n\n\nIn questo secondo esempio, invece, R non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa\n\nx <- 1:3\ny <- 1:6\nx + y # Equivalente a: c(x, x) + y\n\n[1] 2 4 6 5 7 9"
   },
   {
     "objectID": "lezioni/un_A.html#matrici",
     "href": "lezioni/un_A.html#matrici",
     "title": "R per l’analisi statistica multivariata",
     "section": "Matrici",
-    "text": "Matrici\nUna matrice \\({\\bf A}\\) è una collezione di elementi \\((a)_{ij}\\) per \\(i=1,\\dots,n\\) e \\(j=1,\\dots,m\\).\n\nPer esempio, la matrice quadrata di dimensione \\(2 \\times 2\\)\n\\[{\\bf A} = \\begin{pmatrix}\n5 & 2\\\\\n1 & 4 \\\\\n\\end{pmatrix},\\] si può definire in R tramite il comando matrix come segue:\n\nA <- matrix(c(5, 1, 2, 4), nrow = 2, ncol = 2)\nA\n\n     [,1] [,2]\n[1,]    5    2\n[2,]    1    4\n\n\n\n\nÈ inoltre possibile elencare gli elementi riga per riga\n\n# Definizione equivalente\nA <- matrix(c(5, 2, 1, 4), nrow = 2, ncol = 2, byrow = TRUE)"
+    "text": "Matrici\nUna matrice \\({\\bf A}\\) è una collezione di elementi \\((a)_{ij}\\) per \\(i=1,\\dots,n\\) e \\(j=1,\\dots,m\\).\nPer esempio, la matrice quadrata di dimensione \\(2 \\times 2\\)\n\\[{\\bf A} = \\begin{pmatrix}\n5 & 2\\\\\n1 & 4 \\\\\n\\end{pmatrix},\\] si può definire in R tramite il comando matrix come segue:\n\nA <- matrix(c(5, 1, 2, 4), nrow = 2, ncol = 2)\nA\n\n     [,1] [,2]\n[1,]    5    2\n[2,]    1    4\n\n\nÈ inoltre possibile elencare gli elementi riga per riga\n\n# Definizione equivalente\nA <- matrix(c(5, 2, 1, 4), nrow = 2, ncol = 2, byrow = TRUE)"
   },
   {
     "objectID": "lezioni/un_A.html#vettori-riga-e-vettori-colonna",
     "href": "lezioni/un_A.html#vettori-riga-e-vettori-colonna",
     "title": "R per l’analisi statistica multivariata",
     "section": "Vettori riga e vettori colonna",
-    "text": "Vettori riga e vettori colonna\nUna matrice con una sola colonna è un vettore colonna:\n\nx_col <- matrix(c(1, 10, 3, 5), ncol = 1)\nx_col\n\n     [,1]\n[1,]    1\n[2,]   10\n[3,]    3\n[4,]    5\n\n\n\nUna matrice con una sola colonna è un vettore riga:\n\nx_row <- matrix(c(1, 10, 3, 5), nrow = 1)\nx_row\n\n     [,1] [,2] [,3] [,4]\n[1,]    1   10    3    5"
+    "text": "Vettori riga e vettori colonna\nUna matrice con una sola colonna è un vettore colonna:\n\nx_col <- matrix(c(1, 10, 3, 5), ncol = 1)\nx_col\n\n     [,1]\n[1,]    1\n[2,]   10\n[3,]    3\n[4,]    5\n\n\nUna matrice con una sola colonna è un vettore riga:\n\nx_row <- matrix(c(1, 10, 3, 5), nrow = 1)\nx_row\n\n     [,1] [,2] [,3] [,4]\n[1,]    1   10    3    5"
   },
   {
     "objectID": "lezioni/un_A.html#vettori-riga-e-vettori-di-r",
     "href": "lezioni/un_A.html#vettori-riga-e-vettori-di-r",
     "title": "R per l’analisi statistica multivariata",
     "section": "Vettori riga e vettori di R",
-    "text": "Vettori riga e vettori di R\nNella maggior parte dei casi, il {vettore riga x_row è intercambiabile col vettore x.\n\nx_row <- matrix(c(1, 10, 3, 5), nrow = 1)\nx <- c(1, 10, 3, 5) # Simile, ma non identico, a x_row\n\nAd esempio, le funzioni sum(x_row) e sum(x) forniscono lo stesso risultato.\n\nCi sono tuttavia alcune lievi distinzioni. Ad esempio:\n\ndim(x_row)\n\n[1] 1 4\n\ndim(x)\n\nNULL\n\n\nIl simbolo NULL significa non definito, perché non esiste la nozione di dimensione per un generico vettore R."
+    "text": "Vettori riga e vettori di R\nNella maggior parte dei casi, il {vettore riga x_row è intercambiabile col vettore x.\n\nx_row <- matrix(c(1, 10, 3, 5), nrow = 1)\nx <- c(1, 10, 3, 5) # Simile, ma non identico, a x_row\n\nAd esempio, le funzioni sum(x_row) e sum(x) forniscono lo stesso risultato.\nCi sono tuttavia alcune lievi distinzioni. Ad esempio:\n\ndim(x_row)\n\n[1] 1 4\n\ndim(x)\n\nNULL\n\n\nIl simbolo NULL significa non definito, perché non esiste la nozione di dimensione per un generico vettore R."
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-i",
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici I",
-    "text": "Operazioni sulle matrici I\nÈ possibile selezionare gli elementi di una matrice in maniera analoga a quanto fatto con i vettori.\n\nA[1, 2] # Estrazione di elemento in posizione (1,2)\n\n[1] 2\n\nA[, 2] # Estrazione seconda colonna\n\n[1] 2 4\n\nA[1, ] # Estrazione prima riga\n\n[1] 5 2\n\n\n\nAlcuni comandi di base per manipolare le matrici sono i seguenti\n\ndim(A) # Restituisce la dimensione della matrice\n\n[1] 2 2\n\na <- c(A) # Converte la matrice in un vettore\na\n\n[1] 5 1 2 4\n\n\n\n\n\ndiag(A) # Restituisce la diagonale della matrice\n\n[1] 5 4\n\nt(A) # Calcola la matrice trasposta A'\n\n     [,1] [,2]\n[1,]    5    1\n[2,]    2    4\n\nsum(A) # Somma di tutti gli elementi di A\n\n[1] 12"
+    "text": "Operazioni sulle matrici I\nÈ possibile selezionare gli elementi di una matrice in maniera analoga a quanto fatto con i vettori.\n\nA[1, 2] # Estrazione di elemento in posizione (1,2)\n\n[1] 2\n\nA[, 2] # Estrazione seconda colonna\n\n[1] 2 4\n\nA[1, ] # Estrazione prima riga\n\n[1] 5 2\n\n\nAlcuni comandi di base per manipolare le matrici sono i seguenti\n\ndim(A) # Restituisce la dimensione della matrice\n\n[1] 2 2\n\na <- c(A) # Converte la matrice in un vettore\na\n\n[1] 5 1 2 4\n\n\n\ndiag(A) # Restituisce la diagonale della matrice\n\n[1] 5 4\n\nt(A) # Calcola la matrice trasposta A'\n\n     [,1] [,2]\n[1,]    5    1\n[2,]    2    4\n\nsum(A) # Somma di tutti gli elementi di A\n\n[1] 12"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-ii",
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici II",
-    "text": "Operazioni sulle matrici II\nCome per i vettori, le operazioni elementari (somma, prodotto, log, exp, etc.) vengono eseguite elemento per elemento.\n\nexp(A)\n\n           [,1]      [,2]\n[1,] 148.413159  7.389056\n[2,]   2.718282 54.598150\n\n\n\nSiano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di colonne e definiamo\n\\[\n{\\bf C} = \\begin{pmatrix}{\\bf A} \\\\ {\\bf B} \\end{pmatrix}.\n\\]\n\nB <- A # Creo una matrice B identica ad A, per semplicità\nC <- rbind(A, B)\nC\n\n     [,1] [,2]\n[1,]    5    2\n[2,]    1    4\n[3,]    5    2\n[4,]    1    4\n\n\n\n\nIn maniera analoga, siano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di righe e definiamo \\({\\bf C} = \\begin{pmatrix}{\\bf A} & {\\bf B} \\end{pmatrix}\\).\n\nC <- cbind(A, B)\nC\n\n     [,1] [,2] [,3] [,4]\n[1,]    5    2    5    2\n[2,]    1    4    1    4"
+    "text": "Operazioni sulle matrici II\nCome per i vettori, le operazioni elementari (somma, prodotto, log, exp, etc.) vengono eseguite elemento per elemento.\n\nexp(A)\n\n           [,1]      [,2]\n[1,] 148.413159  7.389056\n[2,]   2.718282 54.598150\n\n\nSiano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di colonne e definiamo\n\\[\n{\\bf C} = \\begin{pmatrix}{\\bf A} \\\\ {\\bf B} \\end{pmatrix}.\n\\]\n\nB <- A # Creo una matrice B identica ad A, per semplicità\nC <- rbind(A, B)\nC\n\n     [,1] [,2]\n[1,]    5    2\n[2,]    1    4\n[3,]    5    2\n[4,]    1    4\n\n\nIn maniera analoga, siano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di righe e definiamo \\({\\bf C} = \\begin{pmatrix}{\\bf A} & {\\bf B} \\end{pmatrix}\\).\n\nC <- cbind(A, B)\nC\n\n     [,1] [,2] [,3] [,4]\n[1,]    5    2    5    2\n[2,]    1    4    1    4"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-iii",
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-iii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici III",
-    "text": "Operazioni sulle matrici III\nSiano \\({\\bf x}\\) e \\({\\bf y}\\) due vettori colonna in \\(\\mathbb{R}^p\\). Allora, il loro è pari a\n\\[\n{\\bf x}^\\intercal {\\bf y} = \\sum_{i=1}^p x_i y_i.\n\\]\n\nIn R possiamo usare il comando crossprod\n\nx <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)\ny <- matrix(c(3, 2, 2, 7, 9), ncol = 1)\ncrossprod(x, y) # Equivalente a: sum(x * y)\n\n     [,1]\n[1,]  272\n\n\nIl comando crossprod funziona correttamente anche con “vettori” R.\n\n\nIl comando può essere usato anche per calcolare il seguente prodotto tra matrici \\[\n{\\bf A}^\\intercal {\\bf B},\n\\] dove \\({\\bf A}\\) e \\({\\bf B}\\) sono due matrici di dimensioni compatibili."
+    "text": "Operazioni sulle matrici III\nSiano \\({\\bf x}\\) e \\({\\bf y}\\) due vettori colonna in \\(\\mathbb{R}^p\\). Allora, il loro è pari a\n\\[\n{\\bf x}^\\intercal {\\bf y} = \\sum_{i=1}^p x_i y_i.\n\\]\nIn R possiamo usare il comando crossprod\n\nx <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)\ny <- matrix(c(3, 2, 2, 7, 9), ncol = 1)\ncrossprod(x, y) # Equivalente a: sum(x * y)\n\n     [,1]\n[1,]  272\n\n\nIl comando crossprod funziona correttamente anche con “vettori” R.\nIl comando può essere usato anche per calcolare il seguente prodotto tra matrici \\[\n{\\bf A}^\\intercal {\\bf B},\n\\] dove \\({\\bf A}\\) e \\({\\bf B}\\) sono due matrici di dimensioni compatibili."
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-iv",
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-iv",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici IV",
-    "text": "Operazioni sulle matrici IV\nIn algebra lineare il prodotto tra matrici compatibili \\({\\bf A} {\\bf B}\\) è chiamato prodotto righe per colonne. In R si usa il comando seguente\n\nA <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))\nB <- rbind(c(5, 2, 5), c(3, 3, 7), c(-2, -8, 10))\n\nA %*% B # Prodotto righe per colonne AB\n\n     [,1] [,2] [,3]\n[1,]    5  -16   49\n[2,]   43   19  103\n[3,]   12   -6   44\n\n\n\nNota. Il comando A * B indica il prodotto elemento per elemento e non il prodotto righe per colonne.\n\n\nSe le matrici non sono compatibili R produce un errore (provateci per esercizio!)"
+    "text": "Operazioni sulle matrici IV\nIn algebra lineare il prodotto tra matrici compatibili \\({\\bf A} {\\bf B}\\) è chiamato prodotto righe per colonne. In R si usa il comando seguente\n\nA <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))\nB <- rbind(c(5, 2, 5), c(3, 3, 7), c(-2, -8, 10))\n\nA %*% B # Prodotto righe per colonne AB\n\n     [,1] [,2] [,3]\n[1,]    5  -16   49\n[2,]   43   19  103\n[3,]   12   -6   44\n\n\nNota. Il comando A * B indica il prodotto elemento per elemento e non il prodotto righe per colonne.\nSe le matrici non sono compatibili R produce un errore (provateci per esercizio!)"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-v",
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-v",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici V",
-    "text": "Operazioni sulle matrici V\nSia \\({\\bf A}\\) una matrice quadrata \\(n \\times n\\) a valori reali. La sua matrice inversa \\({\\bf A}^{-1}\\), quando esiste, è l’unica matrice tale per cui\n\\[\n{\\bf A} {\\bf A}^{-1} = {\\bf A}^{-1} {\\bf A} =  I_n.\n\\]\nPer ottenere \\({\\bf A}^{-1}\\) si usa il comando solve.\n\nA <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))\nA1 <- solve(A) # Matrice inversa di A\nA1\n\n           [,1]        [,2]        [,3]\n[1,] -0.5833333 -0.08333333  0.95833333\n[2,]  0.1666667  0.16666667 -0.41666667\n[3,]  0.4166667 -0.08333333 -0.04166667\n\n\n\n\nround(A %*% A1, digits = 5) # Operazione di controllo\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1\n\n\n\n\n\ndet(A) # Calcola il determinante della matrice A\n\n[1] -24"
+    "text": "Operazioni sulle matrici V\nSia \\({\\bf A}\\) una matrice quadrata \\(n \\times n\\) a valori reali. La sua matrice inversa \\({\\bf A}^{-1}\\), quando esiste, è l’unica matrice tale per cui\n\\[\n{\\bf A} {\\bf A}^{-1} = {\\bf A}^{-1} {\\bf A} =  I_n.\n\\]\nPer ottenere \\({\\bf A}^{-1}\\) si usa il comando solve.\n\nA <- rbind(c(1, 2, 3), c(4, 9, 2), c(2, 2, 2))\nA1 <- solve(A) # Matrice inversa di A\nA1\n\n           [,1]        [,2]        [,3]\n[1,] -0.5833333 -0.08333333  0.95833333\n[2,]  0.1666667  0.16666667 -0.41666667\n[3,]  0.4166667 -0.08333333 -0.04166667\n\n\n\nround(A %*% A1, digits = 5) # Operazione di controllo\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1\n\n\n\ndet(A) # Calcola il determinante della matrice A\n\n[1] -24"
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-vi",
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-vi",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici VI",
-    "text": "Operazioni sulle matrici VI\nNel caso una matrice non sia invertibile, il determinante è pari a \\(0\\). Il comando solve in quel caso produce un errore.\n\n# Esempio di matrice NON invertibile\nA <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))\ndet(A) # Deteminante pari a 0, solve(A) produce un errore\n\n[1] 0\n\n\n\nCi sono numerose funzioni per la scomposizione di matrici, il cui output è a volte una lista.\n\nA <- matrix(c(4, 1, 1, 8), ncol = 2)\nchol(A) # Scomposizione di Cholesky\n\n     [,1]     [,2]\n[1,]    2 0.500000\n[2,]    0 2.783882\n\nqr(A) # Scomposizione QR\n\n$qr\n           [,1]      [,2]\n[1,] -4.1231056 -2.910428\n[2,]  0.2425356  7.518604\n\n$rank\n[1] 2\n\n$qraux\n[1] 1.970143 7.518604\n\n$pivot\n[1] 1 2\n\nattr(,\"class\")\n[1] \"qr\"\n\neigen(A) # Scomposizione spettrale\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529"
+    "text": "Operazioni sulle matrici VI\nNel caso una matrice non sia invertibile, il determinante è pari a \\(0\\). Il comando solve in quel caso produce un errore.\n\n# Esempio di matrice NON invertibile\nA <- rbind(c(1, 2, 3), c(2, 4, 6), c(2, 2, 2))\ndet(A) # Deteminante pari a 0, solve(A) produce un errore\n\n[1] 0\n\n\nCi sono numerose funzioni per la scomposizione di matrici, il cui output è a volte una lista.\n\nA <- matrix(c(4, 1, 1, 8), ncol = 2)\nchol(A) # Scomposizione di Cholesky\n\n     [,1]     [,2]\n[1,]    2 0.500000\n[2,]    0 2.783882\n\nqr(A) # Scomposizione QR\n\n$qr\n           [,1]      [,2]\n[1,] -4.1231056 -2.910428\n[2,]  0.2425356  7.518604\n\n$rank\n[1] 2\n\n$qraux\n[1] 1.970143 7.518604\n\n$pivot\n[1] 1 2\n\nattr(,\"class\")\n[1] \"qr\"\n\neigen(A) # Scomposizione spettrale\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529"
   },
   {
     "objectID": "lezioni/un_A.html#liste",
@@ -669,7 +669,7 @@
     "href": "lezioni/un_A.html#esempio-la-scomposizione-spettrale",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esempio: la scomposizione spettrale",
-    "text": "Esempio: la scomposizione spettrale\nGli autovalori ed autovettori di una matrice \\(\\textbf{A}\\) si ottengono tramite il comando eigen.\nIl risultato è una lista, contenente gli autovettori (vectors) e autovalori (values).\n\nSpec_A <- eigen(A) # Scomposizione spettrale della matrice A\nSpec_A\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529\n\n\n\n\nSpec_A$values # Estrazione degli autovalori\n\n[1] 8.236068 3.763932"
+    "text": "Esempio: la scomposizione spettrale\nGli autovalori ed autovettori di una matrice \\(\\textbf{A}\\) si ottengono tramite il comando eigen.\nIl risultato è una lista, contenente gli autovettori (vectors) e autovalori (values).\n\nSpec_A <- eigen(A) # Scomposizione spettrale della matrice A\nSpec_A\n\neigen() decomposition\n$values\n[1] 8.236068 3.763932\n\n$vectors\n          [,1]       [,2]\n[1,] 0.2297529 -0.9732490\n[2,] 0.9732490  0.2297529\n\n\n\nSpec_A$values # Estrazione degli autovalori\n\n[1] 8.236068 3.763932"
   },
   {
     "objectID": "lezioni/un_B.html",
@@ -2336,5 +2336,47 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Il lancio della monetina II",
     "text": "Il lancio della monetina II\n\npar(mfrow=c(1,2))\nset.seed(250)\n\nplot(1:50, cumsum(sample(c(-10, 10), 50, replace = TRUE)), type = \"b\", xlab = \"# Lancio\", ylab = \"Guadagno\")\nabline(h = 0, lty = \"dotted\")\n\nplot(1:50, cumsum(sample(c(-10, 10), 50, replace = TRUE)), type = \"b\", xlab = \"# Lancio\", ylab = \"Guadagno\")\nabline(h = 0, lty = \"dotted\")"
+  },
+  {
+    "objectID": "lezioni/un_L.html",
+    "href": "lezioni/un_L.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "Modelli linearizzabili\nMinimi quadrati non lineari\nGli alberi di ciliegio nero\n\n\n\n\n\n\n\nRiferimenti aggiuntivi\n\n\n\n\nL’unità K del corso Statistica I\nL’Unità L del corso Statistica I\nGli esercizi R associati sono disponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_L.html#descrizione-del-problema",
+    "href": "lezioni/un_L.html#descrizione-del-problema",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Descrizione del problema",
+    "text": "Descrizione del problema\nPer \\(n = 31\\) alberi di ciliegio nero sono disponibili le misure del diametro del tronco (misurato a circa \\(1\\)m dal suolo) ed il volume ricavato dall’albero dopo l’abbattimento.\nSi vogliono utilizzare i dati per ottenere un’equazione che permetta di prevedere il volume, ottenibile solo dopo l’abbattimento dell’albero, avendo a disposizione il diametro, che è invece facilmente misurabile.\nIn altri termini, stiamo cercando una qualche funzione \\(f(\\cdot)\\) tale che\n\\[\n\\text{(volume)} \\approx f(\\text{diametro}).\n\\]\nUna simile equazione ha differenti utilizzi.\nAd esempio, può essere utilizzata per decidere quanti e quali alberi tagliare per ricavare un certo ammontare di legno, oppure per determinare il “prezzo” di un bosco."
+  },
+  {
+    "objectID": "lezioni/un_L.html#importazione-dei-dati-ciliegi",
+    "href": "lezioni/un_L.html#importazione-dei-dati-ciliegi",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Importazione dei dati ciliegi",
+    "text": "Importazione dei dati ciliegi\nCome fatto in precedenza, anzitutto è necessario scaricare il file ciliegi.csv e salvarlo nel proprio computer. Link al file\n\nciliegi <- read.table(\"../dataset/ciliegi.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/ciliegi.csv\"\nciliegi <- read.table(path, header = TRUE, sep = \",\")\n\n\nhead(ciliegi)\n\n  diametro volume\n1      8.3   10.3\n2      8.6   10.3\n3      8.8   10.2\n4     10.5   16.4\n5     10.7   18.8\n6     10.8   19.7"
+  },
+  {
+    "objectID": "lezioni/un_L.html#diagramma-a-dispersione",
+    "href": "lezioni/un_L.html#diagramma-a-dispersione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Diagramma a dispersione",
+    "text": "Diagramma a dispersione\n\nplot(ciliegi)"
+  },
+  {
+    "objectID": "lezioni/un_L.html#alcune-considerazioni-geometriche-recap",
+    "href": "lezioni/un_L.html#alcune-considerazioni-geometriche-recap",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Alcune considerazioni geometriche (recap)",
+    "text": "Alcune considerazioni geometriche (recap)\nNelle unità K ed unità L del corso Statistica I abbiamo costruito dei modelli statistici del tipo \\(\\text{(volume)} \\approx f(\\text{diametro})\\) basati sulla geometria degli alberi.\nDopo varie considerazioni di tipo geometrico, si era giunti ad una specificazione del tipo \\[\n\\text{(volume)} = \\eta \\:\\text{(diametro)}^{\\lambda},\n\\] per due costanti positive \\(\\eta, \\lambda > 0\\).\nPotremmo determinare i valori appropriati per \\(\\eta\\) e \\(\\lambda\\) utilizzando i minimi quadrati, ovvero considerando \\[\n(\\hat{\\eta}_{\\text{ls}}, \\hat{\\lambda}_{\\text{ls}}) = \\arg\\min_{\\eta, \\lambda} \\frac{1}{n} \\sum_{i=1}^n\\left(y_i - \\eta x_i^\\lambda\\right)^2.\n\\]\nPurtroppo non esiste una soluzione in forma chiusa a questo problema, che infatti necessita dell’utilizzo di tecniche numeriche."
+  },
+  {
+    "objectID": "lezioni/un_L.html#minimi-quadrati-non-lineari",
+    "href": "lezioni/un_L.html#minimi-quadrati-non-lineari",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Minimi quadrati non-lineari",
+    "text": "Minimi quadrati non-lineari\nLa procedura di stima per \\((\\hat{\\eta}_{\\text{ls}}, \\hat{\\lambda}_{\\text{ls}})\\) prende il nome di minimi quadrati non-lineari e richiede una minimizzazione numerica, come quelle che abbiamo visto nell’unità K.\nGrazie ad R ed ai suoi strumenti computazionali, possiamo quindi svolgere un calcolo che nei corsi precedenti non era risolvibile. In particolare, possiamo usare nlminb.\nIn primo luogo, definiamo la funzione obiettivo o funzione di perdita:\n\n# Funzione di perdita che vogliamo minimizzare\nloss <- function(par, y, x) {\n  mean((y - par[1] * x^par[2])^2)\n}\n\nAd esempio, tale funzione, valutata nel punto \\((1,1)\\) vale circa \\(460.83\\), infatti:\n\nloss(c(1, 1), ciliegi$volume, ciliegi$diametro)\n\n[1] 460.8329\n\n\n\\end{frame}\n\\end{document}"
   }
 ]
