@@ -169,6 +169,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#diagramma-a-dispersione" id="toc-diagramma-a-dispersione" class="nav-link" data-scroll-target="#diagramma-a-dispersione">Diagramma a dispersione</a></li>
   <li><a href="#alcune-considerazioni-geometriche-recap" id="toc-alcune-considerazioni-geometriche-recap" class="nav-link" data-scroll-target="#alcune-considerazioni-geometriche-recap">Alcune considerazioni geometriche (recap)</a></li>
   <li><a href="#minimi-quadrati-non-lineari" id="toc-minimi-quadrati-non-lineari" class="nav-link" data-scroll-target="#minimi-quadrati-non-lineari">Minimi quadrati non-lineari</a></li>
+  <li><a href="#stima-ai-minimi-quadrati" id="toc-stima-ai-minimi-quadrati" class="nav-link" data-scroll-target="#stima-ai-minimi-quadrati">Stima ai minimi quadrati</a></li>
+  <li><a href="#commenti-ai-risultati" id="toc-commenti-ai-risultati" class="nav-link" data-scroll-target="#commenti-ai-risultati">Commenti ai risultati</a></li>
+  <li><a href="#il-modello-linearizzato" id="toc-il-modello-linearizzato" class="nav-link" data-scroll-target="#il-modello-linearizzato">Il modello linearizzato</a></li>
+  <li><a href="#stima-ai-minimi-quadrati-modello-linearizzato" id="toc-stima-ai-minimi-quadrati-modello-linearizzato" class="nav-link" data-scroll-target="#stima-ai-minimi-quadrati-modello-linearizzato">Stima ai minimi quadrati (modello linearizzato)</a></li>
+  <li><a href="#confronto-tra-modelli" id="toc-confronto-tra-modelli" class="nav-link" data-scroll-target="#confronto-tra-modelli">Confronto tra modelli</a></li>
+  <li><a href="#commenti-conclusivi" id="toc-commenti-conclusivi" class="nav-link" data-scroll-target="#commenti-conclusivi">Commenti conclusivi</a></li>
   </ul>
 </nav>
     </div>
@@ -224,7 +230,7 @@ Riferimenti aggiuntivi
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>L’<a href="https://tommasorigon.github.io/StatI/slides/sl_K.pdf">unità K</a> del corso Statistica I</p></li>
+<li><p>L’<a href="https://tommasorigon.github.io/StatI/slides/sl_K.pdf">Unità K</a> del corso Statistica I</p></li>
 <li><p>L’<a href="https://tommasorigon.github.io/StatI/slides/sl_L.pdf">Unità L</a> del corso Statistica I</p></li>
 <li><p>Gli esercizi <strong>R</strong> associati sono disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_4.html">questo link</a></p></li>
 </ul>
@@ -277,7 +283,7 @@ Riferimenti aggiuntivi
 </section>
 <section id="alcune-considerazioni-geometriche-recap" class="level2">
 <h2 class="anchored" data-anchor-id="alcune-considerazioni-geometriche-recap">Alcune considerazioni geometriche (recap)</h2>
-<p>Nelle <a href="https://tommasorigon.github.io/StatI/slides/sl_K.pdf">unità K</a> ed <a href="https://tommasorigon.github.io/StatI/slides/sl_L.pdf">unità L</a> del corso <strong>Statistica I</strong> abbiamo costruito dei modelli statistici del tipo <span class="math inline">\(\text{(volume)} \approx f(\text{diametro})\)</span> basati sulla geometria degli alberi.</p>
+<p>Nelle <a href="https://tommasorigon.github.io/StatI/slides/sl_K.pdf">Unità K</a> ed <a href="https://tommasorigon.github.io/StatI/slides/sl_L.pdf">Unità L</a> del corso <strong>Statistica I</strong> abbiamo costruito dei modelli statistici del tipo <span class="math inline">\(\text{(volume)} \approx f(\text{diametro})\)</span> basati sulla geometria degli alberi.</p>
 <p>Dopo varie considerazioni di tipo geometrico, si era giunti ad una specificazione del tipo <span class="math display">\[
 \text{(volume)} = \eta \:\text{(diametro)}^{\lambda},
 \]</span> per due costanti <strong>positive</strong> <span class="math inline">\(\eta, \lambda &gt; 0\)</span>.</p>
@@ -288,7 +294,7 @@ Riferimenti aggiuntivi
 </section>
 <section id="minimi-quadrati-non-lineari" class="level2">
 <h2 class="anchored" data-anchor-id="minimi-quadrati-non-lineari">Minimi quadrati non-lineari</h2>
-<p>La procedura di stima per <span class="math inline">\((\hat{\eta}_{\text{ls}}, \hat{\lambda}_{\text{ls}})\)</span> prende il nome di <strong>minimi quadrati non-lineari</strong> e richiede una minimizzazione numerica, come quelle che abbiamo visto nell’<a href="un_K.html">unità K</a>.</p>
+<p>La procedura di stima per <span class="math inline">\((\hat{\eta}_{\text{ls}}, \hat{\lambda}_{\text{ls}})\)</span> prende il nome di <strong>minimi quadrati non-lineari</strong> e richiede una minimizzazione numerica, come quelle che abbiamo visto nell’<a href="un_K.html">Unità K</a>.</p>
 <p>Grazie ad <strong>R</strong> ed ai suoi strumenti computazionali, possiamo quindi svolgere un calcolo che nei corsi precedenti non era risolvibile. In particolare, possiamo usare <code>nlminb</code>.</p>
 <p>In primo luogo, definiamo la <strong>funzione obiettivo</strong> o <strong>funzione di perdita</strong>:</p>
 <div class="cell">
@@ -304,8 +310,124 @@ Riferimenti aggiuntivi
 <pre><code>[1] 460.8329</code></pre>
 </div>
 </div>
-<p>\end{frame}</p>
-<p>\end{document}</p>
+</section>
+<section id="stima-ai-minimi-quadrati" class="level2">
+<h2 class="anchored" data-anchor-id="stima-ai-minimi-quadrati">Stima ai minimi quadrati</h2>
+<p>La stima ai minimi quadrati si ottiene quindi usando <code>nlminb</code>. In questo caso, siamo effettivamente interessati a <strong>minimizzare</strong> una funzione.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fit_ls <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(<span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="cf">function</span>(param) <span class="fu">loss</span>(param, ciliegi<span class="sc">$</span>volume, ciliegi<span class="sc">$</span>diametro),</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">1e-6</span>, <span class="fl">1e-6</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>fit_ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$par
+[1] 0.08661007 2.23638534
+
+$objective
+[1] 10.12108
+
+$convergence
+[1] 0
+
+$iterations
+[1] 27
+
+$evaluations
+function gradient 
+      41       61 
+
+$message
+[1] "relative convergence (4)"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvo i risultati</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>param_hat_ls <span class="ot">&lt;-</span> fit_ls<span class="sc">$</span>par</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>param_hat_ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08661007 2.23638534</code></pre>
+</div>
+</div>
+</section>
+<section id="commenti-ai-risultati" class="level2">
+<h2 class="anchored" data-anchor-id="commenti-ai-risultati">Commenti ai risultati</h2>
+<p>I comandi precedenti quindi implicano che la <strong>stima ai minimi quadrati</strong> (<strong>non lineari</strong>) è pari a <span class="math display">\[\hat{\eta}_{\text{ls}} = 0.0866, \qquad \hat{\lambda}_{\text{ls}} = 2.2364.
+\]</span></p>
+<p>Inoltre, la <strong>varianza residuale</strong> è pari a <span class="math display">\[
+    \frac{1}{n} \sum_{i=1}^n\left(y_i - \hat{\eta}_{\text{ls}} x_i^{\hat{\lambda}_{\text{ls}}}\right)^2 = 10.121.
+\]</span></p>
+<p>Infatti:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fit_ls<span class="sc">$</span>objective</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.12108</code></pre>
+</div>
+</div>
+<p>Come ricorderete, questo problema di stima può essere affrontato alternativamente tramite la procedura di <strong>linearizzazione</strong> del modello.</p>
+<p>Supponendo che la relazione sia del tipo <span class="math inline">\(\text{(volume)} = \eta \:\text{(diametro)}^{\lambda}\)</span>, allora applicando la funzione <span class="math inline">\(\log\)</span> ambo i lati, si ottiene <span class="math display">\[
+\log{\text{(volume)}} = \log{\eta}  + \lambda\log{\text{(diametro)}}.
+\]</span></p>
+<p>Quindi, la <strong>relazione non lineare</strong> che abbiamo supposto tra <code>diametro</code> e <code>volume</code> corrisponde ad una <strong>relazione lineare</strong> tra i logaritmi delle due variabili.</p>
+</section>
+<section id="il-modello-linearizzato" class="level2">
+<h2 class="anchored" data-anchor-id="il-modello-linearizzato">Il modello linearizzato</h2>
+<p>La relazione in scala logaritmica descrive un modello <strong>linearizzato</strong>. Si tratta di un modello di regressione lineare semplice in cui <span class="math display">\[
+z_i = \log y_i, \qquad w_i = \log{x_i}, \qquad i=1,\dots,n.
+\]</span></p>
+<p>Introducendo esplicitamente il termine di errore, avremo quindi che <span class="math display">\[
+z_i = \alpha + \beta w_i + \epsilon_i
+\]</span> in cui <span class="math inline">\(\alpha = \log \eta\)</span> e <span class="math inline">\(\beta = \lambda\)</span>.</p>
+<p>Possiamo determinare i <strong>parametri trasformati</strong> ottimali <span class="math inline">\(\hat{\alpha}\)</span> e <span class="math inline">\(\hat{\beta}\)</span> ed i <strong>parametri originali</strong> <span class="math inline">\(\hat{\eta}_{\text{ols}}\)</span> ed <span class="math inline">\(\hat{\lambda}_{\text{ols}}\)</span> utilizzando il criterio dei minimi quadrati sulla scala trasformata, ovvero <span class="math display">\[
+\min_{\alpha, \beta} \frac{1}{n} \sum_{i=1}^n\left(z_i - \alpha - \beta w_i \right)^2 = \min_{\eta, \lambda} \frac{1}{n} \sum_{i=1}^n\left(\log{y_i} - \log{\eta} - \lambda \log{x_i} \right)^2.
+\]</span></p>
+<p>Varrà quindi la relazione <span class="math inline">\(\hat{\eta}_{\text{ols}} = \exp\{\hat{\alpha}\}\)</span> e che <span class="math inline">\(\hat{\lambda}_{\text{ols}} = \hat{\beta}\)</span>.</p>
+</section>
+<section id="stima-ai-minimi-quadrati-modello-linearizzato" class="level2">
+<h2 class="anchored" data-anchor-id="stima-ai-minimi-quadrati-modello-linearizzato">Stima ai minimi quadrati (modello linearizzato)</h2>
+<p>La stima ai minimi quadrati in scala trasformata ammette una <strong>soluzione esplicita</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">log</span>(ciliegi<span class="sc">$</span>volume)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">log</span>(ciliegi<span class="sc">$</span>diametro)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>beta_hat_ols <span class="ot">&lt;-</span> <span class="fu">cov</span>(w, z) <span class="sc">/</span> <span class="fu">var</span>(w)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>alpha_hat_ols <span class="ot">&lt;-</span> <span class="fu">mean</span>(z) <span class="sc">-</span> <span class="fu">mean</span>(w) <span class="sc">*</span> beta_hat_ols</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Stima ai minimi quadrati, scala trasformata</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>param_hat_ols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">exp</span>(alpha_hat_ols), beta_hat_ols)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>param_hat_ols</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.09505259 2.19996993</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varianza residuale</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">loss</span>(param_hat_ols, ciliegi<span class="sc">$</span>volume, ciliegi<span class="sc">$</span>diametro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.2531</code></pre>
+</div>
+</div>
+<p>I comandi precedenti quindi implicano che la <strong>stima ai minimi quadrati</strong> (<strong>modello linearizzato</strong>) è pari a <span class="math display">\[
+\hat{\eta}_{\text{ols}} = 0.095, \qquad \hat{\lambda}_{\text{ols}} = 2.200.
+\]</span></p>
+<p>Inoltre, la varianza residuale <span class="math inline">\(n^{-1} \sum_{i=1}^n(y_i - \hat{\eta}_{\text{ols}} x_i^{\hat{\lambda}_{\text{ols}}})^2 = 10.253\)</span> è superiore a quella ottenuta in precedenza (<strong>{come mai</strong>?), anche se di poco.</p>
+</section>
+<section id="confronto-tra-modelli" class="level2">
+<h2 class="anchored" data-anchor-id="confronto-tra-modelli">Confronto tra modelli</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ciliegi)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(param_hat_ls[<span class="dv">1</span>] <span class="sc">*</span> x<span class="sc">^</span>param_hat_ls[<span class="dv">2</span>], </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>) <span class="co"># Stime numeriche non-lineari</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(param_hat_ols[<span class="dv">1</span>] <span class="sc">*</span> x<span class="sc">^</span>param_hat_ols[<span class="dv">2</span>], </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># Modello linearizzato</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_L_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="commenti-conclusivi" class="level2">
+<h2 class="anchored" data-anchor-id="commenti-conclusivi">Commenti conclusivi</h2>
+<p>I due approcci sono <strong>sostanzialmente equivalenti</strong> in questo specifico esempio, nel senso che producono risultati quasi indistinguibili.</p>
+<p>Si noti che il <strong>modello</strong> è lo stesso, abbiamo solo cambiato <strong>metodo di stima</strong>!</p>
+<p>Tuttavia, in generale non è detto che sia possibile linearizzare il modello originale. In questi casi, non esiste un’alternativa semplice.</p>
+<p>Infine, a seconda della funzione di perdita utilizzata, due diversi metodi di stima potrebbero differire di molto nonostante il modello sia lo stesso.</p>
+<p>Ad esempio, alcuni stimatori sono più <strong>robusti</strong> di altri rispetto alla presenza di valori anomali.</p>
 
 
 </section>

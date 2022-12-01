@@ -2342,7 +2342,7 @@
     "href": "lezioni/un_L.html",
     "title": "R per l’analisi statistica multivariata",
     "section": "",
-    "text": "Modelli linearizzabili\nMinimi quadrati non lineari\nGli alberi di ciliegio nero\n\n\n\n\n\n\n\nRiferimenti aggiuntivi\n\n\n\n\nL’unità K del corso Statistica I\nL’Unità L del corso Statistica I\nGli esercizi R associati sono disponibili a questo link"
+    "text": "Modelli linearizzabili\nMinimi quadrati non lineari\nGli alberi di ciliegio nero\n\n\n\n\n\n\n\nRiferimenti aggiuntivi\n\n\n\n\nL’Unità K del corso Statistica I\nL’Unità L del corso Statistica I\nGli esercizi R associati sono disponibili a questo link"
   },
   {
     "objectID": "lezioni/un_L.html#descrizione-del-problema",
@@ -2370,13 +2370,55 @@
     "href": "lezioni/un_L.html#alcune-considerazioni-geometriche-recap",
     "title": "R per l’analisi statistica multivariata",
     "section": "Alcune considerazioni geometriche (recap)",
-    "text": "Alcune considerazioni geometriche (recap)\nNelle unità K ed unità L del corso Statistica I abbiamo costruito dei modelli statistici del tipo \\(\\text{(volume)} \\approx f(\\text{diametro})\\) basati sulla geometria degli alberi.\nDopo varie considerazioni di tipo geometrico, si era giunti ad una specificazione del tipo \\[\n\\text{(volume)} = \\eta \\:\\text{(diametro)}^{\\lambda},\n\\] per due costanti positive \\(\\eta, \\lambda > 0\\).\nPotremmo determinare i valori appropriati per \\(\\eta\\) e \\(\\lambda\\) utilizzando i minimi quadrati, ovvero considerando \\[\n(\\hat{\\eta}_{\\text{ls}}, \\hat{\\lambda}_{\\text{ls}}) = \\arg\\min_{\\eta, \\lambda} \\frac{1}{n} \\sum_{i=1}^n\\left(y_i - \\eta x_i^\\lambda\\right)^2.\n\\]\nPurtroppo non esiste una soluzione in forma chiusa a questo problema, che infatti necessita dell’utilizzo di tecniche numeriche."
+    "text": "Alcune considerazioni geometriche (recap)\nNelle Unità K ed Unità L del corso Statistica I abbiamo costruito dei modelli statistici del tipo \\(\\text{(volume)} \\approx f(\\text{diametro})\\) basati sulla geometria degli alberi.\nDopo varie considerazioni di tipo geometrico, si era giunti ad una specificazione del tipo \\[\n\\text{(volume)} = \\eta \\:\\text{(diametro)}^{\\lambda},\n\\] per due costanti positive \\(\\eta, \\lambda > 0\\).\nPotremmo determinare i valori appropriati per \\(\\eta\\) e \\(\\lambda\\) utilizzando i minimi quadrati, ovvero considerando \\[\n(\\hat{\\eta}_{\\text{ls}}, \\hat{\\lambda}_{\\text{ls}}) = \\arg\\min_{\\eta, \\lambda} \\frac{1}{n} \\sum_{i=1}^n\\left(y_i - \\eta x_i^\\lambda\\right)^2.\n\\]\nPurtroppo non esiste una soluzione in forma chiusa a questo problema, che infatti necessita dell’utilizzo di tecniche numeriche."
   },
   {
     "objectID": "lezioni/un_L.html#minimi-quadrati-non-lineari",
     "href": "lezioni/un_L.html#minimi-quadrati-non-lineari",
     "title": "R per l’analisi statistica multivariata",
     "section": "Minimi quadrati non-lineari",
-    "text": "Minimi quadrati non-lineari\nLa procedura di stima per \\((\\hat{\\eta}_{\\text{ls}}, \\hat{\\lambda}_{\\text{ls}})\\) prende il nome di minimi quadrati non-lineari e richiede una minimizzazione numerica, come quelle che abbiamo visto nell’unità K.\nGrazie ad R ed ai suoi strumenti computazionali, possiamo quindi svolgere un calcolo che nei corsi precedenti non era risolvibile. In particolare, possiamo usare nlminb.\nIn primo luogo, definiamo la funzione obiettivo o funzione di perdita:\n\n# Funzione di perdita che vogliamo minimizzare\nloss <- function(par, y, x) {\n  mean((y - par[1] * x^par[2])^2)\n}\n\nAd esempio, tale funzione, valutata nel punto \\((1,1)\\) vale circa \\(460.83\\), infatti:\n\nloss(c(1, 1), ciliegi$volume, ciliegi$diametro)\n\n[1] 460.8329\n\n\n\\end{frame}\n\\end{document}"
+    "text": "Minimi quadrati non-lineari\nLa procedura di stima per \\((\\hat{\\eta}_{\\text{ls}}, \\hat{\\lambda}_{\\text{ls}})\\) prende il nome di minimi quadrati non-lineari e richiede una minimizzazione numerica, come quelle che abbiamo visto nell’Unità K.\nGrazie ad R ed ai suoi strumenti computazionali, possiamo quindi svolgere un calcolo che nei corsi precedenti non era risolvibile. In particolare, possiamo usare nlminb.\nIn primo luogo, definiamo la funzione obiettivo o funzione di perdita:\n\n# Funzione di perdita che vogliamo minimizzare\nloss <- function(par, y, x) {\n  mean((y - par[1] * x^par[2])^2)\n}\n\nAd esempio, tale funzione, valutata nel punto \\((1,1)\\) vale circa \\(460.83\\), infatti:\n\nloss(c(1, 1), ciliegi$volume, ciliegi$diametro)\n\n[1] 460.8329"
+  },
+  {
+    "objectID": "lezioni/un_L.html#stima-ai-minimi-quadrati",
+    "href": "lezioni/un_L.html#stima-ai-minimi-quadrati",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Stima ai minimi quadrati",
+    "text": "Stima ai minimi quadrati\nLa stima ai minimi quadrati si ottiene quindi usando nlminb. In questo caso, siamo effettivamente interessati a minimizzare una funzione.\n\nfit_ls <- nlminb(start = c(1, 1), function(param) loss(param, ciliegi$volume, ciliegi$diametro),\n                 lower = c(1e-6, 1e-6))\nfit_ls\n\n$par\n[1] 0.08661007 2.23638534\n\n$objective\n[1] 10.12108\n\n$convergence\n[1] 0\n\n$iterations\n[1] 27\n\n$evaluations\nfunction gradient \n      41       61 \n\n$message\n[1] \"relative convergence (4)\"\n\n\n\n# Salvo i risultati\nparam_hat_ls <- fit_ls$par\nparam_hat_ls\n\n[1] 0.08661007 2.23638534"
+  },
+  {
+    "objectID": "lezioni/un_L.html#commenti-ai-risultati",
+    "href": "lezioni/un_L.html#commenti-ai-risultati",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Commenti ai risultati",
+    "text": "Commenti ai risultati\nI comandi precedenti quindi implicano che la stima ai minimi quadrati (non lineari) è pari a \\[\\hat{\\eta}_{\\text{ls}} = 0.0866, \\qquad \\hat{\\lambda}_{\\text{ls}} = 2.2364.\n\\]\nInoltre, la varianza residuale è pari a \\[\n    \\frac{1}{n} \\sum_{i=1}^n\\left(y_i - \\hat{\\eta}_{\\text{ls}} x_i^{\\hat{\\lambda}_{\\text{ls}}}\\right)^2 = 10.121.\n\\]\nInfatti:\n\nfit_ls$objective\n\n[1] 10.12108\n\n\nCome ricorderete, questo problema di stima può essere affrontato alternativamente tramite la procedura di linearizzazione del modello.\nSupponendo che la relazione sia del tipo \\(\\text{(volume)} = \\eta \\:\\text{(diametro)}^{\\lambda}\\), allora applicando la funzione \\(\\log\\) ambo i lati, si ottiene \\[\n\\log{\\text{(volume)}} = \\log{\\eta}  + \\lambda\\log{\\text{(diametro)}}.\n\\]\nQuindi, la relazione non lineare che abbiamo supposto tra diametro e volume corrisponde ad una relazione lineare tra i logaritmi delle due variabili."
+  },
+  {
+    "objectID": "lezioni/un_L.html#il-modello-linearizzato",
+    "href": "lezioni/un_L.html#il-modello-linearizzato",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il modello linearizzato",
+    "text": "Il modello linearizzato\nLa relazione in scala logaritmica descrive un modello linearizzato. Si tratta di un modello di regressione lineare semplice in cui \\[\nz_i = \\log y_i, \\qquad w_i = \\log{x_i}, \\qquad i=1,\\dots,n.\n\\]\nIntroducendo esplicitamente il termine di errore, avremo quindi che \\[\nz_i = \\alpha + \\beta w_i + \\epsilon_i\n\\] in cui \\(\\alpha = \\log \\eta\\) e \\(\\beta = \\lambda\\).\nPossiamo determinare i parametri trasformati ottimali \\(\\hat{\\alpha}\\) e \\(\\hat{\\beta}\\) ed i parametri originali \\(\\hat{\\eta}_{\\text{ols}}\\) ed \\(\\hat{\\lambda}_{\\text{ols}}\\) utilizzando il criterio dei minimi quadrati sulla scala trasformata, ovvero \\[\n\\min_{\\alpha, \\beta} \\frac{1}{n} \\sum_{i=1}^n\\left(z_i - \\alpha - \\beta w_i \\right)^2 = \\min_{\\eta, \\lambda} \\frac{1}{n} \\sum_{i=1}^n\\left(\\log{y_i} - \\log{\\eta} - \\lambda \\log{x_i} \\right)^2.\n\\]\nVarrà quindi la relazione \\(\\hat{\\eta}_{\\text{ols}} = \\exp\\{\\hat{\\alpha}\\}\\) e che \\(\\hat{\\lambda}_{\\text{ols}} = \\hat{\\beta}\\)."
+  },
+  {
+    "objectID": "lezioni/un_L.html#stima-ai-minimi-quadrati-modello-linearizzato",
+    "href": "lezioni/un_L.html#stima-ai-minimi-quadrati-modello-linearizzato",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Stima ai minimi quadrati (modello linearizzato)",
+    "text": "Stima ai minimi quadrati (modello linearizzato)\nLa stima ai minimi quadrati in scala trasformata ammette una soluzione esplicita.\n\nz <- log(ciliegi$volume)\nw <- log(ciliegi$diametro)\n\nbeta_hat_ols <- cov(w, z) / var(w)\nalpha_hat_ols <- mean(z) - mean(w) * beta_hat_ols\n\n# Stima ai minimi quadrati, scala trasformata\nparam_hat_ols <- c(exp(alpha_hat_ols), beta_hat_ols)\nparam_hat_ols\n\n[1] 0.09505259 2.19996993\n\n# Varianza residuale\nloss(param_hat_ols, ciliegi$volume, ciliegi$diametro)\n\n[1] 10.2531\n\n\nI comandi precedenti quindi implicano che la stima ai minimi quadrati (modello linearizzato) è pari a \\[\n\\hat{\\eta}_{\\text{ols}} = 0.095, \\qquad \\hat{\\lambda}_{\\text{ols}} = 2.200.\n\\]\nInoltre, la varianza residuale \\(n^{-1} \\sum_{i=1}^n(y_i - \\hat{\\eta}_{\\text{ols}} x_i^{\\hat{\\lambda}_{\\text{ols}}})^2 = 10.253\\) è superiore a quella ottenuta in precedenza ({come mai?), anche se di poco."
+  },
+  {
+    "objectID": "lezioni/un_L.html#confronto-tra-modelli",
+    "href": "lezioni/un_L.html#confronto-tra-modelli",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Confronto tra modelli",
+    "text": "Confronto tra modelli\n\nplot(ciliegi)\ncurve(param_hat_ls[1] * x^param_hat_ls[2], \n      add = TRUE, lty = \"dashed\") # Stime numeriche non-lineari\ncurve(param_hat_ols[1] * x^param_hat_ols[2], \n      add = TRUE, lty = \"dashed\", col = \"red\") # Modello linearizzato"
+  },
+  {
+    "objectID": "lezioni/un_L.html#commenti-conclusivi",
+    "href": "lezioni/un_L.html#commenti-conclusivi",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Commenti conclusivi",
+    "text": "Commenti conclusivi\nI due approcci sono sostanzialmente equivalenti in questo specifico esempio, nel senso che producono risultati quasi indistinguibili.\nSi noti che il modello è lo stesso, abbiamo solo cambiato metodo di stima!\nTuttavia, in generale non è detto che sia possibile linearizzare il modello originale. In questi casi, non esiste un’alternativa semplice.\nInfine, a seconda della funzione di perdita utilizzata, due diversi metodi di stima potrebbero differire di molto nonostante il modello sia lo stesso.\nAd esempio, alcuni stimatori sono più robusti di altri rispetto alla presenza di valori anomali."
   }
 ]
