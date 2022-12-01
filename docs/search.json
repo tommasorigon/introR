@@ -2272,7 +2272,7 @@
     "href": "lezioni/un_J.html#la-roulette-americana-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "La roulette americana I",
-    "text": "La roulette americana I\n\nIl gioco del ``lancio della monetina’’ è concettualmente identico ad un gioco d’azzardo ben più popolare, la .\nSupponendo di scommettere sul rosso (o sul nero) 10 euro, questo gioco d’azzardo può essere simulato usando sostanzialmente lo stesso codice discusso finora.\nC’è però una differenza importante, soprattutto da un punto di vista finanziario: la presenza dello zero e del doppio zero."
+    "text": "La roulette americana I\n\nIl gioco del “lancio della monetina’’ è concettualmente identico ad un gioco d’azzardo ben più popolare, la roulette.\nSupponendo di scommettere sul rosso (o sul nero) 10 euro, questo gioco d’azzardo può essere simulato usando sostanzialmente lo stesso codice discusso finora.\nC’è però una differenza importante, soprattutto da un punto di vista finanziario: la presenza dello zero e del doppio zero."
   },
   {
     "objectID": "lezioni/un_J.html#la-roulette-americana-ii",
@@ -2286,21 +2286,21 @@
     "href": "lezioni/un_J.html#simulazione-ed-analisi-dei-risultati",
     "title": "R per l’analisi statistica multivariata",
     "section": "Simulazione ed analisi dei risultati",
-    "text": "Simulazione ed analisi dei risultati\nTramite gli stessi comandi usati in precedenza, ripetiamo \\(R\\) volte l’operazione per studiare la distribuzione di \\(X\\).\n\nset.seed(123)\nR <- 10^5\nfinal_earning <- replicate(R, sum(sample(c(-10, 10), 50, replace = TRUE, \n                                         prob = c(1 - p_winning, p_winning))))\n\n\n# Media del guadagno finale\nmean(final_earning)\n\n[1] -26.3814\n\n\n\n# Deviazione standard del guadagno finale\nsd(final_earning)\n\n[1] 70.54601\n\n\n\n# Probabilità di vittoria, ovvero P(X > 0)\nmean(final_earning > 0)\n\n[1] 0.30387\n\n\n\n# Probabilità di pareggio, ovvero P(X == 0)\nmean(final_earning == 0)\n\n[1] 0.10483"
+    "text": "Simulazione ed analisi dei risultati\nTramite gli stessi comandi usati in precedenza, ripetiamo \\(R\\) volte l’operazione per studiare la distribuzione di \\(X\\).\n\nset.seed(123)\nR <- 10^5\nfinal_earning <- replicate(R, sum(sample(c(-10, 10), 50, replace = TRUE, \n                                         prob = c(1 - p_winning, p_winning))))\n\n\n# Media del guadagno finale\nmean(final_earning)\n\n[1] -26.3814\n\n\n\n# Deviazione standard del guadagno finale\nsd(final_earning)\n\n[1] 70.54601\n\n\n\n# Probabilità di vittoria, ovvero P(X > 0)\nmean(final_earning > 0)\n\n[1] 0.30387\n\n\n\n# Probabilità di pareggio, ovvero P(X == 0)\nmean(final_earning == 0)\n\n[1] 0.10483\n\n\n\npar(mfrow = c(1, 1))\nplot(table(final_earning) / R, xlab = \"Guadagno finale (50 partite)\", ylab = \"Funzione di probabilità\")"
   },
   {
     "objectID": "lezioni/un_J.html#distribuzione-di-probabilità",
     "href": "lezioni/un_J.html#distribuzione-di-probabilità",
     "title": "R per l’analisi statistica multivariata",
     "section": "Distribuzione di probabilità",
-    "text": "Distribuzione di probabilità\n\npar(mfrow = c(1, 1))\nplot(table(final_earning) / R, xlab = \"Guadagno finale (50 partite)\", ylab = \"Funzione di probabilità\")"
+    "text": "Distribuzione di probabilità\n\nplot(table(final_earning) / R, xlab = \"Guadagno finale (50 partite)\", ylab = \"Funzione di probabilità\")\n\n\n\n\nPossiamo osservare un “picco” di probabilità nel valore \\(-100\\) e pertanto circa il \\(25\\%\\) delle volte il giocatore finisce in bancarotta.\nCon un budget di 100,000 euro, è impossibile che il banco vada in rovina.\nAl tempo stesso, il valore atteso rimane negativo, ovvero \\(\\mathbb{E}(X) = -24\\), ma è tuttavia superiore a quello ottenuto nel modello con budget illimitato, ovvero circa \\(-26\\).\nIn un certo senso, il banco non può sottrarre al giocatore i soldi che questo non possiede.\nDa questo desumiamo la strategia di gioco ottimale alla roulette: bisogna entrare nel casinò con pochi spiccioli in portafoglio o, idealmente, con assolutamente nulla."
   },
   {
     "objectID": "lezioni/un_J.html#commenti-ai-risultati",
     "href": "lezioni/un_J.html#commenti-ai-risultati",
     "title": "R per l’analisi statistica multivariata",
     "section": "Commenti ai risultati",
-    "text": "Commenti ai risultati\nIl valore atteso del guadagno finale \\(\\mathbb{E}(X)\\) è negativo e circa pari a \\(-26\\).\nLa probabilità di vittoria e di pareggio diminuiscono rispetto al “lancio della monetina”.\nL’intera distribuzione è spostata verso valori negativi rispetto al primo scenario.\nQuesti risultati sono una formalizzazione del detto popolare “il banco vince sempre”. Per questo gli statistici non giocano d’azzardo, o quantomeno non alla roulette!\n\n\n\n\n\n\nEsercizio - Proprietà\n\n\n\nI valori attesi, le varianze e le probabilità calcolate tramite simulazione possono essere in realtà ottenute anche analiticamente. Si provi a calcolarle tramite “carta e penna”.\nNegli ultimi paragrafi considereremo quindi un esempio leggermente più sofisticato, che renderebbe molto più difficile fare i conti analitici."
+    "text": "Commenti ai risultati\nIl valore atteso del guadagno finale \\(\\mathbb{E}(X)\\) è negativo e circa pari a \\(-26\\).\nLa probabilità di vittoria e di pareggio diminuiscono rispetto al “lancio della monetina”.\nL’intera distribuzione è spostata verso valori negativi rispetto al primo scenario.\nQuesti risultati sono una formalizzazione del detto popolare “il banco vince sempre”. Per questo gli statistici non giocano d’azzardo, o quantomeno non alla roulette!\n\n\n\n\n\n\nEsercizio - Proprietà\n\n\n\nI valori attesi, le varianze e le probabilità calcolate tramite simulazione possono essere in realtà ottenute anche analiticamente. Si provi a calcolarle tramite “carta e penna”.\nNegli ultimi paragrafi considereremo quindi un esempio leggermente più sofisticato, che renderebbe molto più difficile (anche se non impossibile) fare i conti analitici."
   },
   {
     "objectID": "lezioni/un_J.html#uno-scenario-più-realistico",
@@ -2322,5 +2322,19 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Distribuzione di probabilità",
     "text": "Distribuzione di probabilità\n\nplot(table(final_earning) / R, xlab = \"Guadagno finale (50 partite)\", ylab = \"Funzione di probabilità\")\n\n\n\n\nPossiamo osservare un “picco” di probabilità nel valore \\(-100\\) e pertanto circa il \\(25\\%\\) delle volte il giocatore finisce in bancarotta.\nCon un budget di 100,000 euro, è impossibile che il banco vada in rovina.\nAl tempo stesso, il valore atteso rimane negativo, ovvero \\(\\mathbb{E}(X) = -24\\), ma è tuttavia superiore a quello ottenuto nel modello con budget illimitato, ovvero circa \\(-26\\).\nIn un certo senso, il banco non può sottrarre al giocatore i soldi che questo non possiede.\nDa questo desumiamo la strategia di gioco ottimale alla roulette: bisogna entrare nel casinò con pochi spiccioli in portafoglio o, idealmente, con assolutamente nulla."
+  },
+  {
+    "objectID": "lezioni/un_J.html#il-lancio-della-monetina-i",
+    "href": "lezioni/un_J.html#il-lancio-della-monetina-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il lancio della monetina I",
+    "text": "Il lancio della monetina I\nIl comando che simula una singola partita, ovvero \\(50\\) lanci di monetina dal punto di vista del giocatore A, è il seguente:\n\nset.seed(123)\nsample(c(-10, 10), 50, replace = TRUE) # Gioco 50 volte ai dadi contro B\n\n [1] -10 -10 -10  10 -10  10  10  10 -10 -10  10  10  10 -10  10 -10  10 -10 -10\n[20] -10 -10  10 -10 -10 -10 -10  10  10 -10  10 -10  10 -10  10  10 -10 -10 -10\n[39] -10  10 -10  10  10 -10 -10 -10 -10  10 -10 -10\n\n\nNoi siamo tuttavia interessati al guadagno del giocatore A. Ovviamente per ottenere i guadagni di B è sufficiente cambiare il segno dei risultati.\nIl guadagno del giocatore A dopo ciascun lancio di monetina è pari a\n\nset.seed(123)\ncumsum(sample(c(-10, 10), 50, replace = TRUE))\n\n [1]  -10  -20  -30  -20  -30  -20  -10    0  -10  -20  -10    0   10    0   10\n[16]    0   10    0  -10  -20  -30  -20  -30  -40  -50  -60  -50  -40  -50  -40\n[31]  -50  -40  -50  -40  -30  -40  -50  -60  -70  -60  -70  -60  -50  -60  -70\n[46]  -80  -90  -80  -90 -100"
+  },
+  {
+    "objectID": "lezioni/un_J.html#il-lancio-della-monetina-ii",
+    "href": "lezioni/un_J.html#il-lancio-della-monetina-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Il lancio della monetina II",
+    "text": "Il lancio della monetina II\n\npar(mfrow=c(1,2))\nset.seed(250)\n\nplot(1:50, cumsum(sample(c(-10, 10), 50, replace = TRUE)), type = \"b\", xlab = \"# Lancio\", ylab = \"Guadagno\")\nabline(h = 0, lty = \"dotted\")\n\nplot(1:50, cumsum(sample(c(-10, 10), 50, replace = TRUE)), type = \"b\", xlab = \"# Lancio\", ylab = \"Guadagno\")\nabline(h = 0, lty = \"dotted\")"
   }
 ]

@@ -165,19 +165,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#un-breve-sommario" id="toc-un-breve-sommario" class="nav-link active" data-scroll-target="#un-breve-sommario">Un breve sommario</a></li>
   <li><a href="#un-primo-semplice-gioco" id="toc-un-primo-semplice-gioco" class="nav-link" data-scroll-target="#un-primo-semplice-gioco">Un primo semplice gioco</a></li>
-  <li><a href="#il-lancio-della-monetina" id="toc-il-lancio-della-monetina" class="nav-link" data-scroll-target="#il-lancio-della-monetina">Il lancio della monetina</a></li>
-  <li><a href="#il-lancio-della-monetina-1" id="toc-il-lancio-della-monetina-1" class="nav-link" data-scroll-target="#il-lancio-della-monetina-1">Il lancio della monetina</a></li>
+  <li><a href="#il-lancio-della-monetina-i" id="toc-il-lancio-della-monetina-i" class="nav-link" data-scroll-target="#il-lancio-della-monetina-i">Il lancio della monetina I</a></li>
+  <li><a href="#il-lancio-della-monetina-ii" id="toc-il-lancio-della-monetina-ii" class="nav-link" data-scroll-target="#il-lancio-della-monetina-ii">Il lancio della monetina II</a></li>
   <li><a href="#simulazione-di-unintera-partita" id="toc-simulazione-di-unintera-partita" class="nav-link" data-scroll-target="#simulazione-di-unintera-partita">Simulazione di un’intera partita</a></li>
   <li><a href="#analisi-dei-risultati" id="toc-analisi-dei-risultati" class="nav-link" data-scroll-target="#analisi-dei-risultati">Analisi dei risultati</a></li>
   <li><a href="#analisi-dei-risultati-1" id="toc-analisi-dei-risultati-1" class="nav-link" data-scroll-target="#analisi-dei-risultati-1">Analisi dei risultati</a></li>
   <li><a href="#la-roulette-americana-i" id="toc-la-roulette-americana-i" class="nav-link" data-scroll-target="#la-roulette-americana-i">La roulette americana I</a></li>
   <li><a href="#la-roulette-americana-ii" id="toc-la-roulette-americana-ii" class="nav-link" data-scroll-target="#la-roulette-americana-ii">La roulette americana II</a></li>
   <li><a href="#simulazione-ed-analisi-dei-risultati" id="toc-simulazione-ed-analisi-dei-risultati" class="nav-link" data-scroll-target="#simulazione-ed-analisi-dei-risultati">Simulazione ed analisi dei risultati</a></li>
-  <li><a href="#distribuzione-di-probabilità" id="toc-distribuzione-di-probabilità" class="nav-link" data-scroll-target="#distribuzione-di-probabilità">Distribuzione di probabilità</a></li>
   <li><a href="#commenti-ai-risultati" id="toc-commenti-ai-risultati" class="nav-link" data-scroll-target="#commenti-ai-risultati">Commenti ai risultati</a></li>
   <li><a href="#uno-scenario-più-realistico" id="toc-uno-scenario-più-realistico" class="nav-link" data-scroll-target="#uno-scenario-più-realistico">Uno scenario più realistico</a></li>
   <li><a href="#simulazione-ed-analisi-dei-risultati-1" id="toc-simulazione-ed-analisi-dei-risultati-1" class="nav-link" data-scroll-target="#simulazione-ed-analisi-dei-risultati-1">Simulazione ed analisi dei risultati</a></li>
-  <li><a href="#distribuzione-di-probabilità-1" id="toc-distribuzione-di-probabilità-1" class="nav-link" data-scroll-target="#distribuzione-di-probabilità-1">Distribuzione di probabilità</a></li>
+  <li><a href="#distribuzione-di-probabilità" id="toc-distribuzione-di-probabilità" class="nav-link" data-scroll-target="#distribuzione-di-probabilità">Distribuzione di probabilità</a></li>
   </ul>
 </nav>
     </div>
@@ -243,8 +242,8 @@ Note
 <p>Qual è la distribuzione del <strong>guadagno</strong> finale?</p>
 <p>Qual è la <strong>probabilità di vittoria</strong>, ovvero la probabilità che il guadagno sia positivo?</p>
 </section>
-<section id="il-lancio-della-monetina" class="level2">
-<h2 class="anchored" data-anchor-id="il-lancio-della-monetina">Il lancio della monetina</h2>
+<section id="il-lancio-della-monetina-i" class="level2">
+<h2 class="anchored" data-anchor-id="il-lancio-della-monetina-i">Il lancio della monetina I</h2>
 <p>Il comando che simula una <strong>singola partita</strong>, ovvero <span class="math inline">\(50\)</span> lanci di monetina dal punto di vista del giocatore A, è il seguente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
@@ -268,8 +267,8 @@ Note
 </div>
 </div>
 </section>
-<section id="il-lancio-della-monetina-1" class="level2">
-<h2 class="anchored" data-anchor-id="il-lancio-della-monetina-1">Il lancio della monetina</h2>
+<section id="il-lancio-della-monetina-ii" class="level2">
+<h2 class="anchored" data-anchor-id="il-lancio-della-monetina-ii">Il lancio della monetina II</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">250</span>)</span>
@@ -362,7 +361,7 @@ Note
 <section id="la-roulette-americana-i" class="level2">
 <h2 class="anchored" data-anchor-id="la-roulette-americana-i">La roulette americana I</h2>
 <p><img src="img/roulette.jpg" class="img-fluid"></p>
-<p>Il gioco del ``lancio della monetina’’ è concettualmente identico ad un gioco d’azzardo ben più popolare, la .</p>
+<p>Il gioco del “lancio della monetina’’ è concettualmente identico ad un gioco d’azzardo ben più popolare, la <strong>roulette</strong>.</p>
 <p>Supponendo di scommettere sul rosso (o sul nero) 10 euro, questo gioco d’azzardo può essere simulato usando sostanzialmente lo stesso codice discusso finora.</p>
 <p>C’è però una differenza importante, soprattutto da un punto di vista finanziario: la <strong>presenza dello zero</strong> e del <strong>doppio zero</strong>.</p>
 </section>
@@ -423,9 +422,6 @@ Note
 <pre><code>[1] 0.10483</code></pre>
 </div>
 </div>
-</section>
-<section id="distribuzione-di-probabilità" class="level2">
-<h2 class="anchored" data-anchor-id="distribuzione-di-probabilità">Distribuzione di probabilità</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -451,7 +447,7 @@ Esercizio - Proprietà
 </div>
 <div class="callout-body-container callout-body">
 <p>I valori attesi, le varianze e le probabilità calcolate tramite simulazione possono essere in realtà ottenute anche analiticamente. Si provi a calcolarle tramite “carta e penna”.</p>
-<p>Negli ultimi paragrafi considereremo quindi un esempio leggermente più sofisticato, che renderebbe molto più difficile fare i conti analitici.</p>
+<p>Negli ultimi paragrafi considereremo quindi un esempio leggermente più sofisticato, che renderebbe molto più difficile (anche se non impossibile) fare i conti analitici.</p>
 </div>
 </div>
 </section>
@@ -540,8 +536,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="distribuzione-di-probabilità-1" class="level2">
-<h2 class="anchored" data-anchor-id="distribuzione-di-probabilità-1">Distribuzione di probabilità</h2>
+<section id="distribuzione-di-probabilità" class="level2">
+<h2 class="anchored" data-anchor-id="distribuzione-di-probabilità">Distribuzione di probabilità</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
