@@ -977,7 +977,7 @@
     "href": "lezioni/un_intro.html#statistica-e-data-science",
     "title": "R per l’analisi statistica multivariata",
     "section": "Statistica e data science",
-    "text": "Statistica e data science\n\n\n\n\n\n\nASA Statement on the Role of Statistics in Data Science (2015)\n\n\n\nWhile there is not yet a consensus on what precisely constitutes data science, three professional communities, all within computer science and/or statistics, are emerging as foundational to data science:\n\nDatabase Management enables transformation, conglomeration, and organization of data resources;\nStatistics and Machine Learning convert data into knowledge;\nDistributed and Parallel Systems provide the computational infrastructure to carry out data analysis.\n\n\n\nÈ quindi chiaro che la statistica moderna non può prescindere dall’uso di software.\nASA statement: https://magazine.amstat.org/blog/2015/10/01/asa-statement-on-the-role-of-statistics-in-data-science/"
+    "text": "Statistica e data science\n\nASA Statement on the Role of Statistics in Data Science (2015)\nWhile there is not yet a consensus on what precisely constitutes data science, three professional communities, all within computer science and/or statistics, are emerging as foundational to data science:\n\nDatabase Management enables transformation, conglomeration, and organization of data resources;\nStatistics and Machine Learning convert data into knowledge;\nDistributed and Parallel Systems provide the computational infrastructure to carry out data analysis.\n\nÈ quindi chiaro che la statistica moderna non può prescindere dall’uso di software.\nASA statement: https://magazine.amstat.org/blog/2015/10/01/asa-statement-on-the-role-of-statistics-in-data-science/"
   },
   {
     "objectID": "lezioni/un_intro.html#competenze-mercato-del-lavoro",
@@ -2420,5 +2420,19 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "Commenti conclusivi",
     "text": "Commenti conclusivi\nI due approcci sono sostanzialmente equivalenti in questo specifico esempio, nel senso che producono risultati quasi indistinguibili.\nSi noti che il modello è lo stesso, abbiamo solo cambiato metodo di stima!\nTuttavia, in generale non è detto che sia possibile linearizzare il modello originale. In questi casi, non esiste un’alternativa semplice.\nInfine, a seconda della funzione di perdita utilizzata, due diversi metodi di stima potrebbero differire di molto nonostante il modello sia lo stesso.\nAd esempio, alcuni stimatori sono più robusti di altri rispetto alla presenza di valori anomali."
+  },
+  {
+    "objectID": "lezioni/un_intro.html#struttura-del-corso-ii",
+    "href": "lezioni/un_intro.html#struttura-del-corso-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Struttura del corso II",
+    "text": "Struttura del corso II\nL’analisi statistica multivariata riguarda l’analisi congiunta di più variabili misurate sul medesimo insieme di unità statistiche.\nNei corsi precedenti (ad es. Statistica I), ci si è concentrati su una o due variabili alla volta. In contesti reali le variabili coinvolte sono quasi sempre ben più di 2.\nIl modulo AE è la naturale prosecuzione di un corso di statistica descrittiva, applicato al caso in cui le variabili sono più di 2.\nIl modulo MS estende e analizza nel dettaglio il modello lineare, nel caso in cui le variabili esplicative sono molte.\nLe tecniche per l’analisi di dati multivariati possono avere una natura descrittiva / esplorativa (AE) oppure inferenziale (MS)."
+  },
+  {
+    "objectID": "lezioni/un_intro.html#asm-r",
+    "href": "lezioni/un_intro.html#asm-r",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "ASM-R",
+    "text": "ASM-R\nIl modulo R è in larga misura una revisione di argomenti che dovreste già conoscere bene. Nello specifico, ci occuperemo di\n\nStatistica descrittiva (Statistica I);\nCalcolo delle probabilità;\nInferenza statistica (Statistica II).\n\nAl tempo stesso, il modulo R è un esame di programmazione in R.\n\nNota\nASM-R non è una “introduzione” al software R. Lo scopo del corso è mostrare come risolvere problemi statistici reali disponendo di un computer.\nIn altre parole, all’esame verranno valutati sia la forma (programmazione) che il contenuto (analisi statistica)."
   }
 ]
