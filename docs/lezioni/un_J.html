@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.267">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R per l’analisi statistica multivariata</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenuto della pagina</h2>
+   
+  <ul>
+  <li><a href="#un-breve-sommario" id="toc-un-breve-sommario" class="nav-link active" data-scroll-target="#un-breve-sommario">Un breve sommario</a></li>
+  <li><a href="#un-primo-semplice-gioco" id="toc-un-primo-semplice-gioco" class="nav-link" data-scroll-target="#un-primo-semplice-gioco">Un primo semplice gioco</a></li>
+  <li><a href="#il-lancio-della-monetina" id="toc-il-lancio-della-monetina" class="nav-link" data-scroll-target="#il-lancio-della-monetina">Il lancio della monetina</a></li>
+  <li><a href="#il-lancio-della-monetina-1" id="toc-il-lancio-della-monetina-1" class="nav-link" data-scroll-target="#il-lancio-della-monetina-1">Il lancio della monetina</a></li>
+  <li><a href="#simulazione-di-unintera-partita" id="toc-simulazione-di-unintera-partita" class="nav-link" data-scroll-target="#simulazione-di-unintera-partita">Simulazione di un’intera partita</a></li>
+  <li><a href="#analisi-dei-risultati" id="toc-analisi-dei-risultati" class="nav-link" data-scroll-target="#analisi-dei-risultati">Analisi dei risultati</a></li>
+  <li><a href="#analisi-dei-risultati-1" id="toc-analisi-dei-risultati-1" class="nav-link" data-scroll-target="#analisi-dei-risultati-1">Analisi dei risultati</a></li>
+  <li><a href="#la-roulette-americana-i" id="toc-la-roulette-americana-i" class="nav-link" data-scroll-target="#la-roulette-americana-i">La roulette americana I</a></li>
+  <li><a href="#la-roulette-americana-ii" id="toc-la-roulette-americana-ii" class="nav-link" data-scroll-target="#la-roulette-americana-ii">La roulette americana II</a></li>
+  <li><a href="#simulazione-ed-analisi-dei-risultati" id="toc-simulazione-ed-analisi-dei-risultati" class="nav-link" data-scroll-target="#simulazione-ed-analisi-dei-risultati">Simulazione ed analisi dei risultati</a></li>
+  <li><a href="#distribuzione-di-probabilità" id="toc-distribuzione-di-probabilità" class="nav-link" data-scroll-target="#distribuzione-di-probabilità">Distribuzione di probabilità</a></li>
+  <li><a href="#commenti-ai-risultati" id="toc-commenti-ai-risultati" class="nav-link" data-scroll-target="#commenti-ai-risultati">Commenti ai risultati</a></li>
+  <li><a href="#uno-scenario-più-realistico" id="toc-uno-scenario-più-realistico" class="nav-link" data-scroll-target="#uno-scenario-più-realistico">Uno scenario più realistico</a></li>
+  <li><a href="#simulazione-ed-analisi-dei-risultati-1" id="toc-simulazione-ed-analisi-dei-risultati-1" class="nav-link" data-scroll-target="#simulazione-ed-analisi-dei-risultati-1">Simulazione ed analisi dei risultati</a></li>
+  <li><a href="#distribuzione-di-probabilità-1" id="toc-distribuzione-di-probabilità-1" class="nav-link" data-scroll-target="#distribuzione-di-probabilità-1">Distribuzione di probabilità</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Unità J: casinò, roulette e simulazioni Monte Carlo</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Tommaso Rigon 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Università Milano-Bicocca
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="un-breve-sommario" class="level2">
+<h2 class="anchored" data-anchor-id="un-breve-sommario">Un breve sommario</h2>
+<p>In questa unità studieremo tramite simulazione alcuni <strong>giochi d’azzardo</strong>.</p>
+<p>In particolare, analizzeremo cosa succede ad un ipotetico giocatore che persiste a scommettere per varie volte alla roulette.</p>
+<p>Considereremo scenari progressivamente più complessi, ipotizzando da principio un <strong>semplice gioco</strong> in cui due giocatori si sfidano al lancio della monetina.</p>
+<p>In seguito, considereremo il caso in cui il gioco sia “truccato” ovvero <strong>non equo</strong>, come ad esempio la roulette di un casinò.</p>
+<p>Infine, considereremo un’ulteriore elaborazione del caso precedente, includendo nella simulazione il fatto che i giocatori coinvolti hanno un <strong>budget limitato</strong>.</p>
+</section>
+<section id="un-primo-semplice-gioco" class="level2">
+<h2 class="anchored" data-anchor-id="un-primo-semplice-gioco">Un primo semplice gioco</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Due persone A e B si sfidano al (non così appassionante) gioco del lancio della monetina. Se esce testa, il giocatore A consegna <span class="math inline">\(10\)</span> euro al giocatore B; viceversa se esce croce.</p>
+</div>
+</div>
+<p>Assumiamo quindi che A e B giochino ad esempio <strong>50 volte</strong> al lancio della monetina.</p>
+<p>Quanti soldi avrà <strong>mediamente</strong> vinto / perso il giocatore A al termine dei <span class="math inline">\(50\)</span> lanci?</p>
+<p>Qual è la distribuzione del <strong>guadagno</strong> finale?</p>
+<p>Qual è la <strong>probabilità di vittoria</strong>, ovvero la probabilità che il guadagno sia positivo?</p>
+</section>
+<section id="il-lancio-della-monetina" class="level2">
+<h2 class="anchored" data-anchor-id="il-lancio-della-monetina">Il lancio della monetina</h2>
+<p>Il comando che simula una <strong>singola partita</strong>, ovvero <span class="math inline">\(50\)</span> lanci di monetina dal punto di vista del giocatore A, è il seguente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># Gioco 50 volte ai dadi contro B</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -10 -10 -10  10 -10  10  10  10 -10 -10  10  10  10 -10  10 -10  10 -10 -10
+[20] -10 -10  10 -10 -10 -10 -10  10  10 -10  10 -10  10 -10  10  10 -10 -10 -10
+[39] -10  10 -10  10  10 -10 -10 -10 -10  10 -10 -10</code></pre>
+</div>
+</div>
+<p>Noi siamo tuttavia interessati al guadagno del giocatore A. Ovviamente per ottenere i guadagni di B è sufficiente cambiare il segno dei risultati.</p>
+<p>Il <strong>guadagno</strong> del giocatore A dopo ciascun lancio di monetina è pari a</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  -10  -20  -30  -20  -30  -20  -10    0  -10  -20  -10    0   10    0   10
+[16]    0   10    0  -10  -20  -30  -20  -30  -40  -50  -60  -50  -40  -50  -40
+[31]  -50  -40  -50  -40  -30  -40  -50  -60  -70  -60  -70  -60  -50  -60  -70
+[46]  -80  -90  -80  -90 -100</code></pre>
+</div>
+</div>
+</section>
+<section id="il-lancio-della-monetina-1" class="level2">
+<h2 class="anchored" data-anchor-id="il-lancio-della-monetina-1">Il lancio della monetina</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">250</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"# Lancio"</span>, <span class="at">ylab =</span> <span class="st">"Guadagno"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"# Lancio"</span>, <span class="at">ylab =</span> <span class="st">"Guadagno"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_J_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="simulazione-di-unintera-partita" class="level2">
+<h2 class="anchored" data-anchor-id="simulazione-di-unintera-partita">Simulazione di un’intera partita</h2>
+<p>Siamo interessati ad indagare la <strong>variabile aleatoria</strong> <span class="math inline">\(X\)</span>, che rappresenta il guadagno finale del giocatore A, ovvero la somma algebrica dei guadagni e delle perdite.</p>
+<p>Per esempio, un’<strong>estrazione casuale</strong> dalla distribuzione di <span class="math inline">\(X\)</span>, ovvero il risultato finale di una partita si ottiene come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ottengo il guadagno finale (una volta sola)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -100</code></pre>
+</div>
+</div>
+<p>Possiamo quindi usare il comando <code>replicate</code>, che <strong>ripete la stessa operazione</strong> varie volte. In questo modo otteniamo <span class="math inline">\(R\)</span> copie iid <span class="math inline">\(X_1,\dots,X_R\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ripeto questa operazione R volte per ottenere dei campioni</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Otteniamo 10^5 copie iid aventi la stessa distribuzione di X</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>final_earning[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -100  -40  120  -40  100</code></pre>
+</div>
+</div>
+</section>
+<section id="analisi-dei-risultati" class="level2">
+<h2 class="anchored" data-anchor-id="analisi-dei-risultati">Analisi dei risultati</h2>
+<p>Grazie ai risultati teorici dell’<a href="un_I.html">unità I</a>, possiamo utilizzare i valori simulati <span class="math inline">\(X_1,\dots,X_R\)</span> per imparare qualcosa sulla distribuzione di <span class="math inline">\(X\)</span>.</p>
+<p>In primo luogo approssimiamo il <strong>valore atteso</strong> tramite la somma <span class="math display">\[
+\mathbb{E}(X) \approx \frac{1}{R}\sum_{r=1}^RX_r.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning) <span class="co"># Media del guadagno finale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.3518</code></pre>
+</div>
+</div>
+<p>Ne concludiamo quindi che si tratta di un <strong>gioco equo</strong>, dato che mediamente né vince né si perde, ovvero <span class="math inline">\(\mathbb{E}(X) \approx 0\)</span>.</p>
+<p>Tuttavia, i risultati differiscono molto da una partita ad un’altra, dato che:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_earning) <span class="co"># Deviazione standard del guadagno finale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70.65155</code></pre>
+</div>
+</div>
+</section>
+<section id="analisi-dei-risultati-1" class="level2">
+<h2 class="anchored" data-anchor-id="analisi-dei-risultati-1">Analisi dei risultati</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_J_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>La distribuzione del guadagno finale è quindi <strong>simmetrica</strong> attorno allo zero.</p>
+<p>Vogliamo infine calcolare la <strong>probabilità di vittoria</strong>, definita come <span class="math display">\[
+\mathbb{P}(X &gt; 0).
+\]</span></p>
+<p>Consideriamo quindi la variabile aleatoria binaria <span class="math inline">\(Z = \mathbb{1}(X &gt; 0)\)</span>.</p>
+<p>Approssimiamo l’<strong>evento</strong> contando i successi verificatisi tra le variabili <span class="math inline">\(Z_1,\dots,Z_R\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="co"># Probabilità di vincere, ovvero P(X &gt; 0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.44253</code></pre>
+</div>
+</div>
+<p>La probabilità di vittoria è pertanto inferiore a <span class="math inline">\(0.5\)</span>, mentre la probabilità di <strong>parità</strong>, ovvero <span class="math inline">\(\mathbb{P}(X = 0)\)</span>, è positiva:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>) <span class="co"># Probabilità di pareggiare, ovvero P(X = 0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.11225</code></pre>
+</div>
+</div>
+</section>
+<section id="la-roulette-americana-i" class="level2">
+<h2 class="anchored" data-anchor-id="la-roulette-americana-i">La roulette americana I</h2>
+<p><img src="img/roulette.jpg" class="img-fluid"></p>
+<p>Il gioco del ``lancio della monetina’’ è concettualmente identico ad un gioco d’azzardo ben più popolare, la .</p>
+<p>Supponendo di scommettere sul rosso (o sul nero) 10 euro, questo gioco d’azzardo può essere simulato usando sostanzialmente lo stesso codice discusso finora.</p>
+<p>C’è però una differenza importante, soprattutto da un punto di vista finanziario: la <strong>presenza dello zero</strong> e del <strong>doppio zero</strong>.</p>
+</section>
+<section id="la-roulette-americana-ii" class="level2">
+<h2 class="anchored" data-anchor-id="la-roulette-americana-ii">La roulette americana II</h2>
+<p>Supponendo di <strong>scommettere 10 euro</strong> sul <strong>rosso</strong>, la probabilità di vincerne altrettanti non è più <span class="math inline">\(1/2\)</span>, come nel caso del lancio della monetina, bensì: <span class="math display">\[
+\mathbb{P}(\text{``Vincere puntando sul rosso''}) = \frac{18}{38} \approx 0.474.
+\]</span> Si tratta quindi, come ben noto, di un gioco <strong>non equo</strong>, in cui il banco dispone di un vantaggio.</p>
+<p>Siamo interessati ad indagare la <strong>variabile aleatoria</strong> <span class="math inline">\(X\)</span>, che rappresenta il guadagno finale del giocatore nei confronti del banco:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p_winning <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">/</span> <span class="dv">38</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>p_winning</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4736842</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ottengo il guadagno finale (una volta sola)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+</section>
+<section id="simulazione-ed-analisi-dei-risultati" class="level2">
+<h2 class="anchored" data-anchor-id="simulazione-ed-analisi-dei-risultati">Simulazione ed analisi dei risultati</h2>
+<p>Tramite gli stessi comandi usati in precedenza, <strong>ripetiamo</strong> <span class="math inline">\(R\)</span> volte l’operazione per studiare la distribuzione di <span class="math inline">\(X\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media del guadagno finale</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -26.3814</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deviazione standard del guadagno finale</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_earning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70.54601</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di vittoria, ovvero P(X &gt; 0)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.30387</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di pareggio, ovvero P(X == 0)</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.10483</code></pre>
+</div>
+</div>
+</section>
+<section id="distribuzione-di-probabilità" class="level2">
+<h2 class="anchored" data-anchor-id="distribuzione-di-probabilità">Distribuzione di probabilità</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_J_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="commenti-ai-risultati" class="level2">
+<h2 class="anchored" data-anchor-id="commenti-ai-risultati">Commenti ai risultati</h2>
+<p>Il valore atteso del guadagno finale <span class="math inline">\(\mathbb{E}(X)\)</span> è <strong>negativo</strong> e circa pari a <span class="math inline">\(-26\)</span>.</p>
+<p>La probabilità di vittoria e di pareggio <strong>diminuiscono</strong> rispetto al “lancio della monetina”.</p>
+<p>L’intera distribuzione è spostata verso <strong>valori negativi</strong> rispetto al primo scenario.</p>
+<p>Questi risultati sono una formalizzazione del detto popolare “il banco vince sempre”. Per questo gli statistici non giocano d’azzardo, o quantomeno non alla roulette!</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Esercizio - Proprietà
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I valori attesi, le varianze e le probabilità calcolate tramite simulazione possono essere in realtà ottenute anche analiticamente. Si provi a calcolarle tramite “carta e penna”.</p>
+<p>Negli ultimi paragrafi considereremo quindi un esempio leggermente più sofisticato, che renderebbe molto più difficile fare i conti analitici.</p>
+</div>
+</div>
+</section>
+<section id="uno-scenario-più-realistico" class="level2">
+<h2 class="anchored" data-anchor-id="uno-scenario-più-realistico">Uno scenario più realistico</h2>
+<p>L’implicita ipotesi delle simulazioni precedenti è che sia il giocatore che il banco abbiano un budget superiore a <span class="math inline">\(500\)</span> euro, ovvero la perdita massima.</p>
+<p>Consideriamo quindi il caso in cui il giocatore abbia un <strong>budget massimo</strong>, ad esempio <span class="math inline">\(100\)</span> euro, così come il banco, ad esempio <span class="math inline">\(100,000\)</span> euro.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se questi numeri sembrano irrealistici, è sufficiente ripetere la simulazione cambiando ordine di grandezza, ad esempio moltiplicando tutto per 10 o 100.</p>
+</div>
+</div>
+<p>Il giocatore continua a scommettere fino ad un massimo di <span class="math inline">\(50\)</span> volte solo <strong>se ha ancora soldi a disposizione</strong>. Altrimenti, è costretto a fermarsi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che simula il guadagno finale dopo 50 scommesse</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sim_match <span class="ot">&lt;-</span> <span class="cf">function</span>(player_budget, casino_budget, p_winning){</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  player_money <span class="ot">&lt;-</span> player_budget</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  casino_money <span class="ot">&lt;-</span> casino_budget</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(r <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>){</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    outcome <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning))</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    player_money <span class="ot">&lt;-</span> player_money <span class="sc">+</span> outcome <span class="co"># Aggiorno il budget giocatore</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    casino_money <span class="ot">&lt;-</span> casino_money <span class="sc">-</span> outcome <span class="co"># Aggiorno il budget casinò</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(player_money <span class="sc">&lt;=</span> <span class="dv">0</span>){</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Giocatore in rovina: il giocatore perde tutto il budget</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="sc">-</span> player_budget)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(casino_money <span class="sc">&lt;=</span> <span class="dv">0</span>){</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Casinò in rovina: il casinò perde tutto il budget</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(casino_budget)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  player_money <span class="sc">-</span> player_budget <span class="co"># guadagno rispetto al valore iniziale</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">220</span>)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_match</span>(<span class="dv">100</span>, <span class="dv">100000</span>, p_winning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -60</code></pre>
+</div>
+</div>
+</section>
+<section id="simulazione-ed-analisi-dei-risultati-1" class="level2">
+<h2 class="anchored" data-anchor-id="simulazione-ed-analisi-dei-risultati-1">Simulazione ed analisi dei risultati</h2>
+<p>Tramite gli stessi comandi usati in precedenza, <strong>ripetiamo</strong> <span class="math inline">\(R\)</span> volte l’operazione per studiare la distribuzione di <span class="math inline">\(X\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="fu">sim_match</span>(<span class="dv">100</span>, <span class="dv">100000</span>, p_winning))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media del guadagno finale</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -24.0002</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deviazione standard del guadagno finale</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_earning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 64.52637</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di vittoria, ovvero P(X &gt; 0)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.30288</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di pareggio, ovvero P(X == 0)</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.10084</code></pre>
+</div>
+</div>
+</section>
+<section id="distribuzione-di-probabilità-1" class="level2">
+<h2 class="anchored" data-anchor-id="distribuzione-di-probabilità-1">Distribuzione di probabilità</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_J_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Possiamo osservare un “picco” di probabilità nel valore <span class="math inline">\(-100\)</span> e pertanto circa il <span class="math inline">\(25\%\)</span> delle volte il giocatore finisce in <strong>bancarotta</strong>.</p>
+<p>Con un budget di 100,000 euro, è impossibile che il banco vada in rovina.</p>
+<p>Al tempo stesso, il valore atteso rimane negativo, ovvero <span class="math inline">\(\mathbb{E}(X) = -24\)</span>, ma è tuttavia superiore a quello ottenuto nel modello con budget illimitato, ovvero circa <span class="math inline">\(-26\)</span>.</p>
+<p>In un certo senso, il banco non può sottrarre al giocatore i soldi che questo non possiede.</p>
+<p>Da questo desumiamo la <strong>strategia di gioco ottimale</strong> alla roulette: bisogna entrare nel casinò con pochi spiccioli in portafoglio o, idealmente, con assolutamente nulla.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -67,7 +67,7 @@ La sigla **AR** corrisponde al libro di Albert & Rizzo. La sigla **RC** corrispo
 | Proprietà degli stimatori                        | [Unità M](lezioni/un_M.html)               | [Codice R](lezioni/script/un_M.R)           | **AR** §13.3                                            |
 | *Esercizi*                                       | [Esercizi 4](exe/es_4.html)                | [soluzione.R](exe/es_4.R)                   |                                                         |
 |                                                  | **LEZIONI AGGIUNTIVE**                     |                                             |                                                         |
-| Casinò, roulette e metodi Monte Carlo            | [Unità J](lezioni/un_J.pdf)                | [Codice R](lezioni/script/un_J.R)           | **AR** §11.2                                            |
+| Casinò, roulette e metodi Monte Carlo            | [Unità J](lezioni/un_J.html)                | [Codice R](lezioni/script/un_J.R)           | **AR** §11.2                                            |
 | Minimi quadrati non lineari                      | [Unità L](lezioni/un_L.pdf)                | [Codice R](lezioni/script/un_L.R)           |                                                         |
 |                                                  | **ESAMI PASSATI**                          |                                             |                                                         |
 | Esame 22 Febbraio 2022                           | [Esame](esami/esame_22_02_2022.html)       | [soluzione.R](esami/soluzione_22_02_2022.R) |                                                         |
@@ -117,6 +117,7 @@ knitr::purl("lezioni/un_F.qmd", "lezioni/script/un_F.R")
 knitr::purl("lezioni/un_G.qmd", "lezioni/script/un_G.R")
 knitr::purl("lezioni/un_H.qmd", "lezioni/script/un_H.R")
 knitr::purl("lezioni/un_I.qmd", "lezioni/script/un_I.R")
+knitr::purl("lezioni/un_J.qmd", "lezioni/script/un_J.R")
 knitr::purl("lezioni/un_K.qmd", "lezioni/script/un_K.R")
 knitr::purl("lezioni/un_M.qmd", "lezioni/script/un_M.R")
 ```
