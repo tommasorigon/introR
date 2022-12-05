@@ -11,7 +11,7 @@
     "href": "index.html#materiale-didattico",
     "title": "R per l’analisi statistica multivariata",
     "section": "Materiale didattico",
-    "text": "Materiale didattico\nIl materiale didattico di ciascuna lezione è scaricabile utilizzando i collegamenti ipertestuali. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.\n\nIl software R\n\nR è un software open source ed è possibile scaricarlo al link https://cloud.r-project.org.\nL’uso di Rstudio è facoltativo in questo corso, anche se fortemente consigliato. È possibile scaricarlo al link https://rstudio.com/products/rstudio/.\nLa documentazione del software R è parte integrante del materiale didattico.\n\n\n\nTesti di riferimento\n\nAlbert, J. & M. Rizzo (2012). R by Example. Springer.\n\nRobert, C. & G. Casella (2010). Introducing Monte Carlo Methods with R. Springer\n\n\n\nTesti di consultazione\n\nIl materiale didattico aggiuntivo fornito su questa pagina web.\nAdler, J. (2012). R in a nutshell. O’Reilly.\nGrolemund, G. & Wickham, H. (2016). R for Data Science. O’Reilly.\nVenables, W. N., Smith D. M. & the R Core Team (2021). An Introduction to R.\n\n\n\nMateriale didattico\nLa sigla AR corrisponde al libro di Albert & Rizzo. La sigla RC corrisponde al libro Robert & Casella.\n\n\n\nArgomenti\nMateriale didattico\nMateriale aggiuntivo\nSezioni libro di testo\n\n\n\n\nIntroduzione al corso\nUnità introduttiva\n\n\n\n\n\nINTRODUZIONE AD R\n\n\n\n\nA-B-C: calcolo scientifico ed algebra lineare\nUnità A\nCodice R\nAR §1.1, §1.3, §A1 — §A3\n\n\nElementi di programmazione\nUnità B\nCodice R\nAR §1.2, §1.6 — §1.8\n\n\nI dataframes\nUnità C\nCodice R\nAR §1.4 — §1.5\n\n\nEsercizi\nEsercizi 1\nsoluzione.R\n\n\n\n\nSTATISTICA DESCRITTIVA\n\n\n\n\nAnalisi descrittiva dei dati dde\nUnità D\nCodice R\nAR §2.1 — §2.3, §2.7\n\n\nAnalisi descrittiva dei dati emoglobina\nUnità E\nCodice R\nAR §2.1 — §2.3, §2.7\n\n\nEsercitazione\nUnità F\nCodice R\nAR 7.1, §7.2\n\n\nAnalisi descrittiva dei dati titanic\nUnità G\nCodice R\nAR §3.1 — §3.5\n\n\nEsercizi\nEsercizi 2\nsoluzione.R\n\n\n\n\nCALCOLO DELLE PROBABILITÀ\n\n\n\n\nVariabili aleatorie\nUnità H\nCodice R\nRC §2.1, §2.2\n\n\nMetodi Monte Carlo\nUnità I\nCodice R\nAR §11.1 — §11.5, §13.1, §13.2; RC §3.1, §3.2\n\n\nEsercizi\nEsercizi 3\nsoluzione.R\n\n\n\n\nINFERENZA STATISTICA\n\n\n\n\nMetodi numerici per l’analisi di verosimiglianza\nUnità K\nCodice R\nRC §5.1, §5.2\n\n\nProprietà degli stimatori\nUnità M\nCodice R\nAR §13.3\n\n\nEsercizi\nEsercizi 4\nsoluzione.R\n\n\n\n\nLEZIONI AGGIUNTIVE\n\n\n\n\nCasinò, roulette e metodi Monte Carlo\nUnità J\nCodice R\nAR §11.2\n\n\nMinimi quadrati non lineari\nUnità L\nCodice R\n\n\n\n\nESAMI PASSATI\n\n\n\n\nEsame 22 Febbraio 2022\nEsame\nsoluzione.R\n\n\n\nEsame 4 Febbraio 2022\nEsame\nsoluzione.R\n\n\n\nEsame 19 Novembre 2021\nEsame\nsoluzione.R\n\n\n\nEsame 22 Luglio 2021\nEsame\nsoluzione.R\n\n\n\nEsame 30 Giugno 2021\nEsame\nsoluzione.R\n\n\n\nEsame 24 Febbraio 2021\nEsame\nsoluzione.R\n\n\n\nEsame 08 Febbraio 2021\nEsame\nsoluzione.R\n\n\n\n\n\n\nApprofondimenti\n\nArticoli scientifici (in inglese)\n\nHyndman, R. J. and Yanan, F. (1996). Sample quantiles in statistical packages. The American Statistician 50(4), 361–365.\nHitchcock (2003). A history of the Metropolis-Hastings algorithm. The American Statistician 57(4), 254–257.\nOldford (2016). Self-calibrating quantile–quantile plots. The American Statistician 70(1), 74–90."
+    "text": "Materiale didattico\nIl materiale didattico di ciascuna lezione è scaricabile utilizzando i collegamenti ipertestuali. Si precisa che questa pagina web è soggetta a modifiche, quindi si prega di controllare l’ultima versione aggiornata.\n\nIl software R\n\nR è un software open source ed è possibile scaricarlo al link https://cloud.r-project.org.\nL’uso di Rstudio è facoltativo in questo corso, anche se fortemente consigliato. È possibile scaricarlo al link https://rstudio.com/products/rstudio/.\nLa documentazione del software R è parte integrante del materiale didattico.\n\n\n\nTesti di riferimento\n\nAlbert, J. & M. Rizzo (2012). R by Example. Springer.\n\nRobert, C. & G. Casella (2010). Introducing Monte Carlo Methods with R. Springer\n\n\n\nTesti di consultazione\n\nIl materiale didattico aggiuntivo fornito su questa pagina web.\nAdler, J. (2012). R in a nutshell. O’Reilly.\nGrolemund, G. & Wickham, H. (2016). R for Data Science. O’Reilly.\nVenables, W. N., Smith D. M. & the R Core Team (2021). An Introduction to R.\n\n\n\nMateriale didattico\nLa sigla AR corrisponde al libro di Albert & Rizzo. La sigla RC corrisponde al libro Robert & Casella.\n\n\n\nArgomenti\nMateriale didattico\nMateriale aggiuntivo\nSezioni libro di testo\n\n\n\n\nIntroduzione al corso\nUnità introduttiva\n\n\n\n\n\nINTRODUZIONE AD R\n\n\n\n\nA-B-C: calcolo scientifico ed algebra lineare\nUnità A\nUnità A (py)\nCodice R\nAR §1.1, §1.3, §A1 — §A3\n\n\nElementi di programmazione\nUnità B\nCodice R\nAR §1.2, §1.6 — §1.8\n\n\nI dataframes\nUnità C\nCodice R\nAR §1.4 — §1.5\n\n\nEsercizi\nEsercizi 1\nsoluzione.R\n\n\n\n\nSTATISTICA DESCRITTIVA\n\n\n\n\nAnalisi descrittiva dei dati dde\nUnità D\nCodice R\nAR §2.1 — §2.3, §2.7\n\n\nAnalisi descrittiva dei dati emoglobina\nUnità E\nCodice R\nAR §2.1 — §2.3, §2.7\n\n\nEsercitazione\nUnità F\nCodice R\nAR 7.1, §7.2\n\n\nAnalisi descrittiva dei dati titanic\nUnità G\nCodice R\nAR §3.1 — §3.5\n\n\nEsercizi\nEsercizi 2\nsoluzione.R\n\n\n\n\nCALCOLO DELLE PROBABILITÀ\n\n\n\n\nVariabili aleatorie\nUnità H\nCodice R\nRC §2.1, §2.2\n\n\nMetodi Monte Carlo\nUnità I\nCodice R\nAR §11.1 — §11.5, §13.1, §13.2; RC §3.1, §3.2\n\n\nEsercizi\nEsercizi 3\nsoluzione.R\n\n\n\n\nINFERENZA STATISTICA\n\n\n\n\nMetodi numerici per l’analisi di verosimiglianza\nUnità K\nCodice R\nRC §5.1, §5.2\n\n\nProprietà degli stimatori\nUnità M\nCodice R\nAR §13.3\n\n\nEsercizi\nEsercizi 4\nsoluzione.R\n\n\n\n\nLEZIONI AGGIUNTIVE\n\n\n\n\nCasinò, roulette e metodi Monte Carlo\nUnità J\nCodice R\nAR §11.2\n\n\nMinimi quadrati non lineari\nUnità L\nCodice R\n\n\n\n\nESAMI PASSATI\n\n\n\n\nEsame 22 Febbraio 2022\nEsame\nsoluzione.R\n\n\n\nEsame 4 Febbraio 2022\nEsame\nsoluzione.R\n\n\n\nEsame 19 Novembre 2021\nEsame\nsoluzione.R\n\n\n\nEsame 22 Luglio 2021\nEsame\nsoluzione.R\n\n\n\nEsame 30 Giugno 2021\nEsame\nsoluzione.R\n\n\n\nEsame 24 Febbraio 2021\nEsame\nsoluzione.R\n\n\n\nEsame 08 Febbraio 2021\nEsame\nsoluzione.R\n\n\n\n\n\n\nApprofondimenti\n\nArticoli scientifici (in inglese)\n\nHyndman, R. J. and Yanan, F. (1996). Sample quantiles in statistical packages. The American Statistician 50(4), 361–365.\nHitchcock (2003). A history of the Metropolis-Hastings algorithm. The American Statistician 57(4), 254–257.\nOldford (2016). Self-calibrating quantile–quantile plots. The American Statistician 70(1), 74–90."
   },
   {
     "objectID": "index.html#modalità-desame",
@@ -634,7 +634,7 @@
     "href": "lezioni/un_A.html#operazioni-sulle-matrici-iii",
     "title": "R per l’analisi statistica multivariata",
     "section": "Operazioni sulle matrici III",
-    "text": "Operazioni sulle matrici III\nSiano \\({\\bf x}\\) e \\({\\bf y}\\) due vettori colonna in \\(\\mathbb{R}^p\\). Allora, il loro è pari a\n\\[\n{\\bf x}^\\intercal {\\bf y} = \\sum_{i=1}^p x_i y_i.\n\\]\nIn R possiamo usare il comando crossprod\n\nx <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)\ny <- matrix(c(3, 2, 2, 7, 9), ncol = 1)\ncrossprod(x, y) # Equivalente a: sum(x * y)\n\n     [,1]\n[1,]  272\n\n\nIl comando crossprod funziona correttamente anche con “vettori” R.\nIl comando può essere usato anche per calcolare il seguente prodotto tra matrici \\[\n{\\bf A}^\\intercal {\\bf B},\n\\] dove \\({\\bf A}\\) e \\({\\bf B}\\) sono due matrici di dimensioni compatibili."
+    "text": "Operazioni sulle matrici III\nSiano \\({\\bf x}\\) e \\({\\bf y}\\) due vettori colonna in \\(\\mathbb{R}^p\\). Allora, il loro è pari a\n\\[\n{\\bf x}^\\intercal {\\bf y} = \\sum_{i=1}^p x_i y_i.\n\\]\nIn R possiamo usare il comando crossprod\n\nx <- matrix(c(-4, 2, 6, 10, 22), ncol = 1)\ny <- matrix(c(3, 2, 2, 7, 9), ncol = 1)\ncrossprod(x, y) # Equivalente a: sum(x * y)\n\n     [,1]\n[1,]  272\n\n\nIl comando crossprod funziona correttamente anche con “vettori” R.\nIl comando crossprod può essere usato anche per calcolare il seguente prodotto tra matrici \\[\n{\\bf A}^\\intercal {\\bf B},\n\\] dove \\({\\bf A}\\) e \\({\\bf B}\\) sono due matrici di dimensioni compatibili."
   },
   {
     "objectID": "lezioni/un_A.html#operazioni-sulle-matrici-iv",
@@ -2434,5 +2434,187 @@
     "title": "R per l’analisi statistica multivariata",
     "section": "ASM-R",
     "text": "ASM-R\nIl modulo R è in larga misura una revisione di argomenti che dovreste già conoscere bene. Nello specifico, ci occuperemo di\n\nStatistica descrittiva (Statistica I);\nCalcolo delle probabilità;\nInferenza statistica (Statistica II).\n\nAl tempo stesso, il modulo R è un esame di programmazione in R.\n\nNota\nASM-R non è una “introduzione” al software R. Lo scopo del corso è mostrare come risolvere problemi statistici reali disponendo di un computer.\nIn altre parole, all’esame verranno valutati sia la forma (programmazione) che il contenuto (analisi statistica)."
+  },
+  {
+    "objectID": "lezioni/un_py_A.html",
+    "href": "lezioni/un_py_A.html",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "",
+    "text": "A-B-C: il software Python come calcolatrice scientifica\nOperazioni di routine: pulizia del workspace, simboli speciali\nFunzioni matematiche, grafico di una funzione, operazioni logiche\nOperazioni con vettori e matrici\n\n\n\n\n\n\n\nNota\n\n\n\nEsercizi Python associati sono diponibili a questo link"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#calcolatrice-scientifica",
+    "href": "lezioni/un_py_A.html#calcolatrice-scientifica",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Calcolatrice scientifica",
+    "text": "Calcolatrice scientifica\nAnzitutto, Python può essere usato come se fosse una calcolatrice scientifica:\n\n2 + 2\n\n4\n\n\n\n4 * (3 + 5) # La somma entro parentesi viene eseguita per prima\n\n32\n\n\n\nfrom numpy import pi\npi / 4 # Pi greco quarti\n\n0.7853981633974483\n\n\nPer calcolare la potenza \\(a^b\\) si usa:\n\n2**5\n\n32\n\n\nLe quantità \\(\\sqrt{2}\\) e \\(\\sin(\\pi/4)\\) si ottengono invece con i comandi:\n\nimport numpy as np\nnp.sqrt(2)\n\n1.4142135623730951\n\n\n\nnp.sin(pi / 4)\n\n0.7071067811865475\n\n\n\n\n\n\n\n\nNota\n\n\n\nTutto ciò che viene scritto dopo un cancelletto (#) è considerato un commento."
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#assegnazione-di-un-valore",
+    "href": "lezioni/un_py_A.html#assegnazione-di-un-valore",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Assegnazione di un valore",
+    "text": "Assegnazione di un valore\nÈ possibile salvare un valore assegnandolo ad un oggetto tramite il simbolo =.\n\n# Assegna il valore 5 all'oggetto x\nx = np.sqrt(5)\n\nIl valore contenuto in x può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio y.\n\ny = x + pi # ovvero pi greco + radice quadrata di 5\ny\n\n5.377660631089583\n\n\nPer rimuovere un oggetto dalla memoria, si usa il comando del, ovvero delete.\n\ndel x # x non è più presente nel \"workspace\"\n\n\n\n\n\n\n\nNota\n\n\n\nPython è case sensitive, pertanto l’oggetto x è diverso dall’oggetto X."
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#pulizia-del-workspace",
+    "href": "lezioni/un_py_A.html#pulizia-del-workspace",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Pulizia del workspace",
+    "text": "Pulizia del workspace\nÈ buona norma mantenere pulito il workspace, ovvero l’ambiente di lavoro.\nSe un oggetto non è più necessario, è possibile eliminarlo tramite il comando del.\nÈ possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:\n\ndir() # Nel workspace è presente l'oggetto y"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#alcune-funzioni-matematiche-i",
+    "href": "lezioni/un_py_A.html#alcune-funzioni-matematiche-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Alcune funzioni matematiche I",
+    "text": "Alcune funzioni matematiche I\nSupponiamo che x sia un numero reale.\nCiò che seguono sono una lista di funzioni disponibili in Python:\n\nx = 1/2 # Esempio di numero reale\n\n\nnp.exp(x) # Esponenziale e logaritmo naturale\n\n1.6487212707001282\n\n\n\nnp.log(x)\n\n-0.6931471805599453\n\n\n\nnp.abs(x) # Valore assoluto\n\n0.5\n\n\n\nnp.sign(x) # Funzione segno\n\n1.0"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#alcune-funzioni-matematiche-ii",
+    "href": "lezioni/un_py_A.html#alcune-funzioni-matematiche-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Alcune funzioni matematiche II",
+    "text": "Alcune funzioni matematiche II\n\nnp.sin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n0.479425538604203\n\n\n\nnp.cos(x)\n\n0.8775825618903728\n\n\n\nnp.tan(x)\n\n0.5463024898437905\n\n\n\nnp.arcsin(x) # Funzioni trigonometriche (seno, coseno, tangente)\n\n0.5235987755982988\n\n\n\nnp.arccos(x)\n\n1.0471975511965976\n\n\n\nnp.arctan(x)\n\n0.46364760900080615\n\n\n\n\n\n\n\n\nNota\n\n\n\nLe funzioni di Python si possono combinare tra loro, ad esempio np.log(np.abs(x))."
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#ulteriori-funzioni-matematiche-i",
+    "href": "lezioni/un_py_A.html#ulteriori-funzioni-matematiche-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ulteriori funzioni matematiche I",
+    "text": "Ulteriori funzioni matematiche I\nSupponiamo che x e y siano due numeri reali. Inoltre, siano n e k due numeri naturali.\nSi noti l’uso del ; che può essere usato per separare due comandi nella stessa riga.\n\nx = 1 / 2; y = 1 / 3 # Numeri reali \nn = 5; k = 2 # Numeri naturali\n\n\nimport scipy.special as scp\nscp.factorial(n) # n!\n\n120.0\n\n\n\nscp.binom(n, k) # Coefficiente binomiale\n\n10.0\n\n\n\nnp.around(x, 2) # Arrotonda x usando 2 cifre decimali\n\n0.5\n\n\n\nnp.floor(x) # Arrotonda x all'intero più vicino, per difetto\n\n0.0\n\n\n\nnp.ceil(x) # Arrotonda x all'intero più vicino, per eccesso\n\n1.0"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#ulteriori-funzioni-matematiche-ii",
+    "href": "lezioni/un_py_A.html#ulteriori-funzioni-matematiche-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Ulteriori funzioni matematiche II",
+    "text": "Ulteriori funzioni matematiche II\nLa funzione gamma \\(\\Gamma(x) = \\int_0^\\infty s^{x-1} e^{-s} d s\\) si calcola in Python come segue:\n\nscp.gamma(x) # Funzione gamma\n\n1.7724538509055159\n\n\nLa funzione beta \\(\\mathcal{B}(x,y) = \\int_0^1 s^{x-1}(1-s)^{y-1}ds\\) si calcola in Python come segue:\n\nscp.beta(x, y) # Funzione beta\n\n4.206546315976361"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#la-documentazione-ufficiale",
+    "href": "lezioni/un_py_A.html#la-documentazione-ufficiale",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "La documentazione ufficiale",
+    "text": "La documentazione ufficiale\nLa documentazione di Python è la principale fonte di informazioni.\nA cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella documentazione ufficiale e non in queste slide.\nIl comando help(funzione) apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:\n\n# Documentazione della funzione log\nhelp(np.log) \n\nHelp on ufunc:\n\nlog = <ufunc 'log'>\n    log(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True[, signature, extobj])\n    \n    Natural logarithm, element-wise.\n    \n    The natural logarithm `log` is the inverse of the exponential function,\n    so that `log(exp(x)) = x`. The natural logarithm is logarithm in base\n    `e`.\n    \n    Parameters\n    ----------\n    x : array_like\n        Input value.\n    out : ndarray, None, or tuple of ndarray and None, optional\n        A location into which the result is stored. If provided, it must have\n        a shape that the inputs broadcast to. If not provided or None,\n        a freshly-allocated array is returned. A tuple (possible only as a\n        keyword argument) must have length equal to the number of outputs.\n    where : array_like, optional\n        This condition is broadcast over the input. At locations where the\n        condition is True, the `out` array will be set to the ufunc result.\n        Elsewhere, the `out` array will retain its original value.\n        Note that if an uninitialized `out` array is created via the default\n        ``out=None``, locations within it where the condition is False will\n        remain uninitialized.\n    **kwargs\n        For other keyword-only arguments, see the\n        :ref:`ufunc docs <ufuncs.kwargs>`.\n    \n    Returns\n    -------\n    y : ndarray\n        The natural logarithm of `x`, element-wise.\n        This is a scalar if `x` is a scalar.\n    \n    See Also\n    --------\n    log10, log2, log1p, emath.log\n    \n    Notes\n    -----\n    Logarithm is a multivalued function: for each `x` there is an infinite\n    number of `z` such that `exp(z) = x`. The convention is to return the\n    `z` whose imaginary part lies in `[-pi, pi]`.\n    \n    For real-valued input data types, `log` always returns real output. For\n    each value that cannot be expressed as a real number or infinity, it\n    yields ``nan`` and sets the `invalid` floating point error flag.\n    \n    For complex-valued input, `log` is a complex analytical function that\n    has a branch cut `[-inf, 0]` and is continuous from above on it. `log`\n    handles the floating-point negative zero as an infinitesimal negative\n    number, conforming to the C99 standard.\n    \n    References\n    ----------\n    .. [1] M. Abramowitz and I.A. Stegun, \"Handbook of Mathematical Functions\",\n           10th printing, 1964, pp. 67. http://www.math.sfu.ca/~cbm/aands/\n    .. [2] Wikipedia, \"Logarithm\". https://en.wikipedia.org/wiki/Logarithm\n    \n    Examples\n    --------\n    >>> np.log([1, np.e, np.e**2, 0])\n    array([  0.,   1.,   2., -Inf])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#simboli-speciali",
+    "href": "lezioni/un_py_A.html#simboli-speciali",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Simboli speciali",
+    "text": "Simboli speciali\nNumeri molto grandi, come \\(10^{15}\\), e molto piccoli, come \\(10^{-15}\\), in Python vengono rappresentati come segue:\n\n10**15\n\n1000000000000000\n\n\n\n10**(-15)\n\n1e-15"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#errori-di-approssimazione-numerica",
+    "href": "lezioni/un_py_A.html#errori-di-approssimazione-numerica",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Errori di approssimazione numerica",
+    "text": "Errori di approssimazione numerica\nÈ ben noto che \\(\\sin(\\pi) = 0\\). Tuttavia, in Python si ottiene un numero molto vicino a \\(0\\), ma strettamente positivo. Infatti:\n\nnp.sin(pi)\n\n1.2246467991473532e-16\n\n\nPython è uno strumento di calcolo numerico e pertanto sono sempre presenti errori di approssimazione numerica.\nFortunatamente, nella maggior parte dei casi pratici la differenza tra \\(0\\) e \\(10^{-16}\\) è del tutto irrilevante.\nIn altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.\nAd ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:\n\nnp.cos(pi)\n\n-1.0"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-logiche",
+    "href": "lezioni/un_py_A.html#operazioni-logiche",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni logiche",
+    "text": "Operazioni logiche\nIn Python è spesso necessario verificare se una o più condizioni sono verificate o meno.\n\nx = 5\n\n\nx < 0 # Controlla se il valore di x è minore di 0\n\nFalse\n\n\n\na = (x == -3) # Controlla se il valore di x è uguale a -3\na\n\nFalse\n\n\nIl valore di a è un indicatore binario o booleano, ovvero può essere vero (True) oppure falso (False).\nAltre funzioni logiche disponibili (assumendo che y sia un numero e b un booleano) sono:\n\na = True; b = False; x = 5; y = 7\nx >= y # Controlla se x è maggiore o uguale a y (Si usa \"<=\" per minore uguale)\n\nFalse\n\n\n\nx != y # Controlla se x è diverso da y\n\nTrue\n\n\n\na & b # a AND b. Controlla se i valori booleani a e b sono entrambi veri\n\nFalse\n\n\n\na | b # a OR b. Controlla se Almeno uno tra a ed b è vero\n\nTrue"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#liste-e-vettori",
+    "href": "lezioni/un_py_A.html#liste-e-vettori",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Liste e vettori",
+    "text": "Liste e vettori\nUna lista in Python viene definito tramite la funzione [], come nel seguente esempio:\n\nx = [4, 2, 2, 8, 10]\nx\n\n[4, 2, 2, 8, 10]\n\n\n\n\n\n\n\n\nNota\n\n\n\nCon il termine generico “lista” in Python non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.\n\n\nIl seguente oggetto è una lista in Python, nonostante l’oggetto x sia composto sia numeri che da lettere\n\nx = [\"A\", \"B\", 2, 8, 10]\nx\n\n['A', 'B', 2, 8, 10]"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#vettori",
+    "href": "lezioni/un_py_A.html#vettori",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Vettori",
+    "text": "Vettori\nUn vettore in Python viene definito tramite la libreria numpy e salvato in un oggetto di tipo array, come nel seguente esempio:\n\nimport numpy as np\nx = np.array([4, 2, 2, 8, 10])\nx\n\narray([ 4,  2,  2,  8, 10])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#creazione-di-vettori",
+    "href": "lezioni/un_py_A.html#creazione-di-vettori",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Creazione di vettori",
+    "text": "Creazione di vettori\nTalvolta è comodo creare dei vettori i cui elementi sono dei numeri consecutivi\n\nx = np.arange(5, 11) # Equivalente a: x = np.array([5, 6, 7, 8, 9, 10])\nx\n\narray([ 5,  6,  7,  8,  9, 10])\n\n\nPer creare una successione di numeri reali si usa il comando linspace:\n\nx = np.linspace(start = 0, stop = 1, num = 20)\nx\n\narray([0.        , 0.05263158, 0.10526316, 0.15789474, 0.21052632,\n       0.26315789, 0.31578947, 0.36842105, 0.42105263, 0.47368421,\n       0.52631579, 0.57894737, 0.63157895, 0.68421053, 0.73684211,\n       0.78947368, 0.84210526, 0.89473684, 0.94736842, 1.        ])\n\n\nPer creare un vettore di valori ripetuti si usa il comando ones:\n\nx = np.repeat(10., 7) # Vettore in cui il numero 10 è ripetuto 7 volte\nx\n\narray([10., 10., 10., 10., 10., 10., 10.])\n\n\n\nx = np.zeros(7) # Vettore in cui il numero 0 è ripetuto 7 volte\nx\n\narray([0., 0., 0., 0., 0., 0., 0.])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sui-vettori-i",
+    "href": "lezioni/un_py_A.html#operazioni-sui-vettori-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sui vettori I",
+    "text": "Operazioni sui vettori I\nLa maggior parte delle funzioni matematiche di numpy sono vettorizzate. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.\n\nx = np.linspace(0, 4, 10)\nnp.exp(x) + x / 2 + 1 # Esempio 1\n\narray([ 2.        ,  2.78184572,  3.8768699 ,  5.46033456,  7.80558248,\n       11.33892546, 16.72524943, 25.00152607, 37.78504082, 57.59815003])\n\n\n\nx = np.array([10, 10**2, 10**3, 10**4, 10**5, 10**6]) # Esempio 2\nnp.log10(x)\n\narray([1., 2., 3., 4., 5., 6.])\n\n\n\nx = np.linspace(0, 10, 10)\nx > 4 # Esempio 3\n\narray([False, False, False, False,  True,  True,  True,  True,  True,\n        True])\n\n\nAltre funzioni invece sono utili proprio nel caso in cui l’argomento sia un vettore:\n\nx = np.array([2, 3, 1, 3, 10, 5])\nlen(x) # Lunghezza del vettore\n\n6\n\n\n\nnp.sum(x) # Somma degli elementi del vettore\n\n24\n\n\n\nnp.cumsum(x) # Somme cumulate\n\narray([ 2,  5,  6,  9, 19, 24])\n\n\n\n# Una sintassi alternativa\nx.sum()\n\n24\n\n\n\nx.cumsum()\n\narray([ 2,  5,  6,  9, 19, 24])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sui-vettori-ii",
+    "href": "lezioni/un_py_A.html#operazioni-sui-vettori-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sui vettori II",
+    "text": "Operazioni sui vettori II\nUlteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:\n\nx = np.array([2, 3, 1, 3, 10, 5])\nx.prod()\n\n900\n\n\n\nx.cumprod()\n\narray([  2,   6,   6,  18, 180, 900])\n\n\n\nx.min()\n\n1\n\n\n\nx.argmin() # Posizione del valore corrispondente al minimo\n\n2\n\n\nIl funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:\n\nx.max() # Valore massimo\n\n10\n\n\n\nx.argmax() # Posizione del valore corrispondente al massimo\n\n4\n\n\nPer ordinare un vettore, è possibile usare il comando sort:\n\nnp.sort(x)\n\narray([ 1,  2,  3,  3,  5, 10])\n\n\nAttenzione alla alla differenza con la sua sintassi alternativa:\n\nx.sort()\nx\n\narray([ 1,  2,  3,  3,  5, 10])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sui-vettori-iii",
+    "href": "lezioni/un_py_A.html#operazioni-sui-vettori-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sui vettori III",
+    "text": "Operazioni sui vettori III\nÈ possibile selezionare gli elementi di un vettore usando le parentesi quadrate, come nei seguenti esempi:\n\n# Concatenazione di vettori\nx = np.concatenate([pi * np.ones(2), np.array([np.sqrt(2), 10, 7])])\nx\n\narray([ 3.14159265,  3.14159265,  1.41421356, 10.        ,  7.        ])\n\n\n\nx[2] # Estrae il terzo elemento dal vettore x, ovvero sqrt(2)\n\n1.4142135623730951\n\n\n\nx[[0, 2, 4]] # Estrae il primo, il terzo ed il quinto elemento\n\narray([3.14159265, 1.41421356, 7.        ])\n\n\n\nnp.delete(x, [0, 2, 4]) # Elimina il primo, il terzo ed il quinto elemento\n\narray([ 3.14159265, 10.        ])\n\n\n\nx[x > 3.5] # Estrae gli elementi maggiori di 3.5\n\narray([10.,  7.])\n\n\nL’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una condizione relativa al vettore stesso."
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#grafico-di-una-funzione",
+    "href": "lezioni/un_py_A.html#grafico-di-una-funzione",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Grafico di una funzione",
+    "text": "Grafico di una funzione\nIn Python è possibile disegnare una qualsiasi funzione tramite il comando curve.\nSe ad esempio si considera la funzione \\[f(x) = \\frac{\\sin(x)}{x},\\] allora possiamo disegnare \\(f(x)\\) nell’intervallo \\((0,15)\\) come segue:\n\nimport matplotlib.pyplot as plt\n\nx = np.linspace(1e-15, 15, 200)\ny = np.sin(x) / x\n\nplt.plot(x, y, 'r')\nplt.show()"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#matrici",
+    "href": "lezioni/un_py_A.html#matrici",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Matrici",
+    "text": "Matrici\nUna matrice \\({\\bf A}\\) è una collezione di elementi \\((a)_{ij}\\) per \\(i=1,\\dots,n\\) e \\(j=1,\\dots,m\\).\nPer esempio, la matrice quadrata di dimensione \\(2 \\times 2\\)\n\\[{\\bf A} = \\begin{pmatrix}\n5 & 2\\\\\n1 & 4 \\\\\n\\end{pmatrix},\\] si può definire in Python tramite il comando matrix come segue:\n\nA = np.array([[5, 2], [1, 4]])\nA\n\narray([[5, 2],\n       [1, 4]])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sulle-matrici-i",
+    "href": "lezioni/un_py_A.html#operazioni-sulle-matrici-i",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici I",
+    "text": "Operazioni sulle matrici I\nÈ possibile selezionare gli elementi di una matrice in maniera analoga a quanto fatto con i vettori.\n\nA[0, 1] # Estrazione di elemento in posizione (1,2)\n\n2\n\n\n\nA[:, 1] # Estrazione seconda colonna\n\narray([2, 4])\n\n\n\nA[0, :] # Estrazione prima riga\n\narray([5, 2])\n\n\nAlcuni comandi di base per manipolare le matrici sono i seguenti\n\nA.shape\n\n(2, 2)\n\n\n\na = A.reshape(4) # Converte la matrice in un vettore\na\n\narray([5, 2, 1, 4])\n\n\n\nA.diagonal() # Restituisce la diagonale della matrice\n\narray([5, 4])\n\n\n\nA.transpose() # Calcola la matrice trasposta A'\n\narray([[5, 1],\n       [2, 4]])\n\n\n\nA.sum() # Somma di tutti gli elementi di A\n\n12"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sulle-matrici-ii",
+    "href": "lezioni/un_py_A.html#operazioni-sulle-matrici-ii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici II",
+    "text": "Operazioni sulle matrici II\nCome per i vettori, le operazioni elementari (somma, prodotto, log, exp, etc.) vengono eseguite elemento per elemento.\n\nnp.exp(A)\n\narray([[148.4131591 ,   7.3890561 ],\n       [  2.71828183,  54.59815003]])\n\n\nSiano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di colonne e definiamo\n\\[\n{\\bf C} = \\begin{pmatrix}{\\bf A} \\\\ {\\bf B} \\end{pmatrix}.\n\\]\n\nB = A # Creo una matrice B identica ad A, per semplicità\nC = np.vstack([A, B])\nC\n\narray([[5, 2],\n       [1, 4],\n       [5, 2],\n       [1, 4]])\n\n\nIn maniera analoga, siano \\({\\bf A}\\) e \\({\\bf B}\\) due matrici aventi lo stesso numero di righe e definiamo \\({\\bf C} = \\begin{pmatrix}{\\bf A} & {\\bf B} \\end{pmatrix}\\).\n\nC = np.hstack([A, B])\nC\n\narray([[5, 2, 5, 2],\n       [1, 4, 1, 4]])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sulle-matrici-iii",
+    "href": "lezioni/un_py_A.html#operazioni-sulle-matrici-iii",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici III",
+    "text": "Operazioni sulle matrici III\nSiano \\({\\bf x}\\) e \\({\\bf y}\\) due vettori colonna in \\(\\mathbb{R}^p\\). Allora, il loro è pari a\n\\[\n{\\bf x}^\\intercal {\\bf y} = \\sum_{i=1}^p x_i y_i.\n\\]\nIn Python possiamo usare il comando dot\n\nx = np.array([-4, 2, 6, 10, 22])\ny = np.array([3, 2, 2, 7, 9])\nnp.dot(x, y) # Equivalent a sum(x * y)\n\n272"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sulle-matrici-iv",
+    "href": "lezioni/un_py_A.html#operazioni-sulle-matrici-iv",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici IV",
+    "text": "Operazioni sulle matrici IV\nIn algebra lineare il prodotto tra matrici compatibili \\({\\bf A} {\\bf B}\\) è chiamato prodotto righe per colonne. In Python si usa il comando seguente\n\nA = np.array([[1, 2, 3], [4, 9, 2], [2, 2, 2]])\nB = np.array([[5, 2, 5], [3, 3, 7], [-2, -8, 10]])\n\nnp.matmul(A, B) # Prodotto righe per colonne AB\n\narray([[  5, -16,  49],\n       [ 43,  19, 103],\n       [ 12,  -6,  44]])\n\n\nSe le matrici non sono compatibili Python produce un errore (provateci per esercizio!)\nNota. Il comando A * B indica il prodotto elemento per elemento e non il prodotto righe per colonne.\n\nA * B # Prodotto elemento per elemento\n\narray([[  5,   4,  15],\n       [ 12,  27,  14],\n       [ -4, -16,  20]])"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sulle-matrici-v",
+    "href": "lezioni/un_py_A.html#operazioni-sulle-matrici-v",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici V",
+    "text": "Operazioni sulle matrici V\nSia \\({\\bf A}\\) una matrice quadrata \\(n \\times n\\) a valori reali. La sua matrice inversa \\({\\bf A}^{-1}\\), quando esiste, è l’unica matrice tale per cui\n\\[\n{\\bf A} {\\bf A}^{-1} = {\\bf A}^{-1} {\\bf A} =  I_n.\n\\]\nPer ottenere \\({\\bf A}^{-1}\\) si usa il comando solve.\n\nA = np.array([[1, 2, 3], [4, 9, 2], [2, 2, 2]])\nA1 = np.linalg.inv(A) # Matrice inversa di A\nA1\n\narray([[-0.58333333, -0.08333333,  0.95833333],\n       [ 0.16666667,  0.16666667, -0.41666667],\n       [ 0.41666667, -0.08333333, -0.04166667]])\n\n\n\nnp.around(np.matmul(A, A1), 5) # Operazione di controllo\n\narray([[ 1., -0., -0.],\n       [ 0.,  1.,  0.],\n       [ 0.,  0.,  1.]])\n\n\n\nnp.linalg.det(A) # Calcola il determinante della matrice A\n\n-24.000000000000004"
+  },
+  {
+    "objectID": "lezioni/un_py_A.html#operazioni-sulle-matrici-vi",
+    "href": "lezioni/un_py_A.html#operazioni-sulle-matrici-vi",
+    "title": "R per l’analisi statistica multivariata",
+    "section": "Operazioni sulle matrici VI",
+    "text": "Operazioni sulle matrici VI\nNel caso una matrice non sia invertibile, il determinante è pari a \\(0\\). Il comando inv in quel caso produce un errore.\n\n# Esempio di matrice NON invertibile\nA = np.array([[1, 2, 3], [2, 4, 6], [2, 2, 2]])\nnp.linalg.det(A) # Deteminante pari a 0, np.linalg.inv(A) produce un errore\n\n0.0\n\n\nCi sono numerose funzioni per la scomposizione di matrici, il cui output è a volte una lista.\n\nA = np.array([[4, 1], [1, 8]])\nnp.linalg.cholesky(A) # Scomposizione di Cholesky\n\narray([[2.        , 0.        ],\n       [0.5       , 2.78388218]])\n\n\n\nnp.linalg.qr(A) # Scomposizione QR\n\n(array([[-0.9701425 , -0.24253563],\n        [-0.24253563,  0.9701425 ]]),\n array([[-4.12310563, -2.9104275 ],\n        [ 0.        ,  7.51860438]]))\n\n\n\nnp.linalg.eig(A)\n\n(array([3.76393202, 8.23606798]),\n array([[-0.97324899, -0.22975292],\n        [ 0.22975292, -0.97324899]]))"
   }
 ]
