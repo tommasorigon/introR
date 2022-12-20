@@ -23,7 +23,6 @@ $$
     I = \int_a^b f(x)\mathrm{d}x,
     $$ dove $a < b$ sono due valori reali. Si calcoli il valore dell'integrale $\int_1^3 f(x)\mathrm{d}x$, dove $f(x)$ è la funzione usata nei punti precedenti.
 
-
 ## Esercizio B
 
 Si verifichino numericamente le seguenti identità per $n = 10, 100, 1000$ (ove possibile).
@@ -37,7 +36,7 @@ Si verifichino numericamente le seguenti identità per $n = 10, 100, 1000$ (ove 
     $$
 
 3.  $$
-    \sum_{k=1}^n(-1)^{k+1}k \binom{n}{k} = 0.
+    \sum_{k=1}^n(-1)^{k}k \binom{n}{k} = 0.
     $$
 
 ## Esercizio C

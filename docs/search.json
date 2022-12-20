@@ -1782,7 +1782,7 @@
     "href": "exe/es_1.html#esercizio-b",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio B",
-    "text": "Esercizio B\nSi verifichino numericamente le seguenti identità per \\(n = 10, 100, 1000\\) (ove possibile).\n\n\\[\n\\sum_{k=0}^n(-1)^k\\binom{n}{k} = 0.\n\\]\n\\[\n\\sum_{k=1}^n k \\binom{n}{k} = n 2^{n-1}.\n\\]\n\\[\n\\sum_{k=1}^n(-1)^{k+1}k \\binom{n}{k} = 0.\n\\]"
+    "text": "Esercizio B\nSi verifichino numericamente le seguenti identità per \\(n = 10, 100, 1000\\) (ove possibile).\n\n\\[\n\\sum_{k=0}^n(-1)^k\\binom{n}{k} = 0.\n\\]\n\\[\n\\sum_{k=1}^n k \\binom{n}{k} = n 2^{n-1}.\n\\]\n\\[\n\\sum_{k=1}^n(-1)^{k}k \\binom{n}{k} = 0.\n\\]"
   },
   {
     "objectID": "exe/es_1.html#esercizio-c",
