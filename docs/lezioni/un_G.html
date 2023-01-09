@@ -725,8 +725,6 @@ III             706       0.5364742</code></pre>
 </section>
 <section id="esercizio-riassuntivo" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
-<section id="contingenze-ed-indice-chi2-di-pearson" class="level4">
-<h4 class="anchored" data-anchor-id="contingenze-ed-indice-chi2-di-pearson">Contingenze ed indice <span class="math inline">\(\chi^2\)</span> di Pearson</h4>
 <p>Le <strong>contingenze</strong> sono pari alla differenza tra frequenze osservate e frequenze attese, sotto l’ipotesi di indipendenza: <span class="math display">\[
 (\text{contingenza}_{ij}) = n_{ij} - \hat{n}_{ij}, \qquad i=1,\dots,h,\quad j=1,\dots,k.
 \]</span></p>
@@ -735,7 +733,6 @@ III             706       0.5364742</code></pre>
 \chi^2 = \sum_{i=1}^h\sum_{j=1}^k \frac{(n_{ij} - \hat{n}_{ij})^2}{\hat{n}_{ij}} = n\left(\sum_{i=1}^h\sum_{j=1}^k\frac{f_{ij}^2}{f_{i+}f_{+j}} - 1\right).
 \]</span></p>
 <p>Si scriva una funzione <strong>R</strong> chiamata <code>chi_squared(x, y)</code> che calcola l’indice <span class="math inline">\(\chi^2\)</span> di Pearson.</p>
-</section>
 <section id="soluzione" class="level4">
 <h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
 <div class="cell">
