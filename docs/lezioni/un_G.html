@@ -173,7 +173,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#frequenze-congiunte-marginali" id="toc-frequenze-congiunte-marginali" class="nav-link" data-scroll-target="#frequenze-congiunte-marginali">Frequenze congiunte &amp; marginali</a></li>
   <li><a href="#distribuzioni-condizionate-i" id="toc-distribuzioni-condizionate-i" class="nav-link" data-scroll-target="#distribuzioni-condizionate-i">Distribuzioni condizionate I</a></li>
   <li><a href="#distribuzioni-condizionate-ii" id="toc-distribuzioni-condizionate-ii" class="nav-link" data-scroll-target="#distribuzioni-condizionate-ii">Distribuzioni condizionate II</a></li>
-  <li><a href="#contingenze-ed-indice-chi2-di-pearson" id="toc-contingenze-ed-indice-chi2-di-pearson" class="nav-link" data-scroll-target="#contingenze-ed-indice-chi2-di-pearson">Contingenze ed indice <span class="math inline">\(\chi^2\)</span> di Pearson</a></li>
+  <li><a href="#rappresentazioni-grafiche" id="toc-rappresentazioni-grafiche" class="nav-link" data-scroll-target="#rappresentazioni-grafiche">Rappresentazioni grafiche</a></li>
+  <li><a href="#strumenti-grafici-avanzati" id="toc-strumenti-grafici-avanzati" class="nav-link" data-scroll-target="#strumenti-grafici-avanzati">Strumenti grafici avanzati</a></li>
   <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
   </ul>
 </nav>
@@ -657,8 +658,71 @@ III             706       0.5364742</code></pre>
 </div>
 </div>
 </section>
-<section id="contingenze-ed-indice-chi2-di-pearson" class="level2">
-<h2 class="anchored" data-anchor-id="contingenze-ed-indice-chi2-di-pearson">Contingenze ed indice <span class="math inline">\(\chi^2\)</span> di Pearson</h2>
+<section id="rappresentazioni-grafiche" class="level2">
+<h2 class="anchored" data-anchor-id="rappresentazioni-grafiche">Rappresentazioni grafiche</h2>
+<p>È possibile rappresentare graficamente i dati di una tabella di contingenza tramite un diagramma a barre, che in <strong>R</strong> è implementato tramite il comando <code>barplot</code>.</p>
+<p>Una rappresentazione grafica delle frequenze congiunte è pertanto la seguente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend.text =</span> <span class="cn">TRUE</span>) <span class="co"># Beside = TRUE "affianca" i rettangoli.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se fossimo interessati a mostrare le frequenze condizionate, possiamo invece usare:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(tab, <span class="dv">2</span>), <span class="at">beside =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Classe"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="cn">TRUE</span>) <span class="co"># Beside = FALSE "mette in colonna" i rettangoli.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="strumenti-grafici-avanzati" class="level2">
+<h2 class="anchored" data-anchor-id="strumenti-grafici-avanzati">Strumenti grafici avanzati</h2>
+<section id="il-pacchetto-ggplot2" class="level4">
+<h4 class="anchored" data-anchor-id="il-pacchetto-ggplot2">Il pacchetto <code>ggplot2</code></h4>
+<p>Il cosiddetto <strong>R</strong> <code>base</code> contiene un’ampia gamma di rappresentazioni grafiche. Ciò nonostante, un pacchetto chiamato <code>ggplot2</code> ha recentemente acquisito notevole popolarità.</p>
+<p>Carichiamolo anzitutto in memoria</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Quindi, il primo grafico mostrato in precedenza si può ottenere con la sintassi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze assolute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Mentre il secondo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze relative"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="grafici-interattivi-tramite-flourish" class="level4">
+<h4 class="anchored" data-anchor-id="grafici-interattivi-tramite-flourish">Grafici interattivi tramite <a href="https://flourish.studio">Flourish</a></h4>
+<p>In particolar modo nel cosiddetto <em>data journalism</em>, si è diffuso uno strumento per creare grafici interattivi chiamato <a href="https://flourish.studio"><strong>Flourish</strong></a>. Si veda ad esempio questo <a href="https://www.infodata.ilsole24ore.com/2023/01/08/quanto-siamo-veramente-preoccupati-e-cosa-stiamo-facendo-nel-concreto-il-sondaggio/">recente articolo</a> del sole 24 ore.</p>
+<p>Sebbene perfezionabile in moli aspetti, il vantaggio della web-app Flourish è la sua semplicità d’uso e la produzione di grafici esteticamente gradevoli. Un esempio:</p>
+<div class="flourish-embed flourish-chart" data-src="visualisation/12387362">
+<script src="https://public.flourish.studio/resources/embed.js"></script>
+</div>
+</section>
+</section>
+<section id="esercizio-riassuntivo" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
+<section id="contingenze-ed-indice-chi2-di-pearson" class="level4">
+<h4 class="anchored" data-anchor-id="contingenze-ed-indice-chi2-di-pearson">Contingenze ed indice <span class="math inline">\(\chi^2\)</span> di Pearson</h4>
 <p>Le <strong>contingenze</strong> sono pari alla differenza tra frequenze osservate e frequenze attese, sotto l’ipotesi di indipendenza: <span class="math display">\[
 (\text{contingenza}_{ij}) = n_{ij} - \hat{n}_{ij}, \qquad i=1,\dots,h,\quad j=1,\dots,k.
 \]</span></p>
@@ -666,28 +730,26 @@ III             706       0.5364742</code></pre>
 <p>L’indice di connessione <span class="math inline">\(\chi^2\)</span> è definito come <span class="math display">\[
 \chi^2 = \sum_{i=1}^h\sum_{j=1}^k \frac{(n_{ij} - \hat{n}_{ij})^2}{\hat{n}_{ij}} = n\left(\sum_{i=1}^h\sum_{j=1}^k\frac{f_{ij}^2}{f_{i+}f_{+j}} - 1\right).
 \]</span></p>
-</section>
-<section id="esercizio-riassuntivo" class="level2">
-<h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
 <p>Si scriva una funzione <strong>R</strong> chiamata <code>chi_squared(x, y)</code> che calcola l’indice <span class="math inline">\(\chi^2\)</span> di Pearson.</p>
+</section>
 <section id="soluzione" class="level4">
 <h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n <span class="co"># Frequenze relative congiunte</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">table</span>(x) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di x</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">table</span>(y) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di y</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_x)) {</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_y)) {</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>      S <span class="ot">&lt;-</span> S <span class="sc">+</span> ff[i, j]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (f_x[i] <span class="sc">*</span> f_y[j])</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> (S <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n <span class="co"># Frequenze relative congiunte</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">table</span>(x) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di x</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">table</span>(y) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di y</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_x)) {</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_y)) {</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>      S <span class="ot">&lt;-</span> S <span class="sc">+</span> ff[i, j]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (f_x[i] <span class="sc">*</span> f_y[j])</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> (S <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     No 
 133.052 </code></pre>
@@ -698,23 +760,23 @@ III             706       0.5364742</code></pre>
 <h4 class="anchored" data-anchor-id="soluzione-alternativa-più-concisa">Soluzione (alternativa, più concisa)</h4>
 <p>La soluzione seguente fa uso delle funzioni <code>apply</code> e <code>outer</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">1</span>, sum)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">2</span>, sum)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  f_e <span class="ot">&lt;-</span> <span class="fu">outer</span>(f_x, f_y) <span class="co"># Prodotto "esterno" tra vettori</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> (<span class="fu">sum</span>(ff<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> f_e) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">1</span>, sum)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">2</span>, sum)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  f_e <span class="ot">&lt;-</span> <span class="fu">outer</span>(f_x, f_y) <span class="co"># Prodotto "esterno" tra vettori</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> (<span class="fu">sum</span>(ff<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> f_e) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 133.052</code></pre>
 </div>
 </div>
 <p>Infine, si noti che la funzione <code>chisq.test</code> produce lo stesso risultato.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
