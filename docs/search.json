@@ -53,7 +53,7 @@
     "href": "lezioni/un_G.html#importazione-dei-dati-titanic",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione dei dati titanic",
-    "text": "Importazione dei dati titanic\nCome fatto in precedenza, anzitutto è necessario scaricare il file titanic.csv e salvarlo nel proprio computer. Link al file\n\ntitanic <- read.table(\"../dataset/titanic.csv\", header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/titanic.csv\"\ntitanic <- read.table(path, header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\n\nstr(titanic)\n\n'data.frame':   1316 obs. of  2 variables:\n $ Salvato: Factor w/ 2 levels \"No\",\"Si\": 2 2 2 2 2 2 2 2 2 2 ...\n $ Classe : Factor w/ 3 levels \"I\",\"II\",\"III\": 1 1 1 1 1 1 1 1 1 1 ..."
+    "text": "Importazione dei dati titanic\nCome fatto in precedenza, anzitutto è necessario scaricare il file titanic.csv e salvarlo nel proprio computer. Link al file\n\ntitanic <- read.table(\"../dataset/titanic.csv\", header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/dataset/titanic.csv\"\ntitanic <- read.table(path, header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\n\nstr(titanic)\n\n'data.frame':   1316 obs. of  2 variables:\n $ Salvato: Factor w/ 2 levels \"No\",\"Si\": 2 2 2 2 2 2 2 2 2 2 ...\n $ Classe : Factor w/ 3 levels \"I\",\"II\",\"III\": 1 1 1 1 1 1 1 1 1 1 ..."
   },
   {
     "objectID": "lezioni/un_G.html#le-frequenze-assolute-e-relative-marginali",
@@ -137,7 +137,7 @@
     "href": "lezioni/un_F.html#importazione-dei-dati-forbes",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione dei dati forbes",
-    "text": "Importazione dei dati forbes\nCome fatto in precedenza, anzitutto è necessario scaricare il file forbes.csv e salvarlo nel proprio computer. Link al file\n\nforbes <- read.table(\"../dataset/forbes.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/forbes.csv\"\nforbes <- read.table(path, header = TRUE, sep = \",\")\n\n\nstr(forbes)\n\n'data.frame':   17 obs. of  2 variables:\n $ bp  : num  194 194 198 198 199 ...\n $ pres: num  20.8 20.8 22.4 22.7 23.1 ..."
+    "text": "Importazione dei dati forbes\nCome fatto in precedenza, anzitutto è necessario scaricare il file forbes.csv e salvarlo nel proprio computer. Link al file\n\nforbes <- read.table(\"../dataset/forbes.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/dataset/forbes.csv\"\nforbes <- read.table(path, header = TRUE, sep = \",\")\n\n\nstr(forbes)\n\n'data.frame':   17 obs. of  2 variables:\n $ bp  : num  194 194 198 198 199 ...\n $ pres: num  20.8 20.8 22.4 22.7 23.1 ..."
   },
   {
     "objectID": "lezioni/un_F.html#operazioni-preliminari",
@@ -382,7 +382,7 @@
     "href": "lezioni/un_E.html#importazione-dei-dati-emoglobina",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione dei dati emoglobina",
-    "text": "Importazione dei dati emoglobina\nCome fatto in precedenza, anzitutto è necessario scaricare il file emoglobina.csv e salvarlo nel proprio computer. Link al file\n\nemoglobina <- read.table(\"../dataset/emoglobina.csv\", header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/emoglobina.csv\"\nemoglobina <- read.table(path, header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\n\nstr(emoglobina)\n\n'data.frame':   360 obs. of  2 variables:\n $ emoglobina : num  15 15.1 15.2 14.8 15 ...\n $ Metodologia: Factor w/ 2 levels \"A\",\"B\": 1 1 1 1 1 1 1 1 1 1 ...\n\n\nL’opzione stringsAsFactors = TRUE, implica che la variabile Metodologia viene codificata come factor e non come character."
+    "text": "Importazione dei dati emoglobina\nCome fatto in precedenza, anzitutto è necessario scaricare il file emoglobina.csv e salvarlo nel proprio computer. Link al file\n\nemoglobina <- read.table(\"../dataset/emoglobina.csv\", header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/dataset/emoglobina.csv\"\nemoglobina <- read.table(path, header = TRUE, sep = \",\", stringsAsFactors = TRUE)\n\n\nstr(emoglobina)\n\n'data.frame':   360 obs. of  2 variables:\n $ emoglobina : num  15 15.1 15.2 14.8 15 ...\n $ Metodologia: Factor w/ 2 levels \"A\",\"B\": 1 1 1 1 1 1 1 1 1 1 ...\n\n\nL’opzione stringsAsFactors = TRUE, implica che la variabile Metodologia viene codificata come factor e non come character."
   },
   {
     "objectID": "lezioni/un_E.html#operazioni-preliminari",
@@ -1327,7 +1327,7 @@
     "href": "lezioni/un_H.html#numeri-pseudo-casuali-i",
     "title": "R per l’analisi statistica multivariata",
     "section": "Numeri pseudo-casuali I",
-    "text": "Numeri pseudo-casuali I\nLa quarta classe di funzioni nella nostra lista è quella del tipo rdist, che permette quindi di ottenere dei valore casuali da una distribuzione.\nPer esempio, per campionare \\(5\\) valori indipendenti e identicamente distribuiti (iid) da una normale standard, ovvero \\[\nX_i \\overset{\\text{iid}}{\\sim} \\text{N}(0,1), \\qquad i=1,\\dots,5\n\\] possiamo usare in R il comando seguente:\n\nR <- 5\nrnorm(R, mean = 0, sd = 1)\n\n[1] -1.08255361  0.03147159  0.63943560  1.76963639 -0.61448717"
+    "text": "Numeri pseudo-casuali I\nLa quarta classe di funzioni nella nostra lista è quella del tipo rdist, che permette quindi di ottenere dei valore casuali da una distribuzione.\nPer esempio, per campionare \\(5\\) valori indipendenti e identicamente distribuiti (iid) da una normale standard, ovvero \\[\nX_i \\overset{\\text{iid}}{\\sim} \\text{N}(0,1), \\qquad i=1,\\dots,5\n\\] possiamo usare in R il comando seguente:\n\nR <- 5\nrnorm(R, mean = 0, sd = 1)\n\n[1]  0.1137004 -0.6177752  0.7313744  0.5680932  0.2448644"
   },
   {
     "objectID": "lezioni/un_H.html#numeri-pseudo-casuali-ii",
@@ -1418,7 +1418,7 @@
     "href": "lezioni/un_H.html#il-metodo-dellinversione",
     "title": "R per l’analisi statistica multivariata",
     "section": "Il metodo dell’inversione",
-    "text": "Il metodo dell’inversione\nSia \\(X\\) una variabile aleatoria con funzione di ripartizione \\(F(x)\\) e funzione quantile \\[\n\\mathcal{Q}(p) = \\inf\\{x \\in \\mathbb{R} : F(x) \\ge p \\}.\n\\]\nInoltre, sia \\(U \\sim U(0,1)\\). Allora, vale che\n\\[\nX \\overset{d}{=} \\mathcal{Q}(U).\n\\]\n\nDimostrazione (schema)\n\\[\n\\mathbb{P}(Q(U) \\le x) =  \\mathbb{P}(U \\le F(x)) = F(x).\n\\]\n\n\nRisultato chiave\nSe la funzione quantile \\(\\mathcal{Q}(p)\\) è facile da calcolare, per simulare una variabile aleatoria è quindi sufficiente simulare \\(U \\sim U(0,1)\\) e poi calcolare \\(\\mathcal{Q}(U)\\)."
+    "text": "Il metodo dell’inversione\nSia \\(X\\) una variabile aleatoria con funzione di ripartizione \\(F(x)\\) e funzione quantile \\[\n\\mathcal{Q}(p) = \\inf\\{x \\in \\mathbb{R} : F(x) \\ge p \\}.\n\\]\nInoltre, sia \\(U \\sim U(0,1)\\). Allora, vale che\n\\[\nX \\overset{d}{=} \\mathcal{Q}(U).\n\\]\n\nDimostrazione (schema)\n\\[\n\\mathbb{P}(Q(U) \\le x) =  \\mathbb{P}(U \\le F(x)) = F(x).\n\\]\n\n\n\n\n\n\nRisultato chiave\n\n\n\nSe la funzione quantile \\(\\mathcal{Q}(p)\\) è facile da calcolare, per simulare una variabile aleatoria è quindi sufficiente simulare \\(U \\sim U(0,1)\\) e poi calcolare \\(\\mathcal{Q}(U)\\)."
   },
   {
     "objectID": "lezioni/un_H.html#il-metodo-dellinversione-distribuzione-gaussiana",

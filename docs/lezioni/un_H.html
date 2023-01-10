@@ -641,7 +641,7 @@ X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(R, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.08255361  0.03147159  0.63943560  1.76963639 -0.61448717</code></pre>
+<pre><code>[1]  0.1137004 -0.6177752  0.7313744  0.5680932  0.2448644</code></pre>
 </div>
 </div>
 </section>
@@ -866,10 +866,19 @@ X \overset{d}{=} \mathcal{Q}(U).
 <p><span class="math display">\[
 \mathbb{P}(Q(U) \le x) =  \mathbb{P}(U \le F(x)) = F(x).
 \]</span></p>
-</section>
-<section id="risultato-chiave" class="level4 .callout-note">
-<h4 class="anchored" data-anchor-id="risultato-chiave">Risultato chiave</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Risultato chiave
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Se la funzione quantile <span class="math inline">\(\mathcal{Q}(p)\)</span> è facile da calcolare, per simulare una variabile aleatoria è quindi sufficiente simulare <span class="math inline">\(U \sim U(0,1)\)</span> e poi calcolare <span class="math inline">\(\mathcal{Q}(U)\)</span>.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="il-metodo-dellinversione-distribuzione-gaussiana" class="level2">
