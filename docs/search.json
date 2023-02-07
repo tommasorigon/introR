@@ -403,7 +403,7 @@
     "href": "lezioni/un_E.html#la-varianza-ii",
     "title": "R per l’analisi statistica multivariata",
     "section": "La varianza II",
-    "text": "La varianza II\nPer praticità, creiamo una nuova funzione chiamata my_var che calcola la varianza di un generico vettore x. Pertanto avremo:\n\nmy_var <- function(x) {\n  mean(x^2) - mean(x)^2\n}\n\nmy_var(emo_A)\n\n[1] 0.0456162\n\nmy_var(emo_B)\n\n[1] 0.09901038\n\n\nIn R è presente la funzione var, tuttavia questa calcola una quantità leggermente diversa, ovvero \\[\n\\texttt{var(x)} = \\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2,\n\\] ovvero lo stimatore corretto della varianza quando i dati provengono da una legge gaussiana.\nIl motivo non è chiaro? Verrà presto affrontato a Statistica 2!"
+    "text": "La varianza II\nPer praticità, creiamo una nuova funzione chiamata my_var che calcola la varianza di un generico vettore x. Pertanto avremo:\n\nmy_var <- function(x) {\n  mean(x^2) - mean(x)^2\n}\n\nmy_var(emo_A)\n\n[1] 0.0456162\n\nmy_var(emo_B)\n\n[1] 0.09901038\n\n\nIn R è presente la funzione var, tuttavia questa calcola una quantità leggermente diversa, ovvero \\[\n\\texttt{var(x)} = \\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2,\n\\] ovvero lo stimatore corretto della varianza.\nIl motivo non è chiaro? Verrà presto affrontato a Statistica 2."
   },
   {
     "objectID": "lezioni/un_E.html#la-varianza-iii",
