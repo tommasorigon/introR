@@ -459,7 +459,7 @@
     "href": "lezioni/un_E.html#esercizio-riassuntivo",
     "title": "R per l’analisi statistica multivariata",
     "section": "Esercizio riassuntivo",
-    "text": "Esercizio riassuntivo\nLa misura di asimmetria di uso più comune è il cosiddetto indice di asimmetria standardizzato di Pearson, definito come \\[\n    \\gamma = \\frac{1}{\\text{sqm}(x)^3} \\frac{1}{n} \\sum_{i=1}^n (x_i - \\bar{x})^3 = \\frac{1}{n} \\sum_{i=1}^n \\left(\\frac{x_i - \\bar{x}}{\\sigma}\\right)^3.\n\\]\n\nSi crei una funzione opportuna per il suo calcolo.\n\n\nSoluzione dell’esercizio riassuntivo\n\n# Prima possibile implementazione\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  mean((x - mean(x))^3) / sqm^3\n}\n\n# Implementazione (leggermente) alternativa\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  z <- (x - mean(x)) / sqm\n  mean(z^3)\n}\n\nasym(emo_A)\n\n[1] 0.09535216"
+    "text": "Esercizio riassuntivo\nLa misura di asimmetria di uso più comune è il cosiddetto indice di asimmetria standardizzato di Pearson, definito come \\[\n\\gamma = \\frac{1}{\\text{sqm}(x)^3} \\frac{1}{n} \\sum_{i=1}^n (x_i - \\bar{x})^3 = \\frac{1}{n} \\sum_{i=1}^n \\left(\\frac{x_i - \\bar{x}}{\\sigma}\\right)^3.\n\\]\n\nSi crei una funzione opportuna per il suo calcolo.\n\n\nSoluzione dell’esercizio riassuntivo\n\n# Prima possibile implementazione\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  mean((x - mean(x))^3) / sqm^3\n}\n\n# Implementazione (leggermente) alternativa\nasym <- function(x) {\n  sqm <- sqrt(mean(x^2) - mean(x)^2)\n  z <- (x - mean(x)) / sqm\n  mean(z^3)\n}\n\nasym(emo_A)\n\n[1] 0.09535216"
   },
   {
     "objectID": "lezioni/un_A.html",
@@ -2139,7 +2139,7 @@
     "href": "esami/esiti.html",
     "title": "R per l’analisi statistica multivariata",
     "section": "",
-    "text": "Nota. Dalla seguente tabella sono stati omessi gli studenti Assenti e Ritirati.\n\n\n\n\n\nMatricola\nEsito\n\n\n\n\n795145\nINS\n\n\n826036\nINS\n\n\n832344\n27\n\n\n832450\n18\n\n\n837297\n24\n\n\n837363\n20\n\n\n850960\nINS\n\n\n851007\nINS\n\n\n851534\nINS\n\n\n852054\nINS\n\n\n852225\nINS\n\n\n856942\nINS\n\n\n857880\n26\n\n\n861300\nINS\n\n\n861837\n19\n\n\n864426\n18\n\n\n864920\nINS\n\n\n864973\nINS\n\n\n865257\nINS\n\n\n865309\n25\n\n\n865336\n27\n\n\n865374\n21\n\n\n870789\n26\n\n\n871277\nINS\n\n\n871794\n18\n\n\n873133\nINS\n\n\n873335\nINS\n\n\n874624\n18\n\n\n874883\nINS\n\n\n875967\n22\n\n\n876170\n30"
+    "text": "Nota. Dalla seguente tabella sono stati omessi gli studenti Assenti e Ritirati.\n\n\n\n\n\nMatricola\nEsito\n\n\n\n\n832652\n21\n\n\n845578\nINS\n\n\n851461\n25\n\n\n857714\n21\n\n\n861402\nINS\n\n\n865026\n20\n\n\n868682\n23\n\n\n869341\n30\n\n\n873133\n23\n\n\n874860\n20\n\n\n874883\n25\n\n\n875234\nINS\n\n\n879731\n26\n\n\n879735\n30\n\n\n879897\n26\n\n\n879946\n30\n\n\n880076\n26\n\n\n880123\n25\n\n\n880202\nINS\n\n\n880217\n25\n\n\n880254\n30\n\n\n880287\n29\n\n\n880354\n25\n\n\n880374\n26\n\n\n880397\n30L\n\n\n880610\n29\n\n\n880649\nINS\n\n\n880667\nINS\n\n\n880818\n19\n\n\n880821\nINS\n\n\n880906\n30\n\n\n880911\n25\n\n\n880920\nINS\n\n\n880997\n20\n\n\n889983\n26\n\n\n890888\n29"
   },
   {
     "objectID": "esami/esame_30_06_2021.html",
