@@ -88,9 +88,10 @@ qJB <- function(p, n, R = 1000) {
 set.seed(123)
 qJB(p = 0.95, n = 50, R = 10000) # 4.288469 
 
-# Quanto segue non è materiale d'esame, ma potrebbe esservi utile in futuro ------------
+# -------------------------------------------
+# Quanto segue non è materiale d'esame, ma potrebbe esservi utile in futuro e/o di possibile interesse 
 
-# In realtà, il "vero" test JB non utilizza sd bensì la sua versione in cui la somma degli scarti al quadrato viene divisa per n. La funzione JB pertanto si dovrebbe calcola come segue:
+# In realtà, il "vero" test JB non utilizza "sd" bensì la sua versione in cui la somma degli scarti al quadrato viene divisa per n. La funzione JB pertanto si va calcolata come segue:
 JB <- function(x) {
   n <- length(x)
   sigma <- sqrt(mean(x^2) - mean(x)^2)
