@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">R per l’analisi statistica multivariata</h1>
-<p class="subtitle lead">Esame 24 Febbraio 2021</p>
+<p class="subtitle lead">Esame 20 Febbraio 2023</p>
 </div>
 
 
@@ -128,47 +191,52 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="problema-1" class="level2">
 <h2 class="anchored" data-anchor-id="problema-1">Problema 1</h2>
-<p>I numeri di <strong>Stirling del secondo tipo</strong> <span class="math inline">\(S(n,k)\)</span> rappresentano il numero di possibili partizioni di un insieme di <span class="math inline">\(n\)</span> elementi formate da <span class="math inline">\(k\)</span> termini. È possibile dimostrare che</p>
-<p><span class="math display">\[
-S(n, k) = \frac{1}{k!}\sum_{j=0}^k(-1)^{k-j}\binom{k}{j}j^n,
-\]</span> per qualsiasi valore di <span class="math inline">\(k =1,\dots,n\)</span>. I <strong>numeri di Bell</strong> <span class="math inline">\(B(n)\)</span> rappresentano invece il numero di possibili partizioni di un insieme di <span class="math inline">\(n\)</span> elementi, independentemente dal numero di termini, ovvero</p>
-<p><span class="math display">\[
-B(n) = \sum_{k=1}^n S(n, k).
-\]</span></p>
 <ol type="1">
-<li><p>(6pt) Si scrivano in <strong>R</strong> le funzioni <code>stirling2(n, k)</code> e <code>Bell(n)</code> che calcolano, rispettivamente, i coefficienti <span class="math inline">\(S(n,k)\)</span> e <span class="math inline">\(B(n)\)</span>.</p></li>
-<li><p>(1pt) Utilizzando le funzioni del punto precedente, si dica in quanti modi è possibile dividere un insieme di <span class="math inline">\(10\)</span> elementi utilizzando <span class="math inline">\(5\)</span> gruppi.</p></li>
-<li><p>(1pt) Utilizzando le funzioni dei punti precedenti, si dica in quanti modi è possibile partizionare un insieme di <span class="math inline">\(10\)</span> elementi.</p></li>
+<li><p>(3pt) Calcolare una stima via simulazione Monte Carlo del seguente integrale <span class="math display">\[I_1 = \int_0^1\int_0^1 \exp{(\sqrt{x y})}\mathrm{d}x\mathrm{d}y,\]</span></p></li>
+<li><p>(4pt) Calcolare una stima via simulazione Monte Carlo del seguente integrale <span class="math display">\[I_2 = \int_0^2 \exp{(\sqrt{x})}\mathrm{d}x,\]</span> valutandone in qualche maniera anche la <strong>precisione</strong>.</p></li>
+<li><p>(3pt) In un appello passato avevo chiesto agli studenti di scrivere una funzione <code>my_integral(f, g, R = 1000)</code> che calcoli un’approssimazione Monte Carlo di <span class="math display">\[
+I_3 = \int_{-\infty}^{+\infty} \frac{f(x)}{g(x)} \phi(x)\mathrm{d}x,
+\]</span> dove <span class="math inline">\(\phi(x)\)</span> è la densità di una normale standard. Gli argomenti di <code>my_integral</code> indicano le funzioni <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(g(x)\)</span> ed il numero di simulazioni <span class="math inline">\(R\)</span> su cui basare la stima. Uno studente ha risposto in questo modo:</p></li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_integral <span class="ot">&lt;-</span> <span class="cf">function</span>(f, g, <span class="at">R =</span> <span class="dv">1000</span>) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">f</span>(<span class="fu">rnorm</span>(R)) <span class="sc">/</span> <span class="fu">g</span>(<span class="fu">rnorm</span>(R)))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si spieghi come mai questa risposta non è corretta e si fornisca quindi la soluzione.</p>
 </section>
 <section id="problema-2" class="level2">
 <h2 class="anchored" data-anchor-id="problema-2">Problema 2</h2>
-<p>Il <strong>numero armonico generalizzato</strong> è definito come</p>
-<p><span class="math display">\[
-H(n,\alpha) = 1 + \frac{1}{2^\alpha} + \cdots + \frac{1}{n^\alpha} = \sum_{k=1}^n\frac{1}{k^\alpha}, \qquad \alpha &gt; 0.
-\]</span></p>
-<p>Inoltre, una variabile aleatoria discreta <span class="math inline">\(X\)</span> con supporto <span class="math inline">\(\{1,\dots, n\}\)</span> segue una <strong>distribuzione di Zipf</strong> se</p>
-<p><span class="math display">\[
-P(X = k) = \frac{k^{-\alpha}}{H(n, \alpha)}, \qquad k=1,\dots,n,
-\]</span> ed è pari a <span class="math inline">\(0\)</span> altrimenti.</p>
+<p>Si consideri il dataset di <strong>R</strong> che si ottiene tramite il comando <code>data(faithful)</code> all’interno della libreria <code>MASS</code>. Se ne consulti la documentazione per ulteriori informazioni.</p>
 <ol type="1">
-<li><p>(2pt) Si scriva in <strong>R</strong> la funzione <code>H(n, alpha)</code> che calcola il numero armonico generalizzato. Quanto vale <code>H(10, 1)</code>?</p></li>
-<li><p>(2pt) Si scriva in <strong>R</strong> la funzione di probabilità <code>dzipf(k, n, alpha)</code> di una legge Zipf di parametri <span class="math inline">\(n\)</span> ed <span class="math inline">\(\alpha\)</span> e la si calcoli nei valori <code>dzipf(5, 10, 2)</code>.</p></li>
-<li><p>(2pt) Per <span class="math inline">\(n = 50\)</span> e <span class="math inline">\(\alpha = 1\)</span>, si rappresenti graficamente la legge di probabilità di una distribuzione Zipf tramite un diagramma a bastoncini.</p></li>
-<li><p>(2pt) Si supponga che <span class="math inline">\(X\)</span> segua una Zipf di parametri <span class="math inline">\(n = 100\)</span> e <span class="math inline">\(\alpha = 2\)</span>. Si calcoli la probabilità <span class="math inline">\(P(X \ge 10)\)</span>.</p></li>
-<li><p>(3pt) Si scriva in <strong>R</strong> la funzione <code>rzipf(R, n, alpha)</code> che simula <code>R</code> valori casuali da una distribuzione Zipf. <strong>Suggerimento</strong>: si faccia uso della funzione <code>sample</code>.</p></li>
-<li><p>(2pt) Sfruttando la funzione <code>rzipf</code>, si ottenga un’approssimazione del valore atteso <span class="math inline">\(E(X)\)</span>, quando <span class="math inline">\(n = 50\)</span> e <span class="math inline">\(\alpha = 1\)</span>.</p></li>
+<li><p>(1pt) Si ottenga un istogramma della variabile <code>waiting</code>. Si ottenga inoltre un diagramma a dispersione per le variabili <code>eruptions</code> (<span class="math inline">\(x\)</span>) e <code>waiting</code> (<span class="math inline">\(y\)</span>).</p></li>
+<li><p>(2pt) Si creino le variabili <code>long_waiting</code> e <code>short_waiting</code>, contenenti rispettivamente i valori della variabile <code>waiting</code> relativi ad eruzioni lunghe (<code>eruptions &gt; 3</code> ) ed eruzioni brevi (<code>eruptions &lt;= 3</code>).</p></li>
+<li><p>(3pt) Si confrontino le funzioni di ripartizioni empiriche delle variabili <code>long_waiting</code> e <code>short_waiting</code>. Inoltre, si calcolino media e mediana delle variabili <code>long_waiting</code> e <code>short_waiting</code>.</p></li>
+<li><p>(3pt) Si scriva la funzione <code>asym(x)</code> che calcola il coefficiente di asimmetria secondo Bowley, definito come <span class="math display">\[
+B = \frac{\mathcal{Q}_{0.75} - 2 \mathcal{Q}_{0.5} + \mathcal{Q}_{0.25}}{\mathcal{Q}_{0.75} - \mathcal{Q}_{0.25}},
+\]</span> dove <span class="math inline">\(\mathcal{Q}_p\)</span> rappresenta il quantile <span class="math inline">\(p\)</span>-esimo dei dati. Si calcoli infine il coefficiente di asimmetria secondo Bowley per le variabili <code>long_waiting</code> e <code>short_waiting</code>.</p></li>
 </ol>
 </section>
 <section id="problema-3" class="level2">
 <h2 class="anchored" data-anchor-id="problema-3">Problema 3</h2>
-<p>Si consideri il dataset <code>bacteria</code> della libreria <code>MASS</code> e lo si carichi in memoria. La variabile <code>y</code> indica la presenza (<code>y</code>) o l’assenza (<code>n</code>) del batterio <em>“H influenzae”</em> in alcuni bambini. La variabile <code>trt</code> indica invece il trattamento ricevuto.</p>
+<p>Il test di <strong>Jarque-Bera</strong> è un test molto usato in ambito econometrico per verificare l’ipotesi di normalità. Si supponga di disporre di dati <span class="math inline">\(x_1,\dots,x_n\)</span>, che assumiamo siano determinazioni indipendenti ed identicamente distribuite da una variabile aleatoria <span class="math inline">\(X\)</span>. Il sistema d’ipotesi è il seguente <span class="math display">\[
+H_0 : \{X \sim \text{N}(\mu, \sigma^2), \text{ per } \mu, \sigma^2 \text{ qualsiasi} \}, \quad H_1: \{\text{La distribuzione di } X \text{ non è normale}\}.
+\]</span></p>
+<p>La statistica test è <span class="math display">\[
+\text{JB} = \frac{n}{6}\left(\gamma^2 + \frac{(\kappa - 3)^2}{4}\right),
+\]</span> dove <span class="math inline">\(\gamma\)</span> e <span class="math inline">\(\kappa\)</span> sono gli indici di asimmetria e curtosi di Pearson, ovvero:</p>
+<p><span class="math display">\[
+\gamma = \frac{1}{\text{sqm}(x)^3} \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^3, \quad \kappa = \frac{1}{\text{sqm}(x)^4} \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^4,
+\]</span> per dei dati <span class="math inline">\(x_1,\dots,x_n\)</span> aventi media <span class="math inline">\(\bar{x}\)</span>. Per calcolare lo scarto quadratico medio <span class="math inline">\(\text{sqm(x)}\)</span> si faccia uso della funzione <code>sd</code>.</p>
+<p>Il test rifiuta l’ipotesi nulla per valori grandi di , ovvero quando <span class="math inline">\(\text{JB} &gt; h_{1-\alpha}\)</span>, dove <span class="math inline">\(\alpha\)</span> indica il livello di significatività mentre <span class="math inline">\(h_p\)</span> il quantile <span class="math inline">\(p\)</span>-esimo della distribuzione di quando è vera <span class="math inline">\(H_0\)</span>.</p>
 <ol type="1">
-<li><p>(3pt) L’indice di eterogeneità di Gini è definito come <span class="math inline">\(G = 1 - \sum_{j=1}^kf_j^2\)</span>, dove <span class="math inline">\(f_1,\dots,f_k\)</span> sono le frequenze relative di una variabile qualitativa con modalità <span class="math inline">\(c_1,\dots,c_k\)</span>. Si costruisca in <strong>R</strong> la funzione <code>Gini(x)</code> che calcola l’indice di Gini di una variabile qualitativa <code>x</code>. Si ottenga quindi <code>Gini(bacteria$trt)</code>.</p></li>
-<li><p>(1pt) Si costruisca dataset <code>bacteria2</code> contenente le osservazioni relative alla sesta settimana di sorveglianza (<code>week</code> = <code>6</code>). Da quante osservazioni è composto?</p></li>
-<li><p>(1pt) Utilizzando il dataset <code>bacteria2</code>, si costruisca una tabella di contingenza che mette in relazione le variabili <code>y</code> e <code>trt</code>.</p></li>
-<li><p>(2pt) Utilizzando il dataset <code>bacteria2</code>, si ottengano le distribuzioni di frequenza condizionate della variabile <code>y</code>, per ciascun valore della variabile <code>trt</code>. Ci sono delle differenze tra queste distribuzioni?</p></li>
-<li><p>(2pt) Utilizzando il dataset <code>bacteria2</code>, si ri-eseguano i due punti precedenti (ovvero 3. e 4.) dopo aver raggruppato i valori <code>drug</code> e <code>drug+</code> della variabile <code>trt</code> in un unico valore, chiamato ad esempio <code>drug_and_drug+</code>. I risultati sono diversi da quelli ottenuti al punto precedente (4.)?</p></li>
+<li>(10pt) Si scriva una funzione <code>qJB(p, n, R = 1000)</code> che calcoli, via simulazione, i quantili <span class="math inline">\(p\)</span>-esimi <span class="math inline">\(h_p\)</span> della distribuzione della statistica test quando è vera <span class="math inline">\(H_0\)</span>. In particolare, la funzione deve:
+<ol type="1">
+<li>Generare <span class="math inline">\(R\)</span> campioni di lunghezza <span class="math inline">\(n\)</span> da una normale standard;</li>
+<li>Calcolare la statistica per ogni campione simulato;</li>
+<li>Restituire i quantili campionari dei valori di JB ottenuti al passo precedente.</li>
+</ol></li>
+<li>(2pt) Calcolare <span class="math inline">\(h_{0.95}\)</span> quando <span class="math inline">\(n = 50\)</span>.</li>
 </ol>
 
 
