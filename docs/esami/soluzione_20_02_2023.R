@@ -62,8 +62,8 @@ asym <- function(x) {
   B
 }
 
-asym(long_waiting)
-asym(short_waiting)
+asym(long_waiting) # 0
+asym(short_waiting) # 0.1111111
 
 # Problema 3
 
