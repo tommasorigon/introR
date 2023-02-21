@@ -228,7 +228,7 @@ H_0 : \{X \sim \text{N}(\mu, \sigma^2), \text{ per } \mu, \sigma^2 \text{ qualsi
 <p><span class="math display">\[
 \gamma = \frac{1}{\text{sqm}(x)^3} \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^3, \quad \kappa = \frac{1}{\text{sqm}(x)^4} \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^4,
 \]</span> per dei dati <span class="math inline">\(x_1,\dots,x_n\)</span> aventi media <span class="math inline">\(\bar{x}\)</span>. Per calcolare lo scarto quadratico medio <span class="math inline">\(\text{sqm(x)}\)</span> si faccia uso della funzione <code>sd</code>.</p>
-<p>Il test rifiuta l’ipotesi nulla per valori grandi di , ovvero quando <span class="math inline">\(\text{JB} &gt; h_{1-\alpha}\)</span>, dove <span class="math inline">\(\alpha\)</span> indica il livello di significatività mentre <span class="math inline">\(h_p\)</span> il quantile <span class="math inline">\(p\)</span>-esimo della distribuzione di quando è vera <span class="math inline">\(H_0\)</span>.</p>
+<p>Il test rifiuta l’ipotesi nulla per valori grandi di JB, ovvero quando <span class="math inline">\(\text{JB} &gt; h_{1-\alpha}\)</span>, dove <span class="math inline">\(\alpha\)</span> indica il livello di significatività mentre <span class="math inline">\(h_p\)</span> il quantile <span class="math inline">\(p\)</span>-esimo della distribuzione di quando è vera <span class="math inline">\(H_0\)</span>.</p>
 <ol type="1">
 <li>(10pt) Si scriva una funzione <code>qJB(p, n, R = 1000)</code> che calcoli, via simulazione, i quantili <span class="math inline">\(p\)</span>-esimi <span class="math inline">\(h_p\)</span> della distribuzione della statistica test quando è vera <span class="math inline">\(H_0\)</span>. In particolare, la funzione deve:
 <ol type="1">
