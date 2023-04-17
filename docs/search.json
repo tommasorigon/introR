@@ -2356,7 +2356,7 @@
     "href": "lezioni/un_L.html#importazione-dei-dati-ciliegi",
     "title": "R per l’analisi statistica multivariata",
     "section": "Importazione dei dati ciliegi",
-    "text": "Importazione dei dati ciliegi\nCome fatto in precedenza, anzitutto è necessario scaricare il file ciliegi.csv e salvarlo nel proprio computer. Link al file\n\nciliegi <- read.table(\"../dataset/ciliegi.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/data/ciliegi.csv\"\nciliegi <- read.table(path, header = TRUE, sep = \",\")\n\n\nhead(ciliegi)\n\n  diametro volume\n1      8.3   10.3\n2      8.6   10.3\n3      8.8   10.2\n4     10.5   16.4\n5     10.7   18.8\n6     10.8   19.7"
+    "text": "Importazione dei dati ciliegi\nCome fatto in precedenza, anzitutto è necessario scaricare il file ciliegi.csv e salvarlo nel proprio computer. Link al file\n\nciliegi <- read.table(\"../dataset/ciliegi.csv\", header = TRUE, sep = \",\")\n\nIn alternativa, possiamo semplice ottenerli usando il link:\n\npath <- \"https://tommasorigon.github.io/introR/dataset/ciliegi.csv\"\nciliegi <- read.table(path, header = TRUE, sep = \",\")\n\n\nhead(ciliegi)\n\n  diametro volume\n1      8.3   10.3\n2      8.6   10.3\n3      8.8   10.2\n4     10.5   16.4\n5     10.7   18.8\n6     10.8   19.7"
   },
   {
     "objectID": "lezioni/un_L.html#diagramma-a-dispersione",
