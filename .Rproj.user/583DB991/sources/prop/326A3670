@@ -1,5 +1,5 @@
 {
-    "rmdVisualMode": "false",
+    "rmdVisualMode": "true",
     "rmdVisualWrapConfigured": "true",
     "tempName": "Untitled1",
     "source_window_id": "",
@@ -8,6 +8,6 @@
     "rmdVisualCollapsedChunks": "",
     "cursorPosition": "13,0",
     "scrollLine": "0",
-    "rmdVisualModeLocation": "240:108.18181610107422",
+    "rmdVisualModeLocation": "96:165",
     "chunk_output_type": "console"
 }

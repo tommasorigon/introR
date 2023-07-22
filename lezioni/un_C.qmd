@@ -8,23 +8,6 @@ execute:
 filters: 
   - remove-pause.lua
 format:
-  revealjs:
-    auto-stretch: true
-    center: true
-    html-math-method: katex
-    transition: none
-    output-file: un_C_slides.html
-    slide-number: true
-    callout-appearance: minimal
-    code-line-numbers: true
-    theme: [default, ../template.css] # alternative themes (subset): default, night, dark
-    embed-resources: false
-    echo: true
-    fig-dpi: 200
-    # incremental: true  # Remove comment if you like incremental bullet points
-    logo: img/logoB.png
-    footer: "[Home page](https://tommasorigon.github.io/introR)"
-    highlight-style: github
   html:
     html-math-method: katex
     echo: true
