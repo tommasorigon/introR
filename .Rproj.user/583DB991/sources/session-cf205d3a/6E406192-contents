@@ -17,7 +17,7 @@ format:
     toc: true
     toc-title: Table of contents
     embed-resources: false
-    code-line-numbers: true
+    code-line-numbers: false
     smooth-scroll: true
     code-fold: false
     code-summary: "Show the code"

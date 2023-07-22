@@ -176,8 +176,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="il-lancio-della-monetina-i">Il lancio della monetina I</h2>
 <p>Il comando che simula una <strong>singola partita</strong>, ovvero <span class="math inline">50</span> lanci di monetina dal punto di vista del giocatore A, è il seguente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># Gioco 50 volte ai dadi contro B</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># Gioco 50 volte ai dadi contro B</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -10 -10 -10  10 -10  10  10  10 -10 -10  10  10  10 -10  10 -10  10 -10 -10
 [20] -10 -10  10 -10 -10 -10 -10  10  10 -10  10 -10  10 -10  10  10 -10 -10 -10
@@ -187,8 +187,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Noi siamo tuttavia interessati al guadagno del giocatore A. Ovviamente per ottenere i guadagni di B è sufficiente cambiare il segno dei risultati.</p>
 <p>Il <strong>guadagno</strong> del giocatore A dopo ciascun lancio di monetina è pari a</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  -10  -20  -30  -20  -30  -20  -10    0  -10  -20  -10    0   10    0   10
 [16]    0   10    0  -10  -20  -30  -20  -30  -40  -50  -60  -50  -40  -50  -40
@@ -200,14 +200,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="il-lancio-della-monetina-ii" class="level2">
 <h2 class="anchored" data-anchor-id="il-lancio-della-monetina-ii">Il lancio della monetina II</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">set.seed</span>(<span class="dv">250</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"# Lancio"</span>, <span class="at">ylab =</span> <span class="st">"Guadagno"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"# Lancio"</span>, <span class="at">ylab =</span> <span class="st">"Guadagno"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">250</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"# Lancio"</span>, <span class="at">ylab =</span> <span class="st">"Guadagno"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">cumsum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"# Lancio"</span>, <span class="at">ylab =</span> <span class="st">"Guadagno"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_J_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -218,21 +218,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Siamo interessati ad indagare la <strong>variabile aleatoria</strong> <span class="math inline">X</span>, che rappresenta il guadagno finale del giocatore A, ovvero la somma algebrica dei guadagni e delle perdite.</p>
 <p>Per esempio, un’<strong>estrazione casuale</strong> dalla distribuzione di <span class="math inline">X</span>, ovvero il risultato finale di una partita si ottiene come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Ottengo il guadagno finale (una volta sola)</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ottengo il guadagno finale (una volta sola)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -100</code></pre>
 </div>
 </div>
 <p>Possiamo quindi usare il comando <code>replicate</code>, che <strong>ripete la stessa operazione</strong> varie volte. In questo modo otteniamo <span class="math inline">R</span> copie iid <span class="math inline">X_1,\dots,X_R</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Ripeto questa operazione R volte per ottenere dei campioni</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># Otteniamo 10^5 copie iid aventi la stessa distribuzione di X</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
-<span id="cb8-6"><a href="#cb8-6"></a>final_earning[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ripeto questa operazione R volte per ottenere dei campioni</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Otteniamo 10^5 copie iid aventi la stessa distribuzione di X</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>final_earning[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -100  -40  120  -40  100</code></pre>
 </div>
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \mathbb{E}(X) \approx \frac{1}{R}\sum_{r=1}^RX_r.
 </span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mean</span>(final_earning) <span class="co"># Media del guadagno finale</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning) <span class="co"># Media del guadagno finale</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.3518</code></pre>
 </div>
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ne concludiamo quindi che si tratta di un <strong>gioco equo</strong>, dato che mediamente né vince né si perde, ovvero <span class="math inline">\mathbb{E}(X) \approx 0</span>.</p>
 <p>Tuttavia, i risultati differiscono molto da una partita ad un’altra, dato che:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">sd</span>(final_earning) <span class="co"># Deviazione standard del guadagno finale</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_earning) <span class="co"># Deviazione standard del guadagno finale</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70.65155</code></pre>
 </div>
@@ -262,8 +262,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="analisi-dei-risultati-1" class="level2">
 <h2 class="anchored" data-anchor-id="analisi-dei-risultati-1">Analisi dei risultati</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_J_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -275,14 +275,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Consideriamo quindi la variabile aleatoria binaria <span class="math inline">Z = \mathbb{1}(X &gt; 0)</span>.</p>
 <p>Approssimiamo l’<strong>evento</strong> contando i successi verificatisi tra le variabili <span class="math inline">Z_1,\dots,Z_R</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="co"># Probabilità di vincere, ovvero P(X &gt; 0)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="co"># Probabilità di vincere, ovvero P(X &gt; 0)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.44253</code></pre>
 </div>
 </div>
 <p>La probabilità di vittoria è pertanto inferiore a <span class="math inline">0.5</span>, mentre la probabilità di <strong>parità</strong>, ovvero <span class="math inline">\mathbb{P}(X = 0)</span>, è positiva:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>) <span class="co"># Probabilità di pareggiare, ovvero P(X = 0)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>) <span class="co"># Probabilità di pareggiare, ovvero P(X = 0)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.11225</code></pre>
 </div>
@@ -302,14 +302,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </span> Si tratta quindi, come ben noto, di un gioco <strong>non equo</strong>, in cui il banco dispone di un vantaggio.</p>
 <p>Siamo interessati ad indagare la <strong>variabile aleatoria</strong> <span class="math inline">X</span>, che rappresenta il guadagno finale del giocatore nei confronti del banco:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>p_winning <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">/</span> <span class="dv">38</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>p_winning</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p_winning <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">/</span> <span class="dv">38</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>p_winning</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4736842</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Ottengo il guadagno finale (una volta sola)</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ottengo il guadagno finale (una volta sola)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
@@ -319,42 +319,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="simulazione-ed-analisi-dei-risultati">Simulazione ed analisi dei risultati</h2>
 <p>Tramite gli stessi comandi usati in precedenza, <strong>ripetiamo</strong> <span class="math inline">R</span> volte l’operazione per studiare la distribuzione di <span class="math inline">X</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb23-4"><a href="#cb23-4"></a>                                         <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning))))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(R, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning))))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Media del guadagno finale</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">mean</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media del guadagno finale</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -26.3814</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Deviazione standard del guadagno finale</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">sd</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deviazione standard del guadagno finale</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70.54601</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Probabilità di vittoria, ovvero P(X &gt; 0)</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di vittoria, ovvero P(X &gt; 0)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.30387</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Probabilità di pareggio, ovvero P(X == 0)</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di pareggio, ovvero P(X == 0)</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.10483</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_J_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -400,30 +400,30 @@ Nota
 </div>
 <p>Il giocatore continua a scommettere fino ad un massimo di <span class="math inline">50</span> volte solo <strong>se ha ancora soldi a disposizione</strong>. Altrimenti, è costretto a fermarsi.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Funzione che simula il guadagno finale dopo 50 scommesse</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>sim_match <span class="ot">&lt;-</span> <span class="cf">function</span>(player_budget, casino_budget, p_winning){</span>
-<span id="cb33-3"><a href="#cb33-3"></a>  </span>
-<span id="cb33-4"><a href="#cb33-4"></a>  player_money <span class="ot">&lt;-</span> player_budget</span>
-<span id="cb33-5"><a href="#cb33-5"></a>  casino_money <span class="ot">&lt;-</span> casino_budget</span>
-<span id="cb33-6"><a href="#cb33-6"></a>  </span>
-<span id="cb33-7"><a href="#cb33-7"></a>  <span class="cf">for</span>(r <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>){</span>
-<span id="cb33-8"><a href="#cb33-8"></a>    outcome <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning))</span>
-<span id="cb33-9"><a href="#cb33-9"></a>    player_money <span class="ot">&lt;-</span> player_money <span class="sc">+</span> outcome <span class="co"># Aggiorno il budget giocatore</span></span>
-<span id="cb33-10"><a href="#cb33-10"></a>    casino_money <span class="ot">&lt;-</span> casino_money <span class="sc">-</span> outcome <span class="co"># Aggiorno il budget casinò</span></span>
-<span id="cb33-11"><a href="#cb33-11"></a>    <span class="cf">if</span>(player_money <span class="sc">&lt;=</span> <span class="dv">0</span>){</span>
-<span id="cb33-12"><a href="#cb33-12"></a>      <span class="co"># Giocatore in rovina: il giocatore perde tutto il budget</span></span>
-<span id="cb33-13"><a href="#cb33-13"></a>      <span class="fu">return</span>(<span class="sc">-</span> player_budget)</span>
-<span id="cb33-14"><a href="#cb33-14"></a>    }</span>
-<span id="cb33-15"><a href="#cb33-15"></a>    <span class="cf">if</span>(casino_money <span class="sc">&lt;=</span> <span class="dv">0</span>){</span>
-<span id="cb33-16"><a href="#cb33-16"></a>      <span class="co"># Casinò in rovina: il casinò perde tutto il budget</span></span>
-<span id="cb33-17"><a href="#cb33-17"></a>      <span class="fu">return</span>(casino_budget)</span>
-<span id="cb33-18"><a href="#cb33-18"></a>    }</span>
-<span id="cb33-19"><a href="#cb33-19"></a>  }</span>
-<span id="cb33-20"><a href="#cb33-20"></a>  player_money <span class="sc">-</span> player_budget <span class="co"># guadagno rispetto al valore iniziale</span></span>
-<span id="cb33-21"><a href="#cb33-21"></a>}</span>
-<span id="cb33-22"><a href="#cb33-22"></a></span>
-<span id="cb33-23"><a href="#cb33-23"></a><span class="fu">set.seed</span>(<span class="dv">220</span>)</span>
-<span id="cb33-24"><a href="#cb33-24"></a><span class="fu">sim_match</span>(<span class="dv">100</span>, <span class="dv">100000</span>, p_winning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che simula il guadagno finale dopo 50 scommesse</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sim_match <span class="ot">&lt;-</span> <span class="cf">function</span>(player_budget, casino_budget, p_winning){</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  player_money <span class="ot">&lt;-</span> player_budget</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  casino_money <span class="ot">&lt;-</span> casino_budget</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(r <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>){</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    outcome <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> p_winning, p_winning))</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    player_money <span class="ot">&lt;-</span> player_money <span class="sc">+</span> outcome <span class="co"># Aggiorno il budget giocatore</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    casino_money <span class="ot">&lt;-</span> casino_money <span class="sc">-</span> outcome <span class="co"># Aggiorno il budget casinò</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(player_money <span class="sc">&lt;=</span> <span class="dv">0</span>){</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Giocatore in rovina: il giocatore perde tutto il budget</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="sc">-</span> player_budget)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(casino_money <span class="sc">&lt;=</span> <span class="dv">0</span>){</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Casinò in rovina: il casinò perde tutto il budget</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(casino_budget)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  player_money <span class="sc">-</span> player_budget <span class="co"># guadagno rispetto al valore iniziale</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">220</span>)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_match</span>(<span class="dv">100</span>, <span class="dv">100000</span>, p_winning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -60</code></pre>
 </div>
@@ -433,34 +433,34 @@ Nota
 <h2 class="anchored" data-anchor-id="simulazione-ed-analisi-dei-risultati-1">Simulazione ed analisi dei risultati</h2>
 <p>Tramite gli stessi comandi usati in precedenza, <strong>ripetiamo</strong> <span class="math inline">R</span> volte l’operazione per studiare la distribuzione di <span class="math inline">X</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb35-2"><a href="#cb35-2"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="fu">sim_match</span>(<span class="dv">100</span>, <span class="dv">100000</span>, p_winning))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>final_earning <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="fu">sim_match</span>(<span class="dv">100</span>, <span class="dv">100000</span>, p_winning))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Media del guadagno finale</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">mean</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Media del guadagno finale</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -24.0002</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Deviazione standard del guadagno finale</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">sd</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deviazione standard del guadagno finale</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_earning)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 64.52637</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># Probabilità di vittoria, ovvero P(X &gt; 0)</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di vittoria, ovvero P(X &gt; 0)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.30288</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># Probabilità di pareggio, ovvero P(X == 0)</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilità di pareggio, ovvero P(X == 0)</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_earning <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.10084</code></pre>
 </div>
@@ -469,7 +469,7 @@ Nota
 <section id="distribuzione-di-probabilità" class="level2">
 <h2 class="anchored" data-anchor-id="distribuzione-di-probabilità">Distribuzione di probabilità</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(final_earning) <span class="sc">/</span> R, <span class="at">xlab =</span> <span class="st">"Guadagno finale (50 partite)"</span>, <span class="at">ylab =</span> <span class="st">"Funzione di probabilità"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_J_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="1400"></p>
 </div>
