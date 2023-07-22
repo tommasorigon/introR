@@ -23,7 +23,7 @@ format:
     fig-dpi: 200
     # incremental: true  # Remove comment if you like incremental bullet points
     logo: img/logoB.png
-    footer: "[Home page](https://tommasorigon.github.io/datamining)"
+    footer: "[Home page](https://tommasorigon.github.io/introR)"
     highlight-style: github
   html:
     html-math-method: katex

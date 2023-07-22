@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="un_C_files/libs/clipboard/clipboard.min.js"></script>
+<script src="un_C_files/libs/quarto-html/quarto.js"></script>
+<script src="un_C_files/libs/quarto-html/popper.min.js"></script>
+<script src="un_C_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="un_C_files/libs/quarto-html/anchor.min.js"></script>
+<link href="un_C_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="un_C_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="un_C_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="un_C_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="un_C_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#unità-c" id="toc-unità-c" class="nav-link active" data-scroll-target="#unità-c">Unità C</a></li>
+  <li><a href="#gli-oggetti-di-tipo-data.frame" id="toc-gli-oggetti-di-tipo-data.frame" class="nav-link" data-scroll-target="#gli-oggetti-di-tipo-data.frame">Gli oggetti di tipo <code>data.frame</code></a></li>
+  <li><a href="#importazione-di-un-dataset" id="toc-importazione-di-un-dataset" class="nav-link" data-scroll-target="#importazione-di-un-dataset">Importazione di un dataset</a></li>
+  <li><a href="#i-dati-grezzi-editor-di-testo" id="toc-i-dati-grezzi-editor-di-testo" class="nav-link" data-scroll-target="#i-dati-grezzi-editor-di-testo">I dati grezzi (editor di testo)</a></li>
+  <li><a href="#la-cartella-di-lavoro" id="toc-la-cartella-di-lavoro" class="nav-link" data-scroll-target="#la-cartella-di-lavoro">La cartella di lavoro</a></li>
+  <li><a href="#importazione-del-dataset" id="toc-importazione-del-dataset" class="nav-link" data-scroll-target="#importazione-del-dataset">Importazione del dataset</a></li>
+  <li><a href="#esplorazione-di-un-data.frame" id="toc-esplorazione-di-un-data.frame" class="nav-link" data-scroll-target="#esplorazione-di-un-data.frame">Esplorazione di un <code>data.frame</code></a></li>
+  <li><a href="#il-dataset-calcio" id="toc-il-dataset-calcio" class="nav-link" data-scroll-target="#il-dataset-calcio">Il dataset <code>calcio</code></a></li>
+  <li><a href="#tipologia-di-variabili" id="toc-tipologia-di-variabili" class="nav-link" data-scroll-target="#tipologia-di-variabili">Tipologia di variabili</a></li>
+  <li><a href="#variabili-quantitative" id="toc-variabili-quantitative" class="nav-link" data-scroll-target="#variabili-quantitative">Variabili quantitative</a></li>
+  <li><a href="#variabili-qualitative-i" id="toc-variabili-qualitative-i" class="nav-link" data-scroll-target="#variabili-qualitative-i">Variabili qualitative I</a></li>
+  <li><a href="#variabili-qualitative-ii" id="toc-variabili-qualitative-ii" class="nav-link" data-scroll-target="#variabili-qualitative-ii">Variabili qualitative II</a></li>
+  <li><a href="#variabili-qualitative-iii" id="toc-variabili-qualitative-iii" class="nav-link" data-scroll-target="#variabili-qualitative-iii">Variabili qualitative III</a></li>
+  <li><a href="#le-variabili-di-tipo-date" id="toc-le-variabili-di-tipo-date" class="nav-link" data-scroll-target="#le-variabili-di-tipo-date">Le variabili di tipo <code>date</code></a></li>
+  <li><a href="#manipolazione-di-un-dataset" id="toc-manipolazione-di-un-dataset" class="nav-link" data-scroll-target="#manipolazione-di-un-dataset">Manipolazione di un dataset</a></li>
+  <li><a href="#i-valori-mancanti" id="toc-i-valori-mancanti" class="nav-link" data-scroll-target="#i-valori-mancanti">I valori mancanti</a></li>
+  <li><a href="#gestire-i-dati-mancanti" id="toc-gestire-i-dati-mancanti" class="nav-link" data-scroll-target="#gestire-i-dati-mancanti">Gestire i dati mancanti</a></li>
+  <li><a href="#selezione-delle-variabili" id="toc-selezione-delle-variabili" class="nav-link" data-scroll-target="#selezione-delle-variabili">Selezione delle variabili</a></li>
+  <li><a href="#il-comando-attach" id="toc-il-comando-attach" class="nav-link" data-scroll-target="#il-comando-attach">Il comando <code>attach</code></a></li>
+  <li><a href="#sommario" id="toc-sommario" class="nav-link" data-scroll-target="#sommario">Sommario</a></li>
+  <li><a href="#il-banco-vince-sempre" id="toc-il-banco-vince-sempre" class="nav-link" data-scroll-target="#il-banco-vince-sempre">Il banco vince sempre</a></li>
+  <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="un_C_slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Unità C: i <code>data.frame</code>s</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><span class="orange">Tommaso Rigon</span> </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <em>Università degli Studi di Milano-Bicocca</em>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="unità-c" class="level2">
+<h2 class="anchored" data-anchor-id="unità-c">Unità C</h2>
+<ul>
+<li>L’oggetto <code>data.frame</code></li>
+<li>Importazione di un dataset in memoria</li>
+<li>Esplorazione e manipolazione di un dataset</li>
+<li>Tipologia di variabili</li>
+<li>I valori mancanti</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esercizi <strong>R</strong> associati disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_1.html">questo link</a></p>
+</div>
+</div>
+</section>
+<section id="gli-oggetti-di-tipo-data.frame" class="level2">
+<h2 class="anchored" data-anchor-id="gli-oggetti-di-tipo-data.frame">Gli oggetti di tipo <code>data.frame</code></h2>
+<p>Un oggetto <strong>R</strong> chiamato <code>data.frame</code> corrisponde alla <strong>matrice dei dati</strong>.</p>
+<p>Ciascuna riga rappresenta quindi un’<strong>unità statistica</strong>, mentre ciascuna colonna rappresenta invece una <strong>variabile</strong>.</p>
+<p>Un <code>data.frame</code> assomiglia ad una matrice (<code>matrix</code>), ma è pensato per l’analisi dei dati.</p>
+<p>Ad esempio, un <code>data.frame</code> può contenere anche valori non numerici, come per esempio le <strong>variabili qualitative</strong> o <strong>valori mancanti</strong>.</p>
+<p>Come vedremo, il <code>data.frame</code> viene generalmente caricato all’interno di <strong>R</strong> utilizzando ad esempio la funzione <code>read.table</code>.</p>
+</section>
+<section id="importazione-di-un-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="importazione-di-un-dataset">Importazione di un dataset</h2>
+<p>Il modo più frequente di caricare un dataset in memoria è importarlo da un <strong>file esterno</strong>.</p>
+<p>Se i dati hanno dimensioni piccole / medie (dimensione file <span class="math inline">&lt;</span> 3-4 Gb), sono spesso salvati in formato <code>.csv</code> oppure <code>.txt</code>.</p>
+<p>In contesti reali e più complessi, è possibile importare i dati a partire direttamente da database relazionali come <strong>SQL</strong>.</p>
+<p>È sconsigliabile importare i dati in <strong>R</strong> a partire da un file Excel. Più in generale, ci sono svariate ragioni per evitare Excel se l’obiettivo è condurre una rigorosa analisi dei dati.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Per poter procedere con i prossimi comandi, è necessario scaricare il file <code>calcio.csv</code> e salvarlo nel proprio computer. <a href="../dataset/calcio.csv">Link al file</a>.</p>
+</div>
+</div>
+</section>
+<section id="i-dati-grezzi-editor-di-testo" class="level2">
+<h2 class="anchored" data-anchor-id="i-dati-grezzi-editor-di-testo">I dati grezzi (editor di testo)</h2>
+<p><img src="img/data.png" class="img-fluid"></p>
+</section>
+<section id="la-cartella-di-lavoro" class="level2">
+<h2 class="anchored" data-anchor-id="la-cartella-di-lavoro">La cartella di lavoro</h2>
+<p>La sessione di <strong>R</strong> attiva è aperta in una specifica <strong>cartella di lavoro</strong>, identificata dal comando <code>getwd</code>.</p>
+<p>Ad esempio, la cartella in cui il codice è stato eseguito è la seguente</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">getwd</span>() <span class="co"># Identifica la cartella di lavoro (get working directory)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/tommaso/Library/Mobile Documents/com~apple~CloudDocs/University/Didattica/Laboratorio Statistica/introR/lezioni"</code></pre>
+</div>
+</div>
+<p>Per aprire il file <code>calcio.csv</code>, bisogna fornire ad <strong>R</strong> il <strong>percorso del file</strong>, che dipende da dove questo è stato salvato (sul Desktop, cartella downloads, etc).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># LA VARIABILE PATH VA CAMBIATA A SECONDA DI DOVE SIA SALVATO IL FILE .csv NEL PROPRIO PC</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>path <span class="ot">&lt;-</span> <span class="st">"../dataset/calcio.csv"</span> <span class="co"># Questo è il percorso del file, relativo a getwd()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Il percorso del file può anche essere un <strong>link</strong>, come in questo caso:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>path <span class="ot">&lt;-</span> <span class="st">"https://tommasorigon.github.io/introR/dataset/calcio.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importazione-del-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="importazione-del-dataset">Importazione del dataset</h2>
+<p>È anche possibile <strong>cambiare la cartella di lavoro</strong> tramite il comando <code>setwd</code>.</p>
+<p>In Rstudio, si può usare l’opzione <em>More -&gt; Set as working directory</em> nella finestra <em>Files</em>, selezionando la cartella di interesse.</p>
+<p>Una volta identificato il corretto <em>path</em> del file, per <strong>importare il dataset</strong> in memoria si usa ad esempio il comando <code>read.table</code>. Pertanto:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>L’opzione <code>header = TRUE</code> significa che la prima riga contiene i nomi delle variabili.</li>
+<li>L’opzione <code>sep = ","</code> indica che i vari valori di ciascuna variabile sono separati da una virgola.</li>
+</ul>
+</div>
+</div>
+<p>Infine, si noti che nel caso in cui il file sia contenuto nella cartella di lavoro, è quindi sufficiente usare:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"calcio.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="esplorazione-di-un-data.frame" class="level2">
+<h2 class="anchored" data-anchor-id="esplorazione-di-un-data.frame">Esplorazione di un <code>data.frame</code></h2>
+<p>In primo luogo, siamo interessati a capire quante <strong>variabili</strong> e quante <strong>osservazioni</strong> sono contenute nel dataset <code>data.frame</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">dim</span>(calcio) <span class="co"># Equivalente a c(nrow(calcio), ncol(calcio))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1900    7</code></pre>
+</div>
+</div>
+<p>Per verificare di non aver commesso errori grossolani nell’importazione del <code>data.frame</code>, possiamo visualizzare le prime <span class="math inline">6</span> osservazioni con il comando <code>head</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">head</span>(calcio) <span class="co"># Comando equivalente: calcio[1:6, ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Date HomeTeam   AwayTeam FTR B365H B365D B365A
+1 2014-08-30   Chievo   Juventus   A  7.00   4.0  1.50
+2 2014-08-30     Roma Fiorentina   H  1.67   3.8  5.00
+3 2014-08-31 Atalanta     Verona   D  2.05   3.4  3.60
+4 2014-08-31   Cesena      Parma   H  3.10   3.2  2.35
+5 2014-08-31    Genoa     Napoli   A  3.90   3.4  1.95
+6 2014-08-31    Milan      Lazio   H  2.00   3.4  3.75</code></pre>
+</div>
+</div>
+<p>Il comando <code>tail</code> può essere usato per mostrare le ultime <span class="math inline">6</span> osservazioni:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tail</span>(calcio) <span class="co"># Comando equivalente: calcio[1895:1900, ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam  AwayTeam FTR B365H B365D B365A
+1895 2011-05-22    Inter   Catania   H  1.53  3.75  7.00
+1896 2011-05-22 Juventus    Napoli   D  1.90  3.60  3.80
+1897 2011-05-22    Lecce     Lazio   A  6.00  3.60  1.60
+1898 2011-05-22  Palermo    Chievo   A  1.75  3.50  4.75
+1899 2011-05-22     Roma Sampdoria   H  1.29  5.00 11.00
+1900 2011-05-22  Udinese     Milan   D  3.50  1.53  6.50</code></pre>
+</div>
+</div>
+</section>
+<section id="il-dataset-calcio" class="level2">
+<h2 class="anchored" data-anchor-id="il-dataset-calcio">Il dataset <code>calcio</code></h2>
+<p>Il dataset calcio contiene quindi un totale di <span class="math inline">7</span> variabili. Ciascuna osservazione è una <strong>partita di calcio</strong> avvenuta nel campionato di <strong>serie A</strong> dal 2008 al 2015.</p>
+<ul>
+<li>La variabile <code>Date</code> indica la data della partita.</li>
+<li>Le variabili <code>HomeTeam</code>, <code>AwayTeam</code> indicano la squadra che ha giocato in casa ed in trasferta, rispettivamente.</li>
+<li>La variabile <code>FTR</code> (“<em>Full Time Result</em>”) indica se la partita è stata vinta dalla squadra di casa (<code>H</code>), dalla squadra in trasferta (<code>A</code>), o si è conclusa con un pareggio (<code>D</code>).</li>
+<li>Le variabili <code>B365H</code>, <code>B365D</code> e <code>B365A</code>, indicano le quote della compagnia di scommesse <em>Bet365 Group Ltd</em> relative ai 3 eventi, prima dell’inizio della partita.</li>
+</ul>
+<p>Per <strong>accedere</strong> e <strong>modificare</strong> i nomi delle variabili, si utilizza il comando <code>colnames</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">colnames</span>(calcio) <span class="co"># Per accedere ai nomi delle variabili</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"     "HomeTeam" "AwayTeam" "FTR"      "B365H"    "B365D"    "B365A"   </code></pre>
+</div>
+</div>
+</section>
+<section id="tipologia-di-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="tipologia-di-variabili">Tipologia di variabili</h2>
+<p>In un dataset sono presenti diverse <strong>tipologie di variabili</strong>.</p>
+<p>Le variabili quantitative discrete e continue in <strong>R</strong> sono codificate come oggetti di tipo <code>integer</code> e <code>numeric</code>, rispettivamente.</p>
+<p>Le variabili qualitative in <strong>R</strong> sono codificate come oggetti di tipo <code>character</code> oppure di tipo <code>factor</code>; la differenza tra queste tipologie verrà chiarita nelle prossime slides.</p>
+<p>Infine, le date in <strong>R</strong> si codificano con la tipologia <code>Date</code>.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>R</strong> non sempre riconosce correttamente la tipologia di variabili, come evidenziato dal comando <code>str</code>, che fornisce un sommario del <code>data.frame</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">str</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1900 obs. of  7 variables:
+ $ Date    : chr  "2014-08-30" "2014-08-30" "2014-08-31" "2014-08-31" ...
+ $ HomeTeam: chr  "Chievo" "Roma" "Atalanta" "Cesena" ...
+ $ AwayTeam: chr  "Juventus" "Fiorentina" "Verona" "Parma" ...
+ $ FTR     : chr  "A" "H" "D" "H" ...
+ $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...
+ $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...
+ $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variabili-quantitative" class="level2">
+<h2 class="anchored" data-anchor-id="variabili-quantitative">Variabili quantitative</h2>
+<p>Per <strong>estrarre una variabile</strong> da un <code>data.frame</code> si procede come nel caso delle liste, ovvero tramite il simbolo <code>$</code>. Le variabili possono essere salvate con un nome a piacere.</p>
+<p>Una variabile numerica è un vettore <strong>R</strong> a tutti gli effetti, pertanto possiamo applicare le funzioni che abbiamo già incontrato finora</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">is.numeric</span>(calcio<span class="sc">$</span>B365H) <span class="co"># Verifico che si tratta di una variabile di tipo numeric</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">class</span>(calcio<span class="sc">$</span>B365H)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>calcio<span class="sc">$</span>B365H[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="co"># Primi 10 elementi di un vettore R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 7.00 1.67 2.05 3.10 3.90 2.00 2.20 2.30 3.10 1.80</code></pre>
+</div>
+</div>
+<p>Le <strong>analisi descrittive</strong> di una variabile numerica verranno affrontate nelle unità successive, per ora ci limitiamo alla manipolazione del <code>data.frame</code>.</p>
+</section>
+<section id="variabili-qualitative-i" class="level2">
+<h2 class="anchored" data-anchor-id="variabili-qualitative-i">Variabili qualitative I</h2>
+<p>Le variabili di tipo <code>character</code> sono appropriate per le stringhe di testo, ovvero se ciascun campo corrisponde ad un breve testo, come ad esempio un <em>Tweet</em>.</p>
+<p>Le variabili qualitative con valori ripetuti vanno invece codificate come <code>factor</code>.</p>
+<p>Dobbiamo quindi <strong>convertire</strong> le <span class="math inline">3</span> variabili <code>HomeTeam</code>, <code>AwayTeam</code> e <code>FTR</code> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>calcio<span class="sc">$</span>HomeTeam <span class="ot">&lt;-</span> <span class="fu">factor</span>(calcio<span class="sc">$</span>HomeTeam)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>calcio<span class="sc">$</span>AwayTeam <span class="ot">&lt;-</span> <span class="fu">factor</span>(calcio<span class="sc">$</span>AwayTeam)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>calcio<span class="sc">$</span>FTR <span class="ot">&lt;-</span> <span class="fu">factor</span>(calcio<span class="sc">$</span>FTR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In alternativa, possiamo fare questa operazione in fase di lettura di dati, tramite l’opzione <code>stringsAsFactors</code>. Quindi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>calcio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="variabili-qualitative-ii" class="level2">
+<h2 class="anchored" data-anchor-id="variabili-qualitative-ii">Variabili qualitative II</h2>
+<p>In primo luogo, verifichiamo che la conversione sia avvenuta correttamente ed esploriamone il contenuto della variabile <code>HomeTeam</code>:</p>
+<p>Nelle variabili di tipo <code>factor</code> sono pertanto elencate le varie <code>modalità</code>, chiamati <code>levels</code> in <strong>R</strong>.</p>
+<p>Per accedere alle modalità si usa il comando <code>levels</code>, che elenca le modalità della variabile considerata in ordine alfabetico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">levels</span>(calcio<span class="sc">$</span>HomeTeam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Atalanta"   "Bari"       "Bologna"    "Brescia"    "Cagliari"  
+ [6] "Catania"    "Cesena"     "Chievo"     "Empoli"     "Fiorentina"
+[11] "Genoa"      "Inter"      "Juventus"   "Lazio"      "Lecce"     
+[16] "Livorno"    "Milan"      "Napoli"     "Palermo"    "Parma"     
+[21] "Reggina"    "Roma"       "Sampdoria"  "Sassuolo"   "Siena"     
+[26] "Torino"     "Udinese"    "Verona"    </code></pre>
+</div>
+</div>
+</section>
+<section id="variabili-qualitative-iii" class="level2">
+<h2 class="anchored" data-anchor-id="variabili-qualitative-iii">Variabili qualitative III</h2>
+<p>Il comando <code>levels</code> permette di <strong>rinominare le modalità</strong>, ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>calcio<span class="sc">$</span>FTR[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] A H D H A H D D D H
+Levels: A D H</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">levels</span>(calcio<span class="sc">$</span>FTR) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Away"</span>, <span class="st">"Draw"</span>, <span class="st">"Home"</span>) <span class="co"># Rinomino le modalità</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>calcio<span class="sc">$</span>FTR[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Away Home Draw Home Away Home Draw Draw Draw Home
+Levels: Away Draw Home</code></pre>
+</div>
+</div>
+<p>Il comando <code>levels</code> consente inoltre di accorpare le modalità di una variabile qualitativa:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>calcio<span class="sc">$</span>Draw <span class="ot">&lt;-</span> calcio<span class="sc">$</span>FTR <span class="co"># Creo una copia della variabile FTR chiamata Draw</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">levels</span>(calcio<span class="sc">$</span>Draw) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Not_Draw"</span>, <span class="st">"Draw"</span>, <span class="st">"Not_Draw"</span>) <span class="co"># Accorpamento delle modalità</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a>calcio<span class="sc">$</span>Draw[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Not_Draw Not_Draw Draw     Not_Draw Not_Draw Not_Draw Draw     Draw    
+ [9] Draw     Not_Draw
+Levels: Not_Draw Draw</code></pre>
+</div>
+</div>
+</section>
+<section id="le-variabili-di-tipo-date" class="level2">
+<h2 class="anchored" data-anchor-id="le-variabili-di-tipo-date">Le variabili di tipo <code>date</code></h2>
+<p>La variabile <code>Date</code> del dataset <code>calcio</code> rappresenta una data e pertanto va codificata come tale.</p>
+<p>In <strong>R</strong> la conversione viene eseguita dal comando <code>as.Date</code>, seguita dal <strong>formato</strong> in cui è espressa la data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>calcio<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(calcio<span class="sc">$</span>Date, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">class</span>(calcio<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>calcio<span class="sc">$</span>Date[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2014-08-30" "2014-08-30" "2014-08-31" "2014-08-31" "2014-08-31"
+ [6] "2014-08-31" "2014-08-31" "2014-08-31" "2014-08-31" "2014-08-31"</code></pre>
+</div>
+</div>
+<p>Una volta convertito in formata <code>Date</code>, è possibile svolgere alcune operazioni aggiuntive. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">min</span>(calcio<span class="sc">$</span>Date) <span class="co"># Prima partita giocata</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2008-08-30"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">max</span>(calcio<span class="sc">$</span>Date) <span class="co"># Ultima partita giocata</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2015-05-31"</code></pre>
+</div>
+</div>
+</section>
+<section id="manipolazione-di-un-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="manipolazione-di-un-dataset">Manipolazione di un dataset</h2>
+<p>Per <strong>selezionare le righe</strong> di un dataset si procede come nel caso delle matrici:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>calcio[<span class="fu">c</span>(<span class="dv">1806</span>, <span class="dv">501</span>, <span class="dv">109</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+1806 2011-03-13    Genoa  Palermo Home  1.91  3.25   4.2 Not_Draw
+501  2013-11-23    Milan    Genoa Draw  1.44  4.20   7.5     Draw
+109  2014-11-09  Palermo  Udinese Draw  2.15  3.30   3.4     Draw</code></pre>
+</div>
+</div>
+<p>È ovviamente possibile (e tipicamente molto più utile) selezionare le osservazioni che soddisfino una determinata <strong>condizione</strong>.</p>
+<p>Supponiamo ad esempio di voler identificare le partite terminate con un pareggio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>calcio_draw <span class="ot">&lt;-</span> calcio[calcio<span class="sc">$</span>FTR <span class="sc">==</span> <span class="st">"Draw"</span>, ]</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">head</span>(calcio_draw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Date   HomeTeam  AwayTeam  FTR B365H B365D B365A Draw
+3  2014-08-31   Atalanta    Verona Draw  2.05  3.40   3.6 Draw
+7  2014-08-31    Palermo Sampdoria Draw  2.20  3.25   3.3 Draw
+8  2014-08-31   Sassuolo  Cagliari Draw  2.30  3.40   3.0 Draw
+9  2014-08-31     Torino     Inter Draw  3.10  3.30   2.3 Draw
+14 2014-09-14 Fiorentina     Genoa Draw  1.57  3.80   6.0 Draw
+21 2014-09-20     Cesena    Empoli Draw  2.80  3.00   2.7 Draw</code></pre>
+</div>
+</div>
+</section>
+<section id="i-valori-mancanti" class="level2">
+<h2 class="anchored" data-anchor-id="i-valori-mancanti">I valori mancanti</h2>
+<p>Supponiamo di voler identificare le partite in cui la squadra di casa ha una bassa probabilità di vittoria secondo <em>Bet365</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>calcio_home <span class="ot">&lt;-</span> calcio[calcio<span class="sc">$</span>B365H <span class="sc">&gt;</span> <span class="dv">9</span>, ]</span>
+<span id="cb45-2"><a href="#cb45-2"></a>calcio_home</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw
+224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw
+NA         &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA     &lt;NA&gt;
+1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw
+NA.1       &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA     &lt;NA&gt;
+NA.2       &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt; &lt;NA&gt;    NA    NA    NA     &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Qualcosa è andato storto: ci sono dei simboli (<code>NA</code>) che non avevamo incontrato finora.</p>
+</div>
+</div>
+</div>
+<p>La ragione per cui il comando produce dei risultati apparentemente strani è dovuto alla presenza di alcuni <strong>dati mancanti</strong>, codificati come <code>NA</code> (<em>Not Available</em>).</p>
+<p>In particolare, ci sono <span class="math inline">3</span> osservazioni (la <span class="math inline">1501</span>, <span class="math inline">1846</span> e la <span class="math inline">1848</span>) i cui valori relativi a <em>Bet365</em> non sono disponibili.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>calcio[<span class="fu">rowSums</span>(<span class="fu">is.na</span>(calcio)) <span class="sc">&gt;</span> <span class="dv">0</span>, ] <span class="co"># Identifica le righe con valori mancanti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+1501 2010-05-09  Bologna  Catania Draw    NA    NA    NA     Draw
+1846 2011-04-17   Chievo  Bologna Home    NA    NA    NA Not_Draw
+1848 2011-04-17    Genoa  Brescia Home    NA    NA    NA Not_Draw</code></pre>
+</div>
+</div>
+<p>La funzione <code>is.na</code> produce una matrice <strong>logica</strong> della stessa dimensione di <strong>calcio</strong>, contenente <code>TRUE</code> se il valore è mancante e <code>FALSE</code> altrimenti.</p>
+<p>La funzione <code>rowSums(matrice)</code> produce un vettore i cui valori alla somma degli elementi di ciascuna riga della <code>matrice</code>.</p>
+<p>Di conseguenza, <code>rowSums(is.na(calcio))</code> indica quanti valori mancanti sono presenti in ciascuna riga.</p>
+</section>
+<section id="gestire-i-dati-mancanti" class="level2">
+<h2 class="anchored" data-anchor-id="gestire-i-dati-mancanti">Gestire i dati mancanti</h2>
+<p>La gestione statistica dei dati mancanti non è tra gli obiettivi di questo corso.</p>
+<p>La soluzione più facile, sebbene potenzialmente molto pericolosa, consistente semplicemente nel <strong>rimuovere</strong> le righe incomplete tramite il comando <code>na.omit</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>calcio_no_na <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(calcio)</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="fu">dim</span>(calcio_no_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1897    8</code></pre>
+</div>
+</div>
+<p>Per risolvere il problema originario, ovvero identificare le partite in cui la squadra di casa ha bassa probabilità di vittoria, si può usare <code>subset</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>calcio_home <span class="ot">&lt;-</span> <span class="fu">subset</span>(calcio, <span class="at">subset =</span> B365H <span class="sc">&gt;</span> <span class="dv">9</span>)</span>
+<span id="cb51-2"><a href="#cb51-2"></a>calcio_home</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw
+162  2015-01-06   Cesena   Napoli Away   9.5  4.75  1.36 Not_Draw
+224  2015-02-15   Cesena Juventus Draw  15.0  6.00  1.22     Draw
+1520 2010-05-16    Siena    Inter Away  21.0  9.00  1.10 Not_Draw</code></pre>
+</div>
+</div>
+</section>
+<section id="selezione-delle-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="selezione-delle-variabili">Selezione delle variabili</h2>
+<p>Il comando <code>subset</code> può essere usato sia per <strong>selezionare le righe</strong> (osservazioni) che per <strong>selezionare le colonne</strong> (variabili).</p>
+<p>Nel secondo caso, si può procedere tramite l’opzione <code>select</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>calcio_B365 <span class="ot">&lt;-</span> <span class="fu">subset</span>(calcio, <span class="at">select =</span> <span class="fu">c</span>(B365H, B365D, B365A))</span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="fu">head</span>(calcio_B365)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  B365H B365D B365A
+1  7.00   4.0  1.50
+2  1.67   3.8  5.00
+3  2.05   3.4  3.60
+4  3.10   3.2  2.35
+5  3.90   3.4  1.95
+6  2.00   3.4  3.75</code></pre>
+</div>
+</div>
+<p>Ovviamente è possibile anche selezionare sia le righe che le colonne.</p>
+</section>
+<section id="il-comando-attach" class="level2">
+<h2 class="anchored" data-anchor-id="il-comando-attach">Il comando <code>attach</code></h2>
+<p>In <strong>R</strong> esiste un comando chiamato <code>attach</code>. Sebbene usato da molti, questo comando è <strong>diabolico</strong> e sarebbe meglio evitare di utilizzarlo.</p>
+<p>Il comando <code>attach(dataframe)</code> consente di utilizzare le variabili di un <code>data.frame</code> come se queste fossero presenti nel workspace.</p>
+<p>Questa pratica tuttavia rende il codice molto meno leggibile e spesso conduce ad errori di varia natura.</p>
+<p>Nonostante le varie proteste a favore della rimozione di <code>attach</code> da parte di alcuni, questo comando continua a (r)esistere e viene tuttora usato da molti.</p>
+<p>In questo corso non verranno forniti esempi di utilizzo di <code>attach</code> per evitare di indurre lo studente in tentazione.</p>
+</section>
+<section id="sommario" class="level2">
+<h2 class="anchored" data-anchor-id="sommario">Sommario</h2>
+<p>A seguito di tutte queste operazioni, il dataset risulta molto modificato rispetto alla sua versione iniziale.</p>
+<p>Ri-eseguendo il comando <code>str</code> otteniamo infatti che</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">str</span>(calcio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1900 obs. of  8 variables:
+ $ Date    : Date, format: "2014-08-30" "2014-08-30" ...
+ $ HomeTeam: Factor w/ 28 levels "Atalanta","Bari",..: 8 22 1 7 11 17 19 24 26 27 ...
+ $ AwayTeam: Factor w/ 28 levels "Atalanta","Bari",..: 13 10 28 20 18 14 23 5 12 9 ...
+ $ FTR     : Factor w/ 3 levels "Away","Draw",..: 1 3 2 3 1 3 2 2 2 3 ...
+ $ B365H   : num  7 1.67 2.05 3.1 3.9 2 2.2 2.3 3.1 1.8 ...
+ $ B365D   : num  4 3.8 3.4 3.2 3.4 3.4 3.25 3.4 3.3 3.5 ...
+ $ B365A   : num  1.5 5 3.6 2.35 1.95 3.75 3.3 3 2.3 4.5 ...
+ $ Draw    : Factor w/ 2 levels "Not_Draw","Draw": 1 1 2 1 1 1 2 2 2 1 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="il-banco-vince-sempre" class="level2">
+<h2 class="anchored" data-anchor-id="il-banco-vince-sempre">Il banco vince sempre</h2>
+<p>Nelle scommesse calcistiche le <strong>quote</strong> rappresentano l’inverso della probabilità di un evento, per cui <span class="math display">
+    (\text{Probabilità dell'evento}) = \frac{1}{(\text{Quota dell'evento})}
+    </span></p>
+<p>La quota rappresenta inoltre l’ammontare in € che il vincitore riceve a fronte del pagamento dell’importo unitario di <span class="math inline">1</span>€.</p>
+<p>Ad esempio, scommettendo <span class="math inline">10</span>€ sulla vittoria della Juventus nella partita contro il Chievo del 30 Agosto 2014, si sarebbero ottenuti <span class="math inline">15</span>€, dato che la quota era di <span class="math inline">1.50</span>.</p>
+<p>Se la scommessa fosse equa, le probabilità di vittoria, pareggio e sconfitta dovrebbero sommare ad <span class="math inline">1</span>.</p>
+<p>Tuttavia, questo non accade: le probabilità ottenute sommano ad un valore <span class="math inline">&gt;1</span>. Tale discrepanza si chiama <strong>allibramento</strong> o <strong>aggio</strong> e garantisce al banco un guadagno.</p>
+</section>
+<section id="esercizio-riassuntivo" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
+<ul>
+<li><p>Si ottenga la variabile <code>aggio</code>, ottenuta come la differenza tra la somma delle “probabilità” dei <span class="math inline">3</span> eventi (vittoria, pareggio, sconfitta) ed <span class="math inline">1</span>, ovvero il caso equo.</p></li>
+<li><p>Si dica qual è l’aggio associato alla partita Udinese-Parma del 1 Settembre 2013.</p></li>
+<li><p>Si dica in quali partite è stato applicato il più basso ed il più alto aggio e si identifichino tali valori.</p></li>
+<li><p>In quale partita è stato applicato l’aggio più alto nel campionato di Serie A del 2009/2010?</p></li>
+</ul>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggerimento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si usino i comandi <code>which.min</code> e <code>which.max</code>. Si consulti la documentazione per capirne il funzionamento.</p>
+</div>
+</div>
+<section id="soluzione" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Calcolo dell'aggio</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>calcio<span class="sc">$</span>aggio <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365H <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365D <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> calcio<span class="sc">$</span>B365A <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="co"># Aggio associato a Udinese-Parma del 1 Settembre 2013</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="fu">subset</span>(calcio, Date <span class="sc">==</span> <span class="st">"2013-09-01"</span> <span class="sc">&amp;</span> HomeTeam <span class="sc">==</span> <span class="st">"Udinese"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio
+400 2013-09-01  Udinese    Parma Home   2.1  3.25   3.6 Not_Draw 0.06166056</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># Minimo e massimo aggio</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>calcio[<span class="fu">which.min</span>(calcio<span class="sc">$</span>aggio), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Date HomeTeam AwayTeam  FTR B365H B365D B365A     Draw      aggio
+301 2015-04-18 Juventus    Lazio Home  1.95   3.4  4.33 Not_Draw 0.03788504</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>calcio[<span class="fu">which.max</span>(calcio<span class="sc">$</span>aggio), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio
+1839 2011-04-10  Palermo   Cesena Draw   2.1   2.1     6 Draw 0.1190476</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Il campionato di Serie A inizia a fine Agosto e finisce a fine Maggio</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>calcio2009_2010 <span class="ot">&lt;-</span> <span class="fu">subset</span>(calcio, Date <span class="sc">&lt;=</span> <span class="st">"2009-08-15"</span> <span class="sc">&amp;</span> Date <span class="sc">&lt;=</span> <span class="st">"2010-06-15"</span>)</span>
+<span id="cb63-3"><a href="#cb63-3"></a>calcio2009_2010[<span class="fu">which.max</span>(calcio2009_2010<span class="sc">$</span>aggio), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Date HomeTeam AwayTeam  FTR B365H B365D B365A Draw     aggio
+1125 2009-05-24   Chievo  Bologna Draw   3.2  1.57     6 Draw 0.1161093</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="un_C_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
