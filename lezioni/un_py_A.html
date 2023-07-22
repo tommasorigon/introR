@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="un_py_A_files/libs/clipboard/clipboard.min.js"></script>
+<script src="un_py_A_files/libs/quarto-html/quarto.js"></script>
+<script src="un_py_A_files/libs/quarto-html/popper.min.js"></script>
+<script src="un_py_A_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="un_py_A_files/libs/quarto-html/anchor.min.js"></script>
+<link href="un_py_A_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="un_py_A_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="un_py_A_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="un_py_A_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="un_py_A_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#unità-a" id="toc-unità-a" class="nav-link active" data-scroll-target="#unità-a">Unità A</a></li>
+  <li><a href="#calcolatrice-scientifica" id="toc-calcolatrice-scientifica" class="nav-link" data-scroll-target="#calcolatrice-scientifica">Calcolatrice scientifica</a></li>
+  <li><a href="#assegnazione-di-un-valore" id="toc-assegnazione-di-un-valore" class="nav-link" data-scroll-target="#assegnazione-di-un-valore">Assegnazione di un valore</a></li>
+  <li><a href="#pulizia-del-workspace" id="toc-pulizia-del-workspace" class="nav-link" data-scroll-target="#pulizia-del-workspace">Pulizia del <em>workspace</em></a></li>
+  <li><a href="#alcune-funzioni-matematiche-i" id="toc-alcune-funzioni-matematiche-i" class="nav-link" data-scroll-target="#alcune-funzioni-matematiche-i">Alcune funzioni matematiche I</a></li>
+  <li><a href="#alcune-funzioni-matematiche-ii" id="toc-alcune-funzioni-matematiche-ii" class="nav-link" data-scroll-target="#alcune-funzioni-matematiche-ii">Alcune funzioni matematiche II</a></li>
+  <li><a href="#ulteriori-funzioni-matematiche-i" id="toc-ulteriori-funzioni-matematiche-i" class="nav-link" data-scroll-target="#ulteriori-funzioni-matematiche-i">Ulteriori funzioni matematiche I</a></li>
+  <li><a href="#ulteriori-funzioni-matematiche-ii" id="toc-ulteriori-funzioni-matematiche-ii" class="nav-link" data-scroll-target="#ulteriori-funzioni-matematiche-ii">Ulteriori funzioni matematiche II</a></li>
+  <li><a href="#la-documentazione-ufficiale" id="toc-la-documentazione-ufficiale" class="nav-link" data-scroll-target="#la-documentazione-ufficiale">La documentazione ufficiale</a></li>
+  <li><a href="#simboli-speciali" id="toc-simboli-speciali" class="nav-link" data-scroll-target="#simboli-speciali">Simboli speciali</a></li>
+  <li><a href="#errori-di-approssimazione-numerica" id="toc-errori-di-approssimazione-numerica" class="nav-link" data-scroll-target="#errori-di-approssimazione-numerica">Errori di approssimazione numerica</a></li>
+  <li><a href="#operazioni-logiche" id="toc-operazioni-logiche" class="nav-link" data-scroll-target="#operazioni-logiche">Operazioni logiche</a></li>
+  <li><a href="#liste-e-vettori" id="toc-liste-e-vettori" class="nav-link" data-scroll-target="#liste-e-vettori">Liste e vettori</a></li>
+  <li><a href="#vettori" id="toc-vettori" class="nav-link" data-scroll-target="#vettori">Vettori</a></li>
+  <li><a href="#creazione-di-vettori" id="toc-creazione-di-vettori" class="nav-link" data-scroll-target="#creazione-di-vettori">Creazione di vettori</a></li>
+  <li><a href="#operazioni-sui-vettori-i" id="toc-operazioni-sui-vettori-i" class="nav-link" data-scroll-target="#operazioni-sui-vettori-i">Operazioni sui vettori I</a></li>
+  <li><a href="#operazioni-sui-vettori-ii" id="toc-operazioni-sui-vettori-ii" class="nav-link" data-scroll-target="#operazioni-sui-vettori-ii">Operazioni sui vettori II</a></li>
+  <li><a href="#operazioni-sui-vettori-iii" id="toc-operazioni-sui-vettori-iii" class="nav-link" data-scroll-target="#operazioni-sui-vettori-iii">Operazioni sui vettori III</a></li>
+  <li><a href="#grafico-di-una-funzione" id="toc-grafico-di-una-funzione" class="nav-link" data-scroll-target="#grafico-di-una-funzione">Grafico di una funzione</a></li>
+  <li><a href="#matrici" id="toc-matrici" class="nav-link" data-scroll-target="#matrici">Matrici</a></li>
+  <li><a href="#operazioni-sulle-matrici-i" id="toc-operazioni-sulle-matrici-i" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-i">Operazioni sulle matrici I</a></li>
+  <li><a href="#operazioni-sulle-matrici-ii" id="toc-operazioni-sulle-matrici-ii" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-ii">Operazioni sulle matrici II</a></li>
+  <li><a href="#operazioni-sulle-matrici-iii" id="toc-operazioni-sulle-matrici-iii" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-iii">Operazioni sulle matrici III</a></li>
+  <li><a href="#operazioni-sulle-matrici-iv" id="toc-operazioni-sulle-matrici-iv" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-iv">Operazioni sulle matrici IV</a></li>
+  <li><a href="#operazioni-sulle-matrici-v" id="toc-operazioni-sulle-matrici-v" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-v">Operazioni sulle matrici V</a></li>
+  <li><a href="#operazioni-sulle-matrici-vi" id="toc-operazioni-sulle-matrici-vi" class="nav-link" data-scroll-target="#operazioni-sulle-matrici-vi">Operazioni sulle matrici VI</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="un_A_slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Unità A: calcolo scientifico ed algebra lineare</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><span class="orange">Tommaso Rigon</span> </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <em>Università degli Studi di Milano-Bicocca</em>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="unità-a" class="level2">
+<h2 class="anchored" data-anchor-id="unità-a">Unità A</h2>
+<ul>
+<li>A-B-C: il software <strong>Python</strong> come calcolatrice scientifica</li>
+<li>Operazioni di routine: pulizia del <em>workspace</em>, simboli speciali</li>
+<li>Funzioni matematiche, grafico di una funzione, operazioni logiche</li>
+<li>Operazioni con vettori e matrici</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esercizi <strong>Python</strong> associati sono diponibili a <a href="https://tommasorigon.github.io/introR/exe/es_1.html">questo link</a></p>
+</div>
+</div>
+</section>
+<section id="calcolatrice-scientifica" class="level2">
+<h2 class="anchored" data-anchor-id="calcolatrice-scientifica">Calcolatrice scientifica</h2>
+<p>Anzitutto, <strong>Python</strong> può essere usato come se fosse una <em>calcolatrice scientifica</em>:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">4</span> <span class="op">*</span> (<span class="dv">3</span> <span class="op">+</span> <span class="dv">5</span>) <span class="co"># La somma entro parentesi viene eseguita per prima</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>32</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
+<span id="cb5-2"><a href="#cb5-2"></a>pi <span class="op">/</span> <span class="dv">4</span> <span class="co"># Pi greco quarti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>0.7853981633974483</code></pre>
+</div>
+</div>
+<p>Per calcolare la potenza <span class="math inline">a^b</span> si usa:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="dv">2</span><span class="op">**</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>32</code></pre>
+</div>
+</div>
+<p>Le quantità <span class="math inline">\sqrt{2}</span> e <span class="math inline">\sin(\pi/4)</span> si ottengono invece con i comandi:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2"></a>np.sqrt(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>1.4142135623730951</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>np.sin(pi <span class="op">/</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>0.7071067811865475</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tutto ciò che viene scritto dopo un cancelletto (<code>#</code>) è considerato un <strong>commento</strong>.</p>
+</div>
+</div>
+</section>
+<section id="assegnazione-di-un-valore" class="level2">
+<h2 class="anchored" data-anchor-id="assegnazione-di-un-valore">Assegnazione di un valore</h2>
+<p>È possibile <strong>salvare un valore</strong> assegnandolo ad un oggetto tramite il simbolo <code>=</code>.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Assegna il valore 5 all'oggetto x</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>x <span class="op">=</span> np.sqrt(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Il valore contenuto in <code>x</code> può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio <code>y</code>.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>y <span class="op">=</span> x <span class="op">+</span> pi <span class="co"># ovvero pi greco + radice quadrata di 5</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>5.377660631089583</code></pre>
+</div>
+</div>
+<p>Per <strong>rimuovere un oggetto</strong> dalla memoria, si usa il comando <code>del</code>, ovvero <em>delete</em>.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">del</span> x <span class="co"># x non è più presente nel "workspace"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Python</strong> è <em>case sensitive</em>, pertanto l’oggetto <code>x</code> è diverso dall’oggetto <code>X</code>.</p>
+</div>
+</div>
+</section>
+<section id="pulizia-del-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="pulizia-del-workspace">Pulizia del <em>workspace</em></h2>
+<p>È buona norma mantenere pulito il <em>workspace</em>, ovvero l’ambiente di lavoro.</p>
+<p>Se un oggetto non è più necessario, è possibile eliminarlo tramite il comando <code>del</code>.</p>
+<p>È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">dir</span>() <span class="co"># Nel workspace è presente l'oggetto y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="alcune-funzioni-matematiche-i" class="level2">
+<h2 class="anchored" data-anchor-id="alcune-funzioni-matematiche-i">Alcune funzioni matematiche I</h2>
+<p>Supponiamo che <code>x</code> sia un <strong>numero reale</strong>.</p>
+<p>Ciò che seguono sono una lista di funzioni disponibili in <strong>Python</strong>:</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="co"># Esempio di numero reale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>np.exp(x) <span class="co"># Esponenziale e logaritmo naturale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>1.6487212707001282</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>np.log(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>-0.6931471805599453</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>np.<span class="bu">abs</span>(x) <span class="co"># Valore assoluto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>0.5</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>np.sign(x) <span class="co"># Funzione segno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+</section>
+<section id="alcune-funzioni-matematiche-ii" class="level2">
+<h2 class="anchored" data-anchor-id="alcune-funzioni-matematiche-ii">Alcune funzioni matematiche II</h2>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>np.sin(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>0.479425538604203</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>np.cos(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>0.8775825618903728</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>np.tan(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>0.5463024898437905</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>np.arcsin(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>0.5235987755982988</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>np.arccos(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>1.0471975511965976</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>np.arctan(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>0.46364760900080615</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le funzioni di <strong>Python</strong> si possono combinare tra loro, ad esempio <code>np.log(np.abs(x))</code>.</p>
+</div>
+</div>
+</section>
+<section id="ulteriori-funzioni-matematiche-i" class="level2">
+<h2 class="anchored" data-anchor-id="ulteriori-funzioni-matematiche-i">Ulteriori funzioni matematiche I</h2>
+<p>Supponiamo che <code>x</code> e <code>y</code> siano due <strong>numeri reali</strong>. Inoltre, siano <code>n</code> e <code>k</code> due <strong>numeri naturali</strong>.</p>
+<p>Si noti l’uso del <code>;</code> che può essere usato per separare due comandi nella stessa riga.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span> y <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">3</span> <span class="co"># Numeri reali </span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>n <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> k <span class="op">=</span> <span class="dv">2</span> <span class="co"># Numeri naturali</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">import</span> scipy.special <span class="im">as</span> scp</span>
+<span id="cb40-2"><a href="#cb40-2"></a>scp.factorial(n) <span class="co"># n!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>120.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>scp.binom(n, k) <span class="co"># Coefficiente binomiale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>10.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>np.around(x, <span class="dv">2</span>) <span class="co"># Arrotonda x usando 2 cifre decimali</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>0.5</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>np.floor(x) <span class="co"># Arrotonda x all'intero più vicino, per difetto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>np.ceil(x) <span class="co"># Arrotonda x all'intero più vicino, per eccesso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+</section>
+<section id="ulteriori-funzioni-matematiche-ii" class="level2">
+<h2 class="anchored" data-anchor-id="ulteriori-funzioni-matematiche-ii">Ulteriori funzioni matematiche II</h2>
+<p>La funzione gamma <span class="math inline">\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s</span> si calcola in <strong>Python</strong> come segue:</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>scp.gamma(x) <span class="co"># Funzione gamma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>1.7724538509055159</code></pre>
+</div>
+</div>
+<p>La funzione beta <span class="math inline">\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds</span> si calcola in <strong>Python</strong> come segue:</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>scp.beta(x, y) <span class="co"># Funzione beta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>4.206546315976361</code></pre>
+</div>
+</div>
+</section>
+<section id="la-documentazione-ufficiale" class="level2">
+<h2 class="anchored" data-anchor-id="la-documentazione-ufficiale">La documentazione ufficiale</h2>
+<p>La documentazione di <strong>Python</strong> è la principale fonte di informazioni.</p>
+<p>A cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella <strong>documentazione ufficiale</strong> e non in queste slide.</p>
+<p>Il comando <code>help(funzione)</code> apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># Documentazione della funzione log</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="bu">help</span>(np.log) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Help on ufunc:
+
+log = &lt;ufunc 'log'&gt;
+    log(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True[, signature, extobj])
+    
+    Natural logarithm, element-wise.
+    
+    The natural logarithm `log` is the inverse of the exponential function,
+    so that `log(exp(x)) = x`. The natural logarithm is logarithm in base
+    `e`.
+    
+    Parameters
+    ----------
+    x : array_like
+        Input value.
+    out : ndarray, None, or tuple of ndarray and None, optional
+        A location into which the result is stored. If provided, it must have
+        a shape that the inputs broadcast to. If not provided or None,
+        a freshly-allocated array is returned. A tuple (possible only as a
+        keyword argument) must have length equal to the number of outputs.
+    where : array_like, optional
+        This condition is broadcast over the input. At locations where the
+        condition is True, the `out` array will be set to the ufunc result.
+        Elsewhere, the `out` array will retain its original value.
+        Note that if an uninitialized `out` array is created via the default
+        ``out=None``, locations within it where the condition is False will
+        remain uninitialized.
+    **kwargs
+        For other keyword-only arguments, see the
+        :ref:`ufunc docs &lt;ufuncs.kwargs&gt;`.
+    
+    Returns
+    -------
+    y : ndarray
+        The natural logarithm of `x`, element-wise.
+        This is a scalar if `x` is a scalar.
+    
+    See Also
+    --------
+    log10, log2, log1p, emath.log
+    
+    Notes
+    -----
+    Logarithm is a multivalued function: for each `x` there is an infinite
+    number of `z` such that `exp(z) = x`. The convention is to return the
+    `z` whose imaginary part lies in `[-pi, pi]`.
+    
+    For real-valued input data types, `log` always returns real output. For
+    each value that cannot be expressed as a real number or infinity, it
+    yields ``nan`` and sets the `invalid` floating point error flag.
+    
+    For complex-valued input, `log` is a complex analytical function that
+    has a branch cut `[-inf, 0]` and is continuous from above on it. `log`
+    handles the floating-point negative zero as an infinitesimal negative
+    number, conforming to the C99 standard.
+    
+    References
+    ----------
+    .. [1] M. Abramowitz and I.A. Stegun, "Handbook of Mathematical Functions",
+           10th printing, 1964, pp. 67.
+           https://personal.math.ubc.ca/~cbm/aands/page_67.htm
+    .. [2] Wikipedia, "Logarithm". https://en.wikipedia.org/wiki/Logarithm
+    
+    Examples
+    --------
+    &gt;&gt;&gt; np.log([1, np.e, np.e**2, 0])
+    array([  0.,   1.,   2., -Inf])
+</code></pre>
+</div>
+</div>
+</section>
+<section id="simboli-speciali" class="level2">
+<h2 class="anchored" data-anchor-id="simboli-speciali">Simboli speciali</h2>
+<p>Numeri molto grandi, come <span class="math inline">10^{15}</span>, e molto piccoli, come <span class="math inline">10^{-15}</span>, in <strong>Python</strong> vengono rappresentati come segue:</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="dv">10</span><span class="op">**</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>1000000000000000</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>1e-15</code></pre>
+</div>
+</div>
+</section>
+<section id="errori-di-approssimazione-numerica" class="level2">
+<h2 class="anchored" data-anchor-id="errori-di-approssimazione-numerica">Errori di approssimazione numerica</h2>
+<p>È ben noto che <span class="math inline">\sin(\pi) = 0</span>. Tuttavia, in <strong>Python</strong> si ottiene un numero molto vicino a <span class="math inline">0</span>, ma strettamente positivo. Infatti:</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>np.sin(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>1.2246467991473532e-16</code></pre>
+</div>
+</div>
+<p><strong>Python</strong> è uno strumento di calcolo numerico e pertanto sono sempre presenti <strong>errori di approssimazione numerica</strong>.</p>
+<p>Fortunatamente, nella maggior parte dei casi pratici la differenza tra <span class="math inline">0</span> e <span class="math inline">10^{-16}</span> è del tutto irrilevante.</p>
+<p>In altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.</p>
+<p>Ad ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>np.cos(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>-1.0</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-logiche" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-logiche">Operazioni logiche</h2>
+<p>In <strong>Python</strong> è spesso necessario verificare se una o più condizioni sono verificate o meno.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>x <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>x <span class="op">&lt;</span> <span class="dv">0</span> <span class="co"># Controlla se il valore di x è minore di 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>a <span class="op">=</span> (x <span class="op">==</span> <span class="op">-</span><span class="dv">3</span>) <span class="co"># Controlla se il valore di x è uguale a -3</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p>Il valore di <code>a</code> è un indicatore <strong>binario</strong> o <strong>booleano</strong>, ovvero può essere vero (<code>True</code>) oppure falso (<code>False</code>).</p>
+<p>Altre <strong>funzioni logiche</strong> disponibili (assumendo che <code>y</code> sia un numero e <code>b</code> un booleano) sono:</p>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>a <span class="op">=</span> <span class="va">True</span><span class="op">;</span> b <span class="op">=</span> <span class="va">False</span><span class="op">;</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> y <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb69-2"><a href="#cb69-2"></a>x <span class="op">&gt;=</span> y <span class="co"># Controlla se x è maggiore o uguale a y (Si usa "&lt;=" per minore uguale)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>x <span class="op">!=</span> y <span class="co"># Controlla se x è diverso da y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>a <span class="op">&amp;</span> b <span class="co"># a AND b. Controlla se i valori booleani a e b sono entrambi veri</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>a <span class="op">|</span> b <span class="co"># a OR b. Controlla se Almeno uno tra a ed b è vero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="liste-e-vettori" class="level2">
+<h2 class="anchored" data-anchor-id="liste-e-vettori">Liste e vettori</h2>
+<p>Una <strong>lista</strong> in <strong>Python</strong> viene definito tramite la funzione <code>[]</code>, come nel seguente esempio:</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>x <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>]</span>
+<span id="cb77-2"><a href="#cb77-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>[4, 2, 2, 8, 10]</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Con il termine generico “<strong>lista</strong>” in <strong>Python</strong> non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.</p>
+</div>
+</div>
+<p>Il seguente oggetto è una <strong>lista</strong> in <strong>Python</strong>, nonostante l’oggetto <code>x</code> sia composto sia numeri che da lettere</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>]</span>
+<span id="cb79-2"><a href="#cb79-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>['A', 'B', 2, 8, 10]</code></pre>
+</div>
+</div>
+</section>
+<section id="vettori" class="level2">
+<h2 class="anchored" data-anchor-id="vettori">Vettori</h2>
+<p>Un <strong>vettore</strong> in <strong>Python</strong> viene definito tramite la libreria <code>numpy</code> e salvato in un oggetto di tipo <code>array</code>, come nel seguente esempio:</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb81-2"><a href="#cb81-2"></a>x <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>])</span>
+<span id="cb81-3"><a href="#cb81-3"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>array([ 4,  2,  2,  8, 10])</code></pre>
+</div>
+</div>
+</section>
+<section id="creazione-di-vettori" class="level2">
+<h2 class="anchored" data-anchor-id="creazione-di-vettori">Creazione di vettori</h2>
+<p>Talvolta è comodo creare dei vettori i cui elementi sono dei <strong>numeri consecutivi</strong></p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>x <span class="op">=</span> np.arange(<span class="dv">5</span>, <span class="dv">11</span>) <span class="co"># Equivalente a: x = np.array([5, 6, 7, 8, 9, 10])</span></span>
+<span id="cb83-2"><a href="#cb83-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>array([ 5,  6,  7,  8,  9, 10])</code></pre>
+</div>
+</div>
+<p>Per creare una successione di <strong>numeri reali</strong> si usa il comando <code>linspace</code>:</p>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>x <span class="op">=</span> np.linspace(start <span class="op">=</span> <span class="dv">0</span>, stop <span class="op">=</span> <span class="dv">1</span>, num <span class="op">=</span> <span class="dv">20</span>)</span>
+<span id="cb85-2"><a href="#cb85-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>array([0.        , 0.05263158, 0.10526316, 0.15789474, 0.21052632,
+       0.26315789, 0.31578947, 0.36842105, 0.42105263, 0.47368421,
+       0.52631579, 0.57894737, 0.63157895, 0.68421053, 0.73684211,
+       0.78947368, 0.84210526, 0.89473684, 0.94736842, 1.        ])</code></pre>
+</div>
+</div>
+<p>Per creare un vettore di <strong>valori ripetuti</strong> si usa il comando <code>ones</code>:</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>x <span class="op">=</span> np.repeat(<span class="fl">10.</span>, <span class="dv">7</span>) <span class="co"># Vettore in cui il numero 10 è ripetuto 7 volte</span></span>
+<span id="cb87-2"><a href="#cb87-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>array([10., 10., 10., 10., 10., 10., 10.])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>x <span class="op">=</span> np.zeros(<span class="dv">7</span>) <span class="co"># Vettore in cui il numero 0 è ripetuto 7 volte</span></span>
+<span id="cb89-2"><a href="#cb89-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>array([0., 0., 0., 0., 0., 0., 0.])</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-i" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sui-vettori-i">Operazioni sui vettori I</h2>
+<p>La maggior parte delle funzioni matematiche di <code>numpy</code> sono <strong>vettorizzate</strong>. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.</p>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">10</span>)</span>
+<span id="cb91-2"><a href="#cb91-2"></a>np.exp(x) <span class="op">+</span> x <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span> <span class="co"># Esempio 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>array([ 2.        ,  2.78184572,  3.8768699 ,  5.46033456,  7.80558248,
+       11.33892546, 16.72524943, 25.00152607, 37.78504082, 57.59815003])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, <span class="dv">10</span><span class="op">**</span><span class="dv">3</span>, <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, <span class="dv">10</span><span class="op">**</span><span class="dv">5</span>, <span class="dv">10</span><span class="op">**</span><span class="dv">6</span>]) <span class="co"># Esempio 2</span></span>
+<span id="cb93-2"><a href="#cb93-2"></a>np.log10(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>array([1., 2., 3., 4., 5., 6.])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb95-2"><a href="#cb95-2"></a>x <span class="op">&gt;</span> <span class="dv">4</span> <span class="co"># Esempio 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>array([False, False, False, False,  True,  True,  True,  True,  True,
+        True])</code></pre>
+</div>
+</div>
+<p>Altre funzioni invece sono utili proprio nel caso in cui l’<strong>argomento</strong> sia un <strong>vettore</strong>:</p>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>])</span>
+<span id="cb97-2"><a href="#cb97-2"></a><span class="bu">len</span>(x) <span class="co"># Lunghezza del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>6</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a>np.<span class="bu">sum</span>(x) <span class="co"># Somma degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>24</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a>np.cumsum(x) <span class="co"># Somme cumulate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>array([ 2,  5,  6,  9, 19, 24])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a><span class="co"># Una sintassi alternativa</span></span>
+<span id="cb103-2"><a href="#cb103-2"></a>x.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>24</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a>x.cumsum()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>array([ 2,  5,  6,  9, 19, 24])</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-ii" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sui-vettori-ii">Operazioni sui vettori II</h2>
+<p>Ulteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:</p>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>])</span>
+<span id="cb107-2"><a href="#cb107-2"></a>x.prod()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>900</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a>x.cumprod()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>array([  2,   6,   6,  18, 180, 900])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a>x.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>x.argmin() <span class="co"># Posizione del valore corrispondente al minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p>Il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:</p>
+<div class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>x.<span class="bu">max</span>() <span class="co"># Valore massimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>10</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a>x.argmax() <span class="co"># Posizione del valore corrispondente al massimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p>Per ordinare un vettore, è possibile usare il comando <code>sort</code>:</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a>np.sort(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>array([ 1,  2,  3,  3,  5, 10])</code></pre>
+</div>
+</div>
+<p>Attenzione alla alla differenza con la sua sintassi alternativa:</p>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a>x.sort()</span>
+<span id="cb121-2"><a href="#cb121-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>array([ 1,  2,  3,  3,  5, 10])</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-iii" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sui-vettori-iii">Operazioni sui vettori III</h2>
+<p>È possibile <strong>selezionare gli elementi</strong> di un vettore usando le parentesi quadrate, come nei seguenti esempi:</p>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb123-2"><a href="#cb123-2"></a>x <span class="op">=</span> np.concatenate([pi <span class="op">*</span> np.ones(<span class="dv">2</span>), np.array([np.sqrt(<span class="dv">2</span>), <span class="dv">10</span>, <span class="dv">7</span>])])</span>
+<span id="cb123-3"><a href="#cb123-3"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>array([ 3.14159265,  3.14159265,  1.41421356, 10.        ,  7.        ])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1"></a>x[<span class="dv">2</span>] <span class="co"># Estrae il terzo elemento dal vettore x, ovvero sqrt(2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>1.4142135623730951</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1"></a>x[[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]] <span class="co"># Estrae il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<pre><code>array([3.14159265, 1.41421356, 7.        ])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1"></a>np.delete(x, [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]) <span class="co"># Elimina il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>array([ 3.14159265, 10.        ])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1"></a>x[x <span class="op">&gt;</span> <span class="fl">3.5</span>] <span class="co"># Estrae gli elementi maggiori di 3.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>array([10.,  7.])</code></pre>
+</div>
+</div>
+<p>L’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una <strong>condizione</strong> relativa al vettore stesso.</p>
+</section>
+<section id="grafico-di-una-funzione" class="level2">
+<h2 class="anchored" data-anchor-id="grafico-di-una-funzione">Grafico di una funzione</h2>
+<p>In <strong>Python</strong> è possibile <strong>disegnare</strong> una qualsiasi funzione tramite il comando <code>curve</code>.</p>
+<p>Se ad esempio si considera la funzione <span class="math display">f(x) = \frac{\sin(x)}{x},</span> allora possiamo disegnare <span class="math inline">f(x)</span> nell’intervallo <span class="math inline">(0,15)</span> come segue:</p>
+<div class="cell" data-fig-height="5.5" data-fig-width="12" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb133-2"><a href="#cb133-2"></a></span>
+<span id="cb133-3"><a href="#cb133-3"></a>x <span class="op">=</span> np.linspace(<span class="fl">1e-15</span>, <span class="dv">15</span>, <span class="dv">200</span>)</span>
+<span id="cb133-4"><a href="#cb133-4"></a>y <span class="op">=</span> np.sin(x) <span class="op">/</span> x</span>
+<span id="cb133-5"><a href="#cb133-5"></a></span>
+<span id="cb133-6"><a href="#cb133-6"></a>plt.plot(x, y, <span class="st">'r'</span>)</span>
+<span id="cb133-7"><a href="#cb133-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="un_py_A_files/figure-html/cell-71-output-1.png" width="1212" height="856"></p>
+</div>
+</div>
+</section>
+<section id="matrici" class="level2">
+<h2 class="anchored" data-anchor-id="matrici">Matrici</h2>
+<p>Una <strong>matrice</strong> <span class="math inline">{\bf A}</span> è una collezione di elementi <span class="math inline">(a)_{ij}</span> per <span class="math inline">i=1,\dots,n</span> e <span class="math inline">j=1,\dots,m</span>.</p>
+<p>Per esempio, la matrice quadrata di dimensione <span class="math inline">2 \times 2</span></p>
+<p><span class="math display">{\bf A} = \begin{pmatrix}
+5 &amp; 2\\
+1 &amp; 4 \\
+\end{pmatrix},</span> si può definire in <strong>Python</strong> tramite il comando <code>matrix</code> come segue:</p>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1"></a>A <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">4</span>]])</span>
+<span id="cb134-2"><a href="#cb134-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>array([[5, 2],
+       [1, 4]])</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-i" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-i">Operazioni sulle matrici I</h2>
+<p>È possibile <strong>selezionare gli elementi</strong> di una matrice in maniera analoga a quanto fatto con i vettori.</p>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1"></a>A[<span class="dv">0</span>, <span class="dv">1</span>] <span class="co"># Estrazione di elemento in posizione (1,2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1"></a>A[:, <span class="dv">1</span>] <span class="co"># Estrazione seconda colonna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>array([2, 4])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1"></a>A[<span class="dv">0</span>, :] <span class="co"># Estrazione prima riga</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>array([5, 2])</code></pre>
+</div>
+</div>
+<p>Alcuni <strong>comandi di base</strong> per manipolare le matrici sono i seguenti</p>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1"></a>A.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<pre><code>(2, 2)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1"></a>a <span class="op">=</span> A.reshape(<span class="dv">4</span>) <span class="co"># Converte la matrice in un vettore</span></span>
+<span id="cb144-2"><a href="#cb144-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<pre><code>array([5, 2, 1, 4])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1"></a>A.diagonal() <span class="co"># Restituisce la diagonale della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<pre><code>array([5, 4])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1"></a>A.transpose() <span class="co"># Calcola la matrice trasposta A'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>array([[5, 1],
+       [2, 4]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1"></a>A.<span class="bu">sum</span>() <span class="co"># Somma di tutti gli elementi di A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<pre><code>12</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-ii" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-ii">Operazioni sulle matrici II</h2>
+<p>Come per i vettori, le operazioni elementari (somma, prodotto, <code>log</code>, <code>exp</code>, etc.) vengono eseguite <strong>elemento per elemento</strong>.</p>
+<div class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1"></a>np.exp(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<pre><code>array([[148.4131591 ,   7.3890561 ],
+       [  2.71828183,  54.59815003]])</code></pre>
+</div>
+</div>
+<p>Siano <span class="math inline">{\bf A}</span> e <span class="math inline">{\bf B}</span> due matrici aventi lo stesso numero di colonne e definiamo</p>
+<p><span class="math display">
+{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+</span></p>
+<div class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1"></a>B <span class="op">=</span> A <span class="co"># Creo una matrice B identica ad A, per semplicità</span></span>
+<span id="cb154-2"><a href="#cb154-2"></a>C <span class="op">=</span> np.vstack([A, B])</span>
+<span id="cb154-3"><a href="#cb154-3"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>array([[5, 2],
+       [1, 4],
+       [5, 2],
+       [1, 4]])</code></pre>
+</div>
+</div>
+<p>In maniera analoga, siano <span class="math inline">{\bf A}</span> e <span class="math inline">{\bf B}</span> due matrici aventi lo stesso numero di righe e definiamo <span class="math inline">{\bf C} = \begin{pmatrix}{\bf A} &amp; {\bf B} \end{pmatrix}</span>.</p>
+<div class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1"></a>C <span class="op">=</span> np.hstack([A, B])</span>
+<span id="cb156-2"><a href="#cb156-2"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<pre><code>array([[5, 2, 5, 2],
+       [1, 4, 1, 4]])</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-iii" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-iii">Operazioni sulle matrici III</h2>
+<p>Siano <span class="math inline">{\bf x}</span> e <span class="math inline">{\bf y}</span> due vettori colonna in <span class="math inline">\mathbb{R}^p</span>. Allora, il loro è pari a</p>
+<p><span class="math display">
+{\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
+</span></p>
+<p>In <strong>Python</strong> possiamo usare il comando <code>dot</code></p>
+<div class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1"></a>x <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">22</span>])</span>
+<span id="cb158-2"><a href="#cb158-2"></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">9</span>])</span>
+<span id="cb158-3"><a href="#cb158-3"></a>np.dot(x, y) <span class="co"># Equivalent a sum(x * y)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
+<pre><code>272</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-iv" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-iv">Operazioni sulle matrici IV</h2>
+<p>In algebra lineare il <strong>prodotto tra matrici</strong> compatibili <span class="math inline">{\bf A} {\bf B}</span> è chiamato prodotto righe per colonne. In <strong>Python</strong> si usa il comando seguente</p>
+<div class="cell" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">2</span>], [<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>]])</span>
+<span id="cb160-2"><a href="#cb160-2"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>], [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">7</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">8</span>, <span class="dv">10</span>]])</span>
+<span id="cb160-3"><a href="#cb160-3"></a></span>
+<span id="cb160-4"><a href="#cb160-4"></a>np.matmul(A, B) <span class="co"># Prodotto righe per colonne AB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>array([[  5, -16,  49],
+       [ 43,  19, 103],
+       [ 12,  -6,  44]])</code></pre>
+</div>
+</div>
+<p>Se le matrici non sono compatibili <strong>Python</strong> produce un errore (provateci per esercizio!)</p>
+<p><strong>Nota</strong>. Il comando <code>A * B</code> indica il prodotto elemento per elemento e non il prodotto righe per colonne.</p>
+<div class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1"></a>A <span class="op">*</span> B <span class="co"># Prodotto elemento per elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>array([[  5,   4,  15],
+       [ 12,  27,  14],
+       [ -4, -16,  20]])</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-v" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-v">Operazioni sulle matrici V</h2>
+<p>Sia <span class="math inline">{\bf A}</span> una matrice quadrata <span class="math inline">n \times n</span> a valori reali. La sua <strong>matrice inversa</strong> <span class="math inline">{\bf A}^{-1}</span>, quando esiste, è l’unica matrice tale per cui</p>
+<p><span class="math display">
+{\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
+</span></p>
+<p>Per ottenere <span class="math inline">{\bf A}^{-1}</span> si usa il comando <code>solve</code>.</p>
+<div class="cell" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">2</span>], [<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>]])</span>
+<span id="cb164-2"><a href="#cb164-2"></a>A1 <span class="op">=</span> np.linalg.inv(A) <span class="co"># Matrice inversa di A</span></span>
+<span id="cb164-3"><a href="#cb164-3"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<pre><code>array([[-0.58333333, -0.08333333,  0.95833333],
+       [ 0.16666667,  0.16666667, -0.41666667],
+       [ 0.41666667, -0.08333333, -0.04166667]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1"></a>np.around(np.matmul(A, A1), <span class="dv">5</span>) <span class="co"># Operazione di controllo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>array([[ 1., -0.,  0.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1"></a>np.linalg.det(A) <span class="co"># Calcola il determinante della matrice A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="87">
+<pre><code>-24.000000000000004</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-vi" class="level2">
+<h2 class="anchored" data-anchor-id="operazioni-sulle-matrici-vi">Operazioni sulle matrici VI</h2>
+<p>Nel caso una matrice non sia invertibile, il <strong>determinante</strong> è pari a <span class="math inline">0</span>. Il comando <code>inv</code> in quel caso produce un errore.</p>
+<div class="cell" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1"></a><span class="co"># Esempio di matrice NON invertibile</span></span>
+<span id="cb170-2"><a href="#cb170-2"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>], [<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>]])</span>
+<span id="cb170-3"><a href="#cb170-3"></a>np.linalg.det(A) <span class="co"># Deteminante pari a 0, np.linalg.inv(A) produce un errore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+<p>Ci sono numerose funzioni per la <strong>scomposizione di matrici</strong>, il cui output è a volte una <strong>lista</strong>.</p>
+<div class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1"></a>A <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">8</span>]])</span>
+<span id="cb172-2"><a href="#cb172-2"></a>np.linalg.cholesky(A) <span class="co"># Scomposizione di Cholesky</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>array([[2.        , 0.        ],
+       [0.5       , 2.78388218]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1"></a>np.linalg.qr(A) <span class="co"># Scomposizione QR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="90">
+<pre><code>(array([[-0.9701425 , -0.24253563],
+        [-0.24253563,  0.9701425 ]]),
+ array([[-4.12310563, -2.9104275 ],
+        [ 0.        ,  7.51860438]]))</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1"></a>np.linalg.eig(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
+<pre><code>(array([3.76393202, 8.23606798]),
+ array([[-0.97324899, -0.22975292],
+        [ 0.22975292, -0.97324899]]))</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="un_py_A_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

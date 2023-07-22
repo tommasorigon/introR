@@ -13,7 +13,7 @@ format:
     center: true
     html-math-method: katex
     transition: none
-    output-file: un_A_slides.html
+    output-file: un_D_slides.html
     slide-number: true
     callout-appearance: minimal
     code-line-numbers: true

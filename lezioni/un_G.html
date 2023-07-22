@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="un_G_files/libs/clipboard/clipboard.min.js"></script>
+<script src="un_G_files/libs/quarto-html/quarto.js"></script>
+<script src="un_G_files/libs/quarto-html/popper.min.js"></script>
+<script src="un_G_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="un_G_files/libs/quarto-html/anchor.min.js"></script>
+<link href="un_G_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="un_G_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="un_G_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="un_G_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="un_G_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#argomenti-affrontati" id="toc-argomenti-affrontati" class="nav-link active" data-scroll-target="#argomenti-affrontati">Argomenti affrontati</a></li>
+  <li><a href="#descrizione-del-problema" id="toc-descrizione-del-problema" class="nav-link" data-scroll-target="#descrizione-del-problema">Descrizione del problema</a></li>
+  <li><a href="#importazione-dei-dati-titanic" id="toc-importazione-dei-dati-titanic" class="nav-link" data-scroll-target="#importazione-dei-dati-titanic">Importazione dei dati <code>titanic</code></a></li>
+  <li><a href="#le-frequenze-assolute-e-relative-marginali" id="toc-le-frequenze-assolute-e-relative-marginali" class="nav-link" data-scroll-target="#le-frequenze-assolute-e-relative-marginali">Le frequenze assolute e relative (marginali)</a></li>
+  <li><a href="#frequenze-congiunte" id="toc-frequenze-congiunte" class="nav-link" data-scroll-target="#frequenze-congiunte">Frequenze congiunte</a></li>
+  <li><a href="#tabella-di-contingenza" id="toc-tabella-di-contingenza" class="nav-link" data-scroll-target="#tabella-di-contingenza">Tabella di contingenza</a></li>
+  <li><a href="#tabella-di-contingenza-frequenze-relative" id="toc-tabella-di-contingenza-frequenze-relative" class="nav-link" data-scroll-target="#tabella-di-contingenza-frequenze-relative">Tabella di contingenza, frequenze relative</a></li>
+  <li><a href="#frequenze-congiunte-marginali" id="toc-frequenze-congiunte-marginali" class="nav-link" data-scroll-target="#frequenze-congiunte-marginali">Frequenze congiunte &amp; marginali</a></li>
+  <li><a href="#distribuzioni-condizionate-i" id="toc-distribuzioni-condizionate-i" class="nav-link" data-scroll-target="#distribuzioni-condizionate-i">Distribuzioni condizionate I</a></li>
+  <li><a href="#distribuzioni-condizionate-ii" id="toc-distribuzioni-condizionate-ii" class="nav-link" data-scroll-target="#distribuzioni-condizionate-ii">Distribuzioni condizionate II</a></li>
+  <li><a href="#rappresentazioni-grafiche" id="toc-rappresentazioni-grafiche" class="nav-link" data-scroll-target="#rappresentazioni-grafiche">Rappresentazioni grafiche</a></li>
+  <li><a href="#strumenti-grafici-avanzati-opzionale" id="toc-strumenti-grafici-avanzati-opzionale" class="nav-link" data-scroll-target="#strumenti-grafici-avanzati-opzionale">Strumenti grafici avanzati (opzionale)</a></li>
+  <li><a href="#esercizio-riassuntivo" id="toc-esercizio-riassuntivo" class="nav-link" data-scroll-target="#esercizio-riassuntivo">Esercizio riassuntivo</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="un_G_slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Unità G: analisi descrittiva dei dati <code>titanic</code></p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><span class="orange">Tommaso Rigon</span> </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <em>Università degli Studi di Milano-Bicocca</em>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="argomenti-affrontati" class="level2">
+<h2 class="anchored" data-anchor-id="argomenti-affrontati">Argomenti affrontati</h2>
+<ul>
+<li>Dati qualitativi</li>
+<li>Tabelle di contingenza</li>
+<li>Distribuzioni condizionate</li>
+<li>Indipendenza e indice di connessione <span class="math inline">\chi^2</span></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gli esercizi <strong>R</strong> associati sono disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_2.html">questo link</a></p>
+</div>
+</div>
+</section>
+<section id="descrizione-del-problema" class="level2">
+<h2 class="anchored" data-anchor-id="descrizione-del-problema">Descrizione del problema</h2>
+<p>Dopo il <strong>disastro del Titanic</strong>, una commissione d’inchiesta del <em>British Board of Trade</em> ha compilato una lista di tutti i 1316 passeggeri includendo le seguenti informazioni:</p>
+<ul>
+<li>l’esito (salvato, non salvato)</li>
+<li>la classe (I, II, III) in cui viaggiavano</li>
+<li>il sesso, l’età, etc.</li>
+</ul>
+<p>In questa unità ci limitiamo a considerare le informazioni sull’<code>esito</code> e la <code>classe</code>.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ovviamente, si tratta degli stessi dati considerati nell’<strong>unità O</strong> del corso Statistica I.</p>
+</div>
+</div>
+</section>
+<section id="importazione-dei-dati-titanic" class="level2">
+<h2 class="anchored" data-anchor-id="importazione-dei-dati-titanic">Importazione dei dati <code>titanic</code></h2>
+<p>Come fatto in precedenza, anzitutto è necessario scaricare il file <code>titanic.csv</code> e salvarlo nel proprio computer. <a href="../dataset/titanic.csv">Link al file</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/titanic.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In alternativa, possiamo semplice ottenerli usando il link:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>path <span class="ot">&lt;-</span> <span class="st">"https://tommasorigon.github.io/introR/dataset/titanic.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1316 obs. of  2 variables:
+ $ Salvato: Factor w/ 2 levels "No","Si": 2 2 2 2 2 2 2 2 2 2 ...
+ $ Classe : Factor w/ 3 levels "I","II","III": 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="le-frequenze-assolute-e-relative-marginali" class="level2">
+<h2 class="anchored" data-anchor-id="le-frequenze-assolute-e-relative-marginali">Le frequenze assolute e relative (marginali)</h2>
+<p>Possiamo ottenere le frequenze assolute (marginali) delle due variabili usando il comando <code>summary</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">summary</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Salvato  Classe   
+ No:817   I  :325  
+ Si:499   II :285  
+          III:706  </code></pre>
+</div>
+</div>
+<p>Ovviamente, possiamo ottenere le frequenze <strong>assolute</strong> e <strong>relative</strong> anche usando il comando <code>table</code>. Ad esempio per la variabile <code>classe</code>, possiamo utilizzare:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>freq_abs_classe <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic<span class="sc">$</span>Classe)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>freq_rel_classe <span class="ot">&lt;-</span> freq_abs_classe <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_classe)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>tab_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(freq_abs_classe, freq_rel_classe)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>tab_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    freq_abs_classe freq_rel_classe
+I               325       0.2469605
+II              285       0.2165653
+III             706       0.5364742</code></pre>
+</div>
+</div>
+</section>
+<section id="frequenze-congiunte" class="level2">
+<h2 class="anchored" data-anchor-id="frequenze-congiunte">Frequenze congiunte</h2>
+<p>Una sintesi che possiamo operare consiste nel costruire una tabella, detta <strong>tabella di contingenza</strong> oppure <strong>tabella a doppia entrata</strong>.</p>
+<p>In <strong>R</strong> si usa anche in questo caso il comando <code>table</code>, con due argomenti:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    
+       I  II III
+  No 122 167 528
+  Si 203 118 178</code></pre>
+</div>
+</div>
+<p>In questa tabella sono riportate le <strong>frequenze congiunte</strong>, ad esempio, il valore <span class="math inline">203</span> rappresenta il numero di passeggeri che viaggiavano in I classe e che sono sopravvissuti.</p>
+</section>
+<section id="tabella-di-contingenza" class="level2">
+<h2 class="anchored" data-anchor-id="tabella-di-contingenza">Tabella di contingenza</h2>
+<p>Siano <span class="math inline">x</span> ed <span class="math inline">y</span> due variabili aventi modalità <span class="math inline">c_1,\dots,c_h</span> e <span class="math inline">d_1,\dots,d_k</span>, rispettivamente.</p>
+<p>Una <strong>tabella di contingenza</strong> (a due variabili) per le coppie di dati <span class="math inline">(x_1,y_1),\dots,(x_n,y_n)</span> si presenta nella seguente forma:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th></th>
+<th>Variabile <span class="math inline">y</span></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Variabile</strong> <span class="math inline">x</span></td>
+<td><span class="math inline">d_1</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">d_j</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">d_k</span></td>
+<td><strong>Totale</strong></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">c_1</span></td>
+<td><span class="math inline">n_{11}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{1j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{1k}</span></td>
+<td><span class="math inline">n_{1+}</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">c_i</span></td>
+<td><span class="math inline">n_{i1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ij}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ik}</span></td>
+<td><span class="math inline">n_{i+}</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">c_h</span></td>
+<td><span class="math inline">n_{h1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{hj}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{hk}</span></td>
+<td><span class="math inline">n_{h+}</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Totale</strong></td>
+<td><span class="math inline">n_{+1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{+j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{+k}</span></td>
+<td><span class="math inline">n</span></td>
+</tr>
+</tbody>
+</table>
+<p>La frequenza <span class="math inline">n_{ij}</span> è il numero di unità statistica che presentano contemporaneamente le modalità <span class="math inline">c_i</span> e <span class="math inline">d_j</span>.</p>
+</section>
+<section id="tabella-di-contingenza-frequenze-relative" class="level2">
+<h2 class="anchored" data-anchor-id="tabella-di-contingenza-frequenze-relative">Tabella di contingenza, frequenze relative</h2>
+<p>Dividendo per <span class="math inline">n</span> ciascun termine della precedente tabella, si ottiene inoltre:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th></th>
+<th>Variabile <span class="math inline">y</span></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Variabile</strong> <span class="math inline">x</span></td>
+<td><span class="math inline">d_1</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">d_j</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">d_k</span></td>
+<td><strong>Totale</strong></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">c_1</span></td>
+<td><span class="math inline">f_{11}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{1j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{1k}</span></td>
+<td><span class="math inline">f_{1+}</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">c_i</span></td>
+<td><span class="math inline">f_{i1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{ij}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{ik}</span></td>
+<td><span class="math inline">f_{i+}</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td></td>
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">c_h</span></td>
+<td><span class="math inline">f_{h1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{hj}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{hk}</span></td>
+<td><span class="math inline">f_{h+}</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Totale</strong></td>
+<td><span class="math inline">f_{+1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{+j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">f_{+k}</span></td>
+<td><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<p>La frequenza relativa <span class="math inline">f_{ij} = n_{ij} / n</span> è quindi la frazione di osservazioni che presentano contemporaneamente le modalità <span class="math inline">c_i</span> e <span class="math inline">d_j</span>.</p>
+</section>
+<section id="frequenze-congiunte-marginali" class="level2">
+<h2 class="anchored" data-anchor-id="frequenze-congiunte-marginali">Frequenze congiunte &amp; marginali</h2>
+<p>Le tabelle descritte nei paragrafi precedenti si ottengono in <strong>R</strong> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">addmargins</span>(tab) <span class="co"># Aggiunge le distribuzioni marginali (assolute)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     
+         I   II  III  Sum
+  No   122  167  528  817
+  Si   203  118  178  499
+  Sum  325  285  706 1316</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>tab_rel <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab) <span class="co"># Comando alternativo: table(tab) / sum(tab)</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>tab_rel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    
+              I         II        III
+  No 0.09270517 0.12689970 0.40121581
+  Si 0.15425532 0.08966565 0.13525836</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">addmargins</span>(tab_rel) <span class="co"># Aggiunge le distribuzioni marginali relative</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     
+               I         II        III        Sum
+  No  0.09270517 0.12689970 0.40121581 0.62082067
+  Si  0.15425532 0.08966565 0.13525836 0.37917933
+  Sum 0.24696049 0.21656535 0.53647416 1.00000000</code></pre>
+</div>
+</div>
+</section>
+<section id="distribuzioni-condizionate-i" class="level2">
+<h2 class="anchored" data-anchor-id="distribuzioni-condizionate-i">Distribuzioni condizionate I</h2>
+<section id="distribuzione-condizionata-x-mid-y-d_j" class="level4">
+<h4 class="anchored" data-anchor-id="distribuzione-condizionata-x-mid-y-d_j">Distribuzione condizionata <span class="math inline">(x \mid y = d_j)</span></h4>
+<p>La <span class="math inline">j</span>-esima colonna mostra la distribuzione di <span class="math inline">x</span> <strong>condizionata</strong> ad <span class="math inline">y = d_j</span> oppure, equivalentemente, la distribuzione di <span class="math inline">x</span> dato <span class="math inline">y = d_j</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribuzione <span class="math inline">x \mid y = d_j</span></th>
+<th><span class="math inline">c_1</span></th>
+<th><span class="math inline">\dots</span></th>
+<th><span class="math inline">c_i</span></th>
+<th><span class="math inline">\dots</span></th>
+<th><span class="math inline">c_h</span></th>
+<th>Totale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frequenze assolute</td>
+<td><span class="math inline">n_{1j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ij}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{hj}</span></td>
+<td><span class="math inline">n_{+j}</span></td>
+</tr>
+<tr class="even">
+<td>Frequenze relative</td>
+<td><span class="math inline">n_{1j} / n_{+j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ij} / n_{+j}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{hj} / n_{+j}</span></td>
+<td><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="distribuzione-condizionata-y-mid-x-c_i" class="level4">
+<h4 class="anchored" data-anchor-id="distribuzione-condizionata-y-mid-x-c_i">Distribuzione condizionata <span class="math inline">(y \mid x = c_i)</span></h4>
+<p>La <span class="math inline">i</span>-esima riga mostra la distribuzione di <span class="math inline">y</span> <strong>condizionata</strong> ad <span class="math inline">x = c_i</span> oppure, equivalentemente, la distribuzione di <span class="math inline">y</span> dato <span class="math inline">x = c_i</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribuzione <span class="math inline">y \mid x = c_i</span></th>
+<th><span class="math inline">d_1</span></th>
+<th><span class="math inline">\dots</span></th>
+<th><span class="math inline">d_j</span></th>
+<th><span class="math inline">\dots</span></th>
+<th><span class="math inline">d_k</span></th>
+<th>Totale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frequenze assolute</td>
+<td><span class="math inline">n_{i1}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ij}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ik}</span></td>
+<td><span class="math inline">n_{i+}</span></td>
+</tr>
+<tr class="even">
+<td>Frequenze relative</td>
+<td><span class="math inline">n_{i1} / n_{i+}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ij} / n_{i+}</span></td>
+<td><span class="math inline">\dots</span></td>
+<td><span class="math inline">n_{ik} / n_{i+}</span></td>
+<td><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="distribuzioni-condizionate-ii" class="level2">
+<h2 class="anchored" data-anchor-id="distribuzioni-condizionate-ii">Distribuzioni condizionate II</h2>
+<p>Il comando <code>prop.table</code> consente anche di calcolare le frequenze condizionate relative.</p>
+<p>La distribuzione di ciascuna classe, condizionata all’esito è:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">prop.table</span>(tab, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    
+             I        II       III
+  No 0.1493268 0.2044064 0.6462668
+  Si 0.4068136 0.2364729 0.3567134</code></pre>
+</div>
+</div>
+<p>La distribuzione di ciascun esito, condizionata alla classe è:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">prop.table</span>(tab, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    
+             I        II       III
+  No 0.3753846 0.5859649 0.7478754
+  Si 0.6246154 0.4140351 0.2521246</code></pre>
+</div>
+</div>
+</section>
+<section id="rappresentazioni-grafiche" class="level2">
+<h2 class="anchored" data-anchor-id="rappresentazioni-grafiche">Rappresentazioni grafiche</h2>
+<p>È possibile rappresentare graficamente i dati di una tabella di contingenza tramite un diagramma a barre, che in <strong>R</strong> è implementato tramite il comando <code>barplot</code>.</p>
+<p>Una rappresentazione grafica delle frequenze congiunte è pertanto la seguente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend.text =</span> <span class="cn">TRUE</span>) <span class="co"># Beside = TRUE "affianca" i rettangoli.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+<p>Se fossimo interessati a mostrare le frequenze condizionate, possiamo invece usare:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(tab, <span class="dv">2</span>),</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="at">beside =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="at">xlab =</span> <span class="st">"Classe"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="at">legend.text =</span> <span class="cn">TRUE</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>) <span class="co"># Beside = FALSE "mette in colonna" i rettangoli.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="strumenti-grafici-avanzati-opzionale" class="level2">
+<h2 class="anchored" data-anchor-id="strumenti-grafici-avanzati-opzionale">Strumenti grafici avanzati (opzionale)</h2>
+<section id="il-pacchetto-ggplot2" class="level4">
+<h4 class="anchored" data-anchor-id="il-pacchetto-ggplot2">Il pacchetto <code>ggplot2</code></h4>
+<p>Il cosiddetto <strong>R</strong> <code>base</code> contiene un’ampia gamma di rappresentazioni grafiche. Ciò nonostante, un pacchetto grafico di <strong>R</strong> chiamato <code>ggplot2</code> ha recentemente acquisito notevole popolarità.</p>
+<p>Carichiamolo anzitutto in memoria:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Quindi, il primo grafico mostrato in precedenza si può ottenere con la sintassi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze assolute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+<p>Mentre il secondo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze relative"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="un_G_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="1400"></p>
+</div>
+</div>
+</section>
+<section id="grafici-interattivi-tramite-flourish" class="level4">
+<h4 class="anchored" data-anchor-id="grafici-interattivi-tramite-flourish">Grafici interattivi tramite <strong>Flourish</strong></h4>
+<p>In particolar modo nell’ambito del cosiddetto <em>data journalism</em>, si è diffuso uno strumento per creare grafici interattivi chiamato <a href="https://flourish.studio"><strong>Flourish</strong></a>.</p>
+<p>Si vedano ad esempio questo <a href="https://www.infodata.ilsole24ore.com/2023/01/08/quanto-siamo-veramente-preoccupati-e-cosa-stiamo-facendo-nel-concreto-il-sondaggio/">articolo del Sole 24 Ore</a>, oppure questo <a href="https://www.ilpost.it/2022/11/08/evasione-fiscale-quanto-vale/">articolo del Post</a>.</p>
+<p>Il vantaggio principale della <em>web-app</em> Flourish è la sua semplicità d’uso. Inoltre, i grafici prodotti sono, di solito, esteticamente gradevoli.</p>
+<p>Un esempio con i dati <code>titanic</code>:</p>
+<div class="flourish-embed flourish-chart" data-src="visualisation/12389352">
+<script src="https://public.flourish.studio/resources/embed.js"></script>
+</div>
+<p>Un secondo esempio con i dati <code>titanic</code>:</p>
+<div class="flourish-embed flourish-chart" data-src="visualisation/12387362">
+<script src="https://public.flourish.studio/resources/embed.js"></script>
+</div>
+</section>
+</section>
+<section id="esercizio-riassuntivo" class="level2">
+<h2 class="anchored" data-anchor-id="esercizio-riassuntivo">Esercizio riassuntivo</h2>
+<p>Le <strong>contingenze</strong> sono pari alla differenza tra frequenze osservate e frequenze attese, sotto l’ipotesi di indipendenza: <span class="math display">
+(\text{contingenza}_{ij}) = n_{ij} - \hat{n}_{ij}, \qquad i=1,\dots,h,\quad j=1,\dots,k.
+</span></p>
+<p>Si consulti l’<strong>unità O</strong> di Statistica I per la definizione di <strong>frequenze attese</strong>.</p>
+<p>L’indice di connessione <span class="math inline">\chi^2</span> è definito come <span class="math display">
+\chi^2 = \sum_{i=1}^h\sum_{j=1}^k \frac{(n_{ij} - \hat{n}_{ij})^2}{\hat{n}_{ij}} = n\left(\sum_{i=1}^h\sum_{j=1}^k\frac{f_{ij}^2}{f_{i+}f_{+j}} - 1\right).
+</span></p>
+<p>Si scriva una funzione <strong>R</strong> chiamata <code>chi_squared(x, y)</code> che calcola l’indice <span class="math inline">\chi^2</span> di Pearson.</p>
+<section id="soluzione" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb26-2"><a href="#cb26-2"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n <span class="co"># Frequenze relative congiunte</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">table</span>(x) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di x</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">table</span>(y) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di y</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  S <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_x)) {</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_y)) {</span>
+<span id="cb26-10"><a href="#cb26-10"></a>      S <span class="ot">&lt;-</span> S <span class="sc">+</span> ff[i, j]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (f_x[i] <span class="sc">*</span> f_y[j])</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    }</span>
+<span id="cb26-12"><a href="#cb26-12"></a>  }</span>
+<span id="cb26-13"><a href="#cb26-13"></a>  n <span class="sc">*</span> (S <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb26-14"><a href="#cb26-14"></a>}</span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     No 
+133.052 </code></pre>
+</div>
+</div>
+</section>
+<section id="soluzione-alternativa-più-concisa" class="level4">
+<h4 class="anchored" data-anchor-id="soluzione-alternativa-più-concisa">Soluzione (alternativa, più concisa)</h4>
+<p>La soluzione seguente fa uso delle funzioni <code>apply</code> e <code>outer</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n</span>
+<span id="cb28-5"><a href="#cb28-5"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">1</span>, sum)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">2</span>, sum)</span>
+<span id="cb28-7"><a href="#cb28-7"></a>  f_e <span class="ot">&lt;-</span> <span class="fu">outer</span>(f_x, f_y) <span class="co"># Prodotto "esterno" tra vettori</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>  n <span class="sc">*</span> (<span class="fu">sum</span>(ff<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> f_e) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a>}</span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 133.052</code></pre>
+</div>
+</div>
+<p>Infine, si noti che la funzione <code>chisq.test</code> produce lo stesso risultato.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  table(titanic$Salvato, titanic$Classe)
+X-squared = 133.05, df = 2, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="un_G_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

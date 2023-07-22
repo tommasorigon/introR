@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="un_D_files/libs/clipboard/clipboard.min.js"></script>
-<script src="un_D_files/libs/quarto-html/tabby.min.js"></script>
-<script src="un_D_files/libs/quarto-html/popper.min.js"></script>
-<script src="un_D_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="un_D_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="un_D_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="un_D_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="un_D_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="un_A_files/libs/clipboard/clipboard.min.js"></script>
+<script src="un_A_files/libs/quarto-html/tabby.min.js"></script>
+<script src="un_A_files/libs/quarto-html/popper.min.js"></script>
+<script src="un_A_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="un_A_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="un_A_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="un_A_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="un_A_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Tommaso Rigon">
@@ -15,8 +15,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="un_D_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="un_D_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="un_A_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="un_A_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="un_D_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="un_A_files/libs/revealjs/dist/theme/quarto.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -112,10 +112,10 @@
 }}});
   </script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
-  <link href="un_D_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="un_D_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="un_D_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="un_D_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="un_A_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="un_A_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="un_A_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="un_A_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -407,7 +407,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">R per l’analisi statistica multivariata</h1>
-  <p class="subtitle">Unità D: analisi descrittiva dei dati <code>dde</code></p>
+  <p class="subtitle">Unità A: calcolo scientifico ed algebra lineare</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -421,13 +421,13 @@
 </div>
 
 </section>
-<section id="argomenti-affrontati" class="slide level2 center">
-<h2>Argomenti affrontati</h2>
+<section id="unità-a" class="slide level2 center">
+<h2>Unità A</h2>
 <ul>
-<li>Frequenze assolute, relative</li>
-<li>La funzione di ripartizione</li>
-<li>Rappresentazioni grafiche (boxplot, istogrammi)</li>
-<li>Indici di posizione (media, mediana, quantili)</li>
+<li>A-B-C: il software <strong>R</strong> come calcolatrice scientifica</li>
+<li>Operazioni di routine: pulizia del <em>workspace</em>, simboli speciali</li>
+<li>Funzioni matematiche, grafico di una funzione, operazioni logiche</li>
+<li>Operazioni con vettori e matrici</li>
 </ul>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
@@ -435,282 +435,44 @@
 <p><strong>Nota</strong></p>
 </div>
 <div class="callout-content">
-<p>Gli esercizi <strong>R</strong> associati sono disponibili a <a href="https://tommasorigon.github.io/introR/exe/es_2.html">questo link</a></p>
+<p>Esercizi <strong>R</strong> associati sono diponibili a <a href="https://tommasorigon.github.io/introR/exe/es_1.html">questo link</a></p>
 </div>
 </div>
 </div>
 </section>
-<section id="il-problema-epidemiologico" class="slide level2 center">
-<h2>Il problema epidemiologico</h2>
-<p>Il <code>DDT</code> è estremamente efficace contro le zanzare da malaria ed è pertanto largamente usato in zone in cui la malaria è endemica.</p>
-<p>Al tempo stesso, il <code>DDT</code> potrebbe costituire un <strong>rischio per la salute</strong>, specialmente nel caso di <strong>donne in gravidanza</strong>.</p>
-<p>Per un campione di <span class="math inline">n = 2312</span> donne in gravidanza, viene misurato il <code>DDE</code>, ovvero una sostanza connessa al <code>DDT</code>, presente nel siero materno durante il terzo trimestre della gravidanza.</p>
-<p>La variabile <code>GAD</code> (Gestational Age at Delivery) misura invece a quale giorno della gravidanza è avvenuto il parto.</p>
-<div class="callout callout-note no-icon callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Domanda di ricerca</strong></p>
-</div>
-<div class="callout-content">
-<p>La quantità di <code>DDE</code> è maggiore tra donne che hanno partorito prematuramente?</p>
-</div>
-</div>
-</div>
-</section>
-<section id="importazione-dei-dati-dde" class="slide level2 center">
-<h2>Importazione dei dati <code>dde</code></h2>
-<p>Per poter procedere con i prossimi comandi, è necessario scaricare il file <code>dde.csv</code> e salvarlo nel proprio computer. <a href="../dataset/dde.csv">Link al file</a></p>
+<section id="calcolatrice-scientifica" class="slide level2 center">
+<h2>Calcolatrice scientifica</h2>
+<p>Anzitutto, <strong>R</strong> può essere usato come se fosse una <em>calcolatrice scientifica</em>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>dde <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/dde.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
 </div>
-<p>In alternativa, possiamo semplice ottenerli usando il link:</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">4</span> <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="co"># La somma entro parentesi viene eseguita per prima</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>pi <span class="sc">/</span> <span class="dv">4</span> <span class="co"># Pi greco quarti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7853982</code></pre>
+</div>
+</div>
+<p>Per calcolare la potenza <span class="math inline">a^b</span> si usa:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>dde <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"https://tommasorigon.github.io/introR/dataset/dde.csv"</span>,</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>) <span class="co"># Scarica il file da internet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span> <span class="co"># Sintassi alternativa: 2**5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
 </div>
+</div>
+<p>Le quantità <span class="math inline">\sqrt{2}</span> e <span class="math inline">\sin(\pi/4)</span> si ottengono invece con i comandi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(dde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   2312 obs. of  2 variables:
- $ DDE: num  24.6 15.6 54.8 15 33.5 ...
- $ GAD: int  292 289 252 285 281 283 277 284 293 277 ...</code></pre>
+<pre><code>[1] 1.414214</code></pre>
 </div>
-</div>
-<p>Si noti la presenza di una nuova <strong>tipologia di variabile</strong>, ovvero <code>integer</code>, ovvero <strong>numeri interi</strong>.</p>
-</section>
-<section id="operazioni-preliminari" class="slide level2 center">
-<h2>Operazioni preliminari</h2>
-<p>Un totale di <span class="math inline">361</span> donne hanno <strong>partorito prematuramente</strong>, ovvero prima della conclusione della 37a settimana.</p>
-<p>Per verificare questo, dividiamo la variabile <code>DDE</code> in due gruppi.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dde_preterm <span class="ot">&lt;-</span> dde<span class="sc">$</span>DDE[dde<span class="sc">$</span>GAD <span class="sc">&lt;</span> <span class="dv">37</span> <span class="sc">*</span> <span class="dv">7</span>] <span class="co"># Gruppo parto prematuro</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>dde_non_preterm <span class="ot">&lt;-</span> dde<span class="sc">$</span>DDE[dde<span class="sc">$</span>GAD <span class="sc">&gt;=</span> <span class="dv">37</span> <span class="sc">*</span> <span class="dv">7</span>] <span class="co"># Gruppo parto non prematuro</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">length</span>(dde_preterm) <span class="co"># Numerosità campionaria gruppo 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 361</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">length</span>(dde_non_preterm) <span class="co"># Numerosità campionaria gruppo 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1951</code></pre>
-</div>
-</div>
-<p>Il primo gruppo (variabile <code>dde_preterm</code>) fa riferimento ai parti prematuri e comprende <span class="math inline">361</span> osservazioni.</p>
-<p>Il secondo gruppo (variabile <code>dde_non_preterm</code>) considera i parti non prematuri e comprende le restanti <span class="math inline">1951</span> osservazioni.</p>
-</section>
-<section id="suddivisione-in-intervalli" class="slide level2 center">
-<h2>Suddivisione in intervalli</h2>
-<p>Per sintetizzare i dati tramite <strong>frequenze</strong>, possiamo suddividere l’intervallo che contiene tutti i valori osservati (ovvero <span class="math inline">(0,180]</span>) in un certo numero di <strong>sotto-intervalli</strong>.</p>
-<p>In primo luogo, definiamo i <span class="math inline">10</span> sotto-intervalli di lunghezza <span class="math inline">18</span>, chiusi a destra tramite il comando <code>cut</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>breaks <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">*</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Definizione degli intervalli. Usiamo 10 intervalli di lunghezza 18.</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a>dde_preterm_class <span class="ot">&lt;-</span> <span class="fu">cut</span>(dde_preterm, <span class="at">breaks =</span> breaks)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>dde_non_preterm_class <span class="ot">&lt;-</span> <span class="fu">cut</span>(dde_non_preterm, <span class="at">breaks =</span> breaks)</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">head</span>(dde_preterm_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] (54,72] (18,36] (18,36] (0,18]  (0,18]  (18,36]
-10 Levels: (0,18] (18,36] (36,54] (54,72] (72,90] (90,108] ... (162,180]</code></pre>
-</div>
-</div>
-<p>In questo modo, abbiamo trasformato una variabile <code>numeric</code> in una variabile <code>factor</code>.</p>
-</section>
-<section id="frequenze-assolute" class="slide level2 center">
-<h2>Frequenze assolute</h2>
-<p>Le <strong>frequenze assolute</strong> <span class="math inline">n_1,\dots, n_k</span> si ottengono quindi tramite il comando <code>table</code>, il quale ha senso di essere applicato su variabili di tipo <code>factor</code>.</p>
-<p>La funzione <code>table</code> <strong>conteggia</strong> quante volte una determinata modalità compare nel vettore.</p>
-<p>Eseguiamo questa operazione per entrambi i gruppi di dati:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>freq_abs_preterm <span class="ot">&lt;-</span> <span class="fu">table</span>(dde_preterm_class)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>freq_abs_preterm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dde_preterm_class
-   (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
-       68       164        65        34        14        10         3         1 
-(144,162] (162,180] 
-        1         1 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>freq_abs_non_preterm <span class="ot">&lt;-</span> <span class="fu">table</span>(dde_non_preterm_class)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>freq_abs_non_preterm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dde_non_preterm_class
-   (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
-      573       906       308        91        40        19         6         5 
-(144,162] (162,180] 
-        2         1 </code></pre>
-</div>
-</div>
-</section>
-<section id="frequenze-relative" class="slide level2 center">
-<h2>Frequenze relative</h2>
-<p>Una volta ottenute le frequenze assolute, è possibile calcolare le <strong>frequenze relative</strong>.</p>
-<p>Sebbene sia possibile usare comando <code>prop.table</code> (lo re-incontreremo in seguito), qui seguiamo una via più diretta.</p>
-<p>Si ricordi infatti che <span class="math inline">n = n_1 + \cdots + n_k</span>, pertanto possiamo ottenere le frequenze relative <span class="math inline">f_j = n_j / n</span> come segue:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>freq_rel_preterm <span class="ot">&lt;-</span> freq_abs_preterm <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_preterm)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">round</span>(freq_rel_preterm, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dde_preterm_class
-   (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
-    0.188     0.454     0.180     0.094     0.039     0.028     0.008     0.003 
-(144,162] (162,180] 
-    0.003     0.003 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>freq_rel_non_preterm <span class="ot">&lt;-</span> freq_abs_non_preterm <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_non_preterm)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">round</span>(freq_rel_non_preterm, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dde_non_preterm_class
-   (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
-    0.294     0.464     0.158     0.047     0.021     0.010     0.003     0.003 
-(144,162] (162,180] 
-    0.001     0.001 </code></pre>
-</div>
-</div>
-</section>
-<section id="organizzazione-dei-risultati" class="slide level2 center">
-<h2>Organizzazione dei risultati</h2>
-<p>Raccogliamo quindi i risultati appena ottenuti all’interno di una matrice, per poterli visualizzare meglio.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>tab_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb19-2"><a href="#cb19-2"></a>  freq_abs_preterm, freq_abs_non_preterm,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>  freq_rel_preterm, freq_rel_non_preterm</span>
-<span id="cb19-4"><a href="#cb19-4"></a>)</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="fu">colnames</span>(tab_summary) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb19-7"><a href="#cb19-7"></a>  <span class="st">"n_j prematura"</span>,</span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="st">"n_j non prematura"</span>,</span>
-<span id="cb19-9"><a href="#cb19-9"></a>  <span class="st">"f_j prematura"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10"></a>  <span class="st">"f_j non prematura"</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>)</span>
-<span id="cb19-12"><a href="#cb19-12"></a></span>
-<span id="cb19-13"><a href="#cb19-13"></a><span class="fu">round</span>(tab_summary, <span class="dv">3</span>) <span class="co"># Visualizzazione dei risultati</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          n_j prematura n_j non prematura f_j prematura f_j non prematura
-(0,18]               68               573         0.188             0.294
-(18,36]             164               906         0.454             0.464
-(36,54]              65               308         0.180             0.158
-(54,72]              34                91         0.094             0.047
-(72,90]              14                40         0.039             0.021
-(90,108]             10                19         0.028             0.010
-(108,126]             3                 6         0.008             0.003
-(126,144]             1                 5         0.003             0.003
-(144,162]             1                 2         0.003             0.001
-(162,180]             1                 1         0.003             0.001</code></pre>
-</div>
-</div>
-</section>
-<section id="gli-istogrammi-i" class="slide level2 center">
-<h2>Gli istogrammi I</h2>
-<p>L’<strong>istogramma</strong> consente di rappresentare graficamente una distribuzione di frequenza. Per rinfrescare la memoria, si ricordi che nella sua versione più semplice si pone:</p>
-<p><span class="math display">
-\begin{aligned}
-(\text{base rettangoli}) &amp;= (\text{lunghezza intervalli}) \\
-(\text{altezza rettangoli}) &amp;= (\text{frequenze assolute})
-\end{aligned}
-</span></p>
-<p>Questa definizione <strong>non è appropriata</strong> se gli <strong>intervalli</strong> hanno <strong>dimensioni diverse</strong>.</p>
-<p>In tal caso, è le altezze dei rettangoli devono essere <strong>proporzionali</strong> alla <strong>densità</strong> delle osservazioni nelle singole classi.</p>
-<p>Ricapitolando, costruiremo gli istogrammi ponendo</p>
-<p><span class="math display">
-\begin{aligned}
-(\text{base rettangoli}) &amp;= (\text{lunghezza intervalli}) \\
-(\text{altezza rettangoli}) &amp;= \lambda \times (\text{densità}) = \lambda \times \frac{(\text{frequenze assolute}) }{(\text{lunghezza intervalli})}
-\end{aligned}
-</span></p>
-<p>dove tipicamente si pone <span class="math inline">\lambda = 1/n</span>.</p>
-</section>
-<section id="gli-istogrammi-ii" class="slide level2 center">
-<h2>Gli istogrammi II</h2>
-<p>Concentriamoci inizialmente solo sul gruppo di <strong>nascite non premature</strong>, per capire il funzionamento della sintassi di <strong>R</strong>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Divide il grafico in due parti</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Primo grafico, frequenze assolute</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="at">freq =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="at">breaks =</span> <span class="dv">10</span>, <span class="co"># Utilizzo 10 sotto-intervalli</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span>,</span>
-<span id="cb21-9"><a href="#cb21-9"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
-<span id="cb21-10"><a href="#cb21-10"></a>  <span class="at">ylab =</span> <span class="st">"Frequenze assolute"</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a>)</span>
-<span id="cb21-12"><a href="#cb21-12"></a></span>
-<span id="cb21-13"><a href="#cb21-13"></a><span class="co"># Secondo grafico, densità</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb21-15"><a href="#cb21-15"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="co"># NON vengono usate le frequenze</span></span>
-<span id="cb21-16"><a href="#cb21-16"></a>  <span class="at">breaks =</span> <span class="dv">10</span>, <span class="co"># Utilizzo 10 sotto-intervalli</span></span>
-<span id="cb21-17"><a href="#cb21-17"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb21-18"><a href="#cb21-18"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span>,</span>
-<span id="cb21-19"><a href="#cb21-19"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
-<span id="cb21-20"><a href="#cb21-20"></a>  <span class="at">ylab =</span> <span class="st">"Densità"</span></span>
-<span id="cb21-21"><a href="#cb21-21"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="un_D_files/figure-revealjs/unnamed-chunk-9-1.png" width="2000" class="r-stretch"><p>Istogramma basato sulle <strong>frequenze assolute</strong> (sinistra) e sulla <strong>densità</strong> (destra), solamente per il gruppo di nascite non premature.</p>
-</section>
-<section id="gli-istogrammi-iii" class="slide level2 center">
-<h2>Gli istogrammi III</h2>
-<div class="callout callout-warning no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Nel caso di intervalli <strong>non equispaziati</strong>, è obbligatorio utilizzare l’opzione <code>freq = FALSE</code>, altrimenti il grafico prodotto risulta privo di senso.</p>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Definizione di intervalli NON equispaziati</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">70</span>, <span class="dv">90</span>, <span class="dv">110</span>, <span class="dv">130</span>, <span class="dv">150</span>, <span class="dv">170</span>, <span class="dv">190</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># GRAFICO CORRETTO</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb22-7"><a href="#cb22-7"></a>  <span class="at">breaks =</span> breaks,</span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>  <span class="at">main =</span> <span class="st">"GRAFICO CORRETTO"</span>, <span class="at">xlab =</span> <span class="st">"DDE"</span>, <span class="at">ylab =</span> <span class="st">"Densità"</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="un_D_files/figure-revealjs/unnamed-chunk-10-1.png" width="2000"></p>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># GRAFICO ERRATO</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="at">freq =</span> <span class="cn">TRUE</span>, <span class="co"># NON vengono usate le frequenze</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="at">breaks =</span> breaks,</span>
-<span id="cb23-5"><a href="#cb23-5"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="at">main =</span> <span class="st">"GRAFICO ERRATO"</span>, <span class="at">xlab =</span> <span class="st">"DDE"</span>, <span class="at">ylab =</span> <span class="st">"Frequenze assolute"</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="un_D_files/figure-revealjs/unnamed-chunk-10-2.png" width="2000"></p>
-</div>
-</div>
-<p>Il grafico di sinistra è corretto e fa uso della nozione di <strong>densità</strong> spiegata in precedenza. Il grafico di destra è <strong>errato</strong>.</p>
-<p>Fortunatamente <strong>R</strong> ci avvisa tramite un <code>warning</code> che questa procedura è scorretta.</p>
-</section>
-<section id="il-numero-di-intervalli" class="slide level2 center">
-<h2>Il numero di intervalli</h2>
-<p>Un numero <strong>troppo basso</strong> di intervalli comporta una <strong>perdita di informazione</strong>.</p>
-<p>Viceversa, un numero <strong>troppo alto</strong> di intervalli comporta una <strong>perdita di sintesi</strong>.</p>
-<p>Si tenga presente che il <strong>numero degli intervalli</strong> deve dipendere dal <strong>numero dei dati</strong>.</p>
-<p>Sono state proposte varie formule per identificare il “numero ottimale” di intervalli. Vanno però prese come dei suggerimenti e non usate in maniera automatica.</p>
-<p><strong>Sturges</strong>. Il numero di intervalli, approssimato all’intero più vicino, è <span class="math display">
-(\text{numero di intervalli}) = 1 + \log_2{n}.
-</span></p>
-<p><strong>Freedman &amp; Diaconis</strong>. Il numero di intervalli, approssimato all’intero più vicino, è <span class="math display">
-(\text{numero di intervalli})  = \frac{x_{(n)} - x_{(1)}}{2(\mathcal{Q}_{0.75} - \mathcal{Q}_{0.25})}n^{1/3}.
-</span></p>
-</section>
-<section id="il-numero-di-intervalli-ii" class="slide level2 center">
-<h2>Il numero di intervalli II</h2>
-<p>Il numero “ottimale” di intervalli si può ottenere tramite i comandi seguenti:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">nclass.Sturges</span>(dde_non_preterm) <span class="co"># Regola di Sturges</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 12</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">nclass.FD</span>(dde_non_preterm) <span class="co"># Regola di Freedman e Diaconis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 54</code></pre>
+<pre><code>[1] 0.7071068</code></pre>
 </div>
 </div>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
@@ -719,329 +481,807 @@
 <p><strong>Nota</strong></p>
 </div>
 <div class="callout-content">
-<p>Il comando <code>hist</code> di <strong>R</strong>, se non viene specificato diversamente tramite l’opzione <code>breaks</code>, seleziona in automatico intervalli <strong>equispaziati</strong> tramite la regola di <strong>Sturges</strong>.</p>
+<p>Tutto ciò che viene scritto dopo un cancelletto (<code>#</code>) è considerato un <strong>commento</strong>.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="confronto-tra-le-due-distribuzioni" class="slide level2 center">
-<h2>Confronto tra le due distribuzioni</h2>
-<p>Questo grafico conclusivo consente finalmente di confrontare le due distribuzioni.</p>
+<section id="assegnazione-di-un-valore" class="slide level2 center">
+<h2>Assegnazione di un valore</h2>
+<p>È possibile <strong>salvare un valore</strong> assegnandolo ad un oggetto tramite il simbolo <code>&lt;-</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">hist</span>(dde_non_preterm, <span class="co"># Gruppo nascite non-premature</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb28-3"><a href="#cb28-3"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="un_D_files/figure-revealjs/unnamed-chunk-12-1.png" width="2000"></p>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Assegna il valore 5 all'oggetto x</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>) <span class="co"># Sintassi alternativa (sconsigliata): x = sqrt(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">hist</span>(dde_preterm, <span class="co"># Gruppo nascite premature</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="at">main =</span> <span class="st">"Nascite premature"</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="un_D_files/figure-revealjs/unnamed-chunk-12-2.png" width="2000"></p>
-</div>
-</div>
-<p>Eventualmente, è possibile selezionare una regola diversa ponendo <code>breaks = "FD"</code>.</p>
-<p>La distribuzione di “nascite premature” risulta più spostata a destra.</p>
-</section>
-<section id="la-funzione-di-ripartizione-empirica-i" class="slide level2 center">
-<h2>La funzione di ripartizione empirica I</h2>
-<p>Una seconda rappresentazione grafica di uso frequente è la cosiddetta <strong>funzione di ripartizione empirica</strong> <span class="math inline">F(x)</span>.</p>
-<p>Siano <span class="math inline">x_1,\dots,x_n</span> una collezione di dati, allora definiamo <span class="math display">
-F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{1}(x_i \le x),
-</span> dove <span class="math inline">\mathbb{1}(x_i \le x)</span> è la <strong>funzione indicatrice</strong> e vale <span class="math inline">1</span> se <span class="math inline">x_i \le x</span> e <span class="math inline">0</span> se <span class="math inline">x_i &gt; x</span>.</p>
-<p>In <strong>R</strong>, si usa il comando <code>ecdf</code> (<em>empirical cumulative distribution function</em>), ad esempio:</p>
+<p>Il valore contenuto in <code>x</code> può essere successivamente richiamato, modificato e salvato in un nuovo oggetto, chiamato ad esempio <code>y</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">ecdf</span>(dde_non_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> pi <span class="co"># ovvero pi greco + radice quadrata di 5</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Empirical CDF 
-Call: ecdf(dde_non_preterm)
- x[1:1585] =    2.5,   2.95,   3.14,  ..., 161.11, 162.29</code></pre>
+<pre><code>[1] 5.377661</code></pre>
 </div>
 </div>
-</section>
-<section id="la-funzione-di-ripartizione-empirica-ii" class="slide level2 center">
-<h2>La funzione di ripartizione empirica II</h2>
-<p>Il comando <code>ecdf</code> restituisce come oggetto una vera e propria <strong>funzione</strong>. Infatti:</p>
+<p>Per <strong>rimuovere un oggetto</strong> dalla memoria, si usa il comando <code>rm</code>, ovvero <em>remove</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>F_non_preterm <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(dde_non_preterm)</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">F_non_preterm</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>)) <span class="co"># Calcola la funzione di ripartizione empirica in 20, 40 e 60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3618657 0.8077909 0.9390056</code></pre>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">rm</span>(x) <span class="co"># x non è più presente nel "workspace"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">sum</span>(dde_non_preterm <span class="sc">&lt;=</span> <span class="dv">40</span>) <span class="sc">/</span> <span class="fu">length</span>(dde_non_preterm) <span class="co"># Comando "manuale" alternativo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8077909</code></pre>
-</div>
-</div>
-<p>Per farne un grafico, è inoltre sufficiente usare il comando <code>plot</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_non_preterm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="un_D_files/figure-revealjs/unnamed-chunk-15-1.png" width="2000" class="r-stretch"></section>
-<section id="la-funzione-di-ripartizione-empirica-ii-1" class="slide level2 center">
-<h2>La funzione di ripartizione empirica II</h2>
-<p>Per poter confrontare le funzioni di ripartizione dei due gruppi, la sintassi è leggermente più elaborata:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_preterm),</span>
-<span id="cb37-2"><a href="#cb37-2"></a>  <span class="at">do.points =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"blue"</span>,</span>
-<span id="cb37-3"><a href="#cb37-3"></a>  <span class="at">main =</span> <span class="st">"Blu: parto prematuro. Rosso: parto non prematuro"</span>,</span>
-<span id="cb37-4"><a href="#cb37-4"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
-<span id="cb37-5"><a href="#cb37-5"></a>  <span class="at">ylab =</span> <span class="st">"F(DDE)"</span></span>
-<span id="cb37-6"><a href="#cb37-6"></a>)</span>
-<span id="cb37-7"><a href="#cb37-7"></a></span>
-<span id="cb37-8"><a href="#cb37-8"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_non_preterm), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>) <span class="co"># Aggiungo un secondo gruppo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="un_D_files/figure-revealjs/unnamed-chunk-16-1.png" width="2000" class="r-stretch"><p>L’opzione <code>do.points = FALSE</code> omette i ``pallini’’ nel grafico ed è stato aggiunta per ragioni esclusivamente <strong>estetiche</strong>.</p>
-</section>
-<section id="indici-di-posizione-la-media" class="slide level2 center">
-<h2>Indici di posizione: la media</h2>
-<p>Per quantificare la differenza tra le due distribuzioni, vogliamo trovare le <strong>medie aritmetiche</strong> delle variabili <code>dde_preterm</code> e <code>dde_non_preterm</code>.</p>
-<p>In <strong>R</strong> ovviamente esiste un comando apposito:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">mean</span>(dde_preterm) <span class="co"># Media aritmetica di DDE per donne con parto prematuro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 36.20299</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">mean</span>(dde_non_preterm) <span class="co"># Media aritmetica di DDE per donne con parto regolare</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 29.14199</code></pre>
-</div>
-</div>
-<p>Come ormai ampiamente rilevato, notiamo che il DDE è presente in quantità maggiore tra le donne che hanno partorito prematuramente.</p>
-<p>La media aritmetica poteva essere ottenuta anche a partire dai comandi che abbiamo incontrato nelle unità precedenti:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(dde_preterm) <span class="co"># Numerosità campionaria di dde_preterm (=361)</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">sum</span>(dde_preterm) <span class="sc">/</span> n <span class="co"># Media aritmetica della variabile dde_preterm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 36.20299</code></pre>
-</div>
-</div>
-</section>
-<section id="indici-di-posizione-la-mediana-i" class="slide level2 center">
-<h2>Indici di posizione: la mediana I</h2>
-<p>La mediana (Me) di una variabile è il <strong>valore centrale</strong> della distribuzione, ovvero:</p>
-<p><span class="math display">
-\text{Me} = \begin{cases}x_{\left(\frac{n+1}{2}\right)}, &amp;\qquad \text{ se } n \text{ è dispari},  \\[10pt] \left(x_{(n/2)} + x_{(n/2+1)}\right)/2,&amp;\qquad \text{ se } n \text{ è pari},\end{cases}
-</span> dove <span class="math inline">x_{(1)},\dots,x_{(n)}</span> rappresenta il campione ordinato.</p>
-<p>In <strong>R</strong> esiste un comando apposito:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">median</span>(dde_preterm) <span class="co"># Mediana di DDE per donne con parto prematuro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 29.46</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">median</span>(dde_non_preterm) <span class="co"># Mediana di DDE per donne con parto regolare</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 24.04</code></pre>
-</div>
-</div>
-<p>Si noti (come mai?) che la funzione di ripartizione empirica, valutata nella mediana, è circa pari a <code>0.5</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">F_non_preterm</span>(<span class="fu">median</span>(dde_non_preterm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5002563</code></pre>
-</div>
-</div>
-</section>
-<section id="indici-di-posizione-la-mediana-ii" class="slide level2 center">
-<h2>Indici di posizione: la mediana II</h2>
-<p>La mediana di una variabile numerica si può anche ottenere “manualmente”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="fl">3.5</span>, <span class="dv">28</span>, <span class="dv">62</span>)</span>
-<span id="cb50-2"><a href="#cb50-2"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="co"># Numerosità campionaria</span></span>
-<span id="cb50-3"><a href="#cb50-3"></a>n <span class="co"># Si noti che n = 6 è pari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>x_sort <span class="ot">&lt;-</span> <span class="fu">sort</span>(x) <span class="co"># Vettore ordinato dei valori di x</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>x_sort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  3.5 10.0 20.0 25.0 28.0 62.0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>pos_med_1 <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span> <span class="co"># Elemento in posizione n/2</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a>pos_med_2 <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Elemento in posizione n/2+1</span></span>
-<span id="cb54-3"><a href="#cb54-3"></a></span>
-<span id="cb54-4"><a href="#cb54-4"></a>(x_sort[pos_med_1] <span class="sc">+</span> x_sort[pos_med_2]) <span class="sc">/</span> <span class="dv">2</span> <span class="co"># Mediana di x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 22.5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">median</span>(x) <span class="co"># Ovviamente, il risultato deve coincidere con:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 22.5</code></pre>
-</div>
-</div>
-<div class="callout callout-note no-icon callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Esercizio</strong></p>
-</div>
-<div class="callout-content">
-<p>Si ottenga la mediana “manualmente” nel caso in cui il vettore <code>x</code> ha un numero dispari di elementi.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="indici-di-posizione-i-quantili-i" class="slide level2 center">
-<h2>Indici di posizione: i quantili I</h2>
-<p>Siano <span class="math inline">x_1,\dots,x_n</span> un insieme di dati, sia <span class="math inline">p \in (0,1)</span> e sia <span class="math inline">F(x)</span> la funzione di ripartizione empirica. Il <strong>quantile-</strong><span class="math inline">p</span> è quindi pari a</p>
-<p><span class="math display">
-\mathcal{Q}_p = \inf\{ x : F(x) \ge p \}.
-</span></p>
-<p>In <strong>R</strong> considerando <span class="math inline">p = (0.1,0.25,0.75,0.9)</span>, ovvero il primo decile, il primo quartile, il terzo quartile ed il nono decile, possiamo usare il comando <code>quantile</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  10%   25%   75%   90% 
-15.07 19.94 45.30 68.01 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">quantile</span>(dde_non_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  10%   25%   75%   90% 
-12.23 16.73 35.45 50.72 </code></pre>
-</div>
-</div>
-<div class="callout callout-note no-icon callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Esercizio</strong></p>
-</div>
-<div class="callout-content">
-<p>Lo studente si convinca che l’implementazione “manuale” del comando è la seguente:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">min</span>(dde_non_preterm[<span class="fu">F_non_preterm</span>(dde_non_preterm) <span class="sc">&gt;=</span> <span class="fl">0.25</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16.73</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">min</span>(dde_non_preterm[<span class="fu">F_non_preterm</span>(dde_non_preterm) <span class="sc">&gt;=</span> <span class="fl">0.75</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 35.45</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="indici-di-posizione-i-quantili-ii" class="slide level2 center">
-<h2>Indici di posizione: i quantili II</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Nota</strong></p>
 </div>
 <div class="callout-content">
-<p>La definizione di quantile che abbiamo fornito coincide con quella descritta nel corso Statistica I, ma non è l’unica possibile (Come mai? Si riveda Statistica I…).</p>
+<p><strong>R</strong> è <em>case sensitive</em>, pertanto l’oggetto <code>x</code> è diverso dall’oggetto <code>X</code>.</p>
 </div>
 </div>
 </div>
-<p>Tale definizione si ottiene con l’opzione <code>type = 1</code>, che tuttavia <strong>non è il default</strong>. Il valore predefinito è invece <code>type = 7</code>.</p>
-<p>Se siete curiosi di conoscere le varie definizioni di quantile, vi ricordo che la <strong>documentazione</strong> è consultabile tramite il comando: <code>? quantile</code>.</p>
+</section>
+<section id="pulizia-del-workspace" class="slide level2 center">
+<h2>Pulizia del <em>workspace</em></h2>
+<p>È buona norma mantenere pulito il <em>workspace</em>, ovvero l’ambiente di lavoro.</p>
+<p>Se un oggetto non è più necessario, è possibile eliminarlo tramite il comando <code>rm</code>.</p>
+<p>È possibile visualizzare la lista di oggetti salvati in memoria tramite il comando seguente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ls</span>() <span class="co"># Nel workspace è presente l'oggetto y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "has_annotations" "y"              </code></pre>
+</div>
+</div>
+<p>Pertanto, per <strong>eliminare</strong> tutti gli <strong>oggetti</strong> salvati, si può usare</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="alcune-funzioni-matematiche-i" class="slide level2 center">
+<h2>Alcune funzioni matematiche I</h2>
+<p>Supponiamo che <code>x</code> sia un <strong>numero reale</strong>.</p>
+<p>Ciò che seguono sono una lista di funzioni disponibili in <strong>R</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="co"># Esempio di numero reale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">exp</span>(x) <span class="co"># Esponenziale e logaritmo naturale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.648721</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">log</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.6931472</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">abs</span>(x) <span class="co"># Valore assoluto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">sign</span>(x) <span class="co"># Funzione segno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section>
+<section id="alcune-funzioni-matematiche-ii" class="slide level2 center">
+<h2>Alcune funzioni matematiche II</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">sin</span>(x) <span class="co"># Funzioni trigonometriche (seno, coseno, tangente)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4794255</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">cos</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8775826</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">tan</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5463025</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">asin</span>(x) <span class="co"># Funzioni trigonometriche inverse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5235988</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">acos</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.047198</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">atan</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4636476</code></pre>
+</div>
+</div>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Nota</strong></p>
 </div>
 <div class="callout-content">
-<p>Un difetto del quantile <code>type = 1</code> è che la mediana non sempre coincide con il quantile <span class="math inline">\mathcal{Q}_{0.5}</span>. Si trovi un esempio in questo accade e si verifichi che invece il problema viene risolto nel caso <code>type = 7</code>.</p>
+<p>Le funzioni di <strong>R</strong> si possono combinare tra loro, ad esempio <code>log(abs(x))</code>.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="indici-di-posizione-i-quantili-iii" class="slide level2 center">
-<h2>Indici di posizione: i quantili III</h2>
-<p>In <strong>R</strong> esistono in totale ben <strong>9 modi</strong> per calcolare i quantili.</p>
-<p>Fortunatamente, per numerosità campionarie elevate le <strong>differenze</strong> tendono ad essere <strong>trascurabili</strong>.</p>
-<p>Elenchiamo qui di seguito alcuni esempi per la variabile <code>dde_preterm</code>:</p>
+<section id="ulteriori-funzioni-matematiche-i" class="slide level2 center">
+<h2>Ulteriori funzioni matematiche I</h2>
+<p>Supponiamo che <code>x</code> e <code>y</code> siano due <strong>numeri reali</strong>. Inoltre, siano <code>n</code> e <code>k</code> due <strong>numeri naturali</strong>.</p>
+<p>Si noti l’uso del <code>;</code> che può essere usato per separare due comandi nella stessa riga.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb66-2"><a href="#cb66-2"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>),</span>
-<span id="cb66-3"><a href="#cb66-3"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">6</span>),</span>
-<span id="cb66-4"><a href="#cb66-4"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">7</span>),</span>
-<span id="cb66-5"><a href="#cb66-5"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">9</span>)</span>
-<span id="cb66-6"><a href="#cb66-6"></a>)</span>
-<span id="cb66-7"><a href="#cb66-7"></a><span class="fu">rownames</span>(tab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># Cambia i nomi alle righe della tabella</span></span>
-<span id="cb66-8"><a href="#cb66-8"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     10%   25%   50%      75%    90%
-1 15.070 19.94 29.46 45.30000 68.010
-6 15.054 19.94 29.46 45.49000 68.738
-7 15.070 19.94 29.46 45.30000 68.010
-9 15.060 19.94 29.46 45.41875 68.465</code></pre>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>; y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span> <span class="co"># Numeri reali </span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>; k <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Numeri naturali</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">factorial</span>(n) <span class="co"># n!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 120</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">choose</span>(n, k) <span class="co"># Coefficiente binomiale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arrotonda x usando 2 cifre decimali</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">floor</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per difetto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ceiling</span>(x) <span class="co"># Arrotonda x all'intero più vicino, per eccesso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section>
+<section id="ulteriori-funzioni-matematiche-ii" class="slide level2 center">
+<h2>Ulteriori funzioni matematiche II</h2>
+<p>La funzione gamma <span class="math inline">\Gamma(x) = \int_0^\infty s^{x-1} e^{-s} d s</span> si calcola in <strong>R</strong> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">gamma</span>(x) <span class="co"># Funzione gamma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.772454</code></pre>
+</div>
+</div>
+<p>La funzione beta <span class="math inline">\mathcal{B}(x,y) = \int_0^1 s^{x-1}(1-s)^{y-1}ds</span> si calcola in <strong>R</strong> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">beta</span>(x, y) <span class="co"># Funzione beta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.206546</code></pre>
+</div>
+</div>
+</section>
+<section id="grafico-di-una-funzione" class="slide level2 center">
+<h2>Grafico di una funzione</h2>
+<p>In <strong>R</strong> è possibile <strong>disegnare</strong> una qualsiasi funzione tramite il comando <code>curve</code>.</p>
+<p>Se ad esempio si considera la funzione <span class="math display">f(x) = \frac{\sin(x)}{x},</span> allora possiamo disegnare <span class="math inline">f(x)</span> nell’intervallo <span class="math inline">(0,15)</span> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x) <span class="sc">/</span> x, <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="un_A_files/figure-revealjs/unnamed-chunk-19-1.png" width="2400" class="r-stretch"></section>
+<section id="la-documentazione-ufficiale" class="slide level2 center">
+<h2>La documentazione ufficiale</h2>
+<p>La documentazione di <strong>R</strong> è la principale fonte di informazioni.</p>
+<p>A cosa serve una funzione? Qual è la definizione dei suoi argomenti? La risposta va sempre cercata nella <strong>documentazione ufficiale</strong> e non in queste slide.</p>
+<p>Il comando <code>? funzione</code> apre una finestra in cui vengono descritta nel dettaglio una funzione. Esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>? log <span class="co"># Documentazione della funzione log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Suggerimento</strong></p>
+<p><strong>Nota riguardante l’esame</strong></p>
 </div>
 <div class="callout-content">
-<p>Cosa fa <code>rbind</code>? Lo abbiamo incontrato nell’unità A.</p>
+<p>Durante la prova d’esame è legittimo (anzi, è caldamente consigliato) consultare la documentazione.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="il-comando-summary" class="slide level2 center">
-<h2>Il comando <code>summary</code></h2>
-<p>Per ottenere rapidamente le <strong>principali statistiche descrittive</strong> di una distribuzione (minimo, massimo, media, mediana e quartili), si usa spesso il comando <code>summary</code>:</p>
+<section id="simboli-speciali" class="slide level2 center">
+<h2>Simboli speciali</h2>
+<p>Numeri molto grandi, come <span class="math inline">10^{15}</span>, e molto piccoli, come <span class="math inline">10^{-15}</span>, in <strong>R</strong> vengono rappresentati come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">summary</span>(dde_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   3.17   19.94   29.46   36.20   45.30  178.06 </code></pre>
+<pre><code>[1] 1e+15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">summary</span>(dde_non_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   2.50   16.73   24.04   29.14   35.40  162.29 </code></pre>
+<pre><code>[1] 1e-15</code></pre>
 </div>
 </div>
-<p>Il comando <code>summary</code> può anche essere usato direttamente su un oggetto di tipo <code>data.frame</code> producendo il seguente output:</p>
+<p>Per questioni di approssimazione numerica, quando un numero è troppo grande <strong>R</strong> riporta <code>Inf</code>, ovvero <strong>infinito</strong>. Per esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">summary</span>(dde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">1000</span> <span class="co"># Numero molto grande, anche se finito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      DDE              GAD       
- Min.   :  2.50   Min.   :194.0  
- 1st Qu.: 17.13   1st Qu.:267.0  
- Median : 24.68   Median :277.0  
- Mean   : 30.24   Mean   :274.9  
- 3rd Qu.: 36.52   3rd Qu.:286.0  
- Max.   :178.06   Max.   :315.0  </code></pre>
+<pre><code>[1] Inf</code></pre>
+</div>
+</div>
+<p>Il simbolo <code>NaN</code> significa invece <em>Not a Number</em> e si ottiene quando qualche funzione matematica non è stata usata nel modo corretto. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="co"># Questo comando genera inoltre un avviso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NaN</code></pre>
 </div>
 </div>
 </section>
-<section id="i-boxplot" class="slide level2 center">
-<h2>I boxplot</h2>
-<p>Una rappresentazione grafica alternativa agli istogrammi sono i <strong>boxplot</strong>.</p>
-<p>Le <strong>statistiche descrittive</strong> su cui si basano i boxplot si possono ottenere tramite il comando <code>boxplot.stats</code>, ovvero:</p>
+<section id="errori-di-approssimazione-numerica" class="slide level2 center">
+<h2>Errori di approssimazione numerica</h2>
+<p>È ben noto che <span class="math inline">\sin(\pi) = 0</span>. Tuttavia, in <strong>R</strong> si ottiene un numero molto vicino a <span class="math inline">0</span>, ma strettamente positivo. Infatti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">boxplot.stats</span>(dde_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">sin</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$stats
-[1]  3.17 19.94 29.46 45.30 83.25
-
-$n
-[1] 361
-
-$conf
-[1] 27.35112 31.56888
-
-$out
- [1]  94.60  99.42 144.86 105.83  90.73 128.47  91.23 102.50 178.06  88.72
-[11] 117.54 108.90 106.70 105.48 109.55 103.88 103.77</code></pre>
+<pre><code>[1] 1.224647e-16</code></pre>
+</div>
+</div>
+<p><strong>R</strong> è uno strumento di calcolo numerico e pertanto sono sempre presenti <strong>errori di approssimazione numerica</strong>.</p>
+<p>Fortunatamente, nella maggior parte dei casi pratici la differenza tra <span class="math inline">0</span> e <span class="math inline">10^{-16}</span> è del tutto irrilevante.</p>
+<p>In altre situazioni, errori di approssimazione numerica possono portare a conclusioni fuorvianti. Occorre quindi fare attenzione e valutare caso per caso.</p>
+<p>Ad ogni modo, l’approssimazione numerica potrebbe anche migliorare. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">cos</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-logiche" class="slide level2 center">
+<h2>Operazioni logiche</h2>
+<p>In <strong>R</strong> è spesso necessario verificare se una o più condizioni sono verificate o meno.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a>x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="co"># Il valore di x è minore di 0?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>a <span class="ot">&lt;-</span> (x <span class="sc">==</span> <span class="sc">-</span><span class="dv">3</span>) <span class="co"># Il valore di x è uguale a -3?</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Il valore di <code>a</code> è un indicatore <strong>binario</strong> o <strong>booleano</strong>, ovvero può essere vero (<code>TRUE</code>) oppure falso (<code>FALSE</code>).</p>
+<p>Altre <strong>funzioni logiche</strong> disponibili (assumendo che <code>y</code> sia un numero e <code>b</code> un booleano) sono:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span>; b <span class="ot">&lt;-</span> <span class="cn">FALSE</span>; x <span class="ot">&lt;-</span> <span class="dv">5</span>; y <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a>x <span class="sc">&gt;=</span> y <span class="co"># x è maggiore o uguale a y? (Si usa "&lt;=" per minore uguale)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>x <span class="sc">!=</span> y <span class="co"># x è diverso da y?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>a <span class="sc">&amp;</span> b <span class="co"># a AND b. I valori booleani a e b sono entrambi veri?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>a <span class="sc">|</span> b <span class="co"># a OR b. Almeno uno tra a ed b è vero?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="vettori" class="slide level2 center">
+<h2>Vettori</h2>
+<p>Un <strong>vettore</strong> in <strong>R</strong> viene definito tramite la funzione <code>c()</code>, come nel seguente esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>) </span>
+<span id="cb82-2"><a href="#cb82-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  4  2  2  8 10</code></pre>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Con il termine generico “<strong>vettore</strong>” in <strong>R</strong> non si fa riferimento alla nozione dell’algebra lineare ma semplicemente ad una stringa di valori ordinati.</p>
+</div>
+</div>
+</div>
+<p>Il seguente oggetto è un <strong>vettore</strong> in <strong>R</strong>, nonostante l’oggetto <code>x</code> sia composto sia numeri che da lettere</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb84-2"><a href="#cb84-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A"  "B"  "2"  "8"  "10"</code></pre>
+</div>
+</div>
+</section>
+<section id="creazione-di-vettori" class="slide level2 center">
+<h2>Creazione di vettori</h2>
+<p>Talvolta è comodo creare dei vettori i cui elementi sono dei <strong>numeri consecutivi</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Equivalente a: x &lt;- c(5, 6, 7, 8, 9, 10)</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<p>Per creare una successione di <strong>numeri reali</strong> si usa il comando <code>seq</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb88-2"><a href="#cb88-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+</div>
+</div>
+<p>Per creare un vettore di <strong>valori ripetuti</strong> si usa il comando <code>rep</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">7</span>) <span class="co"># Vettore in cui il numero 10 è ripetuto 7 volte</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 10 10 10 10 10 10</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-i" class="slide level2 center">
+<h2>Operazioni sui vettori I</h2>
+<p>La maggior parte delle funzioni matematiche di <strong>R</strong> sono <strong>vettorizzate</strong>. In altri termini, le funzioni agiscono su tutti gli elementi di un vettore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">exp</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Esempio 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   4.218282   9.389056  22.585537  57.598150 151.913159 407.428793</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">boxplot</span>(dde_preterm, dde_non_preterm) <span class="co"># Produce il grafico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="un_D_files/figure-revealjs/unnamed-chunk-28-1.png" width="2000"></p>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>) <span class="co"># Esempio 2</span></span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="fu">log</span>(x, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
 </div>
 </div>
-<p><img src="img/logoB.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">&gt;</span> <span class="dv">4</span> <span class="co"># Esempio 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>Altre funzioni invece sono utili proprio nel caso in cui l’<strong>argomento</strong> sia un <strong>vettore</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb98-2"><a href="#cb98-2"></a><span class="fu">length</span>(x) <span class="co"># Lunghezza del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="fu">sum</span>(x) <span class="co"># Somma degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="fu">cumsum</span>(x) <span class="co"># Somme cumulate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  5  6  9 19 24</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-ii" class="slide level2 center">
+<h2>Operazioni sui vettori II</h2>
+<p>Ulteriori semplici operazioni in cui l’argomento è un vettore sono elencate nel seguito:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb104-2"><a href="#cb104-2"></a><span class="fu">prod</span>(x) <span class="co"># Prodotto degli elementi del vettore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 900</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">cumprod</span>(x) <span class="co"># Prodotti cumulati</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   2   6   6  18 180 900</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">FALSE</span>) <span class="co"># Vettore ordinato in ordine crescente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  2  3  3  5 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="fu">min</span>(x) <span class="co"># Valore minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="fu">which.min</span>(x) <span class="co"># Posizione del valore corrispondente al minimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>Infine, il funzionamento delle seguenti funzioni dovrebbero essere intuibile da quanto visto finora:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="fu">max</span>(x) <span class="co"># Valore massimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="fu">which.max</span>(x) <span class="co"># Posizione del valore corrispondente al massimo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="fu">range</span>(x) <span class="co"># Equivalente a: c(min(x), max(x))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1 10</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sui-vettori-iii" class="slide level2 center">
+<h2>Operazioni sui vettori III</h2>
+<p>È possibile <strong>selezionare gli elementi</strong> di un vettore usando le parentesi quadrate, come nei seguenti esempi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb120-2"><a href="#cb120-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(pi, <span class="dv">2</span>), <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb120-3"><a href="#cb120-3"></a>x[<span class="dv">3</span>] <span class="co"># Estrae il terzo elemento dal vettore x, ovvero sqrt(2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.414214</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Estrae il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.141593 1.414214 7.000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Elimina il primo, il terzo ed il quinto elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  3.141593 10.000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>x[x <span class="sc">&gt;</span> <span class="fl">3.5</span>] <span class="co"># Estrae gli elementi maggiori di 3.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10  7</code></pre>
+</div>
+</div>
+<p>L’ultimo comando suggerisce che gli elementi di un vettore possono essere selezionati tramite una <strong>condizione</strong> relativa al vettore stesso.</p>
+</section>
+<section id="operazione-sui-vettori-avvertenze" class="slide level2 center">
+<h2>Operazione sui vettori: avvertenze</h2>
+<p>Cosa succede quando vengono sommati due vettori di dimensioni diverse?</p>
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>La maggior parte dei linguaggi di programmazione restituisce un errore. <strong>R</strong> invece esegue ugualmente l’operazione “allungando” il vettore più corto.</p>
+</div>
+</div>
+</div>
+<p>In questo primo esempio, quantomeno <strong>R</strong> restituisce un <em>warning</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a><span class="co"># Concatenazione di vettori</span></span>
+<span id="cb128-2"><a href="#cb128-2"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb128-3"><a href="#cb128-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb128-4"><a href="#cb128-4"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x[1]) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  4  6  8 10  7</code></pre>
+</div>
+</div>
+<p>In questo secondo esempio, invece, <strong>R</strong> non restituisce alcun avviso, rendendo la cosa particolarmente pericolosa</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb130-2"><a href="#cb130-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb130-3"><a href="#cb130-3"></a>x <span class="sc">+</span> y <span class="co"># Equivalente a: c(x, x) + y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4 6 5 7 9</code></pre>
+</div>
+</div>
+</section>
+<section id="matrici" class="slide level2 center">
+<h2>Matrici</h2>
+<p>Una <strong>matrice</strong> <span class="math inline">{\bf A}</span> è una collezione di elementi <span class="math inline">(a)_{ij}</span> per <span class="math inline">i=1,\dots,n</span> e <span class="math inline">j=1,\dots,m</span>.</p>
+<p>Per esempio, la matrice quadrata di dimensione <span class="math inline">2 \times 2</span></p>
+<p><span class="math display">{\bf A} = \begin{pmatrix}
+5 &amp; 2\\
+1 &amp; 4 \\
+\end{pmatrix},</span> si può definire in <strong>R</strong> tramite il comando <code>matrix</code> come segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb132-2"><a href="#cb132-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    2
+[2,]    1    4</code></pre>
+</div>
+</div>
+<p>È inoltre possibile elencare gli elementi <strong>riga per riga</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1"></a><span class="co"># Definizione equivalente</span></span>
+<span id="cb134-2"><a href="#cb134-2"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vettori-riga-e-vettori-colonna" class="slide level2 center">
+<h2>Vettori riga e vettori colonna</h2>
+<p>Una matrice con una sola colonna è un <strong>vettore colonna</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a>x_col <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb135-2"><a href="#cb135-2"></a>x_col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    1
+[2,]   10
+[3,]    3
+[4,]    5</code></pre>
+</div>
+</div>
+<p>Una matrice con una sola colonna è un <strong>vettore riga</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb137-2"><a href="#cb137-2"></a>x_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1   10    3    5</code></pre>
+</div>
+</div>
+</section>
+<section id="vettori-riga-e-vettori-di-r" class="slide level2 center">
+<h2>Vettori riga e vettori di <strong>R</strong></h2>
+<p>Nella maggior parte dei casi, il <strong>{vettore riga</strong> <code>x_row</code> è intercambiabile col vettore <code>x</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a>x_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb139-2"><a href="#cb139-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="co"># Simile, ma non identico, a x_row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ad esempio, le funzioni <code>sum(x_row)</code> e <code>sum(x)</code> forniscono lo stesso risultato.</p>
+<p>Ci sono tuttavia alcune lievi distinzioni. Ad esempio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a><span class="fu">dim</span>(x_row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<p>Il simbolo <code>NULL</code> significa <strong>non definito</strong>, perché non esiste la nozione di dimensione per un generico vettore <strong>R</strong>.</p>
+</section>
+<section id="operazioni-sulle-matrici-i" class="slide level2 center">
+<h2>Operazioni sulle matrici I</h2>
+<p>È possibile <strong>selezionare gli elementi</strong> di una matrice in maniera analoga a quanto fatto con i vettori.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1"></a>A[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># Estrazione di elemento in posizione (1,2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1"></a>A[, <span class="dv">2</span>] <span class="co"># Estrazione seconda colonna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a>A[<span class="dv">1</span>, ] <span class="co"># Estrazione prima riga</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 2</code></pre>
+</div>
+</div>
+<p>Alcuni <strong>comandi di base</strong> per manipolare le matrici sono i seguenti</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1"></a><span class="fu">dim</span>(A) <span class="co"># Restituisce la dimensione della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(A) <span class="co"># Converte la matrice in un vettore</span></span>
+<span id="cb152-2"><a href="#cb152-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 1 2 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1"></a><span class="fu">diag</span>(A) <span class="co"># Restituisce la diagonale della matrice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1"></a><span class="fu">t</span>(A) <span class="co"># Calcola la matrice trasposta A'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    1
+[2,]    2    4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1"></a><span class="fu">sum</span>(A) <span class="co"># Somma di tutti gli elementi di A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-ii" class="slide level2 center">
+<h2>Operazioni sulle matrici II</h2>
+<p>Come per i vettori, le operazioni elementari (somma, prodotto, <code>log</code>, <code>exp</code>, etc.) vengono eseguite <strong>elemento per elemento</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1"></a><span class="fu">exp</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]      [,2]
+[1,] 148.413159  7.389056
+[2,]   2.718282 54.598150</code></pre>
+</div>
+</div>
+<p>Siano <span class="math inline">{\bf A}</span> e <span class="math inline">{\bf B}</span> due matrici aventi lo stesso numero di colonne e definiamo</p>
+<p><span class="math display">
+{\bf C} = \begin{pmatrix}{\bf A} \\ {\bf B} \end{pmatrix}.
+</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1"></a>B <span class="ot">&lt;-</span> A <span class="co"># Creo una matrice B identica ad A, per semplicità</span></span>
+<span id="cb162-2"><a href="#cb162-2"></a>C <span class="ot">&lt;-</span> <span class="fu">rbind</span>(A, B)</span>
+<span id="cb162-3"><a href="#cb162-3"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    2
+[2,]    1    4
+[3,]    5    2
+[4,]    1    4</code></pre>
+</div>
+</div>
+<p>In maniera analoga, siano <span class="math inline">{\bf A}</span> e <span class="math inline">{\bf B}</span> due matrici aventi lo stesso numero di righe e definiamo <span class="math inline">{\bf C} = \begin{pmatrix}{\bf A} &amp; {\bf B} \end{pmatrix}</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1"></a>C <span class="ot">&lt;-</span> <span class="fu">cbind</span>(A, B)</span>
+<span id="cb164-2"><a href="#cb164-2"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    5    2    5    2
+[2,]    1    4    1    4</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-iii" class="slide level2 center">
+<h2>Operazioni sulle matrici III</h2>
+<p>Siano <span class="math inline">{\bf x}</span> e <span class="math inline">{\bf y}</span> due vettori colonna in <span class="math inline">\mathbb{R}^p</span>. Allora, il loro è pari a</p>
+<p><span class="math display">
+{\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
+</span></p>
+<p>In <strong>R</strong> possiamo usare il comando <code>crossprod</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">22</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb166-2"><a href="#cb166-2"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">9</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb166-3"><a href="#cb166-3"></a><span class="fu">crossprod</span>(x, y) <span class="co"># Equivalente a: sum(x * y)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]  272</code></pre>
+</div>
+</div>
+<p>Il comando <code>crossprod</code> funziona correttamente anche con “vettori” <strong>R</strong>.</p>
+<p>Il comando <code>crossprod</code> può essere usato anche per calcolare il seguente <strong>prodotto tra matrici</strong> <span class="math display">
+{\bf A}^\intercal {\bf B},
+</span> dove <span class="math inline">{\bf A}</span> e <span class="math inline">{\bf B}</span> sono due matrici di dimensioni compatibili.</p>
+</section>
+<section id="operazioni-sulle-matrici-iv" class="slide level2 center">
+<h2>Operazioni sulle matrici IV</h2>
+<p>In algebra lineare il <strong>prodotto tra matrici</strong> compatibili <span class="math inline">{\bf A} {\bf B}</span> è chiamato prodotto righe per colonne. In <strong>R</strong> si usa il comando seguente</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb168-2"><a href="#cb168-2"></a>B <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">7</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">8</span>, <span class="dv">10</span>))</span>
+<span id="cb168-3"><a href="#cb168-3"></a></span>
+<span id="cb168-4"><a href="#cb168-4"></a>A <span class="sc">%*%</span> B <span class="co"># Prodotto righe per colonne AB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    5  -16   49
+[2,]   43   19  103
+[3,]   12   -6   44</code></pre>
+</div>
+</div>
+<p><strong>Nota</strong>. Il comando <code>A * B</code> indica il prodotto elemento per elemento e non il prodotto righe per colonne.</p>
+<p>Se le matrici non sono compatibili <strong>R</strong> produce un errore (provateci per esercizio!)</p>
+</section>
+<section id="operazioni-sulle-matrici-v" class="slide level2 center">
+<h2>Operazioni sulle matrici V</h2>
+<p>Sia <span class="math inline">{\bf A}</span> una matrice quadrata <span class="math inline">n \times n</span> a valori reali. La sua <strong>matrice inversa</strong> <span class="math inline">{\bf A}^{-1}</span>, quando esiste, è l’unica matrice tale per cui</p>
+<p><span class="math display">
+{\bf A} {\bf A}^{-1} = {\bf A}^{-1} {\bf A} =  I_n.
+</span></p>
+<p>Per ottenere <span class="math inline">{\bf A}^{-1}</span> si usa il comando <code>solve</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb170-2"><a href="#cb170-2"></a>A1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(A) <span class="co"># Matrice inversa di A</span></span>
+<span id="cb170-3"><a href="#cb170-3"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]        [,2]        [,3]
+[1,] -0.5833333 -0.08333333  0.95833333
+[2,]  0.1666667  0.16666667 -0.41666667
+[3,]  0.4166667 -0.08333333 -0.04166667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href="#cb172-1"></a><span class="fu">round</span>(A <span class="sc">%*%</span> A1, <span class="at">digits =</span> <span class="dv">5</span>) <span class="co"># Operazione di controllo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    1    0
+[3,]    0    0    1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href="#cb174-1"></a><span class="fu">det</span>(A) <span class="co"># Calcola il determinante della matrice A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -24</code></pre>
+</div>
+</div>
+</section>
+<section id="operazioni-sulle-matrici-vi" class="slide level2 center">
+<h2>Operazioni sulle matrici VI</h2>
+<p>Nel caso una matrice non sia invertibile, il <strong>determinante</strong> è pari a <span class="math inline">0</span>. Il comando <code>solve</code> in quel caso produce un errore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1"></a><span class="co"># Esempio di matrice NON invertibile</span></span>
+<span id="cb176-2"><a href="#cb176-2"></a>A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb176-3"><a href="#cb176-3"></a><span class="fu">det</span>(A) <span class="co"># Deteminante pari a 0, solve(A) produce un errore</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>Ci sono numerose funzioni per la <strong>scomposizione di matrici</strong>, il cui output è a volte una <strong>lista</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href="#cb178-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb178-2"><a href="#cb178-2"></a><span class="fu">chol</span>(A) <span class="co"># Scomposizione di Cholesky</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]     [,2]
+[1,]    2 0.500000
+[2,]    0 2.783882</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb180"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb180-1"><a href="#cb180-1"></a><span class="fu">qr</span>(A) <span class="co"># Scomposizione QR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$qr
+           [,1]      [,2]
+[1,] -4.1231056 -2.910428
+[2,]  0.2425356  7.518604
+
+$rank
+[1] 2
+
+$qraux
+[1] 1.970143 7.518604
+
+$pivot
+[1] 1 2
+
+attr(,"class")
+[1] "qr"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb182"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb182-1"><a href="#cb182-1"></a><span class="fu">eigen</span>(A) <span class="co"># Scomposizione spettrale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eigen() decomposition
+$values
+[1] 8.236068 3.763932
+
+$vectors
+          [,1]       [,2]
+[1,] 0.2297529 -0.9732490
+[2,] 0.9732490  0.2297529</code></pre>
+</div>
+</div>
+</section>
+<section id="liste" class="slide level2 center">
+<h2>Liste</h2>
+<p>Una <strong>lista</strong> è una collezione di oggetti (numeri, vettori, matrici, etc).</p>
+<p>Per <strong>salvare</strong> o per <strong>estrarre</strong> un oggetto da una lista si usa il simbolo del dollaro <code>$</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb184"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb184-1"><a href="#cb184-1"></a><span class="co"># Creazione di una lista</span></span>
+<span id="cb184-2"><a href="#cb184-2"></a>new_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb184-3"><a href="#cb184-3"></a>  <span class="at">A =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span>), <span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb184-4"><a href="#cb184-4"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">9</span>)</span>
+<span id="cb184-5"><a href="#cb184-5"></a>)</span>
+<span id="cb184-6"><a href="#cb184-6"></a></span>
+<span id="cb184-7"><a href="#cb184-7"></a>new_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$A
+     [,1] [,2]
+[1,]    4    1
+[2,]    1    8
+
+$x
+[1] 1 2 6 6 9</code></pre>
+</div>
+</div>
+</section>
+<section id="esempio-la-scomposizione-spettrale" class="slide level2 center">
+<h2>Esempio: la scomposizione spettrale</h2>
+<p>Gli autovalori ed autovettori di una matrice <span class="math inline">\textbf{A}</span> si ottengono tramite il comando <code>eigen</code>.</p>
+<p>Il risultato è una <strong>lista</strong>, contenente gli autovettori (<code>vectors</code>) e autovalori (<code>values</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb186-1"><a href="#cb186-1"></a>Spec_A <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A) <span class="co"># Scomposizione spettrale della matrice A</span></span>
+<span id="cb186-2"><a href="#cb186-2"></a>Spec_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eigen() decomposition
+$values
+[1] 8.236068 3.763932
+
+$vectors
+          [,1]       [,2]
+[1,] 0.2297529 -0.9732490
+[2,] 0.9732490  0.2297529</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href="#cb188-1"></a>Spec_A<span class="sc">$</span>values <span class="co"># Estrazione degli autovalori</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.236068 3.763932</code></pre>
+</div>
+</div>
+
+<img src="img/logoB.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://tommasorigon.github.io/introR">Home page</a></p>
 </div>
 </section>
@@ -1049,18 +1289,18 @@ $out
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="un_D_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="un_A_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="un_D_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="un_D_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="un_D_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="un_D_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="un_D_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="un_D_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="un_D_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="un_D_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="un_A_files/libs/revealjs/plugin/zoom/zoom.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

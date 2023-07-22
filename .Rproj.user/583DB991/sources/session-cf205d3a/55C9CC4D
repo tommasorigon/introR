@@ -3,7 +3,7 @@
     "path": "~/Library/Mobile Documents/com~apple~CloudDocs/University/Didattica/Laboratorio Statistica/introR/lezioni/un_A.qmd",
     "project_path": "lezioni/un_A.qmd",
     "type": "quarto_markdown",
-    "hash": "3587353171",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1690041211668.0,
@@ -16,11 +16,11 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "25,62",
-        "scrollLine": "14",
+        "cursorPosition": "4,0",
+        "scrollLine": "3",
         "rmdVisualModeLocation": "2:0",
         "chunk_output_type": "console",
-        "quartoPreviewFormat": "revealjs"
+        "quartoPreviewFormat": "html"
     },
     "folds": "",
     "lastKnownWriteTime": 1690041787,

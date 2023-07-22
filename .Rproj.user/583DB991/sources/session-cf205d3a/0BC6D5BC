@@ -17,18 +17,18 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "1",
-        "cursorPosition": "25,62",
-        "scrollLine": "15",
+        "cursorPosition": "11,22",
+        "scrollLine": "0",
         "rmdVisualModeLocation": "2:0",
         "chunk_output_type": "console",
-        "quartoPreviewFormat": "html"
+        "quartoPreviewFormat": "revealjs"
     },
     "folds": "",
-    "lastKnownWriteTime": 1690041831,
+    "lastKnownWriteTime": 1690041997,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1690041831339,
+    "last_content_update": 1690041997468,
     "read_only": false,
     "read_only_alternatives": []
 }
