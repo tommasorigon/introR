@@ -1,0 +1,32 @@
+{
+    "id": "125CFADE",
+    "path": "~/Library/Mobile Documents/com~apple~CloudDocs/University/Didattica/Laboratorio Statistica/introR/esami/esame_30_06_2021.qmd",
+    "project_path": "esami/esame_30_06_2021.qmd",
+    "type": "quarto_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1690043877494.0,
+    "source_on_save": false,
+    "relative_order": 26,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "652:0",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "30,0",
+        "scrollLine": "0",
+        "chunk_output_type": "console"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1690043908,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1690043908978,
+    "read_only": false,
+    "read_only_alternatives": []
+}
