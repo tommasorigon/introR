@@ -1,0 +1,93 @@
+# es 1
+#a
+f <- function(x){
+  exp(x) / (1+exp(x))
+}
+
+#b
+f(2)
+curve(f(x),-4,4)
+
+#c
+f <- function(x){
+  exp(x) / (1+exp(x))^2
+}
+integrate(f,0,2)
+
+set.seed(123)
+R <- 10^4
+x <- rnorm(R,0,2)
+mean(f(x))
+
+#d
+sum(exp(-1)/factorial(0:100))
+sum( (0:100)^2 * exp(-1)/factorial(0:100))
+
+#es2
+#a
+R <- 30000
+n <- 30
+x <- dunif(n,1,365)
+set.seed(123)
+z <- replicate(R,x)
+prob <-1 - mean(z)
+prob
+
+
+#es 3
+library(MASS)
+data("forbes")
+
+#a
+? forbes
+# bp =boiling point 
+# press = barometric pressure in inches of mercury
+
+#b
+summary(forbes$bp)
+summary(forbes$pres)
+
+boxplot(forbes$bp) # non ci sono outlier per bp
+boxplot(forbes$pres) # non ci sono outlier per pres
+
+#c
+hist(forbes$bp)
+hist(forbes$pres)
+
+#d
+plot(forbes$bp,forbes$pres)
+
+#e
+cor(forbes$bp,forbes$pres)
+
+#f
+beta <- cov(forbes$bp,forbes$pres) / var(forbes$bp)
+alpha <- mean(forbes$pres) -beta*mean(forbes$bp)
+alpha
+beta
+
+#g
+plot(forbes$bp,forbes$pres)
+abline(alpha,beta)
+# il modello si adatta bene ai dati
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+#1.1
+
+
+f <- function(x) {
+  exp(x) / (1 + exp(x))
+}
+
+
+#1.2
+
+f(2)
+plot(f, -4, 4)
+
+
+#1.3
+
+
+f2 <- function(x) {
+  exp(x) / (1 + exp(x))^2
+}
+
+integrate(f2, lower = 0, upper = 2)
+
+R <- 10^5
+montecarlo <- function(R) {
+  f2 <- runif(R, 0, 2)
+  media <- mean(f2)
+  std <- sd(f2) / sqrt(R)
+  media
+}
+montecarlo(1000)
+
+
+#1.4
+
+n <- 100
+g1 <- exp(-1) / (factorial(0:n))
+
+g2 <- (0:n)^2 * (exp(-1) / factorial(0:n))
+
+sum(dbinom(0:n, size = n, prob = g1))
+sum(dbinom(0:n, size = n, prob = g2))
+
+
+#esrcizio 3 
+
+library(MASS)
+data("forbes")
+
+
+View(forbes)
+
+#3.2
+summary(forbes$bp)
+summary(forbes$pres)
+
+boxplot(forbes$bp)
+boxplot.stats(forbes$bp)
+
+boxplot(forbes$pres)
+boxplot.stats(forbes$pres)
+#si possono usare anche i comandi mean median e quantile
+#non sono presenti outlier relativi ai punti di minimo
+
+#3.3
+
+par(mfrow = c(1, 2))
+hist(forbes$bp)
+hist(forbes$pres)
+# ho lasciati il numero di intervalli di default
+
+#3.4
+plot(forbes$bp, type = "h")
+plot(forbes$pres, type ="h", col= "red")
+#3.5
+
+cor(forbes$bp, forbes$pres)
+
+#3.6
+
+beta_hat <- (cov(forbes$bp, forbes$pres) / var(forbes$bp))
+beta_hat
+alpha_hat <- mean(forbes$pres) - beta_hat * mean(forbes$bp)
+alpha_hat
+
+#3.7
+
+reg <- function(x, alpha, beta) {
+  alpha_hat <- mean(forbes$pres) - beta_hat * mean(forbes$bp)
+  beta_hat <- (cov(forbes$bp, forbes$pres) / var(forbes$bp))
+  forbes$pres = alpha_hat + beta_hat*(forbes$bp)
+}
+curve(reg)
+

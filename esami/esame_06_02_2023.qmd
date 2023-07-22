@@ -1,0 +1,59 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esame 20 Febbraio 2023'
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = T, R.options = list(width = 220))
+```
+
+## Problema 1
+
+Si consideri il dataset di **R** che si ottiene tramite il comando `data(trees)`. Se ne consulti la documentazione per  ulteriori informazioni.
+
+1. (1pt) Si ottenga il grafico della funzione di ripartizione empirica $F(x)$ della variabile `Girth`. Si calcoli inoltre il valore di $F(15)$.
+
+1. (2pt) Si identifichi il primo ed il terzo quartile della variabile `Volume`. Si faccia quindi l'istogramma della variabile `Volume`. 
+
+1. (2pt) Si divida la variabile `Volume` in tre classi, utilizzando i seguenti intervalli: $(10, 21]$, $(21, 37]$, $(37, 80]$. Si aggiunga la variabile ottenuta nel dataset `trees`, chiamandola `volume_class`.
+
+1. (2pt) Si rinominino le modalità della variabile `volume_class`, chiamandole `low`, `medium` e `high`.
+
+1. (2pt) Si ottengano i 3 boxplot relativi alla variabile `Girth` per ciascuna modalità della variabile `volume_class`. 
+
+1. (2pt) Si produca un dataset chiamato `trees2` che contiene esclusivamente le variabili `Girth` e `Volume`. Si rinominino le colonne di questo nuovo dataset, chiamandole `Diameter` e `Volume`. 
+
+
+## Problema 2
+
+Uno studente del corso di laurea SSE dell'Università Milano-Bicocca sostiene di aver inventato una nuova variabile aleatoria. Pur non conoscendone la densità, definisce la variabile aleatoria $X$ come segue:
+
+$$
+X = \frac{Y_1}{Y_1 + Y_2},
+$$
+dove $Y_1$ ed $Y_2$ sono due variabile aleatorie _esponenziali_ indipendenti ed identicamente distribuite di media $1$. 
+
+1. (2pt) Si scriva in **R** la funzione `rprop(R)` che simula `R` valori pseudo-casuali distribuiti come la variable  $X$.
+
+1. (2pt) Si fornisca un'approssimazione della media e della varianza di $X$.
+
+1. (2pt) Si quantifichi l'errore commesso al punto precedente.
+
+1. (2pt) Si approssimi la probabilità $P(X \le x)$, per $x = 0.1, 0.5, 0.9$.
+
+1. (2pt) Si ottenga e si faccia il grafico di una stima della densità di $X$. A cosa "assomiglia" la distribuzione di $X$?
+
+## Problema 3
+
+Si consideri il dataset di **R** che si ottiene tramite il comando `data(stackloss)`, contenuto all'interno della libreria `MASS`. Se ne consulti la documentazione per  ulteriori informazioni.
+
+1. (2pt) Cosa significa la frase: "l'algoritmo di ottimizzazione è arrivato a convergenza?"
+
+1. (2pt) Si ottengano le stime a minimi quadrati per un modello di regressione lineare $y_i = \alpha + \beta x_i + \epsilon_i$, dove `Water.Temp` rappresenta la variabile esplicativa ($x$) mentre `stack.loss` rappresenta la variabile risposta ($y$). 
+
+1. (1pt) Si disegni un diagramma a dispersione relativo alle variabili `Water.Temp` e `stack.loss`. Si disegni inoltre la retta di regressione ottenuta.
+
+1. (5pt) Per ridurre l'influenza di eventuali valori anomali, è possibile considerare una stima alternativa per $\alpha$ e $\beta$, che si ottiene come soluzione del seguente problema di minimizzazione:
+$$
+(\hat{\alpha},\hat{\beta}) = \arg \min_{\alpha,\beta} \sum_{i=1}^n |y_i - \alpha - \beta x_i|.
+$$

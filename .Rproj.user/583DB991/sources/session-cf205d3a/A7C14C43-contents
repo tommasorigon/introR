@@ -1,0 +1,73 @@
+#Prova d'esame 19 Luglio 2023 Pietro De Paola 889200
+
+#Problema 1
+
+#1.1
+f<-function(x) exp(x) / (1 + exp(x))
+
+#1.2
+f(2)
+curve(f, -4, 4)
+
+#1.3
+f2<-function(x) exp(x) / (1+exp(x))^2
+integrate(f2, 0, 2)
+mean(f2(x)) 
+
+#1.4
+n<-100
+sum(exp(-1) / factorial(0:n))
+sum(exp(-1) * (0:n)^2 / factorial(0:n))
+
+#Problema 2
+#2.1
+set.seed(123)
+R<-30000
+x<-runif(1:365)
+sim2<-replicate(R, sample(x, 30, replace = T))
+mean(sim2)
+
+#2.2
+x1<-runif(1:35, 0, 2)
+x2<-runif(36:365, 0, 1)
+sim3<-replicate(R, sample(x3, 30, replace = T))
+mean(sim3)
+
+
+
+
+#Problema 3
+library(MASS)
+data(forbes)
+str(forbes)
+
+#3.1
+?forbes
+#le variabili contenute bp e pres rappresentano rispettivamente il punto di ebollizione dell'acqua e la pressione barometrica di dati tratti dalla rivista forbes su punti di ebolizione nelle Alpi
+
+#3.2
+summary(forbes$bp)
+summary(forbes$pres)
+boxplot.stats(forbes$bp)
+boxplot.stats(forbes$pres)
+#non sono presenti outlier
+
+#3.3
+hist(forbes$bp, freq = T)
+hist(forbes$pres)
+
+#3.4
+plot(forbes$bp, forbes$pres)
+
+#3.5
+cor(forbes$bp, forbes$pres)
+
+#3.6
+beta_hat<-cov(forbes$bp, forbes$pres) / var(forbes$bp)
+alpha_hat<-mean(forbes$pres) - mean(forbes$bp) * beta_hat
+c(alpha_hat, beta_hat)
+
+#3.7
+abline(alpha_hat, beta_hat)
+#si 
+

@@ -1,0 +1,130 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esame 30 Giugno 2021'
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = T, R.options = list(width = 220))
+```
+
+## Problema 1
+
+La cosiddetta $\mathcal{D}$ **di Cohen** è una statistica descrittiva
+molto utilizzata in Psicologia. Siano $x_1,\dots,x_{n_x}$ e
+$y_1,\dots,y_{n_y}$ due insieme di dati con numerosità campionarie $n_x$
+ed $n_y$, rispettivamente. Siamo interessati a stabilire se questi due
+insiemi differiscono **in media** in maniera sostanziale. A tal fine,
+definiamo la $\mathcal{D}$ di Cohen come segue:
+
+$$
+\mathcal{D} = \frac{|\bar{x} - \bar{y}|}{s}, \qquad \text{dove} \qquad \bar{x} = \frac{1}{n_x}\sum_{i=1}^{n_x}x_i, \qquad \bar{y} = \frac{1}{n_y}\sum_{i=1}^{n_y}y_i,
+$$
+
+in cui $s > 0$ è una misura della variabilità dei dati. Assumendo che la
+variabilità sia uguale tra le due popolazioni di dati, è ragionevole
+porre ad esempio
+
+$$
+s^2 = \frac{1}{n_x + n_y - 2}\left\{\sum_{i=1}^{n_x}(x_i - \bar{x})^2 + \sum_{i=1}^{n_y}(y_i - \bar{y})^2  \right\}.
+$$
+
+L'ammontare della differenza tra le medie è spesso detta "debole" se
+$\mathcal{D} \approx 0.2$, "media" se $\mathcal{D} \approx 0.5$ e
+"forte" se $\mathcal{D} \approx 0.8$. Si considerino inoltre i seguenti
+insiemi di dati
+
+```{r}
+x <- c(7.19, 8.27, 6.77, 6.65, 8.56, 6.56, 6.09)
+y <- c(6.37, 6.27, 7.95, 6.52, 7.72, 6.92, 6.34, 7.51, 6.07, 8.09, 6.03)
+```
+
+1.  (3pt) Si scriva in **R** la funzione `cohenD(x, y)` che calcola
+    l'indicatore $\mathcal{D}$ di Cohen.
+
+2.  (1pt) Utilizzando i dati forniti, si calcoli la $\mathcal{D}$ di
+    Cohen associata.
+
+3.  (1pt) Si generino due insiemi dati $x_1,\dots,x_{n_x}$ e
+    $y_1,\dots,y_{n_y}$ campionando dei valori indipendenti da una
+    distribuzione normale con media e varianza $N(0, 100)$ e con
+    $n_x = 500$ e $n_y = 2000$. Si calcoli quindi la $\mathcal{D}$ di
+    Cohen associata. Il valore trovato suggerisce una differenza tra le
+    medie "debole"?
+
+4.  (1pt) Si generino due insiemi dati $x_1,\dots,x_{n_x}$ e
+    $y_1,\dots,y_{n_y}$ campionandi dei valori indipendenti dalle
+    distribuzioni normali $N(0, 100)$ e $N(10, 100)$, rispettivamente
+    per le variabili $x$ ed $y$, supponendo anche in questo caso che
+    $n_x = 500$ e $n_y = 2000$. Si calcoli quindi la $\mathcal{D}$ di
+    Cohen. Il valore trovato suggerisce una differenza tra le medie
+    "debole"?
+
+5.  (4pt) Si effetti uno studio di simulazione nel quale i dati $x$ ed
+    $y$ vengono generati varie volte come fatto nel punto precedente.
+    Per ciascuna coppia di insiemi di dati $x$ ed $y$, si calcoli la
+    $\mathcal{D}$ di Cohen associata. Si ripeta questa operazione
+    `R = 1000` volte, ottenendo quindi un vettore di dimensione `1000`
+    che comprende i vari indici $\mathcal{D}$ di Cohen. Si disegni un
+    istogramma di tali valori.
+
+## Problema 2
+
+Si ponga $X_1 = 1$. Si consideri una collezione di variabile casuali
+**binarie ed indipendenti** $X_1,\dots,X_n$, tali per per cui
+
+$$
+\text{P}(X_i = 1) = \frac{\alpha}{\alpha + i - 1}, \qquad i = 2,\dots,n,
+$$
+
+dove $\alpha > 0$ è un parametro positivo. Inoltre, si definisca
+
+$$
+S = \sum_{i=1}^n X_i.
+$$ **Nota**. La variabile $S$ **non** si distribuisce come una
+binomiale, essendo somma di variabili Bernoulli con probabilità
+**differenti**.
+
+1.  (4pt) Si scriva in **R** la funzione `rS(R, n, alpha)` che simula un
+    `R` valori pseudo-casuali distribuiti come la variable $S$.
+
+2.  (2pt) Utilizzando $n = 100$ e $\alpha = 1$, si ottenga una stima
+    Monte Carlo del valore atteso $\text{E}(S)$, utilizzando un numero
+    di repliche `R` appropriato.
+
+3.  (2pt) Utilizzando $n = 500$ e $\alpha = \pi / 4$, si ottenga una
+    stima Monte Carlo dell'evento $\text{P}(3 \le S \le 5)$, utilizzando
+    un numero di repliche `R` appropriato.
+
+4.  (2pt) 1. Utilizzando $n = 500$ e $\alpha = \sqrt{2}$, si ottenga una
+    stima Monte Carlo della distribuzione di $S$ e se ne faccia un
+    grafico, utilizzando un numero di repliche `R` appropriato.
+
+## Problema 3
+
+Si consideri il dataset `Animals` della libreria `MASS` e lo si carichi
+in memoria.
+
+1.  (1pt) Si ottengano le variabili `lbody` e `lbrain`, corrispondenti
+    al logaritmo naturale delle variabili `body` e `brain` del dataset
+    `Animals`, rispettivamente.
+
+2.  (1pt) Si ottengano le medie campionarie e le mediane per le
+    variabili `lbody` e `lbrain`. Si ottengano quindi il primo ed il
+    terzo quartile. Sono presenti outlier nelle due distribuzioni?
+
+3.  (2pt) Si ottengano gli istogrammi di tali variabili, scegliendo
+    opportunamente il numero di intervalli.
+
+4.  (1pt) Si ottenga un grafico che metta in relazione le variabili
+    `lbody` e `lbrain`.
+
+5.  (1pt) Si calcoli la correlazione tra le variabili `lbody` e
+    `lbrain`.
+
+6.  (4pt) In un modello di regressione lineare semplice
+    $y = \alpha + \beta x$, dove `lbody` rappresenta la variabile
+    esplicativa ($x$) e `lbrain` rappresenta la variabile risposta
+    ($y$), si ottengano le stime ai minimi quadrati, le quali sono pari
+    a $$
+    \hat{\alpha} = \bar{y} - \hat{\beta}\bar{x}, \qquad \hat{\beta} = \frac{\text{cov}(x,y)}{\text{var}(x)}.
+    $$

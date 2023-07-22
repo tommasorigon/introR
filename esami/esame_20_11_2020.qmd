@@ -1,0 +1,68 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esame 20 Novembre 2020'
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    math: katex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = T, R.options = list(width = 220))
+```
+
+## Problema 1
+
+Dopo aver caricato in memoria la libreria `MASS`, si acceda al dataset `forbes` contenuto in tale libreria. 
+
+1. Si acceda alla documentazione del dataset `forbes` e si descriva il contenuto del dataset: cosa rappresentano le variabili contenute in tale insieme di dati?
+
+1. Si ottengano le medie campionarie e le mediane per le variabili `bp` e `pres`. Si ottengano quindi il primo ed il terzo quartile. Sono presenti outlier nelle due distribuzioni?
+
+1. Si ottengano gli istogrammi di tali variabili, scegliendo opportunamente il numero di intervalli. 
+
+1. Si ottenga un grafico che metta in relazione le variabili `bp` e `pres`.
+
+1. Si calcoli la correlazione tra le variabili `bp` e `pres`.
+
+1. In un modello di regressione lineare semplice $y = \alpha + \beta x$, dove `bp` rappresenta la variabile esplicativa ($x$) e `pres` rappresenta la variabile risposta ($y$), le stime ai minimi quadrati sono pari a
+$$
+\hat{\alpha} = \bar{y} - \hat{\beta}\bar{x}, \qquad \hat{\beta} = \frac{\text{cov}(x,y)}{\text{var}(x)}.
+$$
+1. Si rappresenti la retta di regressione ottenuta congiuntamenti ai dati. Il modello sembra adattarsi bene ai dati?
+
+
+
+## Problema 2
+
+Una variabile aleatoria $X \sim \text{Burr}(\alpha,\beta)$ segue una distribuzione di Burr di parametri $\alpha, \beta > 0$. Si tratta di una variabile casuale assolutamente continua e a valori positivi avente la seguente densità:
+
+$$
+f(x ; \alpha, \beta) = \alpha \beta \frac{x^{\alpha-1}}{(1 + x^\alpha)^{\beta+1}}, \qquad x > 0.
+$$
+
+È facile verificare che la funzione di ripartizione coincide con
+
+$$
+F(x; \alpha, \beta) = 1 - \frac{1}{(1 + x^\alpha)^\beta}, \qquad x > 0.
+$$
+
+
+1. Si ottenga analiticamente (ovvero utilizzando carta e penna) la funzione quantile $F^{-1}(p; \alpha,\beta)$ della distribuzione di Burr, ovvero la funzione inversa di $F(x;\alpha,\beta) = p$. Quindi, si scrivano in **R** le funzioni per il calcolo della densità, della funzione di ripartizione e la funzione quantile. Si chiamino queste funzioni `dburr(x, alpha, beta)`, `pburr(x, alpha, beta)` e `qburr(p, alpha, beta)`, rispettivamente.
+
+1. Si faccia un grafico della funzione di densità $f(x ; \alpha, \beta)$ con $\alpha = 2$ e $\beta = 1$, in un intervallo opportuno.
+
+1. Per generare valori (pseudo) casuali dalla distribuzione di Burr è possibile utilizzare il metodo dell'inversione. Un singolo valore da una distribuzione di Burr si ottiene tramite il comando `qburr(runif(1), alpha, beta)`. Si definisca quindi la funzione `rburr(R, alpha, beta)` che genera `R` valori pseudo casuali da una distribuzione di Burr.
+
+1. Utilizzando i numeri pseudo-casuali generati tramite la funzione `rburr` con $\alpha = 2$ e $\beta = 1$ si approssimino:
+    a. Il valore atteso $E(X)$.
+    a. La varianza $\text{var}(X)$.
+    a. La probabilità che $X$ sia compresa tra $2$ e $3$.
+    
+1. Si faccia un istogramma dei valori simulati al punto precedente e lo si confronti con la densità $f(x;\alpha,\beta)$ per $\alpha = 2$ e $\beta = 1$.
+
+1. Si ottenga la funzione di ripartizione empirica dei valori simulati in precedenza e la si confronti con la funzione di ripartizione teorica $F(x;\alpha,\beta)$ per $\alpha = 2$ e $\beta = 1$.
+

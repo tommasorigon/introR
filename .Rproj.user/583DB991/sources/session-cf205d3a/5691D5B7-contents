@@ -1,0 +1,92 @@
+---
+title: "Data mining"
+subtitle: "CdL CLAMSES"
+author: "[Tommaso Rigon]{.orange}"
+institute: "_Università degli Studi di Milano-Bicocca_"
+execute:
+  cache: true
+format:
+  html:
+    html-math-method: katex
+    echo: true
+    callout-appearance: minimal
+    theme: [cosmo, template.css]
+    toc: true
+    toc-title: Table of contents
+    embed-resources: true
+    code-line-numbers: true
+    smooth-scroll: true
+    fig-dpi: 250
+editor: 
+  markdown: 
+    wrap: 72
+editor_options: 
+  chunk_output_type: console
+---
+
+This is the website of the **Data Mining** course (6 CFU) of the "*Corso
+di Laurea Magistrale in Scienze Statistiche ed Economiche* (CLAMSES)",
+Università degli Studi di Milano-Bicocca.
+
+## Teaching material
+
+### Required
+
+-   Azzalini, A. and Scarpa, B. (2011), [*Data Analysis and Data
+    Mining*](http://azzalini.stat.unipd.it/Book-DM/), Oxford University
+    Press.
+-   Hastie, T., Tibshirani, R. and Friedman, J. (2009), [*The Elements
+    of Statistical Learning*](https://hastie.su.domains/ElemStatLearn/),
+    Second Edition, Springer.
+
+### Optional
+
+-   Efron, B. and Hastie, T. (2016), [*Computer Age Statistical
+    Inference*](https://hastie.su.domains/CASI/), Cambridge University
+    Press.
+-   Lewis, Kane, Arnold (2019) *A Computational Approach to Statistical
+    Learning*. Chapman And Hall/Crc.
+
+### Slides and lecture notes
+
+If you would like to convert the html slides into pdf files, please
+[follow the instruction of the quarto
+documentation](https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf).
+
+| Topic                                  | Notes                             | Slides                                   | Code                  |
+|------------------|------------------|-------------------|------------------|
+| **Introduction**                       | [Introduction](slides/un_intro.html)                         | [Slides introduction](slides/un_intro_slides.html)                         |                       |
+| **A-B-C**                              | [Unit A](slides/un_A.html)        | [Slides Unit A](slides/un_A_slides.html) | [Code A](code/un_A.R) |
+| Lab 1                                  | \[Code Lab 1\]                    |                                          |                       |
+| *Exercises*                            | [Exercises A](exe/exe_A.html)     |                                          |                       |
+| **Optimism, conflicts and trade-offs** | [Unit B](slides/un_B.html)        | [Slides Unit B](slides/un_B_slides.html) | [Code B](code/un_B.R) |
+| *Exercises*                            | [Exercises B](exe/exe_B.qmd.html) |                                          |                       |
+| Lab 2                                  | \[Code Lab 2\]                    |                                          |                       |
+| **Shrinkage and variable selection**   | [Unit C](slides/un_C.html)        | [Slides Unit C](slides/un_C_slides.html) |                       |
+| *Exercises*                            | [Exercises C](exe/exe_C.html)     |                                          |                       |
+| Lab 3                                  | \[Code Lab 3\]                    |                                          |                       |
+| **Nonparametric estimation**           | \[Unit D\]                        | \[Slides Unit D\]                        |                       |
+| *Exercises*                            | \[Exercises 4\]                   |                                          |                       |
+| Lab 4                                  | \[Code Lab 4\]                    |                                          |                       |
+| **The curse of dimensionality**        | \[Unit E\]                        | \[Slides Unit E\]                        |                       |
+| **Additive models**                    | \[Unit F\]                        | \[Slides Unit F\]                        |                       |
+| *Exercises*                            | \[Exercises 5\]                   |                                          |                       |
+| Lab 5                                  | \[Code Lab 5\]                    |                                          |                       |
+| Lab 6                                  | \[Code Lab 6\]                    |                                          |                       |
+| **Prediction, estimation, and attribution**                    | \[Unit G\]                        | \[Slides Unit G\]                        |                       |
+
+
+## Prerequisites
+
+Knowledge of the topics (i) linear algebra, (ii) linear models, and
+(iii) generalized linear models (GLMs), is highly recommended.
+
+Knowledge of topics covered in the courses Probability and Statistics M
+and Advanced Statistics M is also highly recommended.
+
+## Office hours
+
+To schedule a meeting, please write to `tommaso.rigon@unimib.it`. Office
+hours is every **Tuesday at 17.30**
+
+------------------------------------------------------------------------

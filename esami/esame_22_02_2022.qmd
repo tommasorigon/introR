@@ -1,0 +1,82 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esame 22 Febbraio 2022'
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    math: katex
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = T, R.options = list(width = 220))
+```
+
+
+## Problema 1
+
+Si carichi in memoria il dataset `swiss` presente in **R**. Il dataset si riferisce a $n = 47$ province della svizzera Francese. 
+
+1. (1pt) Si aggiunga al dataset una nuova variabile, chiamata `logEducation`, la quale contiene il logaritmo della variabile `Education`.
+
+1. (1pt) Si produca un grafico opportuno che metta in relazione la variabile `logEducation` e `Agriculture`. 
+
+1. (2pt) Si ottengano le matrici di covarianza e di correlazione relative alle variabili `Fertility`, `Agriculture` e `logEducation`. 
+
+1. (2pt) Si calcolino degli opportuni indici di posizione e variabilità per la variabile `Agriculture`. 
+
+1. (6pt) Si calcoli la correlazione parziale tra le variabili `Agriculture` e `Fertility` al netto della variabile `logEducation`, che si ottiene come segue. Si costruisca un modello di regressione lineare usando `Agriculture` come variabile risposta ($y$) e `logEducation` ($x$) come variabile esplicativa. Analogamente, si costruisca un modello di regressione usando  `Fertility` come variabile risposta e `logEducation` come variabile esplicativa. Si ricordi che le stime ai minimi quadrati sono pari a
+$$
+\hat{\alpha} = \bar{y} - \hat{\beta}\bar{x}, \qquad \hat{\beta} = \frac{\text{cov}(x,y)}{\text{var}(x)}.
+$$
+Il coefficiente di correlazione parziale si ottiene quindi calcolando il coefficiente di correlazione tra i residui di entrambi i modelli. 
+
+## Problema 2
+
+Una variabile aleatoria continua $X$ segue una distribuzione di Kumaraswamy di parametri $\alpha, \beta$ se la sua densità è pari a:
+
+$$
+f(x) = \alpha \beta x^{\alpha - 1}(1 - x^\alpha)^{\beta - 1}, \qquad 0 < x < 1.
+$$
+
+È inoltre possibile dimostrare che la funzione di ripartizione è pari a
+
+$$
+F(x) = 1 - (1 - x^\alpha)^\beta, \qquad 0 < x < 1.
+$$
+Infine, la funzione quantile è pari a
+
+$$
+\mathcal{Q}(p) = (1 - (1 - p)^{1/\beta})^{1/ \alpha}, \qquad 0 < p < 1. 
+$$
+
+
+1. (4pt) Si implementino le funzioni `dkum(x, alpha, beta)`, `pkum(x, alpha, beta)` e `qkum(x, alpha, beta)` le quali fanno riferimento rispettivamente alla densità, alla funzione di ripartizione e alla funzione quantile.
+
+1. (2pt). Si faccia un grafico nell'intervallo $(0, 1)$ di tutte e tre le funzioni precedenti, per $\alpha = \beta = 2$. 
+
+1. (2pt) Si costruisca una funzione `rkum(R, alpha, beta)` che campiona `R` valori pseudo-casuali dalla variabile aleatoria di Kumaraswamy.
+
+1. (2pt) Si ottenga una stima Monte Carlo della densità di $X$, quando $\alpha = \beta = 2$ e la si confronti con la funzione di densità `dkum` ottenuta in precedenza. 
+
+1. (2pt) Si ottenga un'approssimazione Monte Carlo della media $E(X)$, quando $\alpha = \beta = 2$. Si quantifichi opportunamente l'errore commesso. 
+
+
+## Problema 3
+
+Siano $y = (y_1,\dots,y_n)$ delle realizzazioni iid di una variabile aleatoria discreta con legge Poisson di parametro  $\lambda$. Si considerino i seguenti stimatori per la probabilità  $\psi = P(Y = 0)$, dove $Y \sim \text{Pois}(\lambda)$
+
+$$
+T_1 = e^{-\bar{y}}, \qquad T_2 = \frac{1}{n}\sum_{i=1}^n I(y_i = 0),
+$$
+in cui $\bar{y}$ e $I(\cdot)$ rappresentano la media aritmetica e la funzione indicatrice.
+
+1. (4pt) Supponendo $\lambda  = 2$, si verifichi empiricamente se i due stimatori sono consistenti.
+
+1. (2pt) Supponendo $\lambda  = 2$ e per $n = 20$, si effettui uno studio di simulazione e si calcoli la distorsione degli stimatori $T_1$ and $T_2$.
+
+1. (2pt) Supponendo $\lambda  = 2$ e per $n = 20$, si stabilisca quale dei due stimatori è preferibile in termini di errore quadratico medio. 

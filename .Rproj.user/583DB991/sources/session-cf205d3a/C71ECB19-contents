@@ -1,0 +1,134 @@
+#ESAME 19 LUGLIO 2023
+
+
+# PROBLEMA 1 --------------------------------------------------------------
+
+#1.a
+f <- function(x){
+  exp(x) / ( 1 + exp(x) )
+}
+
+
+#1.b
+f(2) #0.8807971
+curve(f(x), -4, 4)
+
+
+#1.c
+#utilizzando la funzione integrate
+g <- function(x){
+  exp(x) / ( ( 1 + exp(x) )^2 )
+}
+
+integrate(g, 0, 2) #0.3807971 with absolute error < 4.2e-15
+
+
+#approssimazione montecarlo
+set.seed(123)
+R <- 10^8
+X <- runif(R, 0, 2)
+mean( exp(X) / ( ( 1+exp(X) )^2 ) ) *2 #0.3808012
+
+
+#1.d
+
+sum( exp(-1) / factorial(0:100) ) #1
+
+sum( ( (0:100)^2 ) * ( exp(-1) / factorial(0:100) ) ) #2
+
+
+# PROBLEMA 2 --------------------------------------------------------------
+
+
+#2.a
+funzione <- function(R, n){
+  sim <- replicate(R, runif(1, 1, 365)) #R campioni da 1
+  sample(1:n, n)
+} 
+
+lamiafunzione <- function(R, n){
+  x <- funzione(R, n) #vettore con i giorni di nascita delle 30 persone estratte
+  y <- table(funzione(R, n)) #frequenze assolute
+  somma <- 0 #inizializzo la somma = 0
+  
+  for (i in 1:n) { # indice da 1 a 30
+    uguali <- 0 #inizializzo uguali = 0
+    if (y[i] != 1) { #se la frequenza assoluta di quella data ? diversa da 1 (data si ripete pi? di una volta), uguali = 1, altrimenti uguali=0
+      uguali = 1 
+    }
+    somma = somma + uguali #se la somma ? diversa da 0 allora qualche data viene ripetuta pi? volte
+  } #risultato della funzione ?  nullo, lo inserisco comunque in un grande ciclo
+
+    somma
+  #ottengo con un "somma" che ? = 0 se tutte le date sono diverse, altrimenti ? = al tot di date che si ripetono (non al numero di ripetizioni)
+  
+} 
+
+
+set.seed(123)
+R <- 30000
+n <- 30
+mean ( replicate(30000, lamiafunzione(R, n)) ) # = probabilit? che siano nati tutti in giorni diversi
+
+
+#immagino non sia la soluzione pi? efficiente, sopratutto per il tempo che ci vuole per implementare il codice scritto, 
+# una stima della probabilit? che le 30 persone campionate siano nate tutte in date diverse si pu? ottenere in maniera estremamente meno precisa,
+# ma in qualche secondo da:
+
+mean ( replicate(100, lamiafunzione(R, n)) ) # 0
+
+
+
+# PROBLEMA 3 --------------------------------------------------------------
+
+library(MASS)
+data(forbes)
+
+#3.a
+? forbes
+#A data frame with 17 observations on boiling point of water and barometric pressure in inches of mercury.
+str(forbes) #7 obs. of  2 variables
+#bp = boiling point (degrees Farenheit).
+#pres = barometric pressure in inches of mercury.
+
+
+#3.b
+summary(forbes$bp)
+#   Min.  1st Qu.  Median    Mean  3rd Qu.    Max. 
+#  194.3   199.4   201.3   203.0   208.6   212.2 
+
+summary(forbes$pres)
+#   Min.  1st Qu.  Median   Mean  3rd Qu.    Max. 
+#  20.79   23.15   24.01   25.06   27.76   30.06 
+
+boxplot.stats(forbes$bp) #non sono presenti outlier
+#$out
+#numeric(0)
+
+boxplot.stats(forbes$pres) #non sono presenti outlier
+#$out
+#numeric(0)
+
+
+#3.c
+hist(forbes$bp)
+hist(forbes$pres)
+#il numero di intervalli ? dato dal metodo di default "Sturges".
+
+
+#3.d
+plot( forbes$bp, forbes$pres )
+
+
+#3.e
+cor(forbes$bp, forbes$pres)
+
+
+#3.f
+beta_hat <- cov( forbes$bp, forbes$pres ) / var(forbes$bp)
+alpha_hat <- mean(forbes$pres) - beta_hat * mean(forbes$bp)
+
+
+#3.g
+abline(a=alpha_hat, b=beta_hat)
+#il modello sembra adattarsi bene ai dati

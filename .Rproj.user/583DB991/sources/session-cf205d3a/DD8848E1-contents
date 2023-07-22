@@ -1,0 +1,133 @@
+#ESAME 19/7/2023
+
+rm(list=ls())
+
+#PROBLEMA 3
+
+library(MASS)
+data(forbes)
+View(forbes)
+
+#3.1 
+
+str(forbes)
+?forbes
+
+#Il dataset forbes contiene 17 osservazioni della temperatura di ebollizione dell'acqua in Farenheit (variabile bp) alla relativa pressione atmosferica (variabile pres).
+
+
+#3.2
+
+mean (forbes$bp)
+mean (forbes$pres)
+
+median (forbes$bp)
+median (forbes$pres)
+
+quantile (forbes$bp, probs = c(0.25, 0.75))
+quantile (forbes$pres, probs = c(0.25, 0.75))
+
+summary(forbes$bp) #Comando alternativo 
+summary(forbes$pres) #Comando alternativo
+
+
+boxplot(forbes$pres)
+boxplot(forbes$bp)
+
+boxplot.stats(forbes$pres)
+boxplot.stats(forbes$bp)
+
+#In entrambe le variabili del dataset non sono presenti outlier
+
+#3.3
+
+hist(forbes$bp, xlab = "Temperatura di ebollizione")
+hist(forbes$pres, xlab = "Pressione atmosferica")
+
+#3.4
+
+plot (forbes$bp  ~ forbes$pres, pch=20)
+
+#3.5
+
+cor(forbes$bp, forbes$pres)
+
+#3.6
+
+beta_hat <- cov(forbes$bp, forbes$pres) / var(forbes$bp)
+beta_hat
+alpha_hat <- (mean(forbes$pres) - (beta_hat * mean(forbes$bp)))
+alpha_hat
+
+#3.7
+
+mod <- lm (forbes$bp ~ forbes$pres)
+plot (forbes$bp  ~ forbes$pres, xlab ="Pressione atmosferica", ylab="Temperatura di ebollizione", pch=20)
+abline(mod, col="red")
+
+#S?, il modello sembra adattarsi bene ai dati.
+
+
+#PROBLEMA 1
+
+rm(list=ls())
+
+#1.1
+
+f <- function(x){
+  exp(x)/((1 + exp(x)))
+}
+
+#1.2
+
+f(x=2)
+
+plot(f, -4,4)
+
+#1.3
+
+int <- function(x){
+  exp(x)/(1+exp(x)^2)
+}
+
+integrate(int, lower=0, upper=2)
+
+set.seed(123)
+R <- 10^5
+x <- runif (R,0,1)
+g <- mean (exp(x)/(1+exp(x)^2))
+g
+
+#1.4
+
+k <- 0:100
+
+sum ((exp(-1)/factorial(0:100)))
+
+sum (((0:100) ^2) * (exp(-1)/factorial(0:100)))
+
+#PROBLEMA 2
+
+#2.a 
+
+set.seed(123)
+R <- 30000
+n <- 30
+x <- runif(n, min=1, max=365)
+
+Sim <- replicate (R, runif(n, min=1, max=365)) #Esecuzione della simulazione
+Sim
+
+round(mean(Sim - x), 2) #Distorsione
+
+mean((Sim - x)^2) #Errore quadratico medio
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Simulazione d''esame'
+output: 
+  html_document: 
+    theme: cosmo
+    df_print: kable
+    highlight: kate
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval = F, message = F, warning = F, error = F, comment = NA, cache = F, include = T, R.options = list(width = 100), collapse = T, dpi = 200, fig.align = "center", fig.height = 4, fig.width = 8)
+```
+
+
+## Problema 1
+
+Sia $X$ una variabile casuale uniforme discreta avente supporto sugli interi da $1$ a $365$. Si assuma che il supporto di $X$ sia associato ad ognuno dei giorni dell’anno (non bisestile); in particolare, $1$ indica il primo Gennaio, mentre $365$ il 31 Dicembre. 
+
+------------------------
+
+1. A partire da queste informazioni si imposti uno studio di simulazione basato su $30000$ repliche per stimare la probabilità che in un gruppo di $39$ persone tutte siano nate in giorni diversi.
+
+1. Si stimi la probabilità dell'evento al punto precedente sotto l'ipotesi che nei primi $35$ giorni dell'anno la probabilità di nascere sia doppia rispetto agli altri giorni dell'anno; si utilizzi lo stesso numero di repliche del punto precedente. 
+
+## Problema 2
+
+È noto che per generare numeri pseudo-casuali da una variabile casuale continua $Z$ è sufficiente avere a disposizione un generatore di numeri pseudo-casuali da una variabile uniforme continua nell’intervallo $[0,1]$. 
+
+Infatti, si ha $z_\text{pc} = F^{-1}_Z(u_\text{pc})$ in cui $z_\text{pc}$ è un numero pseudo-casuale da $Z$, $u_\text{pc}$ è un numero pseudo-casuale da una variabile casuale uniforme in $[0,1]$ e $F^{−1}_Z(\cdot)$ è l’inversa della funzione di ripartizione di $Z$, ovvero la funzione quantile. 
+
+Si supponga che $Z$ sia una variabile casuale continua con funzione di ripartizione
+$$
+F(z) = \frac{e^z}{1 + e^z}.
+$$
+Si generino, secondo la definizione $F^{-1}_Z(u_\text{pc})$, $10000$ numeri pseudo-casuali da $Z$. Quindi, utilizzando i numeri pseudo-casuali generati al punto precedente, si approssimino:
+
+a. Il valore atteso $\mathbb{E}(Z)$ 
+a. La varianza $\text{var}(Z)$ 
+a. La probabilità che $Z$ sia compresa tra $1$ e $2$.
+
+## Problema 3
+
+Nel file `auto.txt` disponibile al link [https://tommasorigon.github.io/introR/data/auto.txt](https://tommasorigon.github.io/introR/data/auto.txt) si riportano dati relativi ad alcuni modelli di autobili presenti in commercio negli Stati Uniti tra il 1973 e il 1974. Le variabili presenti nell’insieme di dati fornito sono
+
+1. `mpg`: consumo (miglia / galloni) 
+1. `cyl`: numero di cilindri
+1. `disp`: cilindrata (pollici cubici) 
+1. `hp`: cavalli
+1. `drat`: rapporto ase posteriore/anteriore
+1. `wt`: peso (in libbre)
+1. `qsec`: tempo a percorrere 1/4 di miglio con partenza da fermo 
+1. `vs`: disposizione dei cilindri (`0` = a V, `1` = in linea)
+1. `am`: cambio (`0` = automatico, `1` = manuale)
+1. `gear`: numero di marce
+1. `carb`: numero di carburatori
+
+-----------------------------
+
+Una volta caricati i dati in **R**:
+
+1. Indicare la classe dell'oggetto importato.
+
+1. Indicare il numero di righe e colonne dell’oggetto importato.
+
+1. Indicare la classe della variabile `vs`: se diversa da `factor`, convertirla e rinominare opportunamente i livelli come `V` e `Linea`.
+
+1. Calcolare le frequenze relative di `cyl` condizionate a `gear=3`.
+
+1. Dire se è corretto affermare che "il $60$-simo percentile della distribuzione dei cavalli delle auto con disposizione dei cilindri a V è maggiore rispetto al numero medio di cavalli delle auto con disposizione dei cilindri in linea".
+

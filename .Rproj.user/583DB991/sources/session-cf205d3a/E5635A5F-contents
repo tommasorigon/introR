@@ -1,0 +1,101 @@
+# Fatima Ezzahra El Ayoubi
+
+rm(list = ls())
+
+# ----------- PROBLEMA 1 ----------------
+
+# 1.a
+f <- function(x) {
+  exp(x) / (1 + exp(x))
+}
+
+# 1.b
+f(2)
+curve(f(x), -4, 4)
+
+# 1.c
+library(cubature)
+
+R <- 10^5
+set.seed(123)
+x <- runif(R, 0, 2)
+g <- function(x) 2 * exp(x) / (1 + exp(x))^2
+mean(g(x))
+
+integrate(function(x) exp(x) / (1 + exp(x))^2, lower = 0, upper = 2)
+
+# 1.d
+k <- 0:100
+sum( (exp(1)^-1) / factorial(k) )
+
+k <- 0:100
+sum( (k^2) * (exp(1)^-1) / factorial(k) ) 
+
+
+# ----------- PROBLEMA 3 -----------------------
+library(MASS)
+data("forbes")
+View(forbes)
+# 3.a
+?forbes
+# bp: boiling point (degrees Farenheit).
+# pres: barometric pressure in inches of mercury.
+
+# 3.b
+summary(forbes) # fornisce medie, mediane, primo e terzo quartile
+
+boxplot(forbes$bp)
+boxplot(forbes$pres)
+
+plot(forbes$bp)
+plot(forbes$pres)
+
+# non ci sono outliers
+
+# 3.c
+hist(forbes$bp, breaks = "FD")
+hist(forbes$pres, breaks = "FD")
+
+# 3.d
+plot(forbes$bp ~ forbes$pres)
+
+# 3.e
+cor(forbes$bp, forbes$pres)
+
+# 3.f
+y <- forbes$pres
+x <- forbes$bp
+
+beta <- cov(x, y) / var(x)
+alpha <- mean(y) - ( beta * mean(x) )
+c(alpha, beta)
+
+# 3.g
+plot(x ~ y)
+abline(lm(x ~ y), col="red")
+
+# il modello sembra adattarsi bene ai dati
+
+
+# ----------- PROBLEMA 2 -----------------------
+
+# 2.a
+R <- 30000
+set.seed(10^5)
+
+giorni_diversi <- function(n){
+  campione <- sample(1:365, n, replace = TRUE)
+  return(length(campione) == length(unique(campione)))
+}
+
+prob_stimata <- mean(replicate(R, giorni_diversi(30)))
+prob_stimata
+
+# 2.b
+primi_giorni <- function(n) {
+  campione <- sample(c(1:35, 36 : 365), n, replace = TRUE, prob = c(rep(2, 35), rep(1, 330)))
+  return(length(campione) == length(unique(campione)))
+}
+
+prob_evento <- mean(replicate(R, primi_giorni(30)))
+prob_evento

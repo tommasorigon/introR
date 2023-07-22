@@ -1,0 +1,79 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esame 19 Novembre 2021'
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    math: katex
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r startup, include = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = T, eval = T, message = F, warning = F, error = F, comment = NA, cache = F, include = T, R.options = list(width = 220))
+```
+
+
+## Problema 1
+
+Si carichi in memoria il dataset `Boston` tramite il comando `data(Boston)` dopo aver caricato in memoria la libreria `MASS`. 
+
+1. (1pt) Si crei un vettore numerico `x` contenente i valori della variabile `crim` del dataset `Boston`. Si calcolino media e mediana di tale variabile. 
+
+1. (1pt) Si creino i vettori `x_river` e `x_no_river` contenenti i valori della variabile `crim`, rispettivamente per le osservazioni vicine al fiume (`chas` = 1) e lontane dal fiume (`chas` = 0). 
+
+2. (4pt) Siano $x_1,\dots,x_n$ delle osservazioni numeriche. La _differenza semplice media_ è un indicatore di variabilità definito come segue 
+$$
+\Delta = \frac{1}{n(n-1)} \sum_{i=1}^n\sum_{j=1}^n |x_i - x_j|.
+$$
+Si definisca in **R** la funzione `delta(x)` che calcola l'indicatore $\Delta$ per un generico vettore numerico `x`. Si calcoli quindi tale indicatore per le variabili `x_river` e `x_no_river`. 
+
+1. (4pt) Sia $x_{(1)}, \dots, x_{(n)}$ il campione ordinato dei dati $x_1,\dots,x_n$ e sia $\bar{x}$ la media aritmetica. La _differenza semplice media_ ammette una rappresentazione alternativa, pari a:
+$$
+\Delta = \frac{4}{n(n-1)}\left( \sum_{i=1}^n i x_{(i)}\right) - 2\bar{x} \frac{n+1}{n-1}.
+$$
+Si definisca in **R** la funzione `delta2(x)` che calcola l'indicatore $\Delta$ tramite questa formula alternativa. Si calcoli quindi tale indicatore per le variabili `x_river` e `x_no_river` e si verifichi che il risultato coincide con quello trovato al punto precedente. 
+
+## Problema 2
+
+Uno studente del corso di laurea SSE dell'Università Milano-Bicocca sostiene di aver inventato una nuova variabile aleatoria. Pur non conoscendone la densità, definisce la variabile aleatoria $X$ come segue:
+
+$$
+X = \sqrt{ - 2 \log{U_1}} \sin{(2\pi U_2)},
+$$
+dove $U_1$ ed $U_2$ sono due variabile aleatorie _uniformi_ in $(0,1)$ ed indipendenti tra loro. 
+
+1. (2pt) Si scriva in **R** la funzione `r_log_sin(R)` che simula `R` valori pseudo-casuali distribuiti come la variabile  $X$.
+
+1. (2pt) Si fornisca un'approssimazione delle quantità $E(X)$ e $E(X^2)$. 
+
+1. (2pt) Si quantifichi l'errore commesso al punto precedente.
+
+1. (2pt) Si approssimino le probabilità $P(X \le x)$, per $x = -1, 0, 1$. 
+
+1. (2pt) Si ottenga una stima della densità di $X$. Sulla base di quest'ultima stima e di tutti gli indicatori precedenti, a cosa "assomiglia" la distribuzione di $X$?
+
+## Problema 3
+
+Siano $y = (y_1,\dots,y_n)$ delle realizzazioni iid di una variabile aleatoria continua con legge Laplace, la cui densità è
+
+$$
+f(y ; \theta) = \frac{1}{2}e^{-|y - \theta|}.
+$$
+
+Di conseguenza, la funzione di log-verosimiglianza, a meno di una costante additiva, è pari a
+
+$$
+\ell(\theta) = \ell(\theta; y) = - \sum_{i=1}^n |y_i - \theta|.
+$$
+
+1. (3pt) Si scriva la funzione `loglik(theta, y)` che calcola la funzione di log-verosimiglianza. Ci si assicuri che la funzione sia opportunamente ``vettorizzata" rispetto a $\theta$. 
+
+1. (3pt) Si considerino le osservazioni `10, 3, 12, 20, 32, 8`. Si disegni la funzione di log-verosimiglianza corrispondente nell'intervallo $(0, 30)$. 
+
+1. (3pt) Utilizzando opportuni strumenti di approssimazione numerica si calcoli la stima di massima verosimiglianza $\hat{\theta}$. 
+
+1. (2pt) Si calcoli il valore della log-verosimiglianza nel punto di massimo e la si confronti con il valore $\ell(10 + \pi/4)$. Si commentino i risultati.

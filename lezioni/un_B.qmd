@@ -1,0 +1,348 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: "Unità B: elementi di programmazione"
+author: "Tommaso Rigon"
+institute: "Università Milano-Bicocca"
+editor: visual
+execute:
+  echo: true
+  warning: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Unità B
+
+-   Definizione di una nuova funzione
+-   Istruzioni di controllo: `if`, `else`
+-   Cicli `for`, cicli `while`
+-   Cenni alle funzioni `*apply`
+-   I pacchetti **R**
+
+::: callout-note
+#### Nota
+
+Esercizi **R** associati disponibili a [questo link](https://tommasorigon.github.io/introR/exe/es_1.html)
+:::
+
+## Funzioni I
+
+Oltre ad essere un software statistico, **R** è un **linguaggio di programmazione**.
+
+La maggior parte degli oggetti **R** è una funzione. Infatti:
+
+```{r}
+class(sum) # Identifica la tipologia di oggetto
+```
+
+. . .
+
+```{r}
+class(log) # Secondo esempio
+```
+
+. . .
+
+È possibile quindi definire **nuove funzioni**, in aggiunta a quelle già esistenti.
+
+Una volta create, le funzioni possono essere usate proprio come tutte le altre.
+
+## Funzioni II
+
+Per creare una nuova funzione, si utilizza comando `function`.
+
+La **nuova funzione** `cube` calcola il cubo del numero ricevuto come input:
+
+```{r}
+cube <- function(x) {
+  out <- x^3
+  out
+}
+```
+
+. . .
+
+L'**ultimo oggetto** (in questo caso chiamato `out`) viene restituito come risultato:
+
+```{r}
+cube(4) # Calcola il cubo del valore 4
+```
+
+. . .
+
+Possiamo alternativamente utilizzare anche il comando `return` per restituire il risultato:
+
+```{r}
+cube <- function(x) {
+  out <- x^3
+  return(out) # Esplicita che il valore da dover restituire è out
+}
+cube(8) # Calcola il cubo del valore 8
+```
+
+## Funzioni III
+
+È possibile definire nuove funzioni con **molteplici argomenti**, scegliendo anche i loro eventuali **valori predefiniti**
+
+```{r}
+power <- function(x, p = 2) {
+  out <- x^p
+  out
+}
+```
+
+. . .
+
+Il valore predefinito per l'argomento `p` è il quadrato (`p = 2`), infatti:
+
+```{r}
+power(x = 4) # Calcola il quadrato del valore 4
+```
+
+. . .
+
+```{r}
+power(4) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti
+```
+
+. . .
+
+Tuttavia, possiamo selezionare una potenza diversa nel modo seguente:
+
+```{r}
+power(x = 4, p = 3) # Calcola il cubo del valore 4
+power(4, 3) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti
+```
+
+## Istruzioni di controllo I
+
+L'istruzione di controllo `if` consente di svolgere una determinata operazione solamente se una certa **condizione** è verificata (`TRUE` oppure `FALSE`).
+
+L'istruzione di controllo (facoltativa) `else` consente di svolgere un'`operazione alternativa` se la precedente condizione non è verificata.
+
+. . .
+
+Ad esempio, il seguente codice mostra a schermo (funzione `print`) una frase diversa a seconda che la condizione sia vera o falsa:
+
+```{r}
+condizione <- pi^2 < 10 # Valore booleano (in questo caso la condizione è TRUE)
+
+if (condizione) {
+  print("La condizione è vera")
+  # Alcuni comandi da eseguire
+  # ...
+} else {
+  print("La condizione è falsa")
+  # Altri comandi da eseguire
+  # ...
+}
+```
+
+## Istruzioni di controllo II
+
+La seguente funzione `square_root` è un esempio più concreto relativo ad `if` ed `else`.
+
+Se il numero fornito come input è negativo, viene restituito un `NaN`:
+
+```{r}
+square_root <- function(x) {
+  if (x < 0) {
+    # Messaggio di avvertimento; in realtà sarebbe più appropriato usare il comando "warning"
+    print("Il valore di x deve essere positivo")
+    out <- NaN # Restituisco Not A Number
+  } else {
+    out <- sqrt(x)
+  }
+  out
+}
+
+square_root(-2) # La condizione x < 0 è verificata
+square_root(36) # La condizione x < 0 NON è verificata
+```
+
+## Cicli `while` e `for` I
+
+I cicli `for` ed i cicli `while` ripetono l'operazione contenuta tra le parentesi graffe `{ }` fintanto che una determinata condizione non si è verificata.
+
+. . .
+
+Cominciamo con un semplice esempio relativo alla funzione `while`:
+
+```{r}
+i <- 5 # Partiamo con i = 5
+
+while (i <= 25) { # Ripete l'operazione fintanto che i non è minore o uguale di 25
+  print(i) # Mostra a schermo il valore di i
+  i <- i + 5 # Incrementa il valore di i
+
+  # In contesti reali, qui ovviamente ci sono altre operazioni da eseguire
+  # ...
+}
+```
+
+## Cicli `while` e `for` II
+
+::: callout-warning
+Attenzione a non creare dei **loop senza fine**!
+:::
+
+. . .
+
+Il codice seguente richiede l'interruzione forzata della sessione di **R** oppure, nella peggiore delle ipotesi, il riavvio del computer:
+
+```{r}
+#| eval: false
+# NON ESEGUIRE IL SEGUENTE CODICE!
+#
+# La condizione i <= 25 è sempre vera perché i non viene aggiornato
+i <- 5
+while (i <= 25) {
+  print(i)
+
+  # Altre operazioni da eseguire
+  # ...
+}
+```
+
+## Cicli `while` e `for` II
+
+In alternativa ai cicli `while`, si può usare la sintassi più esplicita dei cicli `for`.
+
+Il `ciclo` esegue il contenuto delle parantesi graffe considerando di volta in volta i valori contenuti ad esempio in un vettore:
+
+```{r}
+values <- seq(from = 5, to = 25, by = 5)
+values
+
+for (i in values) {
+  print(i + 2) # Mostra a schermo il valore di i + 2
+
+  # Altre operazioni da eseguire
+  # ...
+}
+```
+
+## Esercizio riassuntivo I
+
+Si calcolino gli elementi di una matrice quadrata ${\bf D}$ di dimensione $n \times n$, i cui elementi sono pari $$
+d_{ij} = (x_i - x_j)^2, \qquad  i,j \in \{1,\dots,n\},
+$$ dove ${\bf x} = (x_1,\dots,x_n)^\intercal$ è un generico vettore in $\mathbb{R}^n$.
+
+In altri termini, si definisca una funzione `distances(x)` che a partire da un generico vettore `x` restituisca una matrice `D`.
+
+. . .
+
+::: callout-tip
+## Traccia dello svolgimento
+
+Si crei innanzitutto una matrice `D` i cui elementi sono tutti pari a `0`, usando il comando `matrix`.
+
+Quindi, si usino due cicli `for` "annidati", ovvero uno all'interno dell'altro, per calcolare ciascuno dei valori `D[i, j]`.
+:::
+
+#### Soluzione esercizio riassuntivo I
+
+```{r}
+distances <- function(x) {
+  n <- length(x) # Ottengo la lunghezza del vettore x
+  D <- matrix(0, nrow = n, ncol = n) # Creazione matrice vuota
+
+  for (i in 1:n) {
+    for (j in 1:n) {
+      D[i, j] <- (x[i] - x[j])^2
+    }
+  }
+  D # Valore da restituire
+}
+
+x <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto
+distances(x)
+```
+
+::: callout-note
+## Nota
+
+Esistono molti modi diversi (ma corretti) di implementare questa funzione. Per inciso, questa soluzione non è affatto il modo più efficiente.
+:::
+
+## Esercizio riassuntivo II
+
+`Fizzbuzz` è un semplice esercizio di programmazione spesso usato nei colloqui di lavoro per verificare le conoscenze di programmazione di base.
+
+Il compito è il seguente: per tutti i numeri da $1$ a $100$ si stampi a schermo:
+
+-   la parola `fizz` se il numero è un multiplo di $3$,
+
+-   la parola `buzz` se è multiplo di $5$,
+
+-   la parola `fizzbuzz` se il numero è un multiplo sia di $3$ che di $5$,
+
+    \item
+
+    il numero stesso altrimenti.
+
+. . .
+
+::: callout-tip
+## Suggerimento
+
+Si usi la funzione `print` e la funzione resto `%` di **R**. Inoltre, per rendere il codice più snello è possibile usare l'istruzione di controllo chiamata `else if`.
+:::
+
+#### Soluzione esercizio riassuntivo II
+
+La soluzione riportata fa uso del costrutto `else if`.
+
+```{r}
+#| eval: false
+for (i in 1:100) {
+  condA <- (i %% 3) == 0 # Il numero è un multiplo di 3?
+  condB <- (i %% 5) == 0 # Il numero è un multiplo di 5?
+
+  if (condA & condB) {
+    print("fizzbuzz")
+  } else if (condA) {
+    print("fizz")
+  } else if (condB) {
+    print("buzz")
+  } else {
+    print(i)
+  }
+}
+```
+
+## La famiglia di funzioni `*apply`
+
+Quando possibile, sarebbe meglio `evitare` l'utilizzo dei cicli `for`, perché questi tendono ad essere lenti in **R** (a differenza di altri linguaggi, come C++).
+
+Un'alternativa più elegante, anche se non necessariamente più efficiente, è la famiglia di funzioni `*apply`, ovvero: `apply`, `tapply`, `sapply`, `mapply`, `lapply`.
+
+La più semplice, ovvero `apply`, esegue una determinata funzione per ciascuna riga / colonna di una matrice.
+
+::: callout-note
+## Esercizio
+
+Si consulti la documentazione delle funzioni `*apply` per avere una prima idea del loro funzionamento.
+:::
+
+## I pacchetti **R**
+
+Come menzionato nella lezione introduttiva, **R** è organizzato in **pacchetti**.
+
+Se vogliamo utilizzare le funzioni di un pacchetto, questo può essere richiamato usando la funzione `library`, ovvero:
+
+```{r}
+library(MASS) # Carica in memoria il pacchetto MASS
+library(knitr) # Carica in memoria il pacchetto knitr
+```
+
+. . .
+
+Se un pacchetto non è presente nel computer è necessario installarlo.
+
+Si può usare il comando seguente oppure usare la finestra "Packages" presente in RStudio.
+
+```{r}
+#| eval: false
+install.packages("knitr") # Installa il pacchetto knitr
+```
