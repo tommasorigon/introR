@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
@@ -135,8 +135,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
+  <div class="quarto-title-meta-heading">Autore/Autrice</div>
+  <div class="quarto-title-meta-heading">Affiliazione</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author"><span class="orange">Tommaso Rigon</span> </p>
@@ -204,16 +204,16 @@ Domanda di ricerca
 <h2 class="anchored" data-anchor-id="importazione-dei-dati-dde">Importazione dei dati <code>dde</code></h2>
 <p>Per poter procedere con i prossimi comandi, è necessario scaricare il file <code>dde.csv</code> e salvarlo nel proprio computer. <a href="../dataset/dde.csv">Link al file</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>dde <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/dde.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dde <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/dde.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In alternativa, possiamo semplice ottenerli usando il link:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>dde <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"https://tommasorigon.github.io/introR/dataset/dde.csv"</span>,</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>) <span class="co"># Scarica il file da internet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dde <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"https://tommasorigon.github.io/introR/dataset/dde.csv"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>) <span class="co"># Scarica il file da internet</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(dde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dde)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2312 obs. of  2 variables:
  $ DDE: num  24.6 15.6 54.8 15 33.5 ...
@@ -227,14 +227,14 @@ Domanda di ricerca
 <p>Un totale di <span class="math inline">361</span> donne hanno <strong>partorito prematuramente</strong>, ovvero prima della conclusione della 37a settimana.</p>
 <p>Per verificare questo, dividiamo la variabile <code>DDE</code> in due gruppi.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dde_preterm <span class="ot">&lt;-</span> dde<span class="sc">$</span>DDE[dde<span class="sc">$</span>GAD <span class="sc">&lt;</span> <span class="dv">37</span> <span class="sc">*</span> <span class="dv">7</span>] <span class="co"># Gruppo parto prematuro</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>dde_non_preterm <span class="ot">&lt;-</span> dde<span class="sc">$</span>DDE[dde<span class="sc">$</span>GAD <span class="sc">&gt;=</span> <span class="dv">37</span> <span class="sc">*</span> <span class="dv">7</span>] <span class="co"># Gruppo parto non prematuro</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">length</span>(dde_preterm) <span class="co"># Numerosità campionaria gruppo 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dde_preterm <span class="ot">&lt;-</span> dde<span class="sc">$</span>DDE[dde<span class="sc">$</span>GAD <span class="sc">&lt;</span> <span class="dv">37</span> <span class="sc">*</span> <span class="dv">7</span>] <span class="co"># Gruppo parto prematuro</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dde_non_preterm <span class="ot">&lt;-</span> dde<span class="sc">$</span>DDE[dde<span class="sc">$</span>GAD <span class="sc">&gt;=</span> <span class="dv">37</span> <span class="sc">*</span> <span class="dv">7</span>] <span class="co"># Gruppo parto non prematuro</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(dde_preterm) <span class="co"># Numerosità campionaria gruppo 1</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 361</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">length</span>(dde_non_preterm) <span class="co"># Numerosità campionaria gruppo 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(dde_non_preterm) <span class="co"># Numerosità campionaria gruppo 2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1951</code></pre>
 </div>
@@ -247,12 +247,12 @@ Domanda di ricerca
 <p>Per sintetizzare i dati tramite <strong>frequenze</strong>, possiamo suddividere l’intervallo che contiene tutti i valori osservati (ovvero <span class="math inline">(0,180]</span>) in un certo numero di <strong>sotto-intervalli</strong>.</p>
 <p>In primo luogo, definiamo i <span class="math inline">10</span> sotto-intervalli di lunghezza <span class="math inline">18</span>, chiusi a destra tramite il comando <code>cut</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>breaks <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">*</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Definizione degli intervalli. Usiamo 10 intervalli di lunghezza 18.</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a>dde_preterm_class <span class="ot">&lt;-</span> <span class="fu">cut</span>(dde_preterm, <span class="at">breaks =</span> breaks)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>dde_non_preterm_class <span class="ot">&lt;-</span> <span class="fu">cut</span>(dde_non_preterm, <span class="at">breaks =</span> breaks)</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">head</span>(dde_preterm_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">*</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Definizione degli intervalli. Usiamo 10 intervalli di lunghezza 18.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dde_preterm_class <span class="ot">&lt;-</span> <span class="fu">cut</span>(dde_preterm, <span class="at">breaks =</span> breaks)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>dde_non_preterm_class <span class="ot">&lt;-</span> <span class="fu">cut</span>(dde_non_preterm, <span class="at">breaks =</span> breaks)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dde_preterm_class)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] (54,72] (18,36] (18,36] (0,18]  (0,18]  (18,36]
 10 Levels: (0,18] (18,36] (36,54] (54,72] (72,90] (90,108] ... (162,180]</code></pre>
@@ -266,8 +266,8 @@ Domanda di ricerca
 <p>La funzione <code>table</code> <strong>conteggia</strong> quante volte una determinata modalità compare nel vettore.</p>
 <p>Eseguiamo questa operazione per entrambi i gruppi di dati:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>freq_abs_preterm <span class="ot">&lt;-</span> <span class="fu">table</span>(dde_preterm_class)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>freq_abs_preterm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>freq_abs_preterm <span class="ot">&lt;-</span> <span class="fu">table</span>(dde_preterm_class)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>freq_abs_preterm</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dde_preterm_class
    (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
@@ -275,8 +275,8 @@ Domanda di ricerca
 (144,162] (162,180] 
         1         1 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>freq_abs_non_preterm <span class="ot">&lt;-</span> <span class="fu">table</span>(dde_non_preterm_class)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>freq_abs_non_preterm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>freq_abs_non_preterm <span class="ot">&lt;-</span> <span class="fu">table</span>(dde_non_preterm_class)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>freq_abs_non_preterm</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dde_non_preterm_class
    (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
@@ -292,8 +292,8 @@ Domanda di ricerca
 <p>Sebbene sia possibile usare comando <code>prop.table</code> (lo re-incontreremo in seguito), qui seguiamo una via più diretta.</p>
 <p>Si ricordi infatti che <span class="math inline">n = n_1 + \cdots + n_k</span>, pertanto possiamo ottenere le frequenze relative <span class="math inline">f_j = n_j / n</span> come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>freq_rel_preterm <span class="ot">&lt;-</span> freq_abs_preterm <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_preterm)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">round</span>(freq_rel_preterm, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>freq_rel_preterm <span class="ot">&lt;-</span> freq_abs_preterm <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_preterm)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(freq_rel_preterm, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dde_preterm_class
    (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
@@ -301,8 +301,8 @@ Domanda di ricerca
 (144,162] (162,180] 
     0.003     0.003 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>freq_rel_non_preterm <span class="ot">&lt;-</span> freq_abs_non_preterm <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_non_preterm)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">round</span>(freq_rel_non_preterm, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>freq_rel_non_preterm <span class="ot">&lt;-</span> freq_abs_non_preterm <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_non_preterm)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(freq_rel_non_preterm, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dde_non_preterm_class
    (0,18]   (18,36]   (36,54]   (54,72]   (72,90]  (90,108] (108,126] (126,144] 
@@ -316,19 +316,19 @@ Domanda di ricerca
 <h2 class="anchored" data-anchor-id="organizzazione-dei-risultati">Organizzazione dei risultati</h2>
 <p>Raccogliamo quindi i risultati appena ottenuti all’interno di una matrice, per poterli visualizzare meglio.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>tab_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb19-2"><a href="#cb19-2"></a>  freq_abs_preterm, freq_abs_non_preterm,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>  freq_rel_preterm, freq_rel_non_preterm</span>
-<span id="cb19-4"><a href="#cb19-4"></a>)</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="fu">colnames</span>(tab_summary) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb19-7"><a href="#cb19-7"></a>  <span class="st">"n_j prematura"</span>,</span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="st">"n_j non prematura"</span>,</span>
-<span id="cb19-9"><a href="#cb19-9"></a>  <span class="st">"f_j prematura"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10"></a>  <span class="st">"f_j non prematura"</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>)</span>
-<span id="cb19-12"><a href="#cb19-12"></a></span>
-<span id="cb19-13"><a href="#cb19-13"></a><span class="fu">round</span>(tab_summary, <span class="dv">3</span>) <span class="co"># Visualizzazione dei risultati</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tab_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  freq_abs_preterm, freq_abs_non_preterm,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  freq_rel_preterm, freq_rel_non_preterm</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab_summary) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"n_j prematura"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"n_j non prematura"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"f_j prematura"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"f_j non prematura"</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(tab_summary, <span class="dv">3</span>) <span class="co"># Visualizzazione dei risultati</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          n_j prematura n_j non prematura f_j prematura f_j non prematura
 (0,18]               68               573         0.188             0.294
@@ -368,27 +368,27 @@ Domanda di ricerca
 <h2 class="anchored" data-anchor-id="gli-istogrammi-ii">Gli istogrammi II</h2>
 <p>Concentriamoci inizialmente solo sul gruppo di <strong>nascite non premature</strong>, per capire il funzionamento della sintassi di <strong>R</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Divide il grafico in due parti</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Primo grafico, frequenze assolute</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="at">freq =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="at">breaks =</span> <span class="dv">10</span>, <span class="co"># Utilizzo 10 sotto-intervalli</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span>,</span>
-<span id="cb21-9"><a href="#cb21-9"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
-<span id="cb21-10"><a href="#cb21-10"></a>  <span class="at">ylab =</span> <span class="st">"Frequenze assolute"</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a>)</span>
-<span id="cb21-12"><a href="#cb21-12"></a></span>
-<span id="cb21-13"><a href="#cb21-13"></a><span class="co"># Secondo grafico, densità</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb21-15"><a href="#cb21-15"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="co"># NON vengono usate le frequenze</span></span>
-<span id="cb21-16"><a href="#cb21-16"></a>  <span class="at">breaks =</span> <span class="dv">10</span>, <span class="co"># Utilizzo 10 sotto-intervalli</span></span>
-<span id="cb21-17"><a href="#cb21-17"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb21-18"><a href="#cb21-18"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span>,</span>
-<span id="cb21-19"><a href="#cb21-19"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
-<span id="cb21-20"><a href="#cb21-20"></a>  <span class="at">ylab =</span> <span class="st">"Densità"</span></span>
-<span id="cb21-21"><a href="#cb21-21"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Divide il grafico in due parti</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Primo grafico, frequenze assolute</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dde_non_preterm,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">10</span>, <span class="co"># Utilizzo 10 sotto-intervalli</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Frequenze assolute"</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Secondo grafico, densità</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dde_non_preterm,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="co"># NON vengono usate le frequenze</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">10</span>, <span class="co"># Utilizzo 10 sotto-intervalli</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span>,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Densità"</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -408,26 +408,26 @@ Domanda di ricerca
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Definizione di intervalli NON equispaziati</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">70</span>, <span class="dv">90</span>, <span class="dv">110</span>, <span class="dv">130</span>, <span class="dv">150</span>, <span class="dv">170</span>, <span class="dv">190</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># GRAFICO CORRETTO</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb22-7"><a href="#cb22-7"></a>  <span class="at">breaks =</span> breaks,</span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>  <span class="at">main =</span> <span class="st">"GRAFICO CORRETTO"</span>, <span class="at">xlab =</span> <span class="st">"DDE"</span>, <span class="at">ylab =</span> <span class="st">"Densità"</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione di intervalli NON equispaziati</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span> <span class="sc">*</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">70</span>, <span class="dv">90</span>, <span class="dv">110</span>, <span class="dv">130</span>, <span class="dv">150</span>, <span class="dv">170</span>, <span class="dv">190</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GRAFICO CORRETTO</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dde_non_preterm,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> breaks,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"GRAFICO CORRETTO"</span>, <span class="at">xlab =</span> <span class="st">"DDE"</span>, <span class="at">ylab =</span> <span class="st">"Densità"</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="1400"></p>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># GRAFICO ERRATO</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">hist</span>(dde_non_preterm,</span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="at">freq =</span> <span class="cn">TRUE</span>, <span class="co"># NON vengono usate le frequenze</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="at">breaks =</span> breaks,</span>
-<span id="cb23-5"><a href="#cb23-5"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="at">main =</span> <span class="st">"GRAFICO ERRATO"</span>, <span class="at">xlab =</span> <span class="st">"DDE"</span>, <span class="at">ylab =</span> <span class="st">"Frequenze assolute"</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GRAFICO ERRATO</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dde_non_preterm,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">TRUE</span>, <span class="co"># NON vengono usate le frequenze</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> breaks,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Da qui in poi stiamo solo aggiungendo dettagli estetici</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"GRAFICO ERRATO"</span>, <span class="at">xlab =</span> <span class="st">"DDE"</span>, <span class="at">ylab =</span> <span class="st">"Frequenze assolute"</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in plot.histogram(r, freq = freq1, col = col, border = border, angle =
 angle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'</code></pre>
@@ -456,11 +456,11 @@ angle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'</code></pr
 <h2 class="anchored" data-anchor-id="il-numero-di-intervalli-ii">Il numero di intervalli II</h2>
 <p>Il numero “ottimale” di intervalli si può ottenere tramite i comandi seguenti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">nclass.Sturges</span>(dde_non_preterm) <span class="co"># Regola di Sturges</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nclass.Sturges</span>(dde_non_preterm) <span class="co"># Regola di Sturges</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">nclass.FD</span>(dde_non_preterm) <span class="co"># Regola di Freedman e Diaconis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nclass.FD</span>(dde_non_preterm) <span class="co"># Regola di Freedman e Diaconis</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 54</code></pre>
 </div>
@@ -483,17 +483,17 @@ Nota
 <h2 class="anchored" data-anchor-id="confronto-tra-le-due-distribuzioni">Confronto tra le due distribuzioni</h2>
 <p>Questo grafico conclusivo consente finalmente di confrontare le due distribuzioni.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">hist</span>(dde_non_preterm, <span class="co"># Gruppo nascite non-premature</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dde_non_preterm, <span class="co"># Gruppo nascite non-premature</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Nascite non premature"</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1400"></p>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">hist</span>(dde_preterm, <span class="co"># Gruppo nascite premature</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="at">main =</span> <span class="st">"Nascite premature"</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dde_preterm, <span class="co"># Gruppo nascite premature</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Nascite premature"</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid" width="1400"></p>
 </div>
@@ -509,7 +509,7 @@ F(x) = \frac{1}{n} \sum_{i=1}^n \mathbb{1}(x_i \le x),
 </span> dove <span class="math inline">\mathbb{1}(x_i \le x)</span> è la <strong>funzione indicatrice</strong> e vale <span class="math inline">1</span> se <span class="math inline">x_i \le x</span> e <span class="math inline">0</span> se <span class="math inline">x_i &gt; x</span>.</p>
 <p>In <strong>R</strong>, si usa il comando <code>ecdf</code> (<em>empirical cumulative distribution function</em>), ad esempio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">ecdf</span>(dde_non_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ecdf</span>(dde_non_preterm)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Empirical CDF 
 Call: ecdf(dde_non_preterm)
@@ -521,20 +521,20 @@ Call: ecdf(dde_non_preterm)
 <h2 class="anchored" data-anchor-id="la-funzione-di-ripartizione-empirica-ii">La funzione di ripartizione empirica II</h2>
 <p>Il comando <code>ecdf</code> restituisce come oggetto una vera e propria <strong>funzione</strong>. Infatti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>F_non_preterm <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(dde_non_preterm)</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">F_non_preterm</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>)) <span class="co"># Calcola la funzione di ripartizione empirica in 20, 40 e 60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>F_non_preterm <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(dde_non_preterm)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">F_non_preterm</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>)) <span class="co"># Calcola la funzione di ripartizione empirica in 20, 40 e 60</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3618657 0.8077909 0.9390056</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">sum</span>(dde_non_preterm <span class="sc">&lt;=</span> <span class="dv">40</span>) <span class="sc">/</span> <span class="fu">length</span>(dde_non_preterm) <span class="co"># Comando "manuale" alternativo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dde_non_preterm <span class="sc">&lt;=</span> <span class="dv">40</span>) <span class="sc">/</span> <span class="fu">length</span>(dde_non_preterm) <span class="co"># Comando "manuale" alternativo</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8077909</code></pre>
 </div>
 </div>
 <p>Per farne un grafico, è inoltre sufficiente usare il comando <code>plot</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_non_preterm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_non_preterm))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -544,14 +544,14 @@ Call: ecdf(dde_non_preterm)
 <h2 class="anchored" data-anchor-id="la-funzione-di-ripartizione-empirica-ii-1">La funzione di ripartizione empirica II</h2>
 <p>Per poter confrontare le funzioni di ripartizione dei due gruppi, la sintassi è leggermente più elaborata:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_preterm),</span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="at">do.points =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"blue"</span>,</span>
-<span id="cb38-3"><a href="#cb38-3"></a>  <span class="at">main =</span> <span class="st">"Blu: parto prematuro. Rosso: parto non prematuro"</span>,</span>
-<span id="cb38-4"><a href="#cb38-4"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
-<span id="cb38-5"><a href="#cb38-5"></a>  <span class="at">ylab =</span> <span class="st">"F(DDE)"</span></span>
-<span id="cb38-6"><a href="#cb38-6"></a>)</span>
-<span id="cb38-7"><a href="#cb38-7"></a></span>
-<span id="cb38-8"><a href="#cb38-8"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_non_preterm), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>) <span class="co"># Aggiungo un secondo gruppo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_preterm),</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">do.points =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Blu: parto prematuro. Rosso: parto non prematuro"</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"DDE"</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"F(DDE)"</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(dde_non_preterm), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>) <span class="co"># Aggiungo un secondo gruppo</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -563,11 +563,11 @@ Call: ecdf(dde_non_preterm)
 <p>Per quantificare la differenza tra le due distribuzioni, vogliamo trovare le <strong>medie aritmetiche</strong> delle variabili <code>dde_preterm</code> e <code>dde_non_preterm</code>.</p>
 <p>In <strong>R</strong> ovviamente esiste un comando apposito:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">mean</span>(dde_preterm) <span class="co"># Media aritmetica di DDE per donne con parto prematuro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dde_preterm) <span class="co"># Media aritmetica di DDE per donne con parto prematuro</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 36.20299</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">mean</span>(dde_non_preterm) <span class="co"># Media aritmetica di DDE per donne con parto regolare</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dde_non_preterm) <span class="co"># Media aritmetica di DDE per donne con parto regolare</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 29.14199</code></pre>
 </div>
@@ -575,8 +575,8 @@ Call: ecdf(dde_non_preterm)
 <p>Come ormai ampiamente rilevato, notiamo che il DDE è presente in quantità maggiore tra le donne che hanno partorito prematuramente.</p>
 <p>La media aritmetica poteva essere ottenuta anche a partire dai comandi che abbiamo incontrato nelle unità precedenti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(dde_preterm) <span class="co"># Numerosità campionaria di dde_preterm (=361)</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">sum</span>(dde_preterm) <span class="sc">/</span> n <span class="co"># Media aritmetica della variabile dde_preterm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(dde_preterm) <span class="co"># Numerosità campionaria di dde_preterm (=361)</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dde_preterm) <span class="sc">/</span> n <span class="co"># Media aritmetica della variabile dde_preterm</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 36.20299</code></pre>
 </div>
@@ -590,18 +590,18 @@ Call: ecdf(dde_non_preterm)
 </span> dove <span class="math inline">x_{(1)},\dots,x_{(n)}</span> rappresenta il campione ordinato.</p>
 <p>In <strong>R</strong> esiste un comando apposito:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">median</span>(dde_preterm) <span class="co"># Mediana di DDE per donne con parto prematuro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dde_preterm) <span class="co"># Mediana di DDE per donne con parto prematuro</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 29.46</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">median</span>(dde_non_preterm) <span class="co"># Mediana di DDE per donne con parto regolare</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dde_non_preterm) <span class="co"># Mediana di DDE per donne con parto regolare</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24.04</code></pre>
 </div>
 </div>
 <p>Si noti (come mai?) che la funzione di ripartizione empirica, valutata nella mediana, è circa pari a <code>0.5</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">F_non_preterm</span>(<span class="fu">median</span>(dde_non_preterm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">F_non_preterm</span>(<span class="fu">median</span>(dde_non_preterm))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5002563</code></pre>
 </div>
@@ -611,25 +611,25 @@ Call: ecdf(dde_non_preterm)
 <h2 class="anchored" data-anchor-id="indici-di-posizione-la-mediana-ii">Indici di posizione: la mediana II</h2>
 <p>La mediana di una variabile numerica si può anche ottenere “manualmente”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="fl">3.5</span>, <span class="dv">28</span>, <span class="dv">62</span>)</span>
-<span id="cb51-2"><a href="#cb51-2"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="co"># Numerosità campionaria</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a>n <span class="co"># Si noti che n = 6 è pari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="fl">3.5</span>, <span class="dv">28</span>, <span class="dv">62</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="co"># Numerosità campionaria</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>n <span class="co"># Si noti che n = 6 è pari</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>x_sort <span class="ot">&lt;-</span> <span class="fu">sort</span>(x) <span class="co"># Vettore ordinato dei valori di x</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a>x_sort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x_sort <span class="ot">&lt;-</span> <span class="fu">sort</span>(x) <span class="co"># Vettore ordinato dei valori di x</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>x_sort</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  3.5 10.0 20.0 25.0 28.0 62.0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>pos_med_1 <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span> <span class="co"># Elemento in posizione n/2</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a>pos_med_2 <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Elemento in posizione n/2+1</span></span>
-<span id="cb55-3"><a href="#cb55-3"></a></span>
-<span id="cb55-4"><a href="#cb55-4"></a>(x_sort[pos_med_1] <span class="sc">+</span> x_sort[pos_med_2]) <span class="sc">/</span> <span class="dv">2</span> <span class="co"># Mediana di x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>pos_med_1 <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span> <span class="co"># Elemento in posizione n/2</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>pos_med_2 <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Elemento in posizione n/2+1</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>(x_sort[pos_med_1] <span class="sc">+</span> x_sort[pos_med_2]) <span class="sc">/</span> <span class="dv">2</span> <span class="co"># Mediana di x</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">median</span>(x) <span class="co"># Ovviamente, il risultato deve coincidere con:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x) <span class="co"># Ovviamente, il risultato deve coincidere con:</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22.5</code></pre>
 </div>
@@ -656,12 +656,12 @@ Esercizio
 </span></p>
 <p>In <strong>R</strong> considerando <span class="math inline">p = (0.1,0.25,0.75,0.9)</span>, ovvero il primo decile, il primo quartile, il terzo quartile ed il nono decile, possiamo usare il comando <code>quantile</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  10%   25%   75%   90% 
 15.07 19.94 45.30 68.01 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">quantile</span>(dde_non_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dde_non_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  10%   25%   75%   90% 
 12.23 16.73 35.45 50.72 </code></pre>
@@ -679,11 +679,11 @@ Esercizio
 <div class="callout-body-container callout-body">
 <p>Lo studente si convinca che l’implementazione “manuale” del comando è la seguente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">min</span>(dde_non_preterm[<span class="fu">F_non_preterm</span>(dde_non_preterm) <span class="sc">&gt;=</span> <span class="fl">0.25</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(dde_non_preterm[<span class="fu">F_non_preterm</span>(dde_non_preterm) <span class="sc">&gt;=</span> <span class="fl">0.25</span>])</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.73</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">min</span>(dde_non_preterm[<span class="fu">F_non_preterm</span>(dde_non_preterm) <span class="sc">&gt;=</span> <span class="fl">0.75</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(dde_non_preterm[<span class="fu">F_non_preterm</span>(dde_non_preterm) <span class="sc">&gt;=</span> <span class="fl">0.75</span>])</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 35.45</code></pre>
 </div>
@@ -728,14 +728,14 @@ Nota
 <p>Fortunatamente, per numerosità campionarie elevate le <strong>differenze</strong> tendono ad essere <strong>trascurabili</strong>.</p>
 <p>Elenchiamo qui di seguito alcuni esempi per la variabile <code>dde_preterm</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>),</span>
-<span id="cb67-3"><a href="#cb67-3"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">6</span>),</span>
-<span id="cb67-4"><a href="#cb67-4"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">7</span>),</span>
-<span id="cb67-5"><a href="#cb67-5"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">9</span>)</span>
-<span id="cb67-6"><a href="#cb67-6"></a>)</span>
-<span id="cb67-7"><a href="#cb67-7"></a><span class="fu">rownames</span>(tab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># Cambia i nomi alle righe della tabella</span></span>
-<span id="cb67-8"><a href="#cb67-8"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">1</span>),</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">6</span>),</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">7</span>),</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(dde_preterm, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>), <span class="at">type =</span> <span class="dv">9</span>)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># Cambia i nomi alle righe della tabella</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>tab</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     10%   25%   50%      75%    90%
 1 15.070 19.94 29.46 45.30000 68.010
@@ -762,12 +762,12 @@ Suggerimento
 <h2 class="anchored" data-anchor-id="il-comando-summary">Il comando <code>summary</code></h2>
 <p>Per ottenere rapidamente le <strong>principali statistiche descrittive</strong> di una distribuzione (minimo, massimo, media, mediana e quartili), si usa spesso il comando <code>summary</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">summary</span>(dde_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dde_preterm)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    3.17   19.94   29.46   36.20   45.30  178.06 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">summary</span>(dde_non_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dde_non_preterm)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    2.50   16.73   24.04   29.14   35.40  162.29 </code></pre>
@@ -775,7 +775,7 @@ Suggerimento
 </div>
 <p>Il comando <code>summary</code> può anche essere usato direttamente su un oggetto di tipo <code>data.frame</code> producendo il seguente output:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">summary</span>(dde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dde)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      DDE              GAD       
  Min.   :  2.50   Min.   :194.0  
@@ -792,7 +792,7 @@ Suggerimento
 <p>Una rappresentazione grafica alternativa agli istogrammi sono i <strong>boxplot</strong>.</p>
 <p>Le <strong>statistiche descrittive</strong> su cui si basano i boxplot si possono ottenere tramite il comando <code>boxplot.stats</code>, ovvero:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">boxplot.stats</span>(dde_preterm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot.stats</span>(dde_preterm)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$stats
 [1]  3.17 19.94 29.46 45.30 83.25
@@ -809,7 +809,7 @@ $out
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">boxplot</span>(dde_preterm, dde_non_preterm) <span class="co"># Produce il grafico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dde_preterm, dde_non_preterm) <span class="co"># Produce il grafico</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_D_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -872,12 +872,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

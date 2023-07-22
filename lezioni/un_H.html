@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
@@ -144,8 +144,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
+  <div class="quarto-title-meta-heading">Autore/Autrice</div>
+  <div class="quarto-title-meta-heading">Affiliazione</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author"><span class="orange">Tommaso Rigon</span> </p>
@@ -240,18 +240,18 @@ p(x) = \mathbb{P}(X = x).
 </span></p>
 <p>Supponendo che <span class="math inline">n = 10</span> e <span class="math inline">\pi = 0.6</span>, allora <span class="math inline">\mathbb{P}(X=4)</span> si calcola come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Numero di tentativi</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="co"># Probabilità di successo</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>k <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># Numero di successi</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">choose</span>(n, k) <span class="sc">*</span> p<span class="sc">^</span>k <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p)<span class="sc">^</span>(n <span class="sc">-</span> k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Numero di tentativi</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="co"># Probabilità di successo</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># Numero di successi</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(n, k) <span class="sc">*</span> p<span class="sc">^</span>k <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p)<span class="sc">^</span>(n <span class="sc">-</span> k)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1114767</code></pre>
 </div>
 </div>
 <p>Tuttavia, in <strong>R</strong> esiste una funzione apposita per il calcolo della funzione di probabilità:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dbinom</span>(k, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(k, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1114767</code></pre>
 </div>
@@ -265,11 +265,11 @@ F(x) =   \mathbb{P}(X \le x) = \sum_{k=0}^x\mathbb{P}(X = k), \qquad X \sim \tex
 </span></p>
 <p>Supponendo che <span class="math inline">n = 10</span> e <span class="math inline">\pi = 0.6</span>, allora il valore <span class="math inline">F(5)</span> si calcola come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3668967</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p) <span class="co"># Funzione specifica di R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p) <span class="co"># Funzione specifica di R</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3668967</code></pre>
 </div>
@@ -278,11 +278,11 @@ F(x) =   \mathbb{P}(X \le x) = \sum_{k=0}^x\mathbb{P}(X = k), \qquad X \sim \tex
 \mathbb{P}(X &gt; 5) = 1 - \mathbb{P}(X \le 5).
 </span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6331033</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6331033</code></pre>
 </div>
@@ -296,18 +296,18 @@ F(x) =   \mathbb{P}(X \le x) = \sum_{k=0}^x\mathbb{P}(X = k), \qquad X \sim \tex
 </span></p>
 <p>Supponendo come in precedenza che <span class="math inline">n = 10</span> e <span class="math inline">\pi = 0.6</span>, si ha che:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>n <span class="sc">*</span> p <span class="co"># Valore atteso ottenuto tramite calcoli analitici</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>n <span class="sc">*</span> p <span class="co"># Valore atteso ottenuto tramite calcoli analitici</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">sum</span>(<span class="dv">0</span><span class="sc">:</span>n <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n, <span class="at">size =</span> n, <span class="at">prob =</span> <span class="fl">0.6</span>)) <span class="co"># Calcolo numerico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">0</span><span class="sc">:</span>n <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n, <span class="at">size =</span> n, <span class="at">prob =</span> <span class="fl">0.6</span>)) <span class="co"># Calcolo numerico</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>Tramite il calcolo diretto, possiamo inoltre valutare ad esempio <span class="math inline">\mathbb{E}(\sqrt{X})</span>, infatti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="dv">0</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n, <span class="at">size =</span> n, <span class="at">prob =</span> <span class="fl">0.6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sqrt</span>(<span class="dv">0</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n, <span class="at">size =</span> n, <span class="at">prob =</span> <span class="fl">0.6</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.427083</code></pre>
 </div>
@@ -337,18 +337,18 @@ Nota
 </span></p>
 <p>In <strong>R</strong> possiamo ottenere questi risultati come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">qbinom</span>(<span class="fl">0.25</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>) <span class="co"># Primo quartile</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(<span class="fl">0.25</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>) <span class="co"># Primo quartile</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
 </div>
 <p>Infatti, vale che:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>) <span class="co"># Il valore è minore di 0.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>) <span class="co"># Il valore è minore di 0.25</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1662386</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>) <span class="co"># Il valore è maggiore di 0.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>) <span class="co"># Il valore è maggiore di 0.25</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3668967</code></pre>
 </div>
@@ -357,9 +357,9 @@ Nota
 <section id="distribuzione-binomiale-rappresentazione-grafica" class="level2">
 <h2 class="anchored" data-anchor-id="distribuzione-binomiale-rappresentazione-grafica">Distribuzione binomiale (rappresentazione grafica)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>kk <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
-<span id="cb25-2"><a href="#cb25-2"></a>prob <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">plot</span>(kk, prob, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">main =</span> <span class="st">"Bin(10,0.6)"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">ylab =</span> <span class="st">"P(X=k)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>kk <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(kk, prob, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">main =</span> <span class="st">"Bin(10,0.6)"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">ylab =</span> <span class="st">"P(X=k)"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_H_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -385,15 +385,15 @@ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x - \mu)^2
 </span></p>
 <p>Se <span class="math inline">X \sim \text{N}(3, 10)</span> allora possiamo calcolare il valore <span class="math inline">f(1)</span> utilizzando i comandi di <strong>R</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Punto in cui calcolare f(x)</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>mu <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Media</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a>sigma2 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Varianza</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a></span>
-<span id="cb26-5"><a href="#cb26-5"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> sigma2) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> sigma2) <span class="sc">*</span> (x <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Punto in cui calcolare f(x)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Media</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Varianza</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> sigma2) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> sigma2) <span class="sc">*</span> (x <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1032883</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1032883</code></pre>
 </div>
@@ -419,7 +419,7 @@ Nota
 </span></p>
 <p>Possiamo calcolare questa probabilità (in modo inefficiente) tramite il comando <strong>integrate</strong>, pertanto:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">integrate</span>(dnorm, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">upper =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(dnorm, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">upper =</span> <span class="dv">1</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.6826895 with absolute error &lt; 7.6e-15</code></pre>
 </div>
@@ -427,7 +427,7 @@ Nota
 <p>Trattandosi di una variabile continua, otteniamo che <span class="math inline">\mathbb{P}(X &lt; -1) = \mathbb{P}(X \le -1)</span>.</p>
 <p>Quindi, possiamo calcolare questa probabilità in <strong>R</strong> utilizzando i comandi appositi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6826895</code></pre>
 </div>
@@ -438,7 +438,7 @@ Nota
 <p>La continuità della funzione di ripartizione <span class="math inline">F(x)</span> implica che la <strong>funzione quantile</strong> è pari a <span class="math inline">\mathcal{Q}(\cdot) = F^{-1}(\cdot)</span>.</p>
 <p>Per esempio, si consideri il terzo quartile di una distribuzione normale standard, ovvero</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6744898</code></pre>
 </div>
@@ -448,7 +448,7 @@ F(\mathcal{Q}(0.75)) = F(F^{-1}(0.75))= 0.75.
 </span></p>
 <p>Infatti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">pnorm</span>(<span class="fu">qnorm</span>(<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">qnorm</span>(<span class="fl">0.75</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.75</code></pre>
 </div>
@@ -457,7 +457,7 @@ F(\mathcal{Q}(0.75)) = F(F^{-1}(0.75))= 0.75.
 <section id="distribuzione-normale-rappresentazione-grafica" class="level2">
 <h2 class="anchored" data-anchor-id="distribuzione-normale-rappresentazione-grafica">Distribuzione normale (rappresentazione grafica)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">main =</span> <span class="st">"N(0,1)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">main =</span> <span class="st">"N(0,1)"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_H_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -568,10 +568,10 @@ Esercizio
 X_i \overset{\text{iid}}{\sim} \text{N}(0,1), \qquad i=1,\dots,5
 </span> possiamo usare in <strong>R</strong> il comando seguente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>R <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">rnorm</span>(R, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(R, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.7810216  0.7007556 -0.2359334 -0.2874258  1.2501523</code></pre>
+<pre><code>[1] -0.4913049  1.0298666  0.7259931  0.5136585  0.9742370</code></pre>
 </div>
 </div>
 </section>
@@ -639,25 +639,25 @@ Nota
 <section id="algoritmo-wichmann-hill-1982-2" class="level2">
 <h2 class="anchored" data-anchor-id="algoritmo-wichmann-hill-1982-2">Algoritmo Wichmann &amp; Hill (1982)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>runif.wh <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb41-2"><a href="#cb41-2"></a>  a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">171</span>, <span class="dv">172</span>, <span class="dv">170</span>)</span>
-<span id="cb41-3"><a href="#cb41-3"></a>  b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30269</span>, <span class="dv">30307</span>, <span class="dv">30323</span>)</span>
-<span id="cb41-4"><a href="#cb41-4"></a>  s <span class="ot">&lt;-</span> .current.seed <span class="co"># Il seed corrent è presente nel "global environment"</span></span>
-<span id="cb41-5"><a href="#cb41-5"></a>  u <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n) <span class="co"># Inizializzazione dell'output</span></span>
-<span id="cb41-6"><a href="#cb41-6"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb41-7"><a href="#cb41-7"></a>    s <span class="ot">&lt;-</span> (a <span class="sc">*</span> s) <span class="sc">%%</span> b</span>
-<span id="cb41-8"><a href="#cb41-8"></a>    u[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(s <span class="sc">/</span> b) <span class="sc">%%</span> <span class="dv">1</span></span>
-<span id="cb41-9"><a href="#cb41-9"></a>  }</span>
-<span id="cb41-10"><a href="#cb41-10"></a>  .current.seed <span class="ot">&lt;&lt;-</span> s <span class="co"># Salva il seed finale nel "global environment"</span></span>
-<span id="cb41-11"><a href="#cb41-11"></a>  u</span>
-<span id="cb41-12"><a href="#cb41-12"></a>}</span>
-<span id="cb41-13"><a href="#cb41-13"></a></span>
-<span id="cb41-14"><a href="#cb41-14"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">456</span>, <span class="dv">789</span>)</span>
-<span id="cb41-15"><a href="#cb41-15"></a><span class="fu">runif.wh</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>runif.wh <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">171</span>, <span class="dv">172</span>, <span class="dv">170</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30269</span>, <span class="dv">30307</span>, <span class="dv">30323</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> .current.seed <span class="co"># Il seed corrent è presente nel "global environment"</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n) <span class="co"># Inizializzazione dell'output</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">&lt;-</span> (a <span class="sc">*</span> s) <span class="sc">%%</span> b</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    u[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(s <span class="sc">/</span> b) <span class="sc">%%</span> <span class="dv">1</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  .current.seed <span class="ot">&lt;&lt;-</span> s <span class="co"># Salva il seed finale nel "global environment"</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  u</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">456</span>, <span class="dv">789</span>)</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="fu">runif.wh</span>(<span class="dv">5</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7061613 0.9181272 0.1477225 0.6591895 0.3623401</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>.current.seed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>.current.seed</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24178  7775  9310</code></pre>
 </div>
@@ -679,15 +679,15 @@ Nota
 <h2 class="anchored" data-anchor-id="esempio-distribuzione-binomiale">Esempio: distribuzione binomiale</h2>
 <p>Possiamo sfruttare la nostra funzione <code>runif.wh</code> per ottenere valori pseudo-casuali da una distribuzione binomiale.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>rbinom.wh <span class="ot">&lt;-</span> <span class="cf">function</span>(n, size, prob) {</span>
-<span id="cb45-2"><a href="#cb45-2"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif.wh</span>(n)</span>
-<span id="cb45-3"><a href="#cb45-3"></a>  probs <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>size, <span class="at">size =</span> size, <span class="at">prob =</span> prob)</span>
-<span id="cb45-4"><a href="#cb45-4"></a>  breaks <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(<span class="fu">c</span>(<span class="dv">0</span>, probs))</span>
-<span id="cb45-5"><a href="#cb45-5"></a>  <span class="fu">as.numeric</span>(<span class="fu">cut</span>(u, breaks)) <span class="sc">-</span> <span class="dv">1</span> <span class="co"># Converte la variabile "factor" in numeri interi</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a>}</span>
-<span id="cb45-7"><a href="#cb45-7"></a></span>
-<span id="cb45-8"><a href="#cb45-8"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
-<span id="cb45-9"><a href="#cb45-9"></a><span class="fu">rbinom.wh</span>(<span class="dv">20</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>rbinom.wh <span class="ot">&lt;-</span> <span class="cf">function</span>(n, size, prob) {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif.wh</span>(n)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>size, <span class="at">size =</span> size, <span class="at">prob =</span> prob)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(<span class="fu">c</span>(<span class="dv">0</span>, probs))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(<span class="fu">cut</span>(u, breaks)) <span class="sc">-</span> <span class="dv">1</span> <span class="co"># Converte la variabile "factor" in numeri interi</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom.wh</span>(<span class="dv">20</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 2 3 2 2 1 2 4 2 1 4 3 3 0 3 2 4 4 2 4 4</code></pre>
 </div>
@@ -714,12 +714,12 @@ Nota
 </span></p>
 <p>Per simulare lancio di un dado a sei facce, costruiamo anzitutto un vettore contenente una <strong>sequenza di numeri</strong> da 1 a 6 corrispondenti ai possibili esiti del lancio.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>dice <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dice <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Possiamo usare il comando <code>sample</code> per effettuare il lancio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Comando di R per identificare il "seed"</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">sample</span>(<span class="at">x =</span> dice, <span class="at">size =</span> <span class="dv">1</span>) <span class="co"># size = 1 implica che viene lanciato un solo dado</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Comando di R per identificare il "seed"</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> dice, <span class="at">size =</span> <span class="dv">1</span>) <span class="co"># size = 1 implica che viene lanciato un solo dado</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -752,11 +752,11 @@ Nota
 <h2 class="anchored" data-anchor-id="campionamento-con-reinserimento">Campionamento con reinserimento</h2>
 <p>Il campionamento con reinserimento equivale a fare <span class="math inline">n</span> estrazioni indipendenti dalla stessa variabile aleatoria <span class="math inline">X</span>. Pertanto, per lanciare lo stesso dado <span class="math inline">10</span> volte:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">set.seed</span>(<span class="dv">140</span>)</span>
-<span id="cb50-2"><a href="#cb50-2"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb50-3"><a href="#cb50-3"></a><span class="co"># replace = TRUE implica che il dado è lanciato 10 volte</span></span>
-<span id="cb50-4"><a href="#cb50-4"></a>sim <span class="ot">&lt;-</span> <span class="fu">sample</span>(dice, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb50-5"><a href="#cb50-5"></a>sim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">140</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># replace = TRUE implica che il dado è lanciato 10 volte</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">sample</span>(dice, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>sim</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 3 1 1 1 3 6 4 5 1 6</code></pre>
 </div>
@@ -767,14 +767,14 @@ Nota
 <p>Per effettuare una ipotetica estrazione del Lotto, si devono estrarre da un’urna 5 numeri, tra l’1 e il 90, <strong>senza reinserimento</strong>.</p>
 <p>In <strong>R</strong> quindi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">90</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">90</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 64 53 87 83 61</code></pre>
 </div>
 </div>
 <p>Se specifichiamo solamente il seguente comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">sample</span>(dice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(dice)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 3 1 2 6 4</code></pre>
 </div>
@@ -816,13 +816,13 @@ Risultato chiave
 <p>Supponiamo di voler generare dei valori <span class="math inline">X_1,\dots, X_n</span> da una distribuzione gaussiana.</p>
 <p>Possiamo usare il <strong>metodo dell’inversione</strong>, usando la funzione <code>qnorm</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>rnorm.wh <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mean, sd) {</span>
-<span id="cb56-2"><a href="#cb56-2"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif.wh</span>(n)</span>
-<span id="cb56-3"><a href="#cb56-3"></a>  <span class="fu">qnorm</span>(u, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd)</span>
-<span id="cb56-4"><a href="#cb56-4"></a>}</span>
-<span id="cb56-5"><a href="#cb56-5"></a></span>
-<span id="cb56-6"><a href="#cb56-6"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
-<span id="cb56-7"><a href="#cb56-7"></a><span class="fu">rnorm.wh</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># 10 valori da una normale standard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>rnorm.wh <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mean, sd) {</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif.wh</span>(n)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qnorm</span>(u, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm.wh</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># 10 valori da una normale standard</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -0.30055385  0.68773053 -0.60218766 -0.09437046 -1.79635403 -0.56676389
  [7]  1.37283913 -0.41755131 -1.26972731  1.73470371</code></pre>
@@ -847,18 +847,18 @@ Nota
 <p>Supponiamo di voler generare dei valori <span class="math inline">X_1,\dots, X_n</span> da una distribuzione binomiale.</p>
 <p>Possiamo usare anche in questo caso il <strong>metodo dell’inversione</strong>, usando la funzione <strong>qnorm</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>rbinom.wh2 <span class="ot">&lt;-</span> <span class="cf">function</span>(n, size, prob) {</span>
-<span id="cb58-2"><a href="#cb58-2"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif.wh</span>(n)</span>
-<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">qbinom</span>(u, <span class="at">size =</span> size, <span class="at">prob =</span> prob)</span>
-<span id="cb58-4"><a href="#cb58-4"></a>}</span>
-<span id="cb58-5"><a href="#cb58-5"></a></span>
-<span id="cb58-6"><a href="#cb58-6"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
-<span id="cb58-7"><a href="#cb58-7"></a><span class="fu">rbinom.wh</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>rbinom.wh2 <span class="ot">&lt;-</span> <span class="cf">function</span>(n, size, prob) {</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif.wh</span>(n)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qbinom</span>(u, <span class="at">size =</span> size, <span class="at">prob =</span> prob)</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom.wh</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 2 3 2 2 1 2 4 2 1 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
-<span id="cb60-2"><a href="#cb60-2"></a><span class="fu">rbinom.wh2</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>.current.seed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom.wh2</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 2 3 2 2 1 2 4 2 1 4</code></pre>
 </div>
@@ -904,12 +904,12 @@ Nota
 <h4 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-i">Soluzione esercizio riassuntivo I</h4>
 <p>Implementiamo in primo luogo la funzione <code>dhalf</code>, come richiesto:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>dhalf <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb62-2"><a href="#cb62-2"></a>  <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">/</span> pi) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>y<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb62-3"><a href="#cb62-3"></a>}</span>
-<span id="cb62-4"><a href="#cb62-4"></a></span>
-<span id="cb62-5"><a href="#cb62-5"></a><span class="co"># Non richiesto, controllo che integri a 1</span></span>
-<span id="cb62-6"><a href="#cb62-6"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">dhalf</span>(x), <span class="dv">0</span>, <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>dhalf <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">/</span> pi) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>y<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Non richiesto, controllo che integri a 1</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">dhalf</span>(x), <span class="dv">0</span>, <span class="cn">Inf</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 with absolute error &lt; 9.4e-05</code></pre>
 </div>
@@ -933,9 +933,9 @@ f(x) = \alpha \beta x^{\beta - 1} \exp\left\{- \alpha x^\beta \right\}, \qquad x
 <h4 class="anchored" data-anchor-id="soluzione-esercizio-riassuntivo-ii">Soluzione esercizio riassuntivo II</h4>
 <p>Implementiamo in primo luogo la funzione <code>dweibull(x, alpha, beta)</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>dweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(x, alpha, beta) {</span>
-<span id="cb64-2"><a href="#cb64-2"></a>  alpha <span class="sc">*</span> beta <span class="sc">*</span> x<span class="sc">^</span>(beta <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>alpha <span class="sc">*</span> x<span class="sc">^</span>beta)</span>
-<span id="cb64-3"><a href="#cb64-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>dweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(x, alpha, beta) {</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  alpha <span class="sc">*</span> beta <span class="sc">*</span> x<span class="sc">^</span>(beta <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>alpha <span class="sc">*</span> x<span class="sc">^</span>beta)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ricordiamo che la funzione di ripartizione è pari a <span class="math display">
 F(x) = \int_0^xf(s) \mathrm{d}s = \alpha \beta  \int_0^x s^{\beta - 1} \exp\left\{- \alpha s^\beta \right\}\mathrm{d}s =1 - e^{-\alpha x^\beta}, \qquad x &gt; 0.
@@ -944,19 +944,19 @@ F(x) = \int_0^xf(s) \mathrm{d}s = \alpha \beta  \int_0^x s^{\beta - 1} \exp\left
 \mathcal{Q}(p) = F^{-1}(p) = \left(-\frac{\log{(1-p)}}{\alpha}\right)^{1/\beta},
 </span> per <span class="math inline">p \in (0,1)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>pweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(x, alpha, beta) {</span>
-<span id="cb65-2"><a href="#cb65-2"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>alpha <span class="sc">*</span> x<span class="sc">^</span>beta)</span>
-<span id="cb65-3"><a href="#cb65-3"></a>}</span>
-<span id="cb65-4"><a href="#cb65-4"></a></span>
-<span id="cb65-5"><a href="#cb65-5"></a>qweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(p, alpha, beta) {</span>
-<span id="cb65-6"><a href="#cb65-6"></a>  (<span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> alpha)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> beta)</span>
-<span id="cb65-7"><a href="#cb65-7"></a>}</span>
-<span id="cb65-8"><a href="#cb65-8"></a></span>
-<span id="cb65-9"><a href="#cb65-9"></a>rweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(R, alpha, beta) {</span>
-<span id="cb65-10"><a href="#cb65-10"></a>  <span class="fu">qweibull</span>(<span class="fu">runif</span>(R), alpha, beta)</span>
-<span id="cb65-11"><a href="#cb65-11"></a>}</span>
-<span id="cb65-12"><a href="#cb65-12"></a></span>
-<span id="cb65-13"><a href="#cb65-13"></a><span class="fu">rweibull</span>(<span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>pweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(x, alpha, beta) {</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>alpha <span class="sc">*</span> x<span class="sc">^</span>beta)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>qweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(p, alpha, beta) {</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  (<span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> alpha)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> beta)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>rweibull <span class="ot">&lt;-</span> <span class="cf">function</span>(R, alpha, beta) {</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qweibull</span>(<span class="fu">runif</span>(R), alpha, beta)</span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rweibull</span>(<span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1.1276566 0.8814093 0.4688023 0.7052449 0.6102069 0.8906791 0.4756895
  [8] 0.5512620 1.1274530 1.4573989</code></pre>
@@ -1021,12 +1021,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

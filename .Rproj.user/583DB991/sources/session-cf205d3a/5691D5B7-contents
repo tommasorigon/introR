@@ -3,6 +3,7 @@ title: "Data mining"
 subtitle: "CdL CLAMSES"
 author: "[Tommaso Rigon]{.orange}"
 institute: "_Università degli Studi di Milano-Bicocca_"
+lang: it
 execute:
   cache: true
 format:

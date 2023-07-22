@@ -3,6 +3,7 @@ title: "R per l'analisi statistica multivariata"
 subtitle: "Unità C: i `data.frame`s"
 author: "[Tommaso Rigon]{.orange}"
 institute: "_Università degli Studi di Milano-Bicocca_"
+lang: it
 execute:
   cache: false
 filters: 
@@ -16,7 +17,7 @@ format:
     toc: true
     toc-title: Table of contents
     embed-resources: false
-    code-line-numbers: true
+    code-line-numbers: false
     smooth-scroll: true
     code-fold: false
     code-summary: "Show the code"

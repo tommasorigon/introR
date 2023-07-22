@@ -1,0 +1,58 @@
+---
+title: "R per l'analisi statistica multivariata"
+subtitle: 'Esame 4 Febbraio 2022'
+---
+
+## Problema 1
+
+Si carichi in memoria il dataset `birthwt` della libreria `MASS`. Il dataset si riferisce a $n = 189$ donne in gravidanza. Si consiglia di consultare la documentazione per la descrizione delle variabili coinvolte.
+
+1.  (1pt) Si aggiunga al dataset `birthwt` la nuova variabile qualitativa `age_class`, la quale suddivide i valori della variabile `age` in 3 classi: `low` (età comprese tra 14 e 22), `medium` (età comprese tra 23 e 28) e `high` (età $\ge 29$).
+
+2.  (1pt) Si ottengano le frequenze assolute della variabile `age_class`.
+
+3.  (2pt) La variabile `bwt` è espressa in grammi. La si converta in chilogrammi, sovrascrivendo quella presente nel dataset `birthwt`. Se ne faccia quindi un istogramma, considerando un numero di classi appropriato.
+
+4.  (1pt) Si confrontino i tre boxplot della variabile `bwt` (espressa in chilogrammi) condizionatamente a ciascuna modalità della variabile `age_class`.
+
+5.  (1pt) Si crei un nuovo dataset, chiamato `birthwt_no_smoke` contenente esclusivamente i valori delle donne non-fumatrici e si esegua la stessa analisi condotta al punto precedente. Suggerimento: si consulti la documentazione del dataset.
+
+6.  (4pt) Si consideri nuovamente il dataset `birthwt`. Si costruisca una matrice $\textbf{X}$ di dimensione $n \times 3$ le cui colonne sono i vettori $x_1, x_2, x_3$, ciascuno di dimensione $n \times 1$. Più precisamente, il primo vettore colonna è pari a $x_1 = (1,\dots,1)^T$, mentre i vettori colonna $x_2$ ed $x_3$ contengono i valori delle variabili `age` e `ftv`. Inoltre, il vettore colonna $y$ contiene i valori della variabile `bwt`. Si ottenga il vettore $\beta$ di dimensione $3 \times 1$, definito come segue: $$
+    \hat{\beta} = (\textbf{X}^T\textbf{X})^{-1} \textbf{X}^T y,
+    $$ la cui utilità ed interpretazione risulterà chiara in corsi successivi.
+
+## Problema 2
+
+Siano $p_1(x)$ e $p_2(x)$ due funzioni di probabilità relative a due variabili aleatorie discrete $X_1,X_2$ aventi lo stesso supporto $\mathcal{S} = \{x_1,\dots, x_k\}$. La divergenza di Kullback-Leibler di $X_1$ da $X_2$ è definita come segue
+
+$$
+\text{KL}(p_1 \mid \mid p_2) = \sum_{j=1}^k p_1(x_j) \log\left\{\frac{p_1(x_j) }{p_2(x_j) }\right\}.
+$$
+
+1.  (3pt) Si supponga che $X_1, X_2$ siano due distribuzioni binomiali di parametro $n = 20$ e differenti probabilità di successo $\theta_1 = 0.5$ e $\theta_2 = 0.2$. Si calcoli la divergenza di Kullback-Leibler di $X_1$ da $X_2$.
+
+2.  (3pt) Si noti che: $$
+    \text{KL}(p_1 \mid \mid p_2) = E\left[\log\left\{\frac{p_1(X_1) }{p_2(X_1) }\right\}\right].
+    $$ Si sfrutti questo risultato per ottenere una stima Monte Carlo della divergenza di KL del punto precedente. Si quantifichi inoltre l'errore commesso.
+
+3.  (4pt) Siano $X_1, X_2$ due distribuzioni Poisson di media $\lambda_1$ e $\lambda_2$. In questo caso la dimensione del supporto è $k = \infty$ e pertanto la definizione di divergenza di KL di $X_1$ da $X_2$ coinvolge una somma infinita. Si proponga una strategia appropriata per ottenere la divergenza KL e la si calcoli per $\lambda_1 = 1$ e $\lambda_2 = 4$.
+
+## Problema 3
+
+Siano $y = (y_1,\dots,y_n)$ delle realizzazioni iid di una variabile aleatoria discreta con legge bernoulli di parametro $\theta \in (0,1)$. La funzione di log-verosimiglianza, a meno di una costante additiva, è pari a
+
+$$
+\ell(\theta) = \ell(\theta; y) = \sum_{i=1}^ny_i\log\theta + \sum_{i=1}^n(1 - y_i)\log(1-\theta).
+$$
+
+1.  (2pt) Si implementi la funzione `loglik(theta, y)` che calcola la funzione di log-verosimiglianza.
+
+2.  (2pt) Si considerino le osservazioni `0, 0, 1, 0, 0, 0, 0, 1`. Si disegni la funzione di log-verosimiglianza corrispondente nell'intervallo $(0, 1)$.
+
+3.  (2pt) Utilizzando opportuni strumenti di approssimazione numerica si calcoli la stima di massima verosimiglianza $\hat{\theta}$.
+
+4.  (2pt) L'approssimazione parabolica della funzione di log-verosimiglianza, nel suo punto di massimo, è la seguente $$
+    \ell(\theta) \approx \ell(\hat{\theta}) - \frac{n}{2 \hat{\theta}(1 - \hat{\theta})}(\theta - \hat{\theta})^2.
+    $$ Si implementi la funzione `loglik_approx(theta, y)` che calcola tale approssimazione, sapendo che $\hat{\theta} = \bar{y}$. Si confrontino graficamente la log-verosimiglianza e la sua approssimazione in $(1/10, 1/2)$, utilizzando i dati forniti in precedenza.
+
+5.  (2pt) Si considerino le osservazioni `0, 0, 0, 0, 0, 0, 0, 0`. Si disegni la funzione di log-verosimiglianza nell'intervallo $(0, 1)$ e si calcoli la stima di massima verosimiglianza $\hat{\theta}$. Si provi quindi a disegnare l'approssimazione quadratica della verosimiglianza. Si commentino i risultati e/o eventuali errori.

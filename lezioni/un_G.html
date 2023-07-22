@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
@@ -123,8 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
+  <div class="quarto-title-meta-heading">Autore/Autrice</div>
+  <div class="quarto-title-meta-heading">Affiliazione</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author"><span class="orange">Tommaso Rigon</span> </p>
@@ -195,15 +195,15 @@ Nota
 <h2 class="anchored" data-anchor-id="importazione-dei-dati-titanic">Importazione dei dati <code>titanic</code></h2>
 <p>Come fatto in precedenza, anzitutto è necessario scaricare il file <code>titanic.csv</code> e salvarlo nel proprio computer. <a href="../dataset/titanic.csv">Link al file</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/titanic.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../dataset/titanic.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In alternativa, possiamo semplice ottenerli usando il link:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>path <span class="ot">&lt;-</span> <span class="st">"https://tommasorigon.github.io/introR/dataset/titanic.csv"</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"https://tommasorigon.github.io/introR/dataset/titanic.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read.table</span>(path, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(titanic)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   1316 obs. of  2 variables:
  $ Salvato: Factor w/ 2 levels "No","Si": 2 2 2 2 2 2 2 2 2 2 ...
@@ -215,7 +215,7 @@ Nota
 <h2 class="anchored" data-anchor-id="le-frequenze-assolute-e-relative-marginali">Le frequenze assolute e relative (marginali)</h2>
 <p>Possiamo ottenere le frequenze assolute (marginali) delle due variabili usando il comando <code>summary</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">summary</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(titanic)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Salvato  Classe   
  No:817   I  :325  
@@ -225,10 +225,10 @@ Nota
 </div>
 <p>Ovviamente, possiamo ottenere le frequenze <strong>assolute</strong> e <strong>relative</strong> anche usando il comando <code>table</code>. Ad esempio per la variabile <code>classe</code>, possiamo utilizzare:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>freq_abs_classe <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic<span class="sc">$</span>Classe)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>freq_rel_classe <span class="ot">&lt;-</span> freq_abs_classe <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_classe)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>tab_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(freq_abs_classe, freq_rel_classe)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>tab_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>freq_abs_classe <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic<span class="sc">$</span>Classe)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>freq_rel_classe <span class="ot">&lt;-</span> freq_abs_classe <span class="sc">/</span> <span class="fu">sum</span>(freq_abs_classe)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tab_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(freq_abs_classe, freq_rel_classe)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tab_summary</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    freq_abs_classe freq_rel_classe
 I               325       0.2469605
@@ -242,8 +242,8 @@ III             706       0.5364742</code></pre>
 <p>Una sintesi che possiamo operare consiste nel costruire una tabella, detta <strong>tabella di contingenza</strong> oppure <strong>tabella a doppia entrata</strong>.</p>
 <p>In <strong>R</strong> si usa anche in questo caso il comando <code>table</code>, con due argomenti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tab</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    
        I  II III
@@ -442,7 +442,7 @@ III             706       0.5364742</code></pre>
 <h2 class="anchored" data-anchor-id="frequenze-congiunte-marginali">Frequenze congiunte &amp; marginali</h2>
 <p>Le tabelle descritte nei paragrafi precedenti si ottengono in <strong>R</strong> come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">addmargins</span>(tab) <span class="co"># Aggiunge le distribuzioni marginali (assolute)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(tab) <span class="co"># Aggiunge le distribuzioni marginali (assolute)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     
          I   II  III  Sum
@@ -452,8 +452,8 @@ III             706       0.5364742</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>tab_rel <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab) <span class="co"># Comando alternativo: table(tab) / sum(tab)</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>tab_rel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tab_rel <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab) <span class="co"># Comando alternativo: table(tab) / sum(tab)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tab_rel</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    
               I         II        III
@@ -462,7 +462,7 @@ III             706       0.5364742</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">addmargins</span>(tab_rel) <span class="co"># Aggiunge le distribuzioni marginali relative</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(tab_rel) <span class="co"># Aggiunge le distribuzioni marginali relative</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     
                I         II        III        Sum
@@ -572,7 +572,7 @@ III             706       0.5364742</code></pre>
 <p>Il comando <code>prop.table</code> consente anche di calcolare le frequenze condizionate relative.</p>
 <p>La distribuzione di ciascuna classe, condizionata all’esito è:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">prop.table</span>(tab, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tab, <span class="dv">1</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    
              I        II       III
@@ -582,7 +582,7 @@ III             706       0.5364742</code></pre>
 </div>
 <p>La distribuzione di ciascun esito, condizionata alla classe è:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">prop.table</span>(tab, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tab, <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    
              I        II       III
@@ -596,18 +596,18 @@ III             706       0.5364742</code></pre>
 <p>È possibile rappresentare graficamente i dati di una tabella di contingenza tramite un diagramma a barre, che in <strong>R</strong> è implementato tramite il comando <code>barplot</code>.</p>
 <p>Una rappresentazione grafica delle frequenze congiunte è pertanto la seguente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend.text =</span> <span class="cn">TRUE</span>) <span class="co"># Beside = TRUE "affianca" i rettangoli.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend.text =</span> <span class="cn">TRUE</span>) <span class="co"># Beside = TRUE "affianca" i rettangoli.</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_G_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1400"></p>
 </div>
 </div>
 <p>Se fossimo interessati a mostrare le frequenze condizionate, possiamo invece usare:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(tab, <span class="dv">2</span>),</span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="at">beside =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="at">xlab =</span> <span class="st">"Classe"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="at">legend.text =</span> <span class="cn">TRUE</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>) <span class="co"># Beside = FALSE "mette in colonna" i rettangoli.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(tab, <span class="dv">2</span>),</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">beside =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Classe"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.text =</span> <span class="cn">TRUE</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>) <span class="co"># Beside = FALSE "mette in colonna" i rettangoli.</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_G_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -620,28 +620,28 @@ III             706       0.5364742</code></pre>
 <p>Il cosiddetto <strong>R</strong> <code>base</code> contiene un’ampia gamma di rappresentazioni grafiche. Ciò nonostante, un pacchetto grafico di <strong>R</strong> chiamato <code>ggplot2</code> ha recentemente acquisito notevole popolarità.</p>
 <p>Carichiamolo anzitutto in memoria:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quindi, il primo grafico mostrato in precedenza si può ottenere con la sintassi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze assolute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze assolute"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_G_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1400"></p>
 </div>
 </div>
 <p>Mentre il secondo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze relative"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Classe, <span class="at">fill =</span> Salvato)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequenze relative"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_G_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -675,21 +675,21 @@ III             706       0.5364742</code></pre>
 <section id="soluzione" class="level4">
 <h4 class="anchored" data-anchor-id="soluzione">Soluzione</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb26-2"><a href="#cb26-2"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
-<span id="cb26-3"><a href="#cb26-3"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
-<span id="cb26-4"><a href="#cb26-4"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n <span class="co"># Frequenze relative congiunte</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">table</span>(x) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di x</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">table</span>(y) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di y</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  S <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb26-8"><a href="#cb26-8"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_x)) {</span>
-<span id="cb26-9"><a href="#cb26-9"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_y)) {</span>
-<span id="cb26-10"><a href="#cb26-10"></a>      S <span class="ot">&lt;-</span> S <span class="sc">+</span> ff[i, j]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (f_x[i] <span class="sc">*</span> f_y[j])</span>
-<span id="cb26-11"><a href="#cb26-11"></a>    }</span>
-<span id="cb26-12"><a href="#cb26-12"></a>  }</span>
-<span id="cb26-13"><a href="#cb26-13"></a>  n <span class="sc">*</span> (S <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb26-14"><a href="#cb26-14"></a>}</span>
-<span id="cb26-15"><a href="#cb26-15"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n <span class="co"># Frequenze relative congiunte</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">table</span>(x) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di x</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">table</span>(y) <span class="sc">/</span> n <span class="co"># Frequenze relative marginali di y</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_x)) {</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f_y)) {</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>      S <span class="ot">&lt;-</span> S <span class="sc">+</span> ff[i, j]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (f_x[i] <span class="sc">*</span> f_y[j])</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> (S <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     No 
 133.052 </code></pre>
@@ -700,23 +700,23 @@ III             706       0.5364742</code></pre>
 <h4 class="anchored" data-anchor-id="soluzione-alternativa-più-concisa">Soluzione (alternativa, più concisa)</h4>
 <p>La soluzione seguente fa uso delle funzioni <code>apply</code> e <code>outer</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb28-2"><a href="#cb28-2"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
-<span id="cb28-3"><a href="#cb28-3"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
-<span id="cb28-4"><a href="#cb28-4"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n</span>
-<span id="cb28-5"><a href="#cb28-5"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">1</span>, sum)</span>
-<span id="cb28-6"><a href="#cb28-6"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">2</span>, sum)</span>
-<span id="cb28-7"><a href="#cb28-7"></a>  f_e <span class="ot">&lt;-</span> <span class="fu">outer</span>(f_x, f_y) <span class="co"># Prodotto "esterno" tra vettori</span></span>
-<span id="cb28-8"><a href="#cb28-8"></a>  n <span class="sc">*</span> (<span class="fu">sum</span>(ff<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> f_e) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb28-9"><a href="#cb28-9"></a>}</span>
-<span id="cb28-10"><a href="#cb28-10"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  nn <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(nn)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  ff <span class="ot">&lt;-</span> nn <span class="sc">/</span> n</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  f_x <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">1</span>, sum)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  f_y <span class="ot">&lt;-</span> <span class="fu">apply</span>(ff, <span class="dv">2</span>, sum)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  f_e <span class="ot">&lt;-</span> <span class="fu">outer</span>(f_x, f_y) <span class="co"># Prodotto "esterno" tra vettori</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  n <span class="sc">*</span> (<span class="fu">sum</span>(ff<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> f_e) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_squared</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 133.052</code></pre>
 </div>
 </div>
 <p>Infine, si noti che la funzione <code>chisq.test</code> produce lo stesso risultato.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(titanic<span class="sc">$</span>Salvato, titanic<span class="sc">$</span>Classe))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -784,12 +784,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

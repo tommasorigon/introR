@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tommaso Rigon">
+
+<title>R per l’analisi statistica multivariata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="un_intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="un_intro_files/libs/quarto-html/quarto.js"></script>
+<script src="un_intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="un_intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="un_intro_files/libs/quarto-html/anchor.min.js"></script>
+<link href="un_intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="un_intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="un_intro_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="un_intro_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="un_intro_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#asm" id="toc-asm" class="nav-link active" data-scroll-target="#asm">ASM</a></li>
+  <li><a href="#organizzazione-del-corso" id="toc-organizzazione-del-corso" class="nav-link" data-scroll-target="#organizzazione-del-corso">Organizzazione del corso</a></li>
+  <li><a href="#propedeuticità" id="toc-propedeuticità" class="nav-link" data-scroll-target="#propedeuticità">Propedeuticità</a></li>
+  <li><a href="#registrazione-del-voto" id="toc-registrazione-del-voto" class="nav-link" data-scroll-target="#registrazione-del-voto">Registrazione del voto</a></li>
+  <li><a href="#salto-dappello" id="toc-salto-dappello" class="nav-link" data-scroll-target="#salto-dappello">Salto d’appello</a></li>
+  <li><a href="#asm-r" id="toc-asm-r" class="nav-link" data-scroll-target="#asm-r">ASM-R</a></li>
+  <li><a href="#programma-dettagliato" id="toc-programma-dettagliato" class="nav-link" data-scroll-target="#programma-dettagliato">Programma dettagliato</a></li>
+  <li><a href="#r-software" id="toc-r-software" class="nav-link" data-scroll-target="#r-software"><strong>R</strong> software</a></li>
+  <li><a href="#perché-proprio-r" id="toc-perché-proprio-r" class="nav-link" data-scroll-target="#perché-proprio-r">Perché proprio <strong>R</strong>?</a></li>
+  <li><a href="#numero-di-pacchetti-r-pubblicati-sul-cran" id="toc-numero-di-pacchetti-r-pubblicati-sul-cran" class="nav-link" data-scroll-target="#numero-di-pacchetti-r-pubblicati-sul-cran">Numero di pacchetti R pubblicati sul CRAN</a></li>
+  <li><a href="#scaricare-ed-installare-r" id="toc-scaricare-ed-installare-r" class="nav-link" data-scroll-target="#scaricare-ed-installare-r">Scaricare ed installare <strong>R</strong></a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">Rstudio</a></li>
+  <li><a href="#affrontare-il-corso" id="toc-affrontare-il-corso" class="nav-link" data-scroll-target="#affrontare-il-corso">Affrontare il corso</a></li>
+  <li><a href="#verso-un-uso-di-r-moderno" id="toc-verso-un-uso-di-r-moderno" class="nav-link" data-scroll-target="#verso-un-uso-di-r-moderno">Verso un uso di <strong>R</strong> moderno…</a></li>
+  <li><a href="#statistica-e-data-science" id="toc-statistica-e-data-science" class="nav-link" data-scroll-target="#statistica-e-data-science">Statistica e data science</a></li>
+  <li><a href="#competenze-mercato-del-lavoro" id="toc-competenze-mercato-del-lavoro" class="nav-link" data-scroll-target="#competenze-mercato-del-lavoro">Competenze &amp; mercato del lavoro</a></li>
+  <li><a href="#annuncio-di-lavoro-i" id="toc-annuncio-di-lavoro-i" class="nav-link" data-scroll-target="#annuncio-di-lavoro-i">Annuncio di lavoro I</a></li>
+  <li><a href="#annuncio-di-lavoro-ii" id="toc-annuncio-di-lavoro-ii" class="nav-link" data-scroll-target="#annuncio-di-lavoro-ii">Annuncio di lavoro II</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R per l’analisi statistica multivariata</h1>
+<p class="subtitle lead">Introduzione al corso</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><span class="orange">Tommaso Rigon</span> </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <em>Università degli Studi di Milano-Bicocca</em>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="asm" class="level2">
+<h2 class="anchored" data-anchor-id="asm">ASM</h2>
+<p>L’analisi statistica multivariata riguarda l’<strong>analisi congiunta</strong> di <strong>più variabili</strong> misurate sul medesimo insieme di unità statistiche.</p>
+<p>Nei corsi precedenti (ad es. Statistica I), ci si è concentrati su una o due variabili alla volta. In contesti reali le variabili coinvolte sono quasi sempre ben più di 2.</p>
+<p>Il <strong>modulo AE</strong> è la naturale prosecuzione di un corso di statistica descrittiva, applicato al caso in cui le variabili sono più di 2.</p>
+<p>Il <strong>modulo MS</strong> estende e analizza nel dettaglio il <strong>modello lineare</strong>, nel caso in cui le variabili esplicative sono molte.</p>
+<p>Le tecniche per l’analisi di dati multivariati possono avere una natura descrittiva / esplorativa (AE) oppure inferenziale (MS).</p>
+</section>
+<section id="organizzazione-del-corso" class="level2">
+<h2 class="anchored" data-anchor-id="organizzazione-del-corso">Organizzazione del corso</h2>
+<p>Pagina e-learning: <a href="https://elearning.unimib.it/enrol/index.php?id=37030" class="uri">https://elearning.unimib.it/enrol/index.php?id=37030</a></p>
+<p>Pagina web di <strong>ASM-R</strong>: <a href="https://tommasorigon.github.io/introR/" class="uri">https://tommasorigon.github.io/introR/</a></p>
+<p>Nella pagina web del corso potete trovare:</p>
+<ul>
+<li>Ultimi avvisi</li>
+<li>Materiale didattico da scaricare (slide, esercizi, etc.)</li>
+<li>Modalità d’esame</li>
+<li>Propedeuticità, regole del salto d’appello</li>
+<li>Altro</li>
+</ul>
+<p><strong>Tutor</strong>: Luca Danese (<a href="mailto:l.danese1@campus.unimib.it" class="email">l.danese1@campus.unimib.it</a>).</p>
+</section>
+<section id="propedeuticità" class="level2">
+<h2 class="anchored" data-anchor-id="propedeuticità">Propedeuticità</h2>
+<p>Questa attività formativa <strong>deve essere preceduta</strong> dal superamento e registrazione dei seguenti esami:</p>
+<ul>
+<li>Algebra lineare;</li>
+<li>Analisi Matematica I;</li>
+<li>Calcolo delle Probabilità;</li>
+<li>Statistica I.</li>
+</ul>
+<p><strong>Non è possibile iscriversi alla prove parziali</strong> di R, AE, MS, senza aver prima registrato le attività formative sopra elencate.</p>
+<p>È tuttavia sempre <strong>possibile frequentare</strong> le lezioni.</p>
+</section>
+<section id="registrazione-del-voto" class="level2">
+<h2 class="anchored" data-anchor-id="registrazione-del-voto">Registrazione del voto</h2>
+<p>Il <strong>voto finale</strong> di ASM è determinato dalla <strong>media</strong> (ponderata con i rispettivi CFU) dei voti conseguiti nelle tre parti R, AE e MS (arrotondato all’intero più vicino).</p>
+<p>Per poter registrare il voto di ASM, è necessario aver conseguito un voto sufficiente (<span class="math inline">\ge 18</span>) nelle prove di R, AE e MS ma anche <strong>iscriversi</strong> all’appello di ASM.</p>
+<p>Quindi per registrare l’esame è necessario <strong>iscriversi all’appello</strong> di ASM (15 CFU) ai fini della verbalizzazione.</p>
+</section>
+<section id="salto-dappello" class="level2">
+<h2 class="anchored" data-anchor-id="salto-dappello">Salto d’appello</h2>
+<p>In ottemperanza al Regolamento Didattico di Ateneo, per l’insegnamento ASM è previsto il <strong>salto d’appello</strong>.</p>
+<p>Per <strong>motivi didattici</strong>, agli studenti i quali nel primo appello della sessione Invernale ed Estiva consegnano un compito scritto, chiedendone la correzione, che palesa lacune tali da essere considerate non colmabili nel tempo che intercorre tra l’appello in questione ed il successivo, ovvero una <strong>votazione inferiore a 9/30</strong>.</p>
+<p>Per <strong>motivi disciplinari</strong>, agli studenti che durante gli esami scritti vengano sorpresi a <strong>copiare</strong>, a scambiare informazioni coi compagni, a riversare sull’elaborato informazioni provenienti da qualsiasi supporto di cui non è permesso l’utilizzo.</p>
+<p>Per <strong>motivi organizzativi</strong>, agli studenti che si <strong>iscrivono</strong> ripetutamente (3 volte consecutive) agli appelli <strong>senza presentarsi</strong>, senza effettuare la disiscrizione o avvisare per mail con adeguata motivazione per l’assenza.</p>
+</section>
+<section id="asm-r" class="level2">
+<h2 class="anchored" data-anchor-id="asm-r">ASM-R</h2>
+<p>Il <strong>modulo R</strong> è in larga misura una <strong>revisione</strong> di argomenti che dovreste già conoscere bene. Nello specifico, ci occuperemo di</p>
+<ul>
+<li>Statistica descrittiva (Statistica I);</li>
+<li>Calcolo delle probabilità;</li>
+<li>Inferenza statistica (Statistica II).</li>
+</ul>
+<p>Al tempo stesso, il <strong>modulo R</strong> è un esame di <strong>programmazione in R</strong>.</p>
+<section id="nota" class="level4">
+<h4 class="anchored" data-anchor-id="nota">Nota</h4>
+<p>ASM-R non è una “introduzione” al software <strong>R</strong>. Lo scopo del corso è mostrare come risolvere <strong>problemi statistici</strong> reali disponendo di un <strong>computer</strong>.</p>
+<p>In altre parole, all’esame verranno valutati sia la <strong>forma</strong> (programmazione) che il <strong>contenuto</strong> (analisi statistica).</p>
+</section>
+</section>
+<section id="programma-dettagliato" class="level2">
+<h2 class="anchored" data-anchor-id="programma-dettagliato">Programma dettagliato</h2>
+<p>Il corso ASM-R è costituito da <span class="math inline">4</span> <strong>macro-argomenti</strong>.</p>
+<section id="introduzione-ad-r" class="level4">
+<h4 class="anchored" data-anchor-id="introduzione-ad-r">Introduzione ad <strong>R</strong></h4>
+<p>Concetti di base, elementi di programmazione, vettori, matrici, dataframes, funzioni.</p>
+</section>
+<section id="statistica-descrittiva" class="level4">
+<h4 class="anchored" data-anchor-id="statistica-descrittiva">Statistica descrittiva</h4>
+<p>Revisione degli argomenti di Statistica I usando <strong>R</strong>. Analisi descrittiva di un dataset.</p>
+</section>
+<section id="calcolo-delle-probabilità" class="level4">
+<h4 class="anchored" data-anchor-id="calcolo-delle-probabilità">Calcolo delle probabilità</h4>
+<p>Variabili aleatorie, numeri pseudo-casuali, applicazioni del metodo Monte Carlo.</p>
+</section>
+<section id="inferenza-statistica" class="level4">
+<h4 class="anchored" data-anchor-id="inferenza-statistica">Inferenza statistica</h4>
+<ul>
+<li>Metodi numerici per l’analisi di verosimiglianza.</li>
+<li>Metodi Monte Carlo per il calcolo delle proprietà di uno stimatore (distorsione, varianza, consistenza).</li>
+</ul>
+</section>
+</section>
+<section id="r-software" class="level2">
+<h2 class="anchored" data-anchor-id="r-software"><strong>R</strong> software</h2>
+<p>Il software <strong>R</strong> è contemporaneamente un <strong>linguaggio di programmazione</strong> ed un <strong>software per l’analisi dei dati</strong>.</p>
+<p>È distribuito gratuitamente dal gruppo <strong>The R Project for Statistical Computing</strong> (<a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>).</p>
+<p>Un gruppo di ricercatori, l’<strong>R Core Team</strong>, costituito oggi da circa 20 membri, si occupa dei codici sorgente.</p>
+<p>Il software <strong>R</strong> è in continua evoluzione: dalla versione <code>0.64</code> si è giunti ad oggi (Novembre 2022) allo sviluppo della versione <code>4.2.2 (Innocent and Trusting)</code>.</p>
+<p>È previsto un aggiornamento semestrale in quanto il gruppo di sviluppatori rilascia una <strong>major release</strong> all’anno e una sua <strong>patch</strong> ogni 6 mesi.</p>
+</section>
+<section id="perché-proprio-r" class="level2">
+<h2 class="anchored" data-anchor-id="perché-proprio-r">Perché proprio <strong>R</strong>?</h2>
+<p>Perché si è deciso di usare <strong>R</strong> e non altri strumenti informatici, tra cui i linguaggi Python, Julia da un lato e i costosissimi software STATA, SAS, SPSS dall’altro?</p>
+<p><strong>R</strong> è probabilmente il più popolare linguaggio di programmazione tra i <strong>statistici e data scientist</strong>. Esiste da più di <span class="math inline">20</span> anni e può quindi contare su un ampia base di supporto.</p>
+<p><strong>R</strong> è open-source e <strong>gratuito</strong>.</p>
+<p><strong>R</strong> è sviluppato <strong>da statistici per gli statistici</strong>. Non è quindi un software generalista riadattato per l’analisi dei dati, ma uno strumento con delle precise finalità statistiche.</p>
+<p><strong>R</strong> è lo strumento primario per la <strong>ricerca statistica</strong>: tutte le volte che un nuovo metodo viene studiato, tendenzialmente viene pubblicato anche il corrispondente <strong>pacchetto R</strong>.</p>
+</section>
+<section id="numero-di-pacchetti-r-pubblicati-sul-cran" class="level2">
+<h2 class="anchored" data-anchor-id="numero-di-pacchetti-r-pubblicati-sul-cran">Numero di pacchetti R pubblicati sul CRAN</h2>
+<p><img src="img/number-of-submitted-packages-to-CRAN.png" class="img-fluid"></p>
+<p>Il numero di pacchetti <strong>R</strong> disponibili sul CRAN (Comprehensive R Archive Network) continua a crescere <strong>esponenzialmente</strong>.</p>
+</section>
+<section id="scaricare-ed-installare-r" class="level2">
+<h2 class="anchored" data-anchor-id="scaricare-ed-installare-r">Scaricare ed installare <strong>R</strong></h2>
+<p>Come menzionato, <strong>R</strong> è un software libero e viene distribuito con la licenza <code>GNU GPL</code>.</p>
+<p>Pertanto, per il download di <strong>R</strong> è sufficiente visitare il <strong>Comprehensive R Archive Network</strong> (<a href="http://cran.r-project.org" class="uri">http://cran.r-project.org</a>), spesso abbreviato in <strong>CRAN</strong>.</p>
+<p><strong>R</strong> è <strong>multi-piattaforma</strong>, ovvero disponibile per Windows, Mac e Linux:</p>
+<ul>
+<li>Microsoft Windows: <a href="http://cran.r-project.org/bin/windows/base/" class="uri">http://cran.r-project.org/bin/windows/base/</a></li>
+<li>MacOS: <a href="http://cran.r-project.org/bin/macosx/" class="uri">http://cran.r-project.org/bin/macosx/</a></li>
+<li>Linux: <a href="http://cran.r-project.org/bin/linux/" class="uri">http://cran.r-project.org/bin/linux/</a></li>
+</ul>
+<section id="nota-1" class="level4">
+<h4 class="anchored" data-anchor-id="nota-1">Nota</h4>
+<p>Ovviamente, è fondamentale che installiate <strong>R</strong> sul vostro laptop personale, sia ai fini di questo corso che per gli esami successivi (non solo ASM!)</p>
+</section>
+</section>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">Rstudio</h2>
+<p><strong>R</strong> può essere utilizzato tramite linea di comando (R Console).</p>
+<p><strong>RStudio</strong> (<a href="http://www.rstudio.org" class="uri">http://www.rstudio.org</a>) è un software open-source separato da <strong>R</strong>, ma che grazie alla sua interfaccia intuitiva ne rende più agevole l’uso.</p>
+<p>RStudio è infatti un <strong>IDE</strong> (Integrated Development Environment).</p>
+<p>Anche RStudio è disponibile per differenti piattaforme (Windows, Mac, Linux).</p>
+<p>Per il download: <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a></p>
+<p>L’uso di Rstudio è facoltativo, ma altamente raccomandato.</p>
+</section>
+<section id="affrontare-il-corso" class="level2">
+<h2 class="anchored" data-anchor-id="affrontare-il-corso">Affrontare il corso</h2>
+<p>Non è possibile imparare ad usare <strong>R</strong> semplicemente leggendo un libro o (peggio ancora) “studiando” dalle slides.</p>
+<p>Al contrario, la <strong>pratica</strong> è probabilmente ciò che determina la buona preparazione di uno studente.</p>
+<p>Un pessimo modo di impiegare il proprio tempo è tentare di memorizzare i comandi <strong>R</strong>.</p>
+<p>Viceversa, è importante svolgere il maggior numero possibile di <strong>esercizi</strong> sforzandosi di non guardare le soluzioni se non dopo aver provato a risolverlo.</p>
+<p>Nel caso aveste finito gli esercizi e aveste già risolto autonomamente la lista di esami precedenti, potete provare a risolvere in <strong>R</strong> gli esami degli altri corsi.</p>
+<section id="nota-2" class="level4">
+<h4 class="anchored" data-anchor-id="nota-2">Nota</h4>
+<p>All’esame è possibile consultare sia il <strong>codice utilizzato a lezione</strong> che la <strong>documentazione</strong> di <strong>R</strong> <a href="https://github.com/tommasorigon/introR/tree/master/docs/lezioni/script" class="uri">https://github.com/tommasorigon/introR/tree/master/docs/lezioni/script</a></p>
+</section>
+</section>
+<section id="verso-un-uso-di-r-moderno" class="level2">
+<h2 class="anchored" data-anchor-id="verso-un-uso-di-r-moderno">Verso un uso di <strong>R</strong> moderno…</h2>
+<p>Purtroppo, per ragioni di tempo, non affronteremo gli aspetti più <strong>moderni</strong> e recenti del software <strong>R</strong>. Alcuni importanti pacchetti sono menzionati nel seguito.</p>
+<p>Pacchetti <code>dplyr, tidyr, readr</code> facenti parte del cosiddetto <code>tidyverse</code>. Si tratta di strumenti estremamente efficienti per la manipolazioni di dataset.</p>
+<p>Pacchetto <code>ggplot2</code>. Rappresentazioni grafiche avanzate e di alta qualità, basate sul concetto di <strong>grammar of graphics</strong>.</p>
+<p>Pacchetto <code>shiny</code>. Strumenti per la creazione di siti web interattivi, in cui <strong>R</strong> rimane nel back-end.</p>
+<p>Un caso studio di Shiny: <a href="http://bicocca-datalab.shinyapps.io/covid19/" class="uri">http://bicocca-datalab.shinyapps.io/covid19/</a></p>
+</section>
+<section id="statistica-e-data-science" class="level2">
+<h2 class="anchored" data-anchor-id="statistica-e-data-science">Statistica e data science</h2>
+<section id="asa-statement-on-the-role-of-statistics-in-data-science-2015" class="level4">
+<h4 class="anchored" data-anchor-id="asa-statement-on-the-role-of-statistics-in-data-science-2015">ASA Statement on the Role of Statistics in Data Science (2015)</h4>
+<p>While there is not yet a consensus on what precisely constitutes data science, three professional communities, all within computer science and/or statistics, are emerging as foundational to data science:</p>
+<ul>
+<li>Database Management enables transformation, conglomeration, and organization of data resources;</li>
+<li><strong>Statistics</strong> and Machine Learning convert <strong>data into knowledge</strong>;</li>
+<li>Distributed and Parallel Systems provide the <strong>computational infrastructure</strong> to carry out data analysis.</li>
+</ul>
+<p>È quindi chiaro che la statistica moderna non può prescindere dall’uso di software.</p>
+<p>ASA statement: <a href="https://magazine.amstat.org/blog/2015/10/01/asa-statement-on-the-role-of-statistics-in-data-science/" class="uri">https://magazine.amstat.org/blog/2015/10/01/asa-statement-on-the-role-of-statistics-in-data-science/</a></p>
+</section>
+</section>
+<section id="competenze-mercato-del-lavoro" class="level2">
+<h2 class="anchored" data-anchor-id="competenze-mercato-del-lavoro">Competenze &amp; mercato del lavoro</h2>
+<p>Un laureato/a in statistica che ambisce a fare carriera come statistico/a, non deve sottovalutare l’importanza degli aspetti informatici e computazionali.</p>
+<p>È sufficiente visitare <a href="https://www.linkedin.com/">LinkedIn</a> o altri siti web simili, per verificare che la conoscenza di almeno un software di programmazione (R, Python, Julia, etc) è un requisito essenziale.</p>
+<p>Il <strong>ruolo dello statistico</strong> non è quello del programmatore. Lo statistico interviene principalmente per decidere <strong>cosa fare</strong> (analisi statistica) più che sul <strong>come fare</strong> (implementazione informatica).</p>
+<p>Il “cosa” ed il “come” sono concetti legati a doppio filo: lo statistico deve sapersi interfacciare con i programmatori, o perfino svolgere l’intero lavoro in autonomia.</p>
+</section>
+<section id="annuncio-di-lavoro-i" class="level2">
+<h2 class="anchored" data-anchor-id="annuncio-di-lavoro-i">Annuncio di lavoro I</h2>
+<p><img src="img/IMG_0260.jpg" class="img-fluid" width="439"></p>
+</section>
+<section id="annuncio-di-lavoro-ii" class="level2">
+<h2 class="anchored" data-anchor-id="annuncio-di-lavoro-ii">Annuncio di lavoro II</h2>
+<p><img src="img/IMG_0261.jpg" class="img-fluid" width="440"></p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="un_intro_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
