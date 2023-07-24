@@ -81,37 +81,37 @@ corrisponde al libro Robert & Casella.
 | Argomenti                                         | Materiale didattico                     | Materiale aggiuntivo                              | Sezioni libro di testo                                  |
 |------------------------|---------------------------|-----------|-------------|
 |                                                   | **INTRODUZIONE AD R**                   |                                                   |                                                         |
-| A-B-C: calcolo scientifico ed algebra lineare     | [Unità A](lezi%20oni/un_A.html)         | [Codice R](lezioni/%20script/un_A.R)              | **AR** §1.1, §1.3, §A1 --- §A3                          |
-| Elementi di programmazione                        | [Unità B](lezi%20oni/un_B.html)         | [Codice R](lezioni/%20script/un_B.R)              | **AR** §1.2, §1.6 --- §1.8                              |
-| I dataframes                                      | [Unità C](lezi%20oni/un_C.html)         | [Codice R](lezioni/%20script/un_C.R)              | **AR** §1.4 --- §1.5                                    |
+| A-B-C: calcolo scientifico ed algebra lineare     | [Unità A](lezioni/un_A.html)         | [Codice R](lezioni/script/un_A.R)              | **AR** §1.1, §1.3, §A1 --- §A3                          |
+| Elementi di programmazione                        | [Unità B](lezioni/un_B.html)         | [Codice R](lezioni/script/un_B.R)              | **AR** §1.2, §1.6 --- §1.8                              |
+| I dataframes                                      | [Unità C](lezioni/un_C.html)         | [Codice R](lezioni/script/un_C.R)              | **AR** §1.4 --- §1.5                                    |
 | *Esercizi*                                        | [Esercizi 1](exe/es_1.html)             | [soluzione. R](exe/es_1.R)                        |                                                         |
 |                                                   | **STATISTICA DESCRITTIVA**              |                                                   |                                                         |
-| Analisi descrittiva dei dati `dde`                | [Unità D](lezi%20oni/un_D.html)         | [Codice R](lezioni/%20script/un_D.R)              | **AR** §2.1 --- §2.3, §2.7                              |
-| Analisi descrittiva dei dati `emoglobina`         | [Unità E](lezi%20oni/un_E.html)         | [Codice R](lezioni/%20script/un_E.R)              | **AR** §2.1 --- §2.3, §2.7                              |
-| **E sercitazione**                                | [Unità F](lezi%20oni/un_F.html)         | [Codice R](lezioni/%20script/un_F.R)              | **AR** 7.1, §7.2                                        |
-| Analisi descrittiva dei dati `titanic`            | [Unità G](lezi%20oni/un_G.html)         | [Codice R](lezioni/%20script/un_G.R)              | **AR** §3.1 --- §3.5                                    |
+| Analisi descrittiva dei dati `dde`                | [Unità D](lezioni/un_D.html)         | [Codice R](lezioni/script/un_D.R)              | **AR** §2.1 --- §2.3, §2.7                              |
+| Analisi descrittiva dei dati `emoglobina`         | [Unità E](lezioni/un_E.html)         | [Codice R](lezioni/script/un_E.R)              | **AR** §2.1 --- §2.3, §2.7                              |
+| **E sercitazione**                                | [Unità F](lezioni/un_F.html)         | [Codice R](lezioni/script/un_F.R)              | **AR** 7.1, §7.2                                        |
+| Analisi descrittiva dei dati `titanic`            | [Unità G](lezioni/un_G.html)         | [Codice R](lezioni/script/un_G.R)              | **AR** §3.1 --- §3.5                                    |
 | *Esercizi*                                        | [Esercizi 2](exe/es_2.html)             | [soluzione. R](exe/es_2.R)                        |                                                         |
 |                                                   | **CALCOLO DELLE PROBABILITÀ**           |                                                   |                                                         |
-| Variabili aleatorie                               | [Unità H](lezi%20oni/un_H.html)         | [Codice R](lezioni/%20script/un_H.R)              | **RC** §2.1, §2.2                                       |
-| Metodi Monte Carlo                                | [Unità I](lezi%20oni/un_I.html)         | [Codice R](lezioni/%20script/un_I.R)              | **AR** §11.1 --- §11.5, §13.1, §13.2; **RC** §3.1, §3.2 |
+| Variabili aleatorie                               | [Unità H](lezioni/un_H.html)         | [Codice R](lezioni/script/un_H.R)              | **RC** §2.1, §2.2                                       |
+| Metodi Monte Carlo                                | [Unità I](lezioni/un_I.html)         | [Codice R](lezioni/script/un_I.R)              | **AR** §11.1 --- §11.5, §13.1, §13.2; **RC** §3.1, §3.2 |
 | *Esercizi*                                        | [Esercizi 3](exe/es_3.html)             | [soluzione. R](exe/es_3.R)                        |                                                         |
 |                                                   | **INFERENZA STATISTICA**                |                                                   |                                                         |
-| Metodi numerici per l'analisi di v erosimiglianza | [Unità K](lezi%20oni/un_K.html)         | [Codice R](lezioni/%20script/un_K.R)              | **RC** §5.1, §5.2                                       |
-| Proprietà degli stimatori                         | [Unità M](lezi%20oni/un_M.html)         | [Codice R](lezioni/%20script/un_M.R)              | **AR** §13.3                                            |
+| Metodi numerici per l'analisi di v erosimiglianza | [Unità K](lezioni/un_K.html)         | [Codice R](lezioni/script/un_K.R)              | **RC** §5.1, §5.2                                       |
+| Proprietà degli stimatori                         | [Unità M](lezioni/un_M.html)         | [Codice R](lezioni/script/un_M.R)              | **AR** §13.3                                            |
 | *Esercizi*                                        | [Esercizi 4](exe/es_4.html)             | [soluzione. R](exe/es_4.R)                        |                                                         |
 |                                                   | **LEZIONI AGGIUNTIVE**                  |                                                   |                                                         |
-| Casinò, roulette e metodi Monte Carlo             | [Unità J](lezi%20oni/un_J.html)         | [Codice R](lezioni/%20script/un_J.R)              | **AR** §11.2                                            |
-| Minimi quadrati non lineari                       | [Unità L](lezi%20oni/un_L.html)         | [Codice R](lezioni/%20script/un_L.R)              |                                                         |
+| Casinò, roulette e metodi Monte Carlo             | [Unità J](lezioni/un_J.html)         | [Codice R](lezioni/script/un_J.R)              | **AR** §11.2                                            |
+| Minimi quadrati non lineari                       | [Unità L](lezioni/un_L.html)         | [Codice R](lezioni/script/un_L.R)              |                                                         |
 |                                                   | **ESAMI PASSATI**                       |                                                   |                                                         |
-| Esame 20 Febbraio 2023                            | [Esame](esami/esame_20%20_02_2023.html) | [soluzione.R](e%20sami/soluzione%20_20_02_2023.R) |                                                         |
-| Esame 6 Febbraio 2023                             | [Esame](esami/esame_06%20_02_2023.html) | [soluzione.R](e%20sami/soluzione%20_06_02_2023.R) |                                                         |
-| Esame 22 Febbraio 2022                            | [Esame](esami/esame_22%20_02_2022.html) | [soluzione.R](e%20sami/soluzione%20_22_02_2022.R) |                                                         |
-| Esame 4 Febbraio 2022                             | [Esame](esami/esame_04%20_02_2022.html) | [soluzione.R](e%20sami/soluzione%20_04_02_2022.R) |                                                         |
-| Esame 19 Novembre 2021                            | [Esame](esami/esame_19%20_11_2021.html) | [soluzione.R](e%20sami/soluzione%20_19_11_2021.R) |                                                         |
-| Esame 22 Luglio 2021                              | [Esame](esami/esame_22%20_07_2021.html) | [soluzione.R](e%20sami/soluzione%20_22_07_2021.R) |                                                         |
-| Esame 30 Giugno 2021                              | [Esame](esami/esame_30%20_06_2021.html) | [soluzione.R](e%20sami/soluzione%20_30_06_2021.R) |                                                         |
-| Esame 24 Febbraio 2021                            | [Esame](esami/esame_24%20_02_2021.html) | [soluzione.R](e%20sami/soluzione%20_24_02_2021.R) |                                                         |
-| Esame 08 Febbraio 2021                            | [Esame](esami/esame_08%20_02_2021.html) | [soluzione.R](e%20sami/soluzione%20_08_02_2021.R) |                                                         |
+| Esame 20 Febbraio 2023                            | [Esame](esami/esame_20_02_2023.html) | [soluzione.R](esami/soluzione_20_02_2023.R) |                                                         |
+| Esame 6 Febbraio 2023                             | [Esame](esami/esame_06_02_2023.html) | [soluzione.R](esami/soluzione_06_02_2023.R) |                                                         |
+| Esame 22 Febbraio 2022                            | [Esame](esami/esame_22_02_2022.html) | [soluzione.R](esami/soluzione_22_02_2022.R) |                                                         |
+| Esame 4 Febbraio 2022                             | [Esame](esami/esame_04_02_2022.html) | [soluzione.R](esami/soluzione_04_02_2022.R) |                                                         |
+| Esame 19 Novembre 2021                            | [Esame](esami/esame_19_11_2021.html) | [soluzione.R](esami/soluzione_19_11_2021.R) |                                                         |
+| Esame 22 Luglio 2021                              | [Esame](esami/esame_22_07_2021.html) | [soluzione.R](esami/soluzione_22_07_2021.R) |                                                         |
+| Esame 30 Giugno 2021                              | [Esame](esami/esame_30_06_2021.html) | [soluzione.R](esami/soluzione_30_06_2021.R) |                                                         |
+| Esame 24 Febbraio 2021                            | [Esame](esami/esame_24_02_2021.html) | [soluzione.R](esami/soluzione_24_02_2021.R) |                                                         |
+| Esame 08 Febbraio 2021                            | [Esame](esami/esame_08_02_2021.html) | [soluzione.R](esami/soluzione_08_02_2021.R) |                                                         |
 
 ### Approfondimenti
 
