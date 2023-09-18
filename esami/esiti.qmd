@@ -1,6 +1,6 @@
 ---
 title: "R per l'analisi statistica multivariata"
-subtitle: 'Esiti esame 19 Luglio 2023'
+subtitle: 'Esiti esame 13 Settembre 2023'
 author: "[Tommaso Rigon]{.orange}"
 institute: "_Università degli Studi di Milano-Bicocca_"
 lang: it
