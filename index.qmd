@@ -26,7 +26,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-Il corso [R per l'analisi statistica multivariata]{.orange} è stato erogato nel corso di laurea "Scienze Statistiche ed Economiche" dell'Università Milano-Bicocca negli A.A. 2020/2021, 2021/2022 e 2022/2023.
+Il corso [R per l'analisi statistica multivariata]{.orange} è stato erogato da Tommaso Rigon nel corso di laurea "Scienze Statistiche ed Economiche" dell'Università Milano-Bicocca negli A.A. 2020/2021, 2021/2022 e 2022/2023.
 
 Il materiale didattico di questo sito [rimarrà online]{.blue} a tempo indefinito.
 
