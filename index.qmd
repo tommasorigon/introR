@@ -26,19 +26,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-L'insegnamento di **Analisi Statistica Multivariata** (15 CFU) è
-articolato nelle seguenti parti:
+Il corso [R per l'analisi statistica multivariata]{.orange} è stato erogato nel corso di laurea "Science Statistiche ed Economiche" dell'Università Milano-Bicocca negli A.A. 2020/2021, 2021/2022 e 2022/2023.
 
-1.  R per l'Analisi Statistica Multivariata (R), 3 CFU, II Ciclo, Prof.
-    Rigon.
-
-2.  Modelli Statistici (MS), 6 CFU, III Ciclo, Prof. Ascari.
-
-3.  Analisi Esplorativa (AE), 6 CFU, IV Ciclo, Prof. Monti.
-
-**Nota**: i dettagli legati alle propedeuticità, alla registrazione del
-voto, al calendario degli esami e al salto d'appello sono spiegate nella
-pagina Elearning di Analisi Statistica Multivariata.
+Il materiale didattico di questo sito [rimarrà online]{.blue} a tempo indefinito.
 
 ## Materiale didattico
 
@@ -129,32 +119,6 @@ corrisponde al libro Robert & Casella.
 -   [Oldford (2016)](approfondimenti/Oldford2016.pdf). Self-calibrating
     quantile--quantile plots. *The American Statistician* **70**(1),
     74--90.
-
-## Modalità d'esame
-
-L'esame si svolge tramite **computer** e consiste tipicamente in $3$
-esercizi da svolgere in **R**. L'esame si svolgerà sulla [Piattaforma
-Esami
-Informatizzati](https://esamionline.elearning.unimib.it/login/index.php).
-
-Lo studente all'esame può consultare sia la documentazione ufficiale di
-**R** che il codice utilizzato a lezione, disponibile a [questo
-link](lezioni/script.zip).
-
-Per visionare la prova, è possibile venire a ricevimento. Per ulteriori
-informazioni relative alla registrazione del voto, al calendario delle
-verbalizzazioni e al salto d'appello si visiti la pagina elearning di
-Analisi Statistica Multivariata.
-
-## Propedeuticità
-
-Si veda la pagina elearning di Analisi Statistica Multivariata.
-
-## Ricevimento
-
-Per fissare un appuntamento, si prega di contattare il docente in
-anticipo via posta elettronica all'indirizzo `tommaso.rigon@unimib.it`.
-Il ricevimento è fissato ogni **martedì alle ore 17.30**.
 
 ```{r}
 #| echo: false
