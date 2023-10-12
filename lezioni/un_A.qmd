@@ -462,7 +462,7 @@ x_row
 
 ## Vettori riga e vettori di **R**
 
-Nella maggior parte dei casi, il **{vettore riga** `x_row` è intercambiabile col vettore `x`.
+Nella maggior parte dei casi, il **vettore riga** `x_row` è intercambiabile col vettore `x`.
 
 ```{r}
 x_row <- matrix(c(1, 10, 3, 5), nrow = 1)
