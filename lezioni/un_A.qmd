@@ -533,7 +533,7 @@ C
 
 ## Operazioni sulle matrici III
 
-Siano ${\bf x}$ e ${\bf y}$ due vettori colonna in $\mathbb{R}^p$. Allora, il loro \empb{prodotto incrociato} è pari a
+Siano ${\bf x}$ e ${\bf y}$ due vettori colonna in $\mathbb{R}^p$. Allora, il loro [prodotto incrociato]{.orange} è pari a
 
 $$ 
 {\bf x}^\intercal {\bf y} = \sum_{i=1}^p x_i y_i.
