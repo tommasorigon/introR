@@ -39,20 +39,29 @@ editor_options:
 ::: callout-note
 #### Riferimenti aggiuntivi
 
--   L'[Unità K](https://tommasorigon.github.io/StatI/slides/sl_K.pdf) del corso Statistica I
+-   L'[Unità K](https://tommasorigon.github.io/StatI/slides/sl_K.pdf)
+    del corso Statistica I
 
--   L'[Unità L](https://tommasorigon.github.io/StatI/slides/sl_L.pdf) del corso Statistica I
+-   L'[Unità L](https://tommasorigon.github.io/StatI/slides/sl_L.pdf)
+    del corso Statistica I
 
--   Gli esercizi **R** associati sono disponibili a [questo link](https://tommasorigon.github.io/introR/exe/es_4.html)
+-   Gli esercizi **R** associati sono disponibili a [questo
+    link](https://tommasorigon.github.io/introR/exe/es_4.html)
 :::
 
 ## Descrizione del problema
 
-Per $n = 31$ **alberi di ciliegio** nero sono disponibili le misure del diametro del tronco (misurato a circa $1$m dal suolo) ed il volume ricavato dall'albero dopo l'abbattimento.
+Per $n = 31$ **alberi di ciliegio** nero sono disponibili le misure del
+diametro del tronco (misurato a circa $1$m dal suolo) ed il volume
+ricavato dall'albero dopo l'abbattimento.
 
-Si vogliono utilizzare i dati per ottenere un'**equazione** che permetta di **prevedere** il volume, ottenibile solo dopo l'abbattimento dell'albero, avendo a disposizione il diametro, che è invece facilmente misurabile.
+Si vogliono utilizzare i dati per ottenere un'**equazione** che permetta
+di **prevedere** il volume, ottenibile solo dopo l'abbattimento
+dell'albero, avendo a disposizione il diametro, che è invece facilmente
+misurabile.
 
-In altri termini, stiamo cercando una qualche funzione $f(\cdot)$ tale che
+In altri termini, stiamo cercando una qualche funzione $f(\cdot)$ tale
+che
 
 $$
 \text{(volume)} \approx f(\text{diametro}).
@@ -60,11 +69,15 @@ $$
 
 Una simile equazione ha differenti utilizzi.
 
-Ad esempio, può essere utilizzata per decidere quanti e quali alberi tagliare per ricavare un certo ammontare di legno, oppure per determinare il "prezzo" di un bosco.
+Ad esempio, può essere utilizzata per decidere quanti e quali alberi
+tagliare per ricavare un certo ammontare di legno, oppure per
+determinare il "prezzo" di un bosco.
 
 ## Importazione dei dati `ciliegi`
 
-Come fatto in precedenza, anzitutto è necessario scaricare il file `ciliegi.csv` e salvarlo nel proprio computer. [Link al file](../dataset/ciliegi.csv)
+Come fatto in precedenza, anzitutto è necessario scaricare il file
+`ciliegi.csv` e salvarlo nel proprio computer. [Link al
+file](../dataset/ciliegi.csv)
 
 ```{r}
 ciliegi <- read.table("../dataset/ciliegi.csv", header = TRUE, sep = ",")
@@ -90,25 +103,38 @@ plot(ciliegi)
 
 ## Alcune considerazioni geometriche (recap)
 
-Nelle [Unità K](https://tommasorigon.github.io/StatI/slides/sl_K.pdf) ed [Unità L](https://tommasorigon.github.io/StatI/slides/sl_L.pdf) del corso **Statistica I** abbiamo costruito dei modelli statistici del tipo $\text{(volume)} \approx f(\text{diametro})$ basati sulla geometria degli alberi.
+Nelle [Unità K](https://tommasorigon.github.io/StatI/slides/sl_K.pdf) ed
+[Unità L](https://tommasorigon.github.io/StatI/slides/sl_L.pdf) del
+corso **Statistica I** abbiamo costruito dei modelli statistici del tipo
+$\text{(volume)} \approx f(\text{diametro})$ basati sulla geometria
+degli alberi.
 
-Dopo varie considerazioni di tipo geometrico, si era giunti ad una specificazione del tipo $$
+Dopo varie considerazioni di tipo geometrico, si era giunti ad una
+specificazione del tipo $$
 \text{(volume)} = \eta \:\text{(diametro)}^{\lambda},
 $$ per due costanti **positive** $\eta, \lambda > 0$.
 
-Potremmo determinare i valori appropriati per $\eta$ e $\lambda$ utilizzando i **minimi quadrati**, ovvero considerando $$
+Potremmo determinare i valori appropriati per $\eta$ e $\lambda$
+utilizzando i **minimi quadrati**, ovvero considerando $$
 (\hat{\eta}_{\text{ls}}, \hat{\lambda}_{\text{ls}}) = \arg\min_{\eta, \lambda} \frac{1}{n} \sum_{i=1}^n\left(y_i - \eta x_i^\lambda\right)^2.
 $$
 
-Purtroppo non esiste una **soluzione in forma chiusa** a questo problema, che infatti necessita dell'utilizzo di **tecniche numeriche**.
+Purtroppo non esiste una **soluzione in forma chiusa** a questo
+problema, che infatti necessita dell'utilizzo di **tecniche numeriche**.
 
 ## Minimi quadrati non-lineari
 
-La procedura di stima per $(\hat{\eta}_{\text{ls}}, \hat{\lambda}_{\text{ls}})$ prende il nome di **minimi quadrati non-lineari** e richiede una minimizzazione numerica, come quelle che abbiamo visto nell'[Unità K](un_K.html).
+La procedura di stima per
+$(\hat{\eta}_{\text{ls}}, \hat{\lambda}_{\text{ls}})$ prende il nome di
+**minimi quadrati non-lineari** e richiede una minimizzazione numerica,
+come quelle che abbiamo visto nell'[Unità K](un_K.html).
 
-Grazie ad **R** ed ai suoi strumenti computazionali, possiamo quindi svolgere un calcolo che nei corsi precedenti non era risolvibile. In particolare, possiamo usare `nlminb`.
+Grazie ad **R** ed ai suoi strumenti computazionali, possiamo quindi
+svolgere un calcolo che nei corsi precedenti non era risolvibile. In
+particolare, possiamo usare `nlminb`.
 
-In primo luogo, definiamo la **funzione obiettivo** o **funzione di perdita**:
+In primo luogo, definiamo la **funzione obiettivo** o **funzione di
+perdita**:
 
 ```{r}
 # Funzione di perdita che vogliamo minimizzare
@@ -117,7 +143,8 @@ loss <- function(par, y, x) {
 }
 ```
 
-Ad esempio, tale funzione, valutata nel punto $(1,1)$ vale circa $460.83$, infatti:
+Ad esempio, tale funzione, valutata nel punto $(1,1)$ vale circa
+$460.83$, infatti:
 
 ```{r}
 loss(c(1, 1), ciliegi$volume, ciliegi$diametro)
@@ -125,7 +152,8 @@ loss(c(1, 1), ciliegi$volume, ciliegi$diametro)
 
 ## Stima ai minimi quadrati
 
-La stima ai minimi quadrati si ottiene quindi usando `nlminb`. In questo caso, siamo effettivamente interessati a **minimizzare** una funzione.
+La stima ai minimi quadrati si ottiene quindi usando `nlminb`. In questo
+caso, siamo effettivamente interessati a **minimizzare** una funzione.
 
 ```{r}
 fit_ls <- nlminb(start = c(1, 1), function(param) loss(param, ciliegi$volume, ciliegi$diametro),
@@ -141,7 +169,9 @@ param_hat_ls
 
 ## Commenti ai risultati
 
-I comandi precedenti quindi implicano che la **stima ai minimi quadrati** (**non lineari**) è pari a $$\hat{\eta}_{\text{ls}} = 0.0866, \qquad \hat{\lambda}_{\text{ls}} = 2.2364.
+I comandi precedenti quindi implicano che la **stima ai minimi
+quadrati** (**non lineari**) è pari a
+$$\hat{\eta}_{\text{ls}} = 0.0866, \qquad \hat{\lambda}_{\text{ls}} = 2.2364.
 $$
 
 Inoltre, la **varianza residuale** è pari a $$
@@ -154,17 +184,24 @@ Infatti:
 fit_ls$objective
 ```
 
-Come ricorderete, questo problema di stima può essere affrontato alternativamente tramite la procedura di **linearizzazione** del modello.
+Come ricorderete, questo problema di stima può essere affrontato
+alternativamente tramite la procedura di **linearizzazione** del
+modello.
 
-Supponendo che la relazione sia del tipo $\text{(volume)} = \eta \:\text{(diametro)}^{\lambda}$, allora applicando la funzione $\log$ ambo i lati, si ottiene $$
+Supponendo che la relazione sia del tipo
+$\text{(volume)} = \eta \:\text{(diametro)}^{\lambda}$, allora
+applicando la funzione $\log$ ambo i lati, si ottiene $$
 \log{\text{(volume)}} = \log{\eta}  + \lambda\log{\text{(diametro)}}.
 $$
 
-Quindi, la **relazione non lineare** che abbiamo supposto tra `diametro` e `volume` corrisponde ad una **relazione lineare** tra i logaritmi delle due variabili.
+Quindi, la **relazione non lineare** che abbiamo supposto tra `diametro`
+e `volume` corrisponde ad una **relazione lineare** tra i logaritmi
+delle due variabili.
 
 ## Il modello linearizzato
 
-La relazione in scala logaritmica descrive un modello **linearizzato**. Si tratta di un modello di regressione lineare semplice in cui $$
+La relazione in scala logaritmica descrive un modello **linearizzato**.
+Si tratta di un modello di regressione lineare semplice in cui $$
 z_i = \log y_i, \qquad w_i = \log{x_i}, \qquad i=1,\dots,n.
 $$
 
@@ -172,15 +209,21 @@ Introducendo esplicitamente il termine di errore, avremo quindi che $$
 z_i = \alpha + \beta w_i + \epsilon_i
 $$ in cui $\alpha = \log \eta$ e $\beta = \lambda$.
 
-Possiamo determinare i **parametri trasformati** ottimali $\hat{\alpha}$ e $\hat{\beta}$ ed i **parametri originali** $\hat{\eta}_{\text{ols}}$ ed $\hat{\lambda}_{\text{ols}}$ utilizzando il criterio dei minimi quadrati sulla scala trasformata, ovvero $$
+Possiamo determinare i **parametri trasformati** ottimali $\hat{\alpha}$
+e $\hat{\beta}$ ed i **parametri originali** $\hat{\eta}_{\text{ols}}$
+ed $\hat{\lambda}_{\text{ols}}$ utilizzando il criterio dei minimi
+quadrati sulla scala trasformata, ovvero $$
 \min_{\alpha, \beta} \frac{1}{n} \sum_{i=1}^n\left(z_i - \alpha - \beta w_i \right)^2 = \min_{\eta, \lambda} \frac{1}{n} \sum_{i=1}^n\left(\log{y_i} - \log{\eta} - \lambda \log{x_i} \right)^2.
 $$
 
-Varrà quindi la relazione $\hat{\eta}_{\text{ols}} = \exp\{\hat{\alpha}\}$ e che $\hat{\lambda}_{\text{ols}} = \hat{\beta}$.
+Varrà quindi la relazione
+$\hat{\eta}_{\text{ols}} = \exp\{\hat{\alpha}\}$ e che
+$\hat{\lambda}_{\text{ols}} = \hat{\beta}$.
 
 ## Stima ai minimi quadrati (modello linearizzato)
 
-La stima ai minimi quadrati in scala trasformata ammette una **soluzione esplicita**.
+La stima ai minimi quadrati in scala trasformata ammette una **soluzione
+esplicita**.
 
 ```{r}
 z <- log(ciliegi$volume)
@@ -197,11 +240,15 @@ param_hat_ols
 loss(param_hat_ols, ciliegi$volume, ciliegi$diametro)
 ```
 
-I comandi precedenti quindi implicano che la **stima ai minimi quadrati** (**modello linearizzato**) è pari a $$
+I comandi precedenti quindi implicano che la **stima ai minimi
+quadrati** (**modello linearizzato**) è pari a $$
 \hat{\eta}_{\text{ols}} = 0.095, \qquad \hat{\lambda}_{\text{ols}} = 2.200.
 $$
 
-Inoltre, la varianza residuale $n^{-1} \sum_{i=1}^n(y_i - \hat{\eta}_{\text{ols}} x_i^{\hat{\lambda}_{\text{ols}}})^2 = 10.253$ è superiore a quella ottenuta in precedenza (**{come mai**?), anche se di poco.
+Inoltre, la varianza residuale
+$n^{-1} \sum_{i=1}^n(y_i - \hat{\eta}_{\text{ols}} x_i^{\hat{\lambda}_{\text{ols}}})^2 = 10.253$
+è superiore a quella ottenuta in precedenza (**{come mai**?), anche se
+di poco.
 
 ## Confronto tra modelli
 
@@ -215,12 +262,18 @@ curve(param_hat_ols[1] * x^param_hat_ols[2],
 
 ## Commenti conclusivi
 
-I due approcci sono **sostanzialmente equivalenti** in questo specifico esempio, nel senso che producono risultati quasi indistinguibili.
+I due approcci sono **sostanzialmente equivalenti** in questo specifico
+esempio, nel senso che producono risultati quasi indistinguibili.
 
-Si noti che il **modello** è lo stesso, abbiamo solo cambiato **metodo di stima**!
+Si noti che il **modello** è lo stesso, abbiamo solo cambiato **metodo
+di stima**!
 
-Tuttavia, in generale non è detto che sia possibile linearizzare il modello originale. In questi casi, non esiste un'alternativa semplice.
+Tuttavia, in generale non è detto che sia possibile linearizzare il
+modello originale. In questi casi, non esiste un'alternativa semplice.
 
-Infine, a seconda della funzione di perdita utilizzata, due diversi metodi di stima potrebbero differire di molto nonostante il modello sia lo stesso.
+Infine, a seconda della funzione di perdita utilizzata, due diversi
+metodi di stima potrebbero differire di molto nonostante il modello sia
+lo stesso.
 
-Ad esempio, alcuni stimatori sono più **robusti** di altri rispetto alla presenza di valori anomali.
+Ad esempio, alcuni stimatori sono più **robusti** di altri rispetto alla
+presenza di valori anomali.
