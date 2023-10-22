@@ -46,15 +46,15 @@ link](https://tommasorigon.github.io/introR/exe/es_3.html)
 
 ## I metodi Monte Carlo
 
-Nell'[unità H](un_H.html) abbiamo dedicato moltissime energie per
-cercare di capire come **simulare** dei valori (pseudo) casuali da
-variabili aleatorie continue e discrete.
+Nell'[unità H](un_H.html) abbiamo dedicato grandi energie a cercare
+di capire come **simulare** dei valori (pseudo) casuali da variabili
+aleatorie continue e discrete.
 
-Ciò che tuttavia non abbiamo spiegato è l'**utilità** di queste
+Ciò che tuttavia non abbiamo ancora spiegato è l'**utilità** di queste
 tecniche.
 
 Il motivo è semplice: le **possibili applicazioni** sono talmente
-numerose che è necessario introdurle separatamente in questa lezione...
+numerose che è stato necessario introdurle separatamente in questa lezione...
 e probabilmente scalfiremo solamente la superficie.
 
 ::: callout-important
@@ -107,9 +107,9 @@ Statistica" a Brad Efron nel 2019. Link:
 La **statistica bayesiana** moderna fa uso intensivo dei metodi Monte
 Carlo.
 
-Concetti chiave di **data mining & machine learning**, come la
+Strumenti chiave di **data mining & machine learning**, come la
 suddivisione in insieme di stima & verifica o la convalida incrociata,
-sono per definizione basati sulla simulazione di numeri casuali.
+sono basati sulla simulazione di numeri casuali.
 
 Infine, grazie alla simulazione è possibile verificare la validità dei
 risultati "asintotici" che vengono presentati nei corsi di **inferenza
@@ -359,7 +359,7 @@ MonteCarlo(10^6) # R = 10^6 conduce a std.error basso
 
 ## Integrazione Monte Carlo I
 
-L'idea di approssimare una probabilità tramite simulazione può essere
+Questa idea di approssimare una probabilità tramite simulazione può essere
 **generalizzata**.
 
 In particolare, supponiamo di voler calcolare un generico **integrale**
