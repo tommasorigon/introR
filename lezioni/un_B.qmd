@@ -297,16 +297,14 @@ Il compito è il seguente: per tutti i numeri da $1$ a $100$ si stampi a schermo
 
 -   la parola `fizzbuzz` se il numero è un multiplo sia di $3$ che di $5$,
 
-    \item
-
-    il numero stesso altrimenti.
+-   il numero stesso altrimenti.
 
 . . .
 
 ::: callout-tip
 ## Suggerimento
 
-Si usi la funzione `print` e la funzione resto `%` di **R**. Inoltre, per rendere il codice più snello è possibile usare l'istruzione di controllo chiamata `else if`.
+Si usi la funzione `print` e la funzione resto `%%` di **R**. Inoltre, per rendere il codice più snello è possibile usare l'istruzione di controllo chiamata `else if`.
 :::
 
 #### Soluzione esercizio riassuntivo II
