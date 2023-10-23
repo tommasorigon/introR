@@ -31,6 +31,7 @@ editor_options:
 ---
 
 
+
 ## Unità B
 
 -   Definizione di una nuova funzione
@@ -51,15 +52,19 @@ Oltre ad essere un software statistico, **R** è un **linguaggio di programmazio
 
 La maggior parte degli oggetti **R** è una funzione. Infatti:
 
+
 ```{r}
 class(sum) # Identifica la tipologia di oggetto
 ```
 
+
 . . .
+
 
 ```{r}
 class(log) # Secondo esempio
 ```
+
 
 . . .
 
@@ -73,6 +78,7 @@ Per creare una nuova funzione, si utilizza comando `function`.
 
 La **nuova funzione** `cube` calcola il cubo del numero ricevuto come input:
 
+
 ```{r}
 cube <- function(x) {
   out <- x^3
@@ -80,17 +86,21 @@ cube <- function(x) {
 }
 ```
 
+
 . . .
 
 L'**ultimo oggetto** (in questo caso chiamato `out`) viene restituito come risultato:
+
 
 ```{r}
 cube(4) # Calcola il cubo del valore 4
 ```
 
+
 . . .
 
 Possiamo alternativamente utilizzare anche il comando `return` per restituire il risultato:
+
 
 ```{r}
 cube <- function(x) {
@@ -100,9 +110,11 @@ cube <- function(x) {
 cube(8) # Calcola il cubo del valore 8
 ```
 
+
 ## Funzioni III
 
 È possibile definire nuove funzioni con **molteplici argomenti**, scegliendo anche i loro eventuali **valori predefiniti**
+
 
 ```{r}
 power <- function(x, p = 2) {
@@ -111,28 +123,35 @@ power <- function(x, p = 2) {
 }
 ```
 
+
 . . .
 
 Il valore predefinito per l'argomento `p` è il quadrato (`p = 2`), infatti:
+
 
 ```{r}
 power(x = 4) # Calcola il quadrato del valore 4
 ```
 
+
 . . .
+
 
 ```{r}
 power(4) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti
 ```
 
+
 . . .
 
 Tuttavia, possiamo selezionare una potenza diversa nel modo seguente:
+
 
 ```{r}
 power(x = 4, p = 3) # Calcola il cubo del valore 4
 power(4, 3) # Sintassi alternativa: non è necessario specificare i nomi degli argomenti
 ```
+
 
 ## Istruzioni di controllo I
 
@@ -143,6 +162,7 @@ L'istruzione di controllo (facoltativa) `else` consente di svolgere un'`operazio
 . . .
 
 Ad esempio, il seguente codice mostra a schermo (funzione `print`) una frase diversa a seconda che la condizione sia vera o falsa:
+
 
 ```{r}
 condizione <- pi^2 < 10 # Valore booleano (in questo caso la condizione è TRUE)
@@ -158,11 +178,13 @@ if (condizione) {
 }
 ```
 
+
 ## Istruzioni di controllo II
 
 La seguente funzione `square_root` è un esempio più concreto relativo ad `if` ed `else`.
 
 Se il numero fornito come input è negativo, viene restituito un `NaN`:
+
 
 ```{r}
 square_root <- function(x) {
@@ -180,6 +202,7 @@ square_root(-2) # La condizione x < 0 è verificata
 square_root(36) # La condizione x < 0 NON è verificata
 ```
 
+
 ## Cicli `while` e `for` I
 
 I cicli `for` ed i cicli `while` ripetono l'operazione contenuta tra le parentesi graffe `{ }` fintanto che una determinata condizione non si è verificata.
@@ -187,6 +210,7 @@ I cicli `for` ed i cicli `while` ripetono l'operazione contenuta tra le parentes
 . . .
 
 Cominciamo con un semplice esempio relativo alla funzione `while`:
+
 
 ```{r}
 i <- 5 # Partiamo con i = 5
@@ -200,6 +224,7 @@ while (i <= 25) { # Ripete l'operazione fintanto che i non è minore o uguale di
 }
 ```
 
+
 ## Cicli `while` e `for` II
 
 ::: callout-warning
@@ -209,6 +234,7 @@ Attenzione a non creare dei **loop senza fine**!
 . . .
 
 Il codice seguente richiede l'interruzione forzata della sessione di **R** oppure, nella peggiore delle ipotesi, il riavvio del computer:
+
 
 ```{r}
 #| eval: false
@@ -224,11 +250,13 @@ while (i <= 25) {
 }
 ```
 
+
 ## Cicli `while` e `for` II
 
 In alternativa ai cicli `while`, si può usare la sintassi più esplicita dei cicli `for`.
 
 Il ciclo `for` esegue il contenuto delle parantesi graffe considerando di volta in volta i valori contenuti ad esempio in un vettore:
+
 
 ```{r}
 values <- seq(from = 5, to = 25, by = 5)
@@ -241,6 +269,7 @@ for (i in values) {
   # ...
 }
 ```
+
 
 ## Esercizio riassuntivo I
 
@@ -262,6 +291,7 @@ Quindi, si usino due cicli `for` "annidati", ovvero uno all'interno dell'altro, 
 
 #### Soluzione esercizio riassuntivo I
 
+
 ```{r}
 distances <- function(x) {
   n <- length(x) # Ottengo la lunghezza del vettore x
@@ -278,6 +308,7 @@ distances <- function(x) {
 x <- c(5, 2, 1, 24) # Esempio per verificare che sia corretto
 distances(x)
 ```
+
 
 ::: callout-note
 ## Nota
@@ -313,6 +344,7 @@ Si usi la funzione `print` e la funzione resto `%` di **R**. Inoltre, per render
 
 La soluzione riportata fa uso del costrutto `else if`.
 
+
 ```{r}
 #| eval: false
 for (i in 1:100) {
@@ -330,6 +362,7 @@ for (i in 1:100) {
   }
 }
 ```
+
 
 ## La famiglia di funzioni `*apply`
 
@@ -351,10 +384,12 @@ Come menzionato nella lezione introduttiva, **R** è organizzato in **pacchetti*
 
 Se vogliamo utilizzare le funzioni di un pacchetto, questo può essere richiamato usando la funzione `library`, ovvero:
 
+
 ```{r}
 library(MASS) # Carica in memoria il pacchetto MASS
 library(knitr) # Carica in memoria il pacchetto knitr
 ```
+
 
 . . .
 
@@ -362,7 +397,9 @@ Se un pacchetto non è presente nel computer è necessario installarlo.
 
 Si può usare il comando seguente oppure usare la finestra "Packages" presente in RStudio.
 
+
 ```{r}
 #| eval: false
 install.packages("knitr") # Installa il pacchetto knitr
 ```
+
