@@ -355,7 +355,7 @@ principali distribuzioni di probabilità. Sia $X$ una variabile casuale.
 | Gamma         | `gamma` | `shape`, `rate` | -, `1`   |
 | Esponenziale  | `exp`   | `rate`          | `1`      |
 | Chi-quadrato  | `chisq` | `df`            | \-       |
-| Normale       | `norm`  | `mean`, `sd`    |          |
+| Normale       | `norm`  | `mean`, `sd`    | `0`, `1` |
 
 ::: callout-caution
 Attenzione alla parametrizzazioni e/o ai significati degli argomenti. Si
