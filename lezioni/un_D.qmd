@@ -466,7 +466,7 @@ Se siete curiosi di conoscere le varie definizioni di quantile, vi ricordo che l
 ::: callout-note
 #### Nota
 
-Un difetto del quantile `type = 1` è che la mediana non sempre coincide con il quantile $\mathcal{Q}_{0.5}$. Si trovi un esempio in questo accade e si verifichi che invece il problema viene risolto nel caso `type = 7`.
+Un difetto del quantile `type = 1` è che la mediana non sempre coincide con il quantile $\mathcal{Q}_{0.5}$. Si trovi un esempio in cui questo accade e si verifichi che invece il problema viene risolto nel caso `type = 7`.
 :::
 
 ## Indici di posizione: i quantili III
