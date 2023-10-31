@@ -79,7 +79,7 @@ all'interno del **progetto Manhattan**.
 
 L'**algoritmo di Metropolis**, sviluppato in quegli anni, è tutt'oggi
 ampiamente usato. Purtroppo è prematuro presentarlo in questo corso: lo
-vederete più avanti!
+vedrete più avanti!
 
 ### Approfondimento
 
