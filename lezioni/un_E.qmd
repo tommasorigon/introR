@@ -30,34 +30,44 @@ editor_options:
   chunk_output_type: console
 ---
 
----
+------------------------------------------------------------------------
 
 ## Argomenti affrontati
 
 -   Varianza e scarto quadratico medio
--   Altre misure di variabilità (campo di variazione, scarto interquartile, MAD)
+-   Altre misure di variabilità (campo di variazione, scarto
+    interquartile, MAD)
 
 ::: callout-note
 #### Nota
 
-Gli esercizi **R** associati sono disponibili a [questo link](https://tommasorigon.github.io/introR/exe/es_2.html)
+Gli esercizi **R** associati sono disponibili a [questo
+link](https://tommasorigon.github.io/introR/exe/es_2.html)
 :::
 
 ## Descrizione del problema
 
-Siamo interessati a confrontare l'efficacia di due diverse metodologie, chiamate A e B, per la **misurazione dell'emoglobina** nel sangue.
+Siamo interessati a confrontare l'efficacia di due diverse metodologie,
+chiamate A e B, per la **misurazione dell'emoglobina** nel sangue.
 
-Si è creato in laboratorio del **sangue artificiale** contenente 15 grammi di emoglobina ogni $100 \text{cm}^3$.
+Si è creato in laboratorio del **sangue artificiale** contenente 15
+grammi di emoglobina ogni $100 \text{cm}^3$.
 
 Dal composito sono stati estratti in totale $n = 360$ campioni.
 
-Di questi, in $n_A = 180$ campioni l'emoglobina è stata misurata utilizzando la metodologia A mentre per i restanti $n_B = 180$ campioni è stata usata la metodologia B.
+Di questi, in $n_A = 180$ campioni l'emoglobina è stata misurata
+utilizzando la metodologia A mentre per i restanti $n_B = 180$ campioni
+è stata usata la metodologia B.
 
-Alcuni dati sono riportati nella prossima slide. Le differenze tra le diverse misurazioni sono da attribuire in larga parte agli errori di misura delle due diverse metodologie.
+Alcuni dati sono riportati nella prossima slide. Le differenze tra le
+diverse misurazioni sono da attribuire in larga parte agli errori di
+misura delle due diverse metodologie.
 
 ## Importazione dei dati `emoglobina`
 
-Come fatto in precedenza, anzitutto è necessario scaricare il file `emoglobina.csv` e salvarlo nel proprio computer. [Link al file](../dataset/emoglobina.csv)
+Come fatto in precedenza, anzitutto è necessario scaricare il file
+`emoglobina.csv` e salvarlo nel proprio computer. [Link al
+file](../dataset/emoglobina.csv)
 
 ```{r}
 emoglobina <- read.table("../dataset/emoglobina.csv", header = TRUE, sep = ",", stringsAsFactors = TRUE)
@@ -75,13 +85,17 @@ emoglobina <- read.table(path, header = TRUE, sep = ",", stringsAsFactors = TRUE
 str(emoglobina)
 ```
 
-L'opzione `stringsAsFactors = TRUE`, implica che la variabile `Metodologia` viene codificata come `factor` e non come `character`.
+L'opzione `stringsAsFactors = TRUE`, implica che la variabile
+`Metodologia` viene codificata come `factor` e non come `character`.
 
 ## Operazioni preliminari
 
-In questo formato i dati sono **difficili da analizzare**, quantomeno senza usare le funzioni avanzate `*apply` così come gli strumenti del cosiddetto `tidyverse`.
+In questo formato i dati sono **difficili da analizzare**, quantomeno
+senza usare le funzioni avanzate `*apply` così come gli strumenti del
+cosiddetto `tidyverse`.
 
-Pertanto, creiamo le due variabili `emo_A` ed `emo_B`, contenenti i valori di emoglobina per le due metodologie.
+Pertanto, creiamo le due variabili `emo_A` ed `emo_B`, contenenti i
+valori di emoglobina per le due metodologie.
 
 ```{r}
 emo_A <- emoglobina$emoglobina[emoglobina$Metodologia == "A"] # Emoglobina gruppo A
@@ -98,7 +112,9 @@ boxplot(emoglobina$emoglobina ~ emoglobina$Metodologia,
 )
 ```
 
-Da queste prime analisi descrittive si evince che entrambe le metodologie sono, quantomeno in media, **ben calibrate**. Quale delle due è preferibile?
+Da queste prime analisi descrittive si evince che entrambe le
+metodologie sono, quantomeno in media, **ben calibrate**. Quale delle
+due è preferibile?
 
 ## La varianza I
 
@@ -118,11 +134,13 @@ mean(emo_A^2) - mean(emo_A)^2 # Varianza del gruppo A, formula alternativa
 mean(emo_B^2) - mean(emo_B)^2 # Varianza del gruppo B, formula alternativa
 ```
 
-La metodologia B è quindi caratterizzata da una **variabilità** maggiore.
+La metodologia B è quindi caratterizzata da una **variabilità**
+maggiore.
 
 ## La varianza II
 
-Per praticità, creiamo una **nuova funzione** chiamata `my_var` che calcola la **varianza** di un generico vettore `x`. Pertanto avremo:
+Per praticità, creiamo una **nuova funzione** chiamata `my_var` che
+calcola la **varianza** di un generico vettore `x`. Pertanto avremo:
 
 ```{r}
 my_var <- function(x) {
@@ -133,7 +151,8 @@ my_var(emo_A)
 my_var(emo_B)
 ```
 
-In **R** è presente la funzione `var`, tuttavia questa calcola una **quantità** leggermente **diversa**, ovvero $$
+In **R** è presente la funzione `var`, tuttavia questa calcola una
+**quantità** leggermente **diversa**, ovvero $$
 \texttt{var(x)} = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2,
 $$ ovvero lo **stimatore corretto** della varianza.
 
@@ -141,7 +160,8 @@ $$ ovvero lo **stimatore corretto** della varianza.
 
 ## La varianza III
 
-La differenza `my_var` e `var` è, in pratica, sostanzialmente **trascurabile** in questo caso, infatti:
+La differenza `my_var` e `var` è, in pratica, sostanzialmente
+**trascurabile** in questo caso, infatti:
 
 ```{r}
 var(emo_A)
@@ -156,13 +176,16 @@ Si ottenga lo stesso output di `my_var` utilizzando la funzione `var`.
 
 ## Scarto quadratico medio
 
-Lo **scarto quadratico medio** è la radice quadrata della varianza, ovvero $$
+Lo **scarto quadratico medio** è la radice quadrata della varianza,
+ovvero $$
 \text{sqm}(x) = \sigma = \sqrt{\sigma^2}.
 $$
 
-Creiamo quindi un'opportuna funzione **R** chiamata `my_sd` per il suo calcolo.
+Creiamo quindi un'opportuna funzione **R** chiamata `my_sd` per il suo
+calcolo.
 
-Anche in questo caso, si faccia attenzione che il comando `sd` di **R** invece calcola il valore di $$
+Anche in questo caso, si faccia attenzione che il comando `sd` di **R**
+invece calcola il valore di $$
 \texttt{sd(x)} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}.
 $$
 
@@ -180,11 +203,14 @@ sd(emo_B)
 
 ## Campo di variazione
 
-Il **campo di variazione** è la differenza tra minimo e massimo della distribuzione, ovvero $$
+Il **campo di variazione** è la differenza tra minimo e massimo della
+distribuzione, ovvero $$
 (\text{``Campo di variazione''}) = x_{(n)} - x_{(1)},
-$$ dove $x_{(1)}$ e $x_{(n)}$ rappresentano rispettivamente il minimo ed il massimo dei dati.
+$$ dove $x_{(1)}$ e $x_{(n)}$ rappresentano rispettivamente il minimo ed
+il massimo dei dati.
 
-Sebbene non esista una funzione specifica per il suo calcolo, possiamo usare i seguenti comandi
+Sebbene non esista una funzione specifica per il suo calcolo, possiamo
+usare i seguenti comandi
 
 ```{r}
 max(emo_A) - min(emo_A)
@@ -197,16 +223,19 @@ diff(range(emo_B))
 ::: callout-note
 #### Esercizio
 
-Si definisca un'opportuna funzione **R** che calcola il **campo di variazione**.
+Si definisca un'opportuna funzione **R** che calcola il **campo di
+variazione**.
 :::
 
 ## Scarto interquartile
 
-Lo **scarto interquartile** è la differenza tra il terzo ed il primo quartile, ovvero $$
+Lo **scarto interquartile** è la differenza tra il terzo ed il primo
+quartile, ovvero $$
 (\text{``Scarto interquartile''}) = \mathcal{Q}_{0.75} - \mathcal{Q}_{0.25}.
 $$
 
-È molto più **resistente** della varianza in presenza di poche osservazioni estreme.
+È molto più **resistente** della varianza in presenza di poche
+osservazioni estreme.
 
 La sua implementazione in **R** è la seguente:
 
@@ -221,7 +250,8 @@ interquartile_range(emo_B)
 
 ## Mean absolute deviation (MAD)s
 
-L'indice di variabilità **MAD** (*Median Absolute Deviation*) è definito come segue $$
+L'indice di variabilità **MAD** (*Median Absolute Deviation*) è definito
+come segue $$
 \text{MAD} = \text{Mediana}(|x_1 - \text{Me}_x|, \dots, |x_n - \text{Me}_x|), \qquad \text{Me}_x = \text{Mediana}(x_1,\dots,x_n).
 $$
 
@@ -242,11 +272,14 @@ MAD(emo_B)
 
 ## La funzione `tapply` I
 
-Esiste un metodo più **elegante** e **veloce** per ottenere questi risultati, basato sulla funzione `tapply`.
+Esiste un metodo più **elegante** e **veloce** per ottenere questi
+risultati, basato sulla funzione `tapply`.
 
-La funzione `tapply(x, group, fun)` applica una certa funzione `fun` ad un insieme di dati `x`, per ciascun **gruppo** `group`.
+La funzione `tapply(x, group, fun)` applica una certa funzione `fun` ad
+un insieme di dati `x`, per ciascun **gruppo** `group`.
 
-Per esempio, la media aritmetica di `emo_A` ed `emo_B` si ottiene come segue:
+Per esempio, la media aritmetica di `emo_A` ed `emo_B` si ottiene come
+segue:
 
 ```{r}
 tapply(emoglobina$emoglobina, emoglobina$Metodologia, mean)
@@ -271,12 +304,14 @@ tab
 ::: callout-note
 #### Esercizio
 
-Si provi ad usare la funzione `aggregate` per ottenere lo stesso risultato.
+Si provi ad usare la funzione `aggregate` per ottenere lo stesso
+risultato.
 :::
 
 ## Esercizio riassuntivo
 
-La misura di asimmetria di uso più comune è il cosiddetto **indice di asimmetria** standardizzato di **Pearson**, definito come $$
+La misura di asimmetria di uso più comune è il cosiddetto **indice di
+asimmetria** standardizzato di **Pearson**, definito come $$
 \gamma = \frac{1}{\text{sqm}(x)^3} \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^3 = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i - \bar{x}}{\sigma}\right)^3.
 $$
 

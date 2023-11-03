@@ -365,7 +365,7 @@ Questa idea di approssimare una probabilità tramite simulazione può essere
 In particolare, supponiamo di voler calcolare un generico **integrale**
 del tipo $$
 \mathcal{I} = \int_{\mathcal{X}} g(x) f(x) \mathrm{d}x = \mathbb{E}\{g(X)\},
-$$ dove $f(x)$ è la densità una variabile aleatoria $X$ avente supporto
+$$ dove $f(x)$ è la densità di una variabile aleatoria $X$ avente supporto
 $\mathcal{X}$.
 
 La **probabilità di un evento** è un **caso particolare** di questo
