@@ -26,6 +26,16 @@ editor_options:
   chunk_output_type: console
 ---
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H0CBBT90DC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H0CBBT90DC');
+</script>
+
 Il corso [R per l'analisi statistica multivariata]{.orange} è stato erogato da Tommaso Rigon nel corso di laurea "Scienze Statistiche ed Economiche" dell'Università Milano-Bicocca negli A.A. 2020/2021, 2021/2022 e 2022/2023.
 
 Il materiale didattico di questo sito [rimarrà online]{.blue} a tempo indefinito.
