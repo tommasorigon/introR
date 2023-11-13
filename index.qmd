@@ -15,7 +15,7 @@ format:
     theme: [cosmo, template.css]
     toc: true
     toc-title: Table of contents
-    embed-resources: true
+    embed-resources: false
     code-line-numbers: true
     smooth-scroll: true
     fig-dpi: 250
