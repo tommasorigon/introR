@@ -340,12 +340,17 @@ Esercizio
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">L2 =</span> <span class="fu">loglik2</span>(<span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.03</span>), y),</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">L3 =</span> <span class="fu">loglik3</span>(<span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.03</span>), y)</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in microbenchmark(L1 = loglik(c(0.01, 0.02, 0.03), y), L2 =
+loglik2(c(0.01, : less accurate nanosecond times to avoid potential integer
+overflows</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unit: microseconds
- expr    min      lq     mean  median      uq     max neval
-   L1  1.414  1.5765  2.01399  2.1295  2.2620   4.593   100
-   L2 45.009 45.5330 46.40060 45.8230 46.3305  68.628   100
-   L3 41.027 41.4825 42.55722 41.8325 42.1590 109.490   100</code></pre>
+<pre><code>Unit: nanoseconds
+ expr   min    lq     mean median      uq   max neval
+   L1   492   574   649.44    615   656.0  2337   100
+   L2 15498 15744 16275.36  15908 16318.0 25174   100
+   L3 14022 14350 15064.22  14555 15067.5 48175   100</code></pre>
 </div>
 </div>
 </section>
@@ -400,15 +405,15 @@ Nota
 <h2 class="anchored" data-anchor-id="il-metodo-di-newton-raphson-ii">Il metodo di Newton-Raphson II</h2>
 <p>Il metodo <strong>Newton-Raphson</strong> appena descritto si può implementare in come segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10</span>); lambda[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.005</span> <span class="co"># Punto iniziale (cosa succede cambiandolo?)</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); sum_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Algorithmo Newton-Raphson</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  score <span class="ot">&lt;-</span> n <span class="sc">/</span> lambda[k] <span class="sc">-</span> sum_y <span class="co"># Funzione score</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  obs_info <span class="ot">&lt;-</span> n <span class="sc">/</span> lambda[k]<span class="sc">^</span><span class="dv">2</span> <span class="co"># Informazione osservata</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  lambda[k <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> lambda[k] <span class="sc">+</span> score <span class="sc">/</span> obs_info <span class="co"># Passo iterativo</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">c</span>(lambda[k <span class="sc">+</span> <span class="dv">1</span>], <span class="fu">loglik</span>(lambda[k <span class="sc">+</span> <span class="dv">1</span>], y)), <span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># Mostro i risultati</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10</span>); lambda[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.005</span> <span class="co"># Punto iniziale (cosa succede cambiandolo?)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); sum_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Algorithmo Newton-Raphson</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  score <span class="ot">&lt;-</span> n <span class="sc">/</span> lambda[k] <span class="sc">-</span> sum_y <span class="co"># Funzione score</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  obs_info <span class="ot">&lt;-</span> n <span class="sc">/</span> lambda[k]<span class="sc">^</span><span class="dv">2</span> <span class="co"># Informazione osservata</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  lambda[k <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> lambda[k] <span class="sc">+</span> score <span class="sc">/</span> obs_info <span class="co"># Passo iterativo</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">c</span>(lambda[k <span class="sc">+</span> <span class="dv">1</span>], <span class="fu">loglik</span>(lambda[k <span class="sc">+</span> <span class="dv">1</span>], y)), <span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># Mostro i risultati</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]    0.0084 -127.6403
 [1]    0.0123 -124.4969
@@ -419,8 +424,8 @@ Nota
 </div>
 <p>Il risultato esatto, in questo caso, è facile da calcolare e lo riportiamo per un confronto:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>lambda_hat <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(y)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(lambda_hat, <span class="fu">loglik</span>(lambda_hat, y))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lambda_hat <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(y)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(lambda_hat, <span class="fu">loglik</span>(lambda_hat, y))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]    0.01559454 -123.86002328</code></pre>
 </div>
@@ -455,10 +460,10 @@ Nota
 <p>Inoltre, consente di incorporare dei <strong>vincoli</strong> sui parametri, qualora questi fossero presenti.</p>
 <p>Nel modello esponenziale, per esempio, si ha il vincolo <span class="math inline">\lambda &gt; 0</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start = 1 significa che il valore iniziale è pari a 1</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lower = 1e-5 implica che lambda &gt; 0</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>fit_exp <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(<span class="at">start =</span> <span class="dv">1</span>, <span class="at">objective =</span> <span class="cf">function</span>(lambda) <span class="sc">-</span> <span class="fu">loglik</span>(lambda, y), <span class="at">lower =</span> <span class="fl">1e-5</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>fit_exp</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start = 1 significa che il valore iniziale è pari a 1</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lower = 1e-5 implica che lambda &gt; 0</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>fit_exp <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(<span class="at">start =</span> <span class="dv">1</span>, <span class="at">objective =</span> <span class="cf">function</span>(lambda) <span class="sc">-</span> <span class="fu">loglik</span>(lambda, y), <span class="at">lower =</span> <span class="fl">1e-5</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>fit_exp</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$par
 [1] 0.01559454
@@ -481,15 +486,15 @@ $message
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lambda_hat <span class="ot">&lt;-</span> fit_exp<span class="sc">$</span>par <span class="co"># Stima di massima verosimiglianza</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">loglik</span>(x, y), <span class="fl">0.001</span>, <span class="fl">0.05</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> lambda_hat, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lambda_hat <span class="ot">&lt;-</span> fit_exp<span class="sc">$</span>par <span class="co"># Stima di massima verosimiglianza</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">loglik</span>(x, y), <span class="fl">0.001</span>, <span class="fl">0.05</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> lambda_hat, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_K_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="1400"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">optim</span>(<span class="at">par =</span> <span class="dv">1</span>, <span class="at">fn =</span> <span class="cf">function</span>(lambda) <span class="sc">-</span> <span class="fu">loglik</span>(lambda, y), <span class="at">lower =</span> <span class="fl">1e-5</span>, <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>, <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">optim</span>(<span class="at">par =</span> <span class="dv">1</span>, <span class="at">fn =</span> <span class="cf">function</span>(lambda) <span class="sc">-</span> <span class="fu">loglik</span>(lambda, y), <span class="at">lower =</span> <span class="fl">1e-5</span>, <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>, <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$par
 [1] 0.01561446
@@ -513,9 +518,9 @@ $hessian
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Informazione osservata</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>obs_info <span class="ot">&lt;-</span> <span class="fu">length</span>(y) <span class="sc">/</span> lambda_hat<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>obs_info</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Informazione osservata</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>obs_info <span class="ot">&lt;-</span> <span class="fu">length</span>(y) <span class="sc">/</span> lambda_hat<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>obs_info</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 98688.38</code></pre>
 </div>
@@ -524,8 +529,8 @@ $hessian
 <section id="adeguatezza-del-modello" class="level2">
 <h2 class="anchored" data-anchor-id="adeguatezza-del-modello">Adeguatezza del modello</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y))</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pexp</span>(x, lambda_hat), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pexp</span>(x, lambda_hat), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_K_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -558,16 +563,16 @@ Esercizio
 <h2 class="anchored" data-anchor-id="parametro-vettoriale-il-modello-weibull-ii">Parametro vettoriale: il modello Weibull II</h2>
 <p>La funzione che calcola la verosimiglianza in <strong>R</strong> può essere implementata in vari modi. Ne presentiamo qui uno dei tanti basato sulla funzione <code>dweibull</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y) {</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">dweibull</span>(y, <span class="at">shape =</span> par[<span class="dv">1</span>], <span class="at">scale =</span> par[<span class="dv">2</span>], <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">dweibull</span>(y, <span class="at">shape =</span> par[<span class="dv">1</span>], <span class="at">scale =</span> par[<span class="dv">2</span>], <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Siamo interessati a capire se il modello Weibull, che <strong>generalizza</strong> quello esponenziale, rappresenta una scelta modellistica migliore.</p>
 <p>Consideriamo anche in questo caso il dataset <code>aircondit7</code> della libreria <code>boot</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"aircondit7"</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> aircondit7<span class="sc">$</span>hours</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"aircondit7"</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> aircondit7<span class="sc">$</span>hours</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="grafico-della-verosimiglianza-i-facoltativo" class="level2">
@@ -584,34 +589,34 @@ Esercizio
 <h2 class="anchored" data-anchor-id="grafico-della-verosimiglianza-ii-facoltativo">Grafico della verosimiglianza II (facoltativo)</h2>
 <p>Gli estremi degli intervalli vanno scelti <strong>manualmente</strong>. In pratica, bisogna procedere per tentativi se si vuole disegnare la verosimiglianza in una regione “sensata”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione degli intervalli di punti</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">2.25</span>, <span class="at">length =</span> <span class="dv">200</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">400</span>, <span class="at">length =</span> <span class="dv">200</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ottenimento della griglia tramite prodotto cartesiano </span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>parvalues <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(gamma, beta)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcolo valori di verosimiglianza</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>llikvalues <span class="ot">&lt;-</span> <span class="fu">apply</span>(parvalues, <span class="dv">1</span>, loglik, <span class="at">y =</span> y)</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ri-organizzazione dei valori della log-verosimiglianza in forma matriciale</span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>llikvalues <span class="ot">&lt;-</span> <span class="fu">matrix</span>(llikvalues, <span class="at">nrow =</span> <span class="fu">length</span>(gamma), <span class="at">ncol =</span> <span class="fu">length</span>(beta), <span class="at">byrow =</span> F)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione degli intervalli di punti</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">2.25</span>, <span class="at">length =</span> <span class="dv">200</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">400</span>, <span class="at">length =</span> <span class="dv">200</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ottenimento della griglia tramite prodotto cartesiano </span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>parvalues <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(gamma, beta)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcolo valori di verosimiglianza</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>llikvalues <span class="ot">&lt;-</span> <span class="fu">apply</span>(parvalues, <span class="dv">1</span>, loglik, <span class="at">y =</span> y)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ri-organizzazione dei valori della log-verosimiglianza in forma matriciale</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>llikvalues <span class="ot">&lt;-</span> <span class="fu">matrix</span>(llikvalues, <span class="at">nrow =</span> <span class="fu">length</span>(gamma), <span class="at">ncol =</span> <span class="fu">length</span>(beta), <span class="at">byrow =</span> F)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quindi, il grafico <code>contour</code> oppure sua variante <code>filled.contour</code> si possono ottenere abbastanza facilmente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(gamma, beta, llikvalues,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">expression</span>(gamma), <span class="at">ylab =</span> <span class="fu">expression</span>(beta), <span class="co"># Produce le lettere greche nel grafico</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">140</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">120</span>, <span class="at">by =</span> <span class="dv">2</span>),</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Log-verosimiglianza (Modello Weibull)"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(gamma, beta, llikvalues,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">expression</span>(gamma), <span class="at">ylab =</span> <span class="fu">expression</span>(beta), <span class="co"># Produce le lettere greche nel grafico</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">140</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">120</span>, <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Log-verosimiglianza (Modello Weibull)"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_K_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="1400"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filled.contour</span>(gamma, beta, llikvalues,</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">expression</span>(gamma), <span class="at">ylab =</span> <span class="fu">expression</span>(beta),</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">140</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">120</span>, <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">20</span>), <span class="at">main =</span> <span class="st">"Log-verosimiglianza (Modello Weibull)"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filled.contour</span>(gamma, beta, llikvalues,</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">expression</span>(gamma), <span class="at">ylab =</span> <span class="fu">expression</span>(beta),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">140</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">120</span>, <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">20</span>), <span class="at">main =</span> <span class="st">"Log-verosimiglianza (Modello Weibull)"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_K_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="1400"></p>
 </div>
@@ -649,8 +654,8 @@ Problema chiave
 <p>Oltretutto, questo ci evita di dover fare dei conti analitici, come la derivata prima.</p>
 <p>Anche in questo caso bivariato, si è specificato il <strong>limite inferiore</strong> del dominio della funzione, ovvero <span class="math inline">\gamma, \beta &gt; 0</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fit_weibull <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(<span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="cf">function</span>(par) <span class="sc">-</span><span class="fu">loglik</span>(par, y), <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">1e-7</span>, <span class="fl">1e-7</span>))</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>fit_weibull</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fit_weibull <span class="ot">&lt;-</span> <span class="fu">nlminb</span>(<span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="cf">function</span>(par) <span class="sc">-</span><span class="fu">loglik</span>(par, y), <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">1e-7</span>, <span class="fl">1e-7</span>))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>fit_weibull</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$par
 [1]  1.024919 64.792419
@@ -673,9 +678,9 @@ $message
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y))</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pexp</span>(x, fit_exp<span class="sc">$</span>par), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pweibull</span>(x, fit_weibull<span class="sc">$</span>par[<span class="dv">1</span>], fit_weibull<span class="sc">$</span>par[<span class="dv">2</span>]), <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pexp</span>(x, fit_exp<span class="sc">$</span>par), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pweibull</span>(x, fit_weibull<span class="sc">$</span>par[<span class="dv">1</span>], fit_weibull<span class="sc">$</span>par[<span class="dv">2</span>]), <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="un_K_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="1400"></p>
 </div>
