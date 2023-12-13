@@ -66,7 +66,7 @@ $$\text{var}({\bf x}) = \frac{1}{2 n^2} \sum_{i=1}^n \sum_{j = 1}^n (x_i - x_j)^
 Questo esercizio ripercorre l'[unità
 I](https://tommasorigon.github.io/StatI/slides/sl_I.pdf) del corso
 [Statistica I](https://tommasorigon.github.io/StatI), a cui si rimanda
-per un ripasso sugll'indice di Gini e una descrizione del problema.
+per un ripasso sull'indice di Gini e una descrizione del problema.
 
 A [questo link](../dataset/elezioni.RData) sono disponibili i dati delle
 elezioni municipali del 2016 presso il comune di Milano.
@@ -227,7 +227,7 @@ a disposizione le seguenti variabili:
     risultato.
 
 8.  Si calcoli la correlazione tra `duration` e `lgross` e si commenti
-    il risultato. Possiamo quindi concludere che, per guodagnare molto,
+    il risultato. Possiamo quindi concludere che, per guadagnare molto,
     sia sufficiente produrre un film della durata di 12 ore?
 
 ## Esercizi tratti dai libro di testo Albert & Rizzo (**AR**)
