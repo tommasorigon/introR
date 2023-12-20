@@ -31,7 +31,7 @@ editor_options:
 ## Esercizio A
 
 È ragionevole supporre che la durata dei voli diretti Milano - New York
-si distribuisca come una normale di media $\mu=500$ minuti e varianza
+si distribuisca come una normale di media $\mu = 500$ minuti e varianza
 $\sigma^2 = 625$.
 
 1.  Con quale probabilità un volo impiegherà meno di 9 ore (540 min) per
@@ -42,6 +42,8 @@ $\sigma^2 = 625$.
 
 3.  Si valuti la percentuale di aerei che impiega un tempo compreso tra
     470 e 520 minuti.
+    
+Un modello gaussiano potrebbe non essere appropriato in questo caso, perchè presuppone che valori negativi abbiano probabilità positiva. Si ripeta quindi questo esercizio ipotizzando una distribuzione gamma di media $\mu = 500$ e varianza $\sigma^2 = 625$.
 
 ## Esercizio B
 
@@ -141,12 +143,12 @@ $$
 
 ## Esercizio F
 
-La distribuzione beta-binomiale di parametri $\alpha, \beta > 0$ ed
-$n \in \mathbb{N}$ di è una variabile aleatoria discreta $X$ è tale che
+La funzione di probabilità di una variabile aleatoria beta-binomiale di parametri $\alpha, \beta > 0$ ed
+$n \in \mathbb{N}$ è pari a
 
 $$
 \mathbb{P}(X = k) = \binom{n}{k}\frac{\mathcal{B}(k+\alpha,n-k+\beta)}{\mathcal{B}(\alpha,\beta)},\qquad k=0,\dots,n.
-$$ dove $\mathcal{B}$ è la funzione beta.
+$$ dove $\mathcal{B}$ è la funzione beta (`beta`).
 
 1.  Si definiscano la funzione di probabilità
     `dbetabinom(k, n, alpha, beta)` e la funzione di ripartizione
@@ -174,11 +176,11 @@ $$
 \mathbb{P}(g(X) \ge k) \le \frac{\mathbb{E}(g(X))}{k}.
 $$
 
-1.  Si verifichi tramite simulazione la disugaglianza di Markov nel caso
+1.  Si verifichi tramite simulazione la disuguaglianza di Markov nel caso
     $g(x) = x^2$ e con $X \sim \text{N}(0,1)$, per $k = 1,2,3$. Si
     confronti il risultato con i valori teorici.
 
-2.  Si verifichi tramite simulazione la disugaglianza di Markov nel caso
+2.  Si verifichi tramite simulazione la disuguaglianza di Markov nel caso
     $g(x) = e^{x/100}$ e con $X \sim \text{Ga}(10,1/10)$, per
     $k = 1,2,3$.
 

@@ -113,12 +113,13 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="esercizio-a" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-a">Esercizio A</h2>
-<p>È ragionevole supporre che la durata dei voli diretti Milano - New York si distribuisca come una normale di media <span class="math inline">\mu=500</span> minuti e varianza <span class="math inline">\sigma^2 = 625</span>.</p>
+<p>È ragionevole supporre che la durata dei voli diretti Milano - New York si distribuisca come una normale di media <span class="math inline">\mu = 500</span> minuti e varianza <span class="math inline">\sigma^2 = 625</span>.</p>
 <ol type="1">
 <li><p>Con quale probabilità un volo impiegherà meno di 9 ore (540 min) per arrivare a destinazione?</p></li>
 <li><p>Con quale probabilità un volo impiegherà più di 8 ore e mezza (510 min) per arrivare?</p></li>
 <li><p>Si valuti la percentuale di aerei che impiega un tempo compreso tra 470 e 520 minuti.</p></li>
 </ol>
+<p>Un modello gaussiano potrebbe non essere appropriato in questo caso, perchè presuppone che valori negativi abbiano probabilità positiva. Si ripeta quindi questo esercizio ipotizzando una distribuzione gamma di media <span class="math inline">\mu = 500</span> e varianza <span class="math inline">\sigma^2 = 625</span>.</p>
 </section>
 <section id="esercizio-b" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-b">Esercizio B</h2>
@@ -177,10 +178,10 @@ B = \frac{\mathcal{Q}(0.75) - 2\mathcal{Q}(0.5) + \mathcal{Q}(0.25)}{\mathcal{Q}
 </section>
 <section id="esercizio-f" class="level2">
 <h2 class="anchored" data-anchor-id="esercizio-f">Esercizio F</h2>
-<p>La distribuzione beta-binomiale di parametri <span class="math inline">\alpha, \beta &gt; 0</span> ed <span class="math inline">n \in \mathbb{N}</span> di è una variabile aleatoria discreta <span class="math inline">X</span> è tale che</p>
+<p>La funzione di probabilità di una variabile aleatoria beta-binomiale di parametri <span class="math inline">\alpha, \beta &gt; 0</span> ed <span class="math inline">n \in \mathbb{N}</span> è pari a</p>
 <p><span class="math display">
 \mathbb{P}(X = k) = \binom{n}{k}\frac{\mathcal{B}(k+\alpha,n-k+\beta)}{\mathcal{B}(\alpha,\beta)},\qquad k=0,\dots,n.
-</span> dove <span class="math inline">\mathcal{B}</span> è la funzione beta.</p>
+</span> dove <span class="math inline">\mathcal{B}</span> è la funzione beta (<code>beta</code>).</p>
 <ol type="1">
 <li><p>Si definiscano la funzione di probabilità <code>dbetabinom(k, n, alpha, beta)</code> e la funzione di ripartizione <code>pbetabinom(k, n, alpha, beta)</code> di una distribuzione beta-binomiale.</p></li>
 <li><p>Si controlli empiricamente che per <span class="math inline">n = 40</span> e <span class="math inline">\alpha = \beta = 2</span> le probabilità descritte nell’equazione precedente sommano a uno. Quindi, si rappresenti graficamente la distribuzione.</p></li>
@@ -199,8 +200,8 @@ B = \frac{\mathcal{Q}(0.75) - 2\mathcal{Q}(0.5) + \mathcal{Q}(0.25)}{\mathcal{Q}
 \mathbb{P}(g(X) \ge k) \le \frac{\mathbb{E}(g(X))}{k}.
 </span></p>
 <ol type="1">
-<li><p>Si verifichi tramite simulazione la disugaglianza di Markov nel caso <span class="math inline">g(x) = x^2</span> e con <span class="math inline">X \sim \text{N}(0,1)</span>, per <span class="math inline">k = 1,2,3</span>. Si confronti il risultato con i valori teorici.</p></li>
-<li><p>Si verifichi tramite simulazione la disugaglianza di Markov nel caso <span class="math inline">g(x) = e^{x/100}</span> e con <span class="math inline">X \sim \text{Ga}(10,1/10)</span>, per <span class="math inline">k = 1,2,3</span>.</p></li>
+<li><p>Si verifichi tramite simulazione la disuguaglianza di Markov nel caso <span class="math inline">g(x) = x^2</span> e con <span class="math inline">X \sim \text{N}(0,1)</span>, per <span class="math inline">k = 1,2,3</span>. Si confronti il risultato con i valori teorici.</p></li>
+<li><p>Si verifichi tramite simulazione la disuguaglianza di Markov nel caso <span class="math inline">g(x) = e^{x/100}</span> e con <span class="math inline">X \sim \text{Ga}(10,1/10)</span>, per <span class="math inline">k = 1,2,3</span>.</p></li>
 </ol>
 </section>
 <section id="esercizio-i" class="level2">
