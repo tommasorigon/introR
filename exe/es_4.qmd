@@ -71,7 +71,7 @@ varianza di $X$. Lo stimatore usuale di $\gamma$ è
 
 $$
 \hat{\gamma}_n = \frac{1}{n}\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{S}\right)^3,
-$$ dove $\bar{X} = 1/\sum_{i=1}^nX_i$ e
+$$ dove $\bar{X} = 1/n \sum_{i=1}^nX_i$ e
 $S^2 = 1/n\sum_{i=1}^n(X_i - \bar{X})^2$ indicano la media aritmetica e
 la varianza campionaria (non corretta).
 
